@@ -33,7 +33,6 @@ const Toolbar = ({showSideDrawer}) => {
                     <div className={`desktop-only`}><NavigationItems/></div>
                     <DrawerToggle clicked={showSideDrawer}/>
                 </div>
-
         </header>
 
     );
