@@ -3,7 +3,7 @@
     height: 75vh !important;
     background: url("https://res.cloudinary.com/dwtcilinl/image/upload/v1622277126/Gallery/rwuv1tlhsgv47lxy62fb.jpg") top left #f1f6fd;
     background-size: cover;
-    /*margin-bottom: -200px;*/
+    /*margin-bottom: -100px;*/
     position: relative;
 }
 .Hero:before {
