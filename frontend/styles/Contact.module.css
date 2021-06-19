@@ -1,0 +1,69 @@
+.Wrap {
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px
+}
+
+.Info {
+    background: #ffffff;
+}
+
+.Info i {
+    font-size: 20px;
+    color: #f03c02;
+    float: left;
+    width: 44px;
+    height: 44px;
+    background: #ffeee8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+}
+
+.Info h4 {
+    padding: 0 0 0 60px;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #2b2320;
+}
+
+.Info p {
+    padding: 0 0 0 60px;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #65534c;
+}
+
+.Info:hover i {
+    background: #f03c02;
+    color: #fff;
+}
+
+.Contact {
+    width: 100%;
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+    padding: 30px;
+    background: #fff;
+}
+
+.Contact  .form-group {
+  padding-bottom: 8px;
+}
+.Contact  input {
+  height: 44px;
+}
+
+.Contact  textarea {
+  padding: 10px 12px;
+}
+
+.Btn{
+  background: #f03c02;
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 4px;
+}

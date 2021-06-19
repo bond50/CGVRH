@@ -1,0 +1,101 @@
+.Content {
+    background-color: #f6f9ff;
+    padding: 40px ;
+}
+
+.Content h3 {
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    color: #4154f1;
+    text-transform: uppercase;
+}
+
+.Content h3::after {
+    content: '';
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #fd9042;
+    bottom: 0;
+    margin: 4px 10px;
+}
+
+.Content h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0C163B;
+}
+
+
+
+.Content  p {
+    margin: 15px 0 30px 0;
+    font-size: 13px;
+}
+
+
+
+.Button {
+    line-height: 0;
+    padding: 15px 40px;
+    border-radius: 4px;
+    transition: 0.5s;
+    color: #fff;
+    background-image: linear-gradient(to right, #8ccf69, #cdc951);
+    box-shadow: 0px 5px 25px rgba(65, 84, 241, 0.3);
+}
+
+.Button span {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.Button i {
+    margin-left: 5px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+ .Button:hover i {
+    transform: translateX(5px);
+}
+
+.Img {
+    padding: 20px 6px;
+}
+
+ .Img:hover {
+    cursor: pointer;
+}
+
+ .Animated {
+    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@-webkit-keyframes up-down {
+    0% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes up-down {
+    0% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 991px) {
+    .Animated {
+        -webkit-animation: none;
+        animation: none;
+    }
+
+}

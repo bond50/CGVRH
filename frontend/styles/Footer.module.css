@@ -1,0 +1,21 @@
+.Footer{
+    background: #343434;
+    color: #bebebe;
+    font-size: 11px;
+}
+
+
+.FooterTop {
+    padding: 60px 0 30px 0;
+    background:#343434;
+    border-bottom: 1px solid #bebebe;
+
+}
+
+
+
+
+ .Copyright {
+    text-align: center;
+    color: #bebebe;
+}

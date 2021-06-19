@@ -1,0 +1,20 @@
+.SocialLinks a {
+    font-size: 11px;
+    background: #0366d6;
+    display: inline-block;
+    color: #fff;
+    line-height: 1;
+    padding: 4px 0;
+    margin-right: 4px;
+    border-radius: 2px;
+    text-align: center;
+    width: 18px;
+    height: 18px;
+    transition: 0.3s;
+}
+
+.SocialLinks a:hover {
+    color: #0366d6;
+    background: #f1f6fd;
+    text-decoration: none;
+}

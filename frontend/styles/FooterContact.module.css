@@ -1,0 +1,23 @@
+
+.FooterContact{
+    margin-bottom: 30px;
+}
+.FooterContact h4 {
+    font-size: 16px;
+    margin: 0 0 15px 0;
+    padding: 2px 0 ;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #bebebe;
+    text-transform: uppercase;
+
+}
+
+.FooterContact p {
+    line-height: 24px;
+    font-size: 11px;
+    margin-bottom: 0;
+    font-family: "Muli", sans-serif;
+    color: #bebebe;
+}

@@ -1,0 +1,54 @@
+
+.Section {
+    padding: 60px 1rem;
+    overflow: hidden;
+    border: 2px solid #f1f6fd;
+    border-radius: 5px;
+    min-height: 50vh;
+
+
+}
+
+
+.Title {
+    padding-bottom: 30px;
+}
+
+.Title h3 {
+    font-size: 18px;
+    font-weight: 800;
+    padding: 0;
+    line-height: 1px;
+    margin: 0 0 5px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    color: #666666;
+}
+
+.Title h3::after {
+    content: '';
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #fd9042;
+    bottom: 0;
+    margin: 4px 10px;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .Title h3::after {
+        display: none;
+    }
+
+}
+
+.Title p {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: Poppins, sans-serif;
+    color: #2a2c39;
+}
