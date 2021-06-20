@@ -1,12 +1,13 @@
 import Head from "next/head";
-import {withRouter} from "next/router";
-import Link from "next/link";
-import {useState} from "react";
+import React, {useState} from "react";
+
 import Layout from "../../hoc/Layout";
 import {listBlogsWithCategoriesAndTags} from "../../actions/blog";
-import { APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
-
+import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
+import classes from '../../styles/Blog.module.css'
 import Card from "../../components/blog/Card";
+import {withRouter} from "next/router";
+import SideBar from "../../components/blog/SideBar";
 
 
 const Blogs = ({blogs, tags, categories, totalBlogs, blogsLimit, blogSkip, router}) => {
@@ -35,7 +36,7 @@ const Blogs = ({blogs, tags, categories, totalBlogs, blogsLimit, blogSkip, route
         </Head>
     );
 
- const [limit, setLimit] = useState(blogsLimit);
+    const [limit, setLimit] = useState(blogsLimit);
     const [skip, setSkip] = useState(0);
     const [size, setSize] = useState(totalBlogs);
     const [loadedBlogs, setLoadedBlogs] = useState([]);
@@ -57,7 +58,7 @@ const Blogs = ({blogs, tags, categories, totalBlogs, blogsLimit, blogSkip, route
         return (
             size > 0 &&
             size >= limit && (
-                <button onClick={loadMore} className="btn btn-outline-primary btn-lg">
+                <button onClick={loadMore} className="btn btn-outline-secondary  btn-sm">
                     Load more
                 </button>
             )
@@ -66,68 +67,51 @@ const Blogs = ({blogs, tags, categories, totalBlogs, blogsLimit, blogSkip, route
 
     const showAllBlogs = () => {
         return blogs.map((blog, i) => {
-            // ()
             return (
-                <article key={i}>
-                    <Card blog={blog} />
-                    <hr />
+                <article key={i} className={classes.Entry}>
+                    <Card blog={blog}/>
                 </article>
             );
         });
     };
 
-    const showAllCategories = () => {
-        return categories.map((c, i) => (
-            <Link href={`/categories/${c.slug}`} key={i}>
-                <a className="btn btn-primary mx-1 mt-3">{c.name}</a>
-            </Link>
-        ));
-    };
-
-    const showAllTags = () => {
-        return tags.map((t, i) => (
-            <Link href={`/tags/${t.slug}`} key={i}>
-                <a className="btn btn-outline-primary mx-1 mt-3">{t.name}</a>
-            </Link>
-        ));
-    };
 
     const showLoadedBlogs = () => {
         return loadedBlogs.map((blog, i) => (
-            <article key={i}>
-                <Card blog={blog} />
+            <article key={i} className={classes.Entry}>
+                <Card blog={blog}/>
             </article>
         ));
-    };
+    }
 
+
+    const showSidebar = () => {
+        return <SideBar blogs={blogs} tags={tags} categories={categories}/>
+    };
 
     return (
         <>
             {head()}
             <Layout>
-                <main>
-                    <div className="container-fluid">
-                        <header>
-                            <div className="col-md-12 pt-3">
-                                <h1 className="display-4  text-center" style={{fontWeight:'800'}}>
-                                    {`${APP_NAME} blogs`}
-                                </h1>
-                            </div>
-                            <section>
-                                <div className="pb-5 text-center">
-                                    {showAllCategories()}
-                                    <br />
-                                    {showAllTags()}
+                <section className={classes.Blog}>
+                    <div className="container" data-aos="fade-up">
+                        <div className="row">
+                            <div className="col-lg-8">
+                                {showAllBlogs()}
+                                {showLoadedBlogs()}
+                                <div className="text-center pb-3">
+                                    {loadMoreButton()}
                                 </div>
-                            </section>
-                        </header>
+                            </div>
+                            <div className="col-lg-4">
+                                {showSidebar()}
+                            </div>
+                        </div>
                     </div>
-                    <div className="container-fluid">{showAllBlogs()}</div>
-                    <div className="container-fluid">{showLoadedBlogs()}</div>
-                    <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
-                </main>
-            </Layout>
+                </section>
 
+
+            </Layout>
         </>
     );
 };
@@ -135,9 +119,8 @@ const Blogs = ({blogs, tags, categories, totalBlogs, blogsLimit, blogSkip, route
 
 export const getServerSideProps = async (context) => {
     let skip = 0
-    let limit = 5
+    let limit = 4
     return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
-
         if (data.error) {
             console.log(data.error)
         } else {

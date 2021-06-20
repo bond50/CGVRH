@@ -1,0 +1,14 @@
+.Item {
+    margin-bottom: 30px;
+}
+
+.Title {
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 700;
+    padding: 0 0 0 0;
+    margin: 0 0 15px 0;
+    color: #111;
+    position: relative;
+}
+

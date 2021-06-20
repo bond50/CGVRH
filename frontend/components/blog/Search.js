@@ -1,7 +1,7 @@
 import Link from 'next/link';
-
-import { useState, useEffect } from 'react';
-import { listSearch } from '../../actions/blog';
+import classes from '../../styles/SidebrSearchForm.module.css'
+import {useState, useEffect} from 'react';
+import {listSearch} from '../../actions/blog';
 
 const Search = () => {
     const [values, setValues] = useState({
@@ -11,30 +11,30 @@ const Search = () => {
         message: ''
     });
 
-    const { search, results, searched, message } = values;
+    const {search, results, searched, message} = values;
 
     const searchSubmit = e => {
         e.preventDefault();
-        listSearch({ search }).then(data => {
-            setValues({ ...values, results: data, searched: true, message: `${data.length} blogs found` });
+        listSearch({search}).then(data => {
+            setValues({...values, results: data, searched: true, message: `${data.length} items found`});
 
         });
     };
 
     const handleChange = e => {
-        setValues({ ...values, search: e.target.value, searched: false, results: [] });
+        setValues({...values, search: e.target.value, searched: false, results: []});
     };
 
     const searchedBlogs = (results = []) => {
 
         return (
-            <div className="card">
-                {message && <p className="pt-4 text-muted font-italic">{message}</p>}
+            <div className={classes.Searched}>
+                {message && <p className="pt-3 text-muted">{message}</p>}
                 {results.map((blog, i) => {
                     return (
                         <div key={i}>
                             <Link href={`/blogs/${blog.slug}`}>
-                                <a className="text-primary">{blog.title}</a>
+                                <a className={`text-primary ${classes.Text}`}>{blog.title.toLowerCase()}</a>
                             </Link>
                         </div>
                     );
@@ -44,26 +44,21 @@ const Search = () => {
     };
 
     const searchForm = () => (
-        <form onSubmit={searchSubmit}>
-            <div className="row">
-                <div className="col-md-8">
-                    <input type="search" className="form-control" placeholder="Search blogs" onChange={handleChange} />
-                </div>
-
-                <div className="col-md-4">
-                    <button className="btn btn-block btn-outline-primary" type="submit">
-                        Search
-                    </button>
-                </div>
-            </div>
+        <form className={classes.Form} onSubmit={searchSubmit}>
+            <input placeholder="Search here" type="search" onChange={handleChange}/>
+            <button
+                type="submit"
+                className={classes.Button}>
+                <i className={`bi bi-search`}/>
+            </button>
         </form>
     );
 
     return (
-        <div className="container-fluid">
-            <div className="pt-3 pb-5">{searchForm()}</div>
+        <>
+            {searchForm()}
             {searched && <div>{searchedBlogs(results)}</div>}
-        </div>
+        </>
     );
 };
 

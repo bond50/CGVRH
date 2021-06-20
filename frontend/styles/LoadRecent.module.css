@@ -1,0 +1,33 @@
+
+.Recent .Item + .Item {
+    margin-top: 15px;
+}
+
+.Recent img {
+    width: 80px;
+    float: left;
+}
+
+.Recent h4 {
+    font-size: 15px;
+    margin-left: 95px;
+    font-weight: bold;
+}
+
+.Recent h4 a {
+    color: #111;
+    text-transform: capitalize;
+    transition: 0.3s;
+}
+
+.Recent h4 a:hover {
+    color: #2CC73E;
+}
+
+.Time {
+    display: block;
+    margin-left: 95px;
+    font-style: italic;
+    font-size: 14px;
+    color: #b4aca8;
+}

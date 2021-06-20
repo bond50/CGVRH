@@ -8,6 +8,7 @@ import renderHTML from "react-render-html";
 import Head from "next/head";
 import {useState, useEffect} from "react";
 import SmallCard from "../../components/blog/SmallCard";
+import BlogContainer from "../../hoc/BlogContainer";
 
 const Slug = ({blog, query}) => {
 
