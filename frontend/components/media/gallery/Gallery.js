@@ -1,4 +1,5 @@
 import {SRLWrapper} from "simple-react-lightbox";
+import SimpleReactLightbox from 'simple-react-lightbox'
 
 
 import Filters from "./Filters";
