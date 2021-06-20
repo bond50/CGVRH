@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import AOS from "aos";
 import "aos/dist/aos.css";
-import SimpleReactLightbox from 'simple-react-lightbox'
+
 
 import {useEffect} from "react";
 import Head from "next/head";
