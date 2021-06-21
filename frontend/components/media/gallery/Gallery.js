@@ -40,18 +40,20 @@ const Gallery = ({images, handleTagClick, filters}) => {
                 </div>
             </div>
             <div className='container'>
-                <SRLWrapper options={options}>
-                    <div className='row g-0'>
-                        {images.length <= 0 ? <h1>Loading...</h1> :
-                            images.map(image => <div className="col-lg-3 col-md-4">
-                                    <div className={classes.GalleryItem}>
-                                        <img src={image.secureUrl} alt={image.tag} className='img-fluid'/>
+                <SimpleReactLightbox>
+                    <SRLWrapper options={options}>
+                        <div className='row g-0'>
+                            {images.length <= 0 ? <h1>Loading...</h1> :
+                                images.map(image => <div className="col-lg-3 col-md-4">
+                                        <div className={classes.GalleryItem}>
+                                            <img src={image.secureUrl} alt={image.tag} className='img-fluid'/>
+                                        </div>
                                     </div>
-                                </div>
-                            )
-                        }
-                    </div>
-                </SRLWrapper>
+                                )
+                            }
+                        </div>
+                    </SRLWrapper>
+                </SimpleReactLightbox>
             </div>
         </section>
     );

@@ -45,10 +45,10 @@ const MyApp = ({Component, pageProps}) => {
     },)
 
 
-    return <SimpleReactLightbox>
+    return <>
         {returnHead()}
         <Component {...pageProps} />
-    </SimpleReactLightbox>
+    </>
 
 
 };

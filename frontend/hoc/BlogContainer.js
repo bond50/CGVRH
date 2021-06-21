@@ -1,15 +1,10 @@
 import React from 'react';
 import classes from "../styles/Blog.module.css";
 import SideBar from "../components/blog/SideBar";
-import ShowCategories from "../components/blog/ShowCategories";
-import Search from "../components/blog/Search";
-import ShowItem from "../components/blog/ShowItem";
-import ShowTags from "../components/blog/ShowTags";
-import LoadRecentBlogs from "../components/blog/LoadRecentBlogs";
+import BlogSideBarContent from "../components/blog/BlogSideBarContent";
 
 
-const BlogContainer = ({children, categories, tags, blogs}) => {
-
+const BlogContainer = ({children}) => {
     return (
         <section className={classes.Blog}>
             <div className="container" data-aos="fade-up">
@@ -18,8 +13,9 @@ const BlogContainer = ({children, categories, tags, blogs}) => {
                         {children}
                     </div>
                     <div className="col-lg-4">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, autem commodi culpa cupiditate est iste laboriosam laborum maiores placeat porro, quisquam quos reiciendis rerum sapiente sed soluta tempora veritatis voluptates?
-
+                        <SideBar>
+                            <BlogSideBarContent/>
+                        </SideBar>
                     </div>
                 </div>
             </div>

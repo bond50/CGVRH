@@ -1,0 +1,42 @@
+.SingleBlog {
+    padding: 40px 0 20px 0;
+}
+
+
+
+.Entry {
+  padding: 30px;
+  margin-bottom: 60px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+.Pagination {
+  color: #444444;
+}
+
+.Pagination ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.Pagination li {
+  margin: 0 5px;
+  transition: 0.3s;
+}
+
+.Pagination li a {
+  color: #111;
+  padding: 7px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Pagination li.active, .Pagination li:hover {
+  background: #1bbd36;
+}
+
+.Pagination li.active a, .Pagination li:hover a {
+  color: #fff;
+}

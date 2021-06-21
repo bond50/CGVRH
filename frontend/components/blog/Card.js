@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import {Fragment} from "react";
+import React, {Fragment} from "react";
 import renderHTML from 'react-render-html';
 import moment from 'moment';
 import {API} from '../../config';
 import classes from '../../styles/BlogCard.module.css'
 
-const Card = ({blog}) => {
+const Card = ({blog, single}) => {
     return (
         <Fragment>
             <div className={classes.Image}>
@@ -48,12 +48,25 @@ const Card = ({blog}) => {
             </div>
 
             <div className={classes.Content}>
-                {renderHTML(blog.excerpt)}
-                <div className={`${classes.ReadMore}`}>
-                    <Link href={`/blogs/${blog.slug}`}>
-                        <a>Read more</a>
-                    </Link>
-                </div>
+                {!single && <>
+                    {renderHTML(blog.excerpt)}
+                    <div className={`${classes.ReadMore}`}>
+                        <Link href={`/blogs/${blog.slug}`}>
+                            <a>Read more</a>
+                        </Link>
+                    </div>
+                </>
+                }
+                {single && <>
+                    <blockquote>
+                        <p>
+                            Et vero doloremque tempore voluptatem ratione vel aut. Deleniti sunt animi
+                            aut. Aut eos aliquam doloribus minus autem quos.
+                        </p>
+                    </blockquote>
+                </>
+                }
+
             </div>
         </Fragment>
         // <div className="lead pb-2">

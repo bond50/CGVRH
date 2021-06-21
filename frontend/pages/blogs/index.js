@@ -1,16 +1,15 @@
 import Head from "next/head";
 import React, {useState} from "react";
-
 import Layout from "../../hoc/Layout";
 import {listBlogsWithCategoriesAndTags} from "../../actions/blog";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import classes from '../../styles/Blog.module.css'
 import Card from "../../components/blog/Card";
 import {withRouter} from "next/router";
-import SideBar from "../../components/blog/SideBar";
+import BlogContainer from "../../hoc/BlogContainer";
 
 
-const Blogs = ({blogs, tags, categories, totalBlogs, blogsLimit, blogSkip, router}) => {
+const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, router}) => {
 
     const head = () => (
         <Head>
@@ -35,6 +34,7 @@ const Blogs = ({blogs, tags, categories, totalBlogs, blogsLimit, blogSkip, route
             <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
         </Head>
     );
+
 
     const [limit, setLimit] = useState(blogsLimit);
     const [skip, setSkip] = useState(0);
@@ -85,32 +85,19 @@ const Blogs = ({blogs, tags, categories, totalBlogs, blogsLimit, blogSkip, route
     }
 
 
-    const showSidebar = () => {
-        return <SideBar blogs={blogs} tags={tags} categories={categories}/>
-    };
-
     return (
         <>
             {head()}
             <Layout>
-                <section className={classes.Blog}>
-                    <div className="container" data-aos="fade-up">
-                        <div className="row">
-                            <div className="col-lg-8">
-                                {showAllBlogs()}
-                                {showLoadedBlogs()}
-                                <div className="text-center pb-3">
-                                    {loadMoreButton()}
-                                </div>
-                            </div>
-                            <div className="col-lg-4">
-                                {showSidebar()}
-                            </div>
+                <main>
+                    <BlogContainer>
+                        {showAllBlogs()}
+                        {showLoadedBlogs()}
+                        <div className="text-center pb-3">
+                            {loadMoreButton()}
                         </div>
-                    </div>
-                </section>
-
-
+                    </BlogContainer>
+                </main>
             </Layout>
         </>
     );
@@ -119,16 +106,15 @@ const Blogs = ({blogs, tags, categories, totalBlogs, blogsLimit, blogSkip, route
 
 export const getServerSideProps = async (context) => {
     let skip = 0
-    let limit = 4
+    let limit = 2
     return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
         if (data.error) {
             console.log(data.error)
         } else {
+
             return {
                 props: {
                     blogs: data.blogs,
-                    tags: data.tags,
-                    categories: data.categories,
                     totalBlogs: data.size,
                     blogsLimit: limit,
                     blogSkip: skip
