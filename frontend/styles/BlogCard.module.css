@@ -1,15 +1,26 @@
+.Entry {
+    padding: 30px;
+    margin-bottom: 60px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
 
 .Image {
-    /*width: 100%;*/
-    /*height: auto;*/
     max-height: 440px;
     margin: -30px -30px 20px -30px;
     overflow: hidden;
 }
 
+.Image img {
+    width: 100%;
+    height: auto;
+     object-fit: cover;
+}
+
+
 .Title {
     font-size: 28px;
-    text-transform: capitalize!important;
+    text-transform: capitalize !important;
     font-weight: bold;
     padding: 0;
     margin: 0 0 20px 0;
@@ -91,17 +102,16 @@
     background-color: #fafafa;
     padding: 60px;
     position: relative;
-    text-align: center;
     margin: 20px 0;
 }
 
-.Content blockquote p {
+.Content blockquote * {
     color: #4d4643;
     line-height: 1.6;
     margin-bottom: 0;
     font-style: italic;
     font-weight: 500;
-    font-size: 22px;
+    font-size: 15px;
 }
 
 .Content blockquote::after {
@@ -112,6 +122,57 @@
     bottom: 0;
     width: 3px;
     background-color: #111;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Footer {
+  padding-top: 10px;
+  border-top: 1px solid #e6e6e6;
+}
+
+.Footer i {
+  color: #5e5e5e;
+  display: inline;
+}
+
+.Footer a {
+  color: #1e1e1e;
+  transition: 0.3s;
+}
+
+.Footer a:hover {
+  color: #1bbd36;
+}
+
+.Cats {
+  list-style: none;
+  display: inline;
+  padding: 0 20px 0 0;
+  font-size: 14px;
+}
+.Cats li{
+    display: inline-block;
+}
+
+.Tags {
+  list-style: none;
+  display: inline;
+  padding: 0;
+  font-size: 14px;
+}
+
+.Tags li {
+  display: inline-block;
+}
+
+.Tags  li + li::before {
+  padding-right: 6px;
+  color: #6c757d;
+  content: ",";
+}
+.Cats  li + li::before {
+  padding-right: 6px;
+  color: #6c757d;
+  content: ",";
 }

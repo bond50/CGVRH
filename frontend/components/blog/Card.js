@@ -5,13 +5,26 @@ import moment from 'moment';
 import {API} from '../../config';
 import classes from '../../styles/BlogCard.module.css'
 
+
 const Card = ({blog, single}) => {
+
+
+    const showBlogTags = () =>
+        blog.tags.map((t, i) => (
+                <li key={i} >
+                    <Link href={`/tags/${t.slug}`}>
+                        <a> {t.name}</a>
+                 </Link>
+                </li>
+
+        ));
+
     return (
-        <Fragment>
+        <article className={classes.Entry}>
             <div className={classes.Image}>
                 <Link href={`/blogs/${blog.slug}`}>
                     <img
-                        className="img img-fluid"
+                        className="img-fluid"
                         src={`${API}/blog/photo/${blog.slug}`}
                         alt={blog.title}
                     />
@@ -55,20 +68,34 @@ const Card = ({blog, single}) => {
                             <a>Read more</a>
                         </Link>
                     </div>
-                </>
-                }
+                </>}
                 {single && <>
-                    <blockquote>
-                        <p>
-                            Et vero doloremque tempore voluptatem ratione vel aut. Deleniti sunt animi
-                            aut. Aut eos aliquam doloribus minus autem quos.
-                        </p>
-                    </blockquote>
-                </>
-                }
+                    {renderHTML(blog.body)}
 
+                    <div className={classes.Footer}>
+                        <i className="bi bi-folder"/>
+                        <ul className={classes.Cats}>
+                            {blog.categories.map((c,i)=>(
+                                <li key={i}>
+                                      <Link href={`/categories/${c.slug}`}>
+                                        <a>{c.name}</a>
+                                    </Link>
+                                </li>
+
+                            ))}
+                        </ul>
+
+                        <i className="bi bi-tags"/>
+                        <ul className={classes.Tags}>
+                            {showBlogTags()}
+                        </ul>
+                    </div>
+                </>
+
+
+                }
             </div>
-        </Fragment>
+        </article>
         // <div className="lead pb-2">
         //     <header>
         //         <Link href={`/blogs/${blog.slug}`}>

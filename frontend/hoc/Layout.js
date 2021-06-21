@@ -24,10 +24,10 @@ class Layout extends Component {
                 <Top/>
                 <Toolbar showSideDrawer={this.sideDrawerToggleHandler}/>
                 <SideDrawer open={this.state.showSideDrawer} closeSideDrawer={this.sideDrawerToggleHandler}/>
-                <>
+                <main>
                     <Breadcrumbs/>
                     {children}
-                </>
+                </main>
                 <Footer/>
             </>
         );

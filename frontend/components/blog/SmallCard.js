@@ -5,7 +5,6 @@ import {API} from '../../config';
 
 const SmallCard = ({blog}) => {
     return (
-
         <div className="card">
             <section style={{padding:'0'}}>
                 <Link href={`/blogs/${blog.slug}`}>

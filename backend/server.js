@@ -35,11 +35,11 @@ mongoose
 
 //middleware
 app.use(morgan('tiny'))
-app.use(bodyParser.json())
 app.use(cookieParser())
-app.use(bodyParser.urlencoded({extended: true}))
-app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({limit: '50mb', extended: true}));
+
+
+app.use(express.json({limit: '200mb'}));
+app.use(bodyParser.urlencoded({limit: "200mb", extended: true}));
 
 
 //cors
