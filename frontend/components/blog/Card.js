@@ -7,17 +7,26 @@ import classes from '../../styles/BlogCard.module.css'
 
 
 const Card = ({blog, single}) => {
-
-
     const showBlogTags = () =>
         blog.tags.map((t, i) => (
-                <li key={i} >
-                    <Link href={`/tags/${t.slug}`}>
-                        <a> {t.name}</a>
-                 </Link>
-                </li>
+            <li key={i}>
+                <Link href={`/tags/${t.slug}`}>
+                    <a> {t.name}</a>
+                </Link>
+            </li>
 
         ));
+
+    function showCats() {
+       return  blog.categories.map((c, i) => (
+            <li key={i}>
+                <Link href={`/categories/${c.slug}`}>
+                    <a>{c.name}</a>
+                </Link>
+            </li>
+
+        ))
+    }
 
     return (
         <article className={classes.Entry}>
@@ -71,18 +80,10 @@ const Card = ({blog, single}) => {
                 </>}
                 {single && <>
                     {renderHTML(blog.body)}
-
                     <div className={classes.Footer}>
                         <i className="bi bi-folder"/>
                         <ul className={classes.Cats}>
-                            {blog.categories.map((c,i)=>(
-                                <li key={i}>
-                                      <Link href={`/categories/${c.slug}`}>
-                                        <a>{c.name}</a>
-                                    </Link>
-                                </li>
-
-                            ))}
+                            {showCats()}
                         </ul>
 
                         <i className="bi bi-tags"/>
@@ -91,8 +92,6 @@ const Card = ({blog, single}) => {
                         </ul>
                     </div>
                 </>
-
-
                 }
             </div>
         </article>
