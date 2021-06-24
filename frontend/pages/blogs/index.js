@@ -68,7 +68,9 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, router}) => {
     const showAllBlogs = () => {
         return blogs.map((blog, i) => {
             return (
-                <Card blog={blog} key={i}/>
+                 <article key={i}>
+                    <Card blog={blog} />
+                </article>
             );
         });
     };
@@ -76,8 +78,9 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, router}) => {
 
     const showLoadedBlogs = () => {
         return loadedBlogs.map((blog, i) => (
-                <Card blog={blog} key={i}/>
-
+                <article key={i}>
+                    <Card blog={blog} />
+                </article>
         ));
     }
 

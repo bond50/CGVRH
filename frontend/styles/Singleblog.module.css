@@ -1,5 +1,10 @@
 .SingleBlog {
-    padding: 40px 0 20px 0;
+    padding:  0;
+
+}
+.Img{
+    height: 70vh;
+
 }
 
 .Comments {

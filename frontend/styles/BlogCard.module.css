@@ -4,7 +4,6 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-
 .Image {
     max-height: 440px;
     margin: -30px -30px 20px -30px;
@@ -14,7 +13,7 @@
 .Image img {
     width: 100%;
     height: auto;
-     object-fit: cover;
+    object-fit: cover;
 }
 
 
@@ -68,8 +67,11 @@
 }
 
 
+
 .Content p {
-    line-height: 24px;
+    font-size: 13px;
+    line-height: 26px;
+    color: #111;
 }
 
 .Content .ReadMore {
@@ -127,52 +129,54 @@
 }
 
 .Footer {
-  padding-top: 10px;
-  border-top: 1px solid #e6e6e6;
+    padding-top: 10px;
+    border-top: 1px solid #e6e6e6;
 }
 
 .Footer i {
-  color: #5e5e5e;
-  display: inline;
+    color: #5e5e5e;
+    display: inline;
 }
 
 .Footer a {
-  color: #1e1e1e;
-  transition: 0.3s;
+    color: #1e1e1e;
+    transition: 0.3s;
 }
 
 .Footer a:hover {
-  color: #1bbd36;
+    color: #1bbd36;
 }
 
 .Cats {
-  list-style: none;
-  display: inline;
-  padding: 0 20px 0 0;
-  font-size: 14px;
+    list-style: none;
+    display: inline;
+    padding: 0 20px 0 0;
+    font-size: 14px;
 }
-.Cats li{
+
+.Cats li {
     display: inline-block;
 }
 
 .Tags {
-  list-style: none;
-  display: inline;
-  padding: 0;
-  font-size: 14px;
+    list-style: none;
+    display: inline;
+    padding: 0;
+    font-size: 14px;
 }
 
 .Tags li {
-  display: inline-block;
+    display: inline-block;
 }
 
-.Tags  li + li::before {
-  padding-right: 6px;
-  color: #6c757d;
-  content: ",";
+.Tags li + li::before {
+    padding-right: 6px;
+    color: #6c757d;
+    content: ",";
 }
-.Cats  li + li::before {
-  padding-right: 6px;
-  color: #6c757d;
-  content: ",";
+
+.Cats li + li::before {
+    padding-right: 6px;
+    color: #6c757d;
+    content: ",";
 }

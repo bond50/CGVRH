@@ -1,0 +1,40 @@
+.Card {
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.Card p {
+    font-size: 12px;
+    line-height: 26px;
+    color: #111;
+}
+
+.Card h5 a {
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #111;
+}
+
+.Card h5 a:hover {
+    color: #0366d6;
+}
+
+.Info {
+    font-size: 11px;
+    font-weight: 400;
+    color: #847872;
+}
+
+.Info a {
+    color: #0366d6;
+}
+.Info a:hover {
+    color: #2CC73E;
+}
+
+
