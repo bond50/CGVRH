@@ -25,6 +25,9 @@ p {
     line-height: 26px;
     color: #111;
 }
+ul{
+         font-size: 12px;
+}
 
 @media screen and (max-width: 768px) {
     [data-aos-delay] {
@@ -118,12 +121,14 @@ section {
 .navbar ul {
     margin: 0;
     padding: 0;
+
     display: flex;
     list-style: none;
     align-items: center;
 }
 
 .navbar li {
+
     position: relative;
 }
 
