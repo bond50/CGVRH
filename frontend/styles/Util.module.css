@@ -1,0 +1,36 @@
+
+.Header h1 {
+    text-align: center;
+    text-transform: capitalize;
+    padding-bottom: 30px;
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    color: #111111;
+
+}
+
+.Header h1:before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: #ddd;
+    bottom: 1px;
+    left: calc(50% - 60px);
+}
+
+.Header h1:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #2CC73E;
+    bottom: 0;
+    left: calc(50% - 20px);
+
+}

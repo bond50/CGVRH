@@ -18,7 +18,7 @@ const Card = ({blog, single}) => {
         ));
 
     function showCats() {
-       return  blog.categories.map((c, i) => (
+        return blog.categories.map((c, i) => (
             <li key={i}>
                 <Link href={`/categories/${c.slug}`}>
                     <a>{c.name}</a>
@@ -49,19 +49,18 @@ const Card = ({blog, single}) => {
             <div className={classes.Meta}>
                 <ul className='mark pt-3 pb-3 '>
                     <li className="d-flex align-items-center"><i className="bi bi-person"/>
-                        <Link href={''}>
-                            <a>Written by {blog.postedBy.name}</a>
+                        <span className='px-2'> Written by  </span>
+                        <Link href={`/profile/${blog.postedBy.username}`}>
+                          <a> {blog.postedBy.username}</a>
                         </Link>
                     </li>
 
                     <li className="d-flex align-items-center">
                         <i className="bi bi-clock"/>
-                        <Link href={''}>
-                            <a>Posted {moment(blog.updatedAt).fromNow()}</a>
-                        </Link>
+                        <span>Posted {moment(blog.updatedAt).fromNow()}</span>
                     </li>
 
-                    <li className="d-flex align-items-center"><i className="bi bi-person"/>
+                    <li className="d-flex align-items-center"><i className="bi bi-reply"/>
                         <Link href={''}>
                             <a>12 Comments</a>
                         </Link>

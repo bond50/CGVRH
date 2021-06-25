@@ -56,12 +56,18 @@
 .Meta i {
     font-size: 16px;
     margin-right: 8px;
+    color: #111111;
     line-height: 0;
 }
 
 .Meta a {
-    color: #847872;
     font-size: 14px;
+    display: inline-block;
+    line-height: 1;
+}
+.Meta span  {
+    font-size: 14px;
+    color: #111111;
     display: inline-block;
     line-height: 1;
 }

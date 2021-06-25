@@ -6,12 +6,12 @@ body {
 
 
 a {
-    color: #1bbd36;
+    color: #106eea;
     text-decoration: none;
 }
 
 a:hover {
-    color: #2ae149;
+    color: #0366d6;
     text-decoration: none;
 }
 
@@ -20,14 +20,8 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Muli", sans-serif;
 }
 
-p {
-    font-size: 13px;
-    line-height: 26px;
-    color: #111;
-}
-ul{
-         font-size: 12px;
-}
+
+
 
 @media screen and (max-width: 768px) {
     [data-aos-delay] {

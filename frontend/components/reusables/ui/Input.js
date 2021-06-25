@@ -11,6 +11,7 @@ const Input = ({label, elementType, elementConfig, value, divClass, changed, cla
                 value={value}
             />
             break;
+
         case ('textarea'):
             inputElement = <textarea
                 className={className}
@@ -18,6 +19,7 @@ const Input = ({label, elementType, elementConfig, value, divClass, changed, cla
                 onChange={changed}
                 value={value}/>;
             break;
+
         case ('select'):
             inputElement = (
                 <select
@@ -33,6 +35,7 @@ const Input = ({label, elementType, elementConfig, value, divClass, changed, cla
                     ))}
                 </select>);
             break;
+
         default:
             inputElement = <input
                 className={className}
@@ -41,7 +44,7 @@ const Input = ({label, elementType, elementConfig, value, divClass, changed, cla
                 value={value}/>
     }
     return (
-        <div className={`mb - 3 ${divClass}`}>
+        <div className={`mb-3 ${divClass}`}>
             <label className={labelClassname}>{label}</label>
             {inputElement}
         </div>

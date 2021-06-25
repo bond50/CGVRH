@@ -65,6 +65,7 @@ const ContactForm = () => {
             <div className='col-lg-10'>
                 <div className={classes.Wrap}>
                     <div className="row">
+
                         <div className={`${classes.Info} col-lg-4`}>
                             <i className='bi bi-geo-alt'/>
                             <h4>Location</h4>
@@ -84,7 +85,6 @@ const ContactForm = () => {
                             </p>
                         </div>
                     </div>
-
                 </div>
 
             </div>

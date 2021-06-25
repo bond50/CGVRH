@@ -4,6 +4,7 @@ import Card from "../../components/blog/Card";
 import {singleTag} from "../../actions/tag";
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
+import classes from '../../styles/Util.module.css'
 
 
 const Tag = ({tag, blogs, query}) => {
@@ -37,8 +38,8 @@ const Tag = ({tag, blogs, query}) => {
             {head()}
             <Layout>
                 <main>
-                    <div className="container-fluid text-center">
-                        <header>
+                    <div className="container">
+                        <header className={classes.Header}>
                             <div className="col-md-12 pt-3">
                                 <h1 className="display-4 font-weight-bold">{tag.name}</h1>
 
