@@ -4,7 +4,7 @@ import Alert from "../messages/Alert";
 import Button from "../reusables/ui/Button";
 import classes from '../../styles/Contact.module.css'
 
-const ContactForm = () => {
+const ContactForm = ({authorEmail}) => {
     const [values, setValues] = useState({
         message: '',
         name: '',
@@ -20,7 +20,7 @@ const ContactForm = () => {
     const clickSubmit = e => {
         e.preventDefault();
         setValues({...values, loading: true});
-        emailContactForm({name, email, message}).then(data => {
+        emailContactForm({authorEmail,name, email, message}).then(data => {
             if (data.error) {
                 setValues({...values, error: data.error, loading: false});
             } else {
@@ -39,6 +39,7 @@ const ContactForm = () => {
         });
     };
     const {message, name, email, showForm, loading, success, error} = values;
+
 
     let btnText = 'Send Message'
     if (loading) {
@@ -139,7 +140,7 @@ const ContactForm = () => {
 
     return (
         <section className={classes.Contact}>
-            {topData()}
+            {!authorEmail&&topData()}
             {contactForm()}
         </section>
 

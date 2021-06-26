@@ -35,11 +35,13 @@ const NavigationItems = () => (
             </MyDropdown>
             <Blogs/>
 
+
             {!isAuth() && <>
                 <SignIn/>
                 <SignUp/>
             </>
             }
+
             {isAuth() && <SignOut/>}
         </ul>
     </nav>

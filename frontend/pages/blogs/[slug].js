@@ -11,6 +11,7 @@ import SmallCard from "../../components/blog/SmallCard";
 import BlogContainer from "../../hoc/BlogContainer";
 import BlogSideBarContent from "../../components/blog/BlogSideBarContent";
 import Card from "../../components/blog/Card";
+import DisqusThread from "../../components/DiscussThread";
 
 const Slug = ({blog, query}) => {
 
@@ -94,7 +95,7 @@ const Slug = ({blog, query}) => {
                         </div>
                     </div>
                     <div className="row">
-                         <div className={`col form-group ${classes.FormGroup}`}>
+                        <div className={`col form-group ${classes.FormGroup}`}>
                             <textarea name="comment" className="form-control" placeholder="Your Comment*"></textarea>
                         </div>
                     </div>
@@ -120,6 +121,11 @@ const Slug = ({blog, query}) => {
         ));
     };
 
+
+    const showComments = () => <div>
+        <DisqusThread id={blog._id} title={blog.title} path={blog.slug}/>
+    </div>;
+
     return (
         <>
             {head()}
@@ -129,14 +135,16 @@ const Slug = ({blog, query}) => {
                         <BlogContainer>
                             {showBlog()}
 
-                              {showBlogComments()}
+                           <div className='pt-5'>
+                                {showComments()}
+                           </div>
 
                         </BlogContainer>
                         <hr/>
-                          <div className="container">
-                                <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
-                                <div className="row">{showRelatedBlog()}</div>
-                            </div>
+                        <div className="container">
+                            <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
+                            <div className="row">{showRelatedBlog()}</div>
+                        </div>
 
                     </article>
                 </main>

@@ -1,6 +1,7 @@
 const Blog = require('../models/blog');
 const Category = require('../models/category');
 const Tag = require('../models/tag');
+const User = require('../models/user');
 const formidable = require('formidable');
 const slugify = require('slugify');
 const stripHtml = require('string-strip-html');
@@ -289,11 +290,11 @@ exports.listRelated = (req, res) => {
 };
 exports.listSearch = (req, res) => {
     console.log(req.query);
-    const { search } = req.query;
+    const {search} = req.query;
     if (search) {
         Blog.find(
             {
-                $or: [{ title: { $regex: search, $options: 'i' } }, { body: { $regex: search, $options: 'i' } }]
+                $or: [{title: {$regex: search, $options: 'i'}}, {body: {$regex: search, $options: 'i'}}]
             },
             (err, blogs) => {
                 if (err) {
@@ -304,5 +305,33 @@ exports.listSearch = (req, res) => {
                 res.json(blogs);
             }
         ).select('-photo -body');
+
     }
 };
+
+exports.listByUser = (req, res) => {
+    User.findOne({username: req.params.username}).exec(
+        (err, user) => {
+            if (err) {
+                return res.status(400).json({
+                    error: errorHandler(err)
+                });
+            }
+            Blog.find({postedBy: user._id})
+                .populate('categories', '_id name slug')
+                .populate('tags', '_id name slug')
+                .populate('postedBy', '_id name username')
+                .select('_id title slug postedBy createdAt updatedAt')
+                .exec((err1, data) => {
+                    if (err) {
+                        return res.status(400).json({
+                            error: errorHandler(err)
+                        });
+                    }
+                    res.json(data)
+                })
+
+
+        })
+
+}

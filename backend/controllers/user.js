@@ -81,6 +81,8 @@ exports.update = (req, res) => {
                 });
             }
             user.hashed_password = undefined;
+            user.photo = undefined;
+            user.salt = undefined;
             res.json(user);
         });
     });
