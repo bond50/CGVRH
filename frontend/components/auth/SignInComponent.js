@@ -1,6 +1,7 @@
 import {useState,useEffect} from 'react';
 import {signin, authenticate, isAuth} from '../../actions/auth';
 import Router from 'next/router';
+import Link from "next/link";
 import AboutContainer from "../reusables/AboutContainer";
 
 const SigninComponent = () => {
@@ -86,6 +87,10 @@ const SigninComponent = () => {
             {showLoading()}
             {showMessage()}
             {showForm && signinForm()}
+            <br/>
+            <Link href={`/auth/password/forgot`}>
+                <a className='btn btn-danger btn-sm'>Reset password</a>
+            </Link>
         </AboutContainer>
     );
 };
