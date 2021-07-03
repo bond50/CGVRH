@@ -39,11 +39,12 @@ const Gallery = ({images, handleTagClick, filters}) => {
                     <Filters filters={filters} handleTagClick={handleTagClick}/>
                 </div>
             </div>
+
             <div className='container'>
                 <SimpleReactLightbox>
                     <SRLWrapper options={options}>
                         <div className='row g-0'>
-                            {images.length <= 0 ? <h1>Loading...</h1> :
+                            {
                                 images.map(image => <div className="col-lg-3 col-md-4">
                                         <div className={classes.GalleryItem}>
                                             <img src={image.secureUrl} alt={image.tag} className='img-fluid'/>

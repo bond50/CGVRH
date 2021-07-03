@@ -39,7 +39,6 @@ const Index = ({files}) => {
                     {returnFiles()}
                 </div>
                 {downloaderComponentUI}
-
             </AboutContainer>
         </Layout>
     );

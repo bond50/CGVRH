@@ -3,25 +3,39 @@ import React, {useState} from "react";
 import Layout from "../../hoc/Layout";
 import {listBlogsWithCategoriesAndTags} from "../../actions/blog";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
-import classes from '../../styles/Blog.module.css'
 import Card from "../../components/blog/Card";
 import {withRouter} from "next/router";
 import BlogContainer from "../../hoc/BlogContainer";
+import CustomHead from "../../components/CustomHead";
 
 
 const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, router}) => {
 
+    let headInfo = [
+        {headTitle: 'Blogs'},
+        {description: 'Vihiga county referral hospital blog on our services departments wards core values strategic plan'},
+        {canonicalLink: `${DOMAIN}${router.pathname}`},
+        {ogTitle: `Latest blogs | ${APP_NAME}`},
+    ]
+
+
     const head = () => (
         <Head>
-            <title> Blogs || {APP_NAME} </title>
-            <meta name='description'
-                  content='Vihiga county referral hospital blog on our services departments wards core values strategic plan'/>
-            <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
-            <meta property="og:title" content={`Latest blogs | ${APP_NAME}`}/>
+            <title>Blogs  | {APP_NAME}</title>
+            <meta
+                name="description"
+                content="Vihiga county referral hospital blog on our services departments wards core values strategic plan"
+            />
+
+            <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
+
+            <meta property="og:title" content={`Latest articles | ${APP_NAME}`} />
             <meta
                 property="og:description"
                 content="Vihiga county referral hospital blog on our services departments wards core values strategic plan"
             />
+
+
             <meta property="og:type" content="webiste"/>
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
@@ -68,8 +82,8 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, router}) => {
     const showAllBlogs = () => {
         return blogs.map((blog, i) => {
             return (
-                 <article key={i}>
-                    <Card blog={blog} />
+                <article key={i}>
+                    <Card blog={blog}/>
                 </article>
             );
         });
@@ -78,16 +92,16 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, router}) => {
 
     const showLoadedBlogs = () => {
         return loadedBlogs.map((blog, i) => (
-                <article key={i}>
-                    <Card blog={blog} />
-                </article>
+            <article key={i}>
+                <Card blog={blog}/>
+            </article>
         ));
     }
 
 
     return (
         <>
-            {head()}
+            {returnHea}
             <Layout>
                 <main>
                     <BlogContainer>
