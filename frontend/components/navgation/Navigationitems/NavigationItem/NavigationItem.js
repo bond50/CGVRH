@@ -1,9 +1,14 @@
 import Link from "next/link";
-const NavigationItem = ({href, text}) =>
-    <li>
-        <Link href={href}>
-            <a>{text}</a>
+import classes from '../../../../styles/NavigationItem.module.css'
+
+
+const NavigationItem = ({href, children, active, className,clicked}) => {
+
+    return <li className={` ${className} ${classes.NavigationItem}`} onClick={clicked}>
+        <Link href={href} activeClassName={active}>
+            <a>{children}</a>
         </Link>
-    </li>
+    </li>;
+}
 
 export default NavigationItem;

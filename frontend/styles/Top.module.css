@@ -1,14 +1,16 @@
 .Topbar {
   background: #2CC73E;
-  color: #ffffff;
-  padding: 10px 0;
+  height: 40px;
   font-size: 14px;
-
+  transition: all 0.5s;
+  color: #ffffff;
+  padding:  0;
 }
 
-.ContactInfo{
-  font-style: normal;
 
+.ContactInfo i{
+  font-style: normal;
+  color: #fff;
 }
 .ContactInfo i a,.ContactInfo i span{
   padding-left: 5px;
@@ -20,7 +22,8 @@
   color: #ffffff;
 }
 .ContactInfo i a:hover{
-  color: #ef6603;
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .SocialLinks i{

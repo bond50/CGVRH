@@ -13,7 +13,7 @@ export default function Home() {
     return (
         <HomepageLayout>
             <ServiceBief/>
-            <Strategic/>
+            {/*<Strategic/>*/}
             <CoreValues/>
             <Roles/>
         </HomepageLayout>

@@ -1,7 +1,7 @@
-
 import Logo from "../Logo";
 import NavigationItems from "../Navigationitems/NavigationItems";
 import DrawerToggle from "../Sidedrawer/DrawerToggle/DrawerToggle";
+import classes from '../../../styles/Header.module.css'
 import {useEffect, useState} from "react";
 
 
@@ -10,8 +10,7 @@ const Toolbar = ({showSideDrawer}) => {
 
     const handleScroll = () => {
         const offset = window.scrollY;
-        console.log(window.scrollY)
-        if (offset > 50) {
+        if (offset > 70) {
             setScrolled(true);
         } else {
             setScrolled(false);
@@ -22,17 +21,19 @@ const Toolbar = ({showSideDrawer}) => {
         window.addEventListener('scroll', handleScroll)
     })
 
-    let navbarClasses = ['header d-flex align-items-center'];
+    let navbarClasses = [`${classes.Header} d-flex align-items-center`];
+
     if (scrolled) {
-        navbarClasses.push('fixed-top');
+        navbarClasses.push(`fixed-top ${classes.Fixed}`);
     }
+
     return (
         <header className={navbarClasses.join(" ")}>
-                <div className='container d-flex justify-content-between'>
-                    <Logo/>
-                    <div className={`desktop-only`}><NavigationItems/></div>
-                    <DrawerToggle clicked={showSideDrawer}/>
-                </div>
+            <div className='container d-flex justify-content-between'>
+                <Logo/>
+                <div className={`${classes.DesktopOnly}`}><NavigationItems/></div>
+                {/*<DrawerToggle clicked={showSideDrawer}/>*/}
+            </div>
         </header>
 
     );

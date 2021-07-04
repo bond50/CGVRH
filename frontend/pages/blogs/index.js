@@ -6,7 +6,7 @@ import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import Card from "../../components/blog/Card";
 import {withRouter} from "next/router";
 import BlogContainer from "../../hoc/BlogContainer";
-import CustomHead from "../../components/CustomHead";
+
 
 
 const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, router}) => {
@@ -101,7 +101,7 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, router}) => {
 
     return (
         <>
-            {returnHea}
+            {head()}
             <Layout>
                 <main>
                     <BlogContainer>

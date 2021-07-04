@@ -1,0 +1,40 @@
+.DropdownLi {
+    position: relative;
+    min-width: 200px;
+
+}
+
+.DropdownLi  a {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+    color: #222222;
+    white-space: nowrap;
+    transition: 0.3s;
+    position: relative;
+    padding: 10px 20px;
+    font-weight: 400;
+}
+
+.DropdownLi  a i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+}
+
+.DropdownUl{
+    display: block;
+    position: absolute;
+    left: 28px;
+    top: calc(100% + 30px);
+    margin: 0;
+    padding: 10px 0;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    background: #ffffff;
+    box-shadow:  0px 0px 30px rgba(127,137,161,0.25);
+    transition: 0.3s;
+}

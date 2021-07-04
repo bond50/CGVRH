@@ -1,3 +1,45 @@
+.Section {
+    padding: 60px 1rem;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+
+.SectionTitle  {
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.SectionTitle h2 {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 0;
+    line-height: 1px;
+    margin: 0 0 5px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    color: #aaaaaa;
+}
+
+.SectionTitle  h2::after {
+    content: '';
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: #fd9042;
+    bottom: 0;
+    margin: 4px 10px;
+}
+
+.SectionTitle p {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: Poppins, sans-serif;
+    color: #2a2c39;
+}
 
 .Header h1 {
     text-align: center;
