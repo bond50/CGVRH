@@ -22,7 +22,7 @@ class Layout extends Component {
             <>
                 <Top/>
                 <Toolbar showSideDrawer={this.sideDrawerToggleHandler}/>
-                {/*<SideDrawer open={this.state.showSideDrawer} closeSideDrawer={this.sideDrawerToggleHandler}/>*/}
+                <SideDrawer open={this.state.showSideDrawer} closeSideDrawer={this.sideDrawerToggleHandler}/>
                 {/*<Fragment>*/}
                 {/*    <Hero/>*/}
                 {/*    <main id='main'>*/}

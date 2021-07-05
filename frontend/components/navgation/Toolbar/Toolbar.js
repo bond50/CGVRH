@@ -1,6 +1,5 @@
 import Logo from "../Logo";
-import NavigationItems from "../Navigationitems/NavigationItems";
-import DrawerToggle from "../Sidedrawer/DrawerToggle/DrawerToggle";
+import Navbar from "../Navigationitems/Navbar";
 import classes from '../../../styles/Header.module.css'
 import {useEffect, useState} from "react";
 
@@ -28,14 +27,20 @@ const Toolbar = ({showSideDrawer}) => {
     }
 
     return (
+        // <header className={navbarClasses.join(" ")}>
+        //     <div className='container d-flex justify-content-between'>
+        //         <Logo/>
+        //         <div className={`${classes.DesktopOnly}`}><Navbar/></div>
+        //         {/*<DrawerToggle clicked={showSideDrawer}/>*/}
+        //     </div>
+        // </header>
+
         <header className={navbarClasses.join(" ")}>
-            <div className='container d-flex justify-content-between'>
-                <Logo/>
-                <div className={`${classes.DesktopOnly}`}><NavigationItems/></div>
-                {/*<DrawerToggle clicked={showSideDrawer}/>*/}
+            <div className="container d-flex align-items-center justify-content-between">
+               <Logo/>
+                <Navbar clicked={showSideDrawer} />
             </div>
         </header>
-
     );
 };
 

@@ -3,7 +3,7 @@ import classes from '../../styles/Logo.module.css'
 
 const Logo = () => <div className={classes.Logo}>
     <Link href={`/`}>
-        <a className='img-fluid' >
+        <a>
             <img src="/logo1.png" alt="logo"/>
         </a>
     </Link>

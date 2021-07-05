@@ -20,16 +20,16 @@ class Layout extends Component {
     render() {
         let {children} = this.props;
         return (
-            <body>
+            <>
             <Top/>
-            {/*<Toolbar showSideDrawer={this.sideDrawerToggleHandler}/>*/}
-            {/*<SideDrawer open={this.state.showSideDrawer} closeSideDrawer={this.sideDrawerToggleHandler}/>*/}
+            <Toolbar showSideDrawer={this.sideDrawerToggleHandler}/>
+            <SideDrawer open={this.state.showSideDrawer} closeSideDrawer={this.sideDrawerToggleHandler}/>
             {/*<main>*/}
             {/*    <Breadcrumbs/>*/}
             {/*    {children}*/}
             {/*</main>*/}
             {/*<Footer/>*/}
-            </body>
+            </>
         );
     }
 

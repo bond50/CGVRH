@@ -1,5 +1,3 @@
-import NavigationItem from "./Navigationitems/NavigationItem/NavigationItem";
-
 const Media = () => {
     const list = [
         {text: 'Downloads', href: '/media/downloads'},
@@ -13,13 +11,13 @@ const Media = () => {
     ]
 
     return (
-        <>
+       <ul>
             {list.map(({text, href}, index) => {
                 return (
-                    <NavigationItem key={index} href={href} text={text}/>
+                    <li key={index}><a href={href}>{text}</a></li>
                 )
             })}
-        </>
+        </ul>
     )
 }
 

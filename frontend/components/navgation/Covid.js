@@ -1,5 +1,3 @@
-import NavigationItem from "./Navigationitems/NavigationItem/NavigationItem";
-
 const Covid = () => {
     const list = [
         {text: 'FAqs', href: '/covid/covid'},
@@ -11,7 +9,7 @@ const Covid = () => {
         <>
             {list.map(({text, href}, index) => {
                 return (
-                    <NavigationItem key={index} href={href} text={text}/>
+                    <li key={index}><a href={href}>{text}</a></li>
                 )
             })}
         </>

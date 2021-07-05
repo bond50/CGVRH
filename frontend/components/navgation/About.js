@@ -1,4 +1,3 @@
-import NavigationItem from "./Navigationitems/NavigationItem/NavigationItem";
 
 const About = () => {
     const list = [
@@ -17,13 +16,13 @@ const About = () => {
     ]
 
     return (
-        <>
-            {list.map(({text, href}, index) => {
+        <li>
+             {list.map(({text, href}, index) => {
                 return (
-                    <NavigationItem key={index} href={href} text={text}/>
+                    <a href={href}>{text}</a>
                 )
             })}
-        </>
+        </li>
     )
 }
 

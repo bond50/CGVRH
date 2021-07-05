@@ -1,5 +1,5 @@
 import classes from '../../../styles/Sidedrawer.module.css';
-import NavigationItems from "../Navigationitems/NavigationItems";
+import Navbar from "../Navigationitems/Navbar";
 import DrawerToggle from "./DrawerToggle/DrawerToggle";
 
 
@@ -9,14 +9,13 @@ const SideDrawer = ({closeSideDrawer, open}) => {
         attachedClasses = [classes.SideDrawer, classes.Open];
     }
     return (
-        <>
-            <div className={attachedClasses.join(' ')} >
-                <nav>
-                    <NavigationItems />
-                </nav>
-                 <DrawerToggle clicked={closeSideDrawer} open={open}/>
-            </div>
-        </>
+        <div className={attachedClasses.join(' ')}>
+            <Navbar mobile/>
+
+            <DrawerToggle clicked={closeSideDrawer} open={open}/>
+
+        </div>
+
     );
 };
 

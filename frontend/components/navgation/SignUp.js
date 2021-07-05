@@ -1,9 +1,5 @@
-import NavigationItem from "./Navigationitems/NavigationItem/NavigationItem";
 
-const SignUp = () => {
-    return (
-        <NavigationItem className='nav-link ' text='SignUp' href='/signup'/>
-    );
-};
+
+const SignUp = ({className}) => <li><a href={`/signup/`} className={className}>Signup</a></li>;
 
 export default SignUp;

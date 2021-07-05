@@ -1,5 +1,3 @@
-import NavigationItem from "./Navigationitems/NavigationItem/NavigationItem";
-
 const Services = () => {
     const list = [
         {text: 'Special Clinics', href: '/services/clinics'},
@@ -15,13 +13,13 @@ const Services = () => {
     ]
 
     return (
-        <>
+        <li>
             {list.map(({text, href}, index) => {
                 return (
-                    <NavigationItem key={index} href={href} text={text}/>
+                    <a href={href}>{text}</a>
                 )
             })}
-        </>
+        </li>
     )
 }
 

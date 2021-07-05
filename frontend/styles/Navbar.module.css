@@ -1,12 +1,229 @@
-.Navbar{
+.Navbar {
     padding: 0;
 }
 
-.Navbar ul{
+.Navbar ul {
     margin: 0;
     padding: 0;
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
     align-items: center;
+}
 
+.Navbar li {
+    position: relative;
+}
+
+.Navbar > ul > li {
+    white-space: nowrap;
+    padding: 10px 0 10px 28px;
+}
+
+.Navbar a, .Navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #222222;
+    white-space: nowrap;
+    transition: 0.3s;
+    position: relative;
+}
+
+.Navbar a i, .Navbar a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+}
+
+.Navbar > ul > li > a:before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background-color: #2CC73E;
+    visibility: hidden;
+    width: 0;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.Navbar a:hover:before, .Navbar li:hover > a:before, .Navbar .active:before {
+    visibility: visible;
+    width: 100%;
+}
+
+.Navbar a:hover, .Navbar .active, .Navbar .active:focus, .Navbar li:hover > a {
+    color: #2CC73E;
+}
+
+.Navbar .dropdown ul {
+    display: block;
+    position: absolute;
+    left: 28px;
+    top: calc(100% + 30px);
+    margin: 0;
+    padding: 10px 0;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+    transition: 0.3s;
+}
+
+.Navbar .dropdown ul li {
+    min-width: 200px;
+}
+
+.Navbar .dropdown ul a {
+    padding: 10px 20px;
+    font-weight: 400;
+}
+
+.Navbar .dropdown ul a i {
+    font-size: 12px;
+}
+
+.Navbar .dropdown ul a:hover, .Navbar .dropdown ul .active:hover, .Navbar .dropdown ul li:hover > a {
+    color: #106eea;
+}
+
+.Navbar .dropdown:hover > ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+}
+
+.Navbar .dropdown .dropdown ul {
+    top: 0;
+    left: calc(100% - 30px);
+    visibility: hidden;
+}
+
+.Navbar .dropdown .dropdown:hover > ul {
+    opacity: 1;
+    top: 0;
+    left: 100%;
+    visibility: visible;
+}
+
+@media (max-width: 1366px) {
+    .Navbar .dropdown .dropdown ul {
+        left: -90%;
+    }
+
+    .Navbar .dropdown .dropdown:hover > ul {
+        left: -100%;
+    }
+}
+
+/**
+* Mobile Navigation
+*/
+.MobileNavToggle {
+    color: #222222;
+    font-size: 28px;
+    cursor: pointer;
+    display: none;
+    line-height: 0;
+    transition: 0.5s;
+}
+
+
+@media (max-width: 991px) {
+
+    .MobileNavToggle {
+        display: block;
+    }
+
+    .Navbar ul {
+        display: none;
+    }
+}
+
+
+.NavbarMobile {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(9, 9, 9, 0.9);
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.NavbarMobile .MobileNavToggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.NavbarMobile ul {
+    display: block;
+    position: absolute;
+    top: 55px;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    padding: 10px 0;
+    background-color: #fff;
+    overflow-y: auto;
+    transition: 0.3s;
+}
+
+
+.NavbarMobile a {
+    padding: 10px 20px;
+    font-size: 15px;
+    color: #222222;
+}
+
+.NavbarMobile > ul > li {
+    padding: 0;
+}
+
+.NavbarMobile a:hover:before, .NavbarMobile li:hover > a:before, .NavbarMobile .active:before {
+    visibility: hidden;
+}
+
+.NavbarMobile a:hover, .NavbarMobile .active, .NavbarMobile li:hover > a {
+    color: #2CC73E;
+}
+
+
+.NavbarMobile .dropdown ul {
+    position: static;
+    display: none;
+    margin: 10px 20px;
+    padding: 10px 0;
+    z-index: 99;
+    opacity: 1;
+    visibility: visible;
+    background: #fff;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+
+}
+
+.NavbarMobile .dropdown ul li {
+    min-width: 200px;
+
+}
+
+.NavbarMobile .dropdown ul a {
+    padding: 10px 20px;
+}
+
+
+.NavbarMobile .dropdown ul a:hover, .NavbarMobile .dropdown ul .active:hover, .NavbarMobile .dropdown ul li:hover > a {
+    color: #2CC73E;
+}
+
+.NavbarMobile .dropdown > .dropdownActive {
+    display: block;
 }
