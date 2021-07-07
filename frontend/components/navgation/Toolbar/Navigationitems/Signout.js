@@ -1,4 +1,4 @@
-import {signout} from "../../actions/auth";
+import {signout} from "../../../../actions/auth";
 import Router from "next/router";
 
 const SignOut = ({className}) =>

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import classes from '../../styles/Logo.module.css'
+import classes from '../../../../styles/Logo.module.css'
 
 const Logo = () => <div className={classes.Logo}>
     <Link href={`/`}>

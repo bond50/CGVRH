@@ -1,6 +1,6 @@
-import {YearsOperated} from "../../years-operated/YearsOperated";
-import classes from '../../../styles/Top.module.css'
-import Search from "../../blog/Search";
+import {YearsOperated} from "../../../years-operated/YearsOperated";
+import classes from '../../../../styles/Top.module.css'
+import Search from "../../../blog/Search";
 
 const Top = () => (
     <>

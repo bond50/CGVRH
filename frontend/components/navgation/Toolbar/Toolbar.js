@@ -1,5 +1,5 @@
-import Logo from "../Logo";
-import Navbar from "../Navigationitems/Navbar";
+import Logo from "./Navigationitems/Logo";
+import Navbar from "./Navigationitems/Navbar";
 import classes from '../../../styles/Header.module.css'
 import {useEffect, useState} from "react";
 
