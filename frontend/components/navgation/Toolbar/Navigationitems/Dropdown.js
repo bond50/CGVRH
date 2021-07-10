@@ -10,11 +10,11 @@ const MyDropdown = ({children, caption,dropLink}) => {
     };
 
     return (
-        <li className={classes.Dropdown} onClick={toggleDropdown}>
+        <li className={classes.Dropdown} onClick={toggleDropdown} >
           <Link href={dropLink}>
-                <a><span>{caption}</span> <i className="bi bi-chevron-down"/></a>
+                <a ><span>{caption}</span> <i className="bi bi-chevron-down"/></a>
           </Link>
-            <ul className={open ? classes.DropdownActive : ''}>
+            <ul className={open ? classes.DropdownActive : ''} >
                 {children}
             </ul>
         </li>

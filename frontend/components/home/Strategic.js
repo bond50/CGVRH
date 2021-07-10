@@ -1,12 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import classes from '../../styles/Strategic.module.css'
+import styles from '../../styles/Util.module.css'
 
 const Strategic = () => {
     return (
         <div className="container " data-aos='zoom-out' data-aos-once='true'>
-            <section>
-
+            <section className={styles.Section}>
                 <div className="row gx-0">
                     <div className="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-right"
                          data-aos-once='true'>

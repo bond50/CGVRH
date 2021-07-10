@@ -1,3 +1,7 @@
+.Dropdown{
+     white-space: nowrap;
+
+}
 .Dropdown ul {
     display: block;
     position: absolute;
@@ -28,7 +32,7 @@
 }
 
 .Dropdown ul a:hover, .Dropdown ul .active:hover, .Dropdown ul li:hover > a {
-    color: #2CC73E;
+    color: #106eea;
 }
 
 .Dropdown:hover > ul {
@@ -62,6 +66,9 @@
 
 
 @media (max-width: 991px) {
+    .Dropdown{
+        padding: 10px 0!important;
+    }
     .Dropdown ul {
         position: static;
         display: none;

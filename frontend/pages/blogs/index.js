@@ -11,12 +11,6 @@ import BlogContainer from "../../hoc/BlogContainer";
 
 const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, router}) => {
 
-    let headInfo = [
-        {headTitle: 'Blogs'},
-        {description: 'Vihiga county referral hospital blog on our services departments wards core values strategic plan'},
-        {canonicalLink: `${DOMAIN}${router.pathname}`},
-        {ogTitle: `Latest blogs | ${APP_NAME}`},
-    ]
 
 
     const head = () => (

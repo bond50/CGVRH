@@ -1,8 +1,6 @@
 import '../styles/globals.css'
 import AOS from "aos";
 import "aos/dist/aos.css";
-
-
 import {useEffect} from "react";
 import Head from "next/head";
 import 'nprogress/nprogress.css';
@@ -36,8 +34,13 @@ const MyApp = ({Component, pageProps}) => {
                   rel="stylesheet"
                   integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
                   crossOrigin="anonymous"/>
+
+
+
             <link href="/theme/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+            <link href="/theme/swiper/swiper-bundle.min.css" rel="stylesheet"/>
             <title>Vihiga county Referral Hospital</title>
+
         </Head>
     }
 

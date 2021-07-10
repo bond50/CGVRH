@@ -1,7 +1,7 @@
 .Breadcrumbs {
     padding: 10px 0;
     background-color: #f1f7fd;
-    min-height: 30px;
+    min-height: 20px;
 }
 
 
@@ -23,8 +23,9 @@
     display: inline-block;
     padding:  0 5px;
     color: #6c757d;
-    content: '>';
+    content: '/';
 }
+
 
 .Breadcrumbs ol li + li:last-child:before {
     content: ''

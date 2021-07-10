@@ -1,6 +1,7 @@
 import {faMedkit, faXRay, faMicroscope, faHospitalUser} from '@fortawesome/free-solid-svg-icons'
 import Column from "./Column";
-
+import classes from '../../styles/Util.module.css'
+import styles from "../../styles/Util.module.css";
 
 const ServiceBief = () => {
     const info = [
@@ -39,24 +40,31 @@ const ServiceBief = () => {
     function returnColumns() {
         return info.map(({header, icon, delay, paragraph, to}, i) => {
             return <Column
-                key={i}
+                key={i} classname={`col-md-6 col-lg-3 d-flex align-items-stretch mb-5 lg-0`}
                 to={to}
-                icon={icon}
                 delay={delay}
-                header={header}
-                paragraph={paragraph}/>
+                title={header} btnCaption={'See More'}>
+                <li>{paragraph}</li>
+            </Column>
         })
 
     }
 
     return (
-        <div className="container">
-            <section>
+
+        <section className={`${classes.Section} ${classes.SectionBg}`}>
+            <div className="container">
+                <div className={styles.SectionTitle} data-aos="zoom-out" data-aos-once='true'>
+                    <h2>Featured Services</h2>
+                </div>
+
                 <div className="row">
                     {returnColumns()}
                 </div>
-            </section>
-        </div>
+            </div>
+
+
+        </section>
 
 
     );

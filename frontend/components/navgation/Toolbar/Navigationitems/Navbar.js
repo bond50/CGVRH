@@ -7,8 +7,7 @@ import {useRouter} from "next/router";
 import classes from '../../../../styles/Navbar.module.css'
 import MyDropdown from "./Dropdown";
 import SingleLink from "./SingleLink";
-import {aboutList,servicesList,mediaList,covidList} from "./DropdownLinks";
-
+import {aboutList, servicesList, mediaList, covidList} from "./DropdownLinks";
 
 
 const Navbar = () => {
@@ -17,14 +16,14 @@ const Navbar = () => {
 
     const lists = [
         {to: '/', caption: 'Home'},
-        {caption: 'About', component: aboutList,to:'/about/'},
-        {caption: 'Services', component: servicesList,to:'/services/'},
-        {caption: 'Media', component: mediaList,to:'/media/'},
+        {caption: 'About', component: aboutList, to: '/about/'},
+        {caption: 'Services', component: servicesList, to: '/services/'},
+        {caption: 'Media', component: mediaList, to: '/media/'},
         {to: '/blogs/', caption: 'Blog',},
         {to: '/tenders/tenders/', caption: 'Tenders',},
         {to: '/training/', caption: 'Training',},
         {to: '/contact/', caption: 'Contact'},
-        {caption: 'Covid 19', component: covidList,to:'/covid/'},
+        {caption: 'Covid 19', component: covidList, to: '/covid/'},
     ]
 
 
@@ -54,7 +53,7 @@ const Navbar = () => {
 
 
     const changeClass = () => {
-        setOpen((open) => !open)
+        setOpen(open => !open)
     };
 
     let attachedClasses = [classes.Navbar, classes.Close];
@@ -68,13 +67,13 @@ const Navbar = () => {
         <nav className={attachedClasses.join(' ')}>
             <ul>
                 {renderNavigationItems()}
-                {isAuth() && <SignOut className={`nav-link ${router.asPath === '/signout/' ? classes.active : null}`}/>}
-                {
-                    <>
-                        <SignIn className={`nav-link ${router.asPath === '/signin/' ? classes.active : null}`}/>
-                        <SignUp className={`nav-link ${router.asPath === '/signup/' ? classes.active : null}`}/>
-                    </>
-                }
+                {/*{isAuth() && <SignOut className={`nav-link ${router.asPath === '/signout/' ? classes.active : null}`}/>}*/}
+                {/*{*/}
+                {/*    <>*/}
+                {/*        <SignIn className={`nav-link ${router.asPath === '/signin/' ? classes.active : null}`}/>*/}
+                {/*        <SignUp className={`nav-link ${router.asPath === '/signup/' ? classes.active : null}`}/>*/}
+                {/*    </>*/}
+                {/*}*/}
             </ul>
             <i
                 className={`${!open ? 'bi bi-list' : 'bi bi-x text-white'} ${classes.MobileNavToggle}`}

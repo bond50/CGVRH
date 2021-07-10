@@ -1,6 +1,9 @@
+import Link from "next/link";
 
 const SignUp = ({className}) => <li>
-    <a href={`/signup/`} className={className}>Signup</a>
+    <Link href={`/signup/`}>
+        <a className={className}>Signup</a>
+    </Link>
 </li>;
 
 export default SignUp;

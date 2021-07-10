@@ -1,6 +1,7 @@
-import classes from '../../styles/Roles.module.css'
 import Link from "next/link";
 import {Fragment} from "react";
+import styles from '../../styles/Util.module.css'
+import classes from '../../styles/Roles.module.css'
 
 const Roles = () => {
 
@@ -29,9 +30,9 @@ const Roles = () => {
 
     return (
         <div className="container ">
-            <section className={classes.Roles}>
+            <section className={styles.Section}>
 
-                <div className='section-title' data-aos='zoom-out' data-aos-once='true'>
+                <div className={styles.SectionTitle} data-aos='zoom-out' data-aos-once='true'>
                     <h2>Our roles</h2>
                     <p>Some of Roles we play in the county</p>
                 </div>

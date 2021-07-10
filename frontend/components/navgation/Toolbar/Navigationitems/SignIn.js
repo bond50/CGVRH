@@ -1,7 +1,11 @@
-
+import Link from "next/link";
 
 const SignIn = ({className}) => {
-    return <li><a className={className} href={`/signin/`}>Signin</a></li>;
+    return <li>
+        <Link href={`/signin/`}>
+            <a className={className}>Signin</a>
+        </Link>
+    </li>;
 };
 
 export default SignIn;

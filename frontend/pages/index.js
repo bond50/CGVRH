@@ -7,13 +7,16 @@ import Roles from "../components/home/Roles";
 import HomepageLayout from "../hoc/HomepageLayout";
 import ServiceBief from "../components/home/ServiceBief";
 import FeaturedNews from "../components/home/FeaturedNews";
+import Partners from "../components/home/Partners";
+import LatestBlogs from "../components/home/LatestBlogs";
 
 
 export default function Home() {
     return (
         <HomepageLayout>
+            <LatestBlogs/>
             <ServiceBief/>
-            {/*<Strategic/>*/}
+            <Strategic/>
             <CoreValues/>
             <Roles/>
         </HomepageLayout>
