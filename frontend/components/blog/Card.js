@@ -60,11 +60,6 @@ const Card = ({blog, single}) => {
                         <span>Posted {moment(blog.updatedAt).fromNow()}</span>
                     </li>
 
-                    <li className="d-flex align-items-center"><i className="bi bi-reply"/>
-                        <Link href={''}>
-                            <a>12 Comments</a>
-                        </Link>
-                    </li>
                 </ul>
             </div>
 

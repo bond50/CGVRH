@@ -118,7 +118,7 @@ exports.list = (req, res) => {
 };
 
 exports.listAllBlogsCategoriesTags = (req, res) => {
-    let limit = req.body.limit ? parseInt(req.body.limit) : 10;
+    let limit = req.body.limit ? parseInt(req.body.limit) : 4;
     let skip = req.body.skip ? parseInt(req.body.skip) : 0;
 
     let blogs;
@@ -132,7 +132,7 @@ exports.listAllBlogsCategoriesTags = (req, res) => {
         .sort({ createdAt: -1 })
         .skip(skip)
         .limit(limit)
-        .select('_id title slug excerpt categories tags postedBy createdAt updatedAt')
+        .select('_id title slug excerpt  categories tags postedBy createdAt updatedAt')
         .exec((err, data) => {
             if (err) {
                 return res.json({

@@ -9,12 +9,10 @@ import Head from "next/head";
 import React, {useState, useEffect} from "react";
 import SmallCard from "../../components/blog/SmallCard";
 import BlogContainer from "../../hoc/BlogContainer";
-import BlogSideBarContent from "../../components/blog/BlogSideBarContent";
 import Card from "../../components/blog/Card";
 import DisqusThread from "../../components/DiscussThread";
 
 const Slug = ({blog, query}) => {
-
 
     const [related, setRelated] = useState([])
     const loadRelated = () => {
@@ -57,61 +55,8 @@ const Slug = ({blog, query}) => {
     };
 
 
-    function showBlogComments() {
-        return <div className={classes.Comments}>
-            <h4 className={classes.CommentCount}>8 Comments</h4>
-            <div className={classes.Comment}>
-                <div className="d-flex">
-                    <div className={classes.Image}><img src="assets/img/blog/comments-1.jpg" alt=""/></div>
-                    <div>
-                        <h5><a href="">Georgia Reader</a> <a href="#" className={classes.Reply}><i
-                            className="bi bi-reply-fill"/> Reply</a></h5>
-                        <time dateTime="2020-01-01">01 Jan, 2020</time>
-                        <p>
-                            Et rerum totam nisi. Molestiae vel quam dolorum vel voluptatem et et. Est ad aut sapiente
-                            quis molestiae est qui cum soluta.
-                            Vero aut rerum vel. Rerum quos laboriosam placeat ex qui. Sint qui facilis et.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div className={classes.Form}>
-                <h4>Leave a Reply</h4>
-                <p>Your email address will not be published. Required fields are marked * </p>
-
-                <form>
-                    <div className="row">
-                        <div className={`col-md-6 form-group ${classes.FormGroup}`}>
-                            <input name="name" type="text" className="form-control" placeholder="Your Name*"/>
-                        </div>
-                        <div className={`col-md-6 form-group ${classes.FormGroup}`}>
-                            <input name="email" type="text" className="form-control" placeholder="Your Email*"/>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className={`col form-group ${classes.FormGroup}`}>
-                            <input name="website" type="text" className="form-control" placeholder="Your Website"/>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className={`col form-group ${classes.FormGroup}`}>
-                            <textarea name="comment" className="form-control" placeholder="Your Comment*"></textarea>
-                        </div>
-                    </div>
-                    <button type="submit" className={`btn btn-primary ${classes.Btn}`}>Post Comment</button>
-
-                </form>
-
-            </div>
-
-        </div>
-
-
-    }
 
     const showRelatedBlog = () => {
-
         return related.map((blog, i) => (
             <div className="col-md-4" key={i}>
                 <article>
@@ -131,13 +76,12 @@ const Slug = ({blog, query}) => {
             {head()}
             <Layout>
                 <main>
-                    <article>
                         <BlogContainer>
                             {showBlog()}
 
-                           <div className='pt-5'>
-                                {showComments()}
-                           </div>
+                           {/*<div className='pt-5'>*/}
+                           {/*     {showComments()}*/}
+                           {/*</div>*/}
 
                         </BlogContainer>
                         <hr/>
@@ -146,7 +90,7 @@ const Slug = ({blog, query}) => {
                             <div className="row">{showRelatedBlog()}</div>
                         </div>
 
-                    </article>
+
                 </main>
             </Layout>
         </>

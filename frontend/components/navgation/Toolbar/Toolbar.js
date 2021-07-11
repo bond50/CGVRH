@@ -18,7 +18,7 @@ const Toolbar = ({showSideDrawer}) => {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
-    })
+    },[])
 
     let navbarClasses = [`${classes.Header} d-flex align-items-center`];
 

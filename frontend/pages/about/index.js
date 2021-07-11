@@ -1,10 +1,13 @@
-import React from 'react';
+
 import Layout from "../../hoc/Layout";
+import Plan from "../../components/about/Plan";
+import Partners from "../../components/about/Partners";
 
 const Index = () => {
     return (
         <Layout>
-          <div className='container'>About page</div>
+            <Plan/>
+            <Partners/>
         </Layout>
     );
 };

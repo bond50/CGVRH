@@ -1,27 +1,30 @@
-.Partners .SwiperPagination {
-  margin-top: 20px;
-  position: relative;
+.Wrap {
+  border-top: 1px solid #ececec;
+  border-left: 1px solid #ececec;
 }
 
-.Partners .SwiperPagination .SwiperPaginationBullet {
-  width: 12px;
-  height: 12px;
-  background-color: #fff;
-  opacity: 1;
-  border: 1px solid #e03a3c;
+.Logo{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+  overflow: hidden;
+  background: #fff;
+  height: 100px;
 }
 
-.Partners .swiper-pagination .SwiperPaginationBulletActive {
-  background-color: #e03a3c;
+.Logo img {
+  transition: all 0.3s ease-in-out;
+  height: 36px;
+  filter: grayscale(100%);
+
 }
 
-.Partners .SwiperSlideImage{
-  opacity: 0.5;
-  transition: 0.3s;
-  filter: grayscale(100);
-}
 
-.Partners .SwiperSlideImage:hover {
-  opacity: 1;
+.Logo:hover img {
   filter: none;
+  height: 80px;
+  transform: scale(1.1);
 }

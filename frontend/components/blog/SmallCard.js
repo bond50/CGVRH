@@ -25,13 +25,12 @@ const SmallCard = ({blog}) => {
                     </a>
                 </Link>
             </h5>
-            <p className="card-text">{renderHTML(blog.excerpt)}</p>
+            <div className="card-text">{renderHTML(blog.excerpt)}</div>
             <div className={classes.Info}>
-                    Posted {moment(blog.updatedAt).fromNow()} by{' '}
-             <Link href={`/profile/${blog.postedBy.username}`}>
+                Posted {moment(blog.updatedAt).fromNow()} by{' '}
+                <Link href={`/profile/${blog.postedBy.username}`}>
                     <a className="float-end">{blog.postedBy.username}</a>
                 </Link>
-
 
             </div>
 

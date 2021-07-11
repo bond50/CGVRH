@@ -1,54 +1,40 @@
-
 .Section {
-    padding: 60px 1rem;
+    padding: 60px 0;
     overflow: hidden;
-    border: 2px solid #f1f6fd;
-    border-radius: 5px;
-    min-height: 50vh;
-
-
 }
 
+.SectionBg {
+    background-color: #f7f7f7;
+}
 
-.Title {
+.SectionTitle {
+    text-align: center;
     padding-bottom: 30px;
 }
 
-.Title h3 {
-    font-size: 18px;
-    font-weight: 800;
-    padding: 0;
-    line-height: 1px;
-    margin: 0 0 5px 0;
-    letter-spacing: 2px;
+.SectionTitle h2 {
+    font-size: 32px;
+    font-weight: bold;
     text-transform: uppercase;
-    font-family: "Poppins", sans-serif;
-    color: #666666;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
 }
 
-.Title h3::after {
+.SectionTitle h2::after {
     content: '';
-    width: 120px;
-    height: 1px;
-    display: inline-block;
-    background: #fd9042;
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #2CC73E;
     bottom: 0;
-    margin: 4px 10px;
+    left: calc(50% - 25px);
+}
+
+.SectionTitle p {
+    color: #000000;
+    margin-bottom: 0;
 }
 
 
-@media screen and (max-width: 1000px) {
-    .Title h3::after {
-        display: none;
-    }
-
-}
-
-.Title p {
-    margin: 0;
-    font-size: 26px;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-family: Poppins, sans-serif;
-    color: #2a2c39;
-}

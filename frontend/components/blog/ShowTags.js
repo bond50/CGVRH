@@ -5,7 +5,7 @@ const ShowTags = ({tags}) => {
 
     const showAllTags = () => {
         return tags&&tags.map((t, i) => (
-            <li>
+            <li key={i}>
                 <Link href={`/tags/${t.slug}`} key={i}>
                     <a>{t.name}</a>
                 </Link>

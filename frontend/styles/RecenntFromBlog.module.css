@@ -1,0 +1,60 @@
+.PostBox {
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+    transition: 0.3s;
+    height: 100%;
+    overflow: hidden;
+    padding: 30px;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.PostImg {
+    overflow: hidden;
+    margin: -30px -30px 15px -30px;
+    position: relative;
+}
+
+.PostImg img {
+    transition: 0.5s;
+}
+
+.PostDate {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(1, 41, 112, 0.6);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.PostTitle {
+    font-size: 18px;
+    color: rgba(0,0,0,0.9);
+    font-weight: 500;
+    margin-bottom: 9px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.Btn {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    line-height: 1;
+    transition: 0.3s;
+}
+
+.Btn i {
+    line-height: 0;
+    margin-left: 4px;
+    font-size: 18px;
+}
+
+.PostBox:hover .PostTitle {
+    color: #106eea;
+}
+
+.PostBox:hover .PostImg img {
+    transform: rotate(6deg) scale(1.2);
+}
