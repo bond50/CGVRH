@@ -79,9 +79,9 @@ const Slug = ({blog, query}) => {
                         <BlogContainer>
                             {showBlog()}
 
-                           {/*<div className='pt-5'>*/}
-                           {/*     {showComments()}*/}
-                           {/*</div>*/}
+                           <div className='pt-5'>
+                                {showComments()}
+                           </div>
 
                         </BlogContainer>
                         <hr/>

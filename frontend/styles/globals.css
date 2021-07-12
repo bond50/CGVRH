@@ -27,33 +27,8 @@ h1, h2, h3, h4, h5, h6 {
     }
 
 }
-.clients .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
-}
 
-.clients .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: #fff;
-  opacity: 1;
-  border: 1px solid #e03a3c;
-}
 
-.clients .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: #e03a3c;
-}
-
-.clients .swiper-slide img {
-  opacity: 0.5;
-  transition: 0.3s;
-  filter: grayscale(100);
-}
-
-.clients .swiper-slide img:hover {
-  opacity: 1;
-  filter: none;
-}
 /*section {*/
 /*    padding: 60px 1rem;*/
 /*    background: #ffffff;*/

@@ -1,0 +1,79 @@
+.Member {
+    margin-bottom: 20px;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.MemberImg {
+    position: relative;
+    overflow: hidden;
+}
+
+.Social {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 40px;
+    opacity: 0;
+    transition: ease-in-out 0.3s;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Social a {
+    transition: color 0.3s;
+    color: #111;
+    margin: 0 10px;
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+}
+
+.Social a i {
+    line-height: 0;
+}
+
+.Social a:hover {
+    color: #2CC73E;
+}
+
+.Social i {
+    font-size: 18px;
+    margin: 0 2px;
+}
+
+.MemberInfo {
+    padding: 25px 15px;
+}
+
+.MemberInfo h4 {
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #111;
+}
+
+.MemberInfo span {
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    color: #b4aca8;
+}
+
+.MemberInfo p {
+    font-style: italic;
+    font-size: 14px;
+    line-height: 26px;
+    color: #847872;
+}
+
+.Member:hover .Social {
+    opacity: 1;
+}

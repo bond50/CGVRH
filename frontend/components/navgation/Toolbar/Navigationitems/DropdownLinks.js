@@ -1,14 +1,12 @@
 export const aboutList = [
-    {text: 'Our Mission', href: '/about/mission/'},
-    {text: 'Our Vision ', href: '/about/vision/'},
-    {text: 'Our Core values', href: '/about/core-values/'},
+    {text: 'Our Guiding principles', href: '/about/guiding-principles/'},
     {text: 'Our Board Members', href: '/about/board-members/'},
     {text: 'Our Organogram', href: '/about/organisation-structure/'},
     {text: 'Our Role', href: '/about/roles/'},
     {text: 'Our Strategic Plan', href: '/about/strategic-plan/'},
     {text: 'Our Health Goals', href: '/about/health-goals/'},
-    {text: 'Our Neighboring Facilities', href: '/about/neighboring-facilities/'},
-    {text: 'Our Projects', href: '/about/project/'},
+    // {text: 'Our Neighboring Facilities', href: '/about/neighboring-facilities/'},
+    // {text: 'Our Projects', href: '/about/project/'},
     {text: 'Our Partners', href: '/about/partners/'},
 ];
 

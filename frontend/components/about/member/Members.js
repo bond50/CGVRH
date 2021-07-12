@@ -1,112 +1,82 @@
-import MemberCard from "./MemberCard";
-
-const Members = () => {
-    const membersList = [
-        {
-            name: 'Dr. Vitalis Juma',
-            fbLink: '',
-            instaLink: '',
-            twitterLink: '',
-            linkedInLink: '',
-            memberInfo: 'We are committed to providing equitable, affordable and quality health care of the highest standard to all our residents as stipulated in the Bill of Rights in the Constitution 2010.',
-            src: '../../../static/avatar/maleavatar.jpg',
-            description: 'The Medical Superintendent'
-        },
-        {
-            name: 'Mrs. Mary Anduvate',
-            fbLink: '',
-            linkedInLink: '',
-            instaLink: '',
-            imgAlt: 'image',
-            twitterLink: '',
-            memberInfo: 'We are committed to providing equitable, affordable and quality health care of the highest standard to all our residents as stipulated in the Bill of Rights in the Constitution 2010.',
-            src: '../../../static/avatar/femaleAvatar.jpg',
-            description: 'The Hospital Administrator'
-        },
-        {
-            name: 'Dr. Lorna Awiti',
-            fbLink: '',
-            instaLink: '',
-            linkedInLink: '',
-            imgAlt: 'image',
-            twitterLink: '',
-            memberInfo: 'We are committed to providing equitable, affordable and quality health care of the highest standard to all our residents as stipulated in the Bill of Rights in the Constitution 2010.',
-            src: '../../../static/avatar/femaleAvatar.jpg',
-            description: 'The Head Of Clinical Services'
-        },
-        {
-            name: 'Mr. Aggrey Ememwa',
-            fbLink: '',
-            instaLink: '',
-            linkedInLink: '',
-            imgAlt: 'image',
-            twitterLink: '',
-            memberInfo: 'We are committed to providing equitable, affordable and quality health care of the highest standard to all our residents as stipulated in the Bill of Rights in the Constitution 2010.',
-            src: '../../../static/avatar/maleavatar.jpg',
-            description: 'The Hospital Nursing Officer'
-        },
-        {
-            name: 'Dr. Duncan Mating',
-            fbLink: '',
-            instaLink: '',
-            linkedInLink: '',
-            imgAlt: 'image',
-            twitterLink: '',
-            memberInfo: 'We are committed to providing equitable, affordable and quality health care of the highest standard to all our residents as stipulated in the Bill of Rights in the Constitution 2010.',
-            src: '../../../static/avatar/maleavatar.jpg',
-            description: 'The Hospital Pharmacist'
-        },
-        {
-            name: 'Mr. Julius Ashono',
-            fbLink: '',
-            instaLink: '',
-            linkedInLink: '',
-            imgAlt: 'image',
-            twitterLink: '',
-            memberInfo: 'We are committed to providing equitable, affordable and quality health care of the highest standard to all our residents as stipulated in the Bill of Rights in the Constitution 2010.',
-            src: '../../../static/avatar/maleavatar.jpg',
-            description: 'The Head Of Diagnostic Services'
-        },
-        {
-            name: 'Mr. Arnest Namayi',
-            fbLink: '',
-            instaLink: '',
-            linkedInLink: '',
-            imgAlt: 'image',
-            twitterLink: '',
-            memberInfo: 'We are committed to providing equitable, affordable and quality health care of the highest standard to all our residents as stipulated in the Bill of Rights in the Constitution 2010.',
-            src: '../../../static/avatar/maleavatar.jpg',
-            description: 'The Hospital HRIO'
-        },
-        {
-            name: 'Mr.  Aliwa',
-            fbLink: '',
-            instaLink: '',
-            linkedInLink: '',
-            imgAlt: 'image',
-            twitterLink: '',
-            memberInfo: 'We are committed to providing equitable, affordable and quality health care of the highest standard to all our residents as stipulated in the Bill of Rights in the Constitution 2010.',
-            src: '../../../static/avatar/maleavatar.jpg',
-            description: 'The Hospital PHO '
-        },
-    ]
-    return (
-        <>
-            {membersList.map((member, index) => {
-                return <MemberCard
-                    fbLink={member.fbLink}
-                    imgAlt={member.imgAlt}
-                    imgSrc={member.src}
-                    instaLink={member.instaLink}
-                    linkedInLink={member.linkedInLink}
-                    memberCadre={member.description}
-                    memberName={member.name}
-                    memberInfo={member.memberInfo}
-                    twitterLink={member.twitterLink}/>
-            })}
-        </>
-
-    );
-};
-
-export default Members;
+export const membersList = [
+    {
+        name: 'Dr. Vitalis Juma',
+        fbLink: '',
+        delay:"",
+        instaLink: '',
+        twitterLink: '',
+        linkedInLink: '',
+        src: 'https://via.placeholder.com/400.png/09f/fffC/O https://placeholder.com/',
+        description: 'The Medical Superintendent'
+    },
+    {
+        name: 'Mrs. Mary Anduvate',
+        fbLink: '',
+        delay:"100",
+        linkedInLink: '',
+        instaLink: '',
+        twitterLink: '',
+             src: 'https://via.placeholder.com/400.png/09f/fffC/O https://placeholder.com/',
+        description: 'The Hospital Administrator'
+    },
+    {
+        name: 'Dr. Lorna Awiti',
+        fbLink: '',
+        delay:"200",
+        instaLink: '',
+        linkedInLink: '',
+        twitterLink: '',
+        src: 'https://via.placeholder.com/400.png/09f/fffC/O https://placeholder.com/',
+        description: 'The Head Of Clinical Services'
+    },
+    {
+        name: 'Mr. Aggrey Ememwa',
+        fbLink: '',
+        delay:"300",
+        instaLink: '',
+        linkedInLink: '',
+        twitterLink: '',
+        src: 'https://via.placeholder.com/400.png/09f/fffC/O https://placeholder.com/',
+        description: 'The Hospital Nursing Officer'
+    },
+    {
+        name: 'Dr. Duncan Mating',
+        fbLink: '',
+        delay:"400",
+        instaLink: '',
+        linkedInLink: '',
+        twitterLink: '',
+        src: 'https://via.placeholder.com/400.png/09f/fffC/O https://placeholder.com/',
+        description: 'The Hospital Pharmacist'
+    },
+    {
+        name: 'Mr. Julius Ashono',
+        fbLink: '',
+        delay:"500",
+        instaLink: '',
+        linkedInLink: '',
+        twitterLink: '',
+        src: 'https://via.placeholder.com/400.png/09f/fffC/O https://placeholder.com/',
+        description: 'The Head Of Diagnostic Services'
+    },
+    {
+        name: 'Mr. Arnest Namayi',
+        fbLink: '',
+        delay:"600",
+        instaLink: '',
+        linkedInLink: '',
+        twitterLink: '',
+        src: 'https://via.placeholder.com/400.png/09f/fffC/O https://placeholder.com/',
+        description: 'The Hospital HRIO'
+    },
+    {
+        name: 'Mr.  Aliwa',
+        fbLink: '',
+        delay:"700",
+        instaLink: '',
+        linkedInLink: '',
+        twitterLink: '',
+        src: 'https://via.placeholder.com/400.png/09f/fffC/O https://placeholder.com/',
+        description: 'The Hospital PHO '
+    },
+]

@@ -1,11 +1,11 @@
 import Layout from "../../hoc/Layout";
 
-import CoreValues from "../../components/about/CoreValues";
+import GuidingPrinciples from "../../components/about/GuidingPrinciples";
 
 const Index = () => {
     return (
         <Layout>
-            <CoreValues/>
+            <GuidingPrinciples/>
         </Layout>
     );
 };
