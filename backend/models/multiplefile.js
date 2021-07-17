@@ -6,23 +6,7 @@ const multipleFileSchema = new Schema({
         type: String,
         required: true
     },
-    fileName: {
-        type: String,
-        required: true
-    },
-    filePath: {
-        type: String,
-        required: true
-    },
-    fileType: {
-        type: String,
-        required: true
-    },
-    fileSize: {
-        type: String,
-        required: true
-    }
-
+    files: [Object]
 }, {timestamps: true});
 
 module.exports = model('MultipleFile', multipleFileSchema);

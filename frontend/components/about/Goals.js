@@ -15,23 +15,16 @@ const Goals = () => {
 
 
     return <section className={`${styles.Section} ${styles.SectionBg}`}>
-        <div className={styles.SectionTitle} data-aos="fade-up" data-aos-once='true'>
+        <div className={styles.SectionTitle}p data-aos="fade-up" data-aos-once='true'>
             <h2>Our <strong>Goals</strong></h2>
         </div>
-
         <div className="container">
-            <div className={` ${styles.Content}`}>
-                <div className="pt-4 pt-lg-0" data-aos="fade-up" data-aos-once={`true`}>
-                    <ul>
-                        {list.map((l, i) => {
-                            return <li key={i}
-                            ><i className="bi bi-check2-all"/>
-                                {l.title}
-                            </li>
-                        })
-                        }
-                    </ul>
-                </div>
+            <div data-aos="fade-up" data-aos-once={`true`}>
+                {list.map((l, i) => {
+                    return <p key={i}>
+                        {l.title}
+                    </p>
+                })}
             </div>
         </div>
     </section>

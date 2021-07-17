@@ -17,12 +17,10 @@ const Upload = () => {
         loading: false
     })
 
-
     const UploadMultipleFiles = () => {
         setValues({...values, loading: true, error: ''})
         const formData = new FormData();
         formData.append('title', title);
-
         for (const file of multipleFiles) {
             formData.append('files', file)
         }
@@ -71,6 +69,14 @@ const Upload = () => {
                 </div>
                 <div className="input-group mb-3">
                     <span className="input-group-text" id="basic-addon1">Tag</span>
+
+                    <select className="form-select" aria-label="Default select example">
+                        <option selected>_</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+
                     <input
                         value={title}
                         required

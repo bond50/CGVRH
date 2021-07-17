@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
-import Router from 'next/router';
-import {isAuth} from '../../actions/auth';
+import React, { useEffect } from "react";
+import Router from "next/router";
+import { isAuth } from "../../actions/auth";
 import AboutContainer from "../reusables/AboutContainer";
 
-const Admin = ({children}) => {
+const Admin = ({ children }) => {
     useEffect(() => {
         if (!isAuth()) {
             Router.push(`/signin`);
@@ -11,9 +11,7 @@ const Admin = ({children}) => {
             Router.push(`/admin`);
         }
     }, []);
-    return <div className='container p-5 pb-5'>
-        {children}
-    </div>;
+    return <div className = "container p-5 pb-5" > { children } < /div>;
 };
 
 export default Admin;
