@@ -26,10 +26,12 @@ const singleFileSchema = new Schema({
         type: String,
         required: true
     },
+
     fileSize: {
         type: String,
         required: true
-    }
+    },
+
 }, {timestamps: true});
 
 module.exports = mongoose.model('SingleFile', singleFileSchema);

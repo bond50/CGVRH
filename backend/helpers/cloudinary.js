@@ -11,7 +11,7 @@ exports.cloudinaryUpload = (file, tag, folder) => {
     return new Promise(resolve => {
         cloudinary.uploader.upload(file, (result) => {
             resolve({
-                filePath:result.secure_url,
+                filePath: result.secure_url,
                 cloudinary_id: result.public_id
             })
         }, {
@@ -23,8 +23,8 @@ exports.cloudinaryUpload = (file, tag, folder) => {
 }
 
 
-exports.cloudinaryRetrieve = () => cloudinary.v2.search
-    .expression('folder:Gallery')
+exports.cloudinaryRetrieve = (folder) => cloudinary.v2.search
+    .expression(`folder:${folder}`)
     .sort_by('public_id', 'desc')
     .with_field('tags')
     .execute()

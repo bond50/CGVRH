@@ -65,18 +65,17 @@ const Upload = () => {
             <form>
                 <div className='mb-3'>
                     <Alert msg={successMessage} type="success" label="Success"/>
-                    <Alert msg={error} type="danger" label="Dander"/>
+                    <Alert msg={error} type="danger" label="Danger"/>
                 </div>
                 <div className="input-group mb-3">
                     <span className="input-group-text" id="basic-addon1">Tag</span>
 
                     <select className="form-select" aria-label="Default select example">
                         <option selected>_</option>
-                        <option value="1">One</option>
+                        <option value="tenders">Tenders</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                     </select>
-
                     <input
                         value={title}
                         required

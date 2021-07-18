@@ -42,7 +42,6 @@ const Slug = ({blog, query}) => {
             <meta property="og:type" content="webiste"/>
             <meta property="og:url" content={`${DOMAIN}/blogs/${query.slug}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
-
             <meta property="og:image" content={`${API}/blog/photo/${blog.slug}`}/>
             <meta property="og:image:secure_url" content={`${API}/blog/photo/${blog.slug}`}/>
             <meta property="og:image:type" content="image/jpg"/>
@@ -101,7 +100,6 @@ const Slug = ({blog, query}) => {
 export const getServerSideProps = async ({query}) => {
 
     return singleBlog(query.slug).then(data => {
-
         if (data.error) {
             console.log(data.error)
         } else {

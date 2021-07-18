@@ -10,7 +10,6 @@ const {
 
 
 exports.singleFileUpload = async (req, res) => {
-
     try {
         if (typeof (req.file) == "undefined") {
             return res.status(400).json({
@@ -31,8 +30,8 @@ exports.singleFileUpload = async (req, res) => {
         const {path, originalname, mimetype, size} = file;
 
         const result = await cloudinaryUpload(path, slugify(title).toLowerCase(), folder);
+
         let singleF = new SingleFile({
-            name: req.body.name,
             title: title,
             filePath: result.filePath,
             cloudinary_id: result.public_id,
@@ -63,81 +62,67 @@ exports.singleFileUpload = async (req, res) => {
 
 exports.multipleFileUpload = async (req, res) => {
 
-    // try {
-    //     const files = req.files;
-    //     const {title} = req.body;
-    //     const {folder} = req.body
-    //
-    //
-    //     if (!title || !title.length) {
-    //         return res.status(400).json({
-    //             error: "Tag /file name is required",
-    //         });
-    //     }
-    //
-    //
-    //     for (const file of files) {
-    //         if (typeof (file) == "undefined") {
-    //             return res.status(400).json({
-    //                 error: "Please select a file",
-    //             });
-    //         }
-    //
-    //         const {path, originalname, mimetype, size} = file;
-    //             const result = await cloudinaryUpload(path, slugify(title).toLowerCase(), folder);
-    //             let multipleF = new MultipleFile({
-    //                 name: req.body.name,
-    //                 title: title,
-    //                 filePath: result.filePath,
-    //                 cloudinary_id: result.public_id,
-    //                 fileName: originalname,
-    //                 fileType: mimetype,
-    //                 fileSize: fileSizeFormatter(size, 2)
-    //             });
-    //
-    //             await multipleF.save()
-    //             await fs.unlink(path, (err) => {
-    //                 if (err) throw  err
-    //                 console.log('File deleted from disk')
-    //                 fs.rmdirSync('uploads', {recursive: true});
-    //                 console.log('uploads folder remove from disk')
-    //
-    //             });
-    //
-    //             res.json({data: multipleF, message: "Uploaded to cloudinary storage"});
-    //
-    //     }
-    //
-    //
-    // } catch (err) {
-    //     console.log(err);
-    // }
-
-
     try {
-        let filesArray = [];
-        req.files.forEach(({mimetype, originalname, path, public_id, size}) => {
-            const file = {
-                fileName: originalname,
-                filePath: path,
-                fileType: mimetype,
-                name: req.body.name,
-                cloudinary_id: public_id,
-                fileSize: fileSizeFormatter(size, 2)
-            }
-            filesArray.push(file);
-        });
+        const files = req.files;
+        const {title} = req.body;
+        const {folder} = req.body
 
+        if (!title || !title.length) {
+            return res.status(400).json({
+                error: "Tag /file name is required",
+            });
+        }
+        let filesArray = []
+        for (const file of files) {
+            const {path, originalname, mimetype, size} = file;
+            const result = await cloudinaryUpload(path, slugify(title).toLowerCase(), folder);
+            filesArray.push({
+                filePath: result.filePath,
+                cloudinary_id: result.public_id,
+                fileName: originalname,
+                fileType: mimetype,
+                fileSize: fileSizeFormatter(size, 2)
+            })
+
+        }
         const multipleFiles = new MultipleFile({
             title: req.body.title,
             files: filesArray
         });
-
         await multipleFiles.save();
+        await fs.rmdirSync('uploads', {recursive: true});
         res.status(201).send('Files Uploaded Successfully');
-    } catch (error) {
-        res.status(400).send(error.message);
+
+    } catch (err) {
+        console.log(err);
     }
+
+    //
+    // try {
+    //     let filesArray = [];
+    //
+    //     req.files.forEach(({mimetype, originalname, path, public_id, size}) => {
+    //         const file = {
+    //             fileName: originalname,
+    //             filePath: path,
+    //             fileType: mimetype,
+    //             cloudinary_id: public_id,
+    //             fileSize: fileSizeFormatter(size, 2)
+    //         }
+    //         filesArray.push(file);
+    //     });
+    //
+    //     const result = await cloudinaryUpload(path, slugify(title).toLowerCase(), folder);
+    //     const multipleFiles = new MultipleFile({
+    //         title: req.body.title,
+    //         files: filesArray
+    //     });
+    //
+    //     await multipleFiles.save();
+    //     res.status(201).send('Files Uploaded Successfully');
+    // } catch (error) {
+    //     res.status(400).send(error.message);
+    // }
 
 }
 
@@ -151,10 +136,22 @@ exports.getAllMultipleFiles = async (req, res, next) => {
     }
 }
 
+exports.getAllSingleFiles = async (req, res, next) => {
+    try {
+        const files = await SingleFile.find();
+        res.status(200).send(files);
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
 exports.fileRetrieveFromCloud = async (req, res) => {
+    console.log(req.folder)
+    let folder = req.folder ? req.folder : 'Gallery';
+
     let data = [];
     try {
-        const {resources} = await cloudinaryRetrieve();
+        const {resources} = await cloudinaryRetrieve(folder);
         resources.map((res) => {
             const tag = {...res.tags}
             for (let t in tag) {
