@@ -3,7 +3,6 @@ import classes from '../../styles/Hero.module.css'
 
 const Hero = () => (
     <section className={`${classes.Hero} d-flex align-items-center `}>
-
         <div className="container" data-aos="zoom-out" data-aos-delay="100">
             <div className="row">
                 <div className="col-xl-6">

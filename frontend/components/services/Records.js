@@ -18,7 +18,7 @@ const Records = () => {
     ]
 
     return (
-        <AboutContainer title= 'Health Records And Information Technology Department'>
+        <AboutContainer title= 'Health Records' para={`Health Records And Information Technology`}>
             <p>Health Records and information department manages health information data by ensuring its quality
                 accuracy,accessibility and security in both paper and electronic systems</p>
             <p>By use of technology Health records and information Officers/ technicians classify , code and categorise

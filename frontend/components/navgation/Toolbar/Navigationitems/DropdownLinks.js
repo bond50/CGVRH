@@ -18,11 +18,11 @@ export const covidList = [
 
 export const mediaList = [
     {text: 'Downloads', href: '/media/downloads'},
-    {text: 'Events', href: '/media/events'},
+    // {text: 'Events', href: '/media/events'},
     {text: 'Gallery', href: '/media/gallery'},
-    {text: 'Press', href: '/media/press'},
-    {text: 'Publications', href: '/media/publications'},
-    {text: 'Vacancies', href: '/media/vacancies'},
+    // {text: 'Press', href: '/media/press'},
+    // {text: 'Publications', href: '/media/publications'},
+    // {text: 'Vacancies', href: '/media/vacancies'},
 ];
 
 export const servicesList = [

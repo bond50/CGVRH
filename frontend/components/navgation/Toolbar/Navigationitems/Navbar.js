@@ -20,8 +20,8 @@ const Navbar = () => {
         {caption: 'Services', component: servicesList, to: '/services/'},
         {caption: 'Media', component: mediaList, to: '/media/'},
         {to: '/blogs/', caption: 'Blog',},
-        {to: '/tenders/tenders/', caption: 'Tenders',},
-        {to: '/training/', caption: 'Training',},
+        // {to: '/tenders/tenders/', caption: 'Tenders',},
+        // {to: '/training/', caption: 'Training',},
         {to: '/contact/', caption: 'Contact'},
         {caption: 'Covid 19', component: covidList, to: '/covid/'},
     ]

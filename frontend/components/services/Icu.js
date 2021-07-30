@@ -2,6 +2,18 @@ import AboutContainer from "../reusables/AboutContainer";
 import List from "../reusables/List";
 
 const ICU = () => {
+
+    const obligations = [
+        {
+            content: [
+                {name: 'The family shall disclose bonafide next of kin and a family spokesman to be duly documented in file.'},
+                {name: 'Honor occurred bills.'},
+                {name: 'Provide specimen signatures of the next of kin.'},
+
+            ]
+        },
+    ]
+
     const familyRights = [
         {
             content: [
@@ -65,7 +77,7 @@ const ICU = () => {
     ]
 
     return <AboutContainer
-        title='icu' para={`icu admissions`}>
+        title='icu' para={`The Intensive Care Unit admissions`}>
 
         <p>An ICU/HDU constitute of a bed, working monitor and adequate nurse to patient ratio of 1:1 to
             1:1:5 at any given point. Besides the above there should be arescnitation trolley with incubation
@@ -98,6 +110,10 @@ const ICU = () => {
         <List list={familyRights}/>
         <p><b>Euthanasia</b> is <b>NOT</b> practiced in this hospital in accordance with the constitution.
         </p>
+
+        <h4>Family Obligations</h4>
+        <p>Patients with reversible physiological impairment</p>
+        <List list={obligations}/>
 
 
     </AboutContainer>;

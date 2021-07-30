@@ -54,12 +54,10 @@ const GuidingPrinciples = () => {
                                 Teamwork,
                                 Innovation,
                             </p>
-
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 };
