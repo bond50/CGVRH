@@ -1,11 +1,12 @@
 import React from 'react';
 import TableHeadItem from "../table/TableHeadItem";
 import TableRow from "../table/TableRow";
+import classes from '../../styles/Table.module.css'
 
 const Table = ({theadData, tbodyData, tDescription, customClass}) => (
     <div className='container'>
-        <div className="table-wrapper">
-            <div className="table-title">
+        <div className={classes.tableWrapper}>
+            <div className={classes.tableTitle}>
                 <div className="row">
                     <div className="col-sm-12"><h2>{tDescription}</h2></div>
                 </div>

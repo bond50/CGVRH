@@ -1,7 +1,7 @@
 export const aboutList = [
     {text: 'Our Guiding principles', href: '/about/guiding-principles/'},
-    {text: 'Our Board Members', href: '/about/board-members/'},
-    {text: 'Our Organogram', href: '/about/organisation-structure/'},
+    {text: 'Our Management Team', href: '/about/board-members/'},
+    {text: 'Our Management Structure', href: '/about/organisation-structure/'},
     {text: 'Our Role', href: '/about/roles/'},
     {text: 'Our Strategic Plan', href: '/about/strategic-plan/'},
     {text: 'Our Health Goals', href: '/about/health-goals/'},
@@ -26,7 +26,7 @@ export const mediaList = [
 ];
 
 export const servicesList = [
-    {text: 'Special Clinics', href: '/services/clinics'},
+    // {text: 'Special Clinics', href: '/services/clinics'},
     {text: 'Pharmacy', href: '/services/pharmacy'},
     {text: 'Laboratory', href: '/services/laboratory'},
     {text: 'Radiology/Xray', href: '/services/radiology'},

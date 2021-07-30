@@ -14,7 +14,7 @@ const Pharmacy = () => {
     ]
 
 
-    return <AboutContainer title='The Vihiga County Referral Hospital Pharmacy'>
+    return <AboutContainer title='Pharmacy' para={`The Vihiga County Referral Hospital Pharmacy`}>
         <p>The pharmacy team in Vihiga County Referral Hospital is highly skilled and offer professional services to
             clients.We offer both outpatient and inpatient services. We dispense standard medicines at affordable
             prices. Our in house committee inspects the medicines before stocking. The Hospital procures all medicines

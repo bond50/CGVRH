@@ -18,7 +18,7 @@ const Radiology = () => {
 
 
     return (
-        <AboutContainer title='Imaging And Radiology Services'>
+        <AboutContainer title='Radiology' para={`Imaging And Radiology Services`}>
             <List list={list}/>
 
 

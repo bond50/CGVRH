@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "../../styles/AboutContainer.module.css";
+import AboutContainer from "../reusables/AboutContainer";
 
 
 const Board = () => {
@@ -14,17 +15,12 @@ const Board = () => {
     ]
 
 
-    return <section className={`${styles.Section} ${styles.SectionBg}`}>
-       <div className="container">
-            <div className={styles.SectionTitle} data-aos="fade-up" data-aos-once='true'>
-            <h2>Our <strong>Role</strong></h2>
-            <p>
-                VCRH plays its roles in the county by providing a wide range of health services in partnership
-                with the greater community and other institutions.
-                Some of the roles played by the hospital in the county include
-            </p>
-        </div>
-       </div>
+    return <AboutContainer title={`Role`} para={`Our Roles in the county`}>
+        <p>
+            VCRH plays its roles in the county by providing a wide range of health services in partnership
+            with the greater community and other institutions.
+            Some of the roles played by the hospital in the county include
+        </p>
 
         <div className="container" data-aos="fade-up">
             <div className={` ${styles.Content}`}>
@@ -41,7 +37,7 @@ const Board = () => {
                 </div>
             </div>
         </div>
-    </section>
+    </AboutContainer>
 };
 
 export default Board;

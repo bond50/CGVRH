@@ -1,18 +1,18 @@
 import {useState} from 'react';
-
+import classes from '../../styles/Accordion.module.css'
 const Accordion = ({title, children}) => {
 
     const [isOpen, setOpen] = useState(false)
     return (
-        <div className="accordion-wrapper">
+        <div className={classes.accordionWrapper}>
             <div
-                className={`accordion-title ${isOpen ? "open" : ""}`}
+                className={`${classes.accordionTitle} ${isOpen ? `${classes.open}` : ""}`}
                 onClick={() => setOpen(!isOpen)}
                 >
                 {title}
             </div>
-            <div className={`accordion-item ${!isOpen ? "collapsed" : ""}`}>
-                <div className="accordion-content">{children}</div>
+            <div className={`${classes.accordionItem} ${!isOpen ? `${classes.collapsed}` : ""}`}>
+                <div className={classes.accordionContent}>{children}</div>
             </div>
         </div>
     )

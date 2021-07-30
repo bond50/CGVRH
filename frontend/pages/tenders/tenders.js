@@ -29,7 +29,6 @@ const Index = ({tenders}) => {
                         {renderTenders()}
                         <td>Jacob</td>
                         <td>Jacob</td>
-
                     </tr>
 
                     </tbody>

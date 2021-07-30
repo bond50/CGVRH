@@ -10,9 +10,7 @@ const AboutContainer = ({children, title, para, id}) => (
                 <p>{para}</p>
             </div>
 
-
                 {children}
-
         </div>
     </section>
 

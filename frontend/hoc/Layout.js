@@ -11,7 +11,6 @@ const Layout = ({children}) => {
             <Top/>
             <Toolbar/>
             <main>
-                <Breadcrumbs/>
                 {children}
             </main>
             <Footer/>

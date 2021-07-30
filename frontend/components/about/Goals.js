@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "../../styles/AboutContainer.module.css";
+import AboutContainer from "../reusables/AboutContainer";
 
 
 const Goals = () => {
@@ -14,10 +15,7 @@ const Goals = () => {
     ]
 
 
-    return <section className={`${styles.Section} ${styles.SectionBg}`}>
-        <div className={styles.SectionTitle}p data-aos="fade-up" data-aos-once='true'>
-            <h2>Our <strong>Goals</strong></h2>
-        </div>
+    return <AboutContainer title={`Goals`} para={`Our Health Goals`}>
         <div className="container">
             <div data-aos="fade-up" data-aos-once={`true`}>
                 {list.map((l, i) => {
@@ -27,7 +25,7 @@ const Goals = () => {
                 })}
             </div>
         </div>
-    </section>
+    </AboutContainer>
 };
 
 export default Goals;

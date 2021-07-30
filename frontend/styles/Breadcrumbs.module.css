@@ -1,6 +1,6 @@
 .Breadcrumbs {
     padding: 10px 0;
-    background-color: #f1f7fd;
+    background-color: #ffffff;
     min-height: 20px;
 }
 
@@ -11,12 +11,16 @@
 }
 
 .Breadcrumbs ol {
-      font-size: 11px;
+    font-size: 11px;
     display: flex;
     flex-wrap: wrap;
     list-style: none;
     padding: 0;
     margin: 0;
+}
+.Breadcrumbs a {
+    color: #fafafa;
+    text-transform: uppercase;
 }
 
 .Breadcrumbs ol li + li::before {

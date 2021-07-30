@@ -49,7 +49,9 @@ const Organogram = () => {
         },
     ]
 
-    return <AboutContainer title='THE HOSPITAL MANAGEMENT STRUCTURE'>
+    return <AboutContainer
+        title=' MANAGEMENT STRUCTURE' para={`Our MANAGEMENT STRUCTURE`}>
+
         <p>Vihiga County Referral Hospital is the main hospital within Vihiga County serving as a referral facility for
             Sub County and Health centers within the County. It attained its level five status in August 2017. The
             hospital has an integrated organizational structure with various departments and committees working to

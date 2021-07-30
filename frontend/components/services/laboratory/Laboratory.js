@@ -57,7 +57,7 @@ const Laboratory = () => {
 
 
     return (
-        <AboutContainer title='Laboratory'>
+        <AboutContainer title='Laboratory' para={`Our Laboratory `}>
             <h4>Accreditation</h4>
             <p>Not only do we have a well equipped Laboratory, but also talented staff who offer best services in
                 the region. Our Laboratory is accredited as a medical testing laboratory upon satisfying the
