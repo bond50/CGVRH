@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import Column from "./Column";
 import styles from "../../styles/Util.module.css";
 import Link from "next/link";
 import classes from '../../styles/RecenntFromBlog.module.css'
@@ -56,8 +55,6 @@ const LatestBlogs = () => {
 
 
     return (
-
-
         <section className={`${styles.Section}`}>
             <div className="container" data-aos="fade-up" data-aos-once='true'>
                 <header className={styles.SectionTitle}>

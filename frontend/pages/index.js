@@ -10,11 +10,12 @@ import LatestBlogs from "../components/home/LatestBlogs";
 export default function Home() {
     return (
         <HomepageLayout>
+            <Strategic/>
             <LatestBlogs/>
             <ServiceBief/>
-            <Strategic/>
-            <CoreValues/>
-            <Roles/>
+
+            {/*<CoreValues/>*/}
+            {/*<Roles/>*/}
         </HomepageLayout>
 
         // <HomepageLayout>

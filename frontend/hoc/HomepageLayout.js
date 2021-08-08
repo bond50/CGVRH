@@ -1,13 +1,11 @@
 import {Fragment} from "react";
-import Toolbar from "../components/navgation/Toolbar/Toolbar";
 import Footer from "../components/footer/Footer";
-import Top from "../components/navgation/Toolbar/Navigationitems/Top";
 import Hero from "../components/home/Hero";
+import Toolba from "../components/navgation/Toolba";
 
 const Layout = ({children}) => (
     <>
-        <Top/>
-        <Toolbar/>
+       <Toolba/>
         <Fragment>
             <Hero/>
             <main id='main'>

@@ -1,11 +1,13 @@
 .Section {
-    padding: 60px 0;
     overflow: hidden;
+    padding: 60px 0;
 }
 
 .SectionBg {
-    background-color: #eee;
-    color: #111;
+    /*background-image: url("/pattern.png");*/
+    /*background-repeat: repeat;*/
+    background-color: #f6f9fe;
+    color: #313232;
     line-height: 1.4;
 }
 
@@ -21,7 +23,7 @@
     margin: 0 0 5px 0;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #111111;
+    color: #323232;
     font-family: "Poppins", sans-serif;
 }
 
@@ -30,17 +32,17 @@
     width: 120px;
     height: 1px;
     display: inline-block;
-    background: #e6636a;
+    background: #323232;
     margin: 4px 10px;
 }
 
 .SectionTitle p {
- margin: 0;
-  font-size: 27px;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-family: "Poppins", sans-serif;
-  color: #111;
+    margin: 0;
+    font-size: 27px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    color: #111;
 }
 
 .Content h2 {

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React, {Fragment} from "react";
+import Image from "next/image";
 import renderHTML from 'react-render-html';
 import moment from 'moment';
 import {API} from '../../config';
@@ -28,17 +29,24 @@ const Card = ({blog, single}) => {
         ))
     }
 
+    const myLoader = ({src}) => {
+        return `${API}/blog/photo/${blog.slug}`;
+    }
     return (
         <article className={classes.Entry}>
             <div className={classes.Image}>
                 <Link href={`/blogs/${blog.slug}`}>
-                    <img
+                    <Image
+                        loader={myLoader}
                         className="img-fluid"
+                        width={1200}
+                        height={700}
                         src={`${API}/blog/photo/${blog.slug}`}
                         alt={blog.title}
                     />
                 </Link>
             </div>
+
             <h2 className={classes.Title}>
                 <Link href={`/blogs/${blog.slug}`}>
                     <a>
@@ -51,7 +59,7 @@ const Card = ({blog, single}) => {
                     <li className="d-flex align-items-center"><i className="bi bi-person"/>
                         <span className='px-2'> Written by  </span>
                         <Link href={`/profile/${blog.postedBy.username}`}>
-                          <a> {blog.postedBy.username}</a>
+                            <a> {blog.postedBy.username}</a>
                         </Link>
                     </li>
 

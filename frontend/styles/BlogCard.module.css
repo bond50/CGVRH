@@ -1,6 +1,8 @@
 .Entry {
     padding: 30px;
     margin-bottom: 60px;
+    background-color: #fff;
+    color: #111111;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
@@ -26,13 +28,9 @@
 }
 
 .Title a {
-    color: #111;
     transition: 0.3s;
 }
 
-.Title a:hover {
-    color: #2CC73E;
-}
 
 
 .Meta {
@@ -75,7 +73,6 @@
 
 
 .Content p {
-    font-size: 13px;
     line-height: 26px;
     color: #111;
 }

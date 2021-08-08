@@ -1,15 +1,15 @@
-import Toolbar from "../components/navgation/Toolbar/Toolbar";
+
 import Footer from "../components/footer/Footer";
 
-import Top from "../components/navgation/Toolbar/Navigationitems/Top";
+import Top from "../components/navgation/Top";
 import Breadcrumbs from "../components/reusables/Breadcrumbs";
+import Toolba from "../components/navgation/Toolba";
 
 
 const Layout = ({children}) => {
     return (
         <>
-            <Top/>
-            <Toolbar/>
+           <Toolba/>
             <main>
                 {children}
             </main>

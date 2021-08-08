@@ -1,6 +1,6 @@
 import {faMedkit, faXRay, faMicroscope, faHospitalUser} from '@fortawesome/free-solid-svg-icons'
 import Column from "./Column";
-import classes from '../../styles/Util.module.css'
+
 import styles from "../../styles/Util.module.css";
 
 const ServiceBief = () => {
@@ -52,7 +52,7 @@ const ServiceBief = () => {
 
     return (
 
-        <section className={`${classes.Section} ${classes.SectionBg}`}>
+        <section className={`${styles.Section} ${styles.SectionBg}`}>
             <div className="container">
                 <div className={styles.SectionTitle} data-aos="zoom-out" data-aos-once='true'>
                     <h2>Featured Services</h2>
