@@ -8,4 +8,5 @@ exports.smartTrim = (str, length, delim, appendix) => {
 
     if (trimmedStr) trimmedStr += appendix;
     return trimmedStr;
+
 };

@@ -16,6 +16,8 @@ const tagRoutes = require('./routes/tag')
 const formRoutes = require('./routes/form')
 const uploadRoute = require('./routes/fileUpload')
 const serviceRoutes = require('./routes/services')
+const serviceCategoryRoutes = require('./routes/service-category')
+const serviceTagRoutes = require('./routes/service-tag')
 
 
 const app = express()
@@ -70,6 +72,8 @@ app.use('/api', categoryRoutes);
 app.use('/api', formRoutes);
 app.use('/api', uploadRoute);
 app.use('/api', serviceRoutes);
+app.use('/api', serviceTagRoutes);
+app.use('/api', serviceCategoryRoutes);
 
 
 app.listen(port, () => {

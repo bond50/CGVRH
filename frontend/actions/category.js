@@ -2,8 +2,8 @@ import fetch from "isomorphic-fetch";
 import { API } from "../config";
 import { handleResponse } from "./auth";
 
-export const create = (category, token) => {
-  return fetch(`${API}/category`, {
+export const create = (category, token,endpoint) => {
+  return fetch(`${API}/${endpoint}`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -19,14 +19,15 @@ export const create = (category, token) => {
     .catch((err) => console.log(err));
 };
 
-export const getCategories = () =>
-    fetch(`${API}/categories`, {
+export const getCategories = (endPoint) =>
+    fetch(`${API}/${endPoint}`, {
       method: "GET",
     })
         .then((response) => {
           return response.json();
         })
         .catch((err) => console.log(err));
+
 
 export const singleCategory = (slug) => {
   return fetch(`${API}/category/${slug}`, {
@@ -38,8 +39,8 @@ export const singleCategory = (slug) => {
     .catch((err) => console.log(err));
 };
 
-export const removeCategory = (slug, token) =>
-    fetch(`${API}/category/${slug}`, {
+export const removeCategory = (slug, token,endpoint) =>
+    fetch(`${API}/${endpoint}/${slug}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",

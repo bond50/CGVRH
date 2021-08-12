@@ -45,13 +45,8 @@ const Strategic = () => {
                                 className={`img-fluid ${classes.Animated}`} alt="home"/>
                         </Link>
                     </div>
-
-
                 </div>
-
-
             </div>
-
         </section>
     );
 };

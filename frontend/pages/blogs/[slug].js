@@ -54,7 +54,6 @@ const Slug = ({blog, query}) => {
     };
 
 
-
     const showRelatedBlog = () => {
         return related.map((blog, i) => (
             <div className="col-md-4" key={i}>
@@ -75,21 +74,19 @@ const Slug = ({blog, query}) => {
             {head()}
             <Layout>
                 <main>
-                        <BlogContainer>
-                            {showBlog()}
+                    <BlogContainer>
+                        {showBlog()}
 
-                           {/*<div className='pt-5'>*/}
-                           {/*     {showComments()}*/}
-                           {/*</div>*/}
+                        {/*<div className='pt-5'>*/}
+                        {/*     {showComments()}*/}
+                        {/*</div>*/}
 
-                        </BlogContainer>
-                        <hr/>
-                        <div className="container">
-                            <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
-                            <div className="row">{showRelatedBlog()}</div>
-                        </div>
-
-
+                    </BlogContainer>
+                    <hr/>
+                    <div className="container">
+                        <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
+                        <div className="row">{showRelatedBlog()}</div>
+                    </div>
                 </main>
             </Layout>
         </>

@@ -72,9 +72,7 @@ exports.signup = (req, res) => {
         return res.json({
             message: 'Something went wrong try again'
         });
-
     }
-
 }
 // exports.signup = (req, res) => {
 //     User.findOne({email: req.body.email}).exec((err, user) => {

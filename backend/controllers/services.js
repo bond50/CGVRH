@@ -1,6 +1,6 @@
 const Service = require('../models/services');
-const Category = require('../models/category');
-const Tag = require('../models/tag');
+const Category = require('../models/serviceCategory');
+const Tag = require('../models/serviceTag');
 const formidable = require('formidable');
 const slugify = require('slugify');
 const stripHtml = require('string-strip-html');
@@ -21,18 +21,12 @@ exports.create = (req, res) => {
 
         const {title, body, categories, tags} = fields;
 
-
         if (!title || !title.length) {
             return res.status(400).json({
                 error: 'title is required'
             });
         }
 
-        if (!body || body.length < 200) {
-            return res.status(400).json({
-                error: 'Content is too short'
-            });
-        }
 
         if (!categories || categories.length === 0) {
             return res.status(400).json({
@@ -49,7 +43,7 @@ exports.create = (req, res) => {
         let service = new Service();
         service.title = title;
         service.body = body;
-        service.excerpt = smartTrim(body, 320, ' ', ' ...');
+        service.excerpt = smartTrim(body, 200, ' ', ' ...');
         service.slug = slugify(title).toLowerCase();
         service.metaTitle = `${title} | ${process.env.APP_NAME}`;
         service.metaDesc = stripHtml(body.substring(0, 160));
@@ -76,7 +70,6 @@ exports.create = (req, res) => {
             }
             Service.findByIdAndUpdate(result._id, {$push: {categories: arrayOfCategories}}, {new: true}).exec(
                 (err, result) => {
-                    console.log(result)
                     if (err) {
                         return res.status(400).json({
                             error: errorHandler(err)

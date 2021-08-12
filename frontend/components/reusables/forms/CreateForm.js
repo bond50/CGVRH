@@ -1,10 +1,9 @@
 import dynamic from "next/dynamic";
 import 'react-quill/dist/quill.snow.css';
 import {QuillFormats, QuillModules} from '../../../helpers/quill';
-import 'react-quill/dist/quill.snow.css';
 const ReactQuill = dynamic(() => import('react-quill'), {ssr: false});
 
-const BlogForm = ({onSubmit,btnCapture, handleChange, handleBody, bodyValue, titleValue}) => {
+const CreateForm = ({onSubmit,btnCapture, handleChange, handleBody, bodyValue, titleValue}) => {
     const form = () => {
         return (
             <form onSubmit={onSubmit}>
@@ -43,4 +42,4 @@ const BlogForm = ({onSubmit,btnCapture, handleChange, handleBody, bodyValue, tit
     );
 };
 
-export default BlogForm;
+export default CreateForm;

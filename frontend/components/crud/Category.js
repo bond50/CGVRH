@@ -26,7 +26,7 @@ const Category = () => {
   }, [reload]);
 
   const loadCategories = () => {
-    getCategories().then((data) => {
+    getCategories('categories').then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -61,7 +61,7 @@ const Category = () => {
 
   const deleteCategory = (slug) => {
     // console.log('delete', slug);
-    removeCategory(slug, token).then((data) => {
+    removeCategory(slug, token,'category').then((data) => {
       if (data.error) {
         console.log(data.error);
       } else {
@@ -80,7 +80,7 @@ const Category = () => {
   const clickSubmit = (e) => {
     e.preventDefault();
     // console.log('create category', name);
-    create({ name }, token).then((data) => {
+    create({ name }, token,'category').then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
       } else {

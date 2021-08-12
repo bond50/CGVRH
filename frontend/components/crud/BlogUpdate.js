@@ -12,7 +12,7 @@ const ReactQuill = dynamic(() => import('react-quill'), {ssr: false});
 import '../../node_modules/react-quill/dist/quill.snow.css';
 import {QuillModules, QuillFormats} from '../../helpers/quill';
 import {API} from '../../config';
-import BlogForm from "../blog/blog/CreateBlogForm";
+import BlogForm from "../reusables/forms/CreateForm";
 import Alert from "../messages/Alert";
 
 const BlogUpdate = ({router}) => {

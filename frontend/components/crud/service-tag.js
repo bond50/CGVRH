@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import Router from 'next/router';
 import { getCookie } from '../../actions/auth';
 import { create, getTags, removeTag } from '../../actions/tag';
+import CreateTagCat from "../reusables/forms/CreateTagCat";
 
 const Tag = () => {
     const [values, setValues] = useState({
@@ -20,7 +23,7 @@ const Tag = () => {
     }, [reload]);
 
     const loadTags = () => {
-        getTags('tags').then(data => {
+        getTags('service-tags').then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
@@ -53,7 +56,7 @@ const Tag = () => {
 
     const deleteTag = slug => {
         // console.log('delete', slug);
-        removeTag(slug, token,'tag').then(data => {
+        removeTag(slug, token,'service-tag').then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
@@ -65,7 +68,7 @@ const Tag = () => {
     const clickSubmit = e => {
         e.preventDefault();
         // console.log('create category', name);
-        create({ name }, token,'tag').then(data => {
+        create({ name }, token,'service-tag').then(data => {
             if (data.error) {
                 setValues({ ...values, error: data.error, success: false });
             } else {
@@ -74,9 +77,13 @@ const Tag = () => {
         });
     };
 
-    const handleChange = e => {
-        setValues({ ...values, name: e.target.value, error: false, success: false, removed: '' });
+
+     const handleChange = (e) => {
+        setValues({
+            ...values, name: e.target.value, error: false, success: false, removed: ''
+        });
     };
+
 
     const showSuccess = () => {
         if (success) {
@@ -100,19 +107,6 @@ const Tag = () => {
         setValues({ ...values, error: false, success: false, removed: '' });
     };
 
-    const newTagFom = () => (
-        <form onSubmit={clickSubmit}>
-            <div className="form-group mb-3">
-                <label className="text-muted">Tag Name</label>
-                <input type="text" className="form-control" onChange={handleChange} value={name} required />
-            </div>
-            <div>
-                <button type="submit" className="btn btn-primary mb-3">
-                    Create
-                </button>
-            </div>
-        </form>
-    );
 
     return (
         <React.Fragment>
@@ -120,7 +114,9 @@ const Tag = () => {
             {showError()}
             {showRemoved()}
             <div onMouseMove={mouseMoveHandler}>
-                {newTagFom()}
+                <CreateTagCat name={name}
+                    handleChange={handleChange}
+                    onSubmit={clickSubmit}/>
                 {showTags()}
             </div>
         </React.Fragment>

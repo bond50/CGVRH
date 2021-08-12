@@ -7,7 +7,7 @@ import {createBlog} from '../../actions/blog';
 import {dataFromLocalStorage, setDataToLocalStorage} from '../reusables/functions/dataFromLocalStorage'
 
 import Alert from "../messages/Alert";
-import BlogForm from "../blog/blog/CreateBlogForm";
+import BlogForm from "../reusables/forms/CreateForm";
 
 const CreateBlog = ({router}) => {
     const [categories, setCategories] = useState([]);
@@ -34,7 +34,7 @@ const CreateBlog = ({router}) => {
     }, [router]);
 
     const initCategories = () => {
-        getCategories().then(data => {
+        getCategories('categories').then(data => {
             if (data.error) {
                 setValues({...values, error: data.error});
             } else {
@@ -44,7 +44,7 @@ const CreateBlog = ({router}) => {
     };
 
     const initTags = () => {
-        getTags().then(data => {
+        getTags('tags').then(data => {
             if (data.error) {
                 setValues({...values, error: data.error});
             } else {
@@ -93,8 +93,6 @@ const CreateBlog = ({router}) => {
             all.splice(clickedCategory, 1);
         }
         setChecked(all);
-
-
         formData.set('categories', all);
     };
 

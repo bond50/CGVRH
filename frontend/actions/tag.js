@@ -2,8 +2,8 @@ import fetch from 'isomorphic-fetch';
 import { API } from '../config';
 import {handleResponse} from "./auth";
 
-export const create = (tag, token) => {
-    return fetch(`${API}/tag`, {
+export const create = (tag, token,endpoint) => {
+    return fetch(`${API}/${endpoint}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -19,8 +19,8 @@ export const create = (tag, token) => {
         .catch(err => console.log(err));
 };
 
-export const getTags = () => {
-    return fetch(`${API}/tags`, {
+export const getTags = (endPoint) => {
+    return fetch(`${API}/${endPoint}`, {
         method: 'GET'
     })
         .then(response => {
@@ -28,6 +28,17 @@ export const getTags = () => {
         })
         .catch(err => console.log(err));
 };
+
+// export const getSerViceTags = () => {
+//     return fetch(`${API}/service-tags`, {
+//         method: 'GET'
+//     })
+//         .then(response => {
+//             return response.json();
+//         })
+//         .catch(err => console.log(err));
+// };
+
 
 export const singleTag = slug => {
     return fetch(`${API}/tag/${slug}`, {
@@ -39,8 +50,8 @@ export const singleTag = slug => {
         .catch(err => console.log(err));
 };
 
-export const removeTag = (slug, token) => {
-    return fetch(`${API}/tag/${slug}`, {
+export const removeTag = (slug, token,endpoint) => {
+    return fetch(`${API}/${endpoint}/${slug}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',

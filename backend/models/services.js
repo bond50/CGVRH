@@ -35,9 +35,9 @@ const serviceSchema = new mongoose.Schema(
             data: Buffer,
             contentType: String
         },
-
-        categories: [{type: ObjectId, ref: 'Category', required: true}],
-        tags: [{type: ObjectId, ref: 'Tag', required: true}],
+        isFeatured: {type: Boolean},
+        categories: [{type: ObjectId, ref: 'ServiceCategory', required: true}],
+        tags: [{type: ObjectId, ref: 'ServiceTag', required: true}],
         addedBy: {
             type: ObjectId,
             ref: 'User'
