@@ -65,7 +65,6 @@ const LatestBlogs = () => {
                     {showRecent()}
                 </div>
             </div>
-
         </section>
 
     )

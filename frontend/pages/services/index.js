@@ -1,40 +1,76 @@
-import AboutContainer from "../../components/reusables/AboutContainer";
-import List from "../../components/reusables/List";
+import Head from "next/head";
+import React, {useState,Fragment} from "react";
+import Layout from "../../hoc/Layout";
+import {listServicesWithCategoriesAndTags} from "../../actions/services";
+import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
+import Card from "../../components/blog/Card";
+import {withRouter} from "next/router";
+import BlogContainer from "../../hoc/BlogContainer";
+import {useRouter} from "next/router";
+import Service from "../admin/crud/service";
+import ServiceList from "../../components/services/service-items";
 
-const Directorates = () => {
-    const list = [
-        {
-            desc: 'The clinical services provided include:',
-            content: [
-                {name: 'Internal Medicine',},
-                {name: 'General surgery and anesthesia',},
-                {name: 'Pediatrics',},
-                {name: 'Obstetrics and gynecology',},
-                {name: 'Dental services',},
-                {name: 'Psychiatry',},
-                {name: 'Ophthalmology',},
-                {name: 'Pharmaceutical services',},
-                {name: 'Ambulatory and emergency services',},
-                {name: 'Laboratory services',},
-                {name: 'Rehabilitative care',},
-                {name: 'Counseling',},
-                {name: 'Nutritional services',},
-                {name: 'Physiotherapy',},
-                {name: 'Radiological Imaging services',},
-            ]
-        },
-    ]
-    const intro = [
-        {title: `The hospital has specialized personnel including general surgeons, physicians, a pediatrician, obstetrician & gynecologist, ophthalmologist, nurses, clinical officers, laboratory technologists, rehabilitative staff and public health staff.`}
-    ]
+const Services = ({services, totalServices}) => {
+    const router = useRouter()
+    const head = () => (
+        <Head>
+            <title>All Services | {APP_NAME}</title>
+            <meta
+                name="description"
+                content="Vihiga county referral hospital services "
+            />
 
-    return <AboutContainer title='Directorates Of Clinical Services' >
-        <List
-            list={list}
-            intro={intro}
-        />
+            <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
 
-    </AboutContainer>;
+            <meta property="og:title" content={`Services offered  | ${APP_NAME}`}/>
+            <meta
+                property="og:description"
+                content="Vihiga county referral hospital services"
+            />
+
+            <meta property="og:type" content="webiste"/>
+            <meta property="og:url" content={`${DOMAIN}${router.pathname}`}/>
+            <meta property="og:site_name" content={`${APP_NAME}`}/>
+
+            <meta
+                property="og:image"
+                content={`https://res.cloudinary.com/dwtcilinl/image/upload/v1622297993/Gallery/yffhwkqackates3w0hte.png`}
+            />
+            <meta
+                property="og:image:secure_url"
+                content={`https://res.cloudinary.com/dwtcilinl/image/upload/v1622297993/Gallery/yffhwkqackates3w0hte.png`}
+            />
+            <meta property="og:image:type" content="image/png"/>
+            <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
+        </Head>
+    );
+
+
+
+    return (
+        <Fragment>
+            {head()}
+            <Layout>
+                <ServiceList services={services}/>
+            </Layout>
+        </Fragment>
+    );
 };
 
-export default Directorates;
+export const getServerSideProps = async (context) => {
+
+    return listServicesWithCategoriesAndTags().then((data) => {
+        if (data.error) {
+            console.log(data.error);
+        } else {
+            return {
+                props: {
+                    services: data.services,
+                    totalServices: data.size,
+                },
+            };
+        }
+    });
+};
+
+export default Services

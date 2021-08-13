@@ -21,10 +21,10 @@ const serviceSchema = new mongoose.Schema(
             min: 200,
             max: 2000000
         },
-        excerpt: {
-            type: String,
-            max: 1000
-        },
+        // excerpt: {
+        //     type: String,
+        //     max: 1000
+        // },
         metaTitle: {
             type: String
         },

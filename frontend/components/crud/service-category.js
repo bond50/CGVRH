@@ -59,7 +59,6 @@ const Category = () => {
     };
 
     const deleteCategory = (slug) => {
-        // console.log('delete', slug);
         removeCategory(slug, token,'service-category').then((data) => {
             if (data.error) {
                 console.log(data.error);

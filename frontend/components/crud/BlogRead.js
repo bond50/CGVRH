@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import React, {useState, useEffect} from 'react';
-import Router from 'next/router';
 import {getCookie, isAuth} from '../../actions/auth';
 import {list, removeBlog} from '../../actions/blog';
 import moment from 'moment';
@@ -81,7 +80,6 @@ const BlogRead = ({username}) => {
     return (
         <div className="row">
             <div className="col-md-12">
-
                 {showAllBlogs()}
                 {message && <Alert msg={message} label='Success' type='success'/>}
             </div>

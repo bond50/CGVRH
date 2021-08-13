@@ -14,8 +14,8 @@ export default function Home() {
             <LatestBlogs/>
             <ServiceBief/>
 
-            {/*<CoreValues/>*/}
-            {/*<Roles/>*/}
+            <CoreValues/>
+            <Roles/>
         </HomepageLayout>
 
         // <HomepageLayout>

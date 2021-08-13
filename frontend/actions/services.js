@@ -25,3 +25,33 @@ export const createService = (service, token) => {
         })
         .catch(err => console.log(err));
 };
+
+
+export const list = (username) => {
+    let listServiceEndpoint
+    if (username) {
+        listServiceEndpoint = `${API}/${username}/services`
+    } else {
+        listServiceEndpoint = `${API}/services`
+    }
+
+
+    return fetch(`${API}/services`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+
+export const listServicesWithCategoriesAndTags = () => {
+    return fetch(`${API}/services-categories-tags`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};

@@ -1,27 +1,28 @@
 import React from 'react';
 import Layout from '../../../hoc/Layout';
-import Admin from '../../../components/auth/Admin';
+
+import Private from "../../../components/auth/Private";
+import {isAuth} from "../../../actions/auth";
 import ServiceRead from "../../../components/crud/ServiceRead";
 
+const Blogs = () => {
 
-
-const Blog = () => {
     return (
         <Layout>
-            <Admin>
+            <Private>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-12 pt-5 pb-5">
-                            <h2>Create a new service</h2>
+                            <h2>Manage blogs</h2>
                         </div>
                         <div className="col-md-12">
-                              <ServiceRead />
+                            <ServiceRead username={isAuth() && isAuth().username}/>
                         </div>
                     </div>
                 </div>
-            </Admin>
+            </Private>
         </Layout>
     );
 };
 
-export default Blog;
+export default Blogs;

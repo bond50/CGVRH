@@ -9,6 +9,9 @@ const {errorHandler} = require('../helpers/dbErrorHandler');
 const fs = require('fs');
 const {smartTrim} = require('../helpers/blog');
 
+
+
+
 exports.create = (req, res) => {
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
@@ -34,23 +37,22 @@ exports.create = (req, res) => {
             });
         }
 
+
         if (!tags || tags.length === 0) {
             return res.status(400).json({
                 error: 'At least one tag is required'
             });
         }
-
         let service = new Service();
-        service.title = title;
+        service.title = title.toLowerCase();
         service.body = body;
-        service.excerpt = smartTrim(body, 200, ' ', ' ...');
+        service.excerpt = smartTrim(body, 10, ' ', ' ...');
         service.slug = slugify(title).toLowerCase();
         service.metaTitle = `${title} | ${process.env.APP_NAME}`;
         service.metaDesc = stripHtml(body.substring(0, 160));
         service.addedBy = req.auth._id;
         let arrayOfCategories = categories && categories.split(',');
         let arrayOfTags = tags && tags.split(',');
-
 
         if (files.photo) {
             if (files.photo.size > 10000000) {
@@ -93,4 +95,77 @@ exports.create = (req, res) => {
     })
 }
 
+exports.list = (req, res) => {
+    Service.find({})
+        .populate('categories', '_id name slug')
+        .populate('tags', '_id name slug')
+        .populate('postedBy', '_id name username')
+        .select('_id title slug excerpt categories tags postedBy createdAt updatedAt')
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: errorHandler(err)
+                });
+            }
+            res.json(data);
+        });
+};
 
+
+exports.listAllServicesCategoriesTags = (req, res) => {
+
+    let services;
+    let categories;
+    let tags;
+
+    Service.find({})
+        .populate('categories', '_id name slug')
+        .populate('tags', '_id name slug')
+        .populate('postedBy', '_id name username profile')
+        .sort({ createdAt: -1 })
+        .select('_id title slug excerpt  categories tags postedBy createdAt updatedAt')
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: errorHandler(err)
+                });
+            }
+            services = data;
+            // get all categories
+            Category.find({}).exec((err, c) => {
+                if (err) {
+                    return res.json({
+                        error: errorHandler(err)
+                    });
+                }
+                categories = c; // categories
+                // get all tags
+                Tag.find({}).exec((err, t) => {
+                    if (err) {
+                        return res.json({
+                            error: errorHandler(err)
+                        });
+                    }
+                    tags = t;
+                    // return all blogs categories tags
+                    res.json({ services, categories, tags, size: services.length });
+                });
+            });
+        });
+};
+
+
+exports.photo = (req, res) => {
+    const slug = req.params.slug.toLowerCase();
+    Service.findOne({slug})
+        .select('photo')
+        .exec((err, service) => {
+            if (err || !service) {
+                return res.status(400).json({
+                    error: errorHandler(err)
+                });
+            }
+            res.set('Content-Type', service.photo.contentType);
+            return res.send(service.photo.data);
+        });
+};
