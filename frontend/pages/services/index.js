@@ -1,16 +1,12 @@
 import Head from "next/head";
 import React, {useState,Fragment} from "react";
 import Layout from "../../hoc/Layout";
-import {listServicesWithCategoriesAndTags} from "../../actions/services";
+import {list} from "../../actions/services";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
-import Card from "../../components/blog/Card";
-import {withRouter} from "next/router";
-import BlogContainer from "../../hoc/BlogContainer";
 import {useRouter} from "next/router";
-import Service from "../admin/crud/service";
 import ServiceList from "../../components/services/service-items";
 
-const Services = ({services, totalServices}) => {
+const Services = ({services}) => {
     const router = useRouter()
     const head = () => (
         <Head>
@@ -57,16 +53,14 @@ const Services = ({services, totalServices}) => {
     );
 };
 
-export const getServerSideProps = async (context) => {
-
-    return listServicesWithCategoriesAndTags().then((data) => {
+export const getStaticProps = async (context) => {
+    return list().then((data) => {
         if (data.error) {
             console.log(data.error);
         } else {
             return {
                 props: {
-                    services: data.services,
-                    totalServices: data.size,
+                    services: data,
                 },
             };
         }

@@ -30,9 +30,10 @@
 
 .PostTitle {
     font-size: 18px;
-    color: rgba(0,0,0,0.9);
+    color: rgba(1, 41, 112, 0.6);
     font-weight: 500;
     margin-bottom: 9px;
+    text-transform: capitalize;
     position: relative;
     transition: 0.3s;
 }

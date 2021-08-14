@@ -1,8 +1,10 @@
 import fetch from 'isomorphic-fetch';
-import { API } from '../config';
+import {API} from '../config';
 import {handleResponse} from "./auth";
 
-export const create = (tag, token,endpoint) => {
+
+
+export const create = (tag, token, endpoint) => {
     return fetch(`${API}/${endpoint}`, {
         method: 'POST',
         headers: {
@@ -13,7 +15,7 @@ export const create = (tag, token,endpoint) => {
         body: JSON.stringify(tag)
     })
         .then(response => {
-             handleResponse(response)
+            handleResponse(response)
             return response.json();
         })
         .catch(err => console.log(err));
@@ -40,8 +42,10 @@ export const getTags = (endPoint) => {
 // };
 
 
-export const singleTag = slug => {
-    return fetch(`${API}/tag/${slug}`, {
+export const singleTag = (slug, endpoint) => {
+
+
+    return fetch(`${API}/${endpoint}/${slug}`, {
         method: 'GET'
     })
         .then(response => {
@@ -50,7 +54,7 @@ export const singleTag = slug => {
         .catch(err => console.log(err));
 };
 
-export const removeTag = (slug, token,endpoint) => {
+export const removeTag = (slug, token, endpoint) => {
     return fetch(`${API}/${endpoint}/${slug}`, {
         method: 'DELETE',
         headers: {
@@ -60,7 +64,7 @@ export const removeTag = (slug, token,endpoint) => {
         }
     })
         .then(response => {
-             handleResponse(response)
+            handleResponse(response)
             return response.json();
         })
         .catch(err => console.log(err));

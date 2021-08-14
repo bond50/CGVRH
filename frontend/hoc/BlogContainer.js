@@ -7,7 +7,7 @@ import BlogSideBarContent from "../components/blog/BlogSideBarContent";
 const BlogContainer = ({children}) => {
     return (
         <section className={classes.Blog}>
-            <div className="container" data-aos="fade-up">
+            <div className="container" data-aos="fade-up" data-aos-once='true'>
                 <div className="row">
                     <div className="col-lg-8">
                         {children}

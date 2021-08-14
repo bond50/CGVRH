@@ -35,7 +35,6 @@ exports.list = (req, res) => {
 
 exports.read = (req, res) => {
     const slug = req.params.slug.toLowerCase();
-
     ServiceTag .findOne({ slug }).exec((err, tag) => {
         if (err) {
             return res.status(400).json({
@@ -54,7 +53,7 @@ exports.read = (req, res) => {
                         error: errorHandler(err)
                     });
                 }
-                res.json({ tag: tag, blogs: data });
+                res.json({ tag: tag, data: data });
             });
     });
 };

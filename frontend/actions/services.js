@@ -35,7 +35,6 @@ export const list = (username) => {
         listServiceEndpoint = `${API}/services`
     }
 
-
     return fetch(`${API}/services`, {
         method: 'GET'
     })
@@ -48,6 +47,16 @@ export const list = (username) => {
 
 export const listServicesWithCategoriesAndTags = () => {
     return fetch(`${API}/services-categories-tags`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const  singleService = (slug) => {
+    return fetch(`${API}/service/${slug}`, {
         method: 'GET'
     })
         .then(response => {

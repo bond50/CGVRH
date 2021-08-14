@@ -3,22 +3,28 @@ import Link from "next/link";
 import classes from '../../styles/RecenntFromBlog.module.css'
 import {API} from "../../config";
 import renderHTML from "react-render-html";
+import Image from "next/image";
 
 const ServiceList = ({services}) => {
-
     const showServices = () => {
         return services.map((service, index) => {
+            const myLoader = ({src}) => {
+                return `${API}/service/photo/${service.slug}`;
+            }
             return <div className="col-lg-3" key={index} data-aos="fade-up" data-aos-delay='200' data-aos-once='true'>
                 <Link href={`/services/${service.slug}`}>
                     <div className={classes.PostBox}>
                         <div className={classes.PostImg}>
-                            <img
+                            <Image
+                                loader={myLoader}
                                 src={`${API}/service/photo/${service.slug}`}
                                 className="img-fluid"
+                                width={540}
+                                height={360}
                                 alt={service.title}/>
                         </div>
                         <h3 className={classes.PostTitle}>
-                            {renderHTML(service.title)}
+                            {renderHTML(service.title.toLowerCase())}
                         </h3>
                     </div>
                 </Link>

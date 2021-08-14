@@ -8,6 +8,7 @@ const _ = require('lodash');
 const {errorHandler} = require('../helpers/dbErrorHandler');
 const fs = require('fs');
 const {smartTrim} = require('../helpers/blog');
+const Blog = require("../models/blog");
 
 
 
@@ -113,7 +114,6 @@ exports.list = (req, res) => {
 
 
 exports.listAllServicesCategoriesTags = (req, res) => {
-
     let services;
     let categories;
     let tags;
@@ -167,5 +167,24 @@ exports.photo = (req, res) => {
             }
             res.set('Content-Type', service.photo.contentType);
             return res.send(service.photo.data);
+        });
+};
+
+
+exports.read = (req, res) => {
+    const slug = req.params.slug.toLowerCase();
+    Service.findOne({ slug })
+        // .select("-photo")
+        .populate('categories', '_id name slug')
+        .populate('tags', '_id name slug')
+        .populate('postedBy', '_id name username')
+        .select('_id title body excerpt slug mtitle mdesc categories tags postedBy createdAt updatedAt')
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: errorHandler(err)
+                });
+            }
+            res.json(data);
         });
 };

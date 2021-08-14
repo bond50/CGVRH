@@ -7,7 +7,7 @@ import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import classes from '../../styles/Util.module.css'
 
 
-const Tag = ({tag, blogs, query}) => {
+const Tag = ({tag, services, query}) => {
     const head = () => (
         <Head>
             <title>
@@ -31,28 +31,14 @@ const Tag = ({tag, blogs, query}) => {
 
         </Head>
     );
-
+    console.log(services)
 
     return (
         <>
             {head()}
             <Layout>
                 <main>
-                    <div className="container">
-                        <header className={classes.Header}>
-                            <div className="col-md-12 pt-3">
-                                <h1 className="display-4 font-weight-bold">{tag.name}</h1>
-
-                                {blogs.map((b, i) => {
-                                        return <div>
-                                            <Card key={i} blog={b}/>
-                                            <hr/>
-                                        </div>
-                                    }
-                                )}
-                            </div>
-                        </header>
-                    </div>
+                    {JSON.stringify(services)}
                 </main>
 
             </Layout>
@@ -61,14 +47,14 @@ const Tag = ({tag, blogs, query}) => {
 };
 export const getServerSideProps = async ({query}) => {
 
-    return singleTag(query.slug, 'tag').then(data => {
+    return singleTag(query.slug, 'service-tag').then(data => {
         if (data.error) {
             console.log(data.error)
         } else {
             return {
                 props: {
                     tag: data.tag,
-                    blogs: data.blogs,
+                    services: data.data,
                     query
                 }
             }

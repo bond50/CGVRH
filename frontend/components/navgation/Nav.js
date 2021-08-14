@@ -11,7 +11,7 @@ const Nav = () => {
     const lists = [
         {to: '/', caption: 'Home'},
         {caption: 'About', component: aboutList, to: '/about/'},
-        {caption: 'Services', component: servicesList, to: '/services/'},
+        {caption: 'Patient Care', component: servicesList, to: '/services/'},
         {caption: 'Media', component: mediaList, to: '/media/'},
         {to: '/blogs/', caption: 'Blog',},
         {to: '/contact/', caption: 'Contact'},

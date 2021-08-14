@@ -1,5 +1,5 @@
 import Layout from "../../hoc/Layout";
-import {listBlogsWithCategoriesAndTags, listRelated, singleBlog} from "../../actions/blog";
+import {listRelated, singleBlog} from "../../actions/blog";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import Link from "next/link";
 import moment from "moment";
@@ -76,11 +76,9 @@ const Slug = ({blog, query}) => {
                 <main>
                     <BlogContainer>
                         {showBlog()}
-
-                        {/*<div className='pt-5'>*/}
-                        {/*     {showComments()}*/}
-                        {/*</div>*/}
-
+                        <div className='pt-5'>
+                            {showComments()}
+                        </div>
                     </BlogContainer>
                     <hr/>
                     <div className="container">

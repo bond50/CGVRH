@@ -21,10 +21,10 @@ const serviceSchema = new mongoose.Schema(
             min: 200,
             max: 2000000
         },
-        // excerpt: {
-        //     type: String,
-        //     max: 1000
-        // },
+        excerpt: {
+            type: String,
+            max: 1000
+        },
         metaTitle: {
             type: String
         },
@@ -38,7 +38,7 @@ const serviceSchema = new mongoose.Schema(
         isFeatured: {type: Boolean},
         categories: [{type: ObjectId, ref: 'ServiceCategory', required: true}],
         tags: [{type: ObjectId, ref: 'ServiceTag', required: true}],
-        addedBy: {
+        postedBy: {
             type: ObjectId,
             ref: 'User'
         }
