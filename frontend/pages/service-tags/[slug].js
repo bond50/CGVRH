@@ -40,7 +40,6 @@ const Tag = ({tag, services, query}) => {
                 <main>
                     {JSON.stringify(services)}
                 </main>
-
             </Layout>
         </>
     );

@@ -50,6 +50,11 @@
 /*  --bs-body-color: #212529;*/
 /*  --bs-body-bg: #fff;*/
 /*}*/
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
@@ -125,7 +130,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #header {
     background: #f6f9fe;
-   color: #313232;
+    color: #313232;
     transition: all 0.5s;
     z-index: 997;
     height: 86px;
@@ -136,7 +141,6 @@ h1, h2, h3, h4, h5, h6 {
     height: 70px;
 
 }
-
 
 
 .navbar {

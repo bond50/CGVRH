@@ -10,11 +10,12 @@ import ShowTags from "./ShowTags";
 const BlogSideBarContent = () => {
     const [blogs, setBlogs] = useState([])
     const [tags, setTags] = useState([])
+
     const [categories, setCategories] = useState([])
 
     const items = [
         {title: 'search', component: <Search/>},
-        {title: 'categories', component: <ShowCategories categories={categories}/>},
+        {title: 'categories', component: <ShowCategories categories={categories} />},
         {title: 'Recent', component: <LoadRecentBlogs blogs={blogs}/>},
         {title: 'tags', component: <ShowTags tags={tags}/>},
     ]
@@ -34,6 +35,7 @@ const BlogSideBarContent = () => {
                 setTags(data.tags)
                 setCategories(data.categories)
                 setBlogs(data.blogs)
+
             }
         })
     };

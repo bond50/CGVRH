@@ -4,6 +4,8 @@ import Card from "../../components/blog/Card";
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import classes from '../../styles/Util.module.css'
+import SmallCard from "../../components/blog/SmallCard";
+import React from "react";
 
 
 const Category = ({category, blogs, query}) => {
@@ -29,27 +31,42 @@ const Category = ({category, blogs, query}) => {
 
     );
 
+    const showCats = () => {
+        return blogs.map((blog, i) => (
+            <div className="col-md-4" key={i}>
+                <article>
+                    <SmallCard blog={blog}/>
+                </article>
+            </div>
+        ));
+    };
+
+
     return (
         <>
             {head()}
             <Layout>
-                <main>
-                    <div className="container ">
-                        <header className={classes.Header}>
-                            <div className="col-md-12">
-                                <h1>{category.name.toLowerCase()}</h1>
+                <div className="container">
+                    <h4 className="text-center pt-4 pb-4 h1">Articles on {category.name}</h4>
+                    <div className="row">{showCats()}</div>
+                </div>
 
-                                {blogs.map((b, i) => {
-                                        return <div>
-                                            <Card key={i} blog={b}/>
-                                            <hr/>
-                                        </div>
-                                    }
-                                )}
-                            </div>
-                        </header>
-                    </div>
-                </main>
+                {/*<main>*/}
+                {/*    <div className="container ">*/}
+                {/*        <header className={classes.Header}>*/}
+                {/*            <h1>{category.name.toLowerCase()}</h1>*/}
+                {/*            {blogs.map((b, i) => {*/}
+                {/*                    return <div className="col-md-4">*/}
+                {/*                            <Card key={i} blog={b}/>*/}
+                {/*                            <hr/>*/}
+
+                {/*                    </div>*/}
+                {/*                }*/}
+                {/*            )}*/}
+
+                {/*        </header>*/}
+                {/*    </div>*/}
+                {/*</main>*/}
 
             </Layout>
         </>
@@ -58,11 +75,9 @@ const Category = ({category, blogs, query}) => {
 export const getServerSideProps = async ({query}) => {
 
     return singleCategory(query.slug).then(data => {
-
         if (data.error) {
             console.log(data.error)
         } else {
-
             return {
                 props: {
                     category: data.category,

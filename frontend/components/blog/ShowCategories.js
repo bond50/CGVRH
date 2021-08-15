@@ -6,7 +6,7 @@ const ShowCategories = ({categories}) => {
         return categories&&categories.map((c, i) => (
             <li key={i}>
                 <Link href={`/categories/${c.slug}`}>
-                    <a>{c.name} <span>({categories.length})</span></a>
+                    <a>{c.name}</a>
                 </Link>
             </li>
         ));

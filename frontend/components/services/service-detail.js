@@ -63,7 +63,6 @@ const ServiceDetail = ({service}) => {
 
     return (
         <section className={classes.departments}>
-            <Fragment>
                 <div className="container" data-aos="fade-up" data-aos-once='true'>
                     <div className={classes.sectionTitle} data-aos="fade-up">
                         <h2>Service Detail</h2>
@@ -99,7 +98,7 @@ const ServiceDetail = ({service}) => {
                         </div>
                     </div>
                 </div>
-            </Fragment>
+
         </section>
     );
 };

@@ -2,7 +2,7 @@ import SingleLink from "./single-link";
 import {useState, useEffect, useRef} from "react";
 
 
-const SingleDropdown = ({children, nested, deepText,activeClassName}) => {
+const SingleDropdown = ({children, nested, deepText,activeClassName,href}) => {
     const [open, setOpen] = useState(false)
     const toggleDropdown = () => {
         setOpen((open) => !open)
@@ -16,7 +16,8 @@ const SingleDropdown = ({children, nested, deepText,activeClassName}) => {
 
     return (
         <SingleLink
-            deepText={deepText} href='#'
+            deepText={deepText}
+            href={href}
             className={activeClassName}
             nested={nested} clicked={toggleDropdown}>
             <ul className={open ? 'dropdown-active' : ''} ref={dropRef}>

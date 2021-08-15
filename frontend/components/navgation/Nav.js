@@ -1,9 +1,10 @@
 import SingleLink from "./single-link"
-import {aboutList, covidList, mediaList, servicesList} from "./dropdown-links";
+import {aboutList, mediaList, servicesList} from "./dropdown-links";
 
 import {useRouter} from "next/router";
 import SingleDropdown from "./single-dropdown";
 import {useState} from "react";
+import Link from "next/link";
 
 const Nav = () => {
     const [open, setOpen] = useState(false)
@@ -11,11 +12,11 @@ const Nav = () => {
     const lists = [
         {to: '/', caption: 'Home'},
         {caption: 'About', component: aboutList, to: '/about/'},
-        {caption: 'Patient Care', component: servicesList, to: '/services/'},
+        {caption: 'Patient Care', component: servicesList, to: '/service-categories/patient-care'},
         {caption: 'Media', component: mediaList, to: '/media/'},
         {to: '/blogs/', caption: 'Blog',},
         {to: '/contact/', caption: 'Contact'},
-        {caption: 'Covid 19', component: covidList, to: '/covid/'},
+
     ]
 
 
@@ -26,7 +27,7 @@ const Nav = () => {
     let attachedClasses = [];
 
     if (open) {
-        attachedClasses = ['navbar-mobile','nav-open'];
+        attachedClasses = ['navbar-mobile', 'nav-open'];
     }
 
 
@@ -35,7 +36,8 @@ const Nav = () => {
                 if (list.component) {
                     return <SingleDropdown
                         deepText={list.caption}
-                        key={index} >
+                        href={list.to}
+                        key={index}>
                         {list.component.map((lis, i) =>
                             <SingleLink
                                 key={i}
