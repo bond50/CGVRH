@@ -47,11 +47,11 @@ exports.create = (req, res) => {
         let service = new Service();
         service.title = title.toLowerCase();
         service.body = body;
-        service.excerpt = smartTrim(body, 10, ' ', ' ...');
+        service.excerpt = smartTrim(body, 200, ' ', ' ...');
         service.slug = slugify(title).toLowerCase();
         service.metaTitle = `${title} | ${process.env.APP_NAME}`;
         service.metaDesc = stripHtml(body.substring(0, 160));
-        service.addedBy = req.auth._id;
+        service.postedBy = req.auth._id;
         let arrayOfCategories = categories && categories.split(',');
         let arrayOfTags = tags && tags.split(',');
 

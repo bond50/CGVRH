@@ -52,7 +52,7 @@ exports.read = (req, res) => {
                         error: errorHandler(err)
                     });
                 }
-                res.json({ category: category, blogs: data });
+                res.json({ category: category, services: data });
             });
     });
 };

@@ -53,7 +53,7 @@ exports.read = (req, res) => {
                         error: errorHandler(err)
                     });
                 }
-                res.json({ tag: tag, data: data });
+                res.json({ tag: tag, services: data });
             });
     });
 };

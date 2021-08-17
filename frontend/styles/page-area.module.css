@@ -1,0 +1,25 @@
+
+/*.header-bg {*/
+/*    background-size: cover;*/
+/*    background: url(../img/background/page-header.jpg) no-repeat top center;*/
+/*    padding: 120px 0 60px;*/
+/*}*/
+
+
+.pageArea {
+    position: relative;
+}
+
+@media (max-width: 575px) {
+    .sliderContent {
+        padding: 0;
+    }
+}
+
+.headerBottom h1 {
+    color: #fff;
+    margin-bottom: 0;
+    line-height: 38px;
+    padding: 0px 30px;
+}
+

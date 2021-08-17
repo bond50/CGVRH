@@ -3,7 +3,8 @@ import {singleTag} from "../../actions/tag";
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import React from "react";
-import SmallCard from "../../components/blog/SmallCard";
+import SmallCard from "../../components/reusables/card/small-card";
+
 
 
 const Tag = ({tag, blogs, query}) => {
@@ -47,7 +48,7 @@ const Tag = ({tag, blogs, query}) => {
         <Layout>
 
             <div className="container">
-                <h4 className="text-center pt-4 pb-4 h1">Articles on {tag.name}</h4>
+                <h4 className="text-center pt-4 pb-4 h1"> {tag.name}</h4>
                 <div className="row">{showTags}</div>
             </div>
 

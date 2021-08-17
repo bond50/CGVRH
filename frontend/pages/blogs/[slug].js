@@ -7,10 +7,11 @@ import classes from '../../styles/Singleblog.module.css'
 import renderHTML from "react-render-html";
 import Head from "next/head";
 import React, {useState, useEffect} from "react";
-import SmallCard from "../../components/blog/SmallCard";
+
 import BlogContainer from "../../hoc/BlogContainer";
 import Card from "../../components/blog/Card";
 import DisqusThread from "../../components/DiscussThread";
+import SmallCard from "../../components/reusables/card/small-card";
 
 const Slug = ({blog, query}) => {
 

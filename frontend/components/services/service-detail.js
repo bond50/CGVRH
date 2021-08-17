@@ -5,6 +5,7 @@ import {API} from "../../config";
 import renderHTML from "react-render-html";
 import React, {Fragment, useEffect, useState} from "react";
 import useSWR from "swr";
+import PageArea from "../reusables/page-area";
 
 
 const ServiceDetail = ({service}) => {
@@ -62,7 +63,9 @@ const ServiceDetail = ({service}) => {
 
 
     return (
-        <section className={classes.departments}>
+        <Fragment>
+            <PageArea/>
+            <section className={classes.departments}>
                 <div className="container" data-aos="fade-up" data-aos-once='true'>
                     <div className={classes.sectionTitle} data-aos="fade-up">
                         <h2>Service Detail</h2>
@@ -70,7 +73,7 @@ const ServiceDetail = ({service}) => {
                     </div>
                     <div className="row">
                         <div className="col-lg-3">
-                            {error?<h3>failed to load</h3>:<h3>All Services</h3>}
+                            {error ? <h3>failed to load</h3> : <h3>All Services</h3>}
                             <ul className={`list-group list-group-flush flex-column ${classes.navTabs}`}>
                                 {allServices()}
                             </ul>
@@ -80,7 +83,7 @@ const ServiceDetail = ({service}) => {
                                 <Image
                                     loader={myLoader}
                                     src={imgSrc}
-                                    alt="" className="img-fluid" width={1200} height={600}/>
+                                    alt={service.title} className="img-fluid" width={1200} height={600}/>
                                 <h3>{service.title}</h3>
                                 {renderHTML(service.body.trim())}
                                 <div className={classes.Footer}>
@@ -98,8 +101,9 @@ const ServiceDetail = ({service}) => {
                         </div>
                     </div>
                 </div>
+            </section>
+        </Fragment>
 
-        </section>
     );
 };
 

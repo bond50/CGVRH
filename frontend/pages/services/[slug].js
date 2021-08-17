@@ -28,8 +28,6 @@ const Slug = ({service, query}) => {
 
 
 
-
-
     return (
         <Layout>
             {head()}

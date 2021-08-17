@@ -9,7 +9,8 @@ import React from "react";
 import SmallCard from "../../components/reusables/card/small-card";
 
 
-const Category = ({category, blogs, query}) => {
+const Category = ({category, services, query}) => {
+
     const head = () => (
         <Head>
             <title>
@@ -33,10 +34,10 @@ const Category = ({category, blogs, query}) => {
     );
 
     const showCats = () => {
-        return blogs.map((blog, i) => (
+        return services.map((service, i) => (
             <div className="col-md-4" key={i}>
                 <article>
-                    <SmallCard blog={blog}/>
+                    <SmallCard service={service}/>
                 </article>
             </div>
         ));
@@ -51,38 +52,20 @@ const Category = ({category, blogs, query}) => {
                     <h4 className="text-center pt-4 pb-4 h1">Articles on {category.name}</h4>
                     <div className="row">{showCats()}</div>
                 </div>
-
-                {/*<main>*/}
-                {/*    <div className="container ">*/}
-                {/*        <header className={classes.Header}>*/}
-                {/*            <h1>{category.name.toLowerCase()}</h1>*/}
-                {/*            {blogs.map((b, i) => {*/}
-                {/*                    return <div className="col-md-4">*/}
-                {/*                            <Card key={i} blog={b}/>*/}
-                {/*                            <hr/>*/}
-
-                {/*                    </div>*/}
-                {/*                }*/}
-                {/*            )}*/}
-
-                {/*        </header>*/}
-                {/*    </div>*/}
-                {/*</main>*/}
-
             </Layout>
         </>
     );
 };
 export const getServerSideProps = async ({query}) => {
 
-    return singleCategory(query.slug, 'category').then(data => {
+    return singleCategory(query.slug, 'service-category').then(data => {
         if (data.error) {
             console.log(data.error)
         } else {
             return {
                 props: {
                     category: data.category,
-                    blogs: data.blogs,
+                    services: data.services,
                     query
                 }
             }
