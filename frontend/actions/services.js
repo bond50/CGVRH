@@ -55,7 +55,7 @@ export const listServicesWithCategoriesAndTags = () => {
         .catch(err => console.log(err));
 };
 
-export const  singleService = (slug) => {
+export const singleService = (slug) => {
     return fetch(`${API}/service/${slug}`, {
         method: 'GET'
     })
@@ -63,4 +63,34 @@ export const  singleService = (slug) => {
             return response.json();
         })
         .catch(err => console.log(err));
+};
+
+
+export const listFeaturedServices = (limit) => {
+    return fetch(`${API}/featured-services`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(limit)
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+export const fetcher = async (payload, url) => {
+    const options = {
+        method: payload ? "POST" : "GET",
+        ...(payload && {body: payload}),
+        headers: {
+            accept: "application/json",
+            "Content-Type": "application/json",
+        },
+    };
+
+    return fetch(url, options).then(r => r.json());
+
 };

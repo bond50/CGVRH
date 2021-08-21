@@ -3,7 +3,7 @@ const router = express.Router();
 const {
     create,
     list,
-
+    listFeaturedServices,
     read,
     remove,
     update,
@@ -15,6 +15,7 @@ const {
 const {requireSignin, adminMiddleware} = require('../controllers/auth');
 router.post('/service', requireSignin, adminMiddleware, create);
 router.get('/services', list);
+router.get('/featured-services', listFeaturedServices);
 router.get('/services-categories-tags', listAllServicesCategoriesTags);
 router.get('/service/:slug', read);
 // router.delete('/service/:slug', requireSignin, adminMiddleware, remove);

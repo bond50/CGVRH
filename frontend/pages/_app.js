@@ -6,6 +6,8 @@ import Head from "next/head";
 import 'nprogress/nprogress.css';
 import NProgress from 'nprogress';
 import Router from "next/router";
+import "animate.css"
+
 
 
 const MyApp = ({Component, pageProps}) => {

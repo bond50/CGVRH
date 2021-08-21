@@ -1,23 +1,57 @@
+import {Carousel} from "react-bootstrap";
+import {useState} from "react";
 import Link from "next/link";
-import classes from '../../styles/Hero.module.css'
+import {API} from "../../config";
+import renderHTML from "react-render-html";
 
-const Hero = () => (
-    <section className={`${classes.Hero} d-flex align-items-center `}>
-        <div className="container" data-aos="zoom-out" data-aos-delay="100">
-            <div className="row">
-                <div className="col-xl-6">
-                    <h1>Vihiga county referral hospital </h1>
-                    <h2>We take care of your precious health</h2>
-                    <Link href={`/blogs`}>
-                        <a className={classes.Btn}>Blog Section</a>
-                    </Link>
+function ControlledCarousel({data}) {
+    const [index, setIndex] = useState(0);
+    const [nextIcon, setNextIcon] = useState(<span className="carousel-control-next-icon bi bi-chevron-right"
+                                                   aria-hidden="true"/>);
+    const [prevIcon, setPrevIcon] = useState(<span className="carousel-control-next-icon bi bi-chevron-right"
+                                                   aria-hidden="true"/>);
+
+
+    const handleSelect = (selectedIndex, e) => {
+        setIndex(selectedIndex);
+    };
+
+    const renderCarouselItem = () => {
+        return data && data.map(d => {
+            const sectionStyle = {
+                backgroundImage: `url(${API}/service/photo/${d.slug})`
+            }
+            return <Carousel.Item key={d._id} className='carousel-item' style={sectionStyle}>
+                <div className="carousel-container">
+                    <div className="container">
+                        <h2 className="animate__animated animate__fadeInDown">{d.title.toLowerCase()}</h2>
+                        <p className='animate__animated animate__fadeInUp myP'> {renderHTML(d.excerpt)}</p>
+                        <Link href={`/services/${d.slug}`}>
+                            <a
+                                className="btn-get-started animate__animated animate__fadeInUp ">Read
+                                More
+                            </a>
+                        </Link>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </Carousel.Item>
+        })
 
-    </section>
+    }
+    return (
+        <section id='hero'>
+            <Carousel activeIndex={index} onSelect={handleSelect} variant="dark"
+                      nextLabel=''
+                      prevLabel=''
+                      nextIcon={nextIcon}
+                      prevIcon={prevIcon}
 
+            >
+                {renderCarouselItem()}
+            </Carousel>
+        </section>
 
-);
+    );
+}
 
-export default Hero;
+export default ControlledCarousel

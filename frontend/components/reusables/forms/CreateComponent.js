@@ -3,7 +3,7 @@ import React from 'react';
 import Alert from "../../messages/Alert";
 import CreateForm from "./CreateForm";
 
-const CreateComponent = ({handleChange, handleBody, body, btnCapture, title, onSubmit, errorAlert, successAlert,categories,tags}) => {
+const CreateComponent = ({handleChange, handleBody, body, btnCapture, title, onSubmit, errorAlert, successAlert,categories,tags,featuredServices}) => {
     return (
         <div className="container-fluid pb-5">
             <div className="row">
@@ -33,6 +33,12 @@ const CreateComponent = ({handleChange, handleBody, body, btnCapture, title, onS
                             <input onChange={handleChange('photo')} type="file" accept="image/*" hidden/>
                         </label>
                     </div>
+                     <div className='mb-3'>
+                        <h5>Nature</h5>
+                          <hr/>
+                         <div className='list-group list-group-flush'>{featuredServices()}</div>
+                    </div>
+
                     <div className='mb-3'>
                         <h5>Categories</h5>
                         <hr/>

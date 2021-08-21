@@ -1,37 +1,14 @@
-import React, {useEffect, useState} from 'react';
 import styles from "../../styles/Util.module.css";
 import Link from "next/link";
 import classes from '../../styles/RecenntFromBlog.module.css'
-import {listBlogsWithCategoriesAndTags} from "../../actions/blog";
-import {useRouter} from "next/router";
 import {API} from "../../config";
 import moment from "moment";
 import renderHTML from "react-render-html";
 
-const LatestBlogs = () => {
-    const router = useRouter()
-
-    const [blogs, setBlogs] = useState([]);
-    useEffect(() => {
-        loadBlogs()
-    }, [])
-
-
-    const loadBlogs = () => {
-        let skip = 0
-        let limit = 4
-        return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
-            if (data.error) {
-                console.log(data.error)
-            } else {
-                setBlogs(data.blogs)
-            }
-        })
-    };
-
+const LatestBlogs = ({blogs}) => {
 
     const showRecent = () => {
-        return blogs.map((blog, index) => {
+        return blogs && blogs.map((blog, index) => {
             return <div className="col-lg-3" key={index} data-aos="fade-up" data-aos-delay='200' data-aos-once='true'>
                 <div className={classes.PostBox}>
                     <div className={classes.PostImg}>
@@ -41,7 +18,8 @@ const LatestBlogs = () => {
                             alt={blog.title}/>
                     </div>
                     <span className={classes.PostDate}> {moment(blog.updatedAt).fromNow()}</span>
-                    <h3 className={classes.PostTitle}>{renderHTML(blog.excerpt.length > 90 ? `${blog.excerpt.substring(0, 90)}...` : blog.excerpt)}</h3>
+                    <h3 className={classes.PostTitle}>{blog.title.toLowerCase()}</h3>
+                    {renderHTML(blog.excerpt.length >= 160 ? `${blog.excerpt.substring(0, 160)}...` : blog.excerpt)}
                     <Link href={`/blogs/${blog.slug}`}>
                         <a className={`${classes.Btn} stretched-link mt-auto`}>
                             <span>Read More</span><i
@@ -58,8 +36,7 @@ const LatestBlogs = () => {
         <section className={`${styles.Section}`}>
             <div className="container" data-aos="fade-up" data-aos-once='true'>
                 <header className={styles.SectionTitle}>
-                    <h2>Blog</h2>
-                    <p>Recent posts form our Blog</p>
+                    <h2>Recent news</h2>
                 </header>
                 <div className="row">
                     {showRecent()}

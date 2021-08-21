@@ -2,21 +2,37 @@ import Strategic from "../components/home/Strategic";
 
 import CoreValues from "../components/home/CoreValues";
 import Roles from "../components/home/Roles";
-import HomepageLayout from "../hoc/HomepageLayout";
-import ServiceBief from "../components/home/ServiceBief";
+import FeaturedServices from "../components/home/FeaturedServices";
 import LatestBlogs from "../components/home/LatestBlogs";
+import useSWR from 'swr'
+import {API} from "../config";
+import Toolba from "../components/navgation/Toolba";
+import {Fragment, useEffect, useState} from "react";
+import Hero from "../components/home/Hero";
+import Footer from "../components/footer/Footer";
+import {listBlogsWithCategoriesAndTags} from "../actions/blog";
 
 
 export default function Home() {
-    return (
-        <HomepageLayout>
-            <Strategic/>
-            <LatestBlogs/>
-            <ServiceBief/>
+    const {data: services, error: serviceError} = useSWR(`${API}/featured-services`)
+    const {data: blogs, error: blogsError} = useSWR(`${API}/list-home-page-blogs`)
+    if (serviceError || blogsError) return <div>failed to load</div>
+    if (!blogs||!services) return <div>loading...</div>
 
-            <CoreValues/>
-            <Roles/>
-        </HomepageLayout>
+
+    return (
+        <Fragment>
+            <Toolba/>
+            <Hero data={services}/>
+            <main id='main'>
+                <LatestBlogs blogs={blogs}/>
+                {/*<Strategic/>*/}
+                {/*<FeaturedServices featured={data}/>*/}
+                <CoreValues/>
+                <Roles/>
+            </main>
+            <Footer/>
+        </Fragment>
 
         // <HomepageLayout>
         //     <article className="overflow-hidden">

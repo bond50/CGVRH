@@ -15,6 +15,8 @@ const ServiceCreate = () => {
     const [body, setBody] = useState(dataFromLocalStorage("service"));
     const [checked, setChecked] = useState([]); // categories
     const [checkedTag, setCheckedTag] = useState([]); // tags
+    const [checkedService, setCheckedService] = useState(false);
+
     const [values, setValues] = useState({
         error: '',
         sizeError: '',
@@ -58,6 +60,7 @@ const ServiceCreate = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        formData.set('featured', checkedService)
         createService(formData, token).then(data => {
             if (data.error) {
                 setValues({...values, error: data.error});
@@ -71,6 +74,7 @@ const ServiceCreate = () => {
                 setBody('');
                 setCategories([]);
                 setTags([]);
+                setCheckedService(false)
             }
         });
     };
@@ -79,17 +83,37 @@ const ServiceCreate = () => {
         const value = name === 'photo' ? e.target.files[0] : e.target.value;
         formData.set(name, value);
         setValues({...values, [name]: value, formData, error: ''});
-
     };
+
+
     const handleBody = e => {
         setBody(e);
         formData.set('body', e);
         setDataToLocalStorage('service', e)
     };
 
+    const handleServiceChange = () => {
+        setCheckedService(!checkedService)
+    }
+
+
+    const getFeaturedServices = () => {
+        return (
+            <label className="list-group-item border-0">
+                <input
+                    onChange={handleServiceChange}
+                    type="checkbox"
+                    checked={checkedService}
+                    className="form-check-input me-1"/>
+                Featured
+                <br/>
+                {JSON.stringify(checkedService)}
+            </label>
+        );
+    }
+
     const handleToggle = c => () => {
         setValues({...values, error: ''});
-        // return the first index or -1
         const clickedCategory = checked.indexOf(c);
         const all = [...checked];
 
@@ -114,8 +138,6 @@ const ServiceCreate = () => {
             all.splice(clickedTag, 1);
         }
         setCheckedTag(all);
-        console.log(all)
-
         formData.set('tags', all);
 
     };
@@ -150,6 +172,7 @@ const ServiceCreate = () => {
             handleChange={handleChange}
             onSubmit={handleSubmit}
             title={title}
+            featuredServices={getFeaturedServices}
             body={body}
             btnCapture='Create'
             categories={showCategories}

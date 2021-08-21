@@ -129,7 +129,7 @@ exports.listAllBlogsCategoriesTags = (req, res) => {
         .populate('categories', '_id name slug')
         .populate('tags', '_id name slug')
         .populate('postedBy', '_id name username profile')
-        .sort({ createdAt: -1 })
+        .sort({createdAt: -1})
         .skip(skip)
         .limit(limit)
         .select('_id title slug excerpt  categories tags postedBy createdAt updatedAt')
@@ -157,7 +157,7 @@ exports.listAllBlogsCategoriesTags = (req, res) => {
                     }
                     tags = t;
                     // return all blogs categories tags
-                    res.json({ blogs, categories, tags, size: blogs.length });
+                    res.json({blogs, categories, tags, size: blogs.length});
                 });
             });
         });
@@ -165,7 +165,7 @@ exports.listAllBlogsCategoriesTags = (req, res) => {
 
 exports.read = (req, res) => {
     const slug = req.params.slug.toLowerCase();
-    Blog.findOne({ slug })
+    Blog.findOne({slug})
         // .select("-photo")
         .populate('categories', '_id name slug')
         .populate('tags', '_id name slug')
@@ -180,7 +180,6 @@ exports.read = (req, res) => {
             res.json(data);
         });
 };
-
 
 
 exports.remove = (req, res) => {
@@ -334,7 +333,22 @@ exports.listByUser = (req, res) => {
                     res.json(data)
                 })
 
-
         })
 
 }
+
+
+exports.listHomePageBlogs = (req, res) => {
+    Blog.find({})
+        .select('_id title slug excerpt createdAt updatedAt')
+        .limit(4)
+        .sort({createdAt: -1})
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: errorHandler(err)
+                });
+            }
+            res.json(data);
+        });
+};

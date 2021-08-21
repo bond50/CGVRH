@@ -11,8 +11,6 @@ const {smartTrim} = require('../helpers/blog');
 const Blog = require("../models/blog");
 
 
-
-
 exports.create = (req, res) => {
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
@@ -22,8 +20,7 @@ exports.create = (req, res) => {
                 error: 'Image could not upload'
             });
         }
-
-        const {title, body, categories, tags} = fields;
+        const {title, body, categories, tags, featured} = fields;
 
         if (!title || !title.length) {
             return res.status(400).json({
@@ -47,7 +44,8 @@ exports.create = (req, res) => {
         let service = new Service();
         service.title = title.toLowerCase();
         service.body = body;
-        service.excerpt = smartTrim(body, 200, ' ', ' ...');
+        service.isFeatured = featured;
+        service.excerpt = smartTrim(body, 320, ' ', ' ...');
         service.slug = slugify(title).toLowerCase();
         service.metaTitle = `${title} | ${process.env.APP_NAME}`;
         service.metaDesc = stripHtml(body.substring(0, 160));
@@ -64,6 +62,7 @@ exports.create = (req, res) => {
             service.photo.data = fs.readFileSync(files.photo.path);
             service.photo.contentType = files.photo.type;
         }
+        console.log(featured)
 
         service.save((err, result) => {
             if (err) {
@@ -95,7 +94,23 @@ exports.create = (req, res) => {
         });
     })
 }
+exports.listFeaturedServices = (req, res) => {
 
+    Service.find({isFeatured: true})
+        .select('_id title excerpt slug')
+        .sort({createdAt: -1})
+        .limit(4)
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: errorHandler(err)
+                });
+            }
+            res.json(data);
+        });
+
+
+}
 exports.list = (req, res) => {
     Service.find({})
         .populate('categories', '_id name slug')
@@ -122,7 +137,7 @@ exports.listAllServicesCategoriesTags = (req, res) => {
         .populate('categories', '_id name slug')
         .populate('tags', '_id name slug')
         .populate('postedBy', '_id name username profile')
-        .sort({ createdAt: -1 })
+        .sort({createdAt: -1})
         .select('_id title slug excerpt  categories tags postedBy createdAt updatedAt')
         .exec((err, data) => {
             if (err) {
@@ -148,7 +163,7 @@ exports.listAllServicesCategoriesTags = (req, res) => {
                     }
                     tags = t;
                     // return all blogs categories tags
-                    res.json({ services, categories, tags, size: services.length });
+                    res.json({services, categories, tags, size: services.length});
                 });
             });
         });
@@ -173,7 +188,7 @@ exports.photo = (req, res) => {
 
 exports.read = (req, res) => {
     const slug = req.params.slug.toLowerCase();
-    Service.findOne({ slug })
+    Service.findOne({slug})
         // .select("-photo")
         .populate('categories', '_id name slug')
         .populate('tags', '_id name slug')

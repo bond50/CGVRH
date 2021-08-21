@@ -5,6 +5,7 @@ const {
     list,
     listAllBlogsCategoriesTags,
     read,
+    listHomePageBlogs,
     listByUser,
     remove,
     update,
@@ -17,6 +18,7 @@ const {requireSignin, adminMiddleware, authMiddleware, canUpdateDeleteBlog} = re
 
 router.post('/blog', requireSignin, adminMiddleware, create);
 router.get('/blogs', list);
+router.get('/list-home-page-blogs', listHomePageBlogs);
 router.post('/blogs-categories-tags', listAllBlogsCategoriesTags);
 router.get('/blog/:slug', read);
 router.delete('/blog/:slug', requireSignin, adminMiddleware, remove);

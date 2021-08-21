@@ -5,7 +5,7 @@ import {API} from "../../config";
 import renderHTML from "react-render-html";
 import React, {Fragment, useEffect, useState} from "react";
 import useSWR from "swr";
-import PageArea from "../reusables/page-area";
+
 
 
 const ServiceDetail = ({service}) => {
@@ -35,8 +35,6 @@ const ServiceDetail = ({service}) => {
                 </li>
             })
         }
-
-
         return info
 
     }
@@ -64,7 +62,6 @@ const ServiceDetail = ({service}) => {
 
     return (
         <Fragment>
-            <PageArea/>
             <section className={classes.departments}>
                 <div className="container" data-aos="fade-up" data-aos-once='true'>
                     <div className={classes.sectionTitle} data-aos="fade-up">

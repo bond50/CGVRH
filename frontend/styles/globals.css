@@ -1,55 +1,3 @@
-/*:root {*/
-/*  --bs-blue: #0d6efd;*/
-/*  --bs-indigo: #6610f2;*/
-/*  --bs-purple: #6f42c1;*/
-/*  --bs-pink: #d63384;*/
-/*  --bs-red: #dc3545;*/
-/*  --bs-orange: #fd7e14;*/
-/*  --bs-yellow: #ffc107;*/
-/*  --bs-green: #198754;*/
-/*  --bs-teal: #20c997;*/
-/*  --bs-cyan: #0dcaf0;*/
-/*  --bs-white: #fff;*/
-/*  --bs-gray: #6c757d;*/
-/*  --bs-gray-dark: #343a40;*/
-/*  --bs-gray-100: #f8f9fa;*/
-/*  --bs-gray-200: #e9ecef;*/
-/*  --bs-gray-300: #dee2e6;*/
-/*  --bs-gray-400: #ced4da;*/
-/*  --bs-gray-500: #adb5bd;*/
-/*  --bs-gray-600: #6c757d;*/
-/*  --bs-gray-700: #495057;*/
-/*  --bs-gray-800: #343a40;*/
-/*  --bs-gray-900: #212529;*/
-/*  --bs-primary: #0d6efd;*/
-/*  --bs-secondary: #6c757d;*/
-/*  --bs-success: #198754;*/
-/*  --bs-info: #0dcaf0;*/
-/*  --bs-warning: #ffc107;*/
-/*  --bs-danger: #dc3545;*/
-/*  --bs-light: #f8f9fa;*/
-/*  --bs-dark: #212529;*/
-/*  --bs-primary-rgb: 13, 110, 253;*/
-/*  --bs-secondary-rgb: 108, 117, 125;*/
-/*  --bs-success-rgb: 25, 135, 84;*/
-/*  --bs-info-rgb: 13, 202, 240;*/
-/*  --bs-warning-rgb: 255, 193, 7;*/
-/*  --bs-danger-rgb: 220, 53, 69;*/
-/*  --bs-light-rgb: 248, 249, 250;*/
-/*  --bs-dark-rgb: 33, 37, 41;*/
-/*  --bs-white-rgb: 255, 255, 255;*/
-/*  --bs-black-rgb: 0, 0, 0;*/
-/*  --bs-body-rgb: 33, 37, 41;*/
-/*  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";*/
-/*  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;*/
-/*  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));*/
-/*  --bs-body-font-family: var(--bs-font-sans-serif);*/
-/*  --bs-body-font-size: 1rem;*/
-/*  --bs-body-font-weight: 400;*/
-/*  --bs-body-line-height: 1.5;*/
-/*  --bs-body-color: #212529;*/
-/*  --bs-body-bg: #fff;*/
-/*}*/
 
 html {
     scroll-behavior: smooth;
@@ -501,4 +449,180 @@ section {
     width: 100%;
     max-height: 500px;
     object-fit: cover;
+}
+
+#hero {
+    width: 100%;
+    height: 75vh;
+    background-color: rgba(4, 12, 21, 0.8);
+    overflow: hidden;
+    position: relative;
+}
+
+#hero .carousel, #hero .carousel-inner, #hero .carousel-item, #hero .carousel-item::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+#hero .carousel-item {
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+#hero .carousel-item::before {
+    content: '';
+    background-color: rgba(4, 12, 21, 0.5);
+}
+
+#hero .carousel-container {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    top: 82px;
+    left: 50px;
+    right: 50px;
+}
+
+#hero h2 {
+    color: #fff;
+    margin: 0;
+    font-size: 48px;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+
+#hero p {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+    color: #fff;
+    margin-top: 10px;
+}
+
+@media (min-width: 1200px) {
+    #hero p {
+        width: 75%;
+    }
+}
+
+#hero .carousel-inner .carousel-item {
+    transition-property: opacity;
+    background-position: center top;
+}
+
+
+#hero .carousel-inner .carousel-item,
+#hero .carousel-inner .active.carousel-item-start,
+#hero .carousel-inner .active.carousel-item-end {
+    opacity: 0;
+}
+
+#hero .carousel-inner .active,
+#hero .carousel-inner .carousel-item-next.carousel-item-start,
+#hero .carousel-inner .carousel-item-prev.carousel-item-end {
+    opacity: 1;
+    transition: 0.5s;
+}
+
+#hero .carousel-inner .carousel-item-next,
+#hero .carousel-inner .carousel-item-prev,
+#hero .carousel-inner .active.carousel-item-start,
+#hero .carousel-inner .active.carousel-item-end {
+    left: 0;
+    transform: translate3d(0, 0, 0);
+}
+
+
+#hero .carousel-control-next-icon, #hero .carousel-control-prev-icon {
+    background: none;
+    font-size: 30px;
+    line-height: 0;
+    height: auto;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    transition: 0.3s;
+    color: rgba(255, 255, 255, 0.5);
+    width: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#hero .carousel-control-next-icon:hover, #hero .carousel-control-prev-icon:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#hero .carousel-indicators li {
+    cursor: pointer;
+    background: #fff;
+    overflow: hidden;
+    border: 0;
+    margin: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50px;
+    opacity: .6;
+    transition: 0.3s;
+}
+
+#hero .carousel-indicators li.active {
+    opacity: 1;
+    background: #106eea;
+}
+
+#hero .btn-get-started {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 4px;
+    transition: 0.5s;
+    line-height: 1;
+    color: #fff;
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+    background: #106eea;
+    margin-top: 15px;
+}
+
+#hero .btn-get-started:hover {
+    background: #010483;
+}
+
+@media (max-width: 992px) {
+    #hero {
+        height: 100vh;
+    }
+
+    #hero .carousel-container {
+        text-align: center;
+        top: 74px;
+    }
+}
+
+@media (max-width: 768px) {
+    #hero h2 {
+        font-size: 30px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #hero .carousel-control-prev, #hero .carousel-control-next {
+        width: 5%;
+    }
+}
+
+@media (max-height: 500px) {
+    #hero {
+        height: 120vh;
+    }
 }
