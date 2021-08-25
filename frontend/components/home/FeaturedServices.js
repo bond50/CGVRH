@@ -1,10 +1,9 @@
 import {faMedkit, faXRay, faMicroscope, faHospitalUser} from '@fortawesome/free-solid-svg-icons'
 import Column from "./Column";
-import _ from 'lodash'
-
-import styles from "../../styles/Util.module.css";
+import styles from "../../styles/featured-services.module.css";
 import renderHTML from "react-render-html";
-import service from "../../pages/user/crud/service";
+import Link from "next/link";
+
 
 const FeaturedServices = ({featured}) => {
     const info = [
@@ -36,31 +35,35 @@ const FeaturedServices = ({featured}) => {
 
 
     function returnColumns() {
-
-
-
         return featured && featured.map(service => {
-                return <Column
-                    key={service._id}
-                    classname={`col-md-6 col-lg-3 d-flex align-items-stretch mb-5 lg-0`}
-                    slug={service.slug}
-                    title={service.title}
-                    btnCaption={'See More'}>
-                   <li> {renderHTML(service.excerpt)}</li>
-                </Column>
+                return <div className="col-lg-4 mb-4"  key={service._id}>
+                    <div className={styles.card} data-aos="zoom-in" data-aos-delay="100">
+                        <i className="bi bi-gear"/>
+                        <div className="card-body">
+                            <h5 className="card-title">{service.title.toLowerCase()}</h5>
+                            <div className='card-text'>
+                                {renderHTML(service.excerpt)}
+                            </div>
+                           <Link href={`/services/${service.slug}`}>
+                                <a className={styles.readMore}>Read more </a>
+                           </Link>
+                        </div>
+                    </div>
+                </div>
+
             }
         )
     }
 
     return (
 
-        <section className={`${styles.Section} ${styles.SectionBg}`}>
+        <section className={`${styles.section} `}>
             <div className="container">
                 <div className={styles.SectionTitle} data-aos="zoom-out" data-aos-once='true'>
                     <h2>Featured Services</h2>
                 </div>
 
-                <div className="row">
+                <div className="row row-eq-height justify-content-center">
                     {returnColumns()}
                 </div>
             </div>

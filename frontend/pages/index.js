@@ -6,29 +6,28 @@ import FeaturedServices from "../components/home/FeaturedServices";
 import LatestBlogs from "../components/home/LatestBlogs";
 import useSWR from 'swr'
 import {API} from "../config";
-import Toolba from "../components/navgation/Toolba";
+import Toolbar from "../components/navgation/Toolbar";
 import {Fragment, useEffect, useState} from "react";
 import Hero from "../components/home/Hero";
 import Footer from "../components/footer/Footer";
-import {listBlogsWithCategoriesAndTags} from "../actions/blog";
 
 
 export default function Home() {
     const {data: services, error: serviceError} = useSWR(`${API}/featured-services`)
     const {data: blogs, error: blogsError} = useSWR(`${API}/list-home-page-blogs`)
-    if (serviceError || blogsError) return <div>failed to load</div>
-    if (!blogs||!services) return <div>loading...</div>
+
+    if (serviceError || blogsError) return <div className='container text-center mt-5'><h1>failed to load</h1></div>
+    if (!blogs || !services) return <div className='preloader'/>
 
 
     return (
         <Fragment>
-            <Toolba/>
+            <Toolbar />
             <Hero data={services}/>
             <main id='main'>
+                <Strategic/>
                 <LatestBlogs blogs={blogs}/>
-                {/*<Strategic/>*/}
-                {/*<FeaturedServices featured={data}/>*/}
-                <CoreValues/>
+                <FeaturedServices featured={services}/>
                 <Roles/>
             </main>
             <Footer/>

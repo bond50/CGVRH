@@ -1,54 +1,55 @@
 .Section {
-  padding: 60px 0;
-  overflow: hidden;
-  position: relative;
+    padding: 60px 0;
+    background: #ecf5ff;
+    overflow: hidden;
+    position: relative;
 }
 
 .SectionTitle {
-  text-align: center;
-  padding-bottom: 30px;
-  position: relative;
+    text-align: center;
+    padding-bottom: 30px;
+    position: relative;
 }
 
 .SectionTitle h2 {
-  font-size: 32px;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  position: relative;
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    position: relative;
 }
 
 .SectionTitle h2::after {
-  content: '';
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: #106eea;
-  bottom: 0;
-  left: calc(50% - 25px);
+    content: '';
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #106eea;
+    bottom: 0;
+    left: calc(50% - 25px);
 }
 
 .SectionTitle p {
-  margin-bottom: 0;
-  text-transform: capitalize;
+    margin-bottom: 0;
+    text-transform: capitalize;
 }
 
 .SectionBg {
-  padding: 120px 0;
-  color: #fff;
+    padding: 120px 0;
+    color: #fff;
 }
 
 .SectionBg:before {
-  content: "";
-  background: #1b1b1b;
-  position: absolute;
-  bottom: 60px;
-  top: 60px;
-  left: 0;
-  right: 0;
-  transform: skewY(-3deg);
+    content: "";
+    background: #1b1b1b;
+    position: absolute;
+    bottom: 60px;
+    top: 60px;
+    left: 0;
+    right: 0;
+    transform: skewY(-3deg);
 }
 
 .Box {
@@ -56,7 +57,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    Box-shadow:0 2px 4px rgba(0,0,0,0.07);
+    Box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
     text-align: center;
     transition: all 0.4s ease-in-out;
     width: 100%;

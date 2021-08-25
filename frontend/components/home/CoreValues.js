@@ -1,5 +1,4 @@
 import styles from '../../styles/Util.module.css'
-import Link from "next/link";
 import Column from "./Column";
 
 const CoreValues = () => {

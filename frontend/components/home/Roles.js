@@ -29,12 +29,12 @@ const Roles = () => {
 
 
     return (
-        <div className="container ">
-            <section className={styles.Section}>
+
+        <section className={classes.Section}>
+            <div className="container ">
 
                 <div className={styles.SectionTitle} data-aos='zoom-out' data-aos-once='true'>
                     <h2>Our roles</h2>
-                    <p>Some of Roles we play in the county</p>
                 </div>
                 <div className={`row ${classes.RowContent}`} data-aos='fade-up' data-aos-once='true'>
                     <div className="col-lg-6">
@@ -59,9 +59,8 @@ const Roles = () => {
                         </Link>
                     </div>
                 </div>
-
-            </section>
-        </div>
+            </div>
+        </section>
 
 
     );

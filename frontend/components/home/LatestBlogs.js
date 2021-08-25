@@ -6,10 +6,9 @@ import moment from "moment";
 import renderHTML from "react-render-html";
 
 const LatestBlogs = ({blogs}) => {
-
     const showRecent = () => {
         return blogs && blogs.map((blog, index) => {
-            return <div className="col-lg-3" key={index} data-aos="fade-up" data-aos-delay='200' data-aos-once='true'>
+            return <div className="col-lg-4 " key={index} data-aos="fade-up" data-aos-delay='200' data-aos-once='true'>
                 <div className={classes.PostBox}>
                     <div className={classes.PostImg}>
                         <img
@@ -33,7 +32,7 @@ const LatestBlogs = ({blogs}) => {
 
 
     return (
-        <section className={`${styles.Section}`}>
+        <section className={`${styles.Section} ${classes.SectionBg}`}>
             <div className="container" data-aos="fade-up" data-aos-once='true'>
                 <header className={styles.SectionTitle}>
                     <h2>Recent news</h2>

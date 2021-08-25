@@ -7,20 +7,20 @@ const SingleDropdown = ({children, nested, deepText,activeClassName,href}) => {
     const toggleDropdown = () => {
         setOpen((open) => !open)
     };
-    let dropRef = useRef([]);
-
-    useEffect(() => {
-        console.log(dropRef.current.focus())
-        // setOpen(dropRef.current.children[0]);
-    }, []);
+    // let dropRef = useRef([]);
+    //
+    // useEffect(() => {
+    //     console.log(dropRef.current.focus())
+    //     // setOpen(dropRef.current.children[0]);
+    // }, []);
 
     return (
         <SingleLink
             deepText={deepText}
-            href={href}
             className={activeClassName}
-            nested={nested} clicked={toggleDropdown}>
-            <ul className={open ? 'dropdown-active' : ''} ref={dropRef}>
+            nested={nested}
+            clicked={toggleDropdown}>
+             <ul className={`dropdown-menu ${open ? 'dropdown-active' : ''}`}>
                 {children}
             </ul>
         </SingleLink>

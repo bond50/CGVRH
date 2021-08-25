@@ -99,7 +99,7 @@ exports.listFeaturedServices = (req, res) => {
     Service.find({isFeatured: true})
         .select('_id title excerpt slug')
         .sort({createdAt: -1})
-        .limit(4)
+        .limit(6)
         .exec((err, data) => {
             if (err) {
                 return res.json({
@@ -194,6 +194,21 @@ exports.read = (req, res) => {
         .populate('tags', '_id name slug')
         .populate('postedBy', '_id name username')
         .select('_id title body excerpt slug mtitle mdesc categories tags postedBy createdAt updatedAt')
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: errorHandler(err)
+                });
+            }
+            res.json(data);
+        });
+};
+
+
+exports.listServiceNamesAndSlugs = (req, res) => {
+    Service.find({})
+        .sort({createdAt: -1})
+        .select('_id title slug')
         .exec((err, data) => {
             if (err) {
                 return res.json({

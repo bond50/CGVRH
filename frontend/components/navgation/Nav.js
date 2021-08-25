@@ -1,22 +1,28 @@
 import SingleLink from "./single-link"
-import {aboutList, mediaList, servicesList} from "./dropdown-links";
-
+import {aboutList, mediaList, servicesList, megaList} from "./dropdown-links";
 import {useRouter} from "next/router";
 import SingleDropdown from "./single-dropdown";
+import SingleMegaLink from "./single-mega-link";
 import {useState} from "react";
 import Link from "next/link";
+import MegaMenu from "./mega-menu";
+import {chunkArray} from "../reusables/functions/array-chunk";
 
-const Nav = () => {
+const Nav = ({services}) => {
+
+
     const [open, setOpen] = useState(false)
     const router = useRouter();
+
+
     const lists = [
         {to: '/', caption: 'Home'},
-        {caption: 'About', component: aboutList, to: '/about/'},
-        {caption: 'Patient Care', component: servicesList, to: '/service-categories/patient-care'},
-        {caption: 'Media', component: mediaList, to: '/media/'},
+        {caption: 'About', component: aboutList, ssr: false},
+        {caption: 'Services', component: servicesList, ssr: false},
+        // {caption: 'Patient care', component: services, ssr: true},
+        {caption: 'Media', component: mediaList, ssr: false},
         {to: '/blogs/', caption: 'Blog',},
         {to: '/contact/', caption: 'Contact'},
-
     ]
 
 
@@ -34,18 +40,61 @@ const Nav = () => {
     const renderNavigationItems = () => {
         return lists.map((list, index) => {
                 if (list.component) {
+                    if (list.component.length >= 15) {
+
+                        const chunkedArray = chunkArray(list.component, 3)
+                        const first = chunkedArray[0].map((el, i) => <SingleMegaLink
+                                key={i}
+                                href={list.ssr ? `/services/${el.slug}` : `${el.slug}`}
+                                title={el.title}
+                            />
+                        )
+                        const second = chunkedArray[1].map((el, i) => <SingleMegaLink
+                                key={i}
+                                href={list.ssr ? `/services/${el.slug}` : `${el.slug}`}
+                                title={el.title}
+                            />
+                        )
+                        const third = chunkedArray[2].map((el, i) => <SingleMegaLink
+                                key={i}
+
+                                title={el.title}
+                            />
+                        )
+
+                        return <MegaMenu deepText={list.caption} key={index}>
+                            <div className={`col-lg-4 mega-links `}>
+                                <ul>
+                                    {first}
+                                </ul>
+                            </div>
+
+                            <div className={`col-lg-4 mega-links `}>
+                                <ul>
+                                    {second}
+                                </ul>
+                            </div>
+                            <div className={`col-lg-4 mega-links `}>
+                                <ul>
+                                    {third}
+                                </ul>
+                            </div>
+                        </MegaMenu>
+
+                    }
                     return <SingleDropdown
                         deepText={list.caption}
-                        href={list.to}
                         key={index}>
-                        {list.component.map((lis, i) =>
-                            <SingleLink
-                                key={i}
-                                text={lis.text}
-                                href={lis.href}
-                                className={router.asPath === lis.href ? 'active' : null}/>
+                        {list.component.map((lis, i) => {
+                                return <SingleLink
+                                    key={i}
+                                    text={lis.title}
+                                    href={list.ssr ? `/services/${lis.slug}` : `${lis.slug}`}
+                                    className={router.asPath === lis.href ? 'active' : null}/>;
+                            }
                         )}
                     </SingleDropdown>
+
                 } else {
                     return <SingleLink
                         key={index}
@@ -59,8 +108,8 @@ const Nav = () => {
 
 
     return (
-        <nav id="navbar" className={`navbar ${attachedClasses.join(' ')}`}>
-            <ul>
+        <nav className={`${attachedClasses.join(' ')}`}>
+            <ul className='menu-items'>
                 {renderNavigationItems()}
             </ul>
             <i className={`${open ? 'bi bi-x' : 'bi bi-list'} mobile-nav-toggle`} onClick={MobileToggle}/>

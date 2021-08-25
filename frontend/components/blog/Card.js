@@ -35,16 +35,14 @@ const Card = ({blog, single}) => {
     return (
         <article className={classes.Entry}>
             <div className={classes.Image}>
-                <Link href={`/blogs/${blog.slug}`}>
-                    <Image
-                        loader={myLoader}
-                        className="img-fluid"
-                        width={1200}
-                        height={700}
-                        src={`${API}/blog/photo/${blog.slug}`}
-                        alt={blog.title}
-                    />
-                </Link>
+                <Image
+                    loader={myLoader}
+                    className="img-fluid"
+                    width={1200}
+                    height={700}
+                    src={`${API}/blog/photo/${blog.slug}`}
+                    alt={blog.title}
+                />
             </div>
 
             <h2 className={classes.Title}>

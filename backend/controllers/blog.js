@@ -341,7 +341,7 @@ exports.listByUser = (req, res) => {
 exports.listHomePageBlogs = (req, res) => {
     Blog.find({})
         .select('_id title slug excerpt createdAt updatedAt')
-        .limit(4)
+        .limit(6)
         .sort({createdAt: -1})
         .exec((err, data) => {
             if (err) {

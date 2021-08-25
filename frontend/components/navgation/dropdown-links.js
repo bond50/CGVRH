@@ -1,38 +1,50 @@
 export const aboutList = [
-    {text: 'Our Guiding principles', href: '/about/guiding-principles/'},
-    {text: 'Our Management Team', href: '/about/board-members/'},
-    {text: 'Our Management Structure', href: '/about/organisation-structure/'},
-    {text: 'Our Role', href: '/about/roles/'},
-    {text: 'Our Strategic Plan', href: '/about/strategic-plan/'},
-    {text: 'Our Health Goals', href: '/about/health-goals/'},
-    // {text: 'Our Neighboring Facilities', href: '/about/neighboring-facilities/'},
-    // {text: 'Our Projects', href: '/about/project/'},
-    {text: 'Our Partners', href: '/about/partners/'},
+    {title: 'Our Guiding principles', slug: '/about/guiding-principles/'},
+    {title: 'Our Management Team', slug: '/about/board-members/'},
+    {title: 'Our Management Structure', slug: '/about/organisation-structure/'},
+    {title: 'Our Role', slug: '/about/roles/'},
+    {title: 'Our Strategic Plan', slug: '/about/strategic-plan/'},
+    {title: 'Our Health Goals', slug: '/about/health-goals/'},
+    // {title: 'Our Neighboring Facilities', slug: '/about/neighboring-facilities/'},
+    // {title: 'Our Projects', slug: '/about/project/'},
+    {title: 'Our Partners', slug: '/about/partners/'},
 ];
 
 export const covidList = [
-    {text: 'FAqs', href: '/covid/covid'},
-    {text: 'Proper Hand Care', href: '/covid/hand'},
-    {text: 'How prepared is VCRH', href: '/covid/prep'},
+    {title: 'FAqs', slug: '/covid/covid'},
+    {title: 'Proper Hand Care', slug: '/covid/hand'},
+    {title: 'How prepared is VCRH', slug: '/covid/prep'},
 ];
 
 export const mediaList = [
-    {text: 'Downloads', href: '/media/downloads'},
-    // {text: 'Events', href: '/media/events'},
-    {text: 'Gallery', href: '/media/gallery'},
-    // {text: 'Press', href: '/media/press'},
-    // {text: 'Publications', href: '/media/publications'},
-    // {text: 'Vacancies', href: '/media/vacancies'},
+    {title: 'Downloads', slug: '/media/downloads'},
+    // {title: 'Events', slug: '/media/events'},
+    {title: 'Gallery', slug: '/media/gallery'},
+    // {title: 'Press', slug: '/media/press'},
+    // {title: 'Publications', slug: '/media/publications'},
+    // {title: 'Vacancies', slug: '/media/vacancies'},
 ];
 
 export const servicesList = [
-    // {text: 'Special Clinics', href: '/services/clinics'},
-    {text: 'Pharmacy', href: '/services/pharmacy'},
-    {text: 'Laboratory', href: '/services/laboratory'},
-    {text: 'Radiology/Xray', href: '/services/radiology'},
-    {text: 'Accident And Emergency', href: '/services/casualty'},
-    {text: 'ICU', href: '/services/icu'},
-    {text: 'Ambulance', href: '/services/ambulance'},
-    {text: 'Nursing Services', href: '/services/nursing'},
-    {text: 'Health Records', href: '/services/records'},
+    // {title: 'Special Clinics', slug: '/services/clinics'},
+    {title: 'Pharmacy', slug: '/services/pharmacy'},
+    {title: 'Laboratory', slug: '/services/laboratory'},
+    {title: 'Radiology/Xray', slug: '/services/radiology'},
+    {title: 'Accident And Emergency', slug: '/services/casualty'},
+    {title: 'ICU', slug: '/services/icu'},
+    {title: 'Ambulance', slug: '/services/ambulance'},
+    {title: 'Nursing Services', slug: '/services/nursing'},
+    {title: 'Health Records', slug: '/services/records'},
 ];
+
+export const megaList = [
+    {title: 'Pharmacy', slug: '/services/pharmacy'},
+    {title: 'Laboratory', slug: '/services/laboratory'},
+    {title: 'Radiology/Xray', slug: '/services/radiology'},
+    {title: 'Accident And Emergency', slug: '/services/casualty'},
+    {title: 'ICU', slug: '/services/icu'},
+    {title: 'Radiology/Xray', slug: '/services/radiology'},
+    {title: 'Accident And Emergency', slug: '/services/casualty'},
+    {title: 'ICU', slug: '/services/icu'},
+
+]

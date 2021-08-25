@@ -8,7 +8,7 @@ function ControlledCarousel({data}) {
     const [index, setIndex] = useState(0);
     const [nextIcon, setNextIcon] = useState(<span className="carousel-control-next-icon bi bi-chevron-right"
                                                    aria-hidden="true"/>);
-    const [prevIcon, setPrevIcon] = useState(<span className="carousel-control-next-icon bi bi-chevron-right"
+    const [prevIcon, setPrevIcon] = useState(<span className="carousel-control-next-icon bi bi-chevron-left"
                                                    aria-hidden="true"/>);
 
 
@@ -25,7 +25,7 @@ function ControlledCarousel({data}) {
                 <div className="carousel-container">
                     <div className="container">
                         <h2 className="animate__animated animate__fadeInDown">{d.title.toLowerCase()}</h2>
-                        <p className='animate__animated animate__fadeInUp myP'> {renderHTML(d.excerpt)}</p>
+                        <div className='animate__animated animate__fadeInUp myP'> {renderHTML(d.excerpt)}</div>
                         <Link href={`/services/${d.slug}`}>
                             <a
                                 className="btn-get-started animate__animated animate__fadeInUp ">Read

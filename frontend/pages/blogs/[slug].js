@@ -29,7 +29,7 @@ const Slug = ({blog, query}) => {
 
     useEffect(() => {
         loadRelated()
-    }, [])
+    }, [blog])
 
     const head = () => (
         <Head>

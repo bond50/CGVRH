@@ -8,7 +8,7 @@ const {
     remove,
     update,
     photo,
-    listRelated, listAllServicesCategoriesTags
+    listRelated, listAllServicesCategoriesTags,listServiceNamesAndSlugs
 } = require('../controllers/services');
 
 
@@ -22,5 +22,7 @@ router.get('/service/:slug', read);
 // router.put('/service/:slug', requireSignin, adminMiddleware, update);
 router.get('/service/photo/:slug', photo);
 // router.post('/services/related', listRelated);
+router.get('/list-service-names-slugs', listServiceNamesAndSlugs);
+
 
 module.exports = router;

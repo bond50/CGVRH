@@ -1,10 +1,10 @@
 import Link from "next/link";
 import classes from '../../../styles/FooterLink.module.css'
 
-const FooterLink = ({href, text}) => (
+const FooterLink = ({link, title}) => (
     <li className={classes.FooterLink}>
-        <Link href={href}>
-            <a className={classes.FooterLinkA}>{text}</a>
+        <Link href={link}>
+            <a className={classes.FooterLinkA}>{title}</a>
         </Link>
     </li>
 );

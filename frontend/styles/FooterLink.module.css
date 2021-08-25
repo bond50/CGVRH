@@ -12,6 +12,7 @@
 
 .FooterLinkA {
     color: #bebebe;
+    text-transform: capitalize;
     transition: 0.3s;
     display: inline-block;
     line-height: 1;

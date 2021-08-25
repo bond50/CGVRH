@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 
 import Nav from "./Nav";
 
-const Header = () => {
+const Header = ({services}) => {
 
     const [scrolled, setScrolled] = useState(false);
     const handleScroll = () => {
@@ -20,7 +20,7 @@ const Header = () => {
         window.addEventListener('scroll', handleScroll)
     }, [])
 
-    let navbarClasses = [` d-flex align-items-center`];
+    let navbarClasses = [` d-flex align-items-center justify-content-between`];
 
     if (scrolled) {
         navbarClasses.push(`fixed-top`);
@@ -31,7 +31,7 @@ const Header = () => {
         <header className={navbarClasses.join(" ")} id='header'>
             <div className="container d-flex align-items-center justify-content-between">
                 <Logo/>
-                <Nav/>
+                <Nav services={services}/>
             </div>
         </header>
     );

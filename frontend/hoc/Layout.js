@@ -3,13 +3,13 @@ import Footer from "../components/footer/Footer";
 
 import Top from "../components/navgation/Top";
 import Breadcrumbs from "../components/reusables/Breadcrumbs";
-import Toolba from "../components/navgation/Toolba";
+import Toolbar from "../components/navgation/Toolbar";
 
 
 const Layout = ({children}) => {
     return (
         <>
-           <Toolba/>
+           <Toolbar/>
             <main>
                 {children}
             </main>
