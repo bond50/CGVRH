@@ -1,14 +1,13 @@
 import Link from "next/link";
-import styles from "../../styles/featured-services.module.css";
-import {Fragment} from "react";
 
-const SingleMegaLink = ({href, title}) => {
+
+const SingleMegaLink = ({href, title,clicked}) => {
 
     return (
             <li>
-                <i className="bi bi-chevron-right"/>
+                <i className="bi bi-arrow-right-circle mx-2"/>
                 <Link href={href}>
-                    <a>{title}</a>
+                    <a className='nav-item' onClick={clicked} >{title}</a>
                 </Link>
             </li>
     );

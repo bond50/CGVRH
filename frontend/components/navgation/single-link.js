@@ -12,7 +12,7 @@ const SingleLink = ({className, href, children, text, deepText, nested, clicked,
         return (
             <li className={`${mega ? 'mega-dropdown' : 'dropdown'}`} onClick={clicked}>
                 <Link href={'#'}>
-                    <a className={`menu-item ${className}`}>
+                    <a className={`menu-item nav-item ${className}`}>
                         {deepText ?
                             <Fragment>
                                 <span>{deepText}</span>{dropIcon}
@@ -27,7 +27,7 @@ const SingleLink = ({className, href, children, text, deepText, nested, clicked,
         return (
             <li onClick={clicked}>
                 <Link href={href}>
-                    <a className={`menu-item ${className}`}>
+                    <a className={`menu-item nav-item ${className}`}>
                         {deepText ?
                             <Fragment>
                                 <span>{deepText}</span>{dropIcon}

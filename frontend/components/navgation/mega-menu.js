@@ -1,12 +1,7 @@
 import {useState} from 'react';
 import SingleLink from "./single-link";
 
-const MegaMenu = ({children, deepText, activeClassName}) => {
-    const [megaOpen, setMegaOpen] = useState(false)
-
-    const megaToggle = () => {
-        setMegaOpen(megaOpen => !megaOpen)
-    };
+const MegaMenu = ({children, deepText, activeClassName,megaToggle,megaOpen}) => {
 
 
     return (
@@ -15,7 +10,7 @@ const MegaMenu = ({children, deepText, activeClassName}) => {
             mega
             className={activeClassName}
             clicked={megaToggle}>
-            <div className={`mega-menu ${megaOpen ? 'mega-active' : ''}`}>
+            <div className={`mega-menu ${megaOpen ? 'mega-active' : 'mega-menu-inactive'}`}>
                 <div className="container">
                     <div className="row">
                         {children}

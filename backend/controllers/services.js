@@ -8,7 +8,7 @@ const _ = require('lodash');
 const {errorHandler} = require('../helpers/dbErrorHandler');
 const fs = require('fs');
 const {smartTrim} = require('../helpers/blog');
-const Blog = require("../models/blog");
+
 
 
 exports.create = (req, res) => {
