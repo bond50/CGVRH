@@ -10,6 +10,7 @@ import "animate.css"
 
 
 
+
 const MyApp = ({Component, pageProps}) => {
 
     NProgress.configure({showSpinner: false});
@@ -42,6 +43,8 @@ const MyApp = ({Component, pageProps}) => {
 
 
             <link href="/theme/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
+
+            <link href="/theme/fontawesome/css/all.min.css" rel="stylesheet"/>
             {/*<link href="/theme/swiper/swiper-bundle.min.css" rel="stylesheet"/>*/}
             <title>Vihiga county Referral Hospital</title>
 

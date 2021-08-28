@@ -1,42 +1,45 @@
 import classes from '../../styles/service-detail.module.css'
-import Link from "next/link";
-import Image from "next/image";
 import {API} from "../../config";
 import renderHTML from "react-render-html";
 import React, {Fragment, useEffect, useState} from "react";
+
 import useSWR from "swr";
+import Link from "next/link";
+
+import GeneralPageWrapper from "../../hoc/general-page-wrapper";
+import {useRouter} from "next/router";
 
 
 const ServiceDetail = ({service}) => {
 
-    const {data, error} = useSWR(`${API}/services`)
-
-
-    const imgSrc = `${API}/service/photo/${service.slug}`
-
-    const myLoader = ({src}) => {
-        return imgSrc;
-    }
-
-
-    const allServices = () => {
-        let info
-
-        if (!data) {
-            info = <h3>loading...!</h3>
-
-        } else {
-            info = data.map(service => {
-                return <li>
-                    <Link href={`/services/${service.slug}`}>
-                        <a className={`list-group-item  ${classes.navLink}`}>{service.title}</a>
-                    </Link>
-                </li>
-            })
-        }
-        return info
-
-    }
+    // const router = useRouter();
+    //
+    // const {data, error} = useSWR(`${API}/services`)
+    //
+    //
+    // const allServices = () => {
+    //     return data && data.map(service => {
+    //
+    //         const first = service.slug;
+    //         data.sort(function (x, y) {
+    //             return x === first ? -1 : y === first ? 1 : 0;
+    //         });
+    //
+    //
+    //         let assignedClasses = [`nav-link ${classes.navLink} `]
+    //         const link = `/services/${service.slug}/`
+    //
+    //         if (router.asPath === link) {
+    //             assignedClasses.push(classes.active)
+    //         }
+    //
+    //         return <Link href={link} key={service._id}>
+    //             <a className={assignedClasses.join(' ')}>{service.title}</a>
+    //         </Link>
+    //
+    //     })
+    //
+    // }
 
     const showServiceTags = () =>
         service.tags.map((t, i) => (
@@ -45,7 +48,6 @@ const ServiceDetail = ({service}) => {
                     <a> {t.name}</a>
                 </Link>
             </li>
-
         ));
 
     function showCats() {
@@ -61,67 +63,24 @@ const ServiceDetail = ({service}) => {
 
     return (
         <Fragment>
-
-            <div className="header-bg position-relative">
-                <div className="container text-center">
-                    <div className="row">
-                        <div className="col-md-12 col-sm-12 col-xs-12">
-                            <Image
-                                className='img'
-                                loader={myLoader}
-                                src={imgSrc}
-                                layout='fill'
-                                objectFit='cover'
-                                alt='hhshs'
-                                objectPosition='center'
-                            />
-                            <div className="centered" style={{zIndex: '1'}}>
-                                <div className="layer2 ">
-                                    <h1>{service.title}</h1>
-                                </div>
-                                {/*<div className="layer3">*/}
-                                {/*    <h2>Profesional Blog Page</h2>*/}
-                                {/*</div>*/}
-
-                            </div>
-                        </div>
+            <GeneralPageWrapper
+                title={service.title}
+                imgSrc={`${API}/service/photo/${service.slug}`}
+                alt={service.title} >
+                <div className={`${classes.content} `}>
+                    {renderHTML(service.body.trim())}
+                    <div className={classes.Footer}>
+                        <i className="bi bi-folder"/>
+                        <ul className={classes.Cats}>
+                            {showCats()}
+                        </ul>
+                        <i className="bi bi-tags"/>
+                        <ul className={classes.Tags}>
+                            {showServiceTags()}
+                        </ul>
                     </div>
                 </div>
-            </div>
-            <section className={classes.departments}>
-                <div className="container" data-aos="fade-up" data-aos-once='true'>
-                    {/*<div className={classes.sectionTitle} data-aos="fade-up">*/}
-                    {/*    <h2>Service Detail</h2>*/}
-                    {/*    <p>{service.title}</p>*/}
-                    {/*</div>*/}
-
-                    <div className="row">
-                        <div className="col-lg-3 ">
-                            {error ? <h3>failed to load</h3> : <h3>All Services</h3>}
-                            <ul className={`list-group list-group-flush flex-column ${classes.navTabs}`}>
-                                {allServices()}
-                            </ul>
-                        </div>
-                        <div className="col-lg-9 mt-4 mt-lg-0">
-                            <div className={`${classes.details} `}>
-                                <h3>{service.title}</h3>
-                                {renderHTML(service.body.trim())}
-                                <div className={classes.Footer}>
-                                    <i className="bi bi-folder"/>
-                                    <ul className={classes.Cats}>
-                                        {showCats()}
-                                    </ul>
-
-                                    <i className="bi bi-tags"/>
-                                    <ul className={classes.Tags}>
-                                        {showServiceTags()}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            </GeneralPageWrapper>
         </Fragment>
 
     );

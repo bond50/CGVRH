@@ -6,10 +6,10 @@ import Breadcrumbs from "../components/reusables/Breadcrumbs";
 import Toolbar from "../components/navgation/Toolbar";
 
 
-const Layout = ({children}) => {
+const Layout = ({children,home}) => {
     return (
         <>
-           <Toolbar/>
+           <Toolbar home={home}/>
             <main>
                 {children}
             </main>

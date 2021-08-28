@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {v4 as uuid} from "uuid";
-import Downloader from "../components/downloder/Downloader";
+import {Downloader} from "../components/reusables/downloader/Downloader";
+
 
 const useFileDownloader = () => {
     const [files, setFiles] = useState(() => []);

@@ -8,7 +8,7 @@ const Header = ({services}) => {
     const [scrolled, setScrolled] = useState(false);
     const handleScroll = () => {
         const offset = window.scrollY;
-        if (offset > 70) {
+        if (offset > 0) {
             setScrolled(true);
         } else {
             setScrolled(false);
@@ -20,7 +20,7 @@ const Header = ({services}) => {
         window.addEventListener('scroll', handleScroll)
     }, [])
 
-    let navbarClasses = [` d-flex align-items-center justify-content-between`];
+    let navbarClasses = [` d-flex align-items-center justify-content-between `];
 
     if (scrolled) {
         navbarClasses.push(`fixed-top`);

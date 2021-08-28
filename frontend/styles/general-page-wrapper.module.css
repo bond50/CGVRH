@@ -1,0 +1,20 @@
+.wrapper{
+    top: 0;
+}
+.sidebar {
+
+    height: 100vh;
+    min-height: 200px;
+    overflow: auto;
+
+}
+
+.wrapper h3 {
+    font-size: 16px;
+    padding: 0 0 0 10px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #2c4964;
+    text-transform: capitalize;
+}

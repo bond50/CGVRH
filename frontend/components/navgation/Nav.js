@@ -79,7 +79,7 @@ const Nav = ({services}) => {
                         return <MegaMenu deepText={list.caption} key={index} megaOpen={megaOpen} megaToggle={megaToggle}>
                             <div className={`col-lg-4 mega-links `}>
                                 <ul>
-                                    {first}
+                                    {third}
                                 </ul>
                             </div>
 
@@ -90,7 +90,7 @@ const Nav = ({services}) => {
                             </div>
                             <div className={`col-lg-4 mega-links `}>
                                 <ul>
-                                    {third}
+                                    {first}
                                 </ul>
                             </div>
                         </MegaMenu>

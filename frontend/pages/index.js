@@ -22,7 +22,7 @@ export default function Home() {
 
     return (
         <Fragment>
-            <Toolbar />
+            <Toolbar/>
             <Hero data={services}/>
             <main id='main'>
                 <Strategic/>

@@ -6,6 +6,7 @@ html {
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
+
 }
 
 a {
@@ -79,8 +80,8 @@ h1, h2, h3, h4, h5, h6 {
 #header {
     background: #fff;
     transition: all 0.5s;
+    height: 66px;
     z-index: 997;
-    height: 70px;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
     position: relative;
     margin: auto;
@@ -90,7 +91,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header.fixed-top {
-    height: 70px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+
 }
 
 .menu-items {
@@ -549,7 +555,7 @@ section {
 
 #hero {
     width: 100%;
-    height: 75vh;
+    height: 90vh;
     background-color: rgba(4, 12, 21, 0.8);
     overflow: hidden;
     position: relative;
@@ -799,20 +805,25 @@ section {
 }
 
 
+/*img {*/
+/*    text-indent: -9999px*/
+/*}*/
+
+
 .header-bg {
-     z-index: 1;
+    z-index: 1;
     padding: 240px 0 120px;
 }
 
 .header-bg::before {
-     z-index: 1;
+    z-index: 1;
     content: "";
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6);
 }
 
 @media (min-width: 1025px) {
@@ -827,13 +838,13 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
 .centered h1 {
     color: #fff;
     text-transform: capitalize;
-    font-size: 48px;
+    font-weight: 500;
+    font-size: 36px;
     line-height: 50px;
     margin-bottom: 0;
 }
@@ -845,4 +856,6 @@ section {
     line-height: 40px;
     margin-bottom: 0;
 }
+
+
 

@@ -10,7 +10,6 @@ const fs = require('fs');
 const {smartTrim} = require('../helpers/blog');
 
 
-
 exports.create = (req, res) => {
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
@@ -21,6 +20,7 @@ exports.create = (req, res) => {
             });
         }
         const {title, body, categories, tags, featured} = fields;
+
 
         if (!title || !title.length) {
             return res.status(400).json({
@@ -41,6 +41,14 @@ exports.create = (req, res) => {
                 error: 'At least one tag is required'
             });
         }
+         if (!tags || tags.length === 0) {
+            return res.status(400).json({
+                error: 'At least one tag is required'
+            });
+        }
+
+
+
         let service = new Service();
         service.title = title.toLowerCase();
         service.body = body;
@@ -62,7 +70,7 @@ exports.create = (req, res) => {
             service.photo.data = fs.readFileSync(files.photo.path);
             service.photo.contentType = files.photo.type;
         }
-        console.log(featured)
+
 
         service.save((err, result) => {
             if (err) {
@@ -117,6 +125,7 @@ exports.list = (req, res) => {
         .populate('tags', '_id name slug')
         .populate('postedBy', '_id name username')
         .select('_id title slug excerpt categories tags postedBy createdAt updatedAt')
+        .sort({createdAt: -1})
         .exec((err, data) => {
             if (err) {
                 return res.json({
