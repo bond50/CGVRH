@@ -1,12 +1,16 @@
-import DownloadList from "../../../components/media/download-list";
 import Layout from "../../../hoc/Layout";
-import {files} from "../../../dummy-data";
+import useFetchMedia from "../../../hooks/useFetchMedia";
+import DownloadList from "../../../components/media/download-list";
 
 
 const Downloads = () => {
+    const {transformedArray, source, setTag, activeTag} = useFetchMedia({folder: 'documents'})
+
     return (
         <Layout>
-            <DownloadList files={files}/>
+            <DownloadList filters={transformedArray}
+                          handleTagClick={setTag}
+                          active={activeTag}/>
         </Layout>
     );
 };

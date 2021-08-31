@@ -12,7 +12,9 @@ exports.cloudinaryUpload = (file, tag, folder) => {
         cloudinary.uploader.upload(file, (result) => {
             resolve({
                 filePath: result.secure_url,
-                cloudinary_id: result.public_id
+                cloudinary_id: result.public_id,
+                tags: result.tags,
+                publicId: result.public_id
             })
         }, {
             resource_type: "auto",

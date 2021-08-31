@@ -26,6 +26,7 @@
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
+    "mongodb": "^4.1.1",
     "mongoose": "^5.12.2",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
@@ -34,7 +35,8 @@
     "serve-index": "^1.9.1",
     "shortid": "^2.2.16",
     "slugify": "^1.5.0",
-    "string-strip-html": "^4.4.1"
+    "string-strip-html": "^4.4.1",
+    "uniqid": "^5.4.0"
   },
   "devDependencies": {
     "datauri": "^3.0.0"

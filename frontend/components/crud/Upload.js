@@ -6,21 +6,26 @@ import Alert from "../messages/Alert";
 import Button from "../reusables/ui/Button";
 
 
+
 const Upload = () => {
     const [multipleFiles, setMultipleFiles] = useState('');
+     const [folder, setFolder] = useState('documents')
     const [values, setValues] = useState({
         successMessage: '',
         error: '',
         title: '',
-        formData: {},
         files: '',
         loading: false
     })
+
+
+    const {successMessage, error, title, loading, formData} = values
 
     const UploadMultipleFiles = () => {
         setValues({...values, loading: true, error: ''})
         const formData = new FormData();
         formData.append('title', title);
+        formData.append('folder', folder)
         for (const file of multipleFiles) {
             formData.append('files', file)
         }
@@ -28,10 +33,15 @@ const Upload = () => {
 
         axios.post(`${API}/files-upload`, formData)
             .then(response => {
-                setValues({...values, successMessage: response.data.message, loading: false, title: ''})
+                setValues({
+                    ...values,
+                    successMessage: response.data.message,
+                    loading: false,
+                    title: '',
+                })
                 setTimeout(() => {
                     window.location.reload()
-                }, 5000)
+                }, 3000)
             })
             .catch((error) => {
                 if (error.response) {
@@ -51,9 +61,13 @@ const Upload = () => {
 
     const MultipleFileChange = e => {
         setMultipleFiles(e.target.files)
-    };
-    const {successMessage, error, title, loading,formData} = values
 
+    };
+
+    function handleChange(e) {
+        setValues({folder: e.target.value});
+        e.preventDefault();
+    }
 
     let btnText = 'Upload'
     if (loading) {
@@ -68,14 +82,14 @@ const Upload = () => {
                     <Alert msg={error} type="danger" label="Danger"/>
                 </div>
                 <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1">Tag</span>
+                    <span className="input-group-text">Choose upload folder</span>
+                    <select value={folder} required onChange={(e) => setFolder(e.target.value)}>
+                    <option value="documents">Documents</option>
+                    <option value="gallery">Gallery</option>
 
-                    <select className="form-select" aria-label="Default select example">
-                        <option selected>_</option>
-                        <option value="tenders">Tenders</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+                </select>
+                </div>
+                <div className="input-group mb-3">
                     <input
                         value={title}
                         required
@@ -84,8 +98,9 @@ const Upload = () => {
                         className="form-control" placeholder="Enter a tag/title for the file(s)"/>
                 </div>
 
-                <div className="mb-3">
+                <div className="input-group mb-3">
                     <input
+                        required
                         className="form-control"
                         onChange={(e) => MultipleFileChange(e)}
                         type="file" multiple/>
@@ -99,6 +114,15 @@ const Upload = () => {
     }
     return (
         <>
+            <div className='text-muted'>
+                <p> You have selected <strong>{JSON.stringify(folder)} </strong>folder </p>
+                <i>
+                    <p>All images are uploaded to gallery folder</p>
+                    <p>All documents eg pdf,word,excel are uploaded to documents folder folder</p>
+                    <p>All videos are are uploaded to video folder folder</p>
+                </i>
+            </div>
+
             {returnForm()}
         </>
 

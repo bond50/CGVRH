@@ -65,6 +65,7 @@ const ServiceDetail = ({service}) => {
         <Fragment>
             <GeneralPageWrapper
                 title={service.title}
+                title2={service.title}
                 imgSrc={`${API}/service/photo/${service.slug}`}
                 alt={service.title} >
                 <div className={`${classes.content} `}>

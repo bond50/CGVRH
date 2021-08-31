@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import Image from "next/image";
 import classes from '../styles/general-page-wrapper.module.css'
 
-const GeneralPageWrapper = ({imgSrc, alt, title, children,className}) => {
+const GeneralPageWrapper = ({imgSrc, alt, title, children,className,title2}) => {
     const myLoader = () => {
         return imgSrc;
     }
@@ -36,10 +36,9 @@ const GeneralPageWrapper = ({imgSrc, alt, title, children,className}) => {
             <section className={`section-bg ${className}`}>
                 <div className="container">
                     <div className="section-title">
-                        <h2>{title}</h2>
+                        <h2>{title2}</h2>
                     </div>
                        {children}
-
                 </div>
             </section>
         </Fragment>

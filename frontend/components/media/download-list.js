@@ -4,8 +4,9 @@ import classes from '../../styles/downloads.module.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFilePdf} from '@fortawesome/free-solid-svg-icons'
 import {Fragment} from "react";
+import Filters from "./gallery/Filters";
 
-const DownloadList = ({files}) => {
+const DownloadList = ({files,filters,active,handleTagClick}) => {
     const [downloadFile, downloaderComponentUI] = useFileDownloader();
     const download = (file) => downloadFile(file);
 
@@ -35,26 +36,24 @@ const DownloadList = ({files}) => {
 
     return (
        <Fragment>
-            <GeneralPageWrapper
-            title={'downloads'}
-            imgSrc={`https://res.cloudinary.com/dwtcilinl/image/upload/v1622297993/Gallery/yffhwkqackates3w0hte.png`}
-            alt={'downloads'}
-        >
+             <GeneralPageWrapper imgSrc='/fallback/services.jpg' title='Downloads' title2='files to download'
+                                alt='fallback image'>
 
-            <div className="container" data-aos="fade-up">
+               <Filters filters={filters} active={active} handleTagClick={handleTagClick}/>
+                <div className='container'>
 
                 <div className="row no-gutters">
 
-                    {files.map((f, i) => {
-                        return <div className="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" key={i}>
-                            <div className={classes.countBox}>
-                                <i className={`fas fa-file-pdf ${classes.icon}`}/>
-                                <span>size: 20mb</span>
-                                <p><strong>{f.name}</strong> </p>
-                                <button  onClick={() => download(f)}>Download  <i className="fas fa-download"/> </button>
-                            </div>
-                        </div>
-                    })}
+                    {/*{files.map((f, i) => {*/}
+                    {/*    return <div className="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" key={i}>*/}
+                    {/*        <div className={classes.countBox}>*/}
+                    {/*            <i className={`fas fa-file-pdf ${classes.icon}`}/>*/}
+                    {/*            <span>size: 20mb</span>*/}
+                    {/*            <p><strong>{f.name}</strong> </p>*/}
+                    {/*            <button  onClick={() => download(f)}>Download  <i className="fas fa-download"/> </button>*/}
+                    {/*        </div>*/}
+                    {/*    </div>*/}
+                    {/*})}*/}
 
 
                 </div>

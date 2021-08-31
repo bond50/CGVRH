@@ -7,26 +7,27 @@
 
 }
 
-.Filters li {
+.Filter {
     cursor: pointer;
     display: inline-block;
     padding: 8px 18px 10px 18px;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1;
-    margin: 0 3px 10px 3px ;
+    margin: 0 3px 10px 3px;
     text-transform: uppercase;
     color: #444444;
-    border-radius: 50px;
+    border-radius: 3px;
     transition: all 0.3s ease-in-out;
+
 }
 
-.Filters li:hover, .Filters li.active{
+.Filter:hover, .Filter .active ,.Filter.active {
     color: #fff;
     background: #0880e8;
 }
 
-.Filters li:last-child{
+.Filter:last-child {
     margin-right: 0;
 }
 

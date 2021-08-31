@@ -6,6 +6,10 @@ const multipleFileSchema = new Schema({
         type: String,
         required: true
     },
+    folder: {
+        type: String,
+        required: true
+    },
     files: [Object]
 }, {timestamps: true});
 

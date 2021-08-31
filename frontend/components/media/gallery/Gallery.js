@@ -1,13 +1,13 @@
 import {SRLWrapper} from "simple-react-lightbox";
 import SimpleReactLightbox from 'simple-react-lightbox'
-
-
+import classes from '../../../styles/Gallery.module.css'
+import Image from "next/image";
+import GeneralPageWrapper from "../../../hoc/general-page-wrapper";
 import Filters from "./Filters";
 
-import classes from '../../../styles/Gallery.module.css'
 
+const Gallery = ({images, filters, handleTagClick, active}) => {
 
-const Gallery = ({images, handleTagClick, filters}) => {
     const options = {
         thumbnails: {
             showThumbnails: false
@@ -15,7 +15,7 @@ const Gallery = ({images, handleTagClick, filters}) => {
         settings: {
             overlayColor: '#2092d0',
             autoplaySpeed: 3500,
-            transitionSpeed: 900
+            transitionSpeed: 1500
         },
         buttons: {
             backgroundColor: '#f2f03d',
@@ -33,30 +33,34 @@ const Gallery = ({images, handleTagClick, filters}) => {
     };
 
     return (
-        <section>
-            <div className="row">
-                <div className="col-lg-12 d-flex justify-content-center">
-                    <Filters filters={filters} handleTagClick={handleTagClick}/>
-                </div>
-            </div>
+        <SimpleReactLightbox>
+            <GeneralPageWrapper imgSrc='/fallback/services.jpg' title='Gallery' title2='Some images from our hospital'
+                                alt='fallback image'>
+                <Filters filters={filters} active={active} handleTagClick={handleTagClick}/>
+                <div className='container'>
 
-            <div className='container'>
-                <SimpleReactLightbox>
                     <SRLWrapper options={options}>
                         <div className='row g-0'>
-                            {
-                                images.map(image => <div className="col-lg-3 col-md-4">
+                            {images && images.map(image => {
+                                    return <div className="col-lg-3 col-md-4" key={image._id}>
                                         <div className={classes.GalleryItem}>
-                                            <img src={image.secureUrl} alt={image.tag} className='img-fluid'/>
+                                            <Image
+                                                src={image.filePath}
+                                                width={400}
+                                                height={250}
+                                                alt={`Tag: ${image.tag}`}
+                                                className='img-fluid'/>
                                         </div>
-                                    </div>
-                                )
+                                    </div>;
+                                }
+                            )
                             }
                         </div>
                     </SRLWrapper>
-                </SimpleReactLightbox>
-            </div>
-        </section>
+
+                </div>
+            </GeneralPageWrapper>
+        </SimpleReactLightbox>
     );
 }
 
