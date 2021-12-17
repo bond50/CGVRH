@@ -2,11 +2,77 @@ import React, {Fragment} from 'react';
 import Head from "next/head";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import {singleService} from "../../actions/services";
-import ServiceDetail from "../../components/services/service-detail";
 import Layout from "../../hoc/Layout";
+import Card from "../../components/blog/Card";
+import GeneralPageWrapper from "../../hoc/general-page-wrapper";
+import useSWR from "swr";
+import {fetcher} from "../../components/reusables/functions/fetcher";
+import SmallCard from "../../components/reusables/card/small-card";
+import Link from "next/link";
+
+import classes from '../../styles/page-bar.module.css'
 
 
 const Slug = ({service, query}) => {
+    const {data: related, error: relatedError} = useSWR(
+        [
+            `${API}/services/related`,
+            JSON.stringify({service}),
+        ],
+        fetcher,
+        {
+            revalidateOnFocus: false,
+        },
+    );
+
+    const {data, error} = useSWR(
+        [
+            `${API}/services-categories-tags`,
+        ],
+        fetcher,
+        {
+            revalidateOnFocus: false,
+        },
+    );
+
+    const {data: services, error: serviceError} = useSWR(
+        [
+            `${API}/list-service-names-slugs`,
+        ],
+        fetcher,
+        {
+            revalidateOnFocus: false,
+        },
+    );
+
+
+    if (!related || !data || !services) {
+        return <div className='preloader'/>
+    }
+    if (relatedError || error || serviceError) {
+        return <div>failed to load </div>
+    }
+
+    function showAllServices() {
+        return services && services.map(service => {
+            return <li key={service._id}>
+                <Link href={`/services/${service.slug}`}>
+                    <a className="list-group-item list-group-item-action">{service.title}</a>
+                </Link></li>
+        })
+
+    }
+
+    const showRelatedServices = () => {
+        return related && related.map(service => (
+            <div className="col-lg-4 col-md-6" key={service._id}>
+                <article>
+                    <SmallCard service={service}/>
+                </article>
+            </div>
+        ));
+    }
+
     const head = () => (
         <Head>
             <title>
@@ -26,15 +92,50 @@ const Slug = ({service, query}) => {
         </Head>
     );
 
+    const showPage = () => {
+        return <Card blog={service} single servicePage/>
+    };
 
 
     return (
-        <Layout>
+        <Fragment>
             {head()}
-            <ServiceDetail
-                service={service}/>
-        </Layout>
-    );
+            <Layout>
+                <main>
+                    <GeneralPageWrapper imgSrc={`${API}/service/photo/${service.slug}`} title={service.title}
+                                        alt={service.title}>
+
+                        <div className="container" data-aos="fade-up" data-aos-once='true'>
+                            <div className="row">
+                                <div className="col-lg-8">
+                                    {showPage()}
+                                </div>
+                                <div className="col-lg-4">
+                                    <div className={classes.SideBar}>
+                                        <div className={`card ${classes.card}`}>
+                                            <div className={`card-header ${classes.cardHeader}`}>
+                                                <h4>All services and Patient Care</h4>
+                                            </div>
+                                            <ul className="list-group list-group-flush">
+                                                {showAllServices()}
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr/>
+                        <div className="container">
+                            <h4 className="text-center pt-2 pb-2 h2">Related services</h4>
+                            <div className="row">{showRelatedServices()}</div>
+                        </div>
+                    </GeneralPageWrapper>
+                </main>
+            </Layout>
+        </Fragment>
+    )
 };
 export const getServerSideProps = async ({query}) => {
 

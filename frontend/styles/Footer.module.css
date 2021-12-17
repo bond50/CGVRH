@@ -1,4 +1,4 @@
-.Footer{
+.Footer {
     background: #343434;
     color: #bebebe;
     font-size: 14px;
@@ -6,13 +6,14 @@
 
 .FooterTop {
     padding: 60px 0 30px 0;
-    background:#343434;
+    background: #343434;
     border-bottom: 1px solid #bebebe;
-
 }
 
 
- .Copyright {
+.Copyright {
+    padding-top: 10px;
     text-align: center;
+    font-size: 13px;
     color: #bebebe;
 }

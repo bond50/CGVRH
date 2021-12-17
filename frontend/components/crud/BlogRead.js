@@ -41,7 +41,7 @@ const BlogRead = ({username}) => {
             deleteBlog(slug);
         }
     };
-       const showUpdateButton = blog => {
+    const showUpdateButton = blog => {
         if (isAuth() && isAuth().role === 0) {
             return (
                 <Link href={`/user/crud/${blog.slug}`}>
@@ -61,7 +61,7 @@ const BlogRead = ({username}) => {
         return blogs.map((blog, i) => {
             return (
                 <div key={i} className="pb-5">
-                    <h3>{blog.title}</h3>
+                    <h6>{blog.title}</h6>
                     <p className="mark">
                         Written by {blog.postedBy.name} | Published on {moment(blog.updatedAt).fromNow()}
                     </p>
@@ -75,14 +75,21 @@ const BlogRead = ({username}) => {
     };
 
 
-
-
     return (
         <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-6">
+                <h3>Approved Blogs</h3>
                 {showAllBlogs()}
                 {message && <Alert msg={message} label='Success' type='success'/>}
             </div>
+
+
+            <div className="col-md-6">
+              <h3> Pending</h3>
+
+
+            </div>
+
         </div>
 
     );

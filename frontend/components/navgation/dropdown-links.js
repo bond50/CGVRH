@@ -30,7 +30,7 @@ export const servicesList = [
     {_id: 'uee85', title: 'Pharmacy', slug: 'pharmacy'},
     {_id: '79ijhrg', title: 'Laboratory', slug: 'laboratory'},
     {_id: '54yo906', title: 'Radiology/Xray', slug: 'radiology'},
-    {_id: '5.jtrrjh', title: 'Accident And Emergency', slug: '/casualty'},
+    {_id: '5.jtrrjh', title: 'Accident And Emergency', slug: 'casualty'},
     {_id: 'jbgj', title: 'ICU', slug: 'icu'},
     {_id: 'jggtj', title: 'Ambulance', slug: 'ambulance'},
     {_id: 'jgtj', title: 'Nursing Services', slug: 'nursing'},

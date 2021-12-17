@@ -5,8 +5,8 @@ import AboutContainer from "../reusables/AboutContainer";
 
 const SignupComponent = () => {
     const [values, setValues] = useState({
-        name: 'kufu',
-        email: 'kufu@gmail.com',
+        name: 'Galavu',
+        email: 'galavu10@gmail.com',
         password: '1234567890',
         error: '',
         loading: false,

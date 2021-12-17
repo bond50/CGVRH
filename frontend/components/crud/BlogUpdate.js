@@ -74,7 +74,7 @@ const BlogUpdate = ({router}) => {
     };
 
     const initCategories = () => {
-        getCategories().then(data => {
+        getCategories('categories').then(data => {
             if (data.error) {
                 setValues({...values, error: data.error});
             } else {
@@ -84,7 +84,7 @@ const BlogUpdate = ({router}) => {
     };
 
     const initTags = () => {
-        getTags().then(data => {
+        getTags('tags').then(data => {
             if (data.error) {
                 setValues({...values, error: data.error});
             } else {

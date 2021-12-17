@@ -8,6 +8,7 @@ const _ = require('lodash');
 const {errorHandler} = require('../helpers/dbErrorHandler');
 const fs = require('fs');
 const {smartTrim} = require('../helpers/blog');
+const Blog = require("../models/blog");
 
 
 exports.create = (req, res) => {
@@ -225,5 +226,24 @@ exports.listServiceNamesAndSlugs = (req, res) => {
                 });
             }
             res.json(data);
+        });
+};
+
+
+exports.listRelated = (req, res) => {
+    let limit = req.body.limit ? parseInt(req.body.limit) : 3;
+    const {_id, categories} = req.body.service;
+
+    Service.find({_id: {$ne: _id}, categories: {$in: categories}})
+        .limit(limit)
+        .populate('postedBy', '_id name  username profile')
+        .select('title slug excerpt postedBy createdAt updatedAt')
+        .exec((err, blogs) => {
+            if (err) {
+                return res.status(400).json({
+                    error: 'Services not found'
+                });
+            }
+            res.json(blogs);
         });
 };

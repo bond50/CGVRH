@@ -1,7 +1,7 @@
 import Layout from "../../../hoc/Layout";
 import Admin from "../../../components/auth/Admin";
-import Category from "../../../components/crud/Category";
-import Tag from "../../../components/crud/Tag";
+import BlogCategory from "../../../components/crud/blog-category";
+import BlogTag from "../../../components/crud/blog-tag";
 
 const CategoryTag = () => {
   return (
@@ -13,10 +13,10 @@ const CategoryTag = () => {
               <h2>Manage Categories and Tags</h2>
             </div>
             <div className="col-md-6">
-              <Category />
+              <BlogCategory />
             </div>
             <div className="col-md-6">
-              <Tag/>
+              <BlogTag/>
             </div>
           </div>
         </div>

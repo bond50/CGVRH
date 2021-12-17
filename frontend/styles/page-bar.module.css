@@ -1,0 +1,27 @@
+.SideBar {
+    padding: 0;
+    margin: 0 0 60px 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    max-height: 100vh;
+    overflow: auto;
+    right: 0;
+    border-top: 4px solid #106eea;
+}
+
+
+
+.cardHeader h4 {
+   font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 700;
+    padding: 10px 0;
+    margin: 0 0 15px 0;
+    color: #106eea;
+    position: relative;
+}
+
+.card ul li a {
+    text-transform: capitalize;
+    color: #111;
+    transition: 0.3s;
+}

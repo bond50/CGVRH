@@ -4,7 +4,7 @@ import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import React from "react";
 import SmallCard from "../../components/reusables/card/small-card";
-
+import GeneralPageWrapper from "../../hoc/general-page-wrapper";
 
 
 const Tag = ({tag, blogs, query}) => {
@@ -21,7 +21,6 @@ const Tag = ({tag, blogs, query}) => {
             <meta property="og:type" content="webiste"/>
             <meta property="og:url" content={`${DOMAIN}/tags/${query.slug}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
-
             <meta property="og:image"
                   content={`https://res.cloudinary.com/dwtcilinl/image/upload/v1622297993/Gallery/yffhwkqackates3w0hte.png`}/>
             <meta property="og:image:secure_url"
@@ -31,48 +30,46 @@ const Tag = ({tag, blogs, query}) => {
 
         </Head>
     );
-    const showTags = () => {
-        return blogs.map((blog, i) => (
-            <div className="col-md-4" key={i}>
-                <article>
-                    <SmallCard blog={blog}/>
-                </article>
-            </div>
-        ));
-    };
-
 
     return (
         <>
-        {head()}
-        <Layout>
+            {head()}
+            <Layout>
+                <GeneralPageWrapper imgSrc='/fallback/services.jpg' title={tag.name}
+                                    title2={`All Articles about ${tag.name} `}
+                                    alt='fallback image'>
+                    <div className="row">
+                        {blogs.map(blog => {
+                            return <div className="col-md-4" key={blog._id}>
+                                <article>
+                                    <SmallCard blog={blog}/>
+                                </article>
+                            </div>
+                        })}
+                    </div>
+                </GeneralPageWrapper>
 
-            <div className="container">
-                <h4 className="text-center pt-4 pb-4 h1"> {tag.name}</h4>
-                <div className="row">{showTags}</div>
-            </div>
+                {/*<main>*/}
+                {/*    <div className="container">*/}
+                {/*        <header className={classes.Header}>*/}
+                {/*            <div className="col-md-12 pt-3">*/}
+                {/*                <h1 className="display-4 font-weight-bold">{tag.name}</h1>*/}
+                {/*                {blogs.map((b, i) => {*/}
+                {/*                        return <div>*/}
+                {/*                            <Card key={i} blog={b}/>*/}
+                {/*                            <hr/>*/}
+                {/*                        </div>*/}
+                {/*                    }*/}
+                {/*                )}*/}
+                {/*            </div>*/}
+                {/*        </header>*/}
+                {/*    </div>*/}
+                {/*</main>*/}
 
-            {/*<main>*/}
-            {/*    <div className="container">*/}
-            {/*        <header className={classes.Header}>*/}
-            {/*            <div className="col-md-12 pt-3">*/}
-            {/*                <h1 className="display-4 font-weight-bold">{tag.name}</h1>*/}
-            {/*                {blogs.map((b, i) => {*/}
-            {/*                        return <div>*/}
-            {/*                            <Card key={i} blog={b}/>*/}
-            {/*                            <hr/>*/}
-            {/*                        </div>*/}
-            {/*                    }*/}
-            {/*                )}*/}
-            {/*            </div>*/}
-            {/*        </header>*/}
-            {/*    </div>*/}
-        {/*</main>*/}
+            </Layout>
+        </>
+    )
 
-        </Layout>
-</>
-)
-    ;
 };
 export const getServerSideProps = async ({query}) => {
     return singleTag(query.slug, 'tag').then(data => {

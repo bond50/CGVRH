@@ -16,6 +16,7 @@ const Search = () => {
     const searchSubmit = e => {
         e.preventDefault();
         listSearch({search}).then(data => {
+            console.log(data)
             setValues({...values, results: data, searched: true, message: `${data.length} items found`});
 
         });

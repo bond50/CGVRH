@@ -8,15 +8,14 @@ import Image from "next/image";
 const Strategic = () => {
     return (
         <section className={styles.Section}>
-            <div className="container " data-aos='zoom-out' data-aos-once='true'>
+            <div className= {`container ${classes.container}`} >
                 <div className="row gx-0">
-                    <div className="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-right"
-                         data-aos-once='true'>
+                    <div className="col-lg-7 d-flex flex-column justify-content-center" >
                         <div className={classes.Content}>
                             <h3>Welcome to</h3>
                             <h2>Vihiga County Referral Hospital </h2>
                             <p>The Vihiga County Referral Hospital is in kenya,Vihiga County,along
-                                kisumu-Kakamega road,at Mbale Center ,opposite Headquarters</p>
+                                kisumu-Kakamega road,at Mbale Center ,Opposite District  Headquarters</p>
                             <p>
                                 We have been offering our quality and affordable services to residents of vihiga county
                                 and its neighborhood for <YearsOperated/> years now
@@ -24,7 +23,7 @@ const Strategic = () => {
                             </p>
 
                             <div className="text-center text-lg-start">
-                                <Link href={`/about/plan`}>
+                                <Link href={`/about/strategic-plan`}>
                                     <a
                                         className={`${classes.Button} d-inline-flex align-items-center justify-content-center align-self-center`}>
                                         <span>Read More</span>
@@ -34,11 +33,10 @@ const Strategic = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={`col-lg-6 d-flex align-items-center ${classes.Img}`} data-aos="fade-left"
-                         data-aos-once='true'>
+                    <div className={`col-lg-5 d-flex align-items-center ${classes.Img}`} >
                         <Image
-                            src="https://res.cloudinary.com/dwtcilinl/image/upload/v1622297993/Gallery/yffhwkqackates3w0hte.png"
-                            className={`img-fluid ${classes.Animated}`} alt="home" layout='fill'/>
+                            src="/herp.jpg"
+                            className={`img-fluid ${classes.Animated}`} alt="home" width={500} height={300}/>
 
                     </div>
                 </div>

@@ -2,9 +2,9 @@ import Layout from "../../hoc/Layout";
 import {singleTag} from "../../actions/tag";
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
-import React from "react";
+import React, {Fragment} from "react";
 import SmallCard from "../../components/reusables/card/small-card";
-
+import GeneralPageWrapper from "../../hoc/general-page-wrapper";
 
 
 const Tag = ({tag, services, query}) => {
@@ -31,48 +31,32 @@ const Tag = ({tag, services, query}) => {
 
         </Head>
     );
-    const showTags = () => {
-        return services.map((service, i) => (
-            <div className="col-md-4" key={i}>
-                <article>
-                    <SmallCard service={service}/>
-                </article>
-            </div>
-        ));
-    };
 
 
     return (
-        <>
-        {head()}
-        <Layout>
-
-            <div className="container">
-                <h4 className="text-center pt-4 pb-4 h1">Articles on {tag.name}</h4>
-                <div className="row">{showTags}</div>
-            </div>
-
-            {/*<main>*/}
-            {/*    <div className="container">*/}
-            {/*        <header className={classes.Header}>*/}
-            {/*            <div className="col-md-12 pt-3">*/}
-            {/*                <h1 className="display-4 font-weight-bold">{tag.name}</h1>*/}
-            {/*                {blogs.map((b, i) => {*/}
-            {/*                        return <div>*/}
-            {/*                            <Card key={i} blog={b}/>*/}
-            {/*                            <hr/>*/}
-            {/*                        </div>*/}
-            {/*                    }*/}
-            {/*                )}*/}
-            {/*            </div>*/}
-            {/*        </header>*/}
-            {/*    </div>*/}
-        {/*</main>*/}
-
-        </Layout>
-</>
-)
-    ;
+        <Fragment>
+            {head()}
+            <Layout>
+                <GeneralPageWrapper
+                    imgSrc='/fallback/services.jpg'
+                    title={tag.name}
+                    title2={`All Articles about ${tag.name} `}
+                                    alt='fallback image'>
+                    <div className="row">
+                        {
+                        services.map((service) => (
+                            <div className="col-md-4" key={service._id}>
+                                <article>
+                                    <SmallCard service={service}/>
+                                </article>
+                            </div>
+                        ))
+                    }</div>
+                </GeneralPageWrapper>
+            </Layout>
+        </Fragment>
+    )
+        ;
 };
 export const getServerSideProps = async ({query}) => {
     return singleTag(query.slug, 'service-tag').then(data => {

@@ -7,52 +7,77 @@ import {API} from '../../config';
 import classes from '../../styles/BlogCard.module.css'
 
 
-const Card = ({blog, single}) => {
-    const showBlogTags = () =>
-        blog.tags.map((t, i) => (
-            <li key={i}>
-                <Link href={`/tags/${t.slug}`}>
-                    <a> {t.name}</a>
-                </Link>
-            </li>
+const Card = ({blog, single, servicePage}) => {
 
-        ));
+
+    const showBlogTags = () =>
+        blog.tags.map((t, i) => {
+            let tagsLink = `/tags/${t.slug}`
+            if (servicePage) {
+                tagsLink = `/service-tags/${t.slug}`
+            }
+            return (
+                <li key={i}>
+                    <Link href={tagsLink}>
+                        <a> {t.name}</a>
+                    </Link>
+                </li>
+
+            );
+        });
 
     function showCats() {
-        return blog.categories.map((c, i) => (
-            <li key={i}>
-                <Link href={`/categories/${c.slug}`}>
-                    <a>{c.name}</a>
-                </Link>
-            </li>
+        return blog.categories.map((c, i) => {
 
-        ))
+            let catsLink = `/categories/${c.slug}`
+            if (servicePage) {
+                catsLink = `/service-categories/${c.slug}`
+            }
+
+            return (
+                <li key={i}>
+                    <Link href={catsLink}>
+                        <a>{c.name}</a>
+                    </Link>
+                </li>
+
+            );
+        })
     }
 
-    const myLoader = ({src}) => {
-        return `${API}/blog/photo/${blog.slug}`;
+    let imgSrc = `${API}/blog/photo/${blog.slug}`
+    if (servicePage) {
+        imgSrc = `${API}/service/photo/${blog.slug}`
     }
+
+    const myLoader = () => {
+        return imgSrc;
+    }
+
     return (
         <article className={classes.Entry}>
-            <div className={classes.Image}>
-                <Image
-                    loader={myLoader}
-                    className="img-fluid"
-                    width={1200}
-                    height={700}
-                    src={`${API}/blog/photo/${blog.slug}`}
-                    alt={blog.title}
-                />
-            </div>
+            {!single && <Fragment>
+                <div className={classes.Image}>
+                    <Image
+                        loader={myLoader}
+                        className="img-fluid"
+                        width={1200}
+                        height={700}
+                        src={imgSrc}
+                        alt={blog.title}
+                    />
+                </div>
+                <h2 className={classes.Title}>
+                    <Link href={`/blogs/${blog.slug}`}>
+                        <a>
+                            {blog.title.toLowerCase()}
+                        </a>
+                    </Link>
+                </h2>
+            </Fragment>
+            }
 
-            <h2 className={classes.Title}>
-                <Link href={`/blogs/${blog.slug}`}>
-                    <a>
-                        {blog.title.toLowerCase()}
-                    </a>
-                </Link>
-            </h2>
-            <div className={classes.Meta}>
+            {!servicePage && <div className={classes.Meta}>
                 <ul className='mark pt-3 pb-3 '>
                     <li className="d-flex align-items-center"><i className="bi bi-person"/>
                         <span className='px-2'> Written by  </span>
@@ -68,6 +93,7 @@ const Card = ({blog, single}) => {
 
                 </ul>
             </div>
+            }
 
             <div className={classes.Content}>
                 {!single && <>
@@ -95,47 +121,7 @@ const Card = ({blog, single}) => {
                 }
             </div>
         </article>
-        // <div className="lead pb-2">
-        //     <header>
-        //         <Link href={`/blogs/${blog.slug}`}>
-        //             <a>
-        //                 <h2 className="pt-3 pb-3 font-weight-bold">{blog.title}</h2>
-        //             </a>
-        //         </Link>
-        //     </header>
-        //     <section className={classes.Section}>
-        //         <p className="mark  pt-2 pb-2">
-        //             Written by {blog.postedBy.name} | Published {moment(blog.updatedAt).fromNow()}
-        //         </p>
-        //     </section>
-        //     <section>
-        //         {showBlogCategories(blog)}
-        //         {showBlogTags(blog)}
-        //         <br/>
-        //         <br/>
-        //     </section>
-        //
-        //     <div className="row">
-        //         <div className="col-md-4">
-        //             <section className={classes.Section}>
-        //                 <img
-        //                     className="img img-fluid"
-        //                     src={`${API}/blog/photo/${blog.slug}`}
-        //                     style={{width:'100%',height:'auto'}}
-        //                     alt={blog.title}
-        //                 />
-        //             </section>
-        //         </div>
-        //         <div className="col-md-8">
-        //             <section className={classes.Section}>
-        //                 <div className="pb-3">{renderHTML(blog.excerpt)}</div>
-        //                 <Link href={`/blogs/${blog.slug}`}>
-        //                     <a className="btn btn-primary pt-2">Read more</a>
-        //                 </Link>
-        //             </section>
-        //         </div>
-        //     </div>
-        // </div>
+
     );
 };
 

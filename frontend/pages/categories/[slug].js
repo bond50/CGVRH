@@ -7,6 +7,7 @@ import classes from '../../styles/Util.module.css'
 
 import React from "react";
 import SmallCard from "../../components/reusables/card/small-card";
+import GeneralPageWrapper from "../../hoc/general-page-wrapper";
 
 
 const Category = ({category, blogs, query}) => {
@@ -47,28 +48,11 @@ const Category = ({category, blogs, query}) => {
         <>
             {head()}
             <Layout>
-                <div className="container">
-                    <h4 className="text-center pt-4 pb-4 h1">Articles on {category.name}</h4>
+                <GeneralPageWrapper imgSrc='/fallback/services.jpg' title={category.name}
+                                    title2={`All Articles about ${category.name} `}
+                                    alt='fallback image'>>
                     <div className="row">{showCats()}</div>
-                </div>
-
-                {/*<main>*/}
-                {/*    <div className="container ">*/}
-                {/*        <header className={classes.Header}>*/}
-                {/*            <h1>{category.name.toLowerCase()}</h1>*/}
-                {/*            {blogs.map((b, i) => {*/}
-                {/*                    return <div className="col-md-4">*/}
-                {/*                            <Card key={i} blog={b}/>*/}
-                {/*                            <hr/>*/}
-
-                {/*                    </div>*/}
-                {/*                }*/}
-                {/*            )}*/}
-
-                {/*        </header>*/}
-                {/*    </div>*/}
-                {/*</main>*/}
-
+                </GeneralPageWrapper>
             </Layout>
         </>
     );

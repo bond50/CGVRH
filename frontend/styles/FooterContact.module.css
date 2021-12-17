@@ -1,23 +1,29 @@
 
-.FooterContact{
-    margin-bottom: 30px;
+.FooterContact {
+    margin-bottom: 15px;
+    background: #bebebe;
+    border-top: 4px solid #106eea;
+    text-align: center;
+    padding: 30px 20px;
+
 }
+
 .FooterContact h4 {
     font-size: 18px;
     margin: 0 0 15px 0;
-    padding: 2px 0 ;
+    padding: 2px 0;
     line-height: 1;
     font-weight: 700;
     letter-spacing: 1px;
-    color: #bebebe;
+    color: #343434;
     text-transform: uppercase;
 
 }
 
 .FooterContact p {
-    line-height: 24px;
+    color: #343434;
     font-size: 14px;
+    line-height: 24px;
     margin-bottom: 0;
-    font-family: "Muli", sans-serif;
-    color: #bebebe;
+    font-family: "Raleway", sans-serif;
 }

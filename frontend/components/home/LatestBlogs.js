@@ -4,14 +4,17 @@ import classes from '../../styles/RecenntFromBlog.module.css'
 import {API} from "../../config";
 import moment from "moment";
 import renderHTML from "react-render-html";
+import Image from "next/image";
 
 const LatestBlogs = ({blogs}) => {
     const showRecent = () => {
-        return blogs && blogs.map((blog, index) => {
-            return <div className="col-lg-4 " key={index} data-aos="fade-up" data-aos-delay='200' data-aos-once='true'>
+        return blogs && blogs.map((blog) => {
+            return <div className="col-lg-4 " key={blog._id}  >
                 <div className={classes.PostBox}>
                     <div className={classes.PostImg}>
-                        <img
+                        <Image
+                            width={600}
+                            height={350}
                             src={`${API}/blog/photo/${blog.slug}`}
                             className="img-fluid"
                             alt={blog.title}/>
@@ -33,9 +36,9 @@ const LatestBlogs = ({blogs}) => {
 
     return (
         <section className={`${styles.Section} ${classes.SectionBg}`}>
-            <div className="container" data-aos="fade-up" data-aos-once='true'>
+            <div className="container" >
                 <header className={styles.SectionTitle}>
-                    <h2>Recent news</h2>
+                    <h2>Recent News and Events</h2>
                 </header>
                 <div className="row">
                     {showRecent()}

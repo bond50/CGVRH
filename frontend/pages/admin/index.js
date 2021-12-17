@@ -39,7 +39,7 @@ const AdminIndex = () => {
                             </li>
                             <li className="list-group-item">
                                 <Link href="/admin/crud/upload">
-                                    <a>Upload Center</a>
+                                    <a>Upload Images </a>
                                 </Link>
                             </li>
 
@@ -61,13 +61,38 @@ const AdminIndex = () => {
                                 </Link>
                             </li>
 
-                             <li className="list-group-item">
+
+                            <li className="list-group-item">
                                 <Link href="/admin/crud/services">
                                     <a>Update/Delete Page</a>
                                 </Link>
                             </li>
 
+                            <li className="list-group-item">
+                                <Link href="/admin/crud/document-category-tag">
+                                    <a>Document tag and cats</a>
+                                </Link>
+                            </li>
+
+                            <li className="list-group-item">
+                                <Link href="/admin/crud/document">
+                                    <a>Upload a document</a>
+                                </Link>
+                            </li>
+
+                            <li className="list-group-item">
+                                <Link href="/admin/crud/document">
+                                    <a>Pending Blog Posts (Not approved)</a>
+                                </Link>
+                            </li>
+
+
                         </ul>
+                    </div>
+                    <div className="col-md-8">
+                        <p> Pending Posts</p>
+                        <button type="button" className="btn btn-primary mx-2">Approve</button>
+                        <button type="button" className="btn btn-danger">Decline</button>
                     </div>
                 </div>
             </Admin>

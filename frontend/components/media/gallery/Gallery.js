@@ -46,8 +46,8 @@ const Gallery = ({images, filters, handleTagClick, active}) => {
                                         <div className={classes.GalleryItem}>
                                             <Image
                                                 src={image.filePath}
-                                                width={400}
-                                                height={250}
+                                                width={800}
+                                                height={500}
                                                 alt={`Tag: ${image.tag}`}
                                                 className='img-fluid'/>
                                         </div>

@@ -19,6 +19,10 @@ const serviceRoutes = require('./routes/services')
 const serviceCategoryRoutes = require('./routes/service-category')
 const serviceTagRoutes = require('./routes/service-tag')
 
+const documentCategoryRoutes = require('./routes/document-category')
+const documentTagRoutes = require('./routes/document-tag')
+const documentRoutes = require('./routes/document')
+const searchRoutes = require('./routes/search')
 
 const app = express()
 
@@ -74,8 +78,13 @@ app.use('/api', uploadRoute);
 app.use('/api', serviceRoutes);
 app.use('/api', serviceTagRoutes);
 app.use('/api', serviceCategoryRoutes);
+app.use('/api', documentCategoryRoutes);
+app.use('/api', documentTagRoutes);
+app.use('/api', documentRoutes);
+app.use('/api', searchRoutes);
 
 
-app.listen(port, () => {
+
+app.listen(port, '0.0.0.0',()=>{
     console.log(`Server listening at http://0.0.0.0:${port}`)
-})
+});

@@ -4,6 +4,7 @@ const slugify = require("slugify");
 const {errorHandler} = require("../helpers/dbErrorHandler")
 
 exports.create = (req, res) => {
+
     const {name} = req.body
     let slug = slugify(name).toLowerCase()
     let category = new Category({name, slug})
@@ -32,14 +33,14 @@ exports.list = (req, res) => {
 exports.read = (req, res) => {
     const slug = req.params.slug.toLowerCase();
 
-    Category.findOne({ slug }).exec((err, category) => {
+    Category.findOne({slug}).exec((err, category) => {
         if (err) {
             return res.status(400).json({
                 error: errorHandler(err)
             });
         }
 
-        Blog.find({ categories: category })
+        Blog.find({categories: category})
             .populate('categories', '_id name slug')
             .populate('tags', '_id  name slug')
             .populate('postedBy', '_id name username')
@@ -50,7 +51,7 @@ exports.read = (req, res) => {
                         error: errorHandler(err)
                     });
                 }
-                res.json({ category: category, blogs: data });
+                res.json({category: category, blogs: data, size: data.length});
             });
     });
 };
@@ -65,7 +66,7 @@ exports.remove = (req, res) => {
             });
         }
         res.json({
-            message: 'Category deleted successfully'
+            message: 'BlogCategory deleted successfully'
         });
     });
 };

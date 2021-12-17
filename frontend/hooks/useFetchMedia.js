@@ -37,7 +37,6 @@ const useFetchMedia = (payload) => {
             setFilteredImages(data.filter(image => image.tag === tag))
             setActiveTag(tag)
         }
-
     }, [tag,payload])
 
 

@@ -1,16 +1,26 @@
 .FooterLinks {
     margin-bottom: 30px;
 }
+
 .FooterLinks h4 {
     font-size: 1rem;
     font-weight: bold;
     position: relative;
+    padding-left: 12px;
     text-transform: uppercase;
     margin-bottom: 12px;
 }
 
 .FooterLinks ul {
+    padding-left: 12px;
     list-style: none;
-    padding: 0;
     margin: 0;
+}
+
+.FooterLinks ul i {
+    padding-right: 2px;
+    margin-right: 4px;
+    color: #106eea;
+    font-size: 16px;
+    line-height: 1;
 }

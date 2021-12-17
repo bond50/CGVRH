@@ -1,16 +1,17 @@
 .SocialLinks a {
-    font-size: 11px;
-    background: #0366d6;
+    font-size: 18px;
     display: inline-block;
+    background: #0366d6;
     color: #fff;
     line-height: 1;
-    padding: 4px 0;
+    padding: 8px 0;
     margin-right: 4px;
-    border-radius: 2px;
+    border-radius: 4px;
     text-align: center;
-    width: 18px;
-    height: 18px;
+    width: 36px;
+    height: 36px;
     transition: 0.3s;
+
 }
 
 .SocialLinks a:hover {

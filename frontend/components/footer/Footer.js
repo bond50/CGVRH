@@ -9,13 +9,9 @@ import {Fragment} from "react";
 import ScrollTop from "../ScrollTop";
 
 
-
-
 const Footer = () => {
 
     const {data: services, error} = useSWR(`${API}/featured-services`)
-
-
     const n = new Date()
     const thisYear = n.getFullYear()
     const list = [

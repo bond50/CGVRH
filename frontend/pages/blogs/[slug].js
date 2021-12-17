@@ -1,10 +1,6 @@
 import Layout from "../../hoc/Layout";
 import {listRelated, singleBlog} from "../../actions/blog";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
-import Link from "next/link";
-import moment from "moment";
-import classes from '../../styles/Singleblog.module.css'
-import renderHTML from "react-render-html";
 import Head from "next/head";
 import React, {useState, useEffect} from "react";
 
@@ -12,9 +8,9 @@ import BlogContainer from "../../hoc/BlogContainer";
 import Card from "../../components/blog/Card";
 import DisqusThread from "../../components/DiscussThread";
 import SmallCard from "../../components/reusables/card/small-card";
+import GeneralPageWrapper from "../../hoc/general-page-wrapper";
 
 const Slug = ({blog, query}) => {
-
     const [related, setRelated] = useState([])
     const loadRelated = () => {
         listRelated({blog}).then(data => {
@@ -24,7 +20,6 @@ const Slug = ({blog, query}) => {
                 setRelated(data)
             }
         })
-
     };
 
     useEffect(() => {
@@ -51,13 +46,13 @@ const Slug = ({blog, query}) => {
     );
 
     const showBlog = () => {
-        return <Card blog={blog} single/>
+        return <Card blog={blog} single />
     };
 
 
     const showRelatedBlog = () => {
-        return related.map((blog, i) => (
-            <div className="col-md-4" key={i}>
+        return related.map(blog => (
+            <div className="col-lg-4 col-md-6" key={blog._id}>
                 <article>
                     <SmallCard blog={blog}/>
                 </article>
@@ -75,17 +70,20 @@ const Slug = ({blog, query}) => {
             {head()}
             <Layout>
                 <main>
-                    <BlogContainer>
-                        {showBlog()}
-                        <div className='pt-5'>
-                            {showComments()}
+                     <GeneralPageWrapper imgSrc={`${API}/blog/photo/${blog.slug}`} title={blog.title}
+                                alt={blog.title}>
+                        <BlogContainer>
+                            {showBlog()}
+                            <div className='pt-5'>
+                                {showComments()}
+                            </div>
+                        </BlogContainer>
+                        <hr/>
+                        <div className="container">
+                            <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
+                            <div className="row">{showRelatedBlog()}</div>
                         </div>
-                    </BlogContainer>
-                    <hr/>
-                    <div className="container">
-                        <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
-                        <div className="row">{showRelatedBlog()}</div>
-                    </div>
+                    </GeneralPageWrapper>
                 </main>
             </Layout>
         </>

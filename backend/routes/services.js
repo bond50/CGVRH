@@ -21,7 +21,7 @@ router.get('/service/:slug', read);
 // router.delete('/service/:slug', requireSignin, adminMiddleware, remove);
 // router.put('/service/:slug', requireSignin, adminMiddleware, update);
 router.get('/service/photo/:slug', photo);
-// router.post('/services/related', listRelated);
+router.post('/services/related', listRelated);
 router.get('/list-service-names-slugs', listServiceNamesAndSlugs);
 
 

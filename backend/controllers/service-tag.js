@@ -38,7 +38,7 @@ exports.read = (req, res) => {
     ServiceTag .findOne({ slug }).exec((err, tag) => {
         if (err) {
             return res.status(400).json({
-                error: 'Tag not found'
+                error: 'BlogTag not found'
             });
         }
         // res.json(tag);
@@ -68,7 +68,7 @@ exports.remove = (req, res) => {
             });
         }
         res.json({
-            message: 'Tag deleted successfully'
+            message: 'BlogTag deleted successfully'
         });
     });
 };

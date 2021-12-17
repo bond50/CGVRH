@@ -7,7 +7,7 @@ import LoginGoogle from "./LoginGoogle";
 
 const SigninComponent = () => {
     const [values, setValues] = useState({
-        email: 'kufu@gmail.com',
+        email: 'galavu10@gmail.com',
         password: '1234567890',
         error: '',
         loading: false,

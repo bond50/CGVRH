@@ -1,6 +1,9 @@
 const {Schema, model} = require('mongoose');
+const mongoose = require("mongoose");
+const {ObjectId} = mongoose.Schema;
 
-const documents = new Schema(
+const document = new Schema(
+
         {
             title: {
                 type: String,
@@ -10,11 +13,6 @@ const documents = new Schema(
                 type: String,
                 required: true
             },
-            tag: {
-                type: String,
-                required: true
-            },
-
             publicId: {
                 type: String,
                 required: true
@@ -24,6 +22,7 @@ const documents = new Schema(
                 required: true
             },
 
+
             fileType: {
                 type: String,
                 required: true
@@ -32,9 +31,12 @@ const documents = new Schema(
                 type: String,
                 required: true
             },
-        }
+            categories: [{type: ObjectId, ref: 'DocumentCategory', required: true}],
+            tags: [{type: ObjectId, ref: 'DocumentTag', required: true}],
+        },
+        {timestamps: true}
     )
 ;
 
-module.exports = model('documents', documents);
+module.exports = model('Document', document);
 

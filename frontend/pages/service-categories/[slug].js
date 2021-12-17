@@ -1,12 +1,12 @@
 import Layout from "../../hoc/Layout";
 import {singleCategory} from "../../actions/category";
-import Card from "../../components/blog/Card";
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
-import classes from '../../styles/Util.module.css'
+
 
 import React from "react";
 import SmallCard from "../../components/reusables/card/small-card";
+import GeneralPageWrapper from "../../hoc/general-page-wrapper";
 
 
 const Category = ({category, services, query}) => {
@@ -48,10 +48,11 @@ const Category = ({category, services, query}) => {
         <>
             {head()}
             <Layout>
-                <div className="container">
-                    <h4 className="text-center pt-4 pb-4 h1">Articles on {category.name}</h4>
+                   <GeneralPageWrapper imgSrc='/fallback/services.jpg' title={category.name}
+                                    title2={`All Articles about ${category.name} `}
+                                    alt='fallback image'>
                     <div className="row">{showCats()}</div>
-                </div>
+                   </GeneralPageWrapper>
             </Layout>
         </>
     );

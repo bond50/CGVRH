@@ -1,13 +1,13 @@
 
-
-
 .Content {
-    background-color: #f6f9ff;
+    /*background-color: #f6f9ff;*/
     padding: 40px ;
 }
-
+.container{
+    background-color: #ecf5ff;
+}
 .Content h3 {
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 700;
     font-family: "Poppins", sans-serif;
     color: #4154f1;
@@ -25,7 +25,7 @@
 }
 
 .Content h2 {
-    font-size: 24px;
+    font-size: 40px;
     font-weight: 700;
     color: #0C163B;
 }
@@ -34,10 +34,8 @@
 
 .Content  p {
     margin: 15px 0 30px 0;
-    font-size: 13px;
+    text-transform: capitalize;
 }
-
-
 
 .Button {
     line-height: 0;

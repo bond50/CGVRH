@@ -4,7 +4,6 @@ import {useEffect, useState} from "react";
 import Nav from "./Nav";
 
 const Header = ({services}) => {
-
     const [scrolled, setScrolled] = useState(false);
     const handleScroll = () => {
         const offset = window.scrollY;
@@ -18,6 +17,7 @@ const Header = ({services}) => {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener("scroll", handleScroll);
     }, [])
 
     let navbarClasses = [` d-flex align-items-center justify-content-between `];

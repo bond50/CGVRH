@@ -3,7 +3,7 @@ import Axios from 'axios'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
 
-const DownloadItem = ({name, file, filename, removeFile,_id}) => {
+const DownloadItem = ({ filePath, fileName, removeFile,_id}) => {
 
     const [downloadInfo, setDownloadInfo] = useState({
         progress: 0,
@@ -26,7 +26,7 @@ const DownloadItem = ({name, file, filename, removeFile,_id}) => {
             },
         };
 
-        Axios.get(file, {
+        Axios.get(filePath, {
             responseType: "blob",
             ...options,
         }).then(function (response) {
@@ -40,7 +40,7 @@ const DownloadItem = ({name, file, filename, removeFile,_id}) => {
 
             const link = document.createElement("a");
             link.href = url;
-            link.setAttribute("download", filename);
+            link.setAttribute("download", fileName);
             document.body.appendChild(link);
             link.click();
 

@@ -1,15 +1,10 @@
 import React, {Fragment} from 'react';
 import Image from "next/image";
-import classes from '../styles/general-page-wrapper.module.css'
-
 const GeneralPageWrapper = ({imgSrc, alt, title, children,className,title2}) => {
     const myLoader = () => {
         return imgSrc;
     }
-
-
     return (
-
         <Fragment>
             <div className="header-bg position-relative">
                 <div className="container text-center">
@@ -36,7 +31,7 @@ const GeneralPageWrapper = ({imgSrc, alt, title, children,className,title2}) => 
             <section className={`section-bg ${className}`}>
                 <div className="container">
                     <div className="section-title">
-                        <h2>{title2}</h2>
+                        {title2&&<h2>{title2}</h2>}
                     </div>
                        {children}
                 </div>

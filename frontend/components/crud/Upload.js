@@ -6,10 +6,9 @@ import Alert from "../messages/Alert";
 import Button from "../reusables/ui/Button";
 
 
-
 const Upload = () => {
     const [multipleFiles, setMultipleFiles] = useState('');
-     const [folder, setFolder] = useState('documents')
+    const [folder, setFolder] = useState('gallery')
     const [values, setValues] = useState({
         successMessage: '',
         error: '',
@@ -61,7 +60,6 @@ const Upload = () => {
 
     const MultipleFileChange = e => {
         setMultipleFiles(e.target.files)
-
     };
 
     function handleChange(e) {
@@ -84,10 +82,9 @@ const Upload = () => {
                 <div className="input-group mb-3">
                     <span className="input-group-text">Choose upload folder</span>
                     <select value={folder} required onChange={(e) => setFolder(e.target.value)}>
-                    <option value="documents">Documents</option>
-                    <option value="gallery">Gallery</option>
-
-                </select>
+                        {/*<option value="documents">Documents</option>*/}
+                        <option value="gallery">Gallery</option>
+                    </select>
                 </div>
                 <div className="input-group mb-3">
                     <input
@@ -122,7 +119,6 @@ const Upload = () => {
                     <p>All videos are are uploaded to video folder folder</p>
                 </i>
             </div>
-
             {returnForm()}
         </>
 

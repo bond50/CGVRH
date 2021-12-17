@@ -6,9 +6,7 @@ const { errorHandler } = require('../helpers/dbErrorHandler');
 exports.create = (req, res) => {
     const { name } = req.body;
     let slug = slugify(name).toLowerCase();
-
     let tag = new Tag({ name, slug });
-
     tag.save((err, data) => {
         if (err) {
             console.log(err);
@@ -37,7 +35,7 @@ exports.read = (req, res) => {
     Tag.findOne({ slug }).exec((err, tag) => {
         if (err) {
             return res.status(400).json({
-                error: 'Tag not found'
+                error: 'BlogTag not found'
             });
         }
         // res.json(tag);
@@ -67,7 +65,7 @@ exports.remove = (req, res) => {
             });
         }
         res.json({
-            message: 'Tag deleted successfully'
+            message: 'BlogTag deleted successfully'
         });
     });
 };

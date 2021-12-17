@@ -1,5 +1,5 @@
 const Gallery = require('../models/gallery');
-const Documents = require('../models/documents');
+const Documents = require('../models/document');
 const fs = require("fs");
 const slugify = require('slugify');
 
@@ -11,51 +11,6 @@ const {
 const {errorHandler} = require("../helpers/dbErrorHandler");
 
 
-exports.singleFileUpload = async (req, res) => {
-    if (typeof (req.file) == "undefined") {
-        return res.status(400).json({
-            error: "Please select a file",
-        });
-    }
-
-    if (!req.body.title || !req.body.title.length) {
-        return res.status(400).json({
-            error: "Tag /file name is required",
-        });
-    }
-
-    const {file} = req
-    const {title} = req.body;
-    const {folder} = req.body
-
-    const {path, originalname, mimetype, size} = file;
-
-    const result = await cloudinaryUpload(path, slugify(title).toLowerCase(), folder);
-
-    let singleF = new Documents({
-        title: title,
-        filePath: result.filePath,
-        cloudinary_id: result.public_id,
-        fileName: originalname,
-        fileType: mimetype,
-        fileSize: fileSizeFormatter(size, 2)
-    });
-
-    await singleF.save();
-
-    await fs.unlink(path, (err) => {
-        if (err) throw  err
-        console.log('File deleted from disk')
-        fs.rmdirSync('uploads', {recursive: true});
-        console.log('uploads folder remove from disk')
-
-    });
-
-    res.json({data: singleF, message: "Uploaded to cloudinary storage"});
-
-
-}
-
 
 exports.multipleFileUpload = async (req, res) => {
 
@@ -65,7 +20,7 @@ exports.multipleFileUpload = async (req, res) => {
 
     if (!title || !title.length) {
         return res.status(400).json({
-            error: "Tag /file name is required",
+            error: "BlogTag /file name is required",
         });
     }
     if (files.length <= 0) {
@@ -82,6 +37,7 @@ exports.multipleFileUpload = async (req, res) => {
         const tag = {...result.tags}
         filesArray.push({
             filePath: result.filePath,
+            title:title,
             tag: tag[0],
             publicId: result.publicId,
             fileName: originalname,
@@ -89,7 +45,6 @@ exports.multipleFileUpload = async (req, res) => {
             fileSize: fileSizeFormatter(size, 2)
         })
     }
-
 
     if (folder === 'gallery') {
         Gallery.collection.insertMany(filesArray, function (err, docs) {
@@ -115,15 +70,11 @@ exports.multipleFileUpload = async (req, res) => {
 
     await fs.rmdirSync('uploads', {recursive: true});
 
-
 }
 
 
 exports.getAllMultipleFiles = async (req, res, next) => {
-
     let folder = req.body.folder ? req.body.folder : 'gallery';
-    console.log(folder)
-
 
     if (folder === 'gallery') {
         try {
@@ -146,18 +97,8 @@ exports.getAllMultipleFiles = async (req, res, next) => {
 
         }
     }
-
-
 }
 
-exports.getAllSingleFiles = async (req, res, next) => {
-    try {
-        const files = await SingleFile.find();
-        res.status(200).send(files);
-    } catch (error) {
-        res.status(400).send(error.message);
-    }
-}
 
 exports.fileRetrieveFromCloud = async (req, res) => {
 

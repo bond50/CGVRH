@@ -1,50 +1,41 @@
-import React, {Component} from "react";
+import {useEffect, useState} from 'react';
 
+const ScrollTop = () => {
+    const [visible, setVisible] = useState(false);
 
-export default class ScrollToTop extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            is_visible: false
-        };
-    }
-
-    componentDidMount() {
-        const scrollComponent = this;
-        document.addEventListener("scroll", function (e) {
-            scrollComponent.toggleVisibility();
-        });
-    }
-
-    toggleVisibility() {
-        if (window.pageYOffset > 300) {
-            this.setState({
-                is_visible: true
-            });
-        } else {
-            this.setState({
-                is_visible: false
-            });
-        }
-    }
-
-    scrollToTop() {
+    function scrollToTop() {
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
     }
 
-    render() {
-        let classes = [`back-to-top d-flex align-items-center justify-content-center`];
-        if (this.state.is_visible) {
-            classes.push(`active`);
+
+    useEffect(() => {
+
+        function toggleVisibility() {
+            if (window.pageYOffset > 300) {
+                setVisible(true);
+            } else {
+                setVisible(false);
+            }
         }
 
-        return (
-                <div onClick={this.scrollToTop} className={classes.join(' ')}><i
-                    className="bi bi-arrow-up-short"/>
-                </div>
-        );
+        window.addEventListener("scroll", toggleVisibility);
+        return () => window.removeEventListener("scroll", toggleVisibility);
+    }, [scrollToTop]);
+
+
+    let classes = [`back-to-top d-flex align-items-center justify-content-center`];
+    if (visible) {
+        classes.push(`active`);
     }
-}
+
+    return (
+        <div onClick={scrollToTop} className={classes.join(' ')}><i
+            className="bi bi-arrow-up-short"/>
+        </div>
+    );
+};
+
+export default ScrollTop;

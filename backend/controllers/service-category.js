@@ -67,7 +67,7 @@ exports.remove = (req, res) => {
             });
         }
         res.json({
-            message: 'Category deleted successfully'
+            message: 'BlogCategory deleted successfully'
         });
     });
 };

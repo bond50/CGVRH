@@ -4,7 +4,7 @@ import useFetchMedia from "../../../hooks/useFetchMedia";
 
 
 const GalleryIndex = () => {
-    const {transformedArray,source,setTag,activeTag} =useFetchMedia({folder:'gallery'})
+    const {transformedArray, source, setTag, activeTag} = useFetchMedia({folder: 'gallery'})
     return (
         <Layout>
             <Gallery
@@ -12,7 +12,6 @@ const GalleryIndex = () => {
                 filters={transformedArray}
                 handleTagClick={setTag}
                 active={activeTag}/>
-
         </Layout>
     );
 };

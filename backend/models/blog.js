@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { ObjectId } = mongoose.Schema;
+const {ObjectId} = mongoose.Schema;
 
 const blogSchema = new mongoose.Schema(
     {
@@ -10,7 +10,7 @@ const blogSchema = new mongoose.Schema(
             max: 160,
             required: true
         },
-
+        approved: {type: Boolean},
         slug: {
             type: String,
             unique: true,
@@ -37,15 +37,15 @@ const blogSchema = new mongoose.Schema(
             data: Buffer,
             contentType: String
         },
-        categories: [{ type: ObjectId, ref: 'Category', required: true }],
-        tags: [{ type: ObjectId, ref: 'Tag', required: true }],
+        categories: [{type: ObjectId, ref: 'Category', required: true}],
+        tags: [{type: ObjectId, ref: 'Tag', required: true}],
         postedBy: {
             type: ObjectId,
             ref: 'User'
         }
     },
 
-    { timestamps: true }
+    {timestamps: true}
 );
 
 module.exports = mongoose.model('Blog', blogSchema);

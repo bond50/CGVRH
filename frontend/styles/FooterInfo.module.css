@@ -1,17 +1,18 @@
 
-
 .FooterInfo h4 {
-  font-size: 18px;
-    font-weight: bold;
-    position: relative;
+
+
     text-transform: uppercase;
     margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+
 
 }
 
 .FooterInfo p {
     line-height: 24px;
-    font-size: 11px;
     color: #bebebe;
     margin-bottom: 0;
     font-family: "Muli", sans-serif;

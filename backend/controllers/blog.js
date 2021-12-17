@@ -47,6 +47,7 @@ exports.create = (req, res) => {
         }
 
         let blog = new Blog();
+        blog.approved = false;
         blog.title = title;
         blog.body = body;
         blog.excerpt = smartTrim(body, 320, ' ', ' ...');
@@ -126,7 +127,7 @@ exports.listAllBlogsCategoriesTags = (req, res) => {
     let categories;
     let tags;
 
-    Blog.find({})
+    Blog.find({approved: true})
         .populate('categories', '_id name slug')
         .populate('tags', '_id name slug')
         .populate('postedBy', '_id name username profile')
