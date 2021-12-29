@@ -87,8 +87,8 @@ const Card = ({blog, single, servicePage}) => {
                     </li>
 
                     <li className="d-flex align-items-center">
-                        <i className="bi bi-clock"/>
-                        <span>Posted {moment(blog.updatedAt).fromNow()}</span>
+                        <i className="bi bi-calendar"/>
+                        <span> {moment(blog.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}</span>
                     </li>
 
                 </ul>

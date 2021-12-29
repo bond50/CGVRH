@@ -15,7 +15,7 @@ const LoginGoogle = () => {
             } else {
                 authenticate(data, () => {
                     if (isAuth() && isAuth().role === 1) {
-                        Router.push(`/admin`);
+                        Router.push(`/admin2`);
                     } else {
                         Router.push(`/user`);
                     }
@@ -27,6 +27,7 @@ const LoginGoogle = () => {
     return (
         <div className='pb-3'>
             <GoogleLogin
+
                 clientId={`${GOOGLE_CLIENT_ID}`}
                 buttonText="Login with google"
                 onSuccess={responseGoogle}

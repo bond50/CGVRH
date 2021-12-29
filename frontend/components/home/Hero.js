@@ -16,6 +16,7 @@ function ControlledCarousel({data}) {
     };
 
     const renderCarouselItem = () => {
+
         return data && data.map(d => {
             const sectionStyle = {
                 backgroundImage: `url(${API}/service/photo/${d.slug})`
@@ -25,13 +26,13 @@ function ControlledCarousel({data}) {
                 <div className="carousel-container ">
                     <div className="carousel-content animate__animated animate__fadeInUp">
                         <h2 className="animate__animated animate__fadeInDown">{d.title.toLowerCase()}</h2>
-                         {renderHTML(d.excerpt)}
-                        <div className="text-center"> <Link href={`/services/${d.slug}`}>
+                        {renderHTML(d.excerpt)}
+
+                        <Link href={`/services/${d.slug}`}>
                             <a className="btn-get-started">Read
                                 More
                             </a>
                         </Link>
-                        </div>
                     </div>
                 </div>
             </Carousel.Item>
@@ -40,12 +41,12 @@ function ControlledCarousel({data}) {
     }
     return (
         <section id='hero'>
-            <Carousel activeIndex={index} onSelect={handleSelect} variant="dark"
-                      nextLabel=''
-                      prevLabel=''
-                      nextIcon={nextIcon}
-                      prevIcon={prevIcon}
-            >
+            <Carousel
+                activeIndex={index} onSelect={handleSelect} variant="dark"
+                nextLabel=''
+                prevLabel=''
+                nextIcon={data.length && data.length > 1 && nextIcon}
+                prevIcon={data.length && data.length > 1 &&prevIcon}>
                 {renderCarouselItem()}
             </Carousel>
         </section>

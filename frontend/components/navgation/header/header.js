@@ -1,7 +1,7 @@
-import Logo from "./Logo";
+import Logo from "../Logo";
 import {useEffect, useState} from "react";
 
-import Nav from "./Nav";
+import Nav from "../Nav";
 
 const Header = ({services}) => {
     const [scrolled, setScrolled] = useState(false);

@@ -1,16 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
 import classes from '../../styles/Strategic.module.css'
-import styles from '../../styles/Util.module.css'
 import {YearsOperated} from "../years-operated/YearsOperated";
 import Image from "next/image";
 
 const Strategic = () => {
     return (
-        <section className={styles.Section}>
-            <div className= {`container ${classes.container}`} >
+        <section className={classes.Section}>
+            <div className= {`container `} >
                 <div className="row gx-0">
-                    <div className="col-lg-7 d-flex flex-column justify-content-center" >
+                    <div className="col-lg-8 d-flex flex-column justify-content-center" >
                         <div className={classes.Content}>
                             <h3>Welcome to</h3>
                             <h2>Vihiga County Referral Hospital </h2>
@@ -22,21 +21,21 @@ const Strategic = () => {
                                 .We value and hence take care of your precious health
                             </p>
 
-                            <div className="text-center text-lg-start">
-                                <Link href={`/about/strategic-plan`}>
-                                    <a
-                                        className={`${classes.Button} d-inline-flex align-items-center justify-content-center align-self-center`}>
-                                        <span>Read More</span>
-                                        <i className="bi bi-arrow-right"/>
-                                    </a>
-                                </Link>
-                            </div>
+                            {/*<div className="text-center text-lg-start">*/}
+                            {/*    <Link href={`/about/strategic-plan`}>*/}
+                            {/*        <a*/}
+                            {/*            className={`${classes.Button} d-inline-flex align-items-center justify-content-center align-self-center`}>*/}
+                            {/*            <span>Read More</span>*/}
+                            {/*            <i className="bi bi-arrow-right"/>*/}
+                            {/*        </a>*/}
+                            {/*    </Link>*/}
+                            {/*</div>*/}
                         </div>
                     </div>
-                    <div className={`col-lg-5 d-flex align-items-center ${classes.Img}`} >
+                    <div className={`col-lg-4 d-flex align-items-center ${classes.Img}`} >
                         <Image
                             src="/herp.jpg"
-                            className={`img-fluid ${classes.Animated}`} alt="home" width={500} height={300}/>
+                            className={`img-fluid ${classes.Animated}`} alt="home" width={600} height={400}/>
 
                     </div>
                 </div>

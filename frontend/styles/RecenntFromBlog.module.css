@@ -27,14 +27,14 @@
 .PostDate {
     font-size: 16px;
     font-weight: 600;
-    color: rgba(1, 41, 112, 0.6);
+    color: #09254b;
     display: block;
     margin-bottom: 10px;
 }
 
 .PostTitle {
     font-size: 18px;
-    color: rgb(5,5,5);
+    color: #294a70;
     font-weight: 700;
     margin-bottom: 9px;
     text-transform: capitalize;
@@ -47,6 +47,7 @@
     align-items: center;
     font-weight: 600;
     line-height: 1;
+color: #f4a024;
     transition: 0.3s;
 }
 
@@ -54,10 +55,11 @@
     line-height: 0;
     margin-left: 4px;
     font-size: 18px;
+    color: #f4a024;
 }
 
 .PostBox:hover .PostTitle {
-    color: #106eea;
+    color: #09254b;
 }
 
 .PostBox:hover .PostImg img {

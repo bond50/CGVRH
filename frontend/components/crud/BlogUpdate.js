@@ -186,7 +186,7 @@ const BlogUpdate = ({router}) => {
                 setValues({...values, title: '', success: `Blog titled "${data.title}" is successfully updated`});
                 if (isAuth() && isAuth().role === 1) {
                     // Router.replace(`/admin/crud/${router.query.slug}`);
-                    Router.replace(`/admin`);
+                    Router.replace(`/admin2`);
                 } else if (isAuth() && isAuth().role === 0) {
                     // Router.replace(`/user/crud/${router.query.slug}`);
                     Router.replace(`/user`);

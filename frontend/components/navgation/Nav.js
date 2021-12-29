@@ -1,5 +1,5 @@
 import SingleLink from "./single-link"
-import {aboutList, mediaList, servicesList, megaList} from "./dropdown-links";
+import {aboutList, mediaList, servicesList,} from "./dropdown-links";
 import {useRouter} from "next/router";
 import SingleDropdown from "./single-dropdown";
 import SingleMegaLink from "./single-mega-link";

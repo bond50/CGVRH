@@ -1,6 +1,6 @@
 import {Fragment, useEffect, useState} from 'react';
 import Top from "./Top";
-import Header from "./header"
+import Header from "./header/header"
 import useSWR from "swr";
 import {API} from "../../config";
 

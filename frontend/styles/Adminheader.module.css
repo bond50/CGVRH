@@ -1,0 +1,235 @@
+.Header {
+    transition: all 0.5s;
+    z-index: 997;
+    height: 60px;
+    box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+    background-color: #fff;
+    padding-left: 20px;
+    /* Toggle Sidebar Button */
+    /* Search Bar */
+}
+
+.Logo {
+    line-height: 1;
+}
+
+@media (min-width: 1200px) {
+    .Logo {
+        width: 280px;
+    }
+}
+
+.Image {
+    max-height: 26px;
+    margin-right: 6px;
+}
+
+.Span {
+    font-size: 22px;
+    font-weight: 700;
+    color: #012970;
+    font-family: "Nunito", sans-serif;
+}
+
+.ToggleBtn {
+    font-size: 30px;
+    padding-left: 10px;
+    cursor: pointer;
+    color: #012970;
+}
+
+.HeaderNav ul {
+    list-style: none;
+}
+
+.HeaderNavItem {
+    margin: 0;
+    padding: 0;
+}
+
+.Icon {
+    font-size: 20px;
+    color: #012970;
+}
+
+
+.Profile {
+    color: #012970;
+}
+
+.Profile img {
+    max-height: 36px;
+}
+
+.Profile span {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.BadgeNo {
+    position: absolute;
+    inset: 4px 6px auto auto;
+    font-weight: normal;
+    font-size: 11px;
+    padding: 3px 6px;
+}
+
+.NotificationItem {
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    transition: 0.3s;
+}
+
+.NotificationItem i {
+    margin: 0 20px 0 10px;
+    font-size: 24px;
+}
+
+.NotificationItem h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.NotificationItem p {
+    font-size: 13px;
+    margin-bottom: 3px;
+    color: #919191;
+}
+
+.NotificationItem:hover {
+    background-color: #f6f9ff;
+}
+
+.MessageItem {
+    padding: 15px 10px;
+    transition: 0.3s;
+}
+
+.MessageItem a {
+    display: flex;
+}
+
+.MessageItem img {
+    margin: 0 20px 0 10px;
+    max-height: 40px;
+}
+
+.MessageItem h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #444444;
+}
+
+.MessageItem p {
+    font-size: 13px;
+    margin-bottom: 3px;
+    color: #919191;
+}
+
+.MessageItem:hover {
+    background-color: #f6f9ff;
+}
+
+
+.Profile {
+    min-width: 240px;
+    padding-bottom: 0;
+}
+
+ .DropdownHeader h6 {
+    font-size: 18px;
+    margin-bottom: 0;
+    font-weight: 600;
+    color: #444444;
+}
+
+.DropdownHeader span {
+    font-size: 14px;
+}
+
+
+.DropdownItem {
+    font-size: 14px;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+
+.DropdownItem i {
+    margin-right: 10px;
+    font-size: 18px;
+    line-height: 0;
+}
+
+.DropdownItem:hover {
+    background-color: #f6f9ff;
+}
+
+.DropdownMenu {
+    display: none;
+  border-radius: 4px;
+  padding: 10px 0;
+  -webkit-animation-name: dropdown-animate;
+  animation-name: dropdown-animate;
+  -webkit-animation-duration: 0.2s;
+  animation-duration: 0.2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  border: 0;
+  box-shadow: 0 5px 30px 0 rgba(82, 63, 105, 0.2);
+}
+
+
+
+@media (max-width: 480px) {
+  .DropdownMenu {
+    width: 100vw !important;
+  }
+}
+.DropdownHeader, .DropdownFooter {
+  text-align: center;
+  font-size: 15px;
+  padding: 10px 25px;
+}
+
+.DropdownFooter a {
+  color: #444444;
+  text-decoration: underline;
+}
+.DropdownFooter a:hover {
+  text-decoration: none;
+}
+.DropdownDivider {
+  color: #a5c5fe;
+  margin: 0;
+}
+ .DropdownItem {
+  font-size: 14px;
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+.DropdownItem i {
+  margin-right: 10px;
+  font-size: 18px;
+  line-height: 0;
+}
+.DropdownItem:hover {
+  background-color: #f6f9ff;
+}
+
+@media (min-width: 768px) {
+  .DropdownMenuArrow::before {
+    content: "";
+    width: 13px;
+    height: 13px;
+    background: #fff;
+    position: absolute;
+    top: -7px;
+    right: 20px;
+    transform: rotate(45deg);
+    border-top: 1px solid #eaedf1;
+    border-left: 1px solid #eaedf1;
+  }
+}

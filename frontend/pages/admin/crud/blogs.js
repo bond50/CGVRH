@@ -1,8 +1,8 @@
-import React from 'react';
-import Layout from '../../../hoc/Layout';
+
 import Admin from '../../../components/auth/Admin';
 import BlogRead from '../../../components/crud/BlogRead';
 import Link from 'next/link';
+import Layout from "../../../hoc/admin/layout/layout";
 
 const Blogs = () => {
     return (

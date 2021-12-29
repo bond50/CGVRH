@@ -12,12 +12,14 @@ const {
     photo,
     listRelated,
     listSearch,
+    listPending
 } = require('../controllers/blog');
 
 const {requireSignin, adminMiddleware, authMiddleware, canUpdateDeleteBlog} = require('../controllers/auth');
 
 router.post('/blog', requireSignin, adminMiddleware, create);
 router.get('/blogs', list);
+router.get('/pending-blogs', listPending);
 router.get('/list-home-page-blogs', listHomePageBlogs);
 router.post('/blogs-categories-tags', listAllBlogsCategoriesTags);
 router.get('/blog/:slug', read);

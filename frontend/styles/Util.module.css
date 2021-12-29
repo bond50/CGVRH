@@ -13,6 +13,7 @@
 
 .SectionTitle h2 {
     font-size: 32px;
+    color: #09254b;
     font-weight: bold;
     text-transform: capitalize;
     margin-bottom: 20px;
@@ -24,9 +25,9 @@
     content: '';
     position: absolute;
     display: block;
-    width: 50px;
+    width: 120px;
     height: 3px;
-    background: #106eea;
+    background: #294a70;
     bottom: 0;
     left: calc(50% - 25px);
 }
@@ -117,3 +118,7 @@
 .BtnClick:hover {
     border-color: #fff;
 }
+
+/*color: #09254b;*/
+/*  border-radius: 0 152px 0 0;*/
+/*  border-right: 8px solid #f4a024;*/

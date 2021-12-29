@@ -160,3 +160,22 @@ export const listSearch = params => {
         .catch(err => console.log(err));
 };
 
+
+export const listPending = (username, endpoint) => {
+    let listBlogEndpoint
+    if (username) {
+        listBlogEndpoint = `${API}/${username}/pending-blogs`
+    } else {
+        listBlogEndpoint = `${API}/pending-blogs`
+    }
+
+
+    return fetch(`${listBlogEndpoint}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+

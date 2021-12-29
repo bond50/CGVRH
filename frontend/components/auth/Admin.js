@@ -7,16 +7,16 @@ const Admin = ({children}) => {
     useEffect(() => {
         let componentMounted = true;
         if (!isAuth()) {
-            Router.push(`/signin`);
+            Router.push(`/admin-login`);
         } else if (isAuth().role !== 1) {
-            Router.push(`/admin`);
+            Router.push(`/user`);
         }
 
         return () => {
             componentMounted = false;
         }
     }, []);
-    return <div className="container p-5 pb-5"> {children} < /div>;
+    return <> {children} </>;
 };
 
 export default Admin;

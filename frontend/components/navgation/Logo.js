@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from "next/image";
 import classes from '../../styles/Logo.module.css'
-import {API} from "../../config";
 import React from "react";
 
 const Logo = ({textLogo}) => {

@@ -1,5 +1,5 @@
 
-html {
+:root {
     scroll-behavior: smooth;
 }
 
@@ -277,7 +277,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .mobile-nav-toggle {
-    color: #222222;
+    color: #f4a024;
     font-size: 28px;
     cursor: pointer;
     display: none;
@@ -286,7 +286,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mobile-nav-toggle.bi-x {
-    color: #fff;
+    color: #f4a024;
 }
 
 @media (max-width: 991px) {
@@ -745,7 +745,7 @@ section {
 
 #hero {
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 126px);
     background-color: rgba(60, 60, 60, 0.8);
     overflow: hidden;
     position: relative;
@@ -765,52 +765,49 @@ section {
 #hero .carousel-container {
     display: flex;
     align-items: flex-end;
-    justify-content: center;
+    justify-content: left;
     position: absolute;
-    bottom: 60px;
-    top: 70px;
-    left: 55px;
+    bottom: 7.5%;
+    top: 37%;
+    left: 7.5%;
     right: 55px;
-
-
 }
 
 #hero .carousel-content {
-    background: rgba(4, 4, 4, 0.6);
-    padding: 20px;
-    color: #fff;
-    border-top-right-radius: 50px;
-    border-top: 4px solid #2CC73E;
-    border-right: 4px solid #2CC73E;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 9px 20px 6px 12px;
+    color: #09254b;
+    border-radius: 0 152px 0 0;
+    border-right: 8px solid #f4a024;
 }
 
 #hero .carousel-content h2 {
-    text-transform: uppercase;
-    color: #fff;
+    text-transform: capitalize;
+    color: #294a70;
     margin-bottom: 20px;
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 #hero .btn-get-started {
     font-family: "Roboto", sans-serif;
-    font-weight: 500;
-    font-size: 14px;
+    font-weight: 300;
+    font-size: 11px;
     letter-spacing: 1px;
     display: inline-block;
-    padding: 12px 32px;
+    padding: 3px 8px;
     border-radius: 4px;
     transition: 0.5s;
     line-height: 1;
-    margin: 10px;
-    color: #fff;
+    margin: 3px;
+    color: #294a70;
     -webkit-animation-delay: 0.8s;
     animation-delay: 0.8s;
-    border: 2px solid #2CC73E;
+    border: 1px solid #294a70;
 }
 
 #hero .btn-get-started:hover {
-    background: #2CC73E;
+    background: #294a70;
     color: #fff;
     text-decoration: none;
 }
@@ -829,7 +826,7 @@ section {
 #hero .carousel-inner .active,
 #hero .carousel-inner .carousel-item-next.carousel-item-start,
 #hero .carousel-inner .carousel-item-prev.carousel-item-end {
-    opacity: 1;
+    opacity: 0.8;
     transition: 0.5s;
 }
 
@@ -845,10 +842,10 @@ section {
     background: none;
     font-size: 30px;
     line-height: 0;
-    background: rgba(255, 255, 255, 0.4);
+    background: #09254b;
     border-radius: 50px;
     transition: 0.3s;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.85);
     width: 54px;
     height: 54px;
     display: flex;
@@ -857,7 +854,7 @@ section {
 }
 
 #hero .carousel-control-next-icon:hover, #hero .carousel-control-prev-icon:hover {
-    background: rgba(255, 255, 255, 0.6);
+    background: #f4a024;
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -866,6 +863,7 @@ section {
     background: #fff;
     overflow: hidden;
     border: 0;
+    display: none;
     width: 12px;
     margin-right: 3px;
     height: 12px;
@@ -874,14 +872,22 @@ section {
     transition: 0.3s;
 }
 
+.carousel-control-next, .carousel-control-prev {
+    opacity: 1;
+}
+
+.carousel-control-next:hover, .carousel-control-prev:hover {
+    opacity: 0.5;
+}
 #hero .carousel-indicators li.active {
     opacity: 1;
+    display: none;
     background: #2CC73E;
 }
 
 @media (min-width: 1024px) {
     #hero .carousel-content {
-        width: 60%;
+        width: 45%;
     }
 
     #hero .carousel-control-prev, #hero .carousel-control-next {
@@ -918,7 +924,7 @@ section {
     bottom: 0;
     z-index: 9999;
     overflow: hidden;
-    background: #106eea;
+    background: #09254b;
 }
 
 .preloader:before {
@@ -926,7 +932,7 @@ section {
     position: fixed;
     top: calc(50% - 30px);
     left: calc(50% - 30px);
-    border: 6px solid #106eea;
+    border: 6px solid #09254b;
     border-top-color: #fff;
     border-bottom-color: #fff;
     border-radius: 50%;
@@ -1064,4 +1070,41 @@ section {
 
 .btn {
     margin-bottom: 10px;
+}
+
+
+.card {
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  overflow: hidden;
+}
+
+.card-header, .card-footer {
+  border-color: #ebeef4;
+  background-color: #fff;
+  color: #798eb3;
+  padding: 15px;
+}
+
+.card-title {
+  padding: 20px 0 15px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #106eea;
+  font-family: "Poppins", sans-serif;
+}
+.card-title span {
+  color: #899bbd;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.card-body {
+  padding: 0 20px 20px 20px;
+}
+
+.card-img-overlay {
+  background-color: rgba(255, 255, 255, 0.6);
 }

@@ -15,20 +15,26 @@ import Footer from "../components/footer/Footer";
 export default function Home() {
     const {data: services, error: serviceError} = useSWR(`${API}/featured-services`)
     const {data: blogs, error: blogsError} = useSWR(`${API}/list-home-page-blogs`)
-    //
-    // if (serviceError || blogsError) return <div className='container text-center mt-5'><h1>failed to load</h1></div>
-    // if (!blogs && !services) return <div className='preloader'/>
+
+    if (serviceError || blogsError) return <div className='container text-center mt-5'><h1>failed to load</h1></div>
+    if (!blogs && !services) return <div className='preloader'/>
+
+    let comp = <Hero data={services}/>
+    if (!services || services.length <= 0) {
+        comp = null
+    }
 
 
     return (
         <Fragment>
             <Toolbar/>
-            <Hero data={services}/>
+            {!services || services.length <= 0 ? null : <Hero data={services}/>}
             <main id='main'>
                 <Strategic/>
-                <LatestBlogs blogs={blogs}/>
-                {/*<FeaturedServices featured={services}/>*/}
-                {/*<Roles/>*/}
+                {!blogs || blogs.length <= 0 ? null :<LatestBlogs blogs={blogs}/>}
+                {!services || services.length <= 0 ? null :<FeaturedServices featured={services}/>}
+                <Roles/>
+
             </main>
             <Footer/>
         </Fragment>

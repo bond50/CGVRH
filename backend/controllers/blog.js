@@ -103,7 +103,7 @@ exports.create = (req, res) => {
 
 
 exports.list = (req, res) => {
-    Blog.find({})
+    Blog.find({status: 1})
         .populate('categories', '_id name slug')
         .populate('tags', '_id name slug')
         .populate('postedBy', '_id name username')
@@ -127,7 +127,7 @@ exports.listAllBlogsCategoriesTags = (req, res) => {
     let categories;
     let tags;
 
-    Blog.find({approved: true})
+    Blog.find({status: 1})
         .populate('categories', '_id name slug')
         .populate('tags', '_id name slug')
         .populate('postedBy', '_id name username profile')
@@ -341,10 +341,23 @@ exports.listByUser = (req, res) => {
 
 
 exports.listHomePageBlogs = (req, res) => {
-    Blog.find({})
+    Blog.find({status: 1})
         .select('_id title slug excerpt createdAt updatedAt')
         .limit(6)
         .sort({createdAt: -1})
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: errorHandler(err)
+                });
+            }
+            res.json(data);
+        });
+};
+exports.listPending = (req, res) => {
+    Blog.find({status: 0})
+        .populate('postedBy', '_id name username')
+        .select('_id title slug status postedBy createdAt updatedAt')
         .exec((err, data) => {
             if (err) {
                 return res.json({

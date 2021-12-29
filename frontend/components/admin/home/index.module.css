@@ -1,0 +1,28 @@
+
+.Blogs {
+    font-size: 14px;
+}
+
+.Blogs thead {
+    background: #f6f6fe;
+}
+
+.Blogs th {
+    border: 0;
+}
+
+.Blogs a {
+    text-transform: capitalize;
+}
+
+.Blogs h6 {
+    text-transform: capitalize;
+    color: #555555;
+    font-weight: 400;
+    font-size: 14px;
+}
+.EditBtn  {
+    cursor: pointer;
+
+}
+

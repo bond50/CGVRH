@@ -20,7 +20,6 @@ const Signin = ({router}) => {
                         {router.query.message && <Alert msg={router.query.message} type='danger' label='Danger'/>}
                     </div>
                 </div>
-
             <SigninComponent/>
         </Layout>
     );

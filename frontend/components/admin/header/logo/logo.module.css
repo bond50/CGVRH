@@ -1,0 +1,54 @@
+.Logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Link {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+}
+
+@media (min-width: 1200px) {
+    .Link {
+        width: 280px;
+    }
+}
+
+.Link img {
+    max-height: 26px;
+    margin-right: 6px;
+}
+
+.Link span {
+    font-size: 26px;
+    font-weight: 700;
+    color: #0250DAFF;
+    font-family: "Nunito", sans-serif;
+}
+
+.Icon {
+    font-size: 32px;
+    padding-left: 10px;
+    cursor: pointer;
+    color: #0250DAFF;
+}
+
+
+
+
+@media (max-width: 1199px) {
+  .Icon  {
+    left: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .Icon {
+    margin-left: 0;
+  }
+  .Icon {
+    left: -300px;
+  }
+}

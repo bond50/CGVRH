@@ -1,7 +1,8 @@
-import Layout from "../../../hoc/Layout";
+
 import Admin from "../../../components/auth/Admin";
 import BlogCategory from "../../../components/crud/blog-category";
 import BlogTag from "../../../components/crud/blog-tag";
+import Layout from "../../../hoc/admin/layout/layout";
 
 const CategoryTag = () => {
   return (

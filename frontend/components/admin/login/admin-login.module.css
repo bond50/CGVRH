@@ -1,0 +1,47 @@
+
+.Logo {
+    line-height: 1;
+}
+
+@media (min-width: 1200px) {
+    .Logo {
+        width: 280px;
+    }
+}
+
+.Logo img {
+    max-height: 26px;
+    margin-right: 6px;
+}
+
+.Logo span {
+    font-size: 26px;
+    text-transform: capitalize;
+    font-weight: 700;
+    color: #09254b;
+    font-family: "Nunito", sans-serif;
+}
+
+.CardTitle h5 {
+    padding: 20px 0 15px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color:#09254b;
+    font-family: "Poppins", sans-serif;
+}
+.CardTitle p{
+    color:#294a70 ;
+}
+
+.CardTitle span {
+    color: #09254b;
+    font-size: 14px;
+    font-weight: 400;
+}
+.Btn{
+    background-color: #09254b;
+    border-color: #09254b;
+}
+.sBtn{
+    color: #294a70;
+}
