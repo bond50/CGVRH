@@ -103,7 +103,7 @@ exports.create = (req, res) => {
 
 
 exports.list = (req, res) => {
-    Blog.find({status: 1})
+    Blog.find({accepted: true})
         .populate('categories', '_id name slug')
         .populate('tags', '_id name slug')
         .populate('postedBy', '_id name username')
@@ -122,19 +122,20 @@ exports.listAllBlogsCategoriesTags = (req, res) => {
 
     let limit = req.body.limit ? parseInt(req.body.limit) : 4;
     let skip = req.body.skip ? parseInt(req.body.skip) : 0;
+    console.log(req.body)
 
     let blogs;
     let categories;
     let tags;
 
-    Blog.find({status: 1})
+    Blog.find({accepted: true})
         .populate('categories', '_id name slug')
         .populate('tags', '_id name slug')
         .populate('postedBy', '_id name username profile')
         .sort({createdAt: -1})
         .skip(skip)
         .limit(limit)
-        .select('_id title slug excerpt  categories tags postedBy createdAt updatedAt')
+        .select('_id title accepted slug excerpt  categories tags postedBy createdAt updatedAt')
         .exec((err, data) => {
             if (err) {
                 return res.json({
@@ -172,7 +173,7 @@ exports.read = (req, res) => {
         .populate('categories', '_id name slug')
         .populate('tags', '_id name slug')
         .populate('postedBy', '_id name username')
-        .select('_id title body slug mtitle mdesc categories tags postedBy createdAt updatedAt')
+        .select('_id title body accepted slug mtitle mdesc categories tags postedBy createdAt updatedAt')
         .exec((err, data) => {
             if (err) {
                 return res.json({
@@ -199,6 +200,7 @@ exports.remove = (req, res) => {
 };
 
 exports.update = (req, res) => {
+
     const slug = req.params.slug.toLowerCase();
 
     Blog.findOne({slug}).exec((err, oldBlog) => {
@@ -217,6 +219,7 @@ exports.update = (req, res) => {
                     error: 'Image could not upload'
                 });
             }
+
 
             let slugBeforeMerge = oldBlog.slug;
             oldBlog = _.merge(oldBlog, fields);
@@ -279,7 +282,7 @@ exports.listRelated = (req, res) => {
     let limit = req.body.limit ? parseInt(req.body.limit) : 3;
     const {_id, categories} = req.body.blog;
 
-    Blog.find({_id: {$ne: _id}, categories: {$in: categories}})
+    Blog.find({_id: {$ne: _id}, categories: {$in: categories}}, {status: 'approved'})
         .limit(limit)
         .populate('postedBy', '_id name  username profile')
         .select('title slug excerpt postedBy createdAt updatedAt')
@@ -341,7 +344,7 @@ exports.listByUser = (req, res) => {
 
 
 exports.listHomePageBlogs = (req, res) => {
-    Blog.find({status: 1})
+    Blog.find({accepted: true})
         .select('_id title slug excerpt createdAt updatedAt')
         .limit(6)
         .sort({createdAt: -1})
@@ -355,9 +358,9 @@ exports.listHomePageBlogs = (req, res) => {
         });
 };
 exports.listPending = (req, res) => {
-    Blog.find({status: 0})
+    Blog.find({accepted: false})
         .populate('postedBy', '_id name username')
-        .select('_id title slug status postedBy createdAt updatedAt')
+        .select('_id title accepted slug postedBy createdAt updatedAt')
         .exec((err, data) => {
             if (err) {
                 return res.json({

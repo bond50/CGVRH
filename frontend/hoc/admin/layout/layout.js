@@ -4,10 +4,9 @@ import Header from "../../../components/admin/header/header";
 import AdminSidebar from "../../../components/admin/sidebar/admin-sidebar";
 import PageTitle from "../../../components/admin/page_title/page-title";
 
-const Layout = ({children, pageTitle}) => {
+const Layout = ({children, pageTitle,}) => {
     const [closed, toggleClosed] = useToggle();
     let attachedClasses = [classes.Main];
-
     if (closed) {
         attachedClasses = [classes.Main,classes.Close];
     }
@@ -15,8 +14,7 @@ const Layout = ({children, pageTitle}) => {
     return (
         <>
             <Header clicked={toggleClosed}/>
-            <AdminSidebar closed={closed}/>
-
+            <AdminSidebar closed={closed} />
             <main className={attachedClasses.join(' ')}>
                 {pageTitle && <PageTitle title={pageTitle}/>}
                 {children}

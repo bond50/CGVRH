@@ -117,7 +117,7 @@ const AdminLogin = () => {
                                         <div className="col-12">
                                             <button className={`btn btn-primary w-100 ${classes.Btn}`} type="submit">Login</button>
                                         </div>
-                                        <LoginGoogle/>
+                                        {/*<LoginGoogle/>*/}
                                         {showError()}
                                         {showLoading()}
                                         {showMessage()}

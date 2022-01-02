@@ -5,8 +5,10 @@ import Router from "next/router";
 
 const LoginGoogle = () => {
      const responseGoogle = response => {
-        // console.log(response);
+
         const tokenId = response.tokenId;
+
+
         const user = { tokenId };
 
         loginWithGoogle(user).then(data => {

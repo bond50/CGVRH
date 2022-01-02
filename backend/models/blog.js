@@ -10,9 +10,9 @@ const blogSchema = new mongoose.Schema(
             max: 160,
             required: true
         },
-        status: {
-            type: Number,
-            default: 0,
+        accepted: {
+            type: Boolean,
+            default: false,
         },
         slug: {
             type: String,

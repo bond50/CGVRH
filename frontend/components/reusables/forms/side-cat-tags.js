@@ -2,7 +2,7 @@ import React from 'react';
 
 const SideCatTags = ({handleChange, categories, tags, featuredServices}) => {
     return (
-        <div className="col-md-4">
+        <>
             {handleChange ? <div className="form-group mb-3">
                 <h5>Featured image</h5>
                 <hr/>
@@ -32,7 +32,7 @@ const SideCatTags = ({handleChange, categories, tags, featuredServices}) => {
                      className='list-group list-group-flush'>{tags()}
                 </div>
             </div>
-        </div>
+        </>
     )
 
 }

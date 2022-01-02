@@ -1,13 +1,14 @@
 import Head from "next/head";
 import React, {useState} from "react";
-import Layout from "../../hoc/Layout";
+
 import {listBlogsWithCategoriesAndTags} from "../../actions/blog";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import Card from "../../components/blog/Card";
 import {withRouter} from "next/router";
 import BlogContainer from "../../hoc/BlogContainer";
+import Layout from "../../hoc/blog/blog-layout";
 
-const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, router}) => {
+const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip,categories, router}) => {
     const head = () => (
         <Head>
             <title>Blogs | {APP_NAME}</title>
@@ -76,34 +77,30 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, router}) => {
     const showAllBlogs = () => {
         return blogs.map((blog, i) => {
             return (
-                <article key={i}>
-                    <Card blog={blog}/>
-                </article>
+                <Card blog={blog} key={i}/>
             );
         });
     };
 
     const showLoadedBlogs = () => {
         return loadedBlogs.map((blog, i) => (
-            <article key={i}>
-                <Card blog={blog}/>
-            </article>
+
+            <Card blog={blog} key={i}/>
+
         ));
     };
 
     return (
         <>
             {head()}
-            <Layout>
+            <Layout data={blogs} categories={categories}>
                 <main>
                     <BlogContainer>
-                        {size <= 0 ? <h5 className='pt-5'>No blogs to display now </h5> :
-                            <>
-                                {showAllBlogs()}
-                                {showLoadedBlogs()}
-                                <div className="text-center pb-3">{loadMoreButton()}</div>
-                            </>
-                        }
+                        <>
+                            {showAllBlogs()}
+                            {showLoadedBlogs()}
+                            <div className="text-center pb-3">{loadMoreButton()}</div>
+                        </>
                     </BlogContainer>
                 </main>
             </Layout>
@@ -111,16 +108,19 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, router}) => {
     );
 };
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
     let skip = 0;
-    let limit = 2;
+    let limit = 10;
     return listBlogsWithCategoriesAndTags(skip, limit).then((data) => {
         if (data.error) {
             console.log(data.error);
         } else {
+            console.log(data)
             return {
+                revalidate:true,
                 props: {
                     blogs: data.blogs,
+                    categories: data.categories,
                     totalBlogs: data.size,
                     blogsLimit: limit,
                     blogSkip: skip,

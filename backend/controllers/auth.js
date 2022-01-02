@@ -262,6 +262,7 @@ exports.resetPassword = (req, res) => {
                             error: errorHandler(err)
                         });
                     }
+
                     res.json({
                         message: `Great! Now you can login with your new password`
                     });
@@ -273,7 +274,10 @@ exports.resetPassword = (req, res) => {
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
 exports.googleLogin = (req, res) => {
+
+    console.log(client)
     const idToken = req.body.tokenId
+
     client.verifyIdToken({idToken, audience: process.env.GOOGLE_CLIENT_ID}).then(response => {
         const {email_verified, name, email, jti} = response.payload
         if (email_verified) {

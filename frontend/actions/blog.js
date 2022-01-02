@@ -29,7 +29,6 @@ export const createBlog = (blog, token) => {
 };
 
 export const listBlogsWithCategoriesAndTags = (skip, limit) => {
-    console.log(limit)
     const data = {
         limit,
         skip
@@ -125,7 +124,7 @@ export const updateBlog = (blog, token, slug) => {
       let updateBlogEndpoint
 
     if (isAuth() && isAuth().role === 1) {
-        updateBlogEndpoint `${API}/blog/${slug}`
+        updateBlogEndpoint =`${API}/blog/${slug}`
 
     } else if (isAuth() && isAuth().role === 0) {
       updateBlogEndpoint = `${API}/user/blog/${slug}`

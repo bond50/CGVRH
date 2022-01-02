@@ -3,6 +3,9 @@ import React from 'react';
 import Alert from "../../messages/Alert";
 import CreateForm from "./CreateForm";
 import SideCatTags from "./side-cat-tags";
+import {API} from "../../../config";
+import {useRouter} from "next/router";
+import Image from "next/image";
 
 const CreateComponent = ({
                              handleChange,
@@ -11,36 +14,18 @@ const CreateComponent = ({
                              btnCapture,
                              title,
                              onSubmit,
-                             errorAlert,
-                             successAlert,
-                             categories,
-                             tags,
-                             featuredServices,
                          }) => {
+
     return (
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col-md-8">
-                    <CreateForm
-                        handleChange={handleChange('title')}
-                        handleBody={handleBody}
-                        bodyValue={body}
-                        btnCapture={btnCapture}
-                        titleValue={title}
-                        onSubmit={onSubmit}/>
-                    <div className="mb-3">
-                        <br/>
-                        <Alert msg={errorAlert} type="danger" label="Danger"/>
-                        <Alert msg={successAlert} label='Success' type='success'/>
-                    </div>
-                </div>
-                <SideCatTags
-                    tags={tags}
-                    categories={categories}
-                    handleChange={handleChange}
-                    featuredServices={featuredServices}/>
-            </div>
-        </div>
+
+
+            <CreateForm
+                handleChange={handleChange('title')}
+                handleBody={handleBody}
+                bodyValue={body}
+                btnCapture={btnCapture}
+                titleValue={title}
+                onSubmit={onSubmit}/>
     );
 };
 

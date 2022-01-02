@@ -1,7 +1,7 @@
 
 .Form {
   background: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid  #37639b;
   padding: 3px 10px;
   position: relative;
 }
@@ -23,7 +23,7 @@
   font-size: 16px;
   padding: 0 15px;
   margin: -1px;
-  background: #2CC73E;
+  background: #37639b;
   color: #fff;
   transition: 0.3s;
   border-radius: 0 4px 4px 0;
@@ -35,11 +35,10 @@
 }
 
 .Button:hover {
-  background: #1ecf3b;
+  background:  #f4a024;
 }
 
 .Searched{
-
     padding: 10px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }

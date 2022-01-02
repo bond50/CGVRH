@@ -10,8 +10,11 @@ import DisqusThread from "../../components/DiscussThread";
 import SmallCard from "../../components/reusables/card/small-card";
 import GeneralPageWrapper from "../../hoc/general-page-wrapper";
 
+
 const Slug = ({blog, query}) => {
+
     const [related, setRelated] = useState([])
+
     const loadRelated = () => {
         listRelated({blog}).then(data => {
             if (data.error) {
@@ -46,11 +49,13 @@ const Slug = ({blog, query}) => {
     );
 
     const showBlog = () => {
-        return <Card blog={blog} single />
+
+        return <Card blog={blog} single/>
     };
 
 
     const showRelatedBlog = () => {
+
         return related.map(blog => (
             <div className="col-lg-4 col-md-6" key={blog._id}>
                 <article>
@@ -65,13 +70,15 @@ const Slug = ({blog, query}) => {
         <DisqusThread id={blog._id} title={blog.title} path={blog.slug}/>
     </div>;
 
+
     return (
         <>
             {head()}
             <Layout>
                 <main>
-                     <GeneralPageWrapper imgSrc={`${API}/blog/photo/${blog.slug}`} title={blog.title}
-                                alt={blog.title}>
+                    {blog.accepted === true &&
+                    <GeneralPageWrapper imgSrc={`${API}/blog/photo/${blog.slug}`} title={blog.title}
+                                        alt={blog.title}>
                         <BlogContainer>
                             {showBlog()}
                             <div className='pt-5'>
@@ -83,7 +90,7 @@ const Slug = ({blog, query}) => {
                             <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
                             <div className="row">{showRelatedBlog()}</div>
                         </div>
-                    </GeneralPageWrapper>
+                    </GeneralPageWrapper>}
                 </main>
             </Layout>
         </>
@@ -95,7 +102,8 @@ export const getServerSideProps = async ({query}) => {
 
     return singleBlog(query.slug).then(data => {
         if (data.error) {
-            console.log(data.error)
+            return <p>haha</p>
+
         } else {
             return {
                 props: {blog: data, query}
