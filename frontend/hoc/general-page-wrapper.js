@@ -33,7 +33,9 @@ const GeneralPageWrapper = ({imgSrc, alt, title, children,className,title2}) => 
                     <div className="section-title">
                         {title2&&<h2>{title2}</h2>}
                     </div>
-                       {children}
+                      <div  style={{backgroundColor:'#fff',paddingTop:"60px"}}>
+                           {children}
+                      </div>
                 </div>
             </section>
         </Fragment>

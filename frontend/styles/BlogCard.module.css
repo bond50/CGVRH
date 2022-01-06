@@ -1,9 +1,16 @@
 .Entry {
     padding: 30px;
-    margin-bottom: 60px ;
+    margin-bottom: 60px;
     background-color: #fff;
     color: #111111;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.ServiceEntry {
+    padding: 30px;
+    margin-bottom: 60px;
+    color: #09254b;
+    border: none!important;
 }
 
 .Image {
@@ -30,7 +37,6 @@
 .Title a {
     transition: 0.3s;
 }
-
 
 
 .Meta {
@@ -63,13 +69,13 @@
     display: inline-block;
     line-height: 1;
 }
-.Meta span  {
+
+.Meta span {
     font-size: 14px;
     color: #111111;
     display: inline-block;
     line-height: 1;
 }
-
 
 
 .Content p {

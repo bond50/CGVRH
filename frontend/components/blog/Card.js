@@ -9,6 +9,13 @@ import classes from '../../styles/BlogCard.module.css'
 
 const Card = ({blog, single, servicePage}) => {
 
+    let attachedClass = classes.Entry
+
+    if (servicePage) {
+        attachedClass = classes.ServiceEntry
+    }
+
+
 
     const showBlogTags = () =>
         blog.tags.map((t, i) => {
@@ -55,8 +62,8 @@ const Card = ({blog, single, servicePage}) => {
     }
 
     return (
-        <article className={classes.Entry}>
-            {!single && <Fragment>
+        <article  className={attachedClass}>
+            <Fragment>
                 <div className={classes.Image}>
                     <Image
                         loader={myLoader}
@@ -75,7 +82,7 @@ const Card = ({blog, single, servicePage}) => {
                     </Link>
                 </h2>
             </Fragment>
-            }
+
 
             {!servicePage && <div className={classes.Meta}>
                 <ul className='mark pt-3 pb-3 '>
@@ -106,7 +113,7 @@ const Card = ({blog, single, servicePage}) => {
                 </>}
                 {single && <>
                     {renderHTML(blog.body)}
-                    <div className={classes.Footer}>
+                    {!servicePage&&<div className={classes.Footer}>
                         <i className="bi bi-folder"/>
                         <ul className={classes.Cats}>
                             {showCats()}
@@ -116,7 +123,7 @@ const Card = ({blog, single, servicePage}) => {
                         <ul className={classes.Tags}>
                             {showBlogTags()}
                         </ul>
-                    </div>
+                    </div>}
                 </>
                 }
             </div>

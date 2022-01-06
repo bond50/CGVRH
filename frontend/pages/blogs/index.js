@@ -7,8 +7,10 @@ import Card from "../../components/blog/Card";
 import {withRouter} from "next/router";
 import BlogContainer from "../../hoc/BlogContainer";
 import Layout from "../../hoc/blog/blog-layout";
+import SmallCard from "../../components/reusables/card/small-card";
 
-const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip,categories, router}) => {
+
+const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, categories, router}) => {
     const head = () => (
         <Head>
             <title>Blogs | {APP_NAME}</title>
@@ -77,47 +79,51 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip,categories, router}) => 
     const showAllBlogs = () => {
         return blogs.map((blog, i) => {
             return (
-                <Card blog={blog} key={i}/>
+                <div key={i} className='col-lg-4'>
+                    <SmallCard blog={blog}/>
+                </div>
             );
         });
     };
 
     const showLoadedBlogs = () => {
         return loadedBlogs.map((blog, i) => (
-
-            <Card blog={blog} key={i}/>
-
+            <div key={i} className='col-lg-4'>
+                <SmallCard blog={blog}/>
+            </div>
         ));
     };
+
 
     return (
         <>
             {head()}
-            <Layout data={blogs} categories={categories}>
+            <Layout>
                 <main>
-                    <BlogContainer>
-                        <>
+
+                    <div className="container mt-2">
+                        <div className='row'>
                             {showAllBlogs()}
                             {showLoadedBlogs()}
-                            <div className="text-center pb-3">{loadMoreButton()}</div>
-                        </>
-                    </BlogContainer>
+                        </div>
+                        <div className="text-center pb-3">{loadMoreButton()}</div>
+                    </div>
+
+
                 </main>
             </Layout>
         </>
     );
 };
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     let skip = 0;
-    let limit = 10;
+    let limit = 6;
     return listBlogsWithCategoriesAndTags(skip, limit).then((data) => {
         if (data.error) {
             console.log(data.error);
         } else {
-            console.log(data)
             return {
-                revalidate:true,
                 props: {
                     blogs: data.blogs,
                     categories: data.categories,

@@ -2,12 +2,36 @@ import classes from './admin-sidebar.module.css'
 import Link from 'next/link'
 import React from "react";
 
+import {useAccordionButton} from "react-bootstrap/AccordionButton";
+import Accordion from "react-bootstrap/Accordion";
+import useToggle from "../../../hooks/useToggle";
+
+
 const AdminSidebar = ({closed}) => {
     let attachedClasses = [classes.Sidebar, classes.CloseMobile];
 
     if (closed) {
         attachedClasses = [classes.Sidebar, classes.Close];
     }
+    const [showChevron, toggleChevron] = useToggle()
+
+    let chevronClass = [classes.ChevronDown, 'bi bi-chevron-down', ' ms-auto']
+    if (showChevron) {
+        chevronClass.push(classes.Rotate)
+    }
+
+    function CustomToggle({children, eventKey}) {
+        const decoratedOnClick = useAccordionButton(eventKey, () =>
+            toggleChevron(),
+        );
+
+        return (
+            <div className={`nav-link ${classes.NavLink}`} onClick={decoratedOnClick}>
+                {children}
+            </div>
+        );
+    }
+
 
     return (
         <aside className={attachedClasses.join(' ')}>
@@ -56,7 +80,7 @@ const AdminSidebar = ({closed}) => {
                         </a>
                     </Link>
                 </li>
-                 <li className={`${classes.SidebarListItem} nav-item`}>
+                <li className={`${classes.SidebarListItem} nav-item`}>
 
                     <Link href={`/admin2/crud/blogs`}>
                         <a className={`nav-link ${classes.NavLink}`}>
@@ -66,23 +90,58 @@ const AdminSidebar = ({closed}) => {
                     </Link>
                 </li>
 
-                <li className={classes.NavHeading}>Notifications</li>
+                <li className={classes.NavHeading}>Pages</li>
                 <li className={`${classes.SidebarListItem} ${classes.active} nav-item`}>
-                    <Link href={`/`}>
+                    <Link href={`/admin2/crud/home`}>
                         <a className={`nav-link ${classes.NavLink}`}>
                             <i className="bi bi-grid"/>
-                            <span>Mail</span>
+                            <span>Home page</span>
                         </a>
                     </Link>
                 </li>
-                <li className={`${classes.SidebarListItem}  nav-item`}>
-                    <Link href={`/`}>
-                        <a className={`nav-link ${classes.NavLink}`}>
-                            <i className="bi bi-chat-dots"/>
-                            <span>Messages</span>
-                        </a>
-                    </Link>
-                </li>
+
+                <Accordion as='li' className={`${classes.SidebarListItem} nav-item`}>
+                    <CustomToggle eventKey="0">
+                        <i className="bi bi-journal-text"/><span>Medical Services</span>
+                        <i className={chevronClass.join(' ')}/>
+                    </CustomToggle>
+
+                    <Accordion.Collapse eventKey="0" as='ul' className={classes.NavContent}>
+                        <>
+                            <li>
+                                <a href="forms-elements.html">
+                                    <i className="bi bi-circle"></i><span>Form Elements</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="forms-elements.html">
+                                    <i className="bi bi-circle"></i><span>Form Elements</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="forms-elements.html">
+                                    <i className="bi bi-circle"></i><span>Form Elements</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="forms-elements.html">
+                                    <i className="bi bi-circle"></i><span>Form Elements</span>
+                                </a>
+                            </li>
+                        </>
+                    </Accordion.Collapse>
+                    {/*<Accordion.Collapse eventKey='0'>*/}
+                    {/*    <ul className="nav-content collapse ">*/}
+                    {/*        <li>*/}
+                    {/*            <a href="forms-elements.html">*/}
+                    {/*                <i className="bi bi-circle"></i><span>Form Elements</span>*/}
+                    {/*            </a>*/}
+                    {/*        </li>*/}
+                    {/*    </ul>*/}
+
+                    {/*</Accordion.Collapse>*/}
+                </Accordion>
+
                 <li className={`${classes.SidebarListItem}  nav-item`}>
                     <Link href={`/`}>
                         <a className={`nav-link ${classes.NavLink}`}>
@@ -102,7 +161,8 @@ const AdminSidebar = ({closed}) => {
                 </li>
             </ul>
         </aside>
-    );
+    )
+        ;
 };
 
 export default AdminSidebar;

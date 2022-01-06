@@ -4,7 +4,6 @@ const slugify = require("slugify");
 const {errorHandler} = require("../helpers/dbErrorHandler")
 
 exports.create = (req, res) => {
-
     const {name} = req.body
     let slug = slugify(name).toLowerCase()
     let category = new Category({name, slug})
@@ -40,7 +39,7 @@ exports.read = (req, res) => {
             });
         }
 
-        Blog.find({categories: category})
+        Blog.find({categories: category, accepted: true})
             .populate('categories', '_id name slug')
             .populate('tags', '_id  name slug')
             .populate('postedBy', '_id name username')

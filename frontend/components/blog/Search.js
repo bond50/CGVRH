@@ -29,8 +29,8 @@ const Search = () => {
     const searchedBlogs = (results = []) => {
 
         return (
-            <div className={classes.Searched}>
-                {message && <p className="pt-3 text-muted">{message}</p>}
+            <div className={classes.Searched} >
+                {message && <p className="container pt-3 text-muted">{message}</p>}
                 {results.map((blog, i) => {
                     return (
                         <div key={i}>

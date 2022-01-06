@@ -1,4 +1,3 @@
-import Layout from "../../hoc/Layout";
 import {listRelated, singleBlog} from "../../actions/blog";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import Head from "next/head";
@@ -9,6 +8,7 @@ import Card from "../../components/blog/Card";
 import DisqusThread from "../../components/DiscussThread";
 import SmallCard from "../../components/reusables/card/small-card";
 import GeneralPageWrapper from "../../hoc/general-page-wrapper";
+import Layout from "../../hoc/blog/blog-layout";
 
 
 const Slug = ({blog, query}) => {
@@ -76,9 +76,11 @@ const Slug = ({blog, query}) => {
             {head()}
             <Layout>
                 <main>
-                    {blog.accepted === true &&
-                    <GeneralPageWrapper imgSrc={`${API}/blog/photo/${blog.slug}`} title={blog.title}
-                                        alt={blog.title}>
+
+                    {/*<GeneralPageWrapper*/}
+                    {/*    imgSrc={`${API}/blog/photo/${blog.slug}`}*/}
+                    {/*    title={blog.title}*/}
+                    {/*    alt={blog.title}>*/}
                         <BlogContainer>
                             {showBlog()}
                             <div className='pt-5'>
@@ -90,7 +92,7 @@ const Slug = ({blog, query}) => {
                             <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
                             <div className="row">{showRelatedBlog()}</div>
                         </div>
-                    </GeneralPageWrapper>}
+                    {/*</GeneralPageWrapper>*/}
                 </main>
             </Layout>
         </>

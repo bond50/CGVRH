@@ -7,7 +7,7 @@ import Card from "../../components/blog/Card";
 import GeneralPageWrapper from "../../hoc/general-page-wrapper";
 import useSWR from "swr";
 import {fetcher} from "../../components/reusables/functions/fetcher";
-import SmallCard from "../../components/reusables/card/small-card";
+
 import Link from "next/link";
 
 import classes from '../../styles/page-bar.module.css'
@@ -63,15 +63,6 @@ const Slug = ({service, query}) => {
 
     }
 
-    const showRelatedServices = () => {
-        return related && related.map(service => (
-            <div className="col-lg-4 col-md-6" key={service._id}>
-                <article>
-                    <SmallCard service={service}/>
-                </article>
-            </div>
-        ));
-    }
 
     const head = () => (
         <Head>
@@ -104,7 +95,6 @@ const Slug = ({service, query}) => {
                 <main>
                     <GeneralPageWrapper imgSrc={`${API}/service/photo/${service.slug}`} title={service.title}
                                         alt={service.title}>
-
                         <div className="container" data-aos="fade-up" data-aos-once='true'>
                             <div className="row">
                                 <div className="col-lg-8">
@@ -119,17 +109,10 @@ const Slug = ({service, query}) => {
                                             <ul className="list-group list-group-flush">
                                                 {showAllServices()}
                                             </ul>
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <hr/>
-                        <div className="container">
-                            <h4 className="text-center pt-2 pb-2 h2">Related services</h4>
-                            <div className="row">{showRelatedServices()}</div>
                         </div>
                     </GeneralPageWrapper>
                 </main>

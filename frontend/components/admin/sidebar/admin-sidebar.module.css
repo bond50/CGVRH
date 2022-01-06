@@ -70,6 +70,7 @@
 }
 
 .SidebarListItem {
+    border: none !important;
     padding: 0;
     list-style: none;
     margin-bottom: 5px;
@@ -105,5 +106,44 @@
 }
 
 
+.ChevronDown {
+    margin-right: 0;
+    transition: transform 0.2s ease-in-out;
+}
 
+.Rotate {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease-in-out;
+}
+
+.NavContent {
+    padding: 5px 0 0 0;
+    margin: 0;
+    list-style: none;
+}
+
+.NavContent a {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #294a70;
+    transition: 0.3s;
+    padding: 10px 0 10px 40px;
+}
+
+.NavContent a i {
+    font-size: 6px;
+    margin-right: 8px;
+    line-height: 0;
+    border-radius: 50%;
+}
+
+.NavContent a:hover, .NavContent a.active {
+    color: #4154f1;
+}
+
+.NavContent a.active i {
+    background-color: #4154f1;
+}
 

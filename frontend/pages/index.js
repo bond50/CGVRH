@@ -1,22 +1,23 @@
 import Strategic from "../components/home/Strategic";
-
-import CoreValues from "../components/home/CoreValues";
 import Roles from "../components/home/Roles";
 import FeaturedServices from "../components/home/FeaturedServices";
 import LatestBlogs from "../components/home/LatestBlogs";
 import useSWR from 'swr'
 import {API} from "../config";
 import Toolbar from "../components/navgation/Toolbar";
-import {Fragment, useEffect, useState} from "react";
+import {Fragment} from "react";
 import Hero from "../components/home/Hero";
 import Footer from "../components/footer/Footer";
 
 
 export default function Home() {
+
     const {data: services, error: serviceError} = useSWR(`${API}/featured-services`)
     const {data: blogs, error: blogsError} = useSWR(`${API}/list-home-page-blogs`)
 
-    if (serviceError || blogsError) return <div className='container text-center mt-5'><h1>failed to load</h1></div>
+    if (serviceError || blogsError) return <div className='container uh-oh mt-5 pt-5 '><p>uh oh something is
+        wrong..Please
+        contact Vihiga county referral hospital ICT team for assistance.Thank you </p></div>
     if (!blogs && !services) return <div className='preloader'/>
 
     let comp = <Hero data={services}/>
@@ -31,10 +32,10 @@ export default function Home() {
             {!services || services.length <= 0 ? null : <Hero data={services}/>}
             <main id='main'>
                 <Strategic/>
-                {!blogs || blogs.length <= 0 ? null :<LatestBlogs blogs={blogs}/>}
-                {!services || services.length <= 0 ? null :<FeaturedServices featured={services}/>}
+                {!blogs || blogs.length <= 0 ? null : <LatestBlogs blogs={blogs}/>}
+                {/*<CoreValues/>*/}
+                {!services || services.length <= 0 ? null : <FeaturedServices featured={services}/>}
                 <Roles/>
-
             </main>
             <Footer/>
         </Fragment>

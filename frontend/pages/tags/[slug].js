@@ -1,10 +1,10 @@
-import Layout from "../../hoc/Layout";
 import {singleTag} from "../../actions/tag";
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import React from "react";
 import SmallCard from "../../components/reusables/card/small-card";
 import GeneralPageWrapper from "../../hoc/general-page-wrapper";
+import Layout from "../../hoc/blog/blog-layout";
 
 
 const Tag = ({tag, blogs, query}) => {
@@ -35,9 +35,7 @@ const Tag = ({tag, blogs, query}) => {
         <>
             {head()}
             <Layout>
-                <GeneralPageWrapper imgSrc='/fallback/services.jpg' title={tag.name}
-                                    title2={`All Articles about ${tag.name} `}
-                                    alt='fallback image'>
+                <div className="container mt-2">
                     <div className="row">
                         {blogs.map(blog => {
                             return <div className="col-md-4" key={blog._id}>
@@ -47,7 +45,7 @@ const Tag = ({tag, blogs, query}) => {
                             </div>
                         })}
                     </div>
-                </GeneralPageWrapper>
+                </div>
 
                 {/*<main>*/}
                 {/*    <div className="container">*/}
