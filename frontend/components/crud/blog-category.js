@@ -1,5 +1,5 @@
 import React from "react";
-import useCat from "../../hooks/usecat";
+import useCat from "../../hooks/useCat";
 
 const BlogCategory = () => {
     const {
