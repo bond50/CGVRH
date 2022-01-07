@@ -1,7 +1,8 @@
 import React from 'react';
-import Layout from '../../../hoc/Layout';
-import Admin from '../../../components/auth/Admin';
-import ServiceCreate from '../../../components/crud/ServiceCreate';
+
+import Admin from '../../../../components/auth/Admin';
+import ServiceCreate from '../../../../components/crud/ServiceCreate';
+import Layout from "../../../../hoc/admin/layout/layout";
 
 
 const Service = () => {

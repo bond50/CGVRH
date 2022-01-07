@@ -1,8 +1,7 @@
 import React from 'react';
-import Layout from '../../../hoc/Layout';
-import Admin from '../../../components/auth/Admin';
-import ServiceRead from "../../../components/crud/ServiceRead";
-
+import Admin from '../../../../components/auth/Admin';
+import ServiceRead from "../../../../components/crud/ServiceRead";
+import Layout from "../../../../hoc/admin/layout/layout";
 
 
 const Blog = () => {

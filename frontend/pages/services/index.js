@@ -4,7 +4,7 @@ import Layout from "../../hoc/Layout";
 import {list} from "../../actions/services";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import {useRouter} from "next/router";
-import ServiceList from "../../components/services/service-items";
+import ServiceList from "../../components/services/service-list";
 
 const Services = ({services}) => {
     const router = useRouter()
@@ -13,11 +13,10 @@ const Services = ({services}) => {
             <title>All Services | {APP_NAME}</title>
             <meta
                 name="description"
-                content="Vihiga county referral hospital services "
+                content="Vihiga county referral hospital medical services and patient care "
             />
 
             <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
-
             <meta property="og:title" content={`Services offered  | ${APP_NAME}`}/>
             <meta
                 property="og:description"

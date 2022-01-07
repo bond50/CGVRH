@@ -24,7 +24,9 @@ const documentTagRoutes = require('./routes/document-tag')
 const documentRoutes = require('./routes/document')
 const searchRoutes = require('./routes/search')
 
+const ip = require("ip");
 const app = express()
+
 
 //db
 mongoose
@@ -69,6 +71,9 @@ const port = process.env.PORT || 8000
 // route middleware
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api', blogRoutes);
+app.use('/', (req, res) => {
+    res.send(listEndpoints(app))
+});
 app.use('/api', authRoutes);
 app.use('/api', tagRoutes);
 app.use('/api', userRoutes);
@@ -83,8 +88,16 @@ app.use('/api', documentTagRoutes);
 app.use('/api', documentRoutes);
 app.use('/api', searchRoutes);
 
+const listEndpoints = require('express-list-endpoints')
+app.listen(port, `0.0.0.0`, () => {
+
+    setTimeout(() => {
+        console.log(` Server listening at 
+           Local:            http://localhost:${port}
+           On Your Network:  http://${ip.address()}:${port}
+        `
+        )
+    }, 1000);
 
 
-app.listen(port, '0.0.0.0',()=>{
-    console.log(`Server listening at http://0.0.0.0:${port}`)
 });

@@ -1,7 +1,8 @@
-import Layout from "../../../hoc/Layout";
-import Admin from "../../../components/auth/Admin";
-import ServiceCategory from "../../../components/crud/service-category";
-import ServiceTag from "../../../components/crud/service-tag";
+
+import Admin from "../../../../components/auth/Admin";
+import ServiceCategory from "../../../../components/crud/service-category";
+import ServiceTag from "../../../../components/crud/service-tag";
+import Layout from "../../../../hoc/admin/layout/layout";
 
 const CategoryTag = () => {
   return (

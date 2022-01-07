@@ -4,11 +4,12 @@ import {useRouter} from "next/router";
 import SingleDropdown from "./single-dropdown";
 import SingleMegaLink from "./single-mega-link";
 import {useEffect, useState} from "react";
-import Link from "next/link";
 import MegaMenu from "./mega-menu";
 import {chunkArray} from "../reusables/functions/array-chunk";
+import useSWR from "swr";
+import {API} from "../../config";
 
-const Nav = ({services}) => {
+const Nav = () => {
 
     const [open, setOpen] = useState(false)
 
@@ -18,6 +19,14 @@ const Nav = ({services}) => {
         setMegaOpen(megaOpen => !megaOpen)
     };
 
+    const {data: services, error: serviceError} = useSWR(`${API}/list-service-names-slugs`)
+    if (serviceError) {
+        return <p className='uh-oh'>Failed to fetch medical services.</p>
+    }
+    if (!services) {
+        return <div className='preloader'/>
+    }
+
 
     const router = useRouter();
 
@@ -26,7 +35,7 @@ const Nav = ({services}) => {
         {to: '/', caption: 'Home'},
         {caption: 'About', component: aboutList, to: "about"},
         {caption: 'Services', component: servicesList, to: 'services'},
-        {caption: 'Patient care', component: services, to: 'services'},
+        {caption: 'Medical services', component: services, to: 'services'},
         {caption: 'Media', component: mediaList, to: 'media'},
         {to: '/blogs/', caption: 'Blog',},
         {to: '/contact/', caption: 'Contact',},

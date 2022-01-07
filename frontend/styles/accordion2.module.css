@@ -1,0 +1,64 @@
+
+.SidebarListItem {
+    border: none !important;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 5px;
+}
+
+
+.NavLink {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #294a70;
+    background: #fff;
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+
+.NavLink i {
+    font-size: 16px!important;
+    margin-right: 8px;
+    line-height: 0;
+    border-radius: 50% !important;
+    color: #899bbd
+}
+
+
+.NavLink:hover, .NavLink.active {
+    color: #4154f1;
+    background: #ededf1;
+}
+.ChevronDown {
+    margin-right: 0;
+    transition: transform 0.2s ease-in-out;
+}
+
+.Rotate {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease-in-out;
+}
+.NavContent a {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #294a70;
+    transition: 0.3s;
+}
+
+.NavContent a i {
+    font-size: 6px;
+    line-height: 0;
+    border-radius: 50%;
+}
+
+.NavContent a:hover, .NavContent a.active {
+    color: #4154f1;
+}
+
+.NavContent a.active i {
+    background-color: #4154f1;
+}

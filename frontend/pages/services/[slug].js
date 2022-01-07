@@ -14,26 +14,7 @@ import classes from '../../styles/page-bar.module.css'
 
 
 const Slug = ({service, query}) => {
-    const {data: related, error: relatedError} = useSWR(
-        [
-            `${API}/services/related`,
-            JSON.stringify({service}),
-        ],
-        fetcher,
-        {
-            revalidateOnFocus: false,
-        },
-    );
 
-    const {data, error} = useSWR(
-        [
-            `${API}/services-categories-tags`,
-        ],
-        fetcher,
-        {
-            revalidateOnFocus: false,
-        },
-    );
 
     const {data: services, error: serviceError} = useSWR(
         [
@@ -46,10 +27,10 @@ const Slug = ({service, query}) => {
     );
 
 
-    if (!related || !data || !services) {
+    if (!services) {
         return <div className='preloader'/>
     }
-    if (relatedError || error || serviceError) {
+    if (serviceError) {
         return <div>failed to load </div>
     }
 
@@ -87,32 +68,35 @@ const Slug = ({service, query}) => {
         return <Card blog={service} single servicePage/>
     };
 
-
     return (
         <Fragment>
             {head()}
             <Layout>
                 <main>
-                    <GeneralPageWrapper imgSrc={`${API}/service/photo/${service.slug}`} title={service.title}
-                                        alt={service.title}>
+                    <GeneralPageWrapper
+                        imgSrc={`${API}/service/photo/${service.slug}`}
+                        title={service.title}
+                        alt={service.title}>
+
                         <div className="container" data-aos="fade-up" data-aos-once='true'>
                             <div className="row">
-                                <div className="col-lg-8">
+                                 <div className="col-lg-8 order-lg-5 order-md-first ">
                                     {showPage()}
                                 </div>
-                                <div className="col-lg-4">
+                                <div className="col-lg-4 order-lg-1 order-md-last ">
                                     <div className={classes.SideBar}>
                                         <div className={`card ${classes.card}`}>
                                             <div className={`card-header ${classes.cardHeader}`}>
                                                 <h4>All services and Patient Care</h4>
                                             </div>
-                                            <ul className="list-group list-group-flush">
+                                            <ul className="list-group list-group-flush ">
                                                 {showAllServices()}
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </GeneralPageWrapper>
                 </main>
