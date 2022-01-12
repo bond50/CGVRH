@@ -104,7 +104,6 @@ exports.create = (req, res) => {
     })
 }
 exports.listFeaturedServices = (req, res) => {
-
     Service.find({isFeatured: true})
         .select('_id title excerpt slug')
         .sort({createdAt: -1})

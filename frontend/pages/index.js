@@ -15,17 +15,17 @@ export default function Home() {
     const {data: services, error: serviceError} = useSWR(`${API}/featured-services`)
     const {data: blogs, error: blogsError} = useSWR(`${API}/list-home-page-blogs`)
 
-    if (serviceError || blogsError) return <div className='container uh-oh mt-5 pt-5 '><p>uh oh something is
+    if ( blogsError) return <div className='container uh-oh mt-5 pt-5 '><p>uh oh something is
         wrong..Please
         contact Vihiga county referral hospital ICT team for assistance.Thank you </p></div>
-    if (!blogs && !services) return <div className='preloader'/>
+    if (!blogs ) return <div className='preloader'/>
 
     let comp = <Hero data={services}/>
     if (!services || services.length <= 0) {
         comp = null
     }
 
-
+    console.log(services)
     return (
         <Fragment>
             <Toolbar/>
@@ -54,7 +54,7 @@ export default function Home() {
         //
         //         <div className="container">
         //             <div className="row">
-        //                 <div className="col-md-12 text-center pt-4 pb-5">
+        //                cd  <div className="col-md-12 text-center pt-4 pb-5">
         //                     <p className="lead">
         //                         Best programming and web development blogs and tutorials on React Node NextJs and
         //                         JavaScript

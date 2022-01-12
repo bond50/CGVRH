@@ -29,8 +29,7 @@ const app = express()
 
 
 //db
-mongoose
-    .connect(process.env.DATABASE_URL, {
+mongoose.connect(process.env.DATABASE_URL, {
         useNewUrlParser: true,
         useCreateIndex: true,
         useFindAndModify: false,
@@ -71,9 +70,6 @@ const port = process.env.PORT || 8000
 // route middleware
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api', blogRoutes);
-app.use('/', (req, res) => {
-    res.send(listEndpoints(app))
-});
 app.use('/api', authRoutes);
 app.use('/api', tagRoutes);
 app.use('/api', userRoutes);
@@ -88,7 +84,13 @@ app.use('/api', documentTagRoutes);
 app.use('/api', documentRoutes);
 app.use('/api', searchRoutes);
 
-const listEndpoints = require('express-list-endpoints')
+
+process.on('uncaughtException', function (exception) {
+    console.log(exception); // to see your exception details in the console
+    // if you are on production, maybe you can send the exception details to your
+    // email as well ?
+});
+
 app.listen(port, `0.0.0.0`, () => {
 
     setTimeout(() => {

@@ -1,13 +1,11 @@
 import Head from "next/head";
 import React, {useState} from "react";
-
 import {listBlogsWithCategoriesAndTags} from "../../actions/blog";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
-import Card from "../../components/blog/Card";
 import {withRouter} from "next/router";
-import BlogContainer from "../../hoc/BlogContainer";
 import Layout from "../../hoc/blog/blog-layout";
 import SmallCard from "../../components/reusables/card/small-card";
+
 
 
 const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, categories, router}) => {
@@ -100,6 +98,7 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, categories, router}) =>
             {head()}
             <Layout>
                 <main>
+
 
                     <div className="container mt-2">
                         <div className='row'>

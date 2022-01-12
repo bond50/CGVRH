@@ -10,7 +10,7 @@ import useSWR from "swr";
 import {API} from "../../config";
 
 const Nav = () => {
-
+    const router = useRouter();
     const [open, setOpen] = useState(false)
 
     const [megaOpen, setMegaOpen] = useState(false)
@@ -28,7 +28,7 @@ const Nav = () => {
     }
 
 
-    const router = useRouter();
+
 
 
     const lists = [
