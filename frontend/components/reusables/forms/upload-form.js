@@ -19,9 +19,9 @@ const UploadForm = ({successMessage, error, title, handleChange, handleMultipleF
                 <input
                     value={title}
                     required
-                    onChange={handleChange('title')}
+                    onChange={handleChange}
                     type="text"
-                    className="form-control" placeholder="Enter a tag/title for the file(s)"/>
+                    className="form-control" placeholder="Enter name for the file(s)"/>
             </div>
 
             <div className="input-group mb-3">

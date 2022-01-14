@@ -122,7 +122,6 @@ exports.listAllBlogsCategoriesTags = (req, res) => {
 
     let limit = req.body.limit ? parseInt(req.body.limit) : 4;
     let skip = req.body.skip ? parseInt(req.body.skip) : 0;
-    console.log(req.body)
 
     let blogs;
     let categories;

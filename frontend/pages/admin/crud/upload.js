@@ -1,7 +1,7 @@
 import React from 'react';
-import Layout from '../../../hoc/Layout';
 import Admin from '../../../components/auth/Admin';
 import UploadComponent from "../../../components/crud/Upload";
+import Layout from "../../../hoc/admin/layout/layout";
 
 
 

@@ -1,31 +1,27 @@
 import Layout from "../../../hoc/Layout";
 import DownloadList from "../../../components/media/download-list";
-import {listDocumentAndTags} from "../../../actions/document";
-import Link from "next/link";
-import TagFilters from "../../../components/reusables/TagFilters";
+import {getDownloads} from "../../../actions/fileupload";
 
 
-const Downloads = ({tags, documents,totalDocuments}) => {
-
+const Downloads = ({files}) => {
 
     return (
         <Layout>
-          <DownloadList files={documents}/>
+          <DownloadList files={files}/>
         </Layout>
     );
 };
 
 
 export const getServerSideProps = async () => {
-  return listDocumentAndTags().then((data) => {
+  return getDownloads().then((data) => {
     if (data.error) {
       console.log(data.error);
     } else {
+        console.log(data)
       return {
         props: {
-          documents: data.documents,
-          totalDocuments: data.size,
-          tags :data.tags,
+          files: data.files,
         },
       };
     }

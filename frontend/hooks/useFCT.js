@@ -1,8 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {getCategories} from "../actions/category";
-import {getTags} from "../actions/tag";
+import React from 'react';
 import useSWR from "swr";
-import {useRouter} from "next/router";
 import {API} from "../config";
 import {fetcher} from "../components/reusables/functions/fetcher";
 

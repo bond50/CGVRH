@@ -30,9 +30,9 @@ export const multipleFileUpload = async (data, options) => {
 
 
 
-export const getMultipleFiles = async () => {
+export const getDownloads = async () => {
     try {
-        const {data} = await axios.get(`${API}/get-all-multiple-files`)
+        const {data} = await axios.get(`${API}/get-downloads`)
         return data
     } catch (e) {
         throw e

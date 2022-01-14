@@ -1,9 +1,6 @@
 const {Schema, model} = require('mongoose');
-const mongoose = require("mongoose");
-const {ObjectId} = mongoose.Schema;
 
-const document = new Schema(
-
+const file = new Schema(
         {
             title: {
                 type: String,
@@ -13,6 +10,11 @@ const document = new Schema(
                 type: String,
                 required: true
             },
+            cloudinaryFolder: {
+                type: String,
+                required: true
+            },
+
             publicId: {
                 type: String,
                 required: true
@@ -22,7 +24,6 @@ const document = new Schema(
                 required: true
             },
 
-
             fileType: {
                 type: String,
                 required: true
@@ -31,12 +32,10 @@ const document = new Schema(
                 type: String,
                 required: true
             },
-            categories: [{type: ObjectId, ref: 'DocumentCategory', required: true}],
-            tags: [{type: ObjectId, ref: 'DocumentTag', required: true}],
         },
         {timestamps: true}
     )
 ;
 
-module.exports = model('Document', document);
+module.exports = model('File', file);
 

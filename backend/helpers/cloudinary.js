@@ -7,19 +7,21 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-exports.cloudinaryUpload = (file, tags, folder) => {
+exports.cloudinaryUpload = (file, folder) => {
     return new Promise(resolve => {
         cloudinary.uploader.upload(file, (result) => {
+
+            console.log(result)
             resolve({
                 filePath: result.secure_url,
                 cloudinary_id: result.public_id,
                 tags: result.tags,
-                publicId: result.public_id
+                publicId: result.public_id,
+                createdAt:result.created_at
             })
         }, {
             resource_type: "auto",
             folder: folder,
-            tags: tags
         })
     })
 }

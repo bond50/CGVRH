@@ -77,19 +77,11 @@ const BlogRead = ({username}) => {
 
     return (
         <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-8">
                 <h3>Approved Blogs</h3>
                 {showAllBlogs()}
                 {message && <Alert msg={message} label='Success' type='success'/>}
             </div>
-
-
-            <div className="col-md-6">
-              <h3> Pending</h3>
-
-
-            </div>
-
         </div>
 
     );

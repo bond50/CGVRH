@@ -3,7 +3,8 @@ import Axios from 'axios'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
 
-const DownloadItem = ({ filePath, fileName, removeFile,_id}) => {
+const DownloadItem = ({ filePath, fileSize, removeFile,_id}) => {
+
 
     const [downloadInfo, setDownloadInfo] = useState({
         progress: 0,
@@ -30,7 +31,6 @@ const DownloadItem = ({ filePath, fileName, removeFile,_id}) => {
             responseType: "blob",
             ...options,
         }).then(function (response) {
-            console.log(response);
 
             const url = window.URL.createObjectURL(
                 new Blob([response.data], {
@@ -40,7 +40,7 @@ const DownloadItem = ({ filePath, fileName, removeFile,_id}) => {
 
             const link = document.createElement("a");
             link.href = url;
-            link.setAttribute("download", fileName);
+            link.setAttribute("download", _id);
             document.body.appendChild(link);
             link.click();
 
@@ -51,28 +51,25 @@ const DownloadItem = ({ filePath, fileName, removeFile,_id}) => {
 
             setTimeout(() => {
                 removeFile();
-            }, 4000);
+            }, 14000);
         });
     }, []);
 
-    const formatBytes = (bytes) => `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+    const formatBytes = (bytes) => `${(bytes / (1024 * 1024)).toFixed(2)}`;
     return (
         <li className="list-group-item">
             <div className="row">
-                <div className="col-12 d-flex">
+                <div className="col-12 ">
                     <div className="d-inline font-weight-bold text-truncate">{_id}</div>
                     <div className="d-inline mx-2">
                         <small>
                             {downloadInfo.loaded > 0 && (
-                                <>
-                                    <span className="text-success">{formatBytes(downloadInfo.loaded)}</span>
-                                    / {formatBytes(downloadInfo.total)}
-                                </>
+                                <span className="text-success">{formatBytes(downloadInfo.loaded)}/{fileSize})}</span>
                             )}
                             {downloadInfo.loaded === 0 && <>Initializing...</>}
                         </small>
                     </div>
-                    <div className="d-inline mx-1 ms-auto">
+                    <div className="d-inline ">
                         {downloadInfo.completed && (
                             <span className="text-success">Completed <i className="bi bi-check-circle"/></span>
                         )}

@@ -27,7 +27,10 @@ const DocumentUpload = () => {
                         handleMultipleFile={MultipleFileChange}
                         loading={loading}
                         handleChange={handleChange}
-                        title={title} btnClick={UploadMultipleFiles} error={error} successMessage={successMessage}/>
+                        title={title}
+                        btnClick={UploadMultipleFiles}
+                        error={error}
+                        successMessage={successMessage}/>
                 </div>
 
                 <SideCatTags categories={showCategories} tags={showTags}/>

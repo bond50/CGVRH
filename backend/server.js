@@ -18,10 +18,6 @@ const uploadRoute = require('./routes/fileUpload')
 const serviceRoutes = require('./routes/services')
 const serviceCategoryRoutes = require('./routes/service-category')
 const serviceTagRoutes = require('./routes/service-tag')
-
-const documentCategoryRoutes = require('./routes/document-category')
-const documentTagRoutes = require('./routes/document-tag')
-const documentRoutes = require('./routes/document')
 const searchRoutes = require('./routes/search')
 
 const ip = require("ip");
@@ -79,10 +75,8 @@ app.use('/api', uploadRoute);
 app.use('/api', serviceRoutes);
 app.use('/api', serviceTagRoutes);
 app.use('/api', serviceCategoryRoutes);
-app.use('/api', documentCategoryRoutes);
-app.use('/api', documentTagRoutes);
-app.use('/api', documentRoutes);
 app.use('/api', searchRoutes);
+
 
 
 process.on('uncaughtException', function (exception) {
@@ -94,9 +88,9 @@ process.on('uncaughtException', function (exception) {
 app.listen(port, `0.0.0.0`, () => {
 
     setTimeout(() => {
-        console.log(` Server listening at 
-           Local:            http://localhost:${port}
-           On Your Network:  http://${ip.address()}:${port}
+        console.log(`Your backend REST api endpoint is at
+           Local:            http://localhost:${port}/api
+           On Your Network:  http://${ip.address()}:${port}/api
         `
         )
     }, 1000);

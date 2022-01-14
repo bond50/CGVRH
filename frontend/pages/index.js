@@ -25,7 +25,7 @@ export default function Home() {
         comp = null
     }
 
-    console.log(services)
+
     return (
         <Fragment>
             <Toolbar/>
