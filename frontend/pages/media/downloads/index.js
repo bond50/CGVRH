@@ -18,7 +18,6 @@ export const getServerSideProps = async () => {
     if (data.error) {
       console.log(data.error);
     } else {
-        console.log(data)
       return {
         props: {
           files: data.files,

@@ -15,7 +15,7 @@ exports.fileTypes = (ext) => {
             "application/vnd.ms-excel.template.macroEnabled.12" ||
             "application/vnd.ms-excel.addin.macroEnabled.12" ||
             "application/vnd.ms-excel.sheet.binary.macroEnabled.12"):
-            return <i className="bi bi-file-earmark-excel"/>
+            return <img src="https://img.icons8.com/color/48/000000/ms-excel.png" alt={`ms-excel.png`}/>
         case 'application/pdf':
             return  <img src="https://img.icons8.com/color/48/000000/adobe-acrobat--v2.png" alt={`adobe-acrobat--v2.png`}/>
 
@@ -26,8 +26,8 @@ exports.fileTypes = (ext) => {
             "application/vnd.ms-powerpoint.addin.macroEnabled.12" ||
             "application/vnd.ms-powerpoint.presentation.macroEnabled.12" ||
             "application/vnd.ms-powerpoint.template.macroEnabled.12" ||
-            " application/vnd.ms-powerpoint.slideshow.macroEnabled.12"):
-            return <img src="https://img.icons8.com/color/48/000000/ms-powerpoint--v1.png" alt={`ms-powerpoint--v1.png`}/>
+            "application/vnd.ms-powerpoint.slideshow.macroEnabled.12"):
+            return <img src="https://img.icons8.com/color/48/000000/ms-excel.png" alt={`ms-excel.png`}/>
         default:
            return <img src="https://img.icons8.com/color/48/000000/ms-excel.png" alt={`ms-excel.png`}/>;
 
