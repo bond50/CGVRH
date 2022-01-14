@@ -6,6 +6,7 @@ const _ = require('lodash')
 const expressJwt = require('express-jwt')
 const {errorHandler} = require("../helpers/dbErrorHandler");
 const {OAuth2Client} = require('google-auth-library')
+const ip = require("ip");
 
 const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -30,6 +31,9 @@ exports.preSignup = (req, res) => {
             html: `
             <p>Please use the following link to activate your account:</p>
             <p>${process.env.CLIENT_URL}/auth/account/activate/${token}</p>
+           <br>
+           <p>IF THE ABOVE LINK IS BROCKEN USE THE LINK BELOW</p>
+           <p>http://${ip.address()}:3000/auth/account/activate/${token}</p>
             <hr />
             <p>This email may contain sensetive information</p>
             <p>https://vcrh.com</p>`

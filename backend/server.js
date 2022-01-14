@@ -1,5 +1,4 @@
 'use strict';
-
 const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
@@ -7,7 +6,8 @@ const cors = require('cors')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
-require('dotenv').config()
+const dotenv = require('dotenv');
+dotenv.config();
 const blogRoutes = require('./routes/blog')
 const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/user')
@@ -26,12 +26,12 @@ const app = express()
 
 //db
 mongoose.connect(process.env.DATABASE_URL, {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useFindAndModify: false,
-        useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
 
-    })
+})
     .then(() => {
         console.log('database connection established')
     }).catch((error) => console.log(error))
@@ -76,7 +76,6 @@ app.use('/api', serviceRoutes);
 app.use('/api', serviceTagRoutes);
 app.use('/api', serviceCategoryRoutes);
 app.use('/api', searchRoutes);
-
 
 
 process.on('uncaughtException', function (exception) {
