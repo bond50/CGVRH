@@ -193,7 +193,6 @@ exports.canUpdateDeleteBlog = (req, res, cb) => {
         }
         cb();
     });
-
 }
 
 exports.forgotPassword = (req, res) => {

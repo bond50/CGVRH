@@ -29,7 +29,6 @@ const useCreate = (localStorageItem, catEndpoint, tagEndpoint, pageEndpoint) => 
     const {data: categories, error: catError} = useFCT(catEndpoint)
     const {data: tags, error: tagError} = useFCT(tagEndpoint)
 
-
     useEffect(() => {
         let componentMounted = true;
         setValues({

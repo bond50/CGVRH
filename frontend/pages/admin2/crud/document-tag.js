@@ -1,0 +1,45 @@
+import React from 'react';
+
+import useTag from "../../../hooks/useTag";
+import Layout from "../../../hoc/admin/layout/layout";
+import Admin from "../../../components/auth/Admin";
+import TagCategoryForm from "../../../components/reusables/forms/TagCategoryForm";
+
+const Tag = () => {
+    const {
+        name,
+        handleChange,
+        formLabel,
+        clickSubmit,
+        mouseMoveHandler,
+        showSuccess,
+        showTags,
+        showError,
+        showRemoved
+    } = useTag('document-tags', 'document-tag', 'Document Tag')
+
+
+
+      const newTagFom = () => (
+        <TagCategoryForm
+            value={name}
+            handleChange={handleChange}
+            label={formLabel}
+            clickSubmit={clickSubmit}/>
+    );
+    return (
+         <Layout pageTitle='Manage Tags'>
+            <Admin>
+            {showSuccess()}
+            {showError()}
+            {showRemoved()}
+            <div onMouseMove={mouseMoveHandler}>
+                {newTagFom()}
+                {showTags()}
+            </div>
+            </Admin>
+         </Layout>
+    );
+};
+
+export default Tag;

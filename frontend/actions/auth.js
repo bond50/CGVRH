@@ -66,6 +66,7 @@ export const signin = (user) => {
 export const signout = (next) => {
     removeCookie("token");
     removeLocalStorage("user");
+    removeLocalStorage("loadedUser");
     next();
 
     return fetch(`${API}/signout`, {
@@ -119,6 +120,11 @@ export const authenticate = (data, next) => {
     next();
 };
 
+
+export const loadedUserByAdmin = (data, next) => {
+    setLocalStorage("loadedUser", data);
+};
+
 export const isAuth = () => {
     if (process.browser) {
         const cookieChecked = getCookie("token");
@@ -132,12 +138,41 @@ export const isAuth = () => {
     }
 };
 
-export const updateUser = (user, cb) => {
-    if (process.browser && localStorage.getItem("user")) {
-        localStorage.setItem("user", JSON.stringify(user));
-        cb();
+export const notIsAuth = () => {
+    if (process.browser) {
+        if (localStorage.getItem("loadedUser")) {
+            return JSON.parse(localStorage.getItem("loadedUser"));
+        } else {
+            return false;
+        }
+    }
+}
+
+export const updateUser =  (user, cb) => {
+    if (isAuth() && isAuth().role === 0) {
+        if (process.browser && localStorage.getItem("user")) {
+            localStorage.setItem("user", JSON.stringify(user));
+            cb();
+        }
+    }
+    if (isAuth() && isAuth().role === 1) {
+        if (process.browser && localStorage.getItem("loadedUser")) {
+             removeLocalStorage("loadedUser")
+            localStorage.setItem("loadedUser", JSON.stringify(user));
+            cb();
+        }
     }
 };
+
+export const updateByAdmin = async (user, cb) => {
+    if (process.browser && localStorage.getItem("loadedUser")) {
+        await removeLocalStorage("loadedUser")
+        await localStorage.setItem("loadedUser", JSON.stringify(user));
+        cb();
+    }
+
+}
+
 
 export const forgotPassword = email => {
     return fetch(`${API}/forgot-password`, {

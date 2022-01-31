@@ -11,7 +11,7 @@ const GuidingPrinciples = () => {
                     <div className={`card ${classes.Card}`} style={{
                         backgroundImage:
                             'url(' +
-                            'https://images.unsplash.com/photo-1536784263931-c9bf77120269?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzR8fCUyM21pc3Npb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' +
+                            '/values/image1.jpeg' +
                             ')'
                     }}>
                         <div className={`card-body ${classes.CardBody}`}>
@@ -26,7 +26,7 @@ const GuidingPrinciples = () => {
                     <div className={`card ${classes.Card}`} style={{
                         backgroundImage:
                             'url(' +
-                            'https://images.unsplash.com/photo-1532247993688-7eab533efeba?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fCUyM3Zpc2lvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' +
+                            '/values/image2.jpeg' +
                             ')'
                     }}>
                         <div className={`card-body ${classes.CardBody}`}>
@@ -42,7 +42,7 @@ const GuidingPrinciples = () => {
                     <div className={`card ${classes.Card}`} style={{
                         backgroundImage:
                             'url(' +
-                            'https://images.unsplash.com/photo-1617721950728-3290d9fbfc86?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGNvcmUlMjB2YWx1ZXN8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' +
+                            '/values/image3.jpeg' +
                             ')'
                     }}>
                         <div className={`card-body ${classes.CardBody}`}>

@@ -45,7 +45,7 @@ exports.create = (req, res) => {
                 error: 'At least one tag is required'
             });
         }
-
+              console.log('tags',tags)
         let blog = new Blog();
         blog.approved = false;
         blog.title = title;
@@ -58,6 +58,7 @@ exports.create = (req, res) => {
         // categories and tags
         let arrayOfCategories = categories && categories.split(',');
         let arrayOfTags = tags && tags.split(',');
+        console.log('array',arrayOfTags)
 
         if (files.photo) {
             if (files.photo.size > 10000000) {
@@ -76,6 +77,7 @@ exports.create = (req, res) => {
                 });
             }
             // res.json(result);
+            console.log(result)
             Blog.findByIdAndUpdate(result._id, {$push: {categories: arrayOfCategories}}, {new: true}).exec(
                 (err, result) => {
                     if (err) {
@@ -134,7 +136,7 @@ exports.listAllBlogsCategoriesTags = (req, res) => {
         .sort({createdAt: -1})
         .skip(skip)
         .limit(limit)
-        .select('_id title accepted slug excerpt  categories tags postedBy createdAt updatedAt')
+        .select('_id title accepted slug excerpt categories tags postedBy createdAt updatedAt')
         .exec((err, data) => {
             if (err) {
                 return res.json({

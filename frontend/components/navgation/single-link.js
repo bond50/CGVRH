@@ -2,6 +2,7 @@ import {Fragment} from "react";
 import Link from "next/link";
 
 const SingleLink = ({className, href, children, text, deepText, nested, clicked, mega}) => {
+
     let dropIcon = <i className="bi bi-chevron-down"/>
     if (nested) {
         dropIcon = <i className="bi bi-chevron-right"/>

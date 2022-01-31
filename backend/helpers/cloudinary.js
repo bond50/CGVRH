@@ -11,7 +11,6 @@ exports.cloudinaryUpload = (file, folder) => {
     return new Promise(resolve => {
         cloudinary.uploader.upload(file, (result) => {
 
-            console.log(result)
             resolve({
                 filePath: result.secure_url,
                 cloudinary_id: result.public_id,

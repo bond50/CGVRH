@@ -7,10 +7,10 @@ import Image from "next/image";
 const Strategic = () => {
     return (
         <section className={classes.Section}>
-            <div className= {`container `} >
-                <div className="row gx-0">
+            <div className= {`container ${classes.Container}`}  data-aos="fade-up" >
+                <div className="row gx-0"  data-aos="fade-up" >
                     <div className="col-lg-8 d-flex flex-column justify-content-center" >
-                        <div className={classes.Content}>
+                        <div className={classes.Content} >
                             <h3>Welcome to</h3>
                             <h2>Vihiga County Referral Hospital </h2>
                             <p>The Vihiga County Referral Hospital is in kenya,Vihiga County,along

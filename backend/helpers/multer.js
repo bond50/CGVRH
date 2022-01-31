@@ -17,10 +17,14 @@ const storage = multer.diskStorage({
     }
 });
 
-const ALLOWED_FORMATS = [
+
+const IMAGEFORMATS = [
     'image/jpeg',
     'image/png',
     'image/jpg',
+]
+
+const FILE_FORMATS = [
     'application/pdf',
     "application/msword",
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -33,8 +37,6 @@ const ALLOWED_FORMATS = [
     "application/vnd.ms-excel.sheet.macroEnabled.12",
     "application/vnd.ms-excel.template.macroEnabled.12",
     "application/vnd.ms-excel.addin.macroEnabled.12",
-    "application/vnd.ms-excel.sheet.binary.macroEnabled.12",
-    "application/vnd.ms-powerpoint",
     "application/vnd.openxmlformats-officedocument.presentationml.presentation",
     "application/vnd.openxmlformats-officedocument.presentationml.template",
     "application/vnd.openxmlformats-officedocument.presentationml.slideshow",
@@ -44,17 +46,33 @@ const ALLOWED_FORMATS = [
     "application/vnd.ms-powerpoint.slideshow.macroEnabled.12"
 ];
 
-const fileFilter = function (req, file, cb) {
-    if (ALLOWED_FORMATS.includes(file.mimetype)) {
+const imageFeFilter = function (req, file, cb) {
+    if (IMAGEFORMATS.includes(file.mimetype)) {
+        cb(null, true);
+    } else {
+        cb(new Error('Not supported file type!'), false);
+    }
+}
+const docFilter = function (req, file, cb) {
+    if (FILE_FORMATS.includes(file.mimetype)) {
         cb(null, true);
     } else {
         cb(new Error('Not supported file type!'), false);
     }
 }
 
-const upload = multer({storage, fileFilter})
+
+const uploadImages = multer({storage, fileFilter: imageFeFilter})
+const uploadFiles = multer({storage, fileFilter: docFilter})
 
 
-exports.multipleUploadCtrl = upload.array('files');
+exports.multipleImagesUploadCtrl = uploadImages.array('files')
 
-exports.singleUploadCtrl = upload.single('file');
+exports.multipleFilesUploadCtrl = uploadFiles.array('files');
+
+// exports.singleUploadCtrl = upload.single('file');
+
+
+
+
+

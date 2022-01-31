@@ -38,3 +38,13 @@ export const getDownloads = async () => {
         throw e
     }
 };
+
+
+export const getGallery = async () => {
+    try {
+        const {data} = await axios.get(`${API}/get-gallery`)
+        return data
+    } catch (e) {
+        throw e
+    }
+};

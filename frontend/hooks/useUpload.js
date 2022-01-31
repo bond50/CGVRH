@@ -1,32 +1,36 @@
-import React, {useState} from 'react';
-import axios from "axios";
+import React, {useEffect, useState} from 'react';
+import axiosInstance from "../axios/axios";
 import {API} from "../config";
+import useFCT from "./useFCT";
 
-const useUpload = (folder) => {
+
+const useUpload = (folder, tagEndpoint,url) => {
     const [multipleFiles, setMultipleFiles] = useState('');
-
+    const [checkedTag, setCheckedTag] = useState([]);
     const [values, setValues] = useState({
         successMessage: '',
         error: '',
         title: '',
-        files: '',
         loading: false
     })
 
+    const {data: loadedTags, error: tagError} = useFCT(tagEndpoint)
     const {successMessage, error, title, loading} = values
+
 
     const uploadMultipleFiles = () => {
         setValues({...values, loading: true, error: ''})
         const formData = new FormData();
         formData.append('title', title);
         formData.append('folder', folder)
+        formData.append('tags', checkedTag)
+
 
         for (const file of multipleFiles) {
             formData.append('files', file)
         }
 
-
-        axios.post(`${API}/files-upload`, formData)
+        axiosInstance.post(`/${url}`, formData)
             .then(response => {
                 setValues({
                     ...values,
@@ -37,9 +41,8 @@ const useUpload = (folder) => {
 
                 setTimeout(
                     function () {
-                           window.location.reload()
+                        window.location.reload()
                     },
-
                     3000
                 );
 
@@ -55,7 +58,6 @@ const useUpload = (folder) => {
                     setValues({...values, loading: false})
                 }
             });
-
     }
 
     const multipleFileChange = e => {
@@ -65,7 +67,32 @@ const useUpload = (folder) => {
         setValues({title: e.target.value})
     }
 
-    return {successMessage, folder, error, title, loading, uploadMultipleFiles, multipleFileChange, handleChange}
+
+    const handleTagsToggle = tag => {
+        const clickedTag = checkedTag.indexOf(tag);
+        const all = [...checkedTag];
+
+        if (clickedTag === -1) {
+            all.push(tag);
+        } else {
+            all.splice(clickedTag, 1);
+        }
+        setCheckedTag(all);
+    };
+
+
+    return {
+        successMessage,
+        folder,
+        error,
+        title,
+        loading,
+        loadedTags,
+        handleTagsToggle,
+        uploadMultipleFiles,
+        multipleFileChange,
+        handleChange
+    }
 };
 
 export default useUpload

@@ -23,6 +23,7 @@ exports.userSigninValidator = [
 ];
 
 
+
 exports.forgotPasswordValidator = [
     check('email')
         .not()

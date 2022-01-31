@@ -1,13 +1,16 @@
 import {userPublicProfile} from "../../actions/user";
 import Layout from "../../hoc/Layout";
 import Link from "next/link";
-import moment from "moment";
 import classes from '../../styles/Userprofile.module.css'
 import Head from "next/head";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import ContactForm from "../../components/form/ContactForm";
+import Image from "next/image";
+import React from "react";
+
 
 const Userprofile = ({user, blogs, query}) => {
+
     const head = () => (
         <Head>
             <title>
@@ -33,75 +36,98 @@ const Userprofile = ({user, blogs, query}) => {
 
 
     const showUserBlogs = () => {
-
         return blogs.map((blog, i) => {
             return (
-                <div className={classes.User} key={i}>
-                    <Link href={`/blogs/${blog.slug}`}>
-                        <a className="lead">{blog.title.toLowerCase()}</a>
-                    </Link>
+                <div className={`row ${classes.Row}`} key={i}>
+                    <div className="col-lg-3 col-md-4 ">
+                        <Link href={`/blogs/${blog.slug}`}>
+                            <a className="lead">{blog.title}</a>
+                        </Link>
+                    </div>
+                    <div className="col-lg-9 col-md-8">{user.name}</div>
                 </div>
+
             );
         });
     };
     return (
-        <>{head()}
+        <>
+            {head()}
             <Layout>
-                <div className="container pt-5">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="card">
-                                <div className="card-body">
-                                    <div className='row'>
-                                        <div className="col-md-8">
-                                            <h5>{user.name.toUpperCase()}</h5>
-                                            <p className="text-muted">Joined {moment(user.createdAt).fromNow()}</p>
-                                        </div>
-                                        <div className="col-md-4">
-                                            <img
-                                                src={`${API}/user/photo/${user.username}`}
-                                                className="img-fluid img-thumbnail mb-3"
-                                                style={{maxHeight: '100px', maxWidth: '100%'}}
-                                                alt="user profile"
-                                            />
+                <section className={classes.Profile}>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-xl-4">
+                                <div className={`card ${classes.Card} `}>
+                                    <div
+                                        className={`card-body ${classes.CardBody} pt-4 d-flex flex-column align-items-center`}>
+                                        <Image
+                                            width={256}
+                                            height={171}
+                                            src={`${API}/user/photo/${user.username}`}
+                                            alt={`Image for ${user.username}`}
+                                            className='img-thumbnail'
+                                        />
+                                        <h2>{user.name}</h2>
+                                        <h3>{user.designation ? user.designation : "Designation not available"}</h3>
+                                        <div className={`${classes.Links} mt-2`}>
+                                            {user.twitter &&
+                                                <Link href={user.twitter}>
+                                                    <a className="twitter"><i className="bi bi-twitter"/></a>
+                                                </Link>
+                                            }
+                                            {
+                                                user.facebook &&
+                                                <Link href={user.facebook}>
+                                                    <a className="facebook"><i className="bi bi-facebook"/></a>
+                                                </Link>
+
+                                            }
+                                            {
+                                                user.instagram &&
+                                                <Link href={user.instagram}>
+                                                    <a className="instagram"><i
+                                                        className="bi bi-instagram"/>
+                                                    </a>
+                                                </Link>
+                                            }
+                                            {user.linkedIn &&
+                                                <Link href={user.linkedIn}>
+                                                    <a className="linkedin"><i className="bi bi-linkedin"/></a>
+                                                </Link>
+
+                                            }
                                         </div>
                                     </div>
                                 </div>
+
+                            </div>
+                            <div className="col-xl-8">
+                                {blogs.length > 0 && <div className={`card ${classes.Card}`}>
+                                    <div className={`card-body ${classes.CardBody}`}>
+                                        <h5 className={classes.CardTitle}>Articles written
+                                            by <em><strong>{user.name}</strong></em></h5>
+                                        {showUserBlogs()}
+                                    </div>
+                                </div>}
+
+                                <ContactForm
+                                    authorEmail={user.email}
+                                    label={`Send a message to ${user.name}`}/>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <br/>
-
-                <div className="container pb-5">
-                    <div className="row">
-                        <div className="col-md-6">
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title bg-primary p-4 text-white">
-                                        Recent blogs by {user.name}
-                                    </h5>
-                                    {showUserBlogs()}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-md-6">
-                            <h5 className=" bg-primary p-4 text-light">
-                                Message {user.name}
-                            </h5>
-
-
-                            <ContactForm authorEmail={user.email}/>
-
-                        </div>
-                    </div>
-                </div>
-            </Layout></>
-    );
+                </section>
+            </Layout>
+        </>
+    )
+        ;
 };
-export const getServerSideProps = ({query}) => {
+export const getServerSideProps = (
+    {
+        query
+    }
+) => {
 
     return userPublicProfile(query.username).then(data => {
 

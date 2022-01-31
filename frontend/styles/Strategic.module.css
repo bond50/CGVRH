@@ -1,18 +1,19 @@
 .Section {
-     padding:60px 0 0 0;
+    padding: 60px  0;
     background: #ecf5ff;
     overflow: hidden;
     position: relative;
 }
 
-.Content {
-    /*background-color: #f6f9ff;*/
-
-}
-
-/*.container{*/
-/*    background-color: #ecf5ff;*/
+/*.Content {*/
+/*    background-color: #f6f9ff;*/
+/*    padding: 30px;*/
 /*}*/
+
+.Container{
+    background-color: #f6f9ff;
+      padding: 20px;
+}
 .Content h3 {
     font-size: 16px;
     font-weight: 700;
@@ -72,7 +73,7 @@
 
 .Img {
     padding: 20px 6px;
-    background: #ecf5ff;
+
 }
 
 .Img:hover {
@@ -101,10 +102,10 @@
     }
 }
 
-@media (max-width: 991px) {
-    .Animated {
-        -webkit-animation: none;
-        animation: none;
-    }
+/*@media (max-width: 991px) {*/
+/*    .Animated {*/
+/*        -webkit-animation: none;*/
+/*        animation: none;*/
+/*    }*/
 
-}
+/*}*/

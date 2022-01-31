@@ -1,9 +1,10 @@
 import {useState, useEffect} from 'react';
 
-const Alert = ({msg, type, label}) => {
+const Alert = ({msg, type, label, reload}) => {
     const [show, setShow] = useState(false);
 
     let xLinkHref
+
     if (type === 'danger' || type === 'warning') {
         xLinkHref = 'exclamation-triangle'
     } else if (type === 'info') {
@@ -16,9 +17,11 @@ const Alert = ({msg, type, label}) => {
     useEffect(() => {
         if (msg) {
             setShow(true);
-            setInterval(() => {
-                setShow(false);
-            }, 5000);
+            if (!reload) {
+                setInterval(() => {
+                    setShow(false);
+                }, 5000);
+            }
         }
     }, [msg]);
     return <>

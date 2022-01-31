@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const tagSchema = new mongoose.Schema(
     {
         name: {
@@ -16,5 +15,4 @@ const tagSchema = new mongoose.Schema(
     },
     { timestamps: true }
 );
-
 module.exports = mongoose.model('Tag', tagSchema);

@@ -19,19 +19,20 @@ const SideCatTags = ({handleChange, categories, tags, featuredServices}) => {
                 <div className='list-group list-group-flush'>{featuredServices()}</div>
             </div> : null}
 
-            <div className='mb-3'>
+            {categories && <div className='mb-3'>
                 <h5>Categories</h5>
                 <hr/>
                 <div style={{maxHeight: '200px', overflowY: 'auto'}}
                      className='list-group list-group-flush'>{categories()}</div>
-            </div>
-            <div>
+            </div>}
+            {tags && <div>
                 <h5>Tags</h5>
                 <hr/>
                 <div style={{maxHeight: '200px', overflowY: 'auto'}}
                      className='list-group list-group-flush'>{tags()}
                 </div>
             </div>
+            }
         </>
     )
 

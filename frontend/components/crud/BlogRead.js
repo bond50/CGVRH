@@ -41,6 +41,7 @@ const BlogRead = ({username}) => {
             deleteBlog(slug);
         }
     };
+
     const showUpdateButton = blog => {
         if (isAuth() && isAuth().role === 0) {
             return (

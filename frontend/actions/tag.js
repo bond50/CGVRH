@@ -44,7 +44,6 @@ export const getTags = (endPoint) => {
 
 export const singleTag = (slug, endpoint) => {
 
-
     return fetch(`${API}/${endpoint}/${slug}`, {
         method: 'GET'
     })

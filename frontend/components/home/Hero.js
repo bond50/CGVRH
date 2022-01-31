@@ -28,11 +28,11 @@ function ControlledCarousel({data}) {
                         <h2 className="animate__animated animate__fadeInDown">{d.title.toLowerCase()}</h2>
                         {renderHTML(d.excerpt)}
 
-                        {/*<Link href={`/services/${d.slug}`}>*/}
-                        {/*    <a className="btn-get-started">Read*/}
-                        {/*        More*/}
-                        {/*    </a>*/}
-                        {/*</Link>*/}
+                        <Link href={`/services/${d.slug}`}>
+                            <a className="btn-get-started">Read
+                                More
+                            </a>
+                        </Link>
                     </div>
                 </div>
             </Carousel.Item>

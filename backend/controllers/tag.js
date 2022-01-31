@@ -1,12 +1,12 @@
 const Tag = require('../models/tag');
 const Blog = require('../models/blog');
 const slugify = require('slugify');
-const { errorHandler } = require('../helpers/dbErrorHandler');
+const {errorHandler} = require('../helpers/dbErrorHandler');
 
 exports.create = (req, res) => {
-    const { name } = req.body;
+    const {name} = req.body;
     let slug = slugify(name).toLowerCase();
-    let tag = new Tag({ name, slug });
+    let tag = new Tag({name, slug});
     tag.save((err, data) => {
         if (err) {
             console.log(err);
@@ -14,9 +14,10 @@ exports.create = (req, res) => {
                 error: errorHandler(err)
             });
         }
-        res.json(data); // dont do this res.json({ tag: data });
-    });
+        res.json(data);
+    })
 };
+
 
 exports.list = (req, res) => {
     Tag.find({}).exec((err, data) => {
@@ -32,14 +33,14 @@ exports.list = (req, res) => {
 exports.read = (req, res) => {
     const slug = req.params.slug.toLowerCase();
 
-    Tag.findOne({ slug }).exec((err, tag) => {
+    Tag.findOne({slug}).exec((err, tag) => {
         if (err) {
             return res.status(400).json({
                 error: 'BlogTag not found'
             });
         }
         // res.json(tag);
-        Blog.find({ tags: tag })
+        Blog.find({tags: tag})
             .populate('categories', '_id name slug')
             .populate('tags', '_id name  slug')
             .populate('postedBy', '_id name username')
@@ -50,7 +51,7 @@ exports.read = (req, res) => {
                         error: errorHandler(err)
                     });
                 }
-                res.json({ tag: tag, blogs: data });
+                res.json({tag: tag, blogs: data});
             });
     });
 };
@@ -58,7 +59,7 @@ exports.read = (req, res) => {
 exports.remove = (req, res) => {
     const slug = req.params.slug.toLowerCase();
 
-    Tag.findOneAndRemove({ slug }).exec((err, data) => {
+    Tag.findOneAndRemove({slug}).exec((err, data) => {
         if (err) {
             return res.status(400).json({
                 error: errorHandler(err)

@@ -1,10 +1,12 @@
-import {YearsOperated} from "../years-operated/YearsOperated";
+import classes from './top.module.css'
+
+import {YearsOperated} from "../../years-operated/YearsOperated";
 
 
 const Top = () => (
 
 
-        <div id="topbar" className="d-flex align-items-center ">
+        <div className= {`d-flex align-items-center ${classes.TopBar}`}>
             <div className="container d-flex align-items-center justify-content-center justify-content-md-between">
                 <div className="d-flex align-items-center d-none d-md-flex">
                     <i className="bi bi-calendar2-check-fill "/><span><YearsOperated/> Years of Quality Service </span>

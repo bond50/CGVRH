@@ -22,7 +22,7 @@ const Slug = () => {
         title: '',
         error: '',
         success: '',
-        formData: '',
+        formData: process.browser && new FormData(),
         loading: false
     });
 
@@ -36,6 +36,7 @@ const Slug = () => {
         initBlog();
         initCategories();
         initTags();
+        setValues({...values, formData: new FormData()});
         return () => {
             isMounted = false;
         };
@@ -44,6 +45,7 @@ const Slug = () => {
 
     const initBlog = () => {
         if (router.query.slug) {
+            console.log(router.query.slug)
             singleBlog(router.query.slug).then(data => {
                 if (data.error) {
                     console.log(data.error);

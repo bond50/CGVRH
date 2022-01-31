@@ -1,5 +1,72 @@
-.User a{
-    text-transform: capitalize;
-    font-size: 15px;
+.Profile {
+    padding: 60px 0;
+    overflow: hidden;
+    background: #ecf5ff;
+}
 
+.Card {
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+    overflow: hidden;
+
+
+}
+
+.CardBody  img {
+    overflow: hidden;
+}
+
+.CardBody  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2c384e;
+    margin: 10px 0 0 0;
+}
+
+.CardBody  h3 {
+    font-size: 18px;
+}
+
+.CardBody {
+    padding: 0 20px 20px 20px
+}
+
+.Links a {
+    font-size: 20px;
+    display: inline-block;
+    color: rgba(1, 41, 112, 0.5);
+    line-height: 0;
+    margin-right: 10px;
+    transition: 0.3s;
+}
+
+.Links a:hover {
+    color: #012970;
+}
+
+
+.Row {
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.CardTitle {
+    color: #012970;
+    padding: 20px 0 15px 0;
+    font-size: 18px;
+    font-weight: 500;
+
+}
+
+.CardTitle span {
+    color: #899bbd;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.Label {
+    font-weight: 600;
+    color: rgba(1, 41, 112, 0.6);
 }

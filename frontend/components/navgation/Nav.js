@@ -51,7 +51,7 @@ const Nav = () => {
     };
 
 
-    let attachedClasses = [];
+    let attachedClasses = ['navbar order-last order-lg-0'];
 
     if (open) {
         attachedClasses = ['navbar-mobile', 'nav-open'];
@@ -61,8 +61,7 @@ const Nav = () => {
     const renderNavigationItems = () => {
         return lists.map((list, index) => {
                 if (list.component) {
-                    if (list.component.length >= 12) {
-
+                    if (list.component.length >= 32) {
                         const chunkedArray = chunkArray(list.component, 3)
                         const first = chunkedArray[0].map(el => <SingleMegaLink
                                 key={el._id}

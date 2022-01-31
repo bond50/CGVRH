@@ -86,7 +86,6 @@ const SignupComponent = () => {
                         placeholder="Type your password"
                     />
                 </div>
-
                 <div>
                     <button className="btn btn-primary">Signup</button>
                 </div>
@@ -97,7 +96,6 @@ const SignupComponent = () => {
     return (
         <AboutContainer title='Sign up'>
             {showLoading()}
-
             {showError()}
             {showMessage()}
             {showForm&&signupForm()}

@@ -19,22 +19,29 @@ const serviceRoutes = require('./routes/services')
 const serviceCategoryRoutes = require('./routes/service-category')
 const serviceTagRoutes = require('./routes/service-tag')
 const searchRoutes = require('./routes/search')
+const galleryTagRoutes = require('./routes/gallery-tag')
+const documentTagRoutes = require('./routes/document-tag')
+
 
 const ip = require("ip");
 const app = express()
 
 
 //db
-mongoose.connect(process.env.DATABASE_URL, {
+
+const options = {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
     useUnifiedTopology: true,
 
-})
+}
+mongoose.connect(process.env.DATABASE_URL, options)
     .then(() => {
         console.log('database connection established')
-    }).catch((error) => console.log(error))
+    })
+    .catch((error) => console.log(error))
+
 
 //middleware
 app.use(morgan('tiny'))
@@ -71,11 +78,13 @@ app.use('/api', tagRoutes);
 app.use('/api', userRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', formRoutes);
-app.use('/api', uploadRoute);
+app.use('/api', uploadRoute,);
 app.use('/api', serviceRoutes);
 app.use('/api', serviceTagRoutes);
 app.use('/api', serviceCategoryRoutes);
 app.use('/api', searchRoutes);
+app.use('/api', galleryTagRoutes);
+app.use('/api', documentTagRoutes);
 
 
 process.on('uncaughtException', function (exception) {

@@ -7,7 +7,7 @@ import {membersList} from "./Members";
 const Board = () => {
     const renderMember = () => {
         return membersList.map((m, i) => {
-            return <div className="col-lg-3 d-flex align-items-stretch" key={i}>
+            return <div className="col-lg-3 d-flex align-items-stretch justify-content-center" key={i}>
                 <div className={classes.Member} data-aos="fade-up" data-aos-once='true' data-aos-delay={m.delay}>
                     <div className={classes.MemberImg}>
                         <img src={m.src} className="img-thumbnail img-fluid" alt={`${m.name}'s photo`}/>
@@ -35,7 +35,7 @@ const Board = () => {
                 <p>Our health management team</p>
             </div>
 
-            <div className="row">
+            <div className="row" data-aos="fade-up" data-aos-delay='100'>
                 <p>VCRH is run by the Hospital Management Team under the leadership of the Medical Superintendent and
                     supervision by the Hospital Management Committee.
                 </p>

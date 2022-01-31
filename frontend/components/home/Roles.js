@@ -1,5 +1,6 @@
 import {Fragment} from "react";
 import classes from '../../styles/Roles.module.css'
+import styles from '../../styles/Util.module.css'
 
 const Roles = () => {
 
@@ -29,12 +30,12 @@ const Roles = () => {
     return (
 
         <section className={classes.Section}>
-            <div className="container ">
+            <div className="container "  data-aos='fade-up'>
 
-                {/*<div className={styles.SectionTitle} data-aos='zoom-out' data-aos-once='true'>*/}
-                {/*    <h2>Our roles</h2>*/}
-                {/*</div>*/}
-                <div className={`row ${classes.RowContent}`} data-aos='fade-up' data-aos-once='true'>
+                <div className={styles.SectionTitle} >
+                    <h2>Some of the roles we play </h2>
+                </div>
+                <div className={`row ${classes.RowContent}`} >
                     <div className="col-lg-6">
                         <p>VCRH plays its roles in the county by providing a wide range of health services in
                             partnership

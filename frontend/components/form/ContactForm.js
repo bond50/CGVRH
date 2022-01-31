@@ -4,7 +4,7 @@ import Alert from "../messages/Alert";
 import Button from "../reusables/ui/Button";
 import classes from '../../styles/Contact.module.css'
 
-const ContactForm = ({authorEmail}) => {
+const ContactForm = ({authorEmail,label}) => {
     const [values, setValues] = useState({
         message: '',
         name: '',
@@ -20,7 +20,7 @@ const ContactForm = ({authorEmail}) => {
     const clickSubmit = e => {
         e.preventDefault();
         setValues({...values, loading: true});
-        emailContactForm({authorEmail,name, email, message}).then(data => {
+        emailContactForm({authorEmail, name, email, message}).then(data => {
             if (data.error) {
                 setValues({...values, error: data.error, loading: false});
             } else {
@@ -92,9 +92,10 @@ const ContactForm = ({authorEmail}) => {
         </div>
     }
 
-    const contactForm = () => <div className='row mt-5 justify-content-center' data-aos="fade-up" data-aos-once='true'>
-        <div className="col-lg-10">
-            <form onSubmit={clickSubmit} className={classes.Contact}>
+    const contactForm = () => <div className={`row ${authorEmail?'mt-0':'mt-5'} justify-content-center`} data-aos="fade-up" data-aos-once='true'>
+        <div className={authorEmail?'':'col-lg-10'}>
+            <form onSubmit={clickSubmit} className={authorEmail ? null : classes.Contact}>
+                {label &&<label className="form-label">{label}</label>}
                 <div className="form-group mt-3">
                     <input
                         placeholder="Your Name"
@@ -140,7 +141,7 @@ const ContactForm = ({authorEmail}) => {
 
     return (
         <section className={classes.Contact}>
-            {!authorEmail&&topData()}
+            {!authorEmail && topData()}
             {contactForm()}
         </section>
 

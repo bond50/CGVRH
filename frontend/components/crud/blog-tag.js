@@ -1,9 +1,13 @@
 import React from 'react';
 import useTag from "../../hooks/useTag";
+import TagCategoryForm from "../reusables/forms/TagCategoryForm";
 
 const BlogTag = () => {
     const {
-        newTagFom,
+        name,
+        handleChange,
+        formLabel,
+        clickSubmit,
         mouseMoveHandler,
         showSuccess,
         showTags,
@@ -11,6 +15,14 @@ const BlogTag = () => {
         showRemoved
     } = useTag('tags', 'tag', 'Blog Tag')
 
+
+    const newTagFom = () => (
+        <TagCategoryForm
+            value={name}
+            handleChange={handleChange}
+            label={formLabel}
+            clickSubmit={clickSubmit}/>
+    );
     return (
         <React.Fragment>
             {showSuccess()}

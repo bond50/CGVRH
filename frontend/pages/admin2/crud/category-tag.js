@@ -8,7 +8,7 @@ const CategoryTag = () => {
   return (
     <Layout pageTitle='Manage categories and Tags'>
       <Admin>
-        <div className="container">
+        <div className="container-fluid">
           <div className="row">
             <div className="col-md-6">
               <BlogCategory />

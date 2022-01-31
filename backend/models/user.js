@@ -18,6 +18,29 @@ const userSchema = new mongoose.Schema(
             required: true,
             max: 32,
         },
+        designation: {
+            type: String,
+            max: 32,
+        },
+        address: {
+            type: String,
+        },
+        twitter: {
+            type: String,
+        },
+        facebook: {
+            type: String,
+        },
+        linkedIn: {
+            type: String,
+        },
+        instagram: {
+            type: String,
+        },
+        hmt: {
+            type: Boolean,
+            default: false,
+        },
         email: {
             type: String,
             trim: true,
@@ -50,7 +73,7 @@ const userSchema = new mongoose.Schema(
             default: '',
         },
     },
-    { timestamps: true }
+    {timestamps: true}
 )
 
 userSchema

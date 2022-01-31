@@ -60,7 +60,7 @@ const FeaturedServices = ({featured}) => {
         <section className={`${styles.section} `}>
             <div className="container">
                 <div className={styles.SectionTitle} data-aos="zoom-out" data-aos-once='true'>
-                    <h2>Featured Services</h2>
+                    <h2>Featured medical Services</h2>
                 </div>
 
                 <div className="row row-eq-height justify-content-center">

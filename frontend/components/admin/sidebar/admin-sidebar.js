@@ -4,6 +4,7 @@ import React from "react";
 import Accordion2 from "../../reusables/Accordion2";
 import {accordionFunction} from "../../reusables/functions/admin-accordion";
 import AdminSidebarLink from "../../reusables/ui/admin-Sidebar-link";
+import Admin from "../../auth/Admin";
 
 
 const AdminSidebar = ({closed}) => {
@@ -26,52 +27,68 @@ const AdminSidebar = ({closed}) => {
     ]
     const downloadList = [
         {title: 'Upload', slug: 'upload-files'},
+        {title: 'Tags', slug: 'document-tag'},
     ]
-  const galleryList = [
+    const galleryList = [
         {title: 'Upload', slug: 'upload-images'},
+        {title: 'Tags', slug: 'gallery-tag'},
+    ]
+
+
+    const userList = [
+        {title: 'Add new user', slug: 'users/user'},
+        {title: 'Manage existing users', slug: 'users'},
     ]
 
     return (
-        <aside className={attachedClasses.join(' ')}>
-            <ul className={classes.SidebarList}>
-                <li className={classes.NavHeading}>Dashboard</li>
-                <AdminSidebarLink
-                    title={'Admin home'}
-                    slug={''}
-                    icon={'house'}
-                />
-                <li
-                    className={classes.NavHeading}>Pages</li>
-                <AdminSidebarLink
-                    title={'Home page'}
-                    slug={''} icon={'grid'}/>
-                <Accordion2
-                    title='Blog'
-                    icon='journal-album'>
-                    <>
-                        {accordionFunction(blogList)}
-                    </>
-                </Accordion2>
-                {/*<Accordion2 title='Main site pages' icon='journal'>*/}
-                {/*    <>*/}
-                {/*        {accordionFunction(serviceList)}*/}
-                {/*    </>*/}
-                {/*</Accordion2>*/}
+        <Admin>
+            <aside className={attachedClasses.join(' ')}>
+                <ul className={classes.SidebarList}>
+                    <li className={classes.NavHeading}>Dashboard</li>
+                    <AdminSidebarLink
+                        title={'Admin home'}
+                        slug={''}
+                        icon={'house'}
+                    />
+                    <li
+                        className={classes.NavHeading}>Pages
+                    </li>
+                    <AdminSidebarLink
+                        title={'Home page'}
+                        slug={''} icon={'grid'}/>
+                    <Accordion2
+                        title='Blog'
+                        icon='journal-album'>
+                        <>
+                            {accordionFunction(blogList)}
+                        </>
+                    </Accordion2>
+                    {/*<Accordion2 title='Main site pages' icon='journal'>*/}
+                    {/*    <>*/}
+                    {/*        {accordionFunction(serviceList)}*/}
+                    {/*    </>*/}
+                    {/*</Accordion2>*/}
                     <li className={classes.NavHeading}>Media</li>
-                 <Accordion2 title='Downloads' icon='journal'>
-                    <>
-                        {accordionFunction(downloadList)}
-                    </>
-                </Accordion2>
-                <Accordion2 title='Gallery' icon='journal'>
-                    <>
-                        {accordionFunction(galleryList)}
-                    </>
-                </Accordion2>
-                <li className={classes.NavHeading}>Staff</li>
-               <AdminSidebarLink title='Manage users' icon='brief-case' slug=''/>
-            </ul>
-        </aside>
+                    <Accordion2 title='Downloads' icon='journal'>
+                        <>
+                            {accordionFunction(downloadList)}
+                        </>
+                    </Accordion2>
+                    <Accordion2 title='Gallery' icon='journal'>
+                        <>
+                            {accordionFunction(galleryList)}
+                        </>
+                    </Accordion2>
+                    <li className={classes.NavHeading}>Staff</li>
+
+                    <Accordion2 title='Users' icon='journal'>
+                        <>
+                            {accordionFunction(userList)}
+                        </>
+                    </Accordion2>
+                </ul>
+            </aside>
+        </Admin>
     )
 };
 

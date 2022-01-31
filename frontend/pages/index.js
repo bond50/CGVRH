@@ -8,6 +8,7 @@ import Toolbar from "../components/navgation/Toolbar";
 import {Fragment} from "react";
 import Hero from "../components/home/Hero";
 import Footer from "../components/footer/Footer";
+import CoreValues from "../components/home/CoreValues";
 
 
 export default function Home() {
@@ -15,10 +16,10 @@ export default function Home() {
     const {data: services, error: serviceError} = useSWR(`${API}/featured-services`)
     const {data: blogs, error: blogsError} = useSWR(`${API}/list-home-page-blogs`)
 
-    if ( blogsError) return <div className='container uh-oh mt-5 pt-5 '><p>uh oh something is
+    if (blogsError) return <div className='container uh-oh mt-5 pt-5 '><p>uh oh something is
         wrong..Please
         contact Vihiga county referral hospital ICT team for assistance.Thank you </p></div>
-    if (!blogs ) return <div className='preloader'/>
+    if (!blogs) return <div className='preloader'/>
 
     let comp = <Hero data={services}/>
     if (!services || services.length <= 0) {
@@ -33,8 +34,9 @@ export default function Home() {
             <main id='main'>
                 <Strategic/>
                 {!blogs || blogs.length <= 0 ? null : <LatestBlogs blogs={blogs}/>}
-                {/*<CoreValues/>*/}
+
                 {!services || services.length <= 0 ? null : <FeaturedServices featured={services}/>}
+                <CoreValues/>
                 <Roles/>
             </main>
             <Footer/>

@@ -95,14 +95,11 @@ export const list = (username) => {
 
 export const removeBlog = (slug, token) => {
     let deleteBlogEndpoint
-
     if (isAuth() && isAuth().role === 1) {
         deleteBlogEndpoint= `${API}/blog/${slug}`
-
     } else if (isAuth() && isAuth().role === 0) {
        deleteBlogEndpoint = `${API}/user/blog/${slug}`
     }
-
 
     return fetch(`${deleteBlogEndpoint}`, {
         method: 'DELETE',

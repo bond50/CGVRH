@@ -3,13 +3,12 @@ import useSWR from "swr";
 import {API} from "../config";
 import {fetcher} from "../components/reusables/functions/fetcher";
 
-const useFetchMedia = (payload) => {
+const useFetchMedia = () => {
     const [tag, setTag] = useState('all')
     const [activeTag, setActiveTag] = useState('')
     const {data, error} = useSWR(
         [
-            `${API}/get-all-multiple-files`,
-            JSON.stringify(payload),
+            `${API}/get-gallery`,
         ],
         fetcher,
         {
@@ -37,7 +36,7 @@ const useFetchMedia = (payload) => {
             setFilteredImages(data.filter(image => image.tag === tag))
             setActiveTag(tag)
         }
-    }, [tag,payload])
+    }, [tag])
 
 
     if (!data) {

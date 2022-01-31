@@ -1,28 +1,73 @@
 
-.Blogs {
+.Card {
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+    overflow: hidden;
     font-size: 14px;
 }
 
-.Blogs thead {
+.CardHeader, .CardFooter {
+    border-color: #ebeef4;
+    background-color: #fff;
+    color: #798eb3;
+    padding: 15px;
+}
+
+.CardTitle {
+    padding: 20px 0 15px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #106eea;
+    font-family: "Poppins", sans-serif;
+}
+
+.CardTitle span {
+    color: #899bbd;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.CardBody {
+    padding: 0 20px 20px 20px;
+}
+
+.CardImgOverlay {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.Card thead {
     background: #f6f6fe;
 }
 
-.Blogs th {
+.Card th {
     border: 0;
 }
 
-.Blogs a {
+.Card a {
     text-transform: capitalize;
 }
 
-.Blogs h6 {
-    text-transform: capitalize;
+.Card h6 {
+    text-transform: none;
     color: #555555;
     font-weight: 400;
-    font-size: 14px;
+
 }
-.EditBtn  {
+
+.EditBtn {
     cursor: pointer;
-
+    font-size: 10px!important;
+}
+.tr{
+    font-size: 16px;
+}
+.td {
+    display: flex;
 }
 
+.td span {
+    margin-right: 10px;
+    font-size: 18px;
+}

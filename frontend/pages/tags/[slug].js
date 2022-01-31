@@ -27,7 +27,6 @@ const Tag = ({tag, blogs, query}) => {
                   content={`https://res.cloudinary.com/dwtcilinl/image/upload/v1622297993/Gallery/yffhwkqackates3w0hte.png`}/>
             <meta property="og:image:type" content="image/png"/>
             <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
-
         </Head>
     );
 

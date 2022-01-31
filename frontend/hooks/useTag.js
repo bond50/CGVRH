@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {getCookie} from "../actions/auth";
 import {create, getTags, removeTag} from "../actions/tag";
 import TagCatButton from "../components/reusables/tag-cat-button";
-import TagCategoryForm from "../components/reusables/forms/TagCategoryForm";
 
 
 const useTag = (fetchAllEndpoint, singleEndpoint, formLabel) => {
@@ -13,8 +12,6 @@ const useTag = (fetchAllEndpoint, singleEndpoint, formLabel) => {
         tags: [],
         removed: false,
         reload: false
-
-
     });
 
     const {name, error, success, tags, removed, reload} = values;
@@ -48,7 +45,6 @@ const useTag = (fetchAllEndpoint, singleEndpoint, formLabel) => {
     };
 
     const deleteTag = slug => {
-
         removeTag(slug, token, singleEndpoint).then(data => {
             if (data.error) {
                 console.log(data.error);
@@ -57,9 +53,9 @@ const useTag = (fetchAllEndpoint, singleEndpoint, formLabel) => {
             }
         });
     };
+
     const clickSubmit = e => {
         e.preventDefault();
-
         create({name}, token, singleEndpoint).then(data => {
             if (data.error) {
                 setValues({...values, error: data.error, success: false});
@@ -69,7 +65,7 @@ const useTag = (fetchAllEndpoint, singleEndpoint, formLabel) => {
         });
     };
     const handleChange = e => {
-        setValues({...values, name: e.target.value, error: false, success: false, removed: ''});
+        setValues({...values, name: e.target.value, error: false, success: false, removed: false});
     };
 
     const showSuccess = () => {
@@ -91,18 +87,21 @@ const useTag = (fetchAllEndpoint, singleEndpoint, formLabel) => {
     };
 
     const mouseMoveHandler = e => {
-        setValues({...values, error: false, success: false, removed: ''});
+        setValues({...values, error: false, success: false, removed: false});
     };
 
-    const newTagFom = () => (
-        <TagCategoryForm
-            value={name}
-            handleChange={handleChange}
-            label={formLabel}
-            clickSubmit={clickSubmit}/>
-    );
 
-    return {newTagFom, mouseMoveHandler, showTags, showRemoved, showSuccess, showError}
+    return {
+        name,
+        handleChange,
+        formLabel,
+        clickSubmit,
+        mouseMoveHandler,
+        showTags,
+        showRemoved,
+        showSuccess,
+        showError
+    }
 };
 
 export default useTag

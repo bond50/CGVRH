@@ -1,0 +1,17 @@
+.TopBar {
+    /*background: #106eea;*/
+    background: rgba(44, 199, 62, 0.9);
+    color: #f1f6fd;
+    padding: 0;
+    height: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 996;
+    transition: all 0.5s;
+}
+
+
+.TopBar i {
+    padding-right: 6px;
+    line-height: 0;
+}

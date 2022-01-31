@@ -34,7 +34,7 @@
 
 
 .Card:hover .CardBody {
-    background: #ef6603;
+    background: #f4a024;
 }
 
 .Card:hover .ReadMore a, .Card:hover .CardTitle, .Card:hover .CardTitle a, .Card:hover .CardText {
