@@ -21,16 +21,17 @@ const Header = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [])
 
-    let navbarClasses = [` d-flex align-items-center justify-content-between ${classes.Header}`];
+    let navbarClasses = [`d-flex align-items-center justify-content-between ${classes.Header}`];
 
     if (scrolled) {
         navbarClasses.push(classes.Fixed);
+
     }
 
     return (
         <header className={navbarClasses.join(" ")}>
             <div className="container d-flex align-items-center justify-content-between">
-                <Logo/>
+                <Logo scrolled={scrolled}/>
                 <Nav/>
             </div>
         </header>

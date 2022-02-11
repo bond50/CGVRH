@@ -52,7 +52,6 @@ const Nav = () => {
     const renderNavigationItems = () => {
         return lists.map((list, index) => {
                 if (list.component) {
-                    console.log(list.reload)
 
                     return <SingleDropdown
                         deepText={list.caption}

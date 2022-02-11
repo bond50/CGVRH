@@ -1,4 +1,5 @@
 import {Fragment} from "react";
+import Link from "next/link";
 import classes from '../../styles/Roles.module.css'
 import styles from '../../styles/Util.module.css'
 
@@ -53,9 +54,9 @@ const Roles = () => {
                             technologists,nutritionists, health records and information officers</p>
                         <p>We also implement health policy at facility level and maintain quality standards and Provide
                             technical support to sub-county hospitals and health centers.</p>
-                        {/*<Link href={`/about/roles`}>*/}
-                        {/*    <a className={classes.Button}>Click to see more</a>*/}
-                        {/*</Link>*/}
+                        <Link href={`/about/roles`}>
+                            <a className={classes.Button}>Click to see more</a>
+                        </Link>
                     </div>
                 </div>
             </div>

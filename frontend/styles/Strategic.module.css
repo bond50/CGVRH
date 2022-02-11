@@ -1,19 +1,11 @@
 .Section {
-    padding: 60px  0;
-    background: #ecf5ff;
+    padding:60px 0;
+    background: #f6f9ff;
     overflow: hidden;
     position: relative;
 }
 
-/*.Content {*/
-/*    background-color: #f6f9ff;*/
-/*    padding: 30px;*/
-/*}*/
 
-.Container{
-    background-color: #f6f9ff;
-      padding: 20px;
-}
 .Content h3 {
     font-size: 16px;
     font-weight: 700;

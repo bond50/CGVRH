@@ -7,7 +7,7 @@ import Image from "next/image";
 const Strategic = () => {
     return (
         <section className={classes.Section}>
-            <div className= {`container ${classes.Container}`}  data-aos="fade-up" >
+            <div className= {`container`}  data-aos="fade-up" >
                 <div className="row gx-0"  data-aos="fade-up" >
                     <div className="col-lg-8 d-flex flex-column justify-content-center" >
                         <div className={classes.Content} >

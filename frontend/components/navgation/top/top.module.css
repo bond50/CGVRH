@@ -1,13 +1,10 @@
 .TopBar {
-    /*background: #106eea;*/
-    background: rgba(44, 199, 62, 0.9);
-    color: #f1f6fd;
-    padding: 0;
+    background: #106eea;
     height: 40px;
     font-size: 14px;
-    font-weight: 600;
-    z-index: 996;
     transition: all 0.5s;
+    color: #fff;
+    padding: 0;
 }
 
 
