@@ -1,25 +1,20 @@
-import SingleLink from "./single-link"
 import {aboutList, mediaList, servicesList,} from "./dropdown-links";
 import {useRouter} from "next/router";
 import SingleDropdown from "./single-dropdown";
-import SingleMegaLink from "./single-mega-link";
+
 import {useEffect, useState} from "react";
-import MegaMenu from "./mega-menu";
-import {chunkArray} from "../reusables/functions/array-chunk";
+
 import useSWR from "swr";
 import {API} from "../../config";
+import classes from '../../styles/Nav.module.css'
+import MenuItem from "./singe_link/menu-item";
 
 const Nav = () => {
     const router = useRouter();
     const [open, setOpen] = useState(false)
 
-    const [megaOpen, setMegaOpen] = useState(false)
-
-    const megaToggle = () => {
-        setMegaOpen(megaOpen => !megaOpen)
-    };
-
     const {data: services, error: serviceError} = useSWR(`${API}/list-service-names-slugs`)
+
     if (serviceError) {
         return <p className='uh-oh'>Failed to fetch medical services.</p>
     }
@@ -27,18 +22,14 @@ const Nav = () => {
         return <div className='preloader'/>
     }
 
-
-
-
-
     const lists = [
-        {to: '/', caption: 'Home'},
-        {caption: 'About', component: aboutList, to: "about"},
-        {caption: 'Services', component: servicesList, to: 'services'},
-        {caption: 'Medical services', component: services, to: 'services'},
-        {caption: 'Media', component: mediaList, to: 'media'},
-        {to: '/blogs/', caption: 'Blog',},
-        {to: '/contact/', caption: 'Contact',},
+        {to: '/', caption: 'Home',reload: false},
+        {caption: 'About', component: aboutList, to: "about",reload: false},
+        {caption: 'Services', component: servicesList, to: 'services',reload: false},
+        {caption: 'Medical services', component: services, to: 'services',reload: false},
+        {caption: 'Media', component: mediaList, to: 'media',reload: false},
+        {to: '/blogs/', caption: 'Blog', reload: true},
+        {to: '/contact/', caption: 'Contact',reload: false},
     ]
 
 
@@ -51,64 +42,24 @@ const Nav = () => {
     };
 
 
-    let attachedClasses = ['navbar order-last order-lg-0'];
+    let attachedClasses = [`navbar ${classes.Navbar}order-last order-lg-0`];
 
     if (open) {
-        attachedClasses = ['navbar-mobile', 'nav-open'];
+        attachedClasses = [classes.NavbarMobile, classes.NavOpen];
     }
 
 
     const renderNavigationItems = () => {
         return lists.map((list, index) => {
                 if (list.component) {
-                    if (list.component.length >= 32) {
-                        const chunkedArray = chunkArray(list.component, 3)
-                        const first = chunkedArray[0].map(el => <SingleMegaLink
-                                key={el._id}
-                                clicked={closeMobile}
-                                href={`/${list.to}/${el.slug}`}
-                                title={el.title}
-                            />
-                        )
-                        const second = chunkedArray[1].map(el => <SingleMegaLink
-                                key={el._id}
-                                clicked={closeMobile}
-                                href={`/${list.to}/${el.slug}`}
-                                title={el.title}
-                            />
-                        )
-                        const third = chunkedArray[2].map(el => <SingleMegaLink
-                            key={el._id}
-                            clicked={closeMobile}
-                            href={`/${list.to}/${el.slug}`}
-                            title={el.title}
-                        />)
+                    console.log(list.reload)
 
-                        return <MegaMenu deepText={list.caption} key={index} megaOpen={megaOpen} megaToggle={megaToggle}>
-                            <div className={`col-lg-4 mega-links `}>
-                                <ul>
-                                    {third}
-                                </ul>
-                            </div>
-
-                            <div className={`col-lg-4 mega-links `}>
-                                <ul>
-                                    {second}
-                                </ul>
-                            </div>
-                            <div className={`col-lg-4 mega-links `}>
-                                <ul>
-                                    {first}
-                                </ul>
-                            </div>
-                        </MegaMenu>
-
-                    }
                     return <SingleDropdown
                         deepText={list.caption}
+                        reload={list.reload}
                         key={index}>
-                        {list.component.map((lis, i) => {
-                                return <SingleLink
+                        {list.component.map(lis => {
+                                return <MenuItem
                                     key={lis._id}
                                     text={lis.title}
                                     href={`/${list.to}/${lis.slug}`}
@@ -117,8 +68,9 @@ const Nav = () => {
                         )}
                     </SingleDropdown>
 
+
                 } else {
-                    return <SingleLink
+                    return <MenuItem
                         key={index}
                         text={list.caption}
                         href={list.to}
@@ -131,10 +83,10 @@ const Nav = () => {
 
     return (
         <nav className={`${attachedClasses.join(' ')}`}>
-            <ul className='menu-items'>
+            <ul className={classes.MenuItems}>
                 {renderNavigationItems()}
             </ul>
-            <i className={`${open ? 'bi bi-x' : 'bi bi-list'} mobile-nav-toggle`} onClick={MobileToggle}/>
+            <i className={`${open ? 'bi bi-x' : 'bi bi-list'} ${classes.MobileNavToggle}`} onClick={MobileToggle}/>
         </nav>
     );
 };

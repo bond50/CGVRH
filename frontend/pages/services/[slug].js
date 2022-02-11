@@ -27,19 +27,13 @@ const Slug = ({service, query}) => {
     );
 
 
-    if (!services) {
-        return <div className='preloader'/>
-    }
-    if (serviceError) {
-        return <div>failed to load </div>
-    }
-
     function showAllServices() {
-        return services && services.map(service => {
+        return  services.map(service => {
             return <li key={service._id}>
                 <Link href={`/services/${service.slug}`}>
                     <a className="list-group-item list-group-item-action">{service.title}</a>
-                </Link></li>
+                </Link>
+            </li>
         })
 
     }
@@ -74,24 +68,25 @@ const Slug = ({service, query}) => {
             <Layout>
                 <main>
                     <GeneralPageWrapper
-                        imgSrc={`${API}/service/photo/${service.slug}`}
-                        title={service.title}
-                        alt={service.title}>
-
-                        <div className="container" data-aos="fade-up" data-aos-once='true'>
+                        title={service.title}>
+                        <div className="container" >
                             <div className="row">
-                                 <div className="col-lg-8 order-lg-5 order-md-first ">
+                                <div className="col-lg-8 order-lg-5 order-md-first px-0" style={{background: '#fff'}}>
                                     {showPage()}
                                 </div>
                                 <div className="col-lg-4 order-lg-1 order-md-last ">
                                     <div className={classes.SideBar}>
                                         <div className={`card ${classes.card}`}>
-                                            <div className={`card-header ${classes.cardHeader}`}>
-                                                <h4>All services and Patient Care</h4>
-                                            </div>
-                                            <ul className="list-group list-group-flush ">
-                                                {showAllServices()}
-                                            </ul>
+                                            {!services ? <p>loading</p> :
+                                                <Fragment>
+                                                    <div className={`card-header ${classes.cardHeader}`}>
+                                                        <h4>All services and Patient Care</h4>
+                                                    </div>
+                                                    <ul className="list-group list-group-flush ">
+                                                        {showAllServices()}
+                                                    </ul>
+                                                </Fragment>
+                                            }
                                         </div>
                                     </div>
                                 </div>

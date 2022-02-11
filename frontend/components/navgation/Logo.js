@@ -4,8 +4,6 @@ import classes from '../../styles/Logo.module.css'
 import React from "react";
 
 const Logo = ({textLogo}) => {
-
-
     return <div className={classes.Logo}>
         {textLogo ? <Link href={`/`}>
                 <h1 className="text-light"><a><span>Home</span></a></h1>
@@ -14,8 +12,8 @@ const Logo = ({textLogo}) => {
                 <a>
                     <Image
                         className="img-fluid"
-                        width={90}
-                        height={50}
+                        width={96}
+                        height={54}
                         src={`/logo/logo.png`}
                         alt={'logo'}
                     />

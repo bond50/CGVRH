@@ -1,7 +1,6 @@
 .Entry {
     padding: 30px;
     margin-bottom: 60px;
-    background-color: #fff;
     color: #111111;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
@@ -35,7 +34,10 @@
 }
 
 .Title a {
+    color: #294a70;
+    letter-spacing: 1px;
     transition: 0.3s;
+    text-transform: capitalize;
 }
 
 
@@ -80,7 +82,7 @@
 
 .Content p {
     line-height: 26px;
-    color: #111;
+    color: #7b829c;
 }
 
 .Content .ReadMore {

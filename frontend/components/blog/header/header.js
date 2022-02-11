@@ -4,8 +4,21 @@ import Search from "../Search";
 import Image from "next/image";
 import React from "react";
 import BlogMegaWrapper from "./blog-mega-wrapper";
+import Logo from "../../navgation/Logo";
+import SignUp from "../../navgation/Toolbar/Navigationitems/SignUp";
+import SignOut from "../../navgation/Toolbar/Navigationitems/Signout";
+import Signout from "../../navgation/Toolbar/Navigationitems/Signout";
+import useToggle from "../../../hooks/useToggle";
 
 const Header = ({categories}) => {
+
+    const [closed, toggleClosed] = useToggle();
+
+    let attachedClasses = [classes.Navbar];
+
+    if (closed) {
+        attachedClasses = [classes.Navbar,classes.MobileMenu];
+    }
 
     function showBlogMegaWrapper() {
         return categories.map(cat => {
@@ -20,38 +33,29 @@ const Header = ({categories}) => {
         categories.length > 0 && < >
 
             {/*<div className='container'>*/}
-            {/*    <div className={`${classes.Logo} me-auto`}>*/
-            }
-            {/*        <a href="index.html"><img src="/logo/logo.png" alt="" className="img-fluid"/></a>*/
-            }
-            {/*        <div className={`${classes.Header} me-auto `}>*/
-            }
-            {/*            <h1>Vihiga County Referral Hospital</h1>*/
-            }
-            {/*            <p>We take care of your precious health</p>*/
-            }
-            {/*        </div>*/
-            }
-            {/*        <Search/>*/
-            }
-            {/*    </div>*/
-            }
+            {/*   <div className={`${classes.Logo} me-auto`}>*/}
+            {/*        <a href="index.html"><img src="/logo/logo.png" alt="" className="img-fluid"/></a>*/}
+            {/*        <div className={`${classes.Header} me-auto `}>*/}
+            {/*            <h1>Vihiga County Referral Hospital</h1>*/}
+            {/*            <p>We take care of your precious health</p>*/}
+            {/*        </div>*/}
+            {/*        <Search/>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
 
-            {/*</div>*/
-            }
-
+            <div className=' container d-flex align-items-center me-auto'>
+                <Link href={`/user/crud/blog`}>Write a blog</Link>
+                <Signout/>
+            </div>
             <div className={`d-flex align-items-center  ${classes.Topbar}`}>
                 <div className="container d-flex align-items-center justify-content-center justify-content-between">
-                    <div className="align-items-center d-flex ">
-                        <Link href={`/`}>
-                            <a><Image src="/logo/logo.png" width={160} height={90} alt="" className="img-fluid"/></a>
-                        </Link>
-                    </div>
+                    <Logo/>
                     <Search/>
                 </div>
             </div>
 
-            <nav className={`${classes.Navbar}  `}>
+
+            <nav className={attachedClasses}>
                 <div className='container'>
                     <ul className={` ${classes.Menu} `}>
                         <li className={classes.MenuItem}>
@@ -61,7 +65,7 @@ const Header = ({categories}) => {
                         </li>
                         {showBlogMegaWrapper()}
                     </ul>
-                    <i className={`bi bi-list ${classes.MobileMenu}`}/>
+                    <i className={`${open ? 'bi bi-x' : 'bi bi-list'} mobile-nav-toggle`} onClick={toggleClosed}/>
                 </div>
             </nav>
 

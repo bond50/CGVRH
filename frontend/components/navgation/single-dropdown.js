@@ -1,8 +1,9 @@
-import SingleLink from "./single-link";
+import SingleLink from "./singe_link/single-link";
 import {useState, useEffect, useRef} from "react";
+import MenuItem from "./singe_link/menu-item";
 
 
-const SingleDropdown = ({children, nested, deepText,activeClassName,href}) => {
+const SingleDropdown = ({children, nested, deepText, activeClassName,reload, href}) => {
     const [open, setOpen] = useState(false)
     const toggleDropdown = () => {
         setOpen((open) => !open)
@@ -15,15 +16,17 @@ const SingleDropdown = ({children, nested, deepText,activeClassName,href}) => {
     // }, []);
 
     return (
-        <SingleLink
+        <MenuItem
             deepText={deepText}
             className={activeClassName}
             nested={nested}
+            href={''}
+            reload={reload}
             clicked={toggleDropdown}>
-             <ul className={`dropdown-menu ${open ? 'dropdown-active' : ''}`}>
+            <ul className={`dropdown-menu ${open ? 'dropdown-active' : ''}`}>
                 {children}
             </ul>
-        </SingleLink>
+        </MenuItem>
     );
 };
 

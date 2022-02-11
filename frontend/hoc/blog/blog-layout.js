@@ -31,7 +31,6 @@ const Layout = ({children}) => {
         data.length > 0 ? <>
             <Header categories={data}/>
             <main>
-
                 {children}
             </main>
             <Footer/>

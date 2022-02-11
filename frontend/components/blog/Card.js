@@ -16,7 +16,6 @@ const Card = ({blog, single, servicePage}) => {
     }
 
 
-
     const showBlogTags = () =>
         blog.tags.map((t, i) => {
             let tagsLink = `/tags/${t.slug}`
@@ -62,7 +61,7 @@ const Card = ({blog, single, servicePage}) => {
     }
 
     return (
-        <article  className={attachedClass}>
+        <article className={attachedClass}>
             <Fragment>
                 <div className={classes.Image}>
                     <Image
@@ -75,11 +74,13 @@ const Card = ({blog, single, servicePage}) => {
                     />
                 </div>
                 <h2 className={classes.Title}>
-                    <Link href={`/blogs/${blog.slug}`}>
+
+                    <Link href={single ? '' : `/blogs/${blog.slug}`}>
                         <a>
                             {blog.title.toLowerCase()}
                         </a>
                     </Link>
+
                 </h2>
             </Fragment>
 
@@ -113,7 +114,7 @@ const Card = ({blog, single, servicePage}) => {
                 </>}
                 {single && <>
                     {renderHTML(blog.body)}
-                    {!servicePage&&<div className={classes.Footer}>
+                    {!servicePage && <div className={classes.Footer}>
                         <i className="bi bi-folder"/>
                         <ul className={classes.Cats}>
                             {showCats()}

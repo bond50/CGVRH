@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import SingleLink from "./single-link";
+import SingleLink from "./singe_link/single-link";
 
 const MegaMenu = ({children, deepText, activeClassName,megaToggle,megaOpen}) => {
 

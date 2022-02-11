@@ -1,17 +1,17 @@
 .Header {
-    background: #fff;
-  transition: all 0.5s;
-  z-index: 997;
-  height: 86px;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    background: #ecf5ff;
+    transition: all 0.5s;
+    z-index: 997;
+    height: 86px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 .Fixed {
-    height: 86px;
+    position: fixed;
+    height: 70px;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
 }
 
-@media screen  and (max-width: 991px ) {
-    .DesktopOnly {
-        display: none;
-    }
-}

@@ -98,8 +98,6 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, categories, router}) =>
             {head()}
             <Layout>
                 <main>
-
-
                     <div className="container mt-2">
                         <div className='row'>
                             {showAllBlogs()}

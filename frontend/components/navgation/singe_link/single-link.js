@@ -1,5 +1,6 @@
 import {Fragment} from "react";
 import Link from "next/link";
+import classes from './single-link.module.css'
 
 const SingleLink = ({className, href, children, text, deepText, nested, clicked, mega}) => {
 
@@ -11,7 +12,7 @@ const SingleLink = ({className, href, children, text, deepText, nested, clicked,
 
     if (deepText) {
         return (
-            <li className={`${mega ? 'mega-dropdown' : 'dropdown'}`} onClick={clicked}>
+            <li className={`dropdown`} onClick={clicked}>
                 <Link href={'#'}>
                     <a className={`menu-item nav-item ${className}`}>
                         {deepText ?

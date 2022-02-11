@@ -28,7 +28,7 @@ const PendingPosts = () => {
             return <Alert msg={error} label='Danger' type='danger'/>
         }
 
-        return  <CardDetail title='Pending Blogs' spanText={'Needs to be approved'}>
+        return blogs.length > 0 && <CardDetail title='Pending Blogs' spanText={'Needs to be approved'}>
             {blogs.map(blog => {
                 return <DynamicTableRows
                     key={blog._id}
