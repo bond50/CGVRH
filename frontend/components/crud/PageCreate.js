@@ -1,27 +1,24 @@
+
 import useCreate from "../../hooks/useCreate";
 import CreateForm from "../reusables/forms/CreateForm";
 import Alert from "../messages/Alert";
-import Image from "next/image";
-import {API} from "../../config";
 import SideCatTags from "../reusables/forms/side-cat-tags";
 import React from "react";
-
-
-const CreateBlog = () => {
+const PageCreate = () => {
     const {
         showCategories,
-        showTags,
         handleBody,
         handleChange,
         publish,
+        getFeaturedServices,
         error,
         success,
         title,
         body
-    } = useCreate('blog', 'categories', 'tags', 'blog')
+    } = useCreate('page', 'page-cats', null, 'page')
 
     return (
-        <div className='row'>
+         <div className='row'>
             <div className="col-md-8">
                 <CreateForm
                     handleChange={handleChange('title')}
@@ -38,7 +35,6 @@ const CreateBlog = () => {
             </div>
             <div className="col-md-4">
                 <SideCatTags
-                    tags={showTags}
                     categories={showCategories}
                     handleChange={handleChange}/>
             </div>
@@ -46,4 +42,4 @@ const CreateBlog = () => {
     );
 };
 
-export default CreateBlog
+export default PageCreate;

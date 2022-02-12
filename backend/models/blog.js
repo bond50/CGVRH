@@ -14,6 +14,10 @@ const blogSchema = new mongoose.Schema(
             type: Boolean,
             default: false,
         },
+        featured: {
+            type: Boolean,
+            default: false,
+        },
         slug: {
             type: String,
             unique: true,

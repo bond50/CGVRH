@@ -4,7 +4,7 @@ import MyModal from "../../reusables/ui/modal";
 import Alert from "../../messages/Alert";
 import useARP from "../../../hooks/useARP";
 
-const ApprovedPosts = () => {
+const ApprovedPages = () => {
     const {
         mouseMoveHandler,
         deleteBlog,
@@ -16,7 +16,7 @@ const ApprovedPosts = () => {
         removed,
         blogs,
         message
-    } = useARP('/blogs')
+    } = useARP('/general')
 
     function showBlogs() {
         if (loading) {
@@ -28,12 +28,12 @@ const ApprovedPosts = () => {
             return <Alert msg={error} label='Danger' type='danger'/>
         }
 
-        return blogs.length > 0 && <CardDetail title='Approved Blogs' spanText={'Active articles'}>
+        return blogs.length > 0 && <CardDetail title='Approved Pages' spanText={'active pages'}>
             {blogs.map(blog => {
                 return <DynamicTableRows
                     key={blog._id}
                     blog={blog}
-                      to={`/admin2/crud/${blog.slug}`}
+                    to={`/admin2/crud/gen-page/${blog.slug}`}
                     showModal={handleShow}/>
             })}
         </CardDetail>
@@ -56,4 +56,4 @@ const ApprovedPosts = () => {
     );
 };
 
-export default ApprovedPosts;
+export default ApprovedPages;

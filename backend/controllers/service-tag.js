@@ -2,7 +2,7 @@ const slugify = require("slugify");
 const ServiceTag = require("../models/serviceTag");
 const {errorHandler} = require("../helpers/dbErrorHandler");
 
-const Services = require("../models/services");
+const Services = require("../models/pages");
 
 
 exports.create = (req, res) => {

@@ -7,24 +7,22 @@ import Alert from "../messages/Alert";
 import CreateForm from "../reusables/forms/CreateForm";
 
 
-const BlogUpdate = ({
-                        handleChange,
-                        handleBody,
-                        body,
-                        title,
-                        editBlog,
-                        error,
-                        isFeatured,
-                        featuredChanged,
-                        success,
-                        showTags,
-                        showCategories,
-                        changed,
-                        isToggled
+const Page = ({
+                  handleChange,
+                  handleBody,
+                  body,
+                  title,
+                  editBlog,
+                  isFeatured,
+                  featuredChanged,
+                  error,
+                  success,
+                  showCategories,
+                  changed,
+                  isToggled
 
-                    }) => {
+              }) => {
     const router = useRouter()
-
 
     return (
         <div className='row'>
@@ -39,8 +37,9 @@ const BlogUpdate = ({
                                 checked={isToggled}
                                 onChange={changed}
                                 id="flexSwitchCheckDefault"/>
-                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Accept</label>
+                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Accept </label>
                         </div>
+
                         <div className="form-check form-switch">
                             <input
                                 className="form-check-input"
@@ -66,12 +65,11 @@ const BlogUpdate = ({
                     <Alert msg={success} label='Success' type='success'/>
                 </div>
                 {body && (
-                    <Image src={`${API}/blog/photo/${router.query.slug}`} alt={title} width={800} height={500}/>
+                    <Image src={`${API}/general/photo/${router.query.slug}`} alt={title} width={800} height={500}/>
                 )}
             </div>
             <div className="col-md-4">
                 <SideCatTags
-                    tags={showTags}
                     categories={showCategories}
                     handleChange={handleChange}/>
             </div>
@@ -81,4 +79,4 @@ const BlogUpdate = ({
     );
 };
 
-export default BlogUpdate;
+export default Page;

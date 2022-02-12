@@ -24,9 +24,9 @@ export const BlogMegaWrapper = ({categoryName, slug}) => {
         <li className={classes.MenuItem} onClick={toggleClosed}>
             <a className={`${classes.Link} ${classes.HasDropdown}`}>
                 <span>{categoryName}</span>
-                {blogs.length>0 && <i className={closed ? `bi bi-chevron-up` : `bi bi-chevron-down`}/>}
+                {blogs.length > 0 && <i className={closed ? `bi bi-chevron-up` : `bi bi-chevron-down`}/>}
             </a>
-            {blogs.length>0 && <div className={attachedClasses.join(' ')}>
+            {blogs.length > 0 && <div className={attachedClasses.join(' ')}>
                 <ul className={classes.ContainerList}>
                     <BlogLists blogs={blogs}/>
                 </ul>

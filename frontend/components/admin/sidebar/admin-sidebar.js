@@ -20,10 +20,9 @@ const AdminSidebar = ({closed}) => {
         {title: 'Update/delete a blog', slug: 'blogs'},
     ]
     const serviceList = [
-        {title: 'Categories', slug: 'page-category-tag'},
-        {title: 'Tags', slug: 'page-category-tag'},
-        {title: 'Create  page', slug: 'gen-page/service'},
-        {title: 'Update/delete a page', slug: 'generated-page'},
+        {title: 'Categories', slug: 'gen-page/page-category'},
+        {title: 'Create  page', slug: 'gen-page/'},
+        {title: 'Update/delete a page', slug: 'dynamic-pages'},
     ]
     const downloadList = [
         {title: 'Upload', slug: 'upload-files'},
@@ -63,11 +62,11 @@ const AdminSidebar = ({closed}) => {
                             {accordionFunction(blogList)}
                         </>
                     </Accordion2>
-                    {/*<Accordion2 title='Main site pages' icon='journal'>*/}
-                    {/*    <>*/}
-                    {/*        {accordionFunction(serviceList)}*/}
-                    {/*    </>*/}
-                    {/*</Accordion2>*/}
+                    <Accordion2 title='Pages' icon='journal'>
+                        <>
+                            {accordionFunction(serviceList)}
+                        </>
+                    </Accordion2>
                     <li className={classes.NavHeading}>Media</li>
                     <Accordion2 title='Downloads' icon='journal'>
                         <>

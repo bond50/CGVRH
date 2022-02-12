@@ -1,32 +1,46 @@
-import SingleLink from "./singe_link/single-link";
-import {useState, useEffect, useRef} from "react";
-import MenuItem from "./singe_link/menu-item";
+import useToggle from "../../hooks/useToggle";
+import MyLink from "./myLink";
+import {useEffect, useState} from "react";
+import {singleCategory} from "../../actions/category";
+
+const SingleDropdown = ({ caption, activeClassName, href, slug}) => {
+    const [closed, toggleClosed] = useToggle();
+    const [loadedPages, setLoadedPages] = useState([])
 
 
-const SingleDropdown = ({children, nested, deepText, activeClassName,reload, href}) => {
-    const [open, setOpen] = useState(false)
-    const toggleDropdown = () => {
-        setOpen((open) => !open)
-    };
-    // let dropRef = useRef([]);
-    //
-    // useEffect(() => {
-    //     console.log(dropRef.current.focus())
-    //     // setOpen(dropRef.current.children[0]);
-    // }, []);
+    useEffect(() => {
+            singleCategory(slug, 'page-cat-name').then(res => {
+                setLoadedPages(res.pages)
+            })
+        }
+        ,
+        [slug])
+
+    const showLoadedPages = () => {
+        return loadedPages.map(pg => {
+            return <MyLink key={pg._id} to={`/general/${pg.slug}`} caption={pg.title}/>
+        })
+
+    }
+    if (loadedPages.length < 1) {
+        return null
+    }
+
+    if (loadedPages.length === 1) {
+        return showLoadedPages()
+    }
 
     return (
-        <MenuItem
-            deepText={deepText}
-            className={activeClassName}
-            nested={nested}
-            href={''}
-            reload={reload}
-            clicked={toggleDropdown}>
-            <ul className={`dropdown-menu ${open ? 'dropdown-active' : ''}`}>
-                {children}
+        <li className={`dropdown`} onClick={toggleClosed}>
+            <a href={'#'}
+            >
+                <span>{caption} </span> <i
+                className="bi bi-chevron-down"/>
+            </a>
+            <ul className={`${closed ? 'dropdown-active' : null}`}>
+                {showLoadedPages()}
             </ul>
-        </MenuItem>
+        </li>
     );
 };
 

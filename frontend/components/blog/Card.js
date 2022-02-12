@@ -5,9 +5,11 @@ import renderHTML from 'react-render-html';
 import moment from 'moment';
 import {API} from '../../config';
 import classes from '../../styles/BlogCard.module.css'
+import ImageFallback from "../reusables/ImageFallback";
 
 
 const Card = ({blog, single, servicePage}) => {
+
 
     let attachedClass = classes.Entry
 
@@ -60,21 +62,25 @@ const Card = ({blog, single, servicePage}) => {
         return imgSrc;
     }
 
+    const addDefaultSrc = (ev) => {
+        ev.target.src = '/fallback/services.jpg'
+    }
+
     return (
         <article className={attachedClass}>
             <Fragment>
                 <div className={classes.Image}>
-                    <Image
-                        loader={myLoader}
+                    <ImageFallback
                         className="img-fluid"
                         width={1200}
                         height={700}
                         src={imgSrc}
                         alt={blog.title}
+                        fallbackSrc={`/fallback/services.jpg`}
                     />
+
                 </div>
                 <h2 className={classes.Title}>
-
                     <Link href={single ? '' : `/blogs/${blog.slug}`}>
                         <a>
                             {blog.title.toLowerCase()}

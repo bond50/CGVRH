@@ -27,6 +27,7 @@ const useCreate = (localStorageItem, catEndpoint, tagEndpoint, pageEndpoint) => 
     const token = getCookie('token');
 
     const {data: categories, error: catError} = useFCT(catEndpoint)
+
     const {data: tags, error: tagError} = useFCT(tagEndpoint)
 
     useEffect(() => {
@@ -44,7 +45,6 @@ const useCreate = (localStorageItem, catEndpoint, tagEndpoint, pageEndpoint) => 
 
     const publish = e => {
         e.preventDefault();
-        formData.set('featured', checkedService)
         createAction(formData, token, pageEndpoint).then(data => {
             if (data.error) {
                 setValues({...values, error: data.error});
@@ -86,7 +86,6 @@ const useCreate = (localStorageItem, catEndpoint, tagEndpoint, pageEndpoint) => 
             all.splice(clickedCategory, 1);
         }
         setChecked(all);
-        console.log(all)
         formData.set('categories', all);
     };
 
@@ -102,8 +101,6 @@ const useCreate = (localStorageItem, catEndpoint, tagEndpoint, pageEndpoint) => 
             all.splice(clickedTag, 1);
         }
         setCheckedTag(all);
-        console.log(all)
-
         formData.set('tags', all);
     };
 

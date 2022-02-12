@@ -1,5 +1,5 @@
 const Blog = require("../models/blog");
-const Service = require("../models/services");
+const Service = require("../models/pages");
 
 const {errorHandler} = require("../helpers/dbErrorHandler");
 exports.listSearch = (req, res) => {

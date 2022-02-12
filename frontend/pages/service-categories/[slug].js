@@ -2,8 +2,6 @@ import Layout from "../../hoc/Layout";
 import {singleCategory} from "../../actions/category";
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
-
-
 import React from "react";
 import SmallCard from "../../components/reusables/card/small-card";
 import GeneralPageWrapper from "../../hoc/general-page-wrapper";

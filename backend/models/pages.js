@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const {ObjectId} = mongoose.Schema;
 
-const serviceSchema = new mongoose.Schema(
+const pageSchema = new mongoose.Schema(
     {
         title: {
             type: String,
@@ -35,9 +35,15 @@ const serviceSchema = new mongoose.Schema(
             data: Buffer,
             contentType: String
         },
-        isFeatured: {type: Boolean},
-        categories: [{type: ObjectId, ref: 'ServiceCategory', required: true}],
-        tags: [{type: ObjectId, ref: 'ServiceTag', required: true}],
+        accepted: {
+            type: Boolean,
+            default: false,
+        },
+        featured: {
+            type: Boolean,
+            default: false,
+        },
+        categories: [{type: ObjectId, ref: 'PageCategory', required: true}],
         postedBy: {
             type: ObjectId,
             ref: 'User'
@@ -47,4 +53,4 @@ const serviceSchema = new mongoose.Schema(
     {timestamps: true}
 );
 
-module.exports = mongoose.model('Services', serviceSchema);
+module.exports = mongoose.model('Pages', pageSchema);

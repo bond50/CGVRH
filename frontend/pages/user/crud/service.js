@@ -3,7 +3,7 @@ import Layout from '../../../hoc/Layout';
 
 
 import Private from "../../../components/auth/Private";
-import ServiceCreate from "../../../components/crud/ServiceCreate";
+import PageCreate from "../../../components/crud/PageCreate";
 
 const Blog = () => {
     return (
@@ -14,7 +14,7 @@ const Blog = () => {
                             <h2>Create a new blog</h2>
                         </div>
                         <div className="col-md-12">
-                             <ServiceCreate />
+                             <PageCreate />
                         </div>
                     </div>
             </Private>

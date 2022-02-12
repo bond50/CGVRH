@@ -11,7 +11,6 @@ import Signout from "../../navgation/Toolbar/Navigationitems/Signout";
 import useToggle from "../../../hooks/useToggle";
 
 const Header = ({categories}) => {
-
     const [closed, toggleClosed] = useToggle();
 
     let attachedClasses = [classes.Navbar];

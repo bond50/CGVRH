@@ -1,6 +1,5 @@
-const Service = require('../models/services');
-const Category = require('../models/serviceCategory');
-const Tag = require('../models/serviceTag');
+const Page = require('../models/pages');
+const Category = require('../models/pageCategory');
 const formidable = require('formidable');
 const slugify = require('slugify');
 const stripHtml = require('string-strip-html');
@@ -37,30 +36,16 @@ exports.create = (req, res) => {
         }
 
 
-        if (!tags || tags.length === 0) {
-            return res.status(400).json({
-                error: 'At least one tag is required'
-            });
-        }
-         if (!tags || tags.length === 0) {
-            return res.status(400).json({
-                error: 'At least one tag is required'
-            });
-        }
-
-
-
-        let service = new Service();
-        service.title = title.toLowerCase();
-        service.body = body;
-        service.isFeatured = featured;
-        service.excerpt = smartTrim(body, 320, ' ', ' ...');
-        service.slug = slugify(title).toLowerCase();
-        service.metaTitle = `${title} | ${process.env.APP_NAME}`;
-        service.metaDesc = stripHtml(body.substring(0, 160));
-        service.postedBy = req.auth._id;
+        let page = new Page();
+        page.title = title.toLowerCase();
+        page.body = body;
+        page.excerpt = smartTrim(body, 320, ' ', ' ...');
+        page.slug = slugify(title).toLowerCase();
+        page.metaTitle = `${title} | ${process.env.APP_NAME}`;
+        page.metaDesc = stripHtml(body.substring(0, 160));
+        page.postedBy = req.auth._id;
         let arrayOfCategories = categories && categories.split(',');
-        let arrayOfTags = tags && tags.split(',');
+
 
         if (files.photo) {
             if (files.photo.size > 10000000) {
@@ -68,35 +53,25 @@ exports.create = (req, res) => {
                     error: 'Image should be less then 1mb in size'
                 });
             }
-            service.photo.data = fs.readFileSync(files.photo.path);
-            service.photo.contentType = files.photo.type;
+            page.photo.data = fs.readFileSync(files.photo.path);
+            page.photo.contentType = files.photo.type;
         }
 
 
-        service.save((err, result) => {
+        page.save((err, result) => {
             if (err) {
                 return res.status(400).json({
                     error: errorHandler(err)
                 });
             }
-            Service.findByIdAndUpdate(result._id, {$push: {categories: arrayOfCategories}}, {new: true}).exec(
+            Page.findByIdAndUpdate(result._id, {$push: {categories: arrayOfCategories}}, {new: true}).exec(
                 (err, result) => {
                     if (err) {
                         return res.status(400).json({
                             error: errorHandler(err)
                         });
                     } else {
-                        Service.findByIdAndUpdate(result._id, {$push: {tags: arrayOfTags}}, {new: true}).exec(
-                            (err, result) => {
-                                if (err) {
-                                    return res.status(400).json({
-                                        error: errorHandler(err)
-                                    });
-                                } else {
-                                    res.json(result);
-                                }
-                            }
-                        );
+                        res.json(result);
                     }
                 }
             );
@@ -104,7 +79,7 @@ exports.create = (req, res) => {
     })
 }
 exports.listFeaturedServices = (req, res) => {
-    Service.find({isFeatured: true})
+    Page.find({isFeatured: true})
         .select('_id title excerpt slug')
         .sort({createdAt: -1})
         .limit(6)
@@ -116,15 +91,13 @@ exports.listFeaturedServices = (req, res) => {
             }
             res.json(data);
         });
-
-
 }
 exports.list = (req, res) => {
-    Service.find({})
+
+    Page.find({accepted: true})
         .populate('categories', '_id name slug')
-        .populate('tags', '_id name slug')
         .populate('postedBy', '_id name username')
-        .select('_id title slug excerpt categories tags postedBy createdAt updatedAt')
+        .select('_id title slug excerpt categories  postedBy createdAt updatedAt')
         .sort({createdAt: -1})
         .exec((err, data) => {
             if (err) {
@@ -138,23 +111,22 @@ exports.list = (req, res) => {
 
 
 exports.listAllServicesCategoriesTags = (req, res) => {
-    let services;
+    let pages;
     let categories;
     let tags;
 
-    Service.find({})
+    Page.find({})
         .populate('categories', '_id name slug')
-        .populate('tags', '_id name slug')
         .populate('postedBy', '_id name username profile')
         .sort({createdAt: -1})
-        .select('_id title slug excerpt  categories tags postedBy createdAt updatedAt')
+        .select('_id title slug excerpt  categories postedBy createdAt updatedAt')
         .exec((err, data) => {
             if (err) {
                 return res.json({
                     error: errorHandler(err)
                 });
             }
-            services = data;
+            pages = data;
             // get all categories
             Category.find({}).exec((err, c) => {
                 if (err) {
@@ -163,17 +135,8 @@ exports.listAllServicesCategoriesTags = (req, res) => {
                     });
                 }
                 categories = c; // categories
-                // get all tags
-                Tag.find({}).exec((err, t) => {
-                    if (err) {
-                        return res.json({
-                            error: errorHandler(err)
-                        });
-                    }
-                    tags = t;
-                    // return all blogs categories tags
-                    res.json({services, categories, tags, size: services.length});
-                });
+
+                res.json({pages, categories, size: pages.length});
             });
         });
 };
@@ -181,7 +144,7 @@ exports.listAllServicesCategoriesTags = (req, res) => {
 
 exports.photo = (req, res) => {
     const slug = req.params.slug.toLowerCase();
-    Service.findOne({slug})
+    Page.findOne({slug})
         .select('photo')
         .exec((err, service) => {
             if (err || !service) {
@@ -197,12 +160,11 @@ exports.photo = (req, res) => {
 
 exports.read = (req, res) => {
     const slug = req.params.slug.toLowerCase();
-    Service.findOne({slug})
+    Page.findOne({slug})
         // .select("-photo")
         .populate('categories', '_id name slug')
-        .populate('tags', '_id name slug')
         .populate('postedBy', '_id name username')
-        .select('_id title body excerpt slug mtitle mdesc categories tags postedBy createdAt updatedAt')
+        .select('_id title body accepted featured excerpt slug mtitle mdesc categories tags postedBy createdAt updatedAt')
         .exec((err, data) => {
             if (err) {
                 return res.json({
@@ -215,7 +177,7 @@ exports.read = (req, res) => {
 
 
 exports.listServiceNamesAndSlugs = (req, res) => {
-    Service.find({})
+    Page.find({})
         .sort({createdAt: -1})
         .select('_id title slug')
         .exec((err, data) => {
@@ -230,13 +192,13 @@ exports.listServiceNamesAndSlugs = (req, res) => {
 
 
 exports.listRelated = (req, res) => {
-    let limit = req.body.limit ? parseInt(req.body.limit) : 3;
+    let limit = req.body.limit ? parseInt(req.body.limit) : 30;
     const {_id, categories} = req.body.service;
 
-    Service.find({_id: {$ne: _id}, categories: {$in: categories}})
+
+    Page.find({_id: {$ne: _id}, categories: {$in: categories}})
         .limit(limit)
-        .populate('postedBy', '_id name  username profile')
-        .select('title slug excerpt postedBy createdAt updatedAt')
+        .select('title slug')
         .exec((err, blogs) => {
             if (err) {
                 return res.status(400).json({
@@ -244,5 +206,95 @@ exports.listRelated = (req, res) => {
                 });
             }
             res.json(blogs);
+        });
+};
+
+
+exports.remove = (req, res) => {
+    const slug = req.params.slug.toLowerCase();
+    Page.findOneAndRemove({slug}).exec((err, data) => {
+        if (err) {
+            return res.json({
+                error: errorHandler(err)
+            });
+        }
+        res.json({
+            message: 'Blog deleted successfully'
+        });
+    });
+};
+
+exports.update = (req, res) => {
+
+    const slug = req.params.slug.toLowerCase();
+
+    Page.findOne({slug}).exec((err, oldPage) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler(err)
+            });
+        }
+
+        let form = new formidable.IncomingForm();
+        form.keepExtensions = true;
+
+        form.parse(req, (err, fields, files) => {
+            if (err) {
+                return res.status(400).json({
+                    error: 'Image could not upload'
+                });
+            }
+
+
+            let slugBeforeMerge = oldPage.slug;
+            oldPage = _.merge(oldPage, fields);
+            oldPage.slug = slugBeforeMerge;
+
+            const {body, desc, categories, tags} = fields;
+
+            if (body) {
+                oldPage.excerpt = smartTrim(body, 320, ' ', ' ...');
+                oldPage.desc = stripHtml(body.substring(0, 160));
+            }
+
+            if (categories) {
+                oldPage.categories = categories.split(',');
+            }
+
+
+            if (files.photo) {
+                if (files.photo.size > 10000000) {
+                    return res.status(400).json({
+                        error: 'Image should be less then 1mb in size'
+                    });
+                }
+                oldPage.photo.data = fs.readFileSync(files.photo.path);
+                oldPage.photo.contentType = files.photo.type;
+            }
+
+            oldPage.save((err, result) => {
+                if (err) {
+                    return res.status(400).json({
+                        error: errorHandler(err)
+                    });
+                }
+                // result.photo = undefined;
+                res.json(result);
+            });
+        });
+    });
+};
+
+exports.listPending = (req, res) => {
+    Page.find({accepted: false})
+        .populate('postedBy', '_id name username')
+        .select('_id title accepted slug postedBy createdAt updatedAt')
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: errorHandler(err)
+                });
+            }
+            res.json(data);
         });
 };

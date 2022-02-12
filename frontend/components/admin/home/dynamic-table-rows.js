@@ -4,7 +4,7 @@ import moment from "moment";
 import classes from "./index.module.css";
 
 
-const DynamicTableRows = ({blog, showModal, user}) => {
+const DynamicTableRows = ({blog, showModal, user,to}) => {
 
     return (
         <tr className={classes.tr}>
@@ -22,7 +22,7 @@ const DynamicTableRows = ({blog, showModal, user}) => {
                 <td>{blog.accepted === false ? <span className="badge bg-warning">Pending</span> :
                     <span className="badge bg-success">Approved</span>}</td>
                 <td className={classes.td}>
-                    <Link href={`/admin2/crud/${blog.slug}`}>
+                    <Link href={to}>
                         <span className={`badge bg-primary  ${classes.EditBtn}`}>
                             <i className='bi bi-gear'/>
                         </span>

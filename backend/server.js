@@ -15,8 +15,8 @@ const categoryRoutes = require('./routes/category')
 const tagRoutes = require('./routes/tag')
 const formRoutes = require('./routes/form')
 const uploadRoute = require('./routes/fileUpload')
-const serviceRoutes = require('./routes/services')
-const serviceCategoryRoutes = require('./routes/service-category')
+const serviceRoutes = require('./routes/pages')
+const pageCategoryRoutes = require('./routes/page-category')
 const serviceTagRoutes = require('./routes/service-tag')
 const searchRoutes = require('./routes/search')
 const galleryTagRoutes = require('./routes/gallery-tag')
@@ -81,7 +81,7 @@ app.use('/api', formRoutes);
 app.use('/api', uploadRoute,);
 app.use('/api', serviceRoutes);
 app.use('/api', serviceTagRoutes);
-app.use('/api', serviceCategoryRoutes);
+app.use('/api', pageCategoryRoutes);
 app.use('/api', searchRoutes);
 app.use('/api', galleryTagRoutes);
 app.use('/api', documentTagRoutes);

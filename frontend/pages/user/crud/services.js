@@ -3,7 +3,7 @@ import Layout from '../../../hoc/Layout';
 
 import Private from "../../../components/auth/Private";
 import {isAuth} from "../../../actions/auth";
-import ServiceRead from "../../../components/crud/ServiceRead";
+import PageRead from "../../../components/crud/PageRead";
 
 const Blogs = () => {
 
@@ -16,7 +16,7 @@ const Blogs = () => {
                             <h2>Manage blogs</h2>
                         </div>
                         <div className="col-md-12">
-                            <ServiceRead username={isAuth() && isAuth().username}/>
+                            <PageRead username={isAuth() && isAuth().username}/>
                         </div>
                     </div>
                 </div>

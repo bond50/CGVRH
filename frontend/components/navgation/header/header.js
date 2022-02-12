@@ -1,6 +1,6 @@
 import Logo from "../Logo";
 import {useEffect, useState} from "react";
-import classes from '../../../styles/Header.module.css'
+
 
 import Nav from "../Nav";
 
@@ -21,15 +21,15 @@ const Header = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [])
 
-    let navbarClasses = [`d-flex align-items-center justify-content-between ${classes.Header}`];
+    let navbarClasses = [`d-flex align-items-center`];
 
     if (scrolled) {
-        navbarClasses.push(classes.Fixed);
+        navbarClasses.push('fixed-top');
 
     }
 
     return (
-        <header className={navbarClasses.join(" ")}>
+        <header id="header"  className={navbarClasses.join(" ")}>
             <div className="container d-flex align-items-center justify-content-between">
                 <Logo scrolled={scrolled}/>
                 <Nav/>

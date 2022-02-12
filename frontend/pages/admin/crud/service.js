@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../../../hoc/Layout';
 import Admin from '../../../components/auth/Admin';
-import ServiceCreate from '../../../components/crud/ServiceCreate';
+import PageCreate from '../../../components/crud/PageCreate';
 
 
 const Service = () => {
@@ -13,7 +13,7 @@ const Service = () => {
                         <h2>Create a new service</h2>
                     </div>
                     <div className="col-md-12">
-                        <ServiceCreate/>
+                        <PageCreate/>
                     </div>
                 </div>
 
