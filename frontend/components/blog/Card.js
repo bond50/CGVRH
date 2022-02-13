@@ -55,16 +55,10 @@ const Card = ({blog, single, servicePage}) => {
 
     let imgSrc = `${API}/blog/photo/${blog.slug}`
     if (servicePage) {
-        imgSrc = `${API}/service/photo/${blog.slug}`
+        imgSrc = `${API}/general/photo/${blog.slug}`
     }
 
-    const myLoader = () => {
-        return imgSrc;
-    }
 
-    const addDefaultSrc = (ev) => {
-        ev.target.src = '/fallback/services.jpg'
-    }
 
     return (
         <article className={attachedClass}>

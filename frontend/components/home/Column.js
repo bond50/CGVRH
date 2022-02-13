@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from '../../styles/Util.module.css'
 
 
-const Column = ({slug, children, classname, title, delay,btnCaption}) => {
+const Column = ({ children, classname, title, delay}) => {
     return (
         <div className={`${classname}`}>
             <div className={styles.Box} data-aos="fade-up" data-aos-delay={delay} data-aos-once='true'>
@@ -12,11 +12,11 @@ const Column = ({slug, children, classname, title, delay,btnCaption}) => {
                     <ul>
                         {children}
                     </ul>
-                <div className={styles.Btn}>
-                    <Link href={`/services/${slug}`}>
-                        <a className={styles.BtnClick}>{btnCaption}</a>
-                    </Link>
-                </div>
+                {/*<div className={styles.Btn}>*/}
+                {/*    <Link href={`/services/${slug}`}>*/}
+                {/*        <a className={styles.BtnClick}>{btnCaption}</a>*/}
+                {/*    </Link>*/}
+                {/*</div>*/}
             </div>
         </div>
     );

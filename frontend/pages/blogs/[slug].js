@@ -7,7 +7,7 @@ import BlogContainer from "../../hoc/BlogContainer";
 import Card from "../../components/blog/Card";
 import DisqusThread from "../../components/DiscussThread";
 import SmallCard from "../../components/reusables/card/small-card";
-import GeneralPageWrapper from "../../hoc/general-page-wrapper";
+import GeneralPageHeader from "../../hoc/general-page-header";
 import Layout from "../../hoc/blog/blog-layout";
 
 
@@ -77,7 +77,7 @@ const Slug = ({blog, query}) => {
             <Layout>
                 <main>
 
-                    {/*<GeneralPageWrapper*/}
+                    {/*<GeneralPageHeader*/}
                     {/*    imgSrc={`${API}/blog/photo/${blog.slug}`}*/}
                     {/*    title={blog.title}*/}
                     {/*    alt={blog.title}>*/}
@@ -92,7 +92,7 @@ const Slug = ({blog, query}) => {
                             <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
                             <div className="row">{showRelatedBlog()}</div>
                         </div>
-                    {/*</GeneralPageWrapper>*/}
+                    {/*</GeneralPageHeader>*/}
                 </main>
             </Layout>
         </>

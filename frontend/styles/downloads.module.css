@@ -1,6 +1,7 @@
-.downloads {
-    padding: 0;
+.Download {
+    padding: 60px 0;
     overflow: hidden;
+    background: #fff;
 }
 
 .DownloadWrapper {
@@ -16,10 +17,9 @@
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-    background: #fff;
+    background: #f1f6fd;
     padding: 5px 10px;
     margin: 10px;
-    border-radius: 20px;
     justify-content: space-between;
     text-align: center;
 }

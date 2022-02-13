@@ -18,7 +18,7 @@ const SingleDropdown = ({ caption, activeClassName, href, slug}) => {
 
     const showLoadedPages = () => {
         return loadedPages.map(pg => {
-            return <MyLink key={pg._id} to={`/general/${pg.slug}`} caption={pg.title}/>
+            return <MyLink key={pg._id} to={`/general/${pg.slug}`} caption={pg.title} />
         })
 
     }

@@ -20,7 +20,7 @@ const {requireSignin, adminMiddleware, authMiddleware, canUpdateDeleteBlog} = re
 router.post('/blog', requireSignin, adminMiddleware, create);
 router.get('/blogs', list);
 router.get('/pending-blogs',requireSignin, adminMiddleware, listPending);
-router.get('/list-home-page-blogs', listHomePageBlogs);
+router.get('/list-recent-blogs', listHomePageBlogs);
 router.post('/blogs-categories-tags', listAllBlogsCategoriesTags);
 router.get('/blog/:slug', read);
 router.delete('/blog/:slug', requireSignin, adminMiddleware, remove);

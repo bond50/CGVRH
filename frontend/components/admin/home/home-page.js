@@ -8,11 +8,10 @@ const HomePage = () => {
     return (
         <div className='row'>
             <div className='col-md-12'>
-
-                <PendingPosts/>
-                <ApprovedPosts/>
                 <PendingPages/>
+                <PendingPosts/>
                 <ApprovedPages/>
+                <ApprovedPosts/>
 
                 {/*<RejectedPosts data={data}/>*/}
             </div>

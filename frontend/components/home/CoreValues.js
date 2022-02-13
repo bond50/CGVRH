@@ -23,7 +23,7 @@ const CoreValues = () => {
             classname: 'mt-4 mt-lg-0',
             link: '/about/core-values',
             delay: '300',
-            para: 'Accountability,Commitment,Integrity,\n  Teamwork, Innovation',
+            para: 'Accountability,Commitment,Integrity, Teamwork, Innovation',
             para1: 'Commitment',
             para2: "Integrity",
             para3: "Teamwork",
@@ -37,7 +37,8 @@ const CoreValues = () => {
                 title={item.title}
                 delay={item.delay}
                 classname={`col-lg-4 col-md-6 ${item.classname}`}
-                key={index} btnCaption='See more'>
+                key={index}
+                btnCaption='See more'>
                 <li>{item.para}</li>
             </Column>
 

@@ -19,7 +19,7 @@ function ControlledCarousel({data}) {
 
         return data && data.map(d => {
             const sectionStyle = {
-                backgroundImage: `url(${API}/service/photo/${d.slug})`
+                backgroundImage: `url(${API}/general/photo/${d.slug})`
             }
 
             return <Carousel.Item key={d._id} className='carousel-item ' style={sectionStyle}>
@@ -28,7 +28,7 @@ function ControlledCarousel({data}) {
                         <h2 className="animate__animated animate__fadeInDown">{d.title.toLowerCase()}</h2>
                         {renderHTML(d.excerpt)}
 
-                        <Link href={`/services/${d.slug}`}>
+                        <Link href={`/general/${d.slug}`}>
                             <a className="btn-get-started">Read
                                 More
                             </a>

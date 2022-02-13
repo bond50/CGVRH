@@ -5,7 +5,6 @@ import React, {useEffect, useState,} from "react";
 import {getCookie, isAuth} from "../../../../actions/auth";
 import Router, {useRouter} from "next/router";
 import {getCategories} from "../../../../actions/category";
-import {getTags} from "../../../../actions/tag";
 import {singlePage, updatePage} from "../../../../actions/general";
 
 

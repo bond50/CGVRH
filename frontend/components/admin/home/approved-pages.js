@@ -7,7 +7,7 @@ import useARP from "../../../hooks/useARP";
 const ApprovedPages = () => {
     const {
         mouseMoveHandler,
-        deleteBlog,
+        deletePage,
         handleShow,
         handleClose,
         show,
@@ -25,7 +25,7 @@ const ApprovedPages = () => {
             </div>
         }
         if (error) {
-            return <Alert msg={error} label='Danger' type='danger'/>
+            return <Alert msg={error} label='Danger' type='danger' />
         }
 
         return blogs.length > 0 && <CardDetail title='Approved Pages' spanText={'active pages'}>
@@ -49,7 +49,7 @@ const ApprovedPages = () => {
                     key={i}
                     show={show} titleMessage='Delete confirm'
                     bodyMessage={`Are you sure you want to delete blog entitled ${b.title}`}
-                    handleChanges={() => deleteBlog(b.slug)}
+                    handleChanges={() => deletePage(b.slug)}
                     handleClose={handleClose}/>
             })}
         </div>

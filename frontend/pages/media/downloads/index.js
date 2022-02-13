@@ -4,7 +4,6 @@ import {getDownloads} from "../../../actions/fileupload";
 
 
 const Downloads = ({files}) => {
-
     return (
         <Layout>
           <DownloadList files={files}/>

@@ -3,16 +3,21 @@ import Head from "next/head";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import Layout from "../../hoc/Layout";
 import Card from "../../components/blog/Card";
-import GeneralPageWrapper from "../../hoc/general-page-wrapper";
-import useSWR from "swr";
-import {fetcher} from "../../components/reusables/functions/fetcher";
+import GeneralPageHeader from "../../hoc/general-page-header";
 import Link from "next/link";
 import classes from '../../styles/page-bar.module.css'
 import {singlePage} from "../../actions/general";
 import {listRelated} from "../../actions/general";
+import PageWrapper from "../../hoc/page-wrapper";
+import {useRouter} from "next/router";
+import {Col, Nav, Tab} from "react-bootstrap";
+import ImageFallback from "../../components/reusables/ImageFallback";
+import renderHTML from "react-render-html";
 
 
 const Slug = ({service, query}) => {
+    const router = useRouter()
+
     const [related, setRelated] = useState([])
 
     const loadRelated = () => {
@@ -62,7 +67,8 @@ const Slug = ({service, query}) => {
     );
 
     const showPage = () => {
-        return <Card blog={service} single servicePage/>
+        return <PageWrapper page={service} related={related}/>
+
     };
 
     return (
@@ -70,33 +76,7 @@ const Slug = ({service, query}) => {
             {head()}
             <Layout>
                 <main>
-                    <GeneralPageWrapper
-                        title={service.title}>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-8 order-lg-5 order-md-first px-0" style={{background: '#fff'}}>
-                                    {showPage()}
-                                </div>
-                                <div className="col-lg-4 order-lg-1 order-md-last ">
-                                    <div className={classes.SideBar}>
-                                        <div className={`card ${classes.card}`}>
-                                            {!related ? <p>loading</p> :
-                                                <Fragment>
-                                                    <div className={`card-header ${classes.cardHeader}`}>
-                                                        <h4>Related to {service.title}</h4>
-                                                    </div>
-                                                    <ul className="list-group list-group-flush ">
-                                                        {showAllServices()}
-                                                    </ul>
-                                                </Fragment>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </GeneralPageWrapper>
+                    {showPage()}
                 </main>
             </Layout>
         </Fragment>

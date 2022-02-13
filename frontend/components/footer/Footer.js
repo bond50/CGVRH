@@ -11,12 +11,17 @@ import ScrollTop from "../ScrollTop";
 
 const Footer = () => {
 
-    const {data: services, error} = useSWR(`${API}/featured-services`)
+    const {data: services, error} = useSWR(`${API}/featured-general`)
     const n = new Date()
     const thisYear = n.getFullYear()
     const list = [
-        {title: 'Meet Our team', link: '/about/board-members/'},
+        {
+            title: 'Elephant System',
+            link: 'https://auth0.platform-proxy.kenya.elephantprimarycare.com/login?state=hKFo2SBLeUFVWmVrZ0Z5WWtNOHRpcTZiVHpyeW4yZzhLc0M4cKFupWxvZ2luo3RpZNkgdFBYdnlCMlk0Z0JJR3RMU2xiN2FtNjd2X05PTHJXVU6jY2lk2SBvalBNNXNFc0VVODFuajVjemFNakVCU0RMZmx0dGlpaA&client=ojPM5sEsEU81nj5czaMjEBSDLflttiih&protocol=oauth2&prompt=login&redirect_uri=https%3A%2F%2Fkenya.elephantprimarycare.com%2Fauth0%2Fcallback&scope=openid%20profile%20email&response_type=code&response_mode=query&nonce=VmVjYm9YcGhGYzVhcXRwVjNOcDBLLVR1TDM0ZGlrNWlGVW5FRDlmeU9Ndg%3D%3D&code_challenge=TYmJ6XpMyJru7nvihDZU-zRr_2kCnGEY3DtA_fsMxJ4&code_challenge_method=S256&auth0Client=eyJuYW1lIjoiYXV0aDAtcmVhY3QiLCJ2ZXJzaW9uIjoiMS4yLjAifQ%3D%3D'
+        },
+        {title: 'Meet Our HMT  team', link: '/about/board-members/'},
         {title: 'County website', link: 'https://vihiga.go.ke/'},
+        {title: 'County Vacancies', link: 'https://vihiga.go.ke/career.html'},
         {title: 'MOH', link: 'https://www.health.go.ke/'},
         {title: 'Strategic plan', link: '/about/strategic-plan/'},
         {title: 'Our blog', link: '/blogs'},
@@ -34,7 +39,7 @@ const Footer = () => {
                                 {!services || error ? <div>Loading</div> :
                                     services.map(s => <FooterLink
                                         key={s._id}
-                                        link={`/services/${s.slug}`}
+                                        link={`/general/${s.slug}`}
                                         title={s.title}/>)
                                 }
                             </FooterLinks>

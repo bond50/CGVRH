@@ -17,9 +17,9 @@ export const covidList = [
 ];
 
 export const mediaList = [
-    {_id: '5uryv', title: 'Downloads', slug: 'downloads'},
+    {_id: '5uhhhhryv', title: 'Downloads', slug: 'downloads'},
     // {_id:'',title: 'Events', slug: '/media/events'},
-    {_id: '6rwwd', title: 'Gallery', slug: 'gallery'},
+    {_id: '6rggagjdjdjjjwwd', title: 'Gallery', slug: 'gallery'},
     // {_id:'',title: 'Press', slug: '/media/press'},
     // {_id:'',title: 'Publications', slug: '/media/publications'},
     // {_id:'',title: 'Vacancies', slug: '/media/vacancies'},

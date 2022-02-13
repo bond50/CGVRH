@@ -253,3 +253,16 @@ exports.list = (req, res) => {
             return res.send(users);
         });
 }
+
+exports.listHMT = (req, res) => {
+    User.find({hmt: true})
+        .select('_id name facebook twitter instagram linkedIn designation username')
+        .exec((err, users) => {
+            if (err) {
+                return res.status(400).json({
+                    error: errorHandler(err)
+                });
+            }
+            return res.send(users);
+        });
+}

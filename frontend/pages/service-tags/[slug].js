@@ -4,7 +4,7 @@ import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import React, {Fragment} from "react";
 import SmallCard from "../../components/reusables/card/small-card";
-import GeneralPageWrapper from "../../hoc/general-page-wrapper";
+import GeneralPageHeader from "../../hoc/general-page-header";
 
 
 const Tag = ({tag, services, query}) => {
@@ -37,7 +37,7 @@ const Tag = ({tag, services, query}) => {
         <Fragment>
             {head()}
             <Layout>
-                <GeneralPageWrapper
+                <GeneralPageHeader
                     imgSrc='/fallback/services.jpg'
                     title={tag.name}
                     title2={`All Articles about ${tag.name} `}
@@ -52,7 +52,7 @@ const Tag = ({tag, services, query}) => {
                             </div>
                         ))
                     }</div>
-                </GeneralPageWrapper>
+                </GeneralPageHeader>
             </Layout>
         </Fragment>
     )

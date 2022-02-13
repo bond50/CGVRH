@@ -8,10 +8,13 @@ import About from "./items/about";
 import useSWR from "swr";
 import {API} from "../../config";
 import {fetcher} from "../reusables/functions/fetcher";
-import React from "react";
+import React, {useState} from "react";
+import StaticDropdown from "./static-dropdown";
+import Media from "./media";
 
 
 const Nav = () => {
+    const [pages, setPages] = useState([{_id: 'asd', name: 'Our Management Team', slug: 'board-members'}])
     const router = useRouter();
     const [closed, toggleClosed] = useToggle();
     let attachedClasses = [`navbar`];
@@ -38,15 +41,18 @@ const Nav = () => {
         return <div className='preloader'/>
     }
 
-    const showLinks = data && data.map(link => (
-        <SingleDropdown caption={link.name}  slug={link.slug} key={link._id}/>
+    const showLinks = data.map(link => (
+        <SingleDropdown caption={link.name} slug={link.slug} key={link._id}/>
     ))
 
 
     return (
-        <nav id='navbar' className={`${attachedClasses.join(' ')}`}>
+        <nav id='navbar' className={`${attachedClasses.join('')}`}>
             <ul>
                 {showLinks}
+                <MyLink caption={'HMT'} to='/about/board-members'/>
+                <Media/>
+                <MyLink caption={'Contact'} to='/contact'/>
             </ul>
             <i className={`${closed ? 'bi bi-x' : 'bi bi-list'} mobile-nav-toggle`} onClick={toggleClosed}/>
         </nav>

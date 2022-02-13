@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react';
-import Image from "next/image";
 
-const GeneralPageWrapper = ({title, children, className, title2}) => {
+const GeneralPageHeader = ({title}) => {
 
     return (
         <Fragment>
@@ -18,19 +17,9 @@ const GeneralPageWrapper = ({title, children, className, title2}) => {
                     </div>
                 </div>
             </div>
-            <section className={`section-bg ${className}`}>
-                <div className="container">
-                    {title2 && <div className="section-title pb-3">
-                        <h2>{title2}</h2>
-                    </div>}
-                    <div style={{padding: "60px 0"}}>
-                        {children}
-                    </div>
-                </div>
-            </section>
         </Fragment>
 
     );
 };
 
-export default GeneralPageWrapper;
+export default GeneralPageHeader;

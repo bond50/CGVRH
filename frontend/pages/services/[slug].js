@@ -4,7 +4,7 @@ import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import {singleService} from "../../actions/services";
 import Layout from "../../hoc/Layout";
 import Card from "../../components/blog/Card";
-import GeneralPageWrapper from "../../hoc/general-page-wrapper";
+import GeneralPageHeader from "../../hoc/general-page-header";
 import useSWR from "swr";
 import {fetcher} from "../../components/reusables/functions/fetcher";
 
@@ -67,7 +67,7 @@ const Slug = ({service, query}) => {
             {head()}
             <Layout>
                 <main>
-                    <GeneralPageWrapper
+                    <GeneralPageHeader
                         title={service.title}>
                         <div className="container" >
                             <div className="row">
@@ -93,7 +93,7 @@ const Slug = ({service, query}) => {
                             </div>
 
                         </div>
-                    </GeneralPageWrapper>
+                    </GeneralPageHeader>
                 </main>
             </Layout>
         </Fragment>

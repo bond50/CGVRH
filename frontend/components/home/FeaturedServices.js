@@ -44,7 +44,7 @@ const FeaturedServices = ({featured}) => {
                             <div className='card-text'>
                                 {renderHTML(service.excerpt)}
                             </div>
-                           <Link href={`/services/${service.slug}`}>
+                           <Link href={`/general/${service.slug}`}>
                                 <a className={styles.readMore}>Read more </a>
                            </Link>
                         </div>
@@ -60,7 +60,7 @@ const FeaturedServices = ({featured}) => {
         <section className={`${styles.section} `}>
             <div className="container">
                 <div className={styles.SectionTitle} data-aos="zoom-out" data-aos-once='true'>
-                    <h2>Featured medical Services</h2>
+                    <h2>Featured Services</h2>
                 </div>
 
                 <div className="row row-eq-height justify-content-center">

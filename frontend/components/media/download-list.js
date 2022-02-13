@@ -1,12 +1,11 @@
 import useFileDownloader from "../../hooks/useFileDownloader";
-import GeneralPageWrapper from "../../hoc/general-page-wrapper";
+import GeneralPageHeader from "../../hoc/general-page-header";
 import classes from '../../styles/downloads.module.css'
-import React from 'react';
+import React, {Fragment} from 'react';
 import moment from "moment";
 import axios from "axios";
 
 import {fileTypes} from "../reusables/functions/fileTypes";
-
 const DownloadList = ({files}) => {
 
     function handleDownload(file, id) {
@@ -26,38 +25,47 @@ const DownloadList = ({files}) => {
             document.body.appendChild(link);
             link.click();
 
-        }).catch(err=>{
+        }).catch(err => {
             console.log(err)
         });
     }
 
     return (
-        <GeneralPageWrapper
-            imgSrc='/fallback/services.jpg'
-            title='Downloads'
-            alt='fallback image' className={classes.downloads}>
-            <div className={classes.DownloadWrapper}>
-                {files.map(file => {
-                    return <div className={classes.Wrapper} key={file._id}>
-                        <div className={classes.Header}>
-                            {fileTypes(file.fileType)}
-                            <span>{file.title}</span>
-                        </div>
-                        <div className="d-flex align-items-center flex-column m-2">
-                            <div className={classes.Date}>Uploaded
-                                on <span>{moment(file.createdAt).format('llll')}</span></div>
-                            <div className={classes.Size}>File size :<span>{file.fileSize}</span></div>
-                        </div>
-                        <div className={`${classes.Btn} text-center`}
-                             onClick={() => handleDownload(file.filePath, file._id)}>
-                            <span className="align-middle">Download</span>
-                        </div>
+        <Fragment>
+
+            <GeneralPageHeader
+                title='Downloads'>
+            </GeneralPageHeader>
+
+            <section className={classes.Download}>
+
+
+                    <div className={classes.DownloadWrapper}>
+                        {files.map(file => {
+                            return <div className={classes.Wrapper} key={file._id}>
+                                <div className={classes.Header}>
+                                    {fileTypes(file.fileType)}
+                                    <span>{file.title}</span>
+                                </div>
+                                <div className="d-flex align-items-center flex-column m-2">
+                                    <div className={classes.Date}>Uploaded
+                                        on <span>{moment(file.createdAt).format('llll')}</span></div>
+                                    <div className={classes.Size}>File size :<span>{file.fileSize}</span></div>
+                                </div>
+                                <div className={`${classes.Btn} text-center`}
+                                     onClick={() => handleDownload(file.filePath, file._id)}>
+                                    <span className="align-middle">Download</span>
+                                </div>
+                            </div>
+                        })}
                     </div>
-                })}
-            </div>
 
 
-        </GeneralPageWrapper>
+
+            </section>
+
+
+        </Fragment>
 
 
     );

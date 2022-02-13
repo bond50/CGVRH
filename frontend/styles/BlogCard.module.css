@@ -80,7 +80,7 @@
 }
 
 
-.Content p {
+.Content p, .Content ul li {
     line-height: 26px;
     color: #7b829c;
 }

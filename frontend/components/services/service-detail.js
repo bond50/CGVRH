@@ -6,7 +6,7 @@ import React, {Fragment, useEffect, useState} from "react";
 import useSWR from "swr";
 import Link from "next/link";
 
-import GeneralPageWrapper from "../../hoc/general-page-wrapper";
+import GeneralPageHeader from "../../hoc/general-page-header";
 import {useRouter} from "next/router";
 
 
@@ -63,7 +63,7 @@ const ServiceDetail = ({service}) => {
 
     return (
         <Fragment>
-            <GeneralPageWrapper
+            <GeneralPageHeader
                 title={service.title}
                 title2={service.title}
                 imgSrc={`${API}/service/photo/${service.slug}`}
@@ -81,7 +81,7 @@ const ServiceDetail = ({service}) => {
                         </ul>
                     </div>
                 </div>
-            </GeneralPageWrapper>
+            </GeneralPageHeader>
         </Fragment>
 
     );

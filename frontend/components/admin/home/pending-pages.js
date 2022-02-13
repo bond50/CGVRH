@@ -7,7 +7,7 @@ import useARP from "../../../hooks/useARP";
 const PendingPages = () => {
     const {
         mouseMoveHandler,
-        deleteBlog,
+        deletePage,
         handleShow,
         handleClose,
         show,
@@ -49,7 +49,7 @@ const PendingPages = () => {
                     key={i}
                     show={show} titleMessage='Delete confirm'
                     bodyMessage={`Are you sure you want to delete blog entitled ${b.title}`}
-                    handleChanges={() => deleteBlog(b.slug)}
+                    handleChanges={() => deletePage(b.slug)}
                     handleClose={handleClose}/>
             })}
         </div>

@@ -5,16 +5,25 @@ import {API} from "../../config";
 import moment from "moment";
 import renderHTML from "react-render-html";
 import Image from "next/image";
+import useSWR from "swr";
 
-const LatestBlogs = ({blogs}) => {
+const LatestBlogs = () => {
+
+    const {data: blogs, error: blogsError} = useSWR(`${API}/list-recent-blogs`)
+    if (blogsError) return <div className='container uh-oh mt-5 pt-5 '><p>uh oh something is
+        wrong..Please
+        contact Vihiga county referral hospital ICT team for assistance.Thank you </p></div>
+    if (!blogs) return <div className='preloader'/>
+
+
     const showRecent = () => {
         return blogs && blogs.map((blog) => {
-            return <div className="col-lg-4 " key={blog._id}  >
+            return <div className="col-lg-4 " key={blog._id}>
                 <div className={classes.PostBox}>
                     <div className={classes.PostImg}>
                         <Image
-                            width={600}
-                            height={350}
+                            width={2560}
+                            height={1600}
                             src={`${API}/blog/photo/${blog.slug}`}
                             className="img-fluid"
                             alt={blog.title}/>
@@ -36,7 +45,7 @@ const LatestBlogs = ({blogs}) => {
 
     return (
         <section className={`${styles.Section} ${classes.SectionBg}`}>
-            <div className="container" >
+            <div className="container">
                 <header className={styles.SectionTitle}>
                     <h2>Recent News and Events</h2>
                 </header>

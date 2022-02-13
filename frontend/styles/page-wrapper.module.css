@@ -1,0 +1,65 @@
+.Section {
+    overflow: hidden;
+    padding: 60px 0;
+}
+
+
+.NavLink {
+    border: 0;
+    padding: 12px 15px 12px 0;
+    text-transform: capitalize;
+    transition: 0.3s;
+    color: #2c4964;
+    border-radius: 0;
+    border-right: 2px solid #ebf1f6;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.NavLink:hover {
+    color: #2a7ade;
+}
+
+.NavLink.active, .NavLink .active {
+    color: #f4a024;
+    border-color: #f4a024;
+}
+
+.Details h1, .Details h2, .Details h3, .Details h4, .Details h5, .Details h6 {
+    margin-bottom: 20px;
+    color: #2c4964;
+}
+
+.Details h1::first-letter, .Details h2::first-letter, .Details h3::first-letter, .Details h4::first-letter, .Details h5::first-letter, .Details h6::first-letter {
+    text-transform: uppercase;
+}
+
+
+.Details h3 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.Section p {
+    line-height: 26px;
+}
+
+.Section p, .Section ul li {
+    color: #777777;
+}
+
+.Details p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 992px) {
+    .NavLink {
+        border: 0;
+        padding: 15px;
+    }
+
+    .NavLink.active ,.NavLink .active{
+        color: #fff;
+        background: #294a70;
+    }
+}

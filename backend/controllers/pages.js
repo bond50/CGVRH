@@ -7,7 +7,6 @@ const _ = require('lodash');
 const {errorHandler} = require('../helpers/dbErrorHandler');
 const fs = require('fs');
 const {smartTrim} = require('../helpers/blog');
-const Blog = require("../models/blog");
 
 
 exports.create = (req, res) => {
@@ -19,7 +18,7 @@ exports.create = (req, res) => {
                 error: 'Image could not upload'
             });
         }
-        const {title, body, categories, tags, featured} = fields;
+        const {title, body, categories} = fields;
 
 
         if (!title || !title.length) {
@@ -48,9 +47,9 @@ exports.create = (req, res) => {
 
 
         if (files.photo) {
-            if (files.photo.size > 10000000) {
+            if (files.photo.size > 2000000) {
                 return res.status(400).json({
-                    error: 'Image should be less then 1mb in size'
+                    error: 'Image should be less then 2 mb in size'
                 });
             }
             page.photo.data = fs.readFileSync(files.photo.path);
@@ -78,8 +77,8 @@ exports.create = (req, res) => {
         });
     })
 }
-exports.listFeaturedServices = (req, res) => {
-    Page.find({isFeatured: true})
+exports.listFeatured = (req, res) => {
+    Page.find({featured: true, accepted: true})
         .select('_id title excerpt slug')
         .sort({createdAt: -1})
         .limit(6)
@@ -193,10 +192,10 @@ exports.listServiceNamesAndSlugs = (req, res) => {
 
 exports.listRelated = (req, res) => {
     let limit = req.body.limit ? parseInt(req.body.limit) : 30;
-    const {_id, categories} = req.body.service;
+    const {categories} = req.body.service;
 
 
-    Page.find({_id: {$ne: _id}, categories: {$in: categories}})
+    Page.find({categories: {$in: categories}})
         .limit(limit)
         .select('title slug')
         .exec((err, blogs) => {
@@ -219,7 +218,7 @@ exports.remove = (req, res) => {
             });
         }
         res.json({
-            message: 'Blog deleted successfully'
+            message: `${slug} deleted successfully`
         });
     });
 };

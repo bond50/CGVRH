@@ -3,6 +3,7 @@ import axiosInstance from "../axios/axios";
 import {getCookie} from "../actions/auth";
 import {removeBlog} from "../actions/blog";
 import {removeUser} from "../actions/user";
+import {removePage} from "../actions/general";
 
 const PendingPosts = (url) => {
     const [show, setShow] = useState(false)
@@ -52,6 +53,17 @@ const PendingPosts = (url) => {
         });
     };
 
+    const deletePage = slug => {
+        removePage(slug, token).then(data => {
+            if (data.error) {
+                console.log(data.error);
+            } else {
+                setValues({...values, error: false, message: data.message, removed: !removed, reload: !reload});
+                setShow(false)
+            }
+        });
+    };
+
     const mouseMoveHandler = e => {
         setValues({...values, error: false, removed: false});
     };
@@ -60,9 +72,9 @@ const PendingPosts = (url) => {
     return {
         mouseMoveHandler,
         deleteBlog,
+        deletePage,
         handleShow,
         handleClose,
-
         show,
         loading,
         error,

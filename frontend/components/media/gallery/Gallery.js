@@ -2,7 +2,7 @@ import {SRLWrapper} from "simple-react-lightbox";
 import SimpleReactLightbox from 'simple-react-lightbox'
 import classes from '../../../styles/Gallery.module.css'
 import Image from "next/image";
-import GeneralPageWrapper from "../../../hoc/general-page-wrapper";
+import GeneralPageHeader from "../../../hoc/general-page-header";
 import Filters from "./Filters";
 import {useEffect, useState} from "react";
 import useSWR from "swr";

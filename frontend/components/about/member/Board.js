@@ -1,26 +1,39 @@
 import React from 'react';
 import classes from '../../../styles/Board.module.css'
 import styles from '../../../styles/AboutContainer.module.css'
-import {membersList} from "./Members";
+import Link from 'next/link'
+import {API} from "../../../config";
+import Image from "next/image";
 
-
-const Board = () => {
+const Board = ({members}) => {
     const renderMember = () => {
-        return membersList.map((m, i) => {
+        return members && members.map((m, i) => {
             return <div className="col-lg-3 d-flex align-items-stretch justify-content-center" key={i}>
-                <div className={classes.Member} data-aos="fade-up" data-aos-once='true' data-aos-delay={m.delay}>
+                <div className={classes.Member}>
                     <div className={classes.MemberImg}>
-                        <img src={m.src} className="img-thumbnail img-fluid" alt={`${m.name}'s photo`}/>
+                        <Link href={`/profile/${m.username}`}>
+                            <Image src={`${API}/user/photo/${m.username}`}
+                                   width={6720}
+                                   height={4480}
+                                   layout="responsive"
+                                   className="img-thumbnail img-fluid"
+                                   alt={`${m.name}'s photo`}/>
+                        </Link>
                         <div className={classes.Social}>
-                            <a href={m.twitterLink}><i className="bi bi-twitter"/></a>
-                            <a href={m.fbLink}><i className="bi bi-facebook"/></a>
-                            <a href={m.instaLink}><i className="bi bi-instagram"/></a>
-                            <a href={m.linkedInLink}><i className="bi bi-linkedin"/></a>
+                            {m.twitter && <a href={m.twitter}><i className="bi bi-twitter"/></a>}
+                            {m.facebook && <a href={m.facebook}><i className="bi bi-facebook"/></a>}
+                            {m.instagram && <a href={m.instagram}><i className="bi bi-instagram"/></a>}
+                            {m.linkedIn && <a href={m.linkedIn}><i className="bi bi-linkedin"/></a>}
                         </div>
                     </div>
                     <div className={classes.MemberInfo}>
-                        <h4>{m.name}</h4>
-                        <span>{m.description}</span>
+                        <Link href={`/profile/${m.username}`}>
+                            <h4>
+                                {m.name}
+                            </h4>
+                        </Link>
+
+                        <span>{m.designation}</span>
                     </div>
                 </div>
             </div>

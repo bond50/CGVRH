@@ -7,6 +7,7 @@ import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import ContactForm from "../../components/form/ContactForm";
 import Image from "next/image";
 import React from "react";
+import ResponsiveCardedImage from "../../components/reusables/card/ResponsiveCardedImage";
 
 
 const Userprofile = ({user, blogs, query}) => {
@@ -57,24 +58,26 @@ const Userprofile = ({user, blogs, query}) => {
                 <section className={classes.Profile}>
                     <div className="container">
                         <div className="row">
-                            <div className="col-xl-4">
+                            <div className="col-xl-4 ">
+
                                 <div className={`card ${classes.Card} `}>
+                                    <Image
+                                        src={`${API}/user/photo/${user.username}`}
+                                        width={6720}
+                                        height={4480}
+                                        layout="responsive"
+                                        className="card-img-top" alt="..."/>
                                     <div
-                                        className={`card-body ${classes.CardBody} pt-4 d-flex flex-column align-items-center`}>
-                                        <Image
-                                            width={256}
-                                            height={171}
-                                            src={`${API}/user/photo/${user.username}`}
-                                            alt={`Image for ${user.username}`}
-                                            className='img-thumbnail'
-                                        />
+                                        className={`card-body ${classes.CardBody}  d-flex flex-column align-items-center`}>
                                         <h2>{user.name}</h2>
                                         <h3>{user.designation ? user.designation : "Designation not available"}</h3>
+
+
                                         <div className={`${classes.Links} mt-2`}>
                                             {user.twitter &&
-                                                <Link href={user.twitter}>
-                                                    <a className="twitter"><i className="bi bi-twitter"/></a>
-                                                </Link>
+                                            <Link href={user.twitter}>
+                                                <a className="twitter"><i className="bi bi-twitter"/></a>
+                                            </Link>
                                             }
                                             {
                                                 user.facebook &&
@@ -92,28 +95,36 @@ const Userprofile = ({user, blogs, query}) => {
                                                 </Link>
                                             }
                                             {user.linkedIn &&
-                                                <Link href={user.linkedIn}>
-                                                    <a className="linkedin"><i className="bi bi-linkedin"/></a>
-                                                </Link>
+                                            <Link href={user.linkedIn}>
+                                                <a className="linkedin"><i className="bi bi-linkedin"/></a>
+                                            </Link>
 
                                             }
                                         </div>
+
                                     </div>
                                 </div>
-
                             </div>
                             <div className="col-xl-8">
-                                {blogs.length > 0 && <div className={`card ${classes.Card}`}>
+                                {blogs.length <= 0 ? <p>{user.name} has not written anything</p> :
+                                    <div className={`card ${classes.Card}`}>
+                                        <div className={`card-body ${classes.CardBody}`}>
+                                            <h5 className={classes.CardTitle}>Articles written
+                                                by <em><strong>{user.name}</strong></em></h5>
+                                            {showUserBlogs()}
+                                        </div>
+                                    </div>}
+
+                                {user.about && <div className={`card ${classes.Card}`}>
                                     <div className={`card-body ${classes.CardBody}`}>
-                                        <h5 className={classes.CardTitle}>Articles written
-                                            by <em><strong>{user.name}</strong></em></h5>
-                                        {showUserBlogs()}
+                                        <h5 className={classes.CardTitle}>About {user.name}</h5>
+                                        <p>{user.about}</p>
                                     </div>
                                 </div>}
 
-                                <ContactForm
+                                {user.email && <ContactForm
                                     authorEmail={user.email}
-                                    label={`Send a message to ${user.name}`}/>
+                                    label={`Send a message to ${user.name}`}/>}
                             </div>
                         </div>
                     </div>
