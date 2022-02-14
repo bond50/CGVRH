@@ -1,36 +1,32 @@
-import useToggle from "../../hooks/useToggle";
 import MyLink from "./myLink";
+import useToggle from "../../hooks/useToggle";
 import React, {useEffect, useState} from "react";
 import {singleCategory} from "../../actions/category";
-import {useRouter} from "next/router";
 
-const SingleDropdown = ({caption, activeClassName, href, slug}) => {
-    const router = useRouter()
+export const BlogDrop = ({slug, caption}) => {
     const [closed, toggleClosed] = useToggle();
     const [loadedPages, setLoadedPages] = useState([])
 
-
     useEffect(() => {
-            singleCategory(slug, 'page-cat-name').then(res => {
-                setLoadedPages(res.pages)
+            singleCategory(slug, 'category').then(res => {
+                setLoadedPages(res.blogs)
             })
         }
         ,
-        [slug])
+        [])
 
     const showLoadedPages = () => {
         return loadedPages.map(pg => {
-            return <MyLink key={pg._id} to={`/general/${pg.slug}`} caption={pg.title}/>
+            return <MyLink key={pg._id} to={`/blogs/${pg.slug}`} caption={pg.title}/>
         })
 
     }
+
     if (loadedPages.length < 1) {
         return null
     }
 
-    if (loadedPages.length === 1) {
-        return showLoadedPages()
-    }
+
 
     return (
         <li className={`dropdown`} onClick={toggleClosed}>
@@ -46,4 +42,4 @@ const SingleDropdown = ({caption, activeClassName, href, slug}) => {
     );
 };
 
-export default SingleDropdown;
+export default BlogDrop;

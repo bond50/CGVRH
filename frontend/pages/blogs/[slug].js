@@ -2,13 +2,12 @@ import {listRelated, singleBlog} from "../../actions/blog";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import Head from "next/head";
 import React, {useState, useEffect} from "react";
-
 import BlogContainer from "../../hoc/BlogContainer";
 import Card from "../../components/blog/Card";
 import DisqusThread from "../../components/DiscussThread";
 import SmallCard from "../../components/reusables/card/small-card";
-import GeneralPageHeader from "../../hoc/general-page-header";
-import Layout from "../../hoc/blog/blog-layout";
+import Layout from "../../hoc/Layout";
+
 
 
 const Slug = ({blog, query}) => {
@@ -74,7 +73,7 @@ const Slug = ({blog, query}) => {
     return (
         <>
             {head()}
-            <Layout>
+             <Layout blog>
                 <main>
 
                     {/*<GeneralPageHeader*/}

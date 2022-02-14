@@ -3,10 +3,10 @@ import Footer from "../components/footer/Footer";
 import Toolbar from "../components/navgation/Toolbar";
 
 
-const Layout = ({children,home}) => {
+const Layout = ({children,home, blog}) => {
     return (
         <>
-           <Toolbar home={home}/>
+           <Toolbar home={home}  blog={blog}/>
             <main>
                 {children}
             </main>

@@ -10,6 +10,7 @@ const {errorHandler} = require('../helpers/dbErrorHandler');
 const fs = require('fs');
 const {smartTrim} = require('../helpers/blog');
 
+
 exports.create = (req, res) => {
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
@@ -45,7 +46,7 @@ exports.create = (req, res) => {
                 error: 'At least one tag is required'
             });
         }
-              console.log('tags',tags)
+        console.log('tags', tags)
         let blog = new Blog();
         blog.approved = false;
         blog.title = title;
@@ -58,7 +59,7 @@ exports.create = (req, res) => {
         // categories and tags
         let arrayOfCategories = categories && categories.split(',');
         let arrayOfTags = tags && tags.split(',');
-        console.log('array',arrayOfTags)
+        console.log('array', arrayOfTags)
 
         if (files.photo) {
             if (files.photo.size > 10000000) {
@@ -371,3 +372,18 @@ exports.listPending = (req, res) => {
             res.json(data);
         });
 };
+
+exports.featuredBlogs = (req, res) => {
+    Blog.find({featured: true, accepted: true})
+        .select('_id title excerpt slug')
+        .sort({createdAt: -1})
+        .limit(10)
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: errorHandler(err)
+                });
+            }
+            res.json(data);
+        });
+}

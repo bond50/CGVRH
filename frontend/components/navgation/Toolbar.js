@@ -5,13 +5,12 @@ import useSWR from "swr";
 import {API} from "../../config";
 
 
-const Toolbar = () => {
-
+const Toolbar = ({blog}) => {
 
     return (
         <Fragment>
-            <Top/>
-            <Header />
+            {!blog && <Top/>}
+            <Header blog={blog}/>
         </Fragment>
     )
 

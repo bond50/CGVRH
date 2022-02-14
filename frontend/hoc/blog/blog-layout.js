@@ -7,7 +7,6 @@ import {fetcher} from "../../components/reusables/functions/fetcher";
 import Link from "next/link";
 
 
-
 const Layout = ({children}) => {
     const {data, error} = useSWR(
         [

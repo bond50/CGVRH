@@ -12,6 +12,7 @@ const {
     photo,
     listRelated,
     listSearch,
+    featuredBlogs,
     listPending
 } = require('../controllers/blog');
 
@@ -19,6 +20,7 @@ const {requireSignin, adminMiddleware, authMiddleware, canUpdateDeleteBlog} = re
 
 router.post('/blog', requireSignin, adminMiddleware, create);
 router.get('/blogs', list);
+router.get('/featured-blogs', featuredBlogs);
 router.get('/pending-blogs',requireSignin, adminMiddleware, listPending);
 router.get('/list-recent-blogs', listHomePageBlogs);
 router.post('/blogs-categories-tags', listAllBlogsCategoriesTags);

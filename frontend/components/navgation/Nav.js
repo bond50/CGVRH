@@ -14,8 +14,6 @@ import Media from "./media";
 
 
 const Nav = () => {
-    const [pages, setPages] = useState([{_id: 'asd', name: 'Our Management Team', slug: 'board-members'}])
-    const router = useRouter();
     const [closed, toggleClosed] = useToggle();
     let attachedClasses = [`navbar`];
 
@@ -47,11 +45,13 @@ const Nav = () => {
 
 
     return (
-        <nav id='navbar' className={`${attachedClasses.join('')}`}>
+        <nav id='navbar' className={`${attachedClasses.join(' ')}`}>
             <ul>
                 {showLinks}
                 <MyLink caption={'HMT'} to='/about/board-members'/>
                 <Media/>
+
+                <MyLink caption={'News and events'} to='/blogs'/>
                 <MyLink caption={'Contact'} to='/contact'/>
             </ul>
             <i className={`${closed ? 'bi bi-x' : 'bi bi-list'} mobile-nav-toggle`} onClick={toggleClosed}/>

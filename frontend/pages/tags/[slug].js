@@ -3,8 +3,7 @@ import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import React from "react";
 import SmallCard from "../../components/reusables/card/small-card";
-import GeneralPageHeader from "../../hoc/general-page-header";
-import Layout from "../../hoc/blog/blog-layout";
+import Layout from "../../hoc/Layout";
 
 
 const Tag = ({tag, blogs, query}) => {
@@ -33,18 +32,20 @@ const Tag = ({tag, blogs, query}) => {
     return (
         <>
             {head()}
-            <Layout>
-                <div className="container mt-2">
-                    <div className="row">
-                        {blogs.map(blog => {
-                            return <div className="col-md-4" key={blog._id}>
-                                <article>
-                                    <SmallCard blog={blog}/>
-                                </article>
-                            </div>
-                        })}
+            <Layout blog>
+                <section className='blog-section'>
+                    <div className="container mt-2">
+                        <div className="row">
+                            {blogs.map(blog => {
+                                return <div className="col-md-4" key={blog._id}>
+                                    <article>
+                                        <SmallCard blog={blog}/>
+                                    </article>
+                                </div>
+                            })}
+                        </div>
                     </div>
-                </div>
+                </section>
 
                 {/*<main>*/}
                 {/*    <div className="container">*/}

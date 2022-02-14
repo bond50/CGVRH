@@ -3,9 +3,11 @@ import React, {useState} from "react";
 import {listBlogsWithCategoriesAndTags} from "../../actions/blog";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import {withRouter} from "next/router";
-import Layout from "../../hoc/blog/blog-layout";
-import SmallCard from "../../components/reusables/card/small-card";
 
+import SmallCard from "../../components/reusables/card/small-card";
+import Layout from "../../hoc/Layout";
+import BlogCarousel from "../../components/blog/blog-carousel";
+import BlogHero from "../../components/blog/blog-hero";
 
 
 const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, categories, router}) => {
@@ -96,17 +98,18 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, categories, router}) =>
     return (
         <>
             {head()}
-            <Layout>
+            <Layout blog>
+                <BlogHero/>
                 <main>
-                    <div className="container mt-2">
-                        <div className='row'>
-                            {showAllBlogs()}
-                            {showLoadedBlogs()}
+                    <section className='blog-section'>
+                        <div className="container ">
+                            <div className='row'>
+                                {showAllBlogs()}
+                                {showLoadedBlogs()}
+                            </div>
+                            <div className="text-center pb-3">{loadMoreButton()}</div>
                         </div>
-                        <div className="text-center pb-3">{loadMoreButton()}</div>
-                    </div>
-
-
+                    </section>
                 </main>
             </Layout>
         </>

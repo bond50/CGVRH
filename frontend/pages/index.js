@@ -20,10 +20,6 @@ export default function Home() {
         contact Vihiga county referral hospital ICT team for assistance.Thank you </p></div>
     if (!blogs) return <div className='preloader'/>
 
-    // let comp = <Hero data={services}/>
-    // if (!services || services.length <= 0) {
-    //     comp = null
-    // }
 
 
     return (
