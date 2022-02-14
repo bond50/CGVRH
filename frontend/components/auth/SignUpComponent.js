@@ -1,13 +1,17 @@
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {isAuth, preSignup} from '../../actions/auth';
 import Router from 'next/router';
 import AboutContainer from "../reusables/AboutContainer";
+import AuthWrapper from "./auth-wrapper";
+import classes from "../../styles/login.module.css";
+import Link from "next/link";
+import LoginGoogle from "./LoginGoogle";
 
 const SignupComponent = () => {
     const [values, setValues] = useState({
-        name: 'Galavu',
-        email: 'galavu10@gmail.com',
-        password: '1234567890',
+        name: '',
+        email: '',
+        password: '',
         error: '',
         loading: false,
         message: '',
@@ -25,7 +29,7 @@ const SignupComponent = () => {
         setValues({...values, loading: true, error: ''});
         const user = {name, email, password};
 
-      preSignup(user)
+        preSignup(user)
             .then(data => {
                 if (data.error) {
                     setValues({...values, error: data.error, loading: false});
@@ -54,53 +58,87 @@ const SignupComponent = () => {
 
     const signupForm = () => {
         return (
-            <form onSubmit={handleSubmit}>
-                <div className="form-group mb-3">
-                    <input
-                        value={name}
-                        onChange={handleChange('name')}
-                        type="text"
-                        className="form-control"
-                        placeholder="Type your name"
-                    />
+            <form onSubmit={handleSubmit} className='row gy-3'>
+
+                <div className="col-12">
+                    <label htmlFor="name" className="form-label">Your Name</label>
+                    <div className="input-group ">
+                        <input
+                            value={name}
+                            required
+                            onChange={handleChange('name')}
+                            type="text"
+                            name="name"
+                            className="form-control"
+                        />
+                    </div>
                 </div>
 
-                <div className="form-group mb-3">
-                    <input
-                        value={email}
-                        onChange={handleChange('email')}
-                        type="email"
-                        required
-                        className="form-control"
-                        placeholder="Type your email"
-                    />
+
+                <div className="col-12">
+                    <label htmlFor="email" className="form-label">Your Email</label>
+                    <div className="input-group ">
+                        <input
+                            value={email}
+                            onChange={handleChange('email')}
+                            type="email"
+                            required
+                            className="form-control"
+                        />
+                    </div>
                 </div>
 
-                <div className="form-group mb-3">
-                    <input
-                        value={password}
-                        onChange={handleChange('password')}
-                        type="password"
+                <div className="col-12">
+                    <label htmlFor="email" className="form-label">Password</label>
+                    <div className="input-group ">
+                        <input
 
-                        className="form-control"
-                        placeholder="Type your password"
-                    />
+                            value={password}
+                            onChange={handleChange('password')}
+                            type="password"
+                            className="form-control"
+                        />
+                    </div>
                 </div>
-                <div>
-                    <button className="btn btn-primary">Signup</button>
+                <div className="col-12">
+                    <div className="form-check">
+                        <input className="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms"
+                               required/>
+                            <label className="form-check-label" htmlFor="acceptTerms">I agree and accept the <a
+                                href="#">terms and conditions</a></label>
+                            <div className="invalid-feedback">You must agree before submitting.</div>
+                    </div>
+                </div>
+
+                <div className="col-12">
+                    <button className={`btn btn-primary w-100 ${classes.Btn}`}
+                            type="submit">Create account
+                    </button>
+                </div>
+                <div className={`col-12 ${classes.sBtn}`}>
+                    <div className="small mb-0">Already have account?
+                        <Link href={`/signin/`}>
+                            <a className={`mx-1`}>Login</a>
+                        </Link>
+                    </div>
+                </div>
+                <div className={`col-12 ${classes.sBtn}`}>
+                    <div className="small mb-0">
+                        <LoginGoogle/>
+                    </div>
                 </div>
             </form>
-        );
+    );
     };
 
     return (
-        <AboutContainer title='Sign up'>
+        <AuthWrapper>
             {showLoading()}
             {showError()}
             {showMessage()}
-            {showForm&&signupForm()}
-        </AboutContainer>
+            {showForm && signupForm()}
+        </AuthWrapper>
     );
-};
+    };
 
-export default SignupComponent;
+    export default SignupComponent;

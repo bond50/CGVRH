@@ -3,9 +3,7 @@ import SignupComponent from "../components/auth/SignUpComponent";
 
 const Signup = () => {
     return (
-        <Layout>
-            <SignupComponent/>
-        </Layout>
+        <SignupComponent/>
     );
 };
 

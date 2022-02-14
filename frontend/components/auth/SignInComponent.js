@@ -1,38 +1,37 @@
-import {useState,useEffect} from 'react';
-import {signin, authenticate, isAuth} from '../../actions/auth';
-import Router from 'next/router';
+import classes from '../../styles/login.module.css'
+import React, {useEffect, useState} from "react";
+import {authenticate, isAuth, signin} from "../../actions/auth";
+import Router from "next/router";
+import Alert from "../messages/Alert";
+import LoginGoogle from "../auth/LoginGoogle";
 import Link from "next/link";
-import AboutContainer from "../reusables/AboutContainer";
-import LoginGoogle from "./LoginGoogle";
+import AuthWrapper from "./auth-wrapper";
 
-const SigninComponent = () => {
+const AdminLogin = () => {
     const [values, setValues] = useState({
-        email: 'waldguard@gmail.com',
-        password: '1234567890',
+        email: '',
+        password: '',
         error: '',
         loading: false,
         message: '',
-        showForm: true
+
     });
 
-    const {email, password, error, loading, message, showForm} = values;
+    const {email, password, error, loading, message} = values;
 
     useEffect(() => {
         isAuth() && Router.push(`/`);
     }, []);
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        setValues({...values, loading: true, error: false});
-        const user = {email, password};
 
+    const handleFormSubmit = e => {
+        e.preventDefault();
+        setValues({...values, loading: true, error: ''});
+        const user = {email, password};
         signin(user).then(data => {
             if (data.error) {
                 setValues({...values, error: data.error, loading: false});
             } else {
-                // save user token to cookie
-                // save user info to localstorage
-                // authenticate user
                 authenticate(data, () => {
                     if (isAuth() && isAuth().role === 1) {
                         Router.push(`/admin2`);
@@ -45,56 +44,79 @@ const SigninComponent = () => {
     };
 
     const handleChange = name => e => {
-        setValues({...values, error: false, [name]: e.target.value});
+        setValues({...values, error: '', [name]: e.target.value});
     };
+
 
     const showLoading = () => (loading ? <div className="alert alert-info">Loading...</div> : '');
-    const showError = () => (error ? <div className="alert alert-danger">{error}</div> : '');
-    const showMessage = () => (message ? <div className="alert alert-info">{message}</div> : '');
-
-    const signinForm = () => {
-        return (
-            <form onSubmit={handleSubmit}>
-                <div className="form-group mb-3">
-                    <input
-                        value={email}
-                        onChange={handleChange('email')}
-                        type="email"
-                        className="form-control"
-                        placeholder="Type your email"
-                    />
-                </div>
-
-                <div className="form-group mb-3">
-                    <input
-                        value={password}
-                        onChange={handleChange('password')}
-                        type="password"
-                        className="form-control"
-                        placeholder="Type your password"
-                    />
-                </div>
-
-                <div>
-                    <button className="btn btn-primary">Signin</button>
-                </div>
-            </form>
-        );
-    };
+    const showError = () => (error ? <Alert msg={error} type="danger" label="Danger"/> : '');
+    const showMessage = () => (message ? <Alert msg={message} type="danger" label="Danger"/> : '');
 
     return (
-        <AboutContainer title='Signin'>
-            {showError()}
-            {showLoading()}
-            {showMessage()}
-            <LoginGoogle/>
-            {showForm && signinForm()}
-            <br/>
-            <Link href={`/auth/password/forgot`}>
-                <a className='btn btn-danger btn-sm'>Reset password</a>
-            </Link>
-        </AboutContainer>
+        <AuthWrapper login>
+            <form className="row g-3" onSubmit={handleFormSubmit}>
+                <div className="col-12">
+                    <label htmlFor="email" className="form-label">Email</label>
+                    <div className="input-group ">
+                        <span className="input-group-text" id="inputGroupPrepend">@</span>
+                        <input
+                            type="email"
+                            name="username"
+                            className="form-control"
+                            id="email"
+                            required
+                            value={email}
+                            onChange={handleChange('email')}
+                        />
+                    </div>
+                </div>
+
+                <div className="col-12">
+                    <label htmlFor="password" className="form-label">Password</label>
+                    <input
+                        type="password"
+                        name="password"
+                        className="form-control"
+                        id="password"
+                        value={password}
+                        onChange={handleChange('password')}
+                        required/>
+                </div>
+
+                <div className="col-12">
+                    <div className="form-check">
+                        <input className="form-check-input" type="checkbox" name="remember"
+                               value="true" id="rememberMe"/>
+                        <label className="form-check-label" htmlFor="rememberMe">Remember
+                            me</label>
+                    </div>
+                </div>
+                <div className="col-12">
+                    <button className={`btn btn-primary w-100 ${classes.Btn}`}
+                            type="submit">Login
+                    </button>
+                </div>
+                <LoginGoogle/>
+                {showError()}
+                {showLoading()}
+                {showMessage()}
+                <div className={`col-12 ${classes.sBtn}`}>
+                    <div className="small mb-0">Dont have account?
+                        <Link href={`/signup/`}>
+                            <a className={`mx-1`}>Create an account</a>
+                        </Link>
+                    </div>
+                </div>
+                <div className={`col-12 ${classes.sBtn}`}>
+                    <div className="small mb-0">Forgot password?
+                        <Link href={`/auth/password/forgot`}>
+                            <a className={`mx-1`}>Reset it here</a>
+                        </Link>
+                    </div>
+                </div>
+            </form>
+        </AuthWrapper>
     );
 };
 
-export default SigninComponent;
+export default AdminLogin;
