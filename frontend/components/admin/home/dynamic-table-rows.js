@@ -4,7 +4,7 @@ import moment from "moment";
 import classes from "./index.module.css";
 
 
-const DynamicTableRows = ({blog, showModal, user,to}) => {
+const DynamicTableRows = ({blog, showModal, user, to}) => {
 
     return (
         <tr className={classes.tr}>

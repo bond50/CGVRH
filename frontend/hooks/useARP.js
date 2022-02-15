@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import axiosInstance from "../axios/axios";
 import {getCookie} from "../actions/auth";
 import {removeBlog} from "../actions/blog";
-import {removeUser} from "../actions/user";
 import {removePage} from "../actions/general";
 
 const PendingPosts = (url) => {
@@ -18,7 +17,7 @@ const PendingPosts = (url) => {
 
     const {error, blogs, message, removed, loading, reload} = values
     useEffect(() => {
-        if (url){
+        if (url) {
             loadBogs()
         }
     }, [reload, url])
@@ -31,12 +30,11 @@ const PendingPosts = (url) => {
                 setValues({...values, blogs: response.data, loading: false})
             })
             .catch(err => {
-            if (err.response.status) {
-                setValues({...values, error: 'Oops! something went wrong while fetching blogs', loading: false})
-            }
-        })
+                if (err.response.status) {
+                    setValues({...values, error: 'Oops! something went wrong while fetching blogs', loading: false})
+                }
+            })
     }
-
 
 
     const handleClose = () => setShow(false);

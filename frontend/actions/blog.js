@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import {API} from '../config';
 import queryString from 'query-string'
-import {isAuth,handleResponse} from "./auth";
+import {handleResponse, isAuth} from "./auth";
 
 
 export const createBlog = (blog, token) => {
@@ -49,6 +49,7 @@ export const listBlogsWithCategoriesAndTags = (skip, limit) => {
 
 
 export const singleBlog = (slug) => {
+    console.log(slug)
     return fetch(`${API}/blog/${slug}`, {
         method: 'GET'
     })
@@ -96,9 +97,9 @@ export const list = (username) => {
 export const removeBlog = (slug, token) => {
     let deleteBlogEndpoint
     if (isAuth() && isAuth().role === 1) {
-        deleteBlogEndpoint= `${API}/blog/${slug}`
+        deleteBlogEndpoint = `${API}/blog/${slug}`
     } else if (isAuth() && isAuth().role === 0) {
-       deleteBlogEndpoint = `${API}/user/blog/${slug}`
+        deleteBlogEndpoint = `${API}/user/blog/${slug}`
     }
 
     return fetch(`${deleteBlogEndpoint}`, {
@@ -110,7 +111,7 @@ export const removeBlog = (slug, token) => {
         },
     })
         .then(response => {
-             handleResponse(response)
+            handleResponse(response)
             return response.json();
         })
         .catch(err => console.log(err));
@@ -118,13 +119,13 @@ export const removeBlog = (slug, token) => {
 
 
 export const updateBlog = (blog, token, slug) => {
-      let updateBlogEndpoint
+    let updateBlogEndpoint
 
     if (isAuth() && isAuth().role === 1) {
-        updateBlogEndpoint =`${API}/blog/${slug}`
+        updateBlogEndpoint = `${API}/blog/${slug}`
 
     } else if (isAuth() && isAuth().role === 0) {
-      updateBlogEndpoint = `${API}/user/blog/${slug}`
+        updateBlogEndpoint = `${API}/user/blog/${slug}`
     }
 
 
@@ -137,7 +138,7 @@ export const updateBlog = (blog, token, slug) => {
         body: blog
     })
         .then(response => {
-             handleResponse(response)
+            handleResponse(response)
             return response.json();
         })
         .catch(err => console.log(err));

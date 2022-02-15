@@ -4,7 +4,7 @@ import AboutContainer from "../reusables/AboutContainer";
 const Vacancies = () => {
     return (
         <AboutContainer title='Vacancies'>
-            
+
         </AboutContainer>
     );
 };

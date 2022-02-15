@@ -1,10 +1,7 @@
-import SwitchBox from "../blog/switch-box";
-import React, {useState} from "react";
+import React from "react";
 
 
 const BlogsPending = ({slug}) => {
-
-
 
 
     const showBlogs = () => {

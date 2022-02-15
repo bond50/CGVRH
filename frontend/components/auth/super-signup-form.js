@@ -5,7 +5,7 @@ import Button from "../reusables/ui/Button";
 const SuperSignupForm = () => {
 
     return (
-        <form >
+        <form>
             <div className="row mb-3">
                 <label htmlFor="profileImage"
                        className={`col-lg-3 col-md-4 ${classes.Label}`}>Profile
@@ -26,7 +26,7 @@ const SuperSignupForm = () => {
                 </div>
 
             </div>
-             <div className={`row ${classes.Row} mb-3`}>
+            <div className={`row ${classes.Row} mb-3`}>
                 <div className={`col-lg-3 col-md-4 ${classes.Label}`}>Full Name</div>
                 <div className="col-lg-9 col-md-8">
                     <input
@@ -57,8 +57,8 @@ const SuperSignupForm = () => {
                 <div className={`col-lg-3 col-md-4 ${classes.Label}`}> Address</div>
                 <div className="col-lg-9 col-md-8">
                     <input
-                    type="text"
-                    className="form-control"/>
+                        type="text"
+                        className="form-control"/>
                 </div>
             </div>
 
@@ -70,8 +70,6 @@ const SuperSignupForm = () => {
                       className="form-control"/>
                 </div>
             </div>
-
-
 
 
             <div className="text-center">

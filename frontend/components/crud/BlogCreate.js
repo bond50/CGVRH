@@ -1,8 +1,6 @@
 import useCreate from "../../hooks/useCreate";
 import CreateForm from "../reusables/forms/CreateForm";
 import Alert from "../messages/Alert";
-import Image from "next/image";
-import {API} from "../../config";
 import SideCatTags from "../reusables/forms/side-cat-tags";
 import React from "react";
 

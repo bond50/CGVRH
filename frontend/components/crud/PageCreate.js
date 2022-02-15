@@ -1,9 +1,9 @@
-
 import useCreate from "../../hooks/useCreate";
 import CreateForm from "../reusables/forms/CreateForm";
 import Alert from "../messages/Alert";
 import SideCatTags from "../reusables/forms/side-cat-tags";
 import React from "react";
+
 const PageCreate = () => {
     const {
         showCategories,
@@ -18,7 +18,7 @@ const PageCreate = () => {
     } = useCreate('page', 'page-cats', null, 'page')
 
     return (
-         <div className='row'>
+        <div className='row'>
             <div className="col-md-8">
                 <CreateForm
                     handleChange={handleChange('title')}

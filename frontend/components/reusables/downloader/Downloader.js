@@ -7,7 +7,7 @@ export const Downloader = ({files = [], remove}) => {
             <div className="card">
                 <div className={`card-header ${classes.cardHeader}`}>File Downloader</div>
                 <ul className={`list-group list-group-flush ${classes.listGroup}`}>
-                    {files.map(file  => {
+                    {files.map(file => {
                         return (
                             <DownloadItem
                                 key={file.publicId}

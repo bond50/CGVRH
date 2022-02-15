@@ -1,7 +1,6 @@
 import {API} from "../config";
 import axios from "axios";
 import fetch from "isomorphic-fetch";
-import useSWR from "swr";
 
 
 // export const getFilesFromCloud = async () => {
@@ -18,7 +17,6 @@ export const getFilesFromLocal = async () => {
             return data
         }).catch(error => console.log(error))
 };
-
 
 
 export const getFilesFromCloud = async (folder) => {

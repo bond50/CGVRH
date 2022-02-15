@@ -1,8 +1,5 @@
 import React from 'react';
-import Image from "next/image";
-import {API} from "../../config";
 import classes from './overview.module.css'
-import ProfileUpdateForm from "../reusables/forms/profile-update-form";
 import Button from "../reusables/ui/Button";
 
 

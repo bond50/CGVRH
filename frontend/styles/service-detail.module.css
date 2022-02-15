@@ -1,20 +1,19 @@
 
- .content {
+.content {
     padding: 0 30px 30px;
     background: #fff
 }
 
- .content p {
+.content p {
     margin-bottom: 0;
     padding: 10px 0 0 0;
 }
 
 @media (max-width: 1200px) {
-  .content {
+    .content {
         padding: 0 10px 10px;
     }
 }
-
 
 
 .content h3 {
@@ -25,7 +24,6 @@
     color: #2c4964;
     text-transform: capitalize;
 }
-
 
 
 .Footer {

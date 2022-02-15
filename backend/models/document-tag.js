@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const docSchema = new mongoose.Schema(
-     {
+    {
         name: {
             type: String,
             trim: true,
@@ -14,7 +14,7 @@ const docSchema = new mongoose.Schema(
             index: true
         }
     },
-    { timestamps: true }
+    {timestamps: true}
 );
 
 module.exports = mongoose.model('DocumentTag', docSchema);

@@ -22,7 +22,7 @@
 
 }
 
-.Filter:hover, .Filter .active ,.Filter.active {
+.Filter:hover, .Filter .active, .Filter.active {
     color: #fff;
     background: #0880e8;
 }

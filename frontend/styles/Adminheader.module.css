@@ -139,7 +139,7 @@
     padding-bottom: 0;
 }
 
- .DropdownHeader h6 {
+.DropdownHeader h6 {
     font-size: 18px;
     margin-bottom: 0;
     font-weight: 600;
@@ -169,67 +169,72 @@
 
 .DropdownMenu {
     display: none;
-  border-radius: 4px;
-  padding: 10px 0;
-  -webkit-animation-name: dropdown-animate;
-  animation-name: dropdown-animate;
-  -webkit-animation-duration: 0.2s;
-  animation-duration: 0.2s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  border: 0;
-  box-shadow: 0 5px 30px 0 rgba(82, 63, 105, 0.2);
+    border-radius: 4px;
+    padding: 10px 0;
+    -webkit-animation-name: dropdown-animate;
+    animation-name: dropdown-animate;
+    -webkit-animation-duration: 0.2s;
+    animation-duration: 0.2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    border: 0;
+    box-shadow: 0 5px 30px 0 rgba(82, 63, 105, 0.2);
 }
-
 
 
 @media (max-width: 480px) {
-  .DropdownMenu {
-    width: 100vw !important;
-  }
+    .DropdownMenu {
+        width: 100vw !important;
+    }
 }
+
 .DropdownHeader, .DropdownFooter {
-  text-align: center;
-  font-size: 15px;
-  padding: 10px 25px;
+    text-align: center;
+    font-size: 15px;
+    padding: 10px 25px;
 }
 
 .DropdownFooter a {
-  color: #444444;
-  text-decoration: underline;
+    color: #444444;
+    text-decoration: underline;
 }
+
 .DropdownFooter a:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
+
 .DropdownDivider {
-  color: #a5c5fe;
-  margin: 0;
+    color: #a5c5fe;
+    margin: 0;
 }
- .DropdownItem {
-  font-size: 14px;
-  padding: 10px 15px;
-  transition: 0.3s;
+
+.DropdownItem {
+    font-size: 14px;
+    padding: 10px 15px;
+    transition: 0.3s;
 }
+
 .DropdownItem i {
-  margin-right: 10px;
-  font-size: 18px;
-  line-height: 0;
+    margin-right: 10px;
+    font-size: 18px;
+    line-height: 0;
 }
+
 .DropdownItem:hover {
-  background-color: #f6f9ff;
+    background-color: #f6f9ff;
 }
 
 @media (min-width: 768px) {
-  .DropdownMenuArrow::before {
-    content: "";
-    width: 13px;
-    height: 13px;
-    background: #fff;
-    position: absolute;
-    top: -7px;
-    right: 20px;
-    transform: rotate(45deg);
-    border-top: 1px solid #eaedf1;
-    border-left: 1px solid #eaedf1;
-  }
+    .DropdownMenuArrow::before {
+        content: "";
+        width: 13px;
+        height: 13px;
+        background: #fff;
+        position: absolute;
+        top: -7px;
+        right: 20px;
+        transform: rotate(45deg);
+        border-top: 1px solid #eaedf1;
+        border-left: 1px solid #eaedf1;
+    }
 }

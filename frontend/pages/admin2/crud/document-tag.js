@@ -19,8 +19,7 @@ const Tag = () => {
     } = useTag('document-tags', 'document-tag', 'Document Tag')
 
 
-
-      const newTagFom = () => (
+    const newTagFom = () => (
         <TagCategoryForm
             value={name}
             handleChange={handleChange}
@@ -28,17 +27,17 @@ const Tag = () => {
             clickSubmit={clickSubmit}/>
     );
     return (
-         <Layout pageTitle='Manage Tags'>
+        <Layout pageTitle='Manage Tags'>
             <Admin>
-            {showSuccess()}
-            {showError()}
-            {showRemoved()}
-            <div onMouseMove={mouseMoveHandler}>
-                {newTagFom()}
-                {showTags()}
-            </div>
+                {showSuccess()}
+                {showError()}
+                {showRemoved()}
+                <div onMouseMove={mouseMoveHandler}>
+                    {newTagFom()}
+                    {showTags()}
+                </div>
             </Admin>
-         </Layout>
+        </Layout>
     );
 };
 

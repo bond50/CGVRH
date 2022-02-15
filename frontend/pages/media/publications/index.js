@@ -1,7 +1,6 @@
 import React from 'react';
 import Layout from "../../../hoc/Layout";
-import Publications  from "../../../components/media/Publications";
-
+import Publications from "../../../components/media/Publications";
 
 
 const Index = () => {

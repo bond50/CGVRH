@@ -10,7 +10,7 @@ const SwitchBox = ({title, clicked}) => {
                 checked={false}
                 onClick={clicked}
                 id="flexSwitchCheckDefault"/>
-            <label className="form-check-label" htmlFor="flexSwitchCheckDefault" >{title}</label>
+            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{title}</label>
         </div>
     );
 };

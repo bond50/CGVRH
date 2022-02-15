@@ -1,12 +1,12 @@
 import Table from "../../reusables/table";
 
 const Microbiology = () => {
-    const theadData = ["Test","Cost", "Turn Around Time "];
+    const theadData = ["Test", "Cost", "Turn Around Time "];
 
     const tbodyData = [
         {
             id: "1",
-            items: ["CSF Analysis", "500","30 minutes"],
+            items: ["CSF Analysis", "500", "30 minutes"],
         },
         {
             id: "2",
@@ -14,17 +14,17 @@ const Microbiology = () => {
         },
         {
             id: "4",
-            items: ["Gram stain","200", "40 minutes"],
+            items: ["Gram stain", "200", "40 minutes"],
         },
         {
             id: "5",
-            items: ["Gene Xpert","free", "24 hours"],
+            items: ["Gene Xpert", "free", "24 hours"],
         },
         {
             id: "6",
             items: ["AAFB", "free", "24 hours"],
         },
-{
+        {
             id: "7",
             items: ["Semen Analysis", "600", "60 minutes"],
         },

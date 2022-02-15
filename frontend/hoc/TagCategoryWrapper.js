@@ -1,6 +1,5 @@
 import React from 'react';
 import GeneralPageHeader from "./general-page-header";
-import SmallCard from "../components/reusables/card/small-card";
 
 const TagCategoryWrapper = ({title, children}) => {
     return (

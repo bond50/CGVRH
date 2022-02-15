@@ -16,7 +16,7 @@ exports.cloudinaryUpload = (file, folder) => {
                 cloudinary_id: result.public_id,
                 tags: result.tags,
                 publicId: result.public_id,
-                createdAt:result.created_at
+                createdAt: result.created_at
             })
         }, {
             resource_type: "auto",

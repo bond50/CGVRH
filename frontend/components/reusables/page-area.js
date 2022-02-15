@@ -1,4 +1,5 @@
-import  classes from '../../styles/page-area.module.css'
+import classes from '../../styles/page-area.module.css'
+
 const PageArea = () => {
     return (
         <div className={classes.pageArea}>

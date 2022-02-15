@@ -33,7 +33,7 @@ const ApprovedPosts = () => {
                 return <DynamicTableRows
                     key={blog._id}
                     blog={blog}
-                      to={`/admin2/crud/${blog.slug}`}
+                    to={`/admin2/crud/${blog.slug}`}
                     showModal={handleShow}/>
             })}
         </CardDetail>

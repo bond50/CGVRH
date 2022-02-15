@@ -29,7 +29,6 @@ export const multipleFileUpload = async (data, options) => {
 };
 
 
-
 export const getDownloads = async () => {
     try {
         const {data} = await axios.get(`${API}/get-downloads`)

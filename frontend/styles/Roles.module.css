@@ -1,14 +1,16 @@
 .Section {
-    color:  #0C163B;
+    color: #0C163B;
     background: #f6f9ff;
     padding: 60px 0;
     overflow: hidden;
     position: relative;
 
 }
-.RowContent{
+
+.RowContent {
     padding: 20px;
 }
+
 .RowContent p:last-child {
     margin-bottom: 0;
 

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {getCookie, isAuth} from '../../actions/auth';
 import {list, removePage} from '../../actions/general';
 import moment from 'moment';
@@ -45,20 +45,20 @@ const PageRead = ({username}) => {
     const showUpdateButton = page => {
         if (isAuth() && isAuth().role === 0) {
             return (
-                <Link href={`/user/crud/${page.slug}`}>
+                <Link href={`/user/crud/gen-page/${page.slug}`}>
                     <a className="btn mx-3 btn-sm btn-warning">Update</a>
                 </Link>
             );
         } else if (isAuth() && isAuth().role === 1) {
             return (
-                <Link href={`/admin2/crud/${page.slug}`}>
+                <Link href={`/admin2/crud/gen-page/${page.slug}`}>
                     <a className="mx-3 btn btn-sm btn-warning">Update</a>
                 </Link>
             );
         }
     };
 
-    const showAllBlogs = () => {
+    const showAllPages = () => {
         return pages.map((pg, i) => {
             return (
                 <div key={i} className="pb-5">
@@ -66,7 +66,7 @@ const PageRead = ({username}) => {
                     <p className="mark">
                         Written by {pg.postedBy.name} | Published on {moment(pg.updatedAt).fromNow()}
                     </p>
-                    <button className="btn btn-sm btn-danger" onClick={() => deleteConfirm(blog.slug)}>
+                    <button className="btn btn-sm btn-danger" onClick={() => deleteConfirm(pg.slug)}>
                         Delete
                     </button>
                     {showUpdateButton(pg)}
@@ -79,8 +79,8 @@ const PageRead = ({username}) => {
     return (
         <div className="row">
             <div className="col-md-8">
-                <h3>Approved Blogs</h3>
-                {showAllBlogs()}
+                <h3>Approved Pages</h3>
+                {showAllPages()}
                 {message && <Alert msg={message} label='Success' type='success'/>}
             </div>
         </div>

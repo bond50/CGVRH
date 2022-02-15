@@ -27,6 +27,7 @@
 .card ul {
     color: red;
 }
+
 .card ul li a {
     text-transform: capitalize;
     color: #09254b;

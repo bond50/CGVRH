@@ -3,7 +3,7 @@ import Axios from 'axios'
 import ProgressBar from 'react-bootstrap/ProgressBar'
 
 
-const DownloadItem = ({ filePath, fileSize, removeFile,_id}) => {
+const DownloadItem = ({filePath, fileSize, removeFile, _id}) => {
 
 
     const [downloadInfo, setDownloadInfo] = useState({

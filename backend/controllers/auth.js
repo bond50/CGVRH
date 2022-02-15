@@ -1,5 +1,6 @@
 const User = require('../models/user')
 const Blog = require('../models/blog')
+const Page = require('../models/pages')
 const shortId = require('shortid')
 const jwt = require('jsonwebtoken')
 const _ = require('lodash')
@@ -9,6 +10,7 @@ const {OAuth2Client} = require('google-auth-library')
 const ip = require("ip");
 
 const sgMail = require("@sendgrid/mail");
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 
@@ -180,6 +182,23 @@ exports.adminMiddleware = (req, res, next) => {
 exports.canUpdateDeleteBlog = (req, res, cb) => {
     const slug = req.params.slug.toLowerCase();
     Blog.findOne({slug}).exec((err, data) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler(err)
+            });
+        }
+        let authorizedUser = data.postedBy._id.toString() === req.profile._id.toString();
+        if (!authorizedUser) {
+            return res.status(400).json({
+                error: 'You are not authorized'
+            });
+        }
+        cb();
+    });
+}
+exports.canUpdateDeletePage = (req, res, cb) => {
+    const slug = req.params.slug.toLowerCase();
+    Page.findOne({slug}).exec((err, data) => {
         if (err) {
             return res.status(400).json({
                 error: errorHandler(err)

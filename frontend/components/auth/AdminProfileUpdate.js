@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import Router, {useRouter} from 'next/router';
+import React from 'react';
 
 
 const ProfileUpdate = (username,

@@ -1,11 +1,7 @@
-import Link from 'next/link';
-import React, {useState, useEffect} from 'react';
-import Router, {useRouter} from 'next/router';
-import {getCookie, isAuth, loadedUserByAdmin, removeLocalStorage, updateUser} from '../../actions/auth';
+import React, {useEffect, useState} from 'react';
+import {getCookie, updateUser} from '../../actions/auth';
 import {getProfile, update} from '../../actions/user';
 import {API} from '../../config';
-import Button from "../reusables/ui/Button";
-import classes from "../../styles/Contact.module.css";
 import Alert from "../messages/Alert";
 import ProfileUpdateForm from "../reusables/forms/profile-update-form";
 

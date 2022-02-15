@@ -12,7 +12,7 @@ const useFCT = (endpoint) => {
         fetcher,
     )
 
-    return {data,error}
+    return {data, error}
 };
 
 export default useFCT;

@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from "../../styles/AboutContainer.module.css";
 import AboutContainer from "../reusables/AboutContainer";
 
 

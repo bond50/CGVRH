@@ -18,13 +18,13 @@ const Filters = () => {
             revalidateOnFocus: true,
         },
     );
-    useEffect(()=>{
+    useEffect(() => {
         setTags(filters)
-    },[])
+    }, [])
 
     console.log(tags)
 
-    const returnFilters = () => filters&&filters.map(f => {
+    const returnFilters = () => filters && filters.map(f => {
         return <li
             key={f._id}
             className={`${classes.Filter}`}

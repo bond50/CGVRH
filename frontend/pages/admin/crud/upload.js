@@ -4,7 +4,6 @@ import UploadComponent from "../../../components/crud/Upload";
 import Layout from "../../../hoc/admin/layout/layout";
 
 
-
 const Upload = () => {
     return (
         <Layout>
@@ -15,7 +14,7 @@ const Upload = () => {
                             <h2>Upload Images/Files</h2>
                         </div>
                         <div className="col-md-12">
-                             <UploadComponent/>
+                            <UploadComponent/>
                         </div>
                     </div>
                 </div>

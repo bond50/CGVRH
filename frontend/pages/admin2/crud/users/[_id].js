@@ -160,7 +160,8 @@ const Slug = () => {
                     <div className="row">
                         <div className="col-xl-4">
                             <div className={`card ${classes.Card} `}>
-                                <div className={`card-body ${classes.CardBody} pt-4 d-flex flex-column align-items-center`}>
+                                <div
+                                    className={`card-body ${classes.CardBody} pt-4 d-flex flex-column align-items-center`}>
                                     {username_for_photo && <Image
                                         width={256}
                                         height={171}
@@ -172,9 +173,9 @@ const Slug = () => {
                                     <h3>{designation ? designation : "Designation not available"}</h3>
                                     <div className={`${classes.Links} mt-2`}>
                                         {twitter &&
-                                            <Link href={twitter}>
-                                                <a className="twitter"><i className="bi bi-twitter"/></a>
-                                            </Link>
+                                        <Link href={twitter}>
+                                            <a className="twitter"><i className="bi bi-twitter"/></a>
+                                        </Link>
                                         }
                                         {
                                             facebook &&
@@ -192,9 +193,9 @@ const Slug = () => {
                                             </Link>
                                         }
                                         {linkedIn &&
-                                            <Link href={linkedIn}>
-                                                <a className="linkedin"><i className="bi bi-linkedin"/></a>
-                                            </Link>
+                                        <Link href={linkedIn}>
+                                            <a className="linkedin"><i className="bi bi-linkedin"/></a>
+                                        </Link>
 
                                         }
                                     </div>

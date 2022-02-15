@@ -1,7 +1,6 @@
-import {useState} from 'react';
 import SingleLink from "./singe_link/single-link";
 
-const MegaMenu = ({children, deepText, activeClassName,megaToggle,megaOpen}) => {
+const MegaMenu = ({children, deepText, activeClassName, megaToggle, megaOpen}) => {
 
 
     return (

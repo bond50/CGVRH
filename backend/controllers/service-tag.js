@@ -6,10 +6,10 @@ const Services = require("../models/pages");
 
 
 exports.create = (req, res) => {
-    const { name } = req.body;
+    const {name} = req.body;
     let slug = slugify(name).toLowerCase();
 
-    let tag = new ServiceTag ({ name, slug });
+    let tag = new ServiceTag({name, slug});
 
     tag.save((err, data) => {
         if (err) {
@@ -23,7 +23,7 @@ exports.create = (req, res) => {
 };
 
 exports.list = (req, res) => {
-   ServiceTag .find({}).exec((err, data) => {
+    ServiceTag.find({}).exec((err, data) => {
         if (err) {
             return res.status(400).json({
                 error: errorHandler(err)
@@ -35,14 +35,14 @@ exports.list = (req, res) => {
 
 exports.read = (req, res) => {
     const slug = req.params.slug.toLowerCase();
-    ServiceTag .findOne({ slug }).exec((err, tag) => {
+    ServiceTag.findOne({slug}).exec((err, tag) => {
         if (err) {
             return res.status(400).json({
                 error: 'BlogTag not found'
             });
         }
         // res.json(tag);
-      Services.find({ tags: tag })
+        Services.find({tags: tag})
             .populate('categories', '_id name slug')
             .populate('tags', '_id name  slug')
             .populate('postedBy', '_id name username')
@@ -53,7 +53,7 @@ exports.read = (req, res) => {
                         error: errorHandler(err)
                     });
                 }
-                res.json({ tag: tag, services: data });
+                res.json({tag: tag, services: data});
             });
     });
 };
@@ -61,7 +61,7 @@ exports.read = (req, res) => {
 exports.remove = (req, res) => {
     const slug = req.params.slug.toLowerCase();
 
-   ServiceTag .findOneAndRemove({ slug }).exec((err, data) => {
+    ServiceTag.findOneAndRemove({slug}).exec((err, data) => {
         if (err) {
             return res.status(400).json({
                 error: errorHandler(err)

@@ -5,7 +5,7 @@ import Alert from "../../../components/messages/Alert";
 
 
 const ForgotPassword = () => {
-      const [values, setValues] = useState({
+    const [values, setValues] = useState({
         email: '',
         message: '',
         error: '',
@@ -13,28 +13,28 @@ const ForgotPassword = () => {
     });
 
 
-    const { email, message, error, showForm } = values;
+    const {email, message, error, showForm} = values;
 
     const handleChange = name => e => {
-        setValues({ ...values, message: '', error: '', [name]: e.target.value });
+        setValues({...values, message: '', error: '', [name]: e.target.value});
     };
 
     const handleSubmit = e => {
 
         e.preventDefault();
-        setValues({ ...values, message: '', error: '' });
-        forgotPassword({ email }).then(data => {
+        setValues({...values, message: '', error: ''});
+        forgotPassword({email}).then(data => {
 
             if (data.error) {
-                setValues({ ...values, error: data.error });
+                setValues({...values, error: data.error});
             } else {
-                setValues({ ...values, message: data.message, email: '', showForm: false });
+                setValues({...values, message: data.message, email: '', showForm: false});
             }
         });
     };
 
 
-const passwordForgotForm = () => (
+    const passwordForgotForm = () => (
         <form onSubmit={handleSubmit}>
             <div className="form-group ">
                 <input

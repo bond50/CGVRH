@@ -2,7 +2,6 @@ import {useState} from 'react';
 
 import Router, {withRouter} from 'next/router';
 import {resetPassword} from '../../../../actions/auth';
-import Layout from "../../../../hoc/Layout";
 import Link from "next/link";
 
 const ResetPassword = ({router}) => {

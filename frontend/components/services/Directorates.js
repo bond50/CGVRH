@@ -1,7 +1,5 @@
-
 import AboutContainer from "../reusables/AboutContainer";
 import List from "../reusables/List";
-
 
 
 const Directorates = () => {
@@ -31,7 +29,7 @@ const Directorates = () => {
         {title: `The hospital has specialized personnel including general surgeons, physicians, a pediatrician, obstetrician & gynecologist, ophthalmologist, nurses, clinical officers, laboratory technologists, rehabilitative staff and public health staff.`}
     ]
 
-    return <AboutContainer title='Directorates Of Clinical Services' >
+    return <AboutContainer title='Directorates Of Clinical Services'>
         <List
             list={list}
             intro={intro}

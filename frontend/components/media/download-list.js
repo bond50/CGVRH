@@ -1,4 +1,3 @@
-import useFileDownloader from "../../hooks/useFileDownloader";
 import GeneralPageHeader from "../../hoc/general-page-header";
 import classes from '../../styles/downloads.module.css'
 import React, {Fragment} from 'react';
@@ -6,6 +5,7 @@ import moment from "moment";
 import axios from "axios";
 
 import {fileTypes} from "../reusables/functions/fileTypes";
+
 const DownloadList = ({files}) => {
 
     function handleDownload(file, id) {
@@ -40,26 +40,25 @@ const DownloadList = ({files}) => {
             <section className={classes.Download}>
 
 
-                    <div className={classes.DownloadWrapper}>
-                        {files.map(file => {
-                            return <div className={classes.Wrapper} key={file._id}>
-                                <div className={classes.Header}>
-                                    {fileTypes(file.fileType)}
-                                    <span>{file.title}</span>
-                                </div>
-                                <div className="d-flex align-items-center flex-column m-2">
-                                    <div className={classes.Date}>Uploaded
-                                        on <span>{moment(file.createdAt).format('llll')}</span></div>
-                                    <div className={classes.Size}>File size :<span>{file.fileSize}</span></div>
-                                </div>
-                                <div className={`${classes.Btn} text-center`}
-                                     onClick={() => handleDownload(file.filePath, file._id)}>
-                                    <span className="align-middle">Download</span>
-                                </div>
+                <div className={classes.DownloadWrapper}>
+                    {files.map(file => {
+                        return <div className={classes.Wrapper} key={file._id}>
+                            <div className={classes.Header}>
+                                {fileTypes(file.fileType)}
+                                <span>{file.title}</span>
                             </div>
-                        })}
-                    </div>
-
+                            <div className="d-flex align-items-center flex-column m-2">
+                                <div className={classes.Date}>Uploaded
+                                    on <span>{moment(file.createdAt).format('llll')}</span></div>
+                                <div className={classes.Size}>File size :<span>{file.fileSize}</span></div>
+                            </div>
+                            <div className={`${classes.Btn} text-center`}
+                                 onClick={() => handleDownload(file.filePath, file._id)}>
+                                <span className="align-middle">Download</span>
+                            </div>
+                        </div>
+                    })}
+                </div>
 
 
             </section>

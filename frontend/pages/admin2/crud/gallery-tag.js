@@ -3,7 +3,6 @@ import useTag from "../../../hooks/useTag";
 import TagCategoryForm from "../../../components/reusables/forms/TagCategoryForm";
 import Layout from "../../../hoc/admin/layout/layout";
 import Admin from "../../../components/auth/Admin";
-import CardDetail from "../../../components/admin/home/card-detail";
 
 const BlogTag = () => {
     const {

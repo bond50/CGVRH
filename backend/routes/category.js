@@ -1,6 +1,6 @@
 const express = require('express')
 const {requireSignin, adminMiddleware,} = require('../controllers/auth')
-const {create,list, read, remove} = require('../controllers/category')
+const {create, list, read, remove} = require('../controllers/category')
 const router = express.Router()
 
 //validators

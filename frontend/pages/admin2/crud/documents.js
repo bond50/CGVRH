@@ -14,7 +14,7 @@ const Blogs = () => {
                             <h2>Manage blogs</h2>
                         </div>
                         <div className="col-md-12">
-                             <BlogRead />
+                            <BlogRead/>
                         </div>
                     </div>
                 </div>

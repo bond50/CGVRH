@@ -64,7 +64,7 @@ export const updateForAdmin = (token, user, id) => {
 };
 
 
-export const removeUser = (token,id) => {
+export const removeUser = (token, id) => {
     if (isAuth() && isAuth().role === 1) {
         return fetch(`${API}/single-user/${id}`, {
             method: 'DELETE',

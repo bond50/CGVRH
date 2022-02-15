@@ -3,7 +3,7 @@ import classes from '../../styles/ShowAllCategories.module.css'
 
 const ShowCategories = ({categories}) => {
     const showAllCategories = () => {
-        return categories&&categories.map((c, i) => (
+        return categories && categories.map((c, i) => (
             <li key={i}>
                 <Link href={`/categories/${c.slug}`}>
                     <a>{c.name}</a>

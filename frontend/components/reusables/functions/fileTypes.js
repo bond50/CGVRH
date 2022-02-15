@@ -17,7 +17,8 @@ exports.fileTypes = (ext) => {
             "application/vnd.ms-excel.sheet.binary.macroEnabled.12"):
             return <img src="https://img.icons8.com/color/48/000000/ms-excel.png" alt={`ms-excel.png`}/>
         case 'application/pdf':
-            return  <img src="https://img.icons8.com/color/48/000000/adobe-acrobat--v2.png" alt={`adobe-acrobat--v2.png`}/>
+            return <img src="https://img.icons8.com/color/48/000000/adobe-acrobat--v2.png"
+                        alt={`adobe-acrobat--v2.png`}/>
 
         case ("application/vnd.ms-powerpoint" ||
             "application/vnd.openxmlformats-officedocument.presentationml.presentation" ||
@@ -29,7 +30,7 @@ exports.fileTypes = (ext) => {
             "application/vnd.ms-powerpoint.slideshow.macroEnabled.12"):
             return <img src="https://img.icons8.com/color/48/000000/ms-excel.png" alt={`ms-excel.png`}/>
         default:
-           return <img src="https://img.icons8.com/color/48/000000/ms-excel.png" alt={`ms-excel.png`}/>;
+            return <img src="https://img.icons8.com/color/48/000000/ms-excel.png" alt={`ms-excel.png`}/>;
 
 
     }

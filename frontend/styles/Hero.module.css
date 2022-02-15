@@ -1,6 +1,6 @@
 .Hero {
     width: 100%;
-      background: linear-gradient(rgba(55, 142, 181, 0.5), rgba(55, 142, 181, 0.2)), url("https://res.cloudinary.com/dwtcilinl/image/upload/v1622297989/Gallery/ptd4fionkxhkmsbsiezu.png") top center;
+    background: linear-gradient(rgba(55, 142, 181, 0.5), rgba(55, 142, 181, 0.2)), url("https://res.cloudinary.com/dwtcilinl/image/upload/v1622297989/Gallery/ptd4fionkxhkmsbsiezu.png") top center;
     /*background: url("https://res.cloudinary.com/dwtcilinl/image/upload/v1622297989/Gallery/ptd4fionkxhkmsbsiezu.png") top center no-repeat;*/
     background-size: cover;
     position: relative;

@@ -4,7 +4,7 @@ import AboutContainer from "../reusables/AboutContainer";
 const Events = () => {
     return (
         <AboutContainer title='Events'>
-            
+
         </AboutContainer>
     );
 };

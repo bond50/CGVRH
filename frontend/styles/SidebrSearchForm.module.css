@@ -1,44 +1,44 @@
 
 .Form {
-  background: #fff;
-  border: 1px solid  #37639b;
-  padding: 3px 10px;
-  position: relative;
+    background: #fff;
+    border: 1px solid #37639b;
+    padding: 3px 10px;
+    position: relative;
 }
 
 .Form input[type="search"] {
-  border: 0;
-  padding: 4px;
-  border-radius: 4px;
-  width: calc(100% - 40px);
+    border: 0;
+    padding: 4px;
+    border-radius: 4px;
+    width: calc(100% - 40px);
 }
 
 .Button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  border: 0;
-  background: none;
-  font-size: 16px;
-  padding: 0 15px;
-  margin: -1px;
-  background: #37639b;
-  color: #fff;
-  transition: 0.3s;
-  border-radius: 0 4px 4px 0;
-  line-height: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border: 0;
+    background: none;
+    font-size: 16px;
+    padding: 0 15px;
+    margin: -1px;
+    background: #37639b;
+    color: #fff;
+    transition: 0.3s;
+    border-radius: 0 4px 4px 0;
+    line-height: 0;
 }
 
 .Button i {
-  line-height: 0;
+    line-height: 0;
 }
 
 .Button:hover {
-  background:  #f4a024;
+    background: #f4a024;
 }
 
-.Searched{
+.Searched {
 
     background: #1b1b1b;
     width: 45vw;
@@ -48,10 +48,12 @@
     padding: 10px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
-.Searched p{
+
+.Searched p {
     font-style: italic;
 }
-.Text{
+
+.Text {
     text-transform: capitalize;
     font-size: 13px;
 }

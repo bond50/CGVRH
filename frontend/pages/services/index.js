@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, {useState,Fragment} from "react";
+import React, {Fragment} from "react";
 import Layout from "../../hoc/Layout";
 import {list} from "../../actions/services";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
@@ -39,7 +39,6 @@ const Services = ({services}) => {
             <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
         </Head>
     );
-
 
 
     return (

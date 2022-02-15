@@ -1,7 +1,5 @@
-
 import Admin from '../../../components/auth/Admin';
 import BlogRead from '../../../components/crud/BlogRead';
-import Link from 'next/link';
 import Layout from "../../../hoc/admin/layout/layout";
 
 const Blogs = () => {
@@ -14,7 +12,7 @@ const Blogs = () => {
                             <h2>Manage blogs</h2>
                         </div>
                         <div className="col-md-12">
-                             <BlogRead />
+                            <BlogRead/>
                         </div>
                     </div>
                 </div>

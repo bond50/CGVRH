@@ -58,7 +58,7 @@
         padding: 15px;
     }
 
-    .NavLink.active ,.NavLink .active{
+    .NavLink.active, .NavLink .active {
         color: #fff;
         background: #294a70;
     }

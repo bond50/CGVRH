@@ -25,7 +25,7 @@ const ApprovedPages = () => {
             </div>
         }
         if (error) {
-            return <Alert msg={error} label='Danger' type='danger' />
+            return <Alert msg={error} label='Danger' type='danger'/>
         }
 
         return blogs.length > 0 && <CardDetail title='Approved Pages' spanText={'active pages'}>

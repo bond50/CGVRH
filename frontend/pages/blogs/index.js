@@ -6,7 +6,6 @@ import {withRouter} from "next/router";
 
 import SmallCard from "../../components/reusables/card/small-card";
 import Layout from "../../hoc/Layout";
-import BlogCarousel from "../../components/blog/blog-carousel";
 import BlogHero from "../../components/blog/blog-hero";
 
 

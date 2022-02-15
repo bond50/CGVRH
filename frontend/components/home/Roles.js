@@ -31,12 +31,12 @@ const Roles = () => {
     return (
 
         <section className={classes.Section}>
-            <div className="container "  data-aos='fade-up'>
+            <div className="container " data-aos='fade-up'>
 
-                <div className={styles.SectionTitle} >
+                <div className={styles.SectionTitle}>
                     <h2>Some of the roles we play </h2>
                 </div>
-                <div className={`row ${classes.RowContent}`} >
+                <div className={`row ${classes.RowContent}`}>
                     <div className="col-lg-6">
                         <p>VCRH plays its roles in the county by providing a wide range of health services in
                             partnership

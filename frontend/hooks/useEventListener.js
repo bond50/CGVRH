@@ -1,4 +1,4 @@
-import {useEffect, useCallback} from 'react';
+import {useCallback, useEffect} from 'react';
 
 const useEventListener = (eventName, eventHandler = () => null, element = window) => {
     useEffect(

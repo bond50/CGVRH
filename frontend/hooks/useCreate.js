@@ -52,11 +52,7 @@ const useCreate = (localStorageItem, catEndpoint, tagEndpoint, pageEndpoint) => 
                 setValues({...values, title: '', error: '', success: `A new item titled "${data.title}" is created`});
                 setBody('');
             }
-        }).then(
-            setTimeout(() => {
-                window.location.reload()
-            }, 3000)
-        )
+        })
 
     };
 

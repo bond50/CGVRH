@@ -2,17 +2,10 @@ import React, {Fragment, useEffect, useState} from 'react';
 import Head from "next/head";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import Layout from "../../hoc/Layout";
-import Card from "../../components/blog/Card";
-import GeneralPageHeader from "../../hoc/general-page-header";
 import Link from "next/link";
-import classes from '../../styles/page-bar.module.css'
-import {singlePage} from "../../actions/general";
-import {listRelated} from "../../actions/general";
+import {listRelated, singlePage} from "../../actions/general";
 import PageWrapper from "../../hoc/page-wrapper";
 import {useRouter} from "next/router";
-import {Col, Nav, Tab} from "react-bootstrap";
-import ImageFallback from "../../components/reusables/ImageFallback";
-import renderHTML from "react-render-html";
 
 
 const Slug = ({service, query}) => {

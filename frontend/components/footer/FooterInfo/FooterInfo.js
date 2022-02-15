@@ -1,7 +1,6 @@
 import classes from "../../../styles/FooterInfo.module.css";
 
 
-
 const FooterInfo = () => {
     return (
         <div className={`col-lg-3 col-md-6 ${classes.FooterInfo}`}>

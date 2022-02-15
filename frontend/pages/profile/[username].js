@@ -7,7 +7,6 @@ import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import ContactForm from "../../components/form/ContactForm";
 import Image from "next/image";
 import React from "react";
-import ResponsiveCardedImage from "../../components/reusables/card/ResponsiveCardedImage";
 
 
 const Userprofile = ({user, blogs, query}) => {

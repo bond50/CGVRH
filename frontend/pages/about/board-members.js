@@ -6,7 +6,7 @@ import {API} from "../../config";
 import {fetcher} from "../../components/reusables/functions/fetcher";
 
 const Index = () => {
-        const {data:members, error} = useSWR(
+    const {data: members, error} = useSWR(
         [
             `${API}/users-hmt`,
         ],
@@ -17,12 +17,11 @@ const Index = () => {
     );
 
 
-
-  return (
-    <Layout>
-      <Board members={members}/>
-    </Layout>
-  );
+    return (
+        <Layout>
+            <Board members={members}/>
+        </Layout>
+    );
 };
 
 export default Index;

@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import classes from '../../styles/Accordion.module.css'
+
 const Accordion = ({title, children}) => {
 
     const [isOpen, setOpen] = useState(false)
@@ -8,7 +9,7 @@ const Accordion = ({title, children}) => {
             <div
                 className={`${classes.accordionTitle} ${isOpen ? `${classes.open}` : ""}`}
                 onClick={() => setOpen(!isOpen)}
-                >
+            >
                 {title}
             </div>
             <div className={`${classes.accordionItem} ${!isOpen ? `${classes.collapsed}` : ""}`}>

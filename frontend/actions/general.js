@@ -1,7 +1,7 @@
 import {handleResponse, isAuth} from "./auth";
 import {API} from "../config";
 import fetch from "isomorphic-fetch";
-
+//
 // export const createPage = (page, token) => {
 //     let pageEndpoint
 //
@@ -25,10 +25,6 @@ import fetch from "isomorphic-fetch";
 //         })
 //         .catch(err => console.log(err));
 // };
-//
-//
-//
-//
 
 
 export const singlePage = (slug) => {
@@ -42,15 +38,15 @@ export const singlePage = (slug) => {
 };
 
 export const list = (username) => {
-    let listBlogEndpoint
+    let listEndpoint
     if (username) {
-        listBlogEndpoint = `${API}/${username}/blogs`
+        listEndpoint = `${API}/${username}/general`
     } else {
-        listBlogEndpoint = `${API}/blogs`
+        listEndpoint = `${API}/general`
     }
 
 
-    return fetch(`${listBlogEndpoint}`, {
+    return fetch(`${listEndpoint}`, {
         method: 'GET'
     })
         .then(response => {

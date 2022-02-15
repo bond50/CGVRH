@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import React, {Fragment} from "react";
-import Image from "next/image";
 import renderHTML from 'react-render-html';
 import moment from 'moment';
 import {API} from '../../config';
@@ -57,7 +56,6 @@ const Card = ({blog, single, servicePage}) => {
     if (servicePage) {
         imgSrc = `${API}/general/photo/${blog.slug}`
     }
-
 
 
     return (

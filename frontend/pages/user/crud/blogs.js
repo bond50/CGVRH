@@ -1,8 +1,9 @@
 import React from 'react';
-import Layout from '../../../hoc/Layout';
+
 import BlogRead from '../../../components/crud/BlogRead';
 import Private from "../../../components/auth/Private";
 import {isAuth} from "../../../actions/auth";
+import Layout from "../../../hoc/admin/layout/layout";
 
 const Blogs = () => {
 

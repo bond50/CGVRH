@@ -3,7 +3,7 @@ import classes from '../../../styles/Board.module.css'
 import styles from '../../../styles/AboutContainer.module.css'
 import Link from 'next/link'
 import {API} from "../../../config";
-import Image from "next/image";
+import Image from "../../reusables/lazy/Image";
 
 const Board = ({members}) => {
     const renderMember = () => {

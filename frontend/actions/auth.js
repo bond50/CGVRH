@@ -148,7 +148,7 @@ export const notIsAuth = () => {
     }
 }
 
-export const updateUser =  (user, cb) => {
+export const updateUser = (user, cb) => {
     if (isAuth() && isAuth().role === 0) {
         if (process.browser && localStorage.getItem("user")) {
             localStorage.setItem("user", JSON.stringify(user));
@@ -157,7 +157,7 @@ export const updateUser =  (user, cb) => {
     }
     if (isAuth() && isAuth().role === 1) {
         if (process.browser && localStorage.getItem("loadedUser")) {
-             removeLocalStorage("loadedUser")
+            removeLocalStorage("loadedUser")
             localStorage.setItem("loadedUser", JSON.stringify(user));
             cb();
         }

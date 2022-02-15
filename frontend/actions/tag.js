@@ -3,7 +3,6 @@ import {API} from '../config';
 import {handleResponse} from "./auth";
 
 
-
 export const create = (tag, token, endpoint) => {
     return fetch(`${API}/${endpoint}`, {
         method: 'POST',

@@ -1,5 +1,5 @@
 const {errorHandler} = require("../helpers/dbErrorHandler");
-exports.tagRead = (slug, res,tag,model) => {
+exports.tagRead = (slug, res, tag, model) => {
 
     tag.findOne({slug}).exec((err, tag) => {
         if (err) {

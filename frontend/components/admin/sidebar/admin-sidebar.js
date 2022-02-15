@@ -1,10 +1,12 @@
 import classes from './admin-sidebar.module.css'
-import Link from 'next/link'
 import React from "react";
 import Accordion2 from "../../reusables/Accordion2";
 import {accordionFunction} from "../../reusables/functions/admin-accordion";
+import {accordionPrivateFunction} from "../../reusables/functions/private-accordion";
 import AdminSidebarLink from "../../reusables/ui/admin-Sidebar-link";
-import Admin from "../../auth/Admin";
+import PrivateSidebarLink from "../../reusables/ui/private-Sidebar-link";
+import {isAuth} from "../../../actions/auth";
+import SidebarLink from "../../reusables/ui/sidebar-link";
 
 
 const AdminSidebar = ({closed}) => {
@@ -13,34 +15,127 @@ const AdminSidebar = ({closed}) => {
     if (closed) {
         attachedClasses = [classes.Sidebar, classes.Close];
     }
+
+    //user
+    const userBlogList = [
+        {title: 'Write a blog', to: 'crud/blog'},
+        {title: 'Update/delete a blog', to: 'crud/blogs'},
+    ]
+
+    const userServiceList = [
+        {title: 'Create  page', to: 'crud/gen-page/'},
+        {title: 'Update/delete a page', to: 'crud/gen-page/dynamic-pages'},
+    ]
+    const profileList = [
+        {title: 'Update', to: 'update'},
+    ]
+
+    const userDownloadList = [
+        {title: 'Upload', slug: 'crud/upload-files'},
+
+    ]
+    const userGalleryList = [
+        {title: 'Upload', slug: 'upload-images'},
+
+    ]
+
+
+    //admin
+
     const blogList = [
-        {title: 'Categories', slug: 'category-tag'},
-        {title: 'Tags', slug: 'category-tag'},
-        {title: 'Write a blog', slug: 'blog'},
-        {title: 'Update/delete a blog', slug: 'blogs'},
+        {title: 'Categories', slug: 'crud/category-tag'},
+        {title: 'Tags', slug: 'crud/category-tag'},
+        {title: 'Write a blog', slug: 'crud/blog'},
+        {title: 'Update/delete a blog', slug: 'crud/blogs'},
     ]
+
     const serviceList = [
-        {title: 'Categories', slug: 'gen-page/page-category'},
-        {title: 'Create  page', slug: 'gen-page/'},
-        {title: 'Update/delete a page', slug: 'dynamic-pages'},
+        {title: 'Categories', slug: 'crud/gen-page/page-category'},
+        {title: 'Create  page', slug: 'crud/gen-page/'},
+        {title: 'Update/delete a page', slug: 'crud/gen-page/dynamic-pages'},
     ]
+
     const downloadList = [
-        {title: 'Upload', slug: 'upload-files'},
-        {title: 'Tags', slug: 'document-tag'},
+        {title: 'Upload', slug: 'crud/upload-files'},
+        {title: 'Tags', slug: 'crud/document-tag'},
     ]
     const galleryList = [
-        {title: 'Upload', slug: 'upload-images'},
-        {title: 'Tags', slug: 'gallery-tag'},
+        {title: 'Upload', slug: 'crud/upload-images'},
+        {title: 'Tags', slug: 'crud/gallery-tag'},
+    ]
+    const quickLinks = [
+        {title: 'Website home page', slug: '/'},
+        {title: 'Blog section', slug: '/blogs'},
     ]
 
 
     const userList = [
-        {title: 'Add new user', slug: 'users/user'},
-        {title: 'Manage existing users', slug: 'users'},
+        {title: 'Add new user', slug: 'crud/users/user'},
+        {title: 'Manage existing users', slug: 'crud/users'},
     ]
+    if (isAuth() && isAuth().role === 0) {
+        return <aside className={attachedClasses.join(' ')}>
+            <ul className={classes.SidebarList}>
+                <li className={classes.NavHeading}>Dashboard</li>
+                <PrivateSidebarLink
+                    title={'Home'}
+                    slug={''}
+                    icon={'house'}
+                />
+                <li
+                    className={classes.NavHeading}>Quick links
+                </li>
+                <SidebarLink
+                    title={'Website home page'}
+                    slug={'/'}
+                    icon={'house'}/>
 
-    return (
-        <Admin>
+                <SidebarLink
+                    title={'Blog section'}
+                    slug={'/blogs'}
+                    icon={'grid'}/>
+                <li
+                    className={classes.NavHeading}>Pages
+                </li>
+                <Accordion2
+                    title='Blog'
+                    icon='journal-album'>
+                    <>
+                        {accordionPrivateFunction(userBlogList)}
+                    </>
+                </Accordion2>
+                <Accordion2 title='Pages' icon='journal'>
+                    <>
+                        {accordionPrivateFunction(userServiceList)}
+                    </>
+                </Accordion2>
+
+
+                <Accordion2 title='Downloads' icon='journal'>
+                    <>
+                        {accordionPrivateFunction(userDownloadList)}
+                    </>
+                </Accordion2>
+                <Accordion2 title='Gallery' icon='journal'>
+                    <>
+                        {accordionPrivateFunction(profileList)}
+                    </>
+                </Accordion2>
+
+                <Accordion2 title='Profile' icon='journal'>
+                    <>
+                        {accordionPrivateFunction(profileList)}
+                    </>
+                </Accordion2>
+
+
+            </ul>
+        </aside>
+    }
+
+    if (isAuth() && isAuth().role === 1) {
+        return (
+
             <aside className={attachedClasses.join(' ')}>
                 <ul className={classes.SidebarList}>
                     <li className={classes.NavHeading}>Dashboard</li>
@@ -50,10 +145,23 @@ const AdminSidebar = ({closed}) => {
                         icon={'house'}
                     />
                     <li
+                        className={classes.NavHeading}>Quick links
+                    </li>
+                    <SidebarLink
+                        title={'Website home page'}
+                        slug={'/'}
+                        icon={'house'}/>
+
+                    <SidebarLink
+                        title={'Blog section'}
+                        slug={'/blogs'}
+                        icon={'grid'}/>
+
+                    <li
                         className={classes.NavHeading}>Pages
                     </li>
                     <AdminSidebarLink
-                        title={'Home page'}
+                        title={'Customize Home page'}
                         slug={''} icon={'grid'}/>
                     <Accordion2
                         title='Blog'
@@ -85,10 +193,17 @@ const AdminSidebar = ({closed}) => {
                             {accordionFunction(userList)}
                         </>
                     </Accordion2>
+
+                    <Accordion2 title='Profile' icon='journal'>
+                        <>
+                            {accordionPrivateFunction(profileList)}
+                        </>
+                    </Accordion2>
                 </ul>
             </aside>
-        </Admin>
-    )
+        )
+    } else
+        return <p>loading</p>
 };
 
 export default AdminSidebar;

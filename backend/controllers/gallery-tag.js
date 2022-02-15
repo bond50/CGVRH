@@ -1,9 +1,9 @@
-const Tag= require('../models/gallery-tag');
+const Tag = require('../models/gallery-tag');
 const {tagCatCreate} = require("../helpers/tagcatCreate");
 const {tagList} = require("../helpers/tag-list");
 const {tagDelete} = require("../helpers/tag-delete");
 const {tagRead} = require("../helpers/tag-read");
-const  Gallery= require("../models/gallery");
+const Gallery = require("../models/gallery");
 const Blog = require("../models/blog");
 const {errorHandler} = require("../helpers/dbErrorHandler");
 
@@ -13,7 +13,7 @@ exports.create = (req, res) => {
 };
 
 exports.list = (req, res) => {
-    tagList(Tag,res)
+    tagList(Tag, res)
 };
 
 
@@ -24,8 +24,8 @@ exports.list = (req, res) => {
 
 exports.remove = (req, res) => {
     const slug = req.params.slug.toLowerCase();
-    console.log("slug",slug)
-    tagDelete(slug,res,Tag)
+    console.log("slug", slug)
+    tagDelete(slug, res, Tag)
 };
 
 exports.read = (req, res) => {
@@ -40,7 +40,7 @@ exports.read = (req, res) => {
         Gallery.find({tags: tag})
             .populate('tags', '_id name  slug')
             .populate('uploadedBy', '_id name username')
-            .select('_id filePath title cloudinaryFolder publicId tags fileName fileType fileSize createdAt' )
+            .select('_id filePath title cloudinaryFolder publicId tags fileName fileType fileSize createdAt')
             .exec((err, data) => {
                 if (err) {
                     return res.status(400).json({

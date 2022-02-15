@@ -21,8 +21,6 @@ const Breadcrumb = () => {
     }, [router]);
 
 
-
-
     return (
         <section className={classes.Breadcrumbs}>
             <div className="container">
@@ -30,7 +28,7 @@ const Breadcrumb = () => {
                     <h2>{breadcrumbs.toUpperCase()}</h2>
                     <ol>
                         <li>
-                            <Breadcrumbs useDefaultStyle  />
+                            <Breadcrumbs useDefaultStyle/>
                         </li>
                     </ol>
                 </div>

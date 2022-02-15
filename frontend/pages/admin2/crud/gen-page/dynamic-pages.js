@@ -5,7 +5,7 @@ import Layout from "../../../../hoc/admin/layout/layout";
 
 const Blogs = () => {
     return (
-        <Layout pageTitle='Manage Blogs'>
+        <Layout pageTitle='Manage Dynamic pages'>
             <Admin>
                 <PageRead/>
             </Admin>

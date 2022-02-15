@@ -1,28 +1,163 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import SideCatTags from "../reusables/forms/side-cat-tags";
 import Image from "next/image";
 import {API} from "../../config";
-import {useRouter} from "next/router";
+import Router, {useRouter} from "next/router";
 import Alert from "../messages/Alert";
 import CreateForm from "../reusables/forms/CreateForm";
+import {getCookie, isAuth} from "../../actions/auth";
+import {singlePage, updatePage} from "../../actions/general";
+import {getCategories} from "../../actions/category";
 
 
-const Page = ({
-                  handleChange,
-                  handleBody,
-                  body,
-                  title,
-                  editBlog,
-                  isFeatured,
-                  featuredChanged,
-                  error,
-                  success,
-                  showCategories,
-                  changed,
-                  isToggled
+const Page = () => {
+    const [body, setBody] = useState('');
+    const [categories, setCategories] = useState([]);
+    const [checked, setChecked] = useState([]); // categories
+    const [isAccepted, setIsAccepted] = useState(false); // switch
+    const [isFeatured, setIsFeatured] = useState(false); // switch
 
-              }) => {
+
+    const [values, setValues] = useState({
+        title: '',
+        error: '',
+        success: '',
+        formData: process.browser && new FormData(),
+        loading: false
+    });
+
+    const {error, success, formData, title, status} = values;
+    const token = getCookie('token');
     const router = useRouter()
+
+    useEffect(() => {
+        let isMounted = true;
+        setValues({...values, formData: new FormData()});
+        initPage();
+        initCategories();
+        setValues({...values, formData: new FormData()});
+        return () => {
+            isMounted = false;
+        };
+    }, [router]);
+
+
+    const initPage = () => {
+        if (router.query.slug) {
+            singlePage(router.query.slug).then(data => {
+                if (data.error) {
+                    console.log(data.error);
+                } else {
+                    setValues({...values, title: data.title});
+                    setBody(data.body);
+                    setCategoriesArray(data.categories);
+                    setIsAccepted(data.accepted)
+                    setIsFeatured(data.featured)
+                }
+            });
+        }
+    };
+
+
+    const setCategoriesArray = pageCategories => {
+        let ca = [];
+        pageCategories.map((c, i) => {
+            ca.push(c._id);
+        });
+        setChecked(ca);
+    };
+
+
+    const initCategories = () => {
+        getCategories('page-cats').then(data => {
+            if (data.error) {
+                setValues({...values, error: data.error});
+            } else {
+                setCategories(data);
+            }
+        });
+    };
+
+
+    const handleToggle = c => () => {
+        setValues({...values, error: ''});
+        // return the first index or -1
+        const clickedCategory = checked.indexOf(c);
+        const all = [...checked];
+
+        if (clickedCategory === -1) {
+            all.push(c);
+        } else {
+            all.splice(clickedCategory, 1);
+        }
+        setChecked(all);
+        formData.set('categories', all);
+    };
+
+    const findOutCategory = c => {
+        const result = checked.indexOf(c);
+        return result !== -1;
+    };
+
+
+    const showCategories = () => {
+        return (
+            categories &&
+            categories.map((c, i) => (
+
+                <label key={i} className="list-group-item border-0">
+                    <input onChange={handleToggle(c._id)} checked={findOutCategory(c._id)} type="checkbox"
+                           className="form-check-input me-1"/>
+                    {c.name}
+                </label>
+
+            ))
+        );
+    };
+
+
+    const handleChange = name => e => {
+        const value = name === 'photo' ? e.target.files[0] : e.target.value;
+        formData.set(name, value);
+        setValues({...values, [name]: value, formData, error: ''});
+    };
+
+    const handleBody = e => {
+        setBody(e);
+        formData.set('body', e);
+    };
+
+
+    const editBlog = e => {
+        e.preventDefault();
+        updatePage(formData, token, router.query.slug)
+            .then(data => {
+                if (data.error) {
+                    setValues({...values, error: data.error});
+                } else {
+                    setValues({...values, title: '', success: `Blog titled "${data.title}" is successfully updated`});
+                    if (isAuth() && isAuth().role === 1) {
+                        Router.replace(`/admin2/crud/${router.query.slug}`).then(r => console.log(r));
+                        // Router.replace(`/admin2`);
+                    } else if (isAuth() && isAuth().role === 0) {
+                        Router.replace(`/user/crud/gen-page/${router.query.slug}`).then(r => console.log(r));
+                        // Router.replace(`/user`);
+                    }
+                }
+            });
+    };
+
+
+    const onSwitchToggle = e => {
+        setIsAccepted(!isAccepted)
+        formData.set('accepted', e.target.checked);
+    };
+
+    const onSwitchFeaturedToggle = e => {
+        setIsFeatured(!isFeatured)
+        formData.set('featured', e.target.checked);
+    };
+
 
     return (
         <div className='row'>
@@ -30,25 +165,49 @@ const Page = ({
                 <div className="card">
                     <div className="card-body">
                         <h5 className="card-title">Update <span>| {router.query.slug}</span></h5>
-                        <div className="form-check form-switch">
+                        {isAuth() && isAuth().role === 1 && <div className="form-check form-switch">
                             <input
                                 className="form-check-input"
                                 type="checkbox"
-                                checked={isToggled}
-                                onChange={changed}
+                                checked={isAccepted}
+                                onChange={onSwitchToggle}
                                 id="flexSwitchCheckDefault"/>
                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Accept </label>
                         </div>
+                        }
+                        {isAccepted && isAuth() && isAuth().role === 0 &&
+                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Accepted <i
+                            className="bi bi-check2-circle text-success "/>
+                        </label>
+                        }
+                        <br/>
+                        {isAuth() && isAuth().role === 0 && !isAccepted &&
+                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Accepted <i
+                            className="bi bi-x-circle-fill text-danger "/>
+                        </label>
+                        }
 
-                        <div className="form-check form-switch">
+                        {isAuth() && isAuth().role === 1 && <div className="form-check form-switch">
                             <input
                                 className="form-check-input"
                                 type="checkbox"
                                 checked={isFeatured}
-                                onChange={featuredChanged}
+                                onChange={onSwitchFeaturedToggle}
                                 id="flexSwitchCheckDefault"/>
                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Is Featured </label>
-                        </div>
+                        </div>}
+                        {isAuth() && isAuth().role === 0 && isFeatured &&
+                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Featured <i
+                            className="bi bi-check2-circle text-success "/>
+                        </label>
+                        }
+
+                        <br/>
+                        {isAuth() && isAuth().role === 0 && !isFeatured &&
+                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Featured <i
+                            className="bi bi-x-circle-fill text-danger "/>
+                        </label>
+                        }
                     </div>
                 </div>
 

@@ -1,5 +1,3 @@
-import {faMedkit, faXRay, faMicroscope, faHospitalUser} from '@fortawesome/free-solid-svg-icons'
-import Column from "./Column";
 import styles from "../../styles/featured-services.module.css";
 import renderHTML from "react-render-html";
 import Link from "next/link";
@@ -36,7 +34,7 @@ const FeaturedServices = ({featured}) => {
 
     function returnColumns() {
         return featured && featured.map(service => {
-                return <div className="col-lg-4 mb-4"  key={service._id}>
+                return <div className="col-lg-4 mb-4" key={service._id}>
                     <div className={styles.card} data-aos="zoom-in" data-aos-delay="100">
                         <i className="bi bi-gear"/>
                         <div className="card-body">
@@ -44,9 +42,9 @@ const FeaturedServices = ({featured}) => {
                             <div className='card-text'>
                                 {renderHTML(service.excerpt)}
                             </div>
-                           <Link href={`/general/${service.slug}`}>
+                            <Link href={`/general/${service.slug}`}>
                                 <a className={styles.readMore}>Read more </a>
-                           </Link>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import classes from '../../styles/SidebrSearchForm.module.css'
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import {listSearch} from '../../actions/blog';
 
 const Search = () => {
@@ -29,7 +29,7 @@ const Search = () => {
     const searchedBlogs = (results = []) => {
 
         return (
-            <div className={classes.Searched} >
+            <div className={classes.Searched}>
                 {message && <p className="container pt-3 text-muted">{message}</p>}
                 {results.map((blog, i) => {
                     return (

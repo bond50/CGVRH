@@ -66,7 +66,7 @@ const ClinicalChemistry = () => {
             id: "16",
             items: ["Hepatitis C Virus (HCV)", "200", "60 minutes"],
         },
-{
+        {
             id: "17",
             items: ["Human Chronic Gonadotropin (HCG)", "200", "60 minutes"],
         },

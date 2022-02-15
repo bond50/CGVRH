@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import axiosInstance from "../axios/axios";
-import {API} from "../config";
 import useFCT from "./useFCT";
 
 
-const useUpload = (folder, tagEndpoint,url) => {
+const useUpload = (folder, tagEndpoint, url) => {
     const [multipleFiles, setMultipleFiles] = useState('');
     const [checkedTag, setCheckedTag] = useState([]);
     const [values, setValues] = useState({

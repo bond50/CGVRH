@@ -1,8 +1,6 @@
-import {Fragment, useEffect, useState} from 'react';
+import {Fragment} from 'react';
 import Top from "./top/Top";
 import Header from "./header/header"
-import useSWR from "swr";
-import {API} from "../../config";
 
 
 const Toolbar = ({blog}) => {

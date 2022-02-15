@@ -4,7 +4,6 @@ import Admin from '../../../components/auth/Admin';
 import PageRead from "../../../components/crud/PageRead";
 
 
-
 const Blog = () => {
     return (
         <Layout>
@@ -15,7 +14,7 @@ const Blog = () => {
                             <h2>Create a new service</h2>
                         </div>
                         <div className="col-md-12">
-                              <PageRead />
+                            <PageRead/>
                         </div>
                     </div>
                 </div>

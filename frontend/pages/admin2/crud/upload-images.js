@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Admin from '../../../components/auth/Admin';
 import Layout from "../../../hoc/admin/layout/layout";
 import UploadForm from "../../../components/reusables/forms/upload-form";
 import useUpload from "../../../hooks/useUpload";
-import useFCT from "../../../hooks/useFCT";
 import SideCatTags from "../../../components/reusables/forms/side-cat-tags";
 
 
@@ -19,9 +18,7 @@ const Upload = () => {
         handleChange,
         multipleFileChange,
         uploadMultipleFiles
-    } = useUpload('gallery','gallery-tags','gallery-create')
-
-
+    } = useUpload('gallery', 'gallery-tags', 'gallery-create')
 
 
     const showTags = () => {

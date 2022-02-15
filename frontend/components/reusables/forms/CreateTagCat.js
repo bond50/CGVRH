@@ -1,5 +1,4 @@
-
-const CreateTagCat = ({onSubmit,handleChange,name}) => {
+const CreateTagCat = ({onSubmit, handleChange, name}) => {
     return (
         <form onSubmit={onSubmit}>
             <div className="form-group mb-3">

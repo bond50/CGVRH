@@ -19,7 +19,7 @@ const HeaderNav = () => {
                 <span className={`badge bg-success ${classes.Badge}`}>3</span>
             </div>
 
-            {isAuth() && isAuth().role === 1 && <div className={`${classes.Profile}`}>
+            {isAuth() && <div className={`${classes.Profile}`}>
                 <Image
                     src="/avatar/male.jpg"
                     width={40}

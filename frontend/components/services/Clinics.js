@@ -1,5 +1,4 @@
 import AboutContainer from "../reusables/AboutContainer";
-import List from "../reusables/List";
 import styles from "../../styles/AboutContainer.module.css";
 import React from "react";
 
@@ -31,7 +30,7 @@ const Clinics = () => {
         },
     ]
 
-      return <AboutContainer title={`Role`} para={`Our Roles in the county`}>
+    return <AboutContainer title={`Role`} para={`Our Roles in the county`}>
         <p>
             VCRH plays its roles in the county by providing a wide range of health services in partnership
             with the greater community and other institutions.

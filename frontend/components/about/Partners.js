@@ -1,21 +1,20 @@
 import classes from '../../styles/Partners.module.css'
 import styles from '../../styles/AboutContainer.module.css'
-import List from "../reusables/List";
 
 
 const Partners = () => {
     const list = [
 
-                {name: 'NHIF and community based organizations (CBOs).', src: '/partners/nhif.jpg'},
-                {name: 'MOH', src: '/partners/moh.png'},
-                {name: 'KEMRI/Welcome Trust', src: '/partners/kemri.png'},
-                {name: 'KMTC', src: '/partners/kmtc.jpg'},
-                {name: 'Masinde Muliro University Of Science And Technology', src: '/partners/mmust.png'},
-                {name: 'JKUAT', src: '/partners/jkuat.jpg'},
-                {name: 'The ICT Authority (ICTA)', src: '/partners/icta.png'},
-                {name: 'Mozzart bet', src: '/partners/mozzart.jpg'},
-                {name: 'Moi University', src: '/partners/mu.png'},
-                {name: 'Maseno University', src: '/partners/msu.jpg',},
+        {name: 'NHIF and community based organizations (CBOs).', src: '/partners/nhif.jpg'},
+        {name: 'MOH', src: '/partners/moh.png'},
+        {name: 'KEMRI/Welcome Trust', src: '/partners/kemri.png'},
+        {name: 'KMTC', src: '/partners/kmtc.jpg'},
+        {name: 'Masinde Muliro University Of Science And Technology', src: '/partners/mmust.png'},
+        {name: 'JKUAT', src: '/partners/jkuat.jpg'},
+        {name: 'The ICT Authority (ICTA)', src: '/partners/icta.png'},
+        {name: 'Mozzart bet', src: '/partners/mozzart.jpg'},
+        {name: 'Moi University', src: '/partners/mu.png'},
+        {name: 'Maseno University', src: '/partners/msu.jpg',},
     ]
 
 
@@ -24,7 +23,8 @@ const Partners = () => {
             <div className={styles.SectionTitle}>
                 <h2>Our Partners</h2>
             </div>
-            <div className={`row no-gutters ${classes.Wrap} clearfix`} data-aos="fade-up" data-aos-delay="100" data-aos-once='true' >
+            <div className={`row no-gutters ${classes.Wrap} clearfix`} data-aos="fade-up" data-aos-delay="100"
+                 data-aos-once='true'>
                 {list.map((img, i) => {
                     return <div className="col-lg-3 col-md-4 col-6">
                         <div className={classes.Logo}>

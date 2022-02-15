@@ -108,13 +108,13 @@
     display: inline-block;
     padding: 10px 40px 12px 40px;
     border-radius: 4px;
-    color:   #294a70;
+    color: #294a70;
     /*text-shadow: 0 0 1px #000000;*/
     font-size: 14px;
     font-family: "Raleway", sans-serif;
     font-weight: 600;
     transition: all 0.5s ease-in-out 0s;
-    border: 2px solid  #294a70;
+    border: 2px solid #294a70;
 }
 
 .BtnClick:hover {

@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import classes from '../styles/404.module.css'
 import Router from "next/router";
 

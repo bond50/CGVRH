@@ -2,7 +2,7 @@ export const membersList = [
     {
         name: 'Dr. Vitalis Juma',
         fbLink: '',
-        delay:"",
+        delay: "",
         instaLink: '',
         twitterLink: '',
         linkedInLink: '',
@@ -12,17 +12,17 @@ export const membersList = [
     {
         name: 'Mrs. Mary Anduvate',
         fbLink: '',
-        delay:"100",
+        delay: "100",
         linkedInLink: '',
         instaLink: '',
         twitterLink: '',
-             src: 'https://via.placeholder.com/400.png/09f/fffC/O https://placeholder.com/',
+        src: 'https://via.placeholder.com/400.png/09f/fffC/O https://placeholder.com/',
         description: 'The Hospital Administrator'
     },
     {
         name: 'Dr. Lorna Awiti',
         fbLink: '',
-        delay:"200",
+        delay: "200",
         instaLink: '',
         linkedInLink: '',
         twitterLink: '',
@@ -32,7 +32,7 @@ export const membersList = [
     {
         name: 'Mr. Aggrey Ememwa',
         fbLink: '',
-        delay:"300",
+        delay: "300",
         instaLink: '',
         linkedInLink: '',
         twitterLink: '',
@@ -42,7 +42,7 @@ export const membersList = [
     {
         name: 'Dr. Duncan Mating',
         fbLink: '',
-        delay:"400",
+        delay: "400",
         instaLink: '',
         linkedInLink: '',
         twitterLink: '',
@@ -52,7 +52,7 @@ export const membersList = [
     {
         name: 'Mr. Julius Ashono',
         fbLink: '',
-        delay:"500",
+        delay: "500",
         instaLink: '',
         linkedInLink: '',
         twitterLink: '',
@@ -62,7 +62,7 @@ export const membersList = [
     {
         name: 'Mr. Arnest Namayi',
         fbLink: '',
-        delay:"600",
+        delay: "600",
         instaLink: '',
         linkedInLink: '',
         twitterLink: '',
@@ -72,7 +72,7 @@ export const membersList = [
     {
         name: 'Mr.  Aliwa',
         fbLink: '',
-        delay:"700",
+        delay: "700",
         instaLink: '',
         linkedInLink: '',
         twitterLink: '',

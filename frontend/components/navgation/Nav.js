@@ -1,16 +1,14 @@
-import {aboutList, mediaList, servicesList,} from "./dropdown-links";
-import {useRouter} from "next/router";
+import Router from "next/router";
 import SingleDropdown from "./single-dropdown";
 
 import useToggle from "../../hooks/useToggle";
 import MyLink from "./myLink";
-import About from "./items/about";
 import useSWR from "swr";
 import {API} from "../../config";
 import {fetcher} from "../reusables/functions/fetcher";
-import React, {useState} from "react";
-import StaticDropdown from "./static-dropdown";
+import React from "react";
 import Media from "./media";
+import {isAuth, signout} from "../../actions/auth";
 
 
 const Nav = () => {
@@ -53,6 +51,12 @@ const Nav = () => {
 
                 <MyLink caption={'News and events'} to='/blogs'/>
                 <MyLink caption={'Contact'} to='/contact'/>
+                {isAuth() && <MyLink caption={'Dashboard'} to='/user'/>}
+                {isAuth() && <li
+                    onClick={() => signout(() => Router.replace(`/signin`))}>
+                    <a>Signout</a>
+                </li>
+                }
             </ul>
             <i className={`${closed ? 'bi bi-x' : 'bi bi-list'} mobile-nav-toggle`} onClick={toggleClosed}/>
         </nav>

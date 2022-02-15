@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 
 // controllers
-const { requireSignin, adminMiddleware } = require('../controllers/auth');
-const { create, list, read, remove } = require('../controllers/tag');
+const {requireSignin, adminMiddleware} = require('../controllers/auth');
+const {create, list, read, remove} = require('../controllers/tag');
 
 // validators
-const { runValidation } = require('../validators');
-const { createTagValidator } = require('../validators/tag');
+const {runValidation} = require('../validators');
+const {createTagValidator} = require('../validators/tag');
 
 // only difference is methods not name 'get' | 'post' | 'delete'
 router.post('/tag', createTagValidator, runValidation, requireSignin, adminMiddleware, create);

@@ -4,7 +4,7 @@ import AboutContainer from "../reusables/AboutContainer";
 const Press = () => {
     return (
         <AboutContainer title='Press'>
-            
+
         </AboutContainer>
     );
 };

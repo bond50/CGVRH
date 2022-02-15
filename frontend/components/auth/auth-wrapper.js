@@ -23,7 +23,6 @@ const AuthWrapper = ({login, children}) => {
                                         <p className="text-center small">{login ? 'Enter your email & password to login' : 'Enter your personal details to create account'}</p>
                                     </div>
                                     {children}
-
                                 </div>
                             </div>
                         </div>

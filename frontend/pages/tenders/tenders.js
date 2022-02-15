@@ -1,8 +1,6 @@
 import Layout from "../../hoc/Layout";
 import Tenders from "../../components/tender/Tenders";
 import {getFilesFromCloud} from "../../actions/gallery";
-import {useEffect, useState} from "react";
-import {listBlogsWithCategoriesAndTags} from "../../actions/blog";
 
 
 const Index = ({tenders}) => {
@@ -43,7 +41,7 @@ export const getServerSideProps = async (context) => {
 
         let folder = "Tenders";
 
-        return getFilesFromCloud({folder:'Tenders'}).then((data) => {
+        return getFilesFromCloud({folder: 'Tenders'}).then((data) => {
             if (data.error) {
                 console.log(data.error);
             } else {

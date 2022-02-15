@@ -1,7 +1,5 @@
 import React from 'react';
 import Image from "next/image";
-import {API} from "../../../config";
-import Link from "next/link";
 import classes from './responsive-carded-image.module.css'
 
 const ResponsiveCardedImage = ({imgSrc, width, height, alt, header2, header3, children}) => {

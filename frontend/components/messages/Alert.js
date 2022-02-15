@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 const Alert = ({msg, type, label, reload}) => {
     const [show, setShow] = useState(false);

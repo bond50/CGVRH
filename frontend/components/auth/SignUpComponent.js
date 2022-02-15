@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {isAuth, preSignup} from '../../actions/auth';
 import Router from 'next/router';
-import AboutContainer from "../reusables/AboutContainer";
 import AuthWrapper from "./auth-wrapper";
 import classes from "../../styles/login.module.css";
 import Link from "next/link";
@@ -104,9 +103,9 @@ const SignupComponent = () => {
                     <div className="form-check">
                         <input className="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms"
                                required/>
-                            <label className="form-check-label" htmlFor="acceptTerms">I agree and accept the <a
-                                href="#">terms and conditions</a></label>
-                            <div className="invalid-feedback">You must agree before submitting.</div>
+                        <label className="form-check-label" htmlFor="acceptTerms">I agree and accept the <a
+                            href="#">terms and conditions</a></label>
+                        <div className="invalid-feedback">You must agree before submitting.</div>
                     </div>
                 </div>
 
@@ -127,8 +126,15 @@ const SignupComponent = () => {
                         <LoginGoogle/>
                     </div>
                 </div>
+                <div className={`col-12 ${classes.sBtn}`}>
+                    <div className="small mb-0">
+                        <Link href={`/`}>
+                            <a className={`mx-1`}>Back to home page</a>
+                        </Link>
+                    </div>
+                </div>
             </form>
-    );
+        );
     };
 
     return (
@@ -139,6 +145,6 @@ const SignupComponent = () => {
             {showForm && signupForm()}
         </AuthWrapper>
     );
-    };
+};
 
-    export default SignupComponent;
+export default SignupComponent;

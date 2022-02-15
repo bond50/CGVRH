@@ -1,5 +1,4 @@
-
-const TagCategoryForm = ({clickSubmit, handleChange, value,label}) => {
+const TagCategoryForm = ({clickSubmit, handleChange, value, label}) => {
     return (
         <form onSubmit={clickSubmit}>
             <div className="form-group mb-3">

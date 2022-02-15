@@ -50,7 +50,7 @@ const useFetchMedia = () => {
         source = filteredImages
     }
 
-    return {transformedArray,source,setTag,activeTag}
+    return {transformedArray, source, setTag, activeTag}
 };
 
 export default useFetchMedia;

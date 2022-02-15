@@ -1,6 +1,4 @@
-import List from "../reusables/List";
 import Link from "next/link";
-import {FILE_DOWNLOAD_API} from "../../config";
 import React from "react";
 import styles from "../../styles/AboutContainer.module.css";
 

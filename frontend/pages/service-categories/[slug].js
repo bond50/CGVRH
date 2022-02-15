@@ -46,11 +46,11 @@ const Category = ({category, services, query}) => {
         <>
             {head()}
             <Layout>
-                   <GeneralPageHeader imgSrc='/fallback/services.jpg' title={category.name}
-                                      title2={`All Articles about ${category.name} `}
-                                      alt='fallback image'>
+                <GeneralPageHeader imgSrc='/fallback/services.jpg' title={category.name}
+                                   title2={`All Articles about ${category.name} `}
+                                   alt='fallback image'>
                     <div className="row">{showCats()}</div>
-                   </GeneralPageHeader>
+                </GeneralPageHeader>
             </Layout>
         </>
     );

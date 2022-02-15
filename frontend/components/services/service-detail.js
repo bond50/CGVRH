@@ -1,13 +1,10 @@
 import classes from '../../styles/service-detail.module.css'
 import {API} from "../../config";
 import renderHTML from "react-render-html";
-import React, {Fragment, useEffect, useState} from "react";
-
-import useSWR from "swr";
+import React, {Fragment} from "react";
 import Link from "next/link";
 
 import GeneralPageHeader from "../../hoc/general-page-header";
-import {useRouter} from "next/router";
 
 
 const ServiceDetail = ({service}) => {
@@ -67,7 +64,7 @@ const ServiceDetail = ({service}) => {
                 title={service.title}
                 title2={service.title}
                 imgSrc={`${API}/service/photo/${service.slug}`}
-                alt={service.title} >
+                alt={service.title}>
                 <div className={`${classes.content} `}>
                     {renderHTML(service.body.trim())}
                     <div className={classes.Footer}>

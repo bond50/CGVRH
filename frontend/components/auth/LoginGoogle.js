@@ -4,12 +4,12 @@ import {authenticate, isAuth, loginWithGoogle} from "../../actions/auth";
 import Router from "next/router";
 
 const LoginGoogle = () => {
-     const responseGoogle = response => {
+    const responseGoogle = response => {
 
         const tokenId = response.tokenId;
 
 
-        const user = { tokenId };
+        const user = {tokenId};
 
         loginWithGoogle(user).then(data => {
             if (data.error) {

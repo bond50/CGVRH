@@ -1,4 +1,4 @@
-const TableRow = ({ data }) => {
+const TableRow = ({data}) => {
     return (
         <tr>
             {data.map((item) => {

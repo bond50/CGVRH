@@ -25,7 +25,6 @@ const GalleryIndex = () => {
     }
 
 
-
     return (
         <Layout>
             <Gallery

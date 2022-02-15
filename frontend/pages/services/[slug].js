@@ -28,7 +28,7 @@ const Slug = ({service, query}) => {
 
 
     function showAllServices() {
-        return  services.map(service => {
+        return services.map(service => {
             return <li key={service._id}>
                 <Link href={`/services/${service.slug}`}>
                     <a className="list-group-item list-group-item-action">{service.title}</a>
@@ -69,7 +69,7 @@ const Slug = ({service, query}) => {
                 <main>
                     <GeneralPageHeader
                         title={service.title}>
-                        <div className="container" >
+                        <div className="container">
                             <div className="row">
                                 <div className="col-lg-8 order-lg-5 order-md-first px-0" style={{background: '#fff'}}>
                                     {showPage()}

@@ -3,12 +3,11 @@ import BlogRead from '../../../components/crud/BlogRead';
 import Layout from "../../../hoc/admin/layout/layout";
 
 
-
 const Blogs = () => {
     return (
         <Layout pageTitle='Manage Blogs'>
             <Admin>
-                <BlogRead />
+                <BlogRead/>
             </Admin>
         </Layout>
     );

@@ -1,13 +1,12 @@
 import {listRelated, singleBlog} from "../../actions/blog";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import Head from "next/head";
-import React, {useState, useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import BlogContainer from "../../hoc/BlogContainer";
 import Card from "../../components/blog/Card";
 import DisqusThread from "../../components/DiscussThread";
 import SmallCard from "../../components/reusables/card/small-card";
 import Layout from "../../hoc/Layout";
-
 
 
 const Slug = ({blog, query}) => {
@@ -73,24 +72,24 @@ const Slug = ({blog, query}) => {
     return (
         <>
             {head()}
-             <Layout blog>
+            <Layout blog>
                 <main>
 
                     {/*<GeneralPageHeader*/}
                     {/*    imgSrc={`${API}/blog/photo/${blog.slug}`}*/}
                     {/*    title={blog.title}*/}
                     {/*    alt={blog.title}>*/}
-                        <BlogContainer>
-                            {showBlog()}
-                            <div className='pt-5'>
-                                {showComments()}
-                            </div>
-                        </BlogContainer>
-                        <hr/>
-                        <div className="container">
-                            <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
-                            <div className="row">{showRelatedBlog()}</div>
+                    <BlogContainer>
+                        {showBlog()}
+                        <div className='pt-5'>
+                            {showComments()}
                         </div>
+                    </BlogContainer>
+                    <hr/>
+                    <div className="container">
+                        <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
+                        <div className="row">{showRelatedBlog()}</div>
+                    </div>
                     {/*</GeneralPageHeader>*/}
                 </main>
             </Layout>

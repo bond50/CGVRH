@@ -17,7 +17,7 @@ const Upload = () => {
         handleChange,
         multipleFileChange,
         uploadMultipleFiles
-    } = useUpload('documents', 'document-tags','files-upload')
+    } = useUpload('documents', 'document-tags', 'files-upload')
 
 
     const showTags = () => {

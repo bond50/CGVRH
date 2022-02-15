@@ -1,7 +1,6 @@
-import {useState, useEffect} from 'react';
-import Router, {withRouter} from 'next/router';
+import {useEffect, useState} from 'react';
+import {withRouter} from 'next/router';
 import {signup} from '../../../../actions/auth';
-import Layout from "../../../../hoc/Layout";
 import jwt from 'jsonwebtoken'
 import Link from "next/link";
 

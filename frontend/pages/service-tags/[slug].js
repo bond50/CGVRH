@@ -41,17 +41,17 @@ const Tag = ({tag, services, query}) => {
                     imgSrc='/fallback/services.jpg'
                     title={tag.name}
                     title2={`All Articles about ${tag.name} `}
-                                    alt='fallback image'>
+                    alt='fallback image'>
                     <div className="row">
                         {
-                        services.map((service) => (
-                            <div className="col-md-4" key={service._id}>
-                                <article>
-                                    <SmallCard service={service}/>
-                                </article>
-                            </div>
-                        ))
-                    }</div>
+                            services.map((service) => (
+                                <div className="col-md-4" key={service._id}>
+                                    <article>
+                                        <SmallCard service={service}/>
+                                    </article>
+                                </div>
+                            ))
+                        }</div>
                 </GeneralPageHeader>
             </Layout>
         </Fragment>

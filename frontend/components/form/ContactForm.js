@@ -4,7 +4,7 @@ import Alert from "../messages/Alert";
 import Button from "../reusables/ui/Button";
 import classes from '../../styles/Contact.module.css'
 
-const ContactForm = ({authorEmail,label}) => {
+const ContactForm = ({authorEmail, label}) => {
     const [values, setValues] = useState({
         message: '',
         name: '',
@@ -92,10 +92,11 @@ const ContactForm = ({authorEmail,label}) => {
         </div>
     }
 
-    const contactForm = () => <div className={`row ${authorEmail?'mt-0':'mt-5'} justify-content-center`} data-aos="fade-up" data-aos-once='true'>
-        <div className={authorEmail?'':'col-lg-10'}>
+    const contactForm = () => <div className={`row ${authorEmail ? 'mt-0' : 'mt-5'} justify-content-center`}
+                                   data-aos="fade-up" data-aos-once='true'>
+        <div className={authorEmail ? '' : 'col-lg-10'}>
             <form onSubmit={clickSubmit} className={authorEmail ? null : classes.Contact}>
-                {label &&<label className="form-label">{label}</label>}
+                {label && <label className="form-label">{label}</label>}
                 <div className="form-group mt-3">
                     <input
                         placeholder="Your Name"

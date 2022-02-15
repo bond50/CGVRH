@@ -34,7 +34,7 @@ exports.list = (req, res) => {
 
 exports.read = (req, res) => {
     const slug = req.params.slug.toLowerCase();
-    PageCategory.findOne({ slug }).exec((err, category) => {
+    PageCategory.findOne({slug}).exec((err, category) => {
         if (err) {
             return res.status(400).json({
                 error: errorHandler(err)
@@ -42,7 +42,7 @@ exports.read = (req, res) => {
         }
 
 
-        Pages.find({ categories: category })
+        Pages.find({categories: category})
             .populate('categories', '_id name slug')
             .populate('postedBy', '_id name username')
             .select('_id title slug excerpt categories postedBy  createdAt updatedAt')
@@ -50,26 +50,26 @@ exports.read = (req, res) => {
                 if (err) return res.status(400).json({
                     error: errorHandler(err)
                 });
-                res.json({ category: category, pages: data });
+                res.json({category: category, pages: data});
             });
     });
 };
 exports.readCatNames = (req, res) => {
     const slug = req.params.slug.toLowerCase();
-    PageCategory.findOne({ slug }).exec((err, category) => {
+    PageCategory.findOne({slug}).exec((err, category) => {
         if (err) {
             return res.status(400).json({
                 error: errorHandler(err)
             });
         }
 
-        Pages.find({ categories: category ,accepted:true })
+        Pages.find({categories: category, accepted: true})
             .select('_id title slug')
             .exec((err, data) => {
                 if (err) return res.status(400).json({
                     error: errorHandler(err)
                 });
-                res.json({ category: category, pages: data });
+                res.json({category: category, pages: data});
             });
     });
 };

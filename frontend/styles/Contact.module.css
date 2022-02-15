@@ -40,9 +40,11 @@
     background: #106eea;
     color: #fff;
 }
-.smallContact{
+
+.smallContact {
 
 }
+
 .Contact {
     width: 100%;
     box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
@@ -50,22 +52,23 @@
     background: #fff;
 }
 
-.Contact  .form-group {
-  padding-bottom: 8px;
-}
-.Contact  input {
-  height: 44px;
+.Contact .form-group {
+    padding-bottom: 8px;
 }
 
-.Contact  textarea {
-  padding: 10px 12px;
+.Contact input {
+    height: 44px;
 }
 
-.Btn{
-  background: #106eea;
-  border: 0;
-  padding: 10px 24px;
-  color: #fff;
-  transition: 0.4s;
-  border-radius: 4px;
+.Contact textarea {
+    padding: 10px 12px;
+}
+
+.Btn {
+    background: #106eea;
+    border: 0;
+    padding: 10px 24px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 4px;
 }

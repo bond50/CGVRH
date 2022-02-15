@@ -1,4 +1,4 @@
-const TableHeadItem = ({ item }) => {
+const TableHeadItem = ({item}) => {
     return (
         <td title={item}>
             {item}

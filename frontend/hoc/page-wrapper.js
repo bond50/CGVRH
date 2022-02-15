@@ -1,4 +1,4 @@
-import {Nav, Tab} from "react-bootstrap";
+import {Nav} from "react-bootstrap";
 import Link from "next/link";
 import React from "react";
 import renderHTML from "react-render-html";
@@ -7,6 +7,7 @@ import {API} from "../config";
 import GeneralPageHeader from "./general-page-header";
 import {useRouter} from "next/router";
 import classes from '../styles/page-wrapper.module.css'
+
 const PageWrapper = ({related, page}) => {
     const router = useRouter()
 

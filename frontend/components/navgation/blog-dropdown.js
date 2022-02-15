@@ -27,7 +27,6 @@ export const BlogDrop = ({slug, caption}) => {
     }
 
 
-
     return (
         <li className={`dropdown`} onClick={toggleClosed}>
             <a href={'#'}

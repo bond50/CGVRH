@@ -1,6 +1,6 @@
 const Carousel = () => {
     return (
-        <section >
+        <section>
             <div id="heroCarousel" data-bs-interval="5000" className="carousel slide carousel-fade"
                  data-bs-ride="carousel">
                 <ol className="carousel-indicators" id="hero-carousel-indicators"></ol>

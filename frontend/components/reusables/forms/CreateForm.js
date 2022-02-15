@@ -1,9 +1,10 @@
 import dynamic from "next/dynamic";
 import 'react-quill/dist/quill.snow.css';
 import {QuillFormats, QuillModules} from '../../../helpers/quill';
+
 const ReactQuill = dynamic(() => import('react-quill'), {ssr: false});
 
-const CreateForm = ({onSubmit,btnCapture, handleChange, handleBody, bodyValue, titleValue}) => {
+const CreateForm = ({onSubmit, btnCapture, handleChange, handleBody, bodyValue, titleValue}) => {
     const form = () => {
         return (
             <form onSubmit={onSubmit}>

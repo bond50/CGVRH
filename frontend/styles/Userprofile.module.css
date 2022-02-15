@@ -12,18 +12,18 @@
     overflow: hidden;
 }
 
-.CardBody  img {
+.CardBody img {
     overflow: hidden;
 }
 
-.CardBody  h2 {
+.CardBody h2 {
     font-size: 24px;
     font-weight: 700;
     color: #2c384e;
     margin: 10px 0 0 0;
 }
 
-.CardBody  h3 {
+.CardBody h3 {
     font-size: 18px;
 }
 

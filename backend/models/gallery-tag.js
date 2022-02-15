@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const galSchema = new mongoose.Schema(
-      {
+    {
         name: {
             type: String,
             trim: true,
@@ -15,9 +15,9 @@ const galSchema = new mongoose.Schema(
             index: true
         }
     },
-    { timestamps: true }
+    {timestamps: true}
 );
 
 
-module.exports = mongoose.model('GalleryTag',galSchema);
+module.exports = mongoose.model('GalleryTag', galSchema);
 

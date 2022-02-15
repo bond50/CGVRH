@@ -1,5 +1,5 @@
 const Tag = require('../models/document-tag');
-const Document= require('../models/document');
+const Document = require('../models/document');
 const {tagCatCreate} = require("../helpers/tagcatCreate");
 const {tagList} = require("../helpers/tag-list");
 const {tagRead} = require("../helpers/tag-read");
@@ -23,6 +23,6 @@ exports.read = (req, res) => {
 
 exports.remove = (req, res) => {
     const slug = req.params.slug.toLowerCase();
-    tagDelete(slug,res,Tag)
+    tagDelete(slug, res, Tag)
 
 };

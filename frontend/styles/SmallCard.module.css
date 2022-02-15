@@ -13,7 +13,7 @@
 
 .Card h5 a {
     font-weight: 700;
-    font-family: "Open Sans",Arial, serif;
+    font-family: "Open Sans", Arial, serif;
     text-transform: capitalize;
     margin-bottom: 5px;
     color: #0082ba;
@@ -29,8 +29,9 @@
 }
 
 .Info a {
-   color: #0082ba;
+    color: #0082ba;
 }
+
 .Info a:hover {
     color: #2CC73E;
 }

@@ -3,7 +3,7 @@ import {tableRows} from "../../reusables/functions/table-rows";
 import CardDetail from "./card-detail";
 
 const RejectedPosts = ({data}) => {
-     if (!data) {
+    if (!data) {
         return <div className='preloader'/>
     }
 

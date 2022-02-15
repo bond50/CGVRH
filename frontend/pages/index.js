@@ -21,7 +21,6 @@ export default function Home() {
     if (!blogs) return <div className='preloader'/>
 
 
-
     return (
         <Fragment>
             <Toolbar/>
