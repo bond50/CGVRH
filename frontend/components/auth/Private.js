@@ -8,9 +8,9 @@ const Private = ({children}) => {
             Router.push(`/signin`);
         }
     }, []);
-    return <div className='container p-5 pb-5'>
+    return <>
         {children}
-    </div>;
+    </>;
 };
 
 export default Private;

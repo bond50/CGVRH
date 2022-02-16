@@ -29,7 +29,6 @@ const LoginGoogle = () => {
     return (
         <div className='pb-3'>
             <GoogleLogin
-
                 clientId={`${GOOGLE_CLIENT_ID}`}
                 buttonText="Login with google"
                 onSuccess={responseGoogle}

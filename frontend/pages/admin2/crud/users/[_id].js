@@ -35,6 +35,8 @@ const Slug = () => {
         linkedIn: '',
         instagram: '',
         reload: false,
+        hmtRole: '',
+        hospitalRole: '',
         hmt: false,
         userData: process.browser && new FormData()
     });
@@ -59,6 +61,8 @@ const Slug = () => {
                     linkedIn: res.data.linkedIn,
                     instagram: res.data.instagram,
                     hmt: res.data.hmt,
+                    hmtRole: res.data.hmtRole,
+                    hospitalRole: res.data.hospitalRole
                 });
 
             });
@@ -83,6 +87,8 @@ const Slug = () => {
         instagram,
         hmt,
         reload,
+        hmtRole,
+        hospitalRole,
         userData
     } = values;
     useEffect(() => {
@@ -123,6 +129,8 @@ const Slug = () => {
                     password: '',
                     success: true,
                     hmt: data.hmt,
+                    hmtRole: data.hmtRole,
+                    hospitalRole: data.hospitalRole,
                     loading: false,
                     reload: !reload
                 });
@@ -218,7 +226,9 @@ const Slug = () => {
                                                 username={username}
                                                 hmt={hmt}
                                                 about={about}
-                                                designation={designation}/>
+                                                designation={designation}
+                                                hmtRole={hmtRole}
+                                                hospitalRole={hospitalRole}/>
                                         </Tab>
                                         <Tab eventKey="profile" title="Profile">
                                             <Profile
@@ -241,6 +251,8 @@ const Slug = () => {
                                                 linkedIn={linkedIn}
                                                 address={address}
                                                 hmt={hmt}
+                                                hmtRole={hmtRole}
+                                                hospitalRole={hospitalRole}
                                             />
                                         </Tab>
                                         <Tab eventKey="password" title="Change Password" disabled>

@@ -8,6 +8,8 @@ const Profile = ({
                      handleSubmit,
                      handleChange,
                      username,
+                     hmtRole,
+                     hospitalRole,
                      name,
                      about,
                      errorMsg,
@@ -77,6 +79,18 @@ const Profile = ({
                 </div>
             </div>
             <div className={`row ${classes.Row} mb-3`}>
+                <div className={`col-lg-3 col-md-4 ${classes.Label}`}>Hospital Management Role</div>
+                <div className="col-lg-9 col-md-8">
+                    <input
+                        onChange={handleChange('hospitalRole')}
+                        placeholder='e.g The Hospital Administrator , The Medical Superintendent'
+                        type="text"
+                        value={hospitalRole || ''}
+                        className="form-control"/>
+                </div>
+            </div>
+
+            <div className={`row ${classes.Row} mb-3`}>
                 <div className={`col-lg-3 col-md-4 ${classes.Label}`}>HMT Member</div>
                 <div className="col-lg-9 col-md-8">
                     <input
@@ -86,6 +100,18 @@ const Profile = ({
                         onChange={handleCheckBox}/> {hmt === false ? "No" : "Yes"}
                 </div>
             </div>
+
+            {hmt && <div className={`row ${classes.Row} mb-3`}>
+                <div className={`col-lg-3 col-md-4 ${classes.Label}`}>HMT Role</div>
+                <div className="col-lg-9 col-md-8">
+                    <input
+                        onChange={handleChange('hmtRole')}
+                        placeholder='e.g Chairman , Executive member'
+                        type="text"
+                        value={hmtRole || ''}
+                        className="form-control"/>
+                </div>
+            </div>}
 
 
             <div className={`row ${classes.Row} mb-3`}>

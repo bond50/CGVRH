@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './overview.module.css'
 
 
-const Overview = ({username, name, hmt, about, designation, address}) => {
+const Overview = ({username, name, hmt, about, designation, address, hospitalRole, hmtRole}) => {
 
     return (
         <>
@@ -22,7 +22,12 @@ const Overview = ({username, name, hmt, about, designation, address}) => {
                 <div className={`col-lg-3 col-md-4 ${classes.Label}`}>Username</div>
                 <div className="col-lg-9 col-md-8">{username}</div>
             </div>
-
+            {
+                hospitalRole && <div className={`row ${classes.Row} mb-3`}>
+                    <div className={`col-lg-3 col-md-4 ${classes.Label}`}>Hospital Management Role</div>
+                    <div className="col-lg-9 col-md-8">{hospitalRole}</div>
+                </div>
+            }
             {designation && <div className={`row ${classes.Row} mb-3`}>
                 <div className={`col-lg-3 col-md-4 ${classes.Label}`}>Designation</div>
                 <div className="col-lg-9 col-md-8">{designation}</div>
@@ -33,6 +38,14 @@ const Overview = ({username, name, hmt, about, designation, address}) => {
                 <div className="col-lg-9 col-md-8">{address}
                 </div>
             </div>}
+
+            {
+                hmtRole && <div className={`row ${classes.Row} mb-3`}>
+                    <div className={`col-lg-3 col-md-4 ${classes.Label}`}>Hmt Role</div>
+                    <div className="col-lg-9 col-md-8">{hmtRole}</div>
+                </div>
+            }
+
             <div className={`row ${classes.Row} mb-3`}>
                 <div className={`col-lg-3 col-md-4 ${classes.Label}`}>HMT member</div>
                 <div className="col-lg-9 col-md-8">{hmt === false ? "No" : "yes"}

@@ -7,6 +7,7 @@ const {
     read,
     listHomePageBlogs,
     listByUser,
+    listPendingByUser,
     remove,
     update,
     photo,
@@ -17,6 +18,7 @@ const {
 } = require('../controllers/blog');
 
 const {requireSignin, adminMiddleware, authMiddleware, canUpdateDeleteBlog} = require('../controllers/auth');
+
 
 router.post('/blog', requireSignin, adminMiddleware, create);
 router.get('/blogs', list);
@@ -34,6 +36,7 @@ router.get('/blogs/search', listSearch);
 //auth user blog routes
 
 router.post('/user/blog', requireSignin, authMiddleware, create);
+router.get('/:username/pending-blogs', listPendingByUser);
 router.get('/:username/blogs', listByUser);
 router.delete('/user/blog/:slug', requireSignin, authMiddleware, canUpdateDeleteBlog, remove);
 router.put('/user/blog/:slug', requireSignin, authMiddleware, canUpdateDeleteBlog, update);

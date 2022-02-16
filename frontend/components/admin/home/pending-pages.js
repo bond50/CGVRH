@@ -3,8 +3,9 @@ import DynamicTableRows from "./dynamic-table-rows";
 import MyModal from "../../reusables/ui/modal";
 import Alert from "../../messages/Alert";
 import useARP from "../../../hooks/useARP";
+import {isAuth} from "../../../actions/auth";
 
-const PendingPages = () => {
+const PendingPages = ({username}) => {
     const {
         mouseMoveHandler,
         deletePage,
@@ -16,7 +17,7 @@ const PendingPages = () => {
         removed,
         blogs,
         message
-    } = useARP('/pending-pages')
+    } = useARP(username ? `/${username}/pending-pages` : '/pending-pages')
 
     function showBlogs() {
         if (loading) {
@@ -30,10 +31,18 @@ const PendingPages = () => {
 
         return blogs.length > 0 && <CardDetail title='Pending Pages' spanText={'Needs to be approved'}>
             {blogs.map(blog => {
+                let endpoint
+                if (isAuth() && isAuth().role === 1) {
+                    endpoint = `/admin2/crud/gen-page/${blog.slug}`
+
+                } else if (isAuth() && isAuth().role === 0) {
+                    endpoint = `/user/crud/gen-page/${blog.slug}`
+                }
+
                 return <DynamicTableRows
                     key={blog._id}
                     blog={blog}
-                    to={`/admin2/crud/gen-page/${blog.slug}`}
+                    to={endpoint}
                     showModal={handleShow}/>
             })}
         </CardDetail>

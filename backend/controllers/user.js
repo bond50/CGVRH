@@ -242,7 +242,7 @@ exports.photo = (req, res) => {
 
 exports.list = (req, res) => {
     User.find({})
-        .select('_id name username email role profile')
+        .select('_id name username  email role profile')
 
         .exec((err, users) => {
             if (err) {
@@ -256,7 +256,7 @@ exports.list = (req, res) => {
 
 exports.listHMT = (req, res) => {
     User.find({hmt: true})
-        .select('_id name facebook twitter instagram linkedIn designation username')
+        .select('_id name hospitalRole  hmtRole facebook twitter instagram linkedIn designation username')
         .exec((err, users) => {
             if (err) {
                 return res.status(400).json({

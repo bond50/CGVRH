@@ -9,6 +9,7 @@ const {
     update,
     listPending,
     photo,
+    listPendingByUser,
     listByUser,
     listRelated, listAllServicesCategoriesTags, listServiceNamesAndSlugs
 } = require('../controllers/pages');
@@ -38,6 +39,7 @@ router.get('/list-service-names-slugs', listServiceNamesAndSlugs);
 //auth user blog routes
 
 router.post('/user/page', requireSignin, authMiddleware, create);
+router.get('/:username/pending-pages', listPendingByUser);
 router.get('/:username/general', listByUser);
 router.delete('/user/general/:slug', requireSignin, authMiddleware, canUpdateDeletePage, remove);
 router.put('/user/general/:slug', requireSignin, authMiddleware, canUpdateDeletePage, update);

@@ -22,6 +22,14 @@ const userSchema = new mongoose.Schema(
             type: String,
             max: 32,
         },
+        hospitalRole: {
+            type: String,
+            max: 32,
+        },
+        hmtRole: {
+            type: String,
+            max: 32,
+        },
         address: {
             type: String,
         },

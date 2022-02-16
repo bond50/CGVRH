@@ -9,6 +9,7 @@ const _ = require('lodash');
 const {errorHandler} = require('../helpers/dbErrorHandler');
 const fs = require('fs');
 const {smartTrim} = require('../helpers/blog');
+const Page = require("../models/pages");
 
 
 exports.create = (req, res) => {
@@ -326,11 +327,11 @@ exports.listByUser = (req, res) => {
                     error: errorHandler(err)
                 });
             }
-            Blog.find({postedBy: user._id})
+            Blog.find({postedBy: user._id, accepted: true})
                 .populate('categories', '_id name slug')
                 .populate('tags', '_id name slug')
                 .populate('postedBy', '_id name username')
-                .select('_id title slug postedBy createdAt updatedAt')
+                .select('_id title accepted  slug postedBy createdAt updatedAt')
                 .exec((err1, data) => {
                     if (err) {
                         return res.status(400).json({
@@ -359,6 +360,7 @@ exports.listHomePageBlogs = (req, res) => {
             res.json(data);
         });
 };
+
 exports.listPending = (req, res) => {
     Blog.find({accepted: false})
         .populate('postedBy', '_id name username')
@@ -372,6 +374,28 @@ exports.listPending = (req, res) => {
             res.json(data);
         });
 };
+exports.listPendingByUser = (req, res) => {
+    User.findOne({username: req.params.username}).exec(
+        (err, user) => {
+            if (err) {
+                return res.status(400).json({
+                    error: errorHandler(err)
+                });
+            }
+            Blog.find({postedBy: user._id, accepted: false})
+                .populate('postedBy', '_id name username')
+                .select('_id title accepted slug postedBy createdAt updatedAt')
+                .exec((err1, data) => {
+                    if (err) {
+                        return res.status(400).json({
+                            error: errorHandler(err)
+                        });
+                    }
+                    res.json(data)
+                })
+
+        })
+}
 
 exports.featuredBlogs = (req, res) => {
     Blog.find({featured: true, accepted: true})

@@ -32,7 +32,8 @@ const Board = ({members}) => {
                                 {m.name}
                             </h4>
                         </Link>
-
+                        {m.hospitalRole && <span>{m.hospitalRole}</span>}
+                        {m.hmtRole && <span>{m.hmtRole} of HMT</span>}
                         <span>{m.designation}</span>
                     </div>
                 </div>

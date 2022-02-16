@@ -3,8 +3,9 @@ import DynamicTableRows from "./dynamic-table-rows";
 import MyModal from "../../reusables/ui/modal";
 import Alert from "../../messages/Alert";
 import useARP from "../../../hooks/useARP";
+import {isAuth} from "../../../actions/auth";
 
-const ApprovedPosts = () => {
+const ApprovedPosts = ({username}) => {
     const {
         mouseMoveHandler,
         deleteBlog,
@@ -16,7 +17,7 @@ const ApprovedPosts = () => {
         removed,
         blogs,
         message
-    } = useARP('/blogs')
+    } = useARP(username ? `/${username}/blogs` : '/blogs')
 
     function showBlogs() {
         if (loading) {
@@ -30,10 +31,18 @@ const ApprovedPosts = () => {
 
         return blogs.length > 0 && <CardDetail title='Approved Blogs' spanText={'Active articles'}>
             {blogs.map(blog => {
+                let endpoint
+                if (isAuth() && isAuth().role === 1) {
+                    endpoint = `/admin2/crud/${blog.slug}`
+
+                } else if (isAuth() && isAuth().role === 0) {
+                    endpoint = `/user/crud/${blog.slug}`
+                }
+
                 return <DynamicTableRows
                     key={blog._id}
                     blog={blog}
-                    to={`/admin2/crud/${blog.slug}`}
+                    to={endpoint}
                     showModal={handleShow}/>
             })}
         </CardDetail>

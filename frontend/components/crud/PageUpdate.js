@@ -137,11 +137,11 @@ const Page = () => {
                 } else {
                     setValues({...values, title: '', success: `Blog titled "${data.title}" is successfully updated`});
                     if (isAuth() && isAuth().role === 1) {
-                        Router.replace(`/admin2/crud/${router.query.slug}`).then(r => console.log(r));
-                        // Router.replace(`/admin2`);
+                        // Router.replace(`/admin2/crud/${router.query.slug}`).then(r => console.log(r));
+                        Router.replace(`/admin2`).then(r => (console.log(r)));
                     } else if (isAuth() && isAuth().role === 0) {
-                        Router.replace(`/user/crud/gen-page/${router.query.slug}`).then(r => console.log(r));
-                        // Router.replace(`/user`);
+                        // Router.replace(`/user/crud/gen-page/${router.query.slug}`).then(r => console.log(r));
+                        Router.replace(`/user`).then(r => (console.log(r)));
                     }
                 }
             });
