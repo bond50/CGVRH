@@ -2,6 +2,7 @@ import classes from './header-nav.module.css'
 import Image from "next/image";
 import {isAuth} from "../../../../actions/auth";
 import {useEffect, useState} from "react";
+import {API} from "../../../../config";
 
 const HeaderNav = () => {
     const [mounted, setMounted] = useState(false);
@@ -20,12 +21,15 @@ const HeaderNav = () => {
             </div>
 
             {isAuth() && <div className={`${classes.Profile}`}>
-                <Image
-                    src="/avatar/male.jpg"
-                    width={40}
-                    height={40}
-                    className={`rounded-circle `}
-                />
+                    <div className={classes.ProfileImage}>
+                        <Image
+                        src={`${API}/user/photo/${isAuth() && isAuth().username}`}
+                        width={40}
+                        height={40}
+                        layout="responsive"
+                        className={`rounded-circle `}
+                    />
+                    </div>
                 <span className="d-none d-md-block dropdown-toggle ps-2">{isAuth().name}</span>
             </div>}
         </div>

@@ -10,7 +10,6 @@ const Index = () => {
         [
             `${API}/users-hmt`,
         ],
-        fetcher,
         {
             revalidateOnFocus: true,
         },

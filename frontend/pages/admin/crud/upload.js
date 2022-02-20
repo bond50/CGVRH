@@ -1,6 +1,6 @@
 import React from 'react';
 import Admin from '../../../components/auth/Admin';
-import UploadComponent from "../../../components/crud/Upload";
+import UploadComponent from "../../../components/crud/upload-files";
 import Layout from "../../../hoc/admin/layout/layout";
 
 

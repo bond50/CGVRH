@@ -17,6 +17,12 @@ const gallery = new Schema(
                 type: String,
                 required: true
             },
+            width: {
+                type: Number,
+            },
+            height: {
+                type: Number,
+            },
 
             tags: [{type: ObjectId, ref: 'GalleryTag', required: true}],
 

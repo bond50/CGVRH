@@ -75,6 +75,10 @@ const userSchema = new mongoose.Schema(
         photo: {
             data: Buffer,
             contentType: String,
+
+        },
+        photoDimensions: {
+            type: Object
         },
         resetPasswordLink: {
             data: String,

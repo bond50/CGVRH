@@ -24,13 +24,14 @@ const IMAGEFORMATS = [
     'image/jpg',
 ]
 
-const FILE_FORMATS = [
+const docFormats = [
     'application/pdf',
     "application/msword",
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     "application/vnd.openxmlformats-officedocument.wordprocessingml.template",
     "application/vnd.ms-word.document.macroEnabled.12",
     "application/vnd.ms-word.template.macroEnabled.12",
+
     "application/vnd.ms-excel",
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     "application/vnd.openxmlformats-officedocument.spreadsheetml.template",
@@ -43,8 +44,31 @@ const FILE_FORMATS = [
     "application/vnd.ms-powerpoint.addin.macroEnabled.12",
     "application/vnd.ms-powerpoint.presentation.macroEnabled.12",
     "application/vnd.ms-powerpoint.template.macroEnabled.12",
-    "application/vnd.ms-powerpoint.slideshow.macroEnabled.12"
+    "application/vnd.ms-powerpoint.slideshow.macroEnabled.12",
+    "application/excel",
+    "application/x-excel",
+    "application/x-msexcel",
+    "application/ms-doc",
+    "application/msword",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "application/mspowerpoint",
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    "application/mspowerpoint",
+    "application/mspowerpoint",
+    "application/vnd.openxmlformats-officedocument.presentationml.slideshow",
+    "application/mspowerpoint",
+    "application/vnd.ms-powerpoint.addin.macroEnabled.12",
+    "application/vnd.ms-powerpoint.presentation.macroEnabled.12",
+    "application/vnd.ms-powerpoint.slideshow.macroEnabled.12",
+    "application/vnd.ms-powerpoint.template.macroEnabled.12",
+    "application/msaccess"
+
 ];
+
+let FILE_FORMATS = [...new Set(docFormats)];
+
+
+const maxSize = 2 * 1024 * 1024; // for 2MB
 
 const imageFeFilter = function (req, file, cb) {
     if (IMAGEFORMATS.includes(file.mimetype)) {
@@ -62,8 +86,8 @@ const docFilter = function (req, file, cb) {
 }
 
 
-const uploadImages = multer({storage, fileFilter: imageFeFilter})
-const uploadFiles = multer({storage, fileFilter: docFilter})
+const uploadImages = multer({storage, fileFilter: imageFeFilter, limits: {fileSize: maxSize}})
+const uploadFiles = multer({storage, docFilter, limits: {fileSize: maxSize}})
 
 
 exports.multipleImagesUploadCtrl = uploadImages.array('files')

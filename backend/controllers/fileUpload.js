@@ -106,7 +106,6 @@ exports.getDownloads = async (req, res) => {
 
 exports.getGallery = async (req, res) => {
     Gallery.find({})
-        .select('_id filePath title  publicId   createdAt')
         .sort({createdAt: -1})
         .exec((err, data) => {
             if (err) {
@@ -114,6 +113,7 @@ exports.getGallery = async (req, res) => {
                     error: errorHandler(err)
                 });
             }
+            console.log(data)
             res.json(data);
         });
 }
@@ -174,6 +174,8 @@ exports.galleryCreate = async (req, res,) => {
         gallery.cloudinaryFolder = folder
         gallery.publicId = result.publicId
         gallery.fileName = originalname
+        gallery.width = result.width
+        gallery.height = result.height
         gallery.fileType = mimetype
         gallery.fileSize = fileSizeFormatter(size, 2)
         gallery.createdAt = result.createdAt

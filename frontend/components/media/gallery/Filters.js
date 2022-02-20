@@ -20,9 +20,10 @@ const Filters = () => {
     );
     useEffect(() => {
         setTags(filters)
+        setTags(...tags,)
     }, [])
 
-    console.log(tags)
+
 
     const returnFilters = () => filters && filters.map(f => {
         return <li

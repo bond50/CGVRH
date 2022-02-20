@@ -33,18 +33,9 @@ const Profile = ({
                     Image
                 </label>
                 <div className="col-md-8 col-lg-9">
-                    {/*{*/}
-                    {/*    username_for_photo && <Image*/}
-                    {/*        width={256}*/}
-                    {/*        height={171}*/}
-                    {/*        src={`${API}/user/photo/${username_for_photo}`}*/}
-                    {/*        className="img-fluid"*/}
-                    {/*        alt="user profile"*/}
-                    {/*    />*/}
-                    {/*}*/}
 
                     <div className="pt-2">
-                        <label className="btn btn-primary btn-sm mx-1" title="Upload new profile image">
+                        <label className="btn btn-primary btn-sm mx-1" title="UploadFiles new profile image">
                             <i className="bi bi-upload"/>
                             <input
                                 name='photo'

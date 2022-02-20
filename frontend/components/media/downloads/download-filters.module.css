@@ -1,0 +1,28 @@
+.Filters {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.Filters li {
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px 5px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+    color: #444444;
+    transition: all 0.3s;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-family: "Poppins", sans-serif;
+}
+
+.Filters li:hover, .Filters li.active {
+    background: #294a70;
+    color: #fff;
+}
+
+.Filters li::first-letter {
+    text-transform: uppercase;
+}
+

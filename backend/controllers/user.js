@@ -5,6 +5,8 @@ const formidable = require('formidable');
 const fs = require('fs');
 const slugify = require("slugify");
 const {errorHandler} = require('../helpers/dbErrorHandler');
+const probe = require('probe-image-size');
+
 
 exports.read = (req, res) => {
     req.profile.hashed_password = undefined;
@@ -120,13 +122,17 @@ exports.update = (req, res) => {
         user.email = existingEmail;
 
         if (files.photo) {
-            if (files.photo.size > 10000000) {
+            let data = require('fs').readFileSync(files.photo.path);
+            const {width, height} = probe.sync(data)
+            const photoDimensions = {width, height}
+            if (files.photo.size > 1000000) {
                 return res.status(400).json({
-                    error: 'Image should be less than 1mb'
+                    error: 'Profile Image should be less than 1mb'
                 });
             }
             user.photo.data = fs.readFileSync(files.photo.path);
             user.photo.contentType = files.photo.type;
+            user.photoDimensions = photoDimensions
         }
 
         user.save((err, result) => {
@@ -194,13 +200,19 @@ exports.singleUpdate = (req, res) => {
                 oldUser = _.extend(oldUser, fields);
 
                 if (files.photo) {
-                    if (files.photo.size > 10000000) {
+                    let data = require('fs').readFileSync(files.photo.path);
+                    const {width, height} = probe.sync(data)
+                    const dimensions = {width, height}
+
+                    if (files.photo.size > 1000000) {
                         return res.status(400).json({
-                            error: 'Image should be less than 1mb'
+                            error: 'Profile Image should be less than 1mb '
                         });
                     }
                     oldUser.photo.data = fs.readFileSync(files.photo.path);
                     oldUser.photo.contentType = files.photo.type;
+                    oldUser.photoDimensions = dimensions
+
                 }
 
                 oldUser.save((err, result) => {
@@ -233,10 +245,12 @@ exports.photo = (req, res) => {
                 error: 'User not found'
             });
         }
+
         if (user.photo.data) {
             res.set('Content-Type', user.photo.contentType);
-            return res.send(user.photo.data);
+            return res.send(user.photo.data)
         }
+
     });
 };
 

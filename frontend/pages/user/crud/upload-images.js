@@ -1,16 +1,15 @@
-import React from 'react';
-import Admin from '../../../components/auth/Admin';
 import Layout from "../../../hoc/admin/layout/layout";
 import UploadImages from "../../../components/crud/upload-images";
+import Private from "../../../components/auth/Private";
 
 
 const Upload = () => {
 
     return (
         <Layout>
-            <Admin>
+            <Private>
                 <UploadImages/>
-            </Admin>
+            </Private>
         </Layout>
     );
 };

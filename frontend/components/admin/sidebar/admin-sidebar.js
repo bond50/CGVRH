@@ -31,11 +31,11 @@ const AdminSidebar = ({closed}) => {
     ]
 
     const userDownloadList = [
-        {title: 'Upload', slug: 'crud/upload-files'},
+        {title: 'Upload', to: 'crud/upload-files'},
 
     ]
     const userGalleryList = [
-        {title: 'Upload', slug: 'upload-images'},
+        {title: 'Upload', to: 'crud/upload-images'},
 
     ]
 
@@ -111,22 +111,22 @@ const AdminSidebar = ({closed}) => {
                 </Accordion2>
 
 
-                <Accordion2 title='Downloads' icon='journal'>
-                    <>
-                        {accordionPrivateFunction(userDownloadList)}
-                    </>
-                </Accordion2>
-                <Accordion2 title='Gallery' icon='journal'>
-                    <>
-                        {accordionPrivateFunction(profileList)}
-                    </>
-                </Accordion2>
-
                 <Accordion2 title='Profile' icon='journal'>
                     <>
                         {accordionPrivateFunction(profileList)}
                     </>
                 </Accordion2>
+                {/*<Accordion2 title='Gallery' icon='journal'>*/}
+                {/*    <>*/}
+                {/*        {accordionPrivateFunction(userGalleryList)}*/}
+                {/*    </>*/}
+                {/*</Accordion2>*/}
+
+                {/*<Accordion2 title='Downloads' icon='journal'>*/}
+                {/*    <>*/}
+                {/*        {accordionPrivateFunction(userDownloadList)}*/}
+                {/*    </>*/}
+                {/*</Accordion2>*/}
 
 
             </ul>

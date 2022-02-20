@@ -29,7 +29,9 @@ const useUpload = (folder, tagEndpoint, url) => {
             formData.append('files', file)
         }
 
-        axiosInstance.post(`/${url}`, formData)
+
+
+        axiosInstance.post(url, formData)
             .then(response => {
                 setValues({
                     ...values,
@@ -47,6 +49,7 @@ const useUpload = (folder, tagEndpoint, url) => {
 
             })
             .catch((error) => {
+
                 if (error.response) {
                     setValues({...values, error: error.response.data.error, loading: false})
 

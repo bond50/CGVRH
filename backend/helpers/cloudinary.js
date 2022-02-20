@@ -10,13 +10,16 @@ cloudinary.config({
 exports.cloudinaryUpload = (file, folder) => {
     return new Promise(resolve => {
         cloudinary.uploader.upload(file, (result) => {
+            console.log(result)
 
             resolve({
                 filePath: result.secure_url,
                 cloudinary_id: result.public_id,
                 tags: result.tags,
                 publicId: result.public_id,
-                createdAt: result.created_at
+                createdAt: result.created_at,
+                width: result.width,
+                height: result.height,
             })
         }, {
             resource_type: "auto",

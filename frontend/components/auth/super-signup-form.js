@@ -15,7 +15,7 @@ const SuperSignupForm = () => {
 
 
                     <div className="pt-2">
-                        <label className="btn btn-primary btn-sm mx-1" title="Upload new profile image">
+                        <label className="btn btn-primary btn-sm mx-1" title="UploadFiles new profile image">
                             <i className="bi bi-upload"/>
                             <input
                                 name='photo'

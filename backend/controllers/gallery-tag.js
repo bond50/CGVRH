@@ -13,7 +13,14 @@ exports.create = (req, res) => {
 };
 
 exports.list = (req, res) => {
-    tagList(Tag, res)
+    Tag.find({}).exec((err, data) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler(err)
+            });
+        }
+        res.json(data);
+    });
 };
 
 

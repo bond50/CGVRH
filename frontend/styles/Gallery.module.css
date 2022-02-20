@@ -1,3 +1,10 @@
+
+.Gallery {
+    padding: 60px 0;
+    overflow: hidden;
+    background: #f1f6fd;
+}
+
 .GalleryItem {
     overflow: hidden;
     border-right: 3px solid #fff;

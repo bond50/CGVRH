@@ -30,6 +30,13 @@
     display: flex;
     align-items: center;
 }
+.ProfileImage{
+    display: block;
+    width: 40px;
+    height: auto;
+
+
+}
 
 .Profile span {
     font-size: 14px;

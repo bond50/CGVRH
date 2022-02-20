@@ -4,6 +4,7 @@ import {getProfile, update} from '../../actions/user';
 import {API} from '../../config';
 import Alert from "../messages/Alert";
 import ProfileUpdateForm from "../reusables/forms/profile-update-form";
+import Image from "next/image";
 
 
 const ProfileUpdate = () => {
@@ -17,6 +18,7 @@ const ProfileUpdate = () => {
         success: false,
         loading: false,
         photo: '',
+        photoDimensions:{},
         userData: process.browser && new FormData()
     });
 
@@ -32,6 +34,7 @@ const ProfileUpdate = () => {
         loading,
         photo,
         userData
+        ,photoDimensions
     } = values;
 
     const init = () => {
@@ -46,7 +49,8 @@ const ProfileUpdate = () => {
                         username_for_photo: data.username,
                         name: data.name,
                         email: data.email,
-                        about: data.about
+                        about: data.about,
+                        photoDimensions:data.photoDimensions
                     });
 
                 }
@@ -75,7 +79,7 @@ const ProfileUpdate = () => {
             if (data.error) {
                 setValues({...values, error: data.error, loading: false});
             } else {
-                updateUser(data, () => {
+                updateUser(data,null, () => {
                     setValues({
                         ...values,
                         username: data.username,
@@ -111,10 +115,11 @@ const ProfileUpdate = () => {
         <div className="container">
             <div className="row">
                 <div className="col-md-4">
-                    {username_for_photo && <img
+                    {username_for_photo && <Image
                         src={`${API}/user/photo/${username_for_photo}`}
-                        className="img img-fluid img-thumbnail mb-3"
-                        style={{maxHeight: 'auto', maxWidth: '100%'}}
+                        width={photoDimensions.width}
+                        height={photoDimensions.height}
+                        layout='responsive'
                         alt="user profile"
                     />}
                 </div>
