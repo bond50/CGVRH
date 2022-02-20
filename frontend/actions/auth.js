@@ -136,10 +136,6 @@ export const isAuth = () => {
 
 
 export const updateUser = (user, id, cb) => {
-    if (!id && process.browser && localStorage.getItem("user")) {
-        localStorage.setItem("user", JSON.stringify(user));
-        cb();
-    }
 
     if (isAuth() && isAuth()._id === id && process.browser && localStorage.getItem("user")) {
         localStorage.setItem("user", JSON.stringify(user));

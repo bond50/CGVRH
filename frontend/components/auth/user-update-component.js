@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
-import axiosInstance from "../../axios/axios";
 import {API} from "../../config";
 import Alert from "../../components/messages/Alert";
 import {getCookie, updateUser,} from "../../actions/auth";
-import {updateForAdmin} from "../../actions/user";
+import {getProfile, update, updateForAdmin} from "../../actions/user";
 import Image from "next/image";
 import classes from "../../styles/Userprofile.module.css";
 import {Tab, Tabs} from "react-bootstrap";
@@ -32,40 +31,11 @@ const UserUpdateComponent = ({id}) => {
         reload: false,
         hmtRole: '',
         hospitalRole: '',
+        loadedId: '',
         hmt: false,
         photoDimensions: {},
         userData: process.browser && new FormData()
     });
-
-
-
-
-    const init = () => {
-        axiosInstance.get(`${API}/single-user/${id}`)
-            .then(res => {
-                setValues({
-                    ...values,
-                    username: res.data.username,
-                    username_for_photo: res.data.username,
-                    name: res.data.name,
-                    email: res.data.email,
-                    about: res.data.about,
-                    role: res.data.role,
-                    address: res.data.address,
-                    designation: res.data.designation,
-                    twitter: res.data.twitter,
-                    facebook: res.data.facebook,
-                    linkedIn: res.data.linkedIn,
-                    instagram: res.data.instagram,
-                    hmt: res.data.hmt,
-                    hmtRole: res.data.hmtRole,
-                    hospitalRole: res.data.hospitalRole,
-                    photoDimensions: res.data.photoDimensions
-                });
-
-            });
-    };
-
 
     const token = getCookie('token');
     const {
@@ -84,12 +54,42 @@ const UserUpdateComponent = ({id}) => {
         linkedIn,
         instagram,
         hmt,
+        loadedId,
         reload,
         hmtRole,
         hospitalRole,
         photoDimensions,
         userData
     } = values;
+
+    const init = () => {
+        getProfile(token, id)
+            .then(res => {
+                setValues({
+                    ...values,
+                    username: res.username,
+                    username_for_photo: res.username,
+                    name: res.name,
+                    email: res.email,
+                    about: res.about,
+                    role: res.role,
+                    loadedId: res._id,
+                    address: res.address,
+                    designation: res.designation,
+                    twitter: res.twitter,
+                    facebook: res.facebook,
+                    linkedIn: res.linkedIn,
+                    instagram: res.instagram,
+                    hmt: res.hmt,
+                    hmtRole: res.hmtRole,
+                    hospitalRole: res.hospitalRole,
+                    photoDimensions: res.photoDimensions
+                });
+
+            });
+    };
+
+
     useEffect(() => {
         setValues({...values, userData: new FormData()});
         init();
@@ -108,11 +108,11 @@ const UserUpdateComponent = ({id}) => {
     const handleSubmit = e => {
         e.preventDefault();
         setValues({...values, error: '', loading: true, success: false});
-        updateForAdmin(token, userData, id).then(data => {
+        update(token, userData, loadedId).then(data => {
             if (data.error) {
                 setValues({...values, error: data.error, loading: false});
             } else {
-                updateUser(data, id, () => {
+                updateUser(data, loadedId, () => {
                     setValues({
                         ...values,
                         username: data.username,
@@ -163,7 +163,6 @@ const UserUpdateComponent = ({id}) => {
 
 
     const imgSrc = `${API}/user/photo/${username_for_photo}`
-
 
     return (
 

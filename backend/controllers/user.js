@@ -84,71 +84,71 @@ exports.publicProfile = (req, res) => {
 };
 
 
-exports.update = (req, res) => {
-    let form = new formidable.IncomingForm();
-    form.keepExtension = true;
-    form.parse(req, (err, fields, files) => {
-        if (err) {
-            return res.status(400).json({
-                error: 'Photo could not be uploaded'
-            });
-        }
-
-        let user = req.profile;
-        // user's existing role and email before update
-
-        let existingRole = user.role;
-        let existingEmail = user.email;
-
-        if (fields && fields.username && fields.username.length > 12) {
-            return res.status(400).json({
-                error: 'Username should be less than 12 characters long'
-            });
-        }
-
-        if (fields.username) {
-            fields.username = slugify(fields.username).toLowerCase();
-        }
-
-        if (fields.password && fields.password.length < 6) {
-            return res.status(400).json({
-                error: 'Password should be min 6 characters long'
-            });
-        }
-
-        user = _.extend(user, fields);
-        // user's existing role and email - dont update - keep it same
-        user.role = existingRole;
-        user.email = existingEmail;
-
-        if (files.photo) {
-            let data = require('fs').readFileSync(files.photo.path);
-            const {width, height} = probe.sync(data)
-            const photoDimensions = {width, height}
-            if (files.photo.size > 1000000) {
-                return res.status(400).json({
-                    error: 'Profile Image should be less than 1mb'
-                });
-            }
-            user.photo.data = fs.readFileSync(files.photo.path);
-            user.photo.contentType = files.photo.type;
-            user.photoDimensions = photoDimensions
-        }
-
-        user.save((err, result) => {
-            if (err) {
-                console.log('profile update error', err);
-                return res.status(400).json({
-                    error: errorHandler(err)
-                });
-            }
-            user.hashed_password = undefined;
-            user.salt = undefined;
-            user.photo = undefined;
-            res.json(user);
-        });
-    });
-};
+// exports.update = (req, res) => {
+//     let form = new formidable.IncomingForm();
+//     form.keepExtension = true;
+//     form.parse(req, (err, fields, files) => {
+//         if (err) {
+//             return res.status(400).json({
+//                 error: 'Photo could not be uploaded'
+//             });
+//         }
+//
+//         let user = req.profile;
+//         // user's existing role and email before update
+//
+//         let existingRole = user.role;
+//         let existingEmail = user.email;
+//
+//         if (fields && fields.username && fields.username.length > 12) {
+//             return res.status(400).json({
+//                 error: 'Username should be less than 12 characters long'
+//             });
+//         }
+//
+//         if (fields.username) {
+//             fields.username = slugify(fields.username).toLowerCase();
+//         }
+//
+//         if (fields.password && fields.password.length < 6) {
+//             return res.status(400).json({
+//                 error: 'Password should be min 6 characters long'
+//             });
+//         }
+//
+//         user = _.extend(user, fields);
+//         // user's existing role and email - dont update - keep it same
+//         user.role = existingRole;
+//         user.email = existingEmail;
+//
+//         if (files.photo) {
+//             let data = require('fs').readFileSync(files.photo.path);
+//             const {width, height} = probe.sync(data)
+//             const photoDimensions = {width, height}
+//             if (files.photo.size > 1000000) {
+//                 return res.status(400).json({
+//                     error: 'Profile Image should be less than 1mb'
+//                 });
+//             }
+//             user.photo.data = fs.readFileSync(files.photo.path);
+//             user.photo.contentType = files.photo.type;
+//             user.photoDimensions = photoDimensions
+//         }
+//
+//         user.save((err, result) => {
+//             if (err) {
+//                 console.log('profile update error', err);
+//                 return res.status(400).json({
+//                     error: errorHandler(err)
+//                 });
+//             }
+//             user.hashed_password = undefined;
+//             user.salt = undefined;
+//             user.photo = undefined;
+//             res.json(user);
+//         });
+//     });
+// };
 
 
 exports.singleUpdate = (req, res) => {

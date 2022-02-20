@@ -1,15 +1,17 @@
 import React from "react";
-import Layout from "../../hoc/Layout";
+
 import Private from "../../components/auth/Private";
-import ProfileUpdate from "../../components/auth/ProfileUpdate";
+import UserUpdateComponent from "../../components/auth/user-update-component";
+import Layout from "../../hoc/admin/layout/layout";
 
 
 const UserUpdate = () => {
+
     return (
         <Layout>
             <Private>
                 <div className='row'>
-                    <ProfileUpdate/>
+                    <UserUpdateComponent/>
                 </div>
             </Private>
         </Layout>

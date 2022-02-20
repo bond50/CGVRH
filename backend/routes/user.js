@@ -16,7 +16,7 @@ const router = express.Router()
 
 router.get('/user/profile', requireSignin, authMiddleware, read);
 router.get('/user/:username', publicProfile);
-router.put('/user/update', requireSignin, authMiddleware, update);
+router.put('/single-user/:_id', requireSignin, authMiddleware, singleUpdate);
 router.get('/user/photo/:username', photo);
 router.get('/users-hmt', listHMT);
 
