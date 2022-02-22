@@ -8,6 +8,8 @@ const {
     forgotPassword,
     resetPassword
 } = require('../controllers/auth')
+
+
 const router = express.Router()
 
 //validators

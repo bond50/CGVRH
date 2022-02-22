@@ -14,10 +14,8 @@ const Signin = ({router}) => {
     // };
     return (
         <>
-            <div className='container mt-5 mb-0'>
-                <div className="col-lg-8">
-                    {router.query.message && <Alert msg={router.query.message} type='danger' label='Danger'/>}
-                </div>
+            <div className="col-lg-12">
+                {router.query.message && <Alert msg={router.query.message} type='danger' label='Danger'/>}
             </div>
             <SigninComponent/>
         </>

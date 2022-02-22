@@ -197,6 +197,13 @@ exports.singleUpdate = (req, res) => {
                     });
                 }
 
+                  if (fields.password && fields.password.length < 6) {
+                    return res.status(400).json({
+                        error: 'Password should be min 6 characters long'
+                    });
+                }
+
+
                 oldUser = _.extend(oldUser, fields);
 
                 if (files.photo) {

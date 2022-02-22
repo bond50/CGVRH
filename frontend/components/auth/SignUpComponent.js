@@ -138,7 +138,7 @@ const SignupComponent = () => {
     };
 
     return (
-        <AuthWrapper>
+        <AuthWrapper register>
             {showLoading()}
             {showError()}
             {showMessage()}

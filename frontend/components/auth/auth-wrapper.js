@@ -1,26 +1,43 @@
 import React from 'react';
 import classes from "../../styles/login.module.css";
 
-const AuthWrapper = ({login, children}) => {
+const AuthWrapper = ({login, children, password, register}) => {
     return (
-        <div className='container'>
             <section
-                className="min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+                className={` ${classes.Section}`}>
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-                            <div className="d-flex justify-content-center py-4">
-                                <a href="#" className={`${classes.Logo} d-flex align-items-center w-auto`}>
-                                    <img src={`/logo/logo.png`} alt="logo"/>
-                                    <span className="d-none d-lg-block">Vihiga  Referral Hospital </span>
-                                </a>
-                            </div>
+                            {
+                                !password &&
+                                <div className="d-flex justify-content-center py-4">
+                                    <a href="#" className={`${classes.Logo} d-flex align-items-center w-auto`}>
+                                        <img src={`/logo/logo.png`} alt="logo"/>
+                                        <span className="d-none d-lg-block">Vihiga  Referral Hospital </span>
+                                    </a>
+                                </div>
+                            }
                             <div className={`card mb-3 ${classes.Card}`}>
+
                                 <div className={`card-body ${classes.CardBody}`}>
+                                    {/*<div className='text-center mt-4'>*/}
+                                    {/*    <h3><i className="fa fa-lock fa-4x"/></h3>*/}
+                                    {/*</div>*/}
                                     <div className={`pt-4 pb-2 ${classes.CardTitle}`}>
-                                        <h5 className={`text-center pb-0 fs-4`}>{login ? `Login to Your
-                                        Account` : 'Create an account'}</h5>
-                                        <p className="text-center small">{login ? 'Enter your email & password to login' : 'Enter your personal details to create account'}</p>
+
+
+                                        {login && <h5 className={`text-center pb-0 fs-4`}> Login to Your Account</h5>}
+                                        {register && <h5 className={`text-center pb-0 fs-4`}>Create an account</h5>}
+                                        {password &&
+                                        <h5 className={`text-center pb-0 fs-4`}>Forgot password ?</h5>}
+                                        {login &&
+                                        <p className="text-center small">Enter your email & password to login </p>}
+                                        {register &&
+                                        <p className="text-center small">Enter your personal details to create
+                                            account </p>}
+                                        {password &&
+                                        <p className="text-center small">You can reset your password here </p>}
+
                                     </div>
                                     {children}
                                 </div>
@@ -30,7 +47,7 @@ const AuthWrapper = ({login, children}) => {
                 </div>
 
             </section>
-        </div>
+
     );
 };
 

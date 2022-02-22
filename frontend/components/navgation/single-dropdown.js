@@ -28,9 +28,6 @@ const SingleDropdown = ({caption, activeClassName, href, slug}) => {
         return null
     }
 
-    if (loadedPages.length === 1) {
-        return showLoadedPages()
-    }
 
     return (
         <li className={`dropdown`} onClick={toggleClosed}>

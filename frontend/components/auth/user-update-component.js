@@ -2,14 +2,14 @@ import React, {useEffect, useState} from "react";
 import {API} from "../../config";
 import Alert from "../../components/messages/Alert";
 import {getCookie, updateUser,} from "../../actions/auth";
-import {getProfile, update, updateForAdmin} from "../../actions/user";
+import {getProfile, update} from "../../actions/user";
 import Image from "next/image";
 import classes from "../../styles/Userprofile.module.css";
 import {Tab, Tabs} from "react-bootstrap";
 import Overview from "../../components/profile/overview";
 import Profile from "../../components/profile/profile";
-import ChangePassword from "../../components/profile/change-password";
 import Link from "next/link";
+import ForgotPassword from "../../pages/auth/password/forgot";
 
 const UserUpdateComponent = ({id}) => {
     const [key, setKey] = useState('overview');
@@ -33,7 +33,7 @@ const UserUpdateComponent = ({id}) => {
         hospitalRole: '',
         loadedId: '',
         hmt: false,
-        photoDimensions: {},
+        photoDimensions: null,
         userData: process.browser && new FormData()
     });
 
@@ -164,20 +164,24 @@ const UserUpdateComponent = ({id}) => {
 
     const imgSrc = `${API}/user/photo/${username_for_photo}`
 
+
     return (
 
         <section>
             <div className="row mx-0">
                 <div className="col-xl-4">
                     <div className={`card ${classes.Card} `}>
-                        {username_for_photo && <Image
-                            width={photoDimensions.width}
-                            height={photoDimensions.height}
-                            src={imgSrc}
-                            layout='responsive'
-                            className="img-fluid"
-                            alt="user profile"
-                        />}
+                        {
+                         photoDimensions && username_for_photo && <Image
+                                width={photoDimensions.width}
+                                height={photoDimensions.height}
+                                src={imgSrc}
+                                layout='responsive'
+
+                                className="img-fluid"
+                                alt="user profile"
+                            />
+                        }
                         <div
                             className={`card-body ${classes.CardBody} pt-4 d-flex flex-column align-items-center`}>
                             <h2>{name}</h2>
@@ -260,8 +264,16 @@ const UserUpdateComponent = ({id}) => {
                                         hospitalRole={hospitalRole}
                                     />
                                 </Tab>
-                                <Tab eventKey="password" title="Change Password" disabled>
-                                    <ChangePassword/>
+                                <Tab eventKey="password" title="Change Password">
+                                    <div className={classes.Password}>
+                                        <div className={`row ${classes.Row} mb-3`}>
+                                            <div className={`col-lg-3 col-md-4 ${classes.Label}`}>Password Reset</div>
+                                            <div className="col-lg-9 col-md-8">
+                                                <ForgotPassword/>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </Tab>
                             </Tabs>
                         </div>

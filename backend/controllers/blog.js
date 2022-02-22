@@ -362,6 +362,7 @@ exports.listHomePageBlogs = (req, res) => {
 };
 
 exports.listPending = (req, res) => {
+
     Blog.find({accepted: false})
         .populate('postedBy', '_id name username')
         .select('_id title accepted slug postedBy createdAt updatedAt')
@@ -371,6 +372,7 @@ exports.listPending = (req, res) => {
                     error: errorHandler(err)
                 });
             }
+
             res.json(data);
         });
 };
@@ -391,6 +393,7 @@ exports.listPendingByUser = (req, res) => {
                             error: errorHandler(err)
                         });
                     }
+                     console.log(data)
                     res.json(data)
                 })
 

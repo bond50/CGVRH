@@ -51,7 +51,8 @@ const Nav = () => {
 
                 <MyLink caption={'News and events'} to='/blogs'/>
                 <MyLink caption={'Contact'} to='/contact'/>
-                {isAuth() && <MyLink caption={'Dashboard'} to='/user'/>}
+                {isAuth() && isAuth().role === 0 && <MyLink caption={'Dashboard'} to='/user'/>}
+                {isAuth() && isAuth().role === 1 && <MyLink caption={'Dashboard'} to='/admin2'/>}
                 {isAuth() && <li
                     onClick={() => signout(() => Router.replace(`/signin`))}>
                     <a>Signout</a>

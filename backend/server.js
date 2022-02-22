@@ -36,7 +36,7 @@ const options = {
     useUnifiedTopology: true,
 
 }
-mongoose.connect(process.env.DATABASE_URL, options)
+mongoose.connect(process.env.DATABASE_URL)
     .then(() => {
         console.log('database connection established')
     })

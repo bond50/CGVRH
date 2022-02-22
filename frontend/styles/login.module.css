@@ -1,4 +1,8 @@
+.Section{
+    background: #f1f6fd;
+    overflow: hidden;
 
+}
 .Logo {
     line-height: 1;
 }
@@ -27,7 +31,12 @@
     border-radius: 5px;
     box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
 }
-
+.Card i{
+     color: #012970;
+}
+.Icon{
+    font-size: 12px!important;
+}
 .CardTitle {
     padding: 20px 0 15px 0;
     font-size: 18px;

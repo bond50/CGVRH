@@ -1,7 +1,7 @@
 import React from "react";
 import useCat from "../../hooks/useCat";
 
-const BlogCategory = () => {
+const PageCategory = () => {
     const {
         newTagFom, mouseMoveHandler, showCategories, showRemoved, showSuccess, showError
     } = useCat('page-cats', 'page-cat', 'Page category')
@@ -19,4 +19,4 @@ const BlogCategory = () => {
     );
 };
 
-export default BlogCategory;
+export default PageCategory;

@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './overview.module.css'
 import Button from "../reusables/ui/Button";
+import {isAuth} from "../../actions/auth";
 
 
 const Profile = ({
@@ -70,7 +71,7 @@ const Profile = ({
                 </div>
             </div>
             <div className={`row ${classes.Row} mb-3`}>
-                <div className={`col-lg-3 col-md-4 ${classes.Label}`}>Hospital Management Role</div>
+                <div className={`col-lg-3 col-md-4 ${classes.Label}`}>Hospital Role</div>
                 <div className="col-lg-9 col-md-8">
                     <input
                         onChange={handleChange('hospitalRole')}
@@ -81,7 +82,7 @@ const Profile = ({
                 </div>
             </div>
 
-            <div className={`row ${classes.Row} mb-3`}>
+            {isAuth() && isAuth().role === 1 && <div className={`row ${classes.Row} mb-3`}>
                 <div className={`col-lg-3 col-md-4 ${classes.Label}`}>HMT Member</div>
                 <div className="col-lg-9 col-md-8">
                     <input
@@ -90,9 +91,9 @@ const Profile = ({
                         checked={hmt}
                         onChange={handleCheckBox}/> {hmt === false ? "No" : "Yes"}
                 </div>
-            </div>
+            </div>}
 
-            {hmt && <div className={`row ${classes.Row} mb-3`}>
+            {hmt && isAuth() && isAuth().role === 1 && <div className={`row ${classes.Row} mb-3`}>
                 <div className={`col-lg-3 col-md-4 ${classes.Label}`}>HMT Role</div>
                 <div className="col-lg-9 col-md-8">
                     <input
@@ -129,12 +130,15 @@ const Profile = ({
                 <div className="col-lg-9 col-md-8">
                   <textarea
                       onChange={handleChange('about')}
+                      placeholder='Write something about yourself'
                       value={about || ''}
                       className="form-control"/>
                 </div>
             </div>
 
-
+            <div className={`row ${classes.Row} mb-3 text-muted`}>
+                <p className='fst-italic'>If you want people to find you on social media copy paste your links in the spaces below</p>
+            </div>
             <div className={`row ${classes.Row} mb-3`}>
                 <label htmlFor="Twitter"
                        className={`col-md-4 col-lg-3 col-form-label  
@@ -145,6 +149,7 @@ const Profile = ({
                         onChange={handleChange('twitter')}
                         type="text"
                         id='Twitter'
+
                         value={twitter || ''}
                         className="form-control"/>
                 </div>
@@ -168,7 +173,7 @@ const Profile = ({
 
             <div className={`row ${classes.Row} mb-3`}>
                 <label htmlFor="instagram"
-                       className={`col-md-4 col-lg-3 col-form-label  ${classes.Label}`}>Linkedin Link
+                       className={`col-md-4 col-lg-3 col-form-label  ${classes.Label}`}>Instagram Link
                 </label>
                 <div className="col-md-8 col-lg-9">
                     <input
@@ -179,10 +184,9 @@ const Profile = ({
                         className="form-control"/>
                 </div>
             </div>
-
             <div className={`row ${classes.Row} mb-3`}>
-                <label htmlFor="linkedin"
-                       className={`col-md-4 col-lg-3 col-form-label  ${classes.Label}`}>Twitter Link
+                <label htmlFor="instagram"
+                       className={`col-md-4 col-lg-3 col-form-label  ${classes.Label}`}>Linkedin Link
                 </label>
                 <div className="col-md-8 col-lg-9">
                     <input
@@ -193,6 +197,8 @@ const Profile = ({
                         className="form-control"/>
                 </div>
             </div>
+
+
             <div>
                 {errorMsg()}
                 {successMsg()}

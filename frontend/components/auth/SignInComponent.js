@@ -7,6 +7,8 @@ import LoginGoogle from "../auth/LoginGoogle";
 import Link from "next/link";
 import AuthWrapper from "./auth-wrapper";
 
+
+
 const AdminLogin = () => {
     const [values, setValues] = useState({
         email: '',
@@ -19,7 +21,10 @@ const AdminLogin = () => {
 
     const {email, password, error, loading, message} = values;
 
+
+
     useEffect(() => {
+
         isAuth() && Router.push(`/`);
     }, []);
 
@@ -107,6 +112,9 @@ const AdminLogin = () => {
                         </Link>
                     </div>
                 </div>
+                  <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
+
+
                 <div className={`col-12 ${classes.sBtn}`}>
                     <div className="small mb-0">Forgot password?
                         <Link href={`/auth/password/forgot`}>

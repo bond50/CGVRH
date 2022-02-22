@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const crypto = require('crypto')
+const Blog = require("../models/blog")
 
 const userSchema = new mongoose.Schema(
     {
@@ -59,6 +60,15 @@ const userSchema = new mongoose.Schema(
         profile: {
             type: String,
             required: true,
+        },
+        activeStatus: {
+            type: Boolean,
+            default: false,
+
+        },
+        banned: {
+            type: Boolean,
+            default: false,
         },
         hashed_password: {
             type: String,
@@ -123,5 +133,11 @@ userSchema.methods = {
         return Math.round(new Date().valueOf() * Math.random()) + ''
     },
 }
+userSchema.pre('remove', async function (next) {
+    const user = this
+    console.log(user)
+     await Blog.remove({postedBy: user}).exec()
+    next()
+})
 
 module.exports = mongoose.model('User', userSchema)

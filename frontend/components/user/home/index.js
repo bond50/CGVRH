@@ -10,11 +10,10 @@ const HomePage = () => {
     return (
         <div className='row'>
             <div className='col-md-12'>
-                hello
-                {/*<PendingPages username={isAuth() && isAuth().username}/>*/}
-                {/*<PendingPosts username={isAuth() && isAuth().username}/>*/}
+                <PendingPages username={isAuth() && isAuth().username}/>
+                <PendingPosts username={isAuth() && isAuth().username}/>
                 <ApprovedPages username={isAuth() && isAuth().username}/>
-                {/*<ApprovedPosts  username={isAuth() && isAuth().username}/>*/}
+                <ApprovedPosts  username={isAuth() && isAuth().username}/>
 
                 {/*<RejectedPosts data={data}/>*/}
             </div>

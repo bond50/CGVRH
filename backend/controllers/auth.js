@@ -110,6 +110,8 @@ exports.signup = (req, res) => {
 // };
 
 exports.signin = (req, res) => {
+
+
     const {email, password} = req.body;
     // check if user exist
     User.findOne({email}).exec((err, user) => {
@@ -237,7 +239,7 @@ exports.forgotPassword = (req, res) => {
             <p>${process.env.CLIENT_URL}/auth/password/reset/${token}</p>
             <hr />
             <p>This email may contain sensetive information</p>
-            <p>https://vcrh.com</p>
+            <p>https://vihigahospital.go.ke</p>
         `
         };
         // populating the db > user > resetPasswordLink
@@ -293,7 +295,11 @@ exports.resetPassword = (req, res) => {
             });
         });
     }
+
 };
+
+
+
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)
 exports.googleLogin = (req, res) => {

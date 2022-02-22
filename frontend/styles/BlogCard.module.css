@@ -110,16 +110,21 @@
     font-weight: bold;
 }
 
-.Content blockquote {
-    overflow: hidden;
-    background-color: #fafafa;
+.Content img{
+    max-width: 100%;
+   height: auto;
+    object-fit: cover;
+}
+
+
+
+.Content blockquote  {
+     overflow: hidden;
+    background-color: #f1f6fd;
     padding: 60px;
     position: relative;
     margin: 20px 0;
-}
-
-.Content blockquote * {
-    color: #4d4643;
+    color: #0C163B;
     line-height: 1.6;
     margin-bottom: 0;
     font-style: italic;
@@ -128,14 +133,14 @@
 }
 
 .Content blockquote::after {
+    height: 100%;
     content: '';
     position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
     width: 3px;
-    background-color: #111;
-    margin-top: 10px;
+    background-color: #f4a024;
     margin-bottom: 10px;
 }
 
