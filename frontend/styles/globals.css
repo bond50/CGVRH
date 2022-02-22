@@ -420,7 +420,8 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(255, 255, 255, 0.85);
     padding: 20px;
     color: #09254b;
-    border-top: 5px solid #441f00;
+    /*border-top: 5px solid #441f00;*/
+    border-top: 5px solid #51b23d;
     /*border-radius: 0 152px 0 0;*/
     /*border-right: 8px solid #f4a024;*/
 }
@@ -453,10 +454,11 @@ h1, h2, h3, h4, h5, h6 {
     transition: 0.5s;
     line-height: 1;
     margin: 10px;
-    color: #441f00;
+    /*color: #441f00;*/
+    color: #51b23d;
     -webkit-animation-delay: 0.8s;
     animation-delay: 0.8s;
-    border: 2px solid #09254b;
+    border: 2px solid #51b23d;
 }
 
 #hero .btn-get-started:hover {
@@ -506,7 +508,7 @@ h1, h2, h3, h4, h5, h6 {
     background: none;
     font-size: 30px;
     line-height: 0;
-    background: #09254b;
+    background: #51b23d;
     border-radius: 50px;
     transition: 0.3s;
     color: rgba(255, 255, 255, 0.85);

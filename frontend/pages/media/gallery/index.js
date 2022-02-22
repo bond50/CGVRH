@@ -23,6 +23,13 @@ const GalleryIndex = () => {
     if (error) {
         return 'Failed to load images from cloudinary '
     }
+    if (data.length <= 0) {
+        return <Layout>
+            <p>
+                xhshbdnymfdyggx
+            </p>
+        </Layout>
+    }
 
 
     return (

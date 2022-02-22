@@ -4,11 +4,19 @@ import {getDownloads} from "../../../actions/fileupload";
 
 
 const Downloads = ({files}) => {
-    return (
-        <Layout>
-            <DownloadList files={files}/>
+    if (!files || files.length === 0) {
+        return <Layout>
+            <div className="container m-4">
+                <h2>No Files uploaded yet</h2>
+            </div>
         </Layout>
-    );
+    } else {
+        return (
+            <Layout>
+                <DownloadList files={files}/>
+            </Layout>
+        );
+    }
 };
 
 

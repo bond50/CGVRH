@@ -49,7 +49,7 @@ const Nav = () => {
                 <MyLink caption={'HMT'} to='/about/board-members'/>
                 <Media/>
 
-                <MyLink caption={'News and events'} to='/blogs'/>
+                <MyLink caption={'Blog'} to='/blogs'/>
                 <MyLink caption={'Contact'} to='/contact'/>
                 {isAuth() && isAuth().role === 0 && <MyLink caption={'Dashboard'} to='/user'/>}
                 {isAuth() && isAuth().role === 1 && <MyLink caption={'Dashboard'} to='/admin2'/>}

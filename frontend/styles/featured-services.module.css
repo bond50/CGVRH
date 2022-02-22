@@ -1,6 +1,7 @@
 .section {
     padding: 60px 0;
-    background: #004a99;
+    background:  #4154f1;
+    /*background: #1bbd36;*/
 }
 
 .SectionTitle {
@@ -31,8 +32,11 @@
 }
 
 .card {
-    background: #00458f;
-    border-color: #00458f;
+    /*background: #00458f;*/
+    /*border-color: #00458f; */
+
+        background: #004a99;
+    border-color:  #4154f1;
     border-radius: 10px;
     margin: 0 15px;
     padding: 15px 0;
