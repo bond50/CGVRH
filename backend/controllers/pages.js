@@ -8,6 +8,7 @@ const {errorHandler} = require('../helpers/dbErrorHandler');
 const fs = require('fs');
 const {smartTrim} = require('../helpers/blog');
 const User = require("../models/user");
+const {capitalizeFirstLetter} = require("../helpers/importantFunctions");
 
 
 exports.create = (req, res) => {
@@ -218,11 +219,14 @@ exports.remove = (req, res) => {
                 error: errorHandler(err)
             });
         }
+        data.photo = undefined
+        console.log(data)
         res.json({
-            message: `${slug} deleted successfully`
+            message: `${capitalizeFirstLetter(data.title)} page deleted successfully`
         });
     });
 };
+
 
 exports.update = (req, res) => {
 

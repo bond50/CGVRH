@@ -1,22 +1,19 @@
 import CardDetail from "./card-detail";
 import DynamicTableRows from "./dynamic-table-rows";
-import MyModal from "../../reusables/ui/modal";
 import Alert from "../../messages/Alert";
 import useARP from "../../../hooks/useARP";
+import {Fragment} from "react";
 import {isAuth} from "../../../actions/auth";
 
 
 const ApprovedPages = ({username}) => {
     const {
         mouseMoveHandler,
-        deletePage,
-        handleShow,
-        handleClose,
-        show,
         loading,
+        deleteConfirm,
         error,
         removed,
-        blogs,
+        data: blogs,
         message
     } = useARP(username ? `/${username}/general` : '/general')
 
@@ -41,11 +38,9 @@ const ApprovedPages = ({username}) => {
                     endpoint = `/user/crud/gen-page/${blog.slug}`
                 }
 
-                return <DynamicTableRows
-                    key={blog._id}
-                    blog={blog}
-                    to={endpoint}
-                    showModal={handleShow}/>
+                return <Fragment key={blog._id}>
+                    <DynamicTableRows blog={blog} deleteConfirm={deleteConfirm} endpoint={endpoint}/>
+                </Fragment>
             })}
         </CardDetail>
 
@@ -55,14 +50,6 @@ const ApprovedPages = ({username}) => {
         <div onMouseMove={mouseMoveHandler}>
             {removed && <Alert msg={message} label='Success' type='success' reload/>}
             {showBlogs()}
-            {show && blogs.map((b, i) => {
-                return <MyModal
-                    key={i}
-                    show={show} titleMessage='Delete confirm'
-                    bodyMessage={`Are you sure you want to delete blog entitled ${b.title}`}
-                    handleChanges={() => deletePage(b.slug)}
-                    handleClose={handleClose}/>
-            })}
         </div>
     );
 };

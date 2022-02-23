@@ -7,15 +7,12 @@ import {isAuth} from "../../../actions/auth";
 
 const PendingPosts = ({username}) => {
     const {
-        mouseMoveHandler,
-        deleteBlog,
-        handleShow,
-        handleClose,
-        show,
+      mouseMoveHandler,
         loading,
+        deleteBlogConfirm,
         error,
         removed,
-        blogs,
+        data: blogs,
         message
     } = useARP(username ? `/${username}/pending-blogs` : '/pending-blogs')
 
@@ -40,11 +37,7 @@ const PendingPosts = ({username}) => {
                 }
 
 
-                return <DynamicTableRows
-                    key={blog._id}
-                    blog={blog}
-                    to={endpoint}
-                    showModal={handleShow}/>
+                return <DynamicTableRows blog={blog} deleteConfirm={deleteBlogConfirm} endpoint={endpoint}/>
             })}
         </CardDetail>
 
@@ -54,14 +47,6 @@ const PendingPosts = ({username}) => {
         <div onMouseMove={mouseMoveHandler}>
             {removed && <Alert msg={message} label='Success' type='success' reload/>}
             {showBlogs()}
-            {show && blogs.map((b, i) => {
-                return <MyModal
-                    key={i}
-                    show={show} titleMessage='Delete confirm'
-                    bodyMessage={`Are you sure you want to delete blog entitled ${b.title}`}
-                    handleChanges={() => deleteBlog(b.slug)}
-                    handleClose={handleClose}/>
-            })}
         </div>
     );
 };

@@ -4,41 +4,38 @@ import {getCookie} from "../actions/auth";
 import {removeBlog} from "../actions/blog";
 import {removePage} from "../actions/general";
 
-const PendingPosts = (url) => {
-    const [show, setShow] = useState(false)
+
+const UseARP = (url) => {
     const [values, setValues] = useState({
         error: false,
         loading: false,
         message: '',
-        blogs: [],
+        data: [],
         removed: false,
         reload: false
     });
 
-    const {error, blogs, message, removed, loading, reload} = values
+    const {error, data, message, removed, loading, reload} = values
     useEffect(() => {
         if (url) {
-            loadBogs()
+            loadData()
         }
     }, [reload, url])
     const token = getCookie('token');
 
-    function loadBogs() {
+    function loadData() {
         setValues({...values, loading: true, error: false})
         axiosInstance.get(url)
             .then(response => {
-                setValues({...values, blogs: response.data, loading: false})
+                setValues({...values, data: response.data, loading: false})
             })
             .catch(err => {
                 if (err.response.status) {
-                    setValues({...values, error: 'Oops! something went wrong while fetching blogs', loading: false})
+                    setValues({...values, error: 'Oops! something went wrong while fetching data', loading: false})
                 }
             })
     }
 
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     const deleteBlog = slug => {
         removeBlog(slug, token).then(data => {
@@ -46,7 +43,6 @@ const PendingPosts = (url) => {
                 console.log(data.error);
             } else {
                 setValues({...values, error: false, message: data.message, removed: !removed, reload: !reload});
-                setShow(false)
             }
         });
     };
@@ -57,7 +53,6 @@ const PendingPosts = (url) => {
                 console.log(data.error);
             } else {
                 setValues({...values, error: false, message: data.message, removed: !removed, reload: !reload});
-                setShow(false)
             }
         });
     };
@@ -66,22 +61,33 @@ const PendingPosts = (url) => {
         setValues({...values, error: false, removed: false});
     };
 
+    function deleteBlogConfirm(slug, title) {
+        let answer = window.confirm(`Are you sure you want to delete ${title}`)
+        if (answer) {
+            deleteBlog(slug)
+        }
+    }
+
+
+    function deleteConfirm(slug, title) {
+        let answer = window.confirm(`Are you sure you want to delete ${title}`)
+        if (answer) {
+            deletePage(slug)
+        }
+    }
+
 
     return {
         mouseMoveHandler,
-        deleteBlog,
-        deletePage,
-        handleShow,
-        handleClose,
-        show,
+        deleteBlogConfirm,
+        deleteConfirm,
         loading,
         error,
-        blogs,
+        data,
         removed,
         message,
-
 
     }
 };
 
-export default PendingPosts;
+export default UseARP;

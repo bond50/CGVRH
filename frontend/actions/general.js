@@ -1,30 +1,6 @@
 import {handleResponse, isAuth} from "./auth";
 import {API} from "../config";
 import fetch from "isomorphic-fetch";
-//
-// export const createPage = (page, token) => {
-//     let pageEndpoint
-//
-//     if (isAuth() && isAuth().role === 1) {
-//         pageEndpoint = `${API}/page`
-//     } else if (isAuth() && isAuth().role === 0) {
-//         pageEndpoint = `${API}/user/page`
-//     }
-//
-//     return fetch(`${pageEndpoint}`, {
-//         method: 'POST',
-//         headers: {
-//             Accept: 'application/json',
-//             Authorization: `Bearer ${token}`
-//         },
-//         body: page
-//     })
-//         .then(response => {
-//             handleResponse(response)
-//             return response.json();
-//         })
-//         .catch(err => console.log(err));
-// };
 
 
 export const singlePage = (slug) => {
