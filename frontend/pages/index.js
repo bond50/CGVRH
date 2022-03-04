@@ -24,7 +24,7 @@ export default function Home() {
     return (
         <Fragment>
             <Toolbar/>
-            {!services || services.length <= 0 ? null : <Hero data={services}/>}
+            <Hero data={services}/>
             <main id='main'>
                 <Strategic/>
                 {!blogs || blogs.length <= 0 ? null : <LatestBlogs blogs={blogs}/>}

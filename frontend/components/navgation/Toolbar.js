@@ -7,7 +7,7 @@ const Toolbar = ({blog}) => {
 
     return (
         <Fragment>
-            {!blog && <Top/>}
+            {blog && <Top/>}
             <Header blog={blog}/>
         </Fragment>
     )
