@@ -69,10 +69,10 @@ const Slug = ({blog, query}) => {
     </div>;
 
 
-    return (
-        <section style={{padding: "40px 0 20px 0"}}>
-            {head()}
-            <Layout blog>
+    return (<Layout blog>
+            <section >
+                {head()}
+
                 <main>
 
                     {/*<GeneralPageHeader*/}
@@ -92,8 +92,9 @@ const Slug = ({blog, query}) => {
                     </div>
                     {/*</GeneralPageHeader>*/}
                 </main>
-            </Layout>
-        </section>
+
+            </section>
+        </Layout>
     );
 };
 

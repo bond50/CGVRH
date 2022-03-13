@@ -14,9 +14,12 @@ const Goals = () => {
     ]
 
 
-    return <AboutContainer title={`Goals`} para={`Our Health Goals`}>
+    return <section className='section-bg'>
         <div className="container">
             <div data-aos="fade-up" data-aos-once={`true`}>
+                <div className="section-title">
+                    <h2>Our Health Goals</h2>
+                </div>
                 {list.map((l, i) => {
                     return <p key={i}>
                         {l.title}
@@ -24,7 +27,7 @@ const Goals = () => {
                 })}
             </div>
         </div>
-    </AboutContainer>
+    </section>
 };
 
 export default Goals;

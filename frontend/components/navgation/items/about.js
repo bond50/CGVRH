@@ -7,7 +7,7 @@ const About = () => {
         {_id: 'asd', title: 'Our Management Team', slug: 'board-members'},
         {_id: 'asdf', title: 'Our Management Structure', slug: 'organisation-structure'},
         {_id: 'asdfg', title: 'Our Role', slug: 'roles'},
-        {_id: 'qwer', title: 'Our Strategic Plan', slug: 'strategic-plan'},
+        {_id: 'qwer', title: 'Our About Plan', slug: 'strategic-plan'},
         {_id: 'jhiu', title: 'Our Health Goals', slug: 'health-goals'},
         {_id: 'gcgcgcgc', title: 'Our Neighboring Facilities', slug: 'neighboring-facilities'},
         {_id: 'gdgdgdgdg', title: 'Our Projects', slug: 'project'},

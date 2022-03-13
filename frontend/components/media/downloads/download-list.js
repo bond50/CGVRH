@@ -71,9 +71,9 @@ const DownloadList = ({files}) => {
 
     return (
         <Fragment>
-            <GeneralPageHeader
-                title='Downloads'>
-            </GeneralPageHeader>
+            {/*<GeneralPageHeader*/}
+            {/*    title='Downloads'>*/}
+            {/*</GeneralPageHeader>*/}
 
             <section className={classes.Download}>
                 <Filters
@@ -83,7 +83,6 @@ const DownloadList = ({files}) => {
 
                 <div className={classes.DownloadWrapper}  data-aos="slide-up" data-aos-delay="100">
                     {downloads.map(file => {
-                        console.log(file.title,file.fileType)
                         return <div className={classes.Wrapper} key={file._id}>
                             <div className={classes.Header}>
                                 {fileTypes(file.fileType)}

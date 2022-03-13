@@ -94,7 +94,6 @@ exports.listFeatured = (req, res) => {
         });
 }
 exports.list = (req, res) => {
-
     Page.find({accepted: true})
         .populate('categories', '_id name slug')
         .populate('postedBy', '_id name username')

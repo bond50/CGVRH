@@ -1,15 +1,15 @@
 import Logo from "../Logo";
-import {useEffect, useState} from "react";
-
-
-import Nav from "../Nav";
+import React, {Fragment, useEffect, useState} from "react";
 import BlogNav from "../blog-nav";
+import Nav from "../Nav";
+import Image from "next/image";
+import Link from "next/link";
 
-const Header = ({blog}) => {
+const Header = ({blog, home}) => {
     const [scrolled, setScrolled] = useState(false);
     const handleScroll = () => {
         const offset = window.scrollY;
-        if (offset > 0) {
+        if (offset > 1) {
             setScrolled(true);
         } else {
             setScrolled(false);
@@ -26,21 +26,65 @@ const Header = ({blog}) => {
 
     if (scrolled) {
         navbarClasses.push('fixed-top');
-
     }
 
-    let nav = <Nav/>
-    if (blog) {
-        nav = <BlogNav/>
+    let homeHeader = [`fixed-top d-flex align-items-center `]
+    if (home) {
+        homeHeader.push('margin-from-top')
+    }
+    if (scrolled) {
+        homeHeader.push('header-scrolled');
+    }
+
+    let logo = ['home-logo']
+    if (scrolled) {
+        logo.push('scrolled-logo')
     }
 
     return (
-        <header id="header" className={navbarClasses.join(" ")}>
-            <div className="container d-flex align-items-center justify-content-between">
-                <Logo scrolled={scrolled}/>
-                {nav}
-            </div>
-        </header>
+        <Fragment>
+            {blog &&
+            <header id='header' className={navbarClasses.join(" ")}>
+                <div className="container">
+                    <div className={`d-flex align-items-center justify-content-between`}>
+                        <Logo scrolled={scrolled}/>
+                        <BlogNav/>
+                    </div>
+                </div>
+            </header>
+            }
+            {home && <header id='home-header' className={homeHeader.join(" ")}
+                              style={{top: `${home && !scrolled ? '20px' : ''}`}}>
+                <div className="container">
+                    <div className='header-container d-flex align-items-center justify-content-between'>
+                        <div className={logo.join(' ')}>
+                            <Link href='/'>
+                                <a>
+                                    <Image
+                                        className="img-fluid"
+                                        width={128}
+                                        height={73}
+                                        src={`/logo/logo.png`}
+                                        alt={'logo'}
+                                    />
+                                </a>
+                            </Link>
+                        </div>
+                        <Nav/>
+                    </div>
+                </div>
+            </header>
+            }
+            {!blog && !home &&
+            <header id='header' className={navbarClasses.join(" ")}>
+                <div className="container">
+                    <div className={`d-flex align-items-center justify-content-between`}>
+                        <Logo scrolled={scrolled}/>
+                        <Nav/>
+                    </div>
+                </div>
+            </header>}
+        </Fragment>
     );
 };
 

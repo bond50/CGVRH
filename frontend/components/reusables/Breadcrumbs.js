@@ -1,6 +1,6 @@
 import Breadcrumbs from 'nextjs-breadcrumbs';
 import {useRouter} from 'next/router';
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import classes from '../../styles/Breadcrumbs.module.css'
 
 
@@ -22,10 +22,10 @@ const Breadcrumb = () => {
 
 
     return (
-        <section className={classes.Breadcrumbs}>
+        <section id="breadcrumbs"  className='breadcrumbs'>
             <div className="container">
-                <div className={`d-flex justify-content-between  align-items-center ${classes.Block}`}>
-                    <h2>{breadcrumbs.toUpperCase()}</h2>
+                <div className={`d-flex justify-content-between align-items-center`}>
+                    <h2>{breadcrumbs.toLowerCase()}</h2>
                     <ol>
                         <li>
                             <Breadcrumbs useDefaultStyle/>
@@ -33,7 +33,6 @@ const Breadcrumb = () => {
                     </ol>
                 </div>
             </div>
-
         </section>
     );
 };

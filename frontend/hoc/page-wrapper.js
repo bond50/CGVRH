@@ -13,9 +13,9 @@ const PageWrapper = ({related, page}) => {
 
     return (
         <>
-            <GeneralPageHeader
-                title={page.title}>
-            </GeneralPageHeader>
+            {/*<GeneralPageHeader*/}
+            {/*    title={page.title}>*/}
+            {/*</GeneralPageHeader>*/}
             <section className={classes.Section}>
                 <div className="container">
                     <div className='row gy-4'>

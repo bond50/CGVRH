@@ -3,7 +3,7 @@ import Layout from "../../hoc/Layout";
 import Board from "../../components/about/member/Board";
 import useSWR from "swr";
 import {API} from "../../config";
-import {fetcher} from "../../components/reusables/functions/fetcher";
+import Breadcrumbs from "../../components/reusables/Breadcrumbs";
 
 const Index = () => {
     const {data: members, error} = useSWR(
@@ -18,6 +18,7 @@ const Index = () => {
 
     return (
         <Layout>
+            <Breadcrumbs/>
             <Board members={members}/>
         </Layout>
     );

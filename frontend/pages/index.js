@@ -1,4 +1,4 @@
-import Strategic from "../components/home/Strategic";
+import About from "../components/home/about";
 import Roles from "../components/home/Roles";
 import FeaturedServices from "../components/home/FeaturedServices";
 import LatestBlogs from "../components/home/LatestBlogs";
@@ -9,6 +9,8 @@ import {Fragment} from "react";
 import Hero from "../components/home/Hero";
 import Footer from "../components/footer/Footer";
 import CoreValues from "../components/home/CoreValues";
+import Clients from "../components/home/clients";
+import Cta from "../components/home/cta";
 
 
 export default function Home() {
@@ -23,12 +25,14 @@ export default function Home() {
 
     return (
         <Fragment>
-            <Toolbar/>
-            <Hero data={services}/>
-            <main id='main'>
-                <Strategic/>
-                {!blogs || blogs.length <= 0 ? null : <LatestBlogs blogs={blogs}/>}
+            <Toolbar home/>
+            <Hero/>
 
+            <main id='main'>
+                <Clients/>
+                <About/>
+                {!blogs || blogs.length <= 0 ? null : <LatestBlogs blogs={blogs}/>}
+                <Cta/>
                 {!services || services.length <= 0 ? null : <FeaturedServices featured={services}/>}
                 <CoreValues/>
                 <Roles/>

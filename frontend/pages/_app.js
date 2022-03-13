@@ -7,7 +7,9 @@ import 'nprogress/nprogress.css';
 import NProgress from 'nprogress';
 import Router from "next/router";
 import "animate.css"
-
+import Script from "next/script";
+import {GOOGLE_ANALYTICS} from "../config";
+import {publicRuntimeConfig} from "../next.config";
 
 const MyApp = ({Component, pageProps}) => {
 
@@ -16,7 +18,6 @@ const MyApp = ({Component, pageProps}) => {
     Router.onRouteChangeComplete = () => NProgress.done();
     Router.onRouteChangeError = () => NProgress.done();
 
-
     const returnHead = () => {
         return <Head>
             <meta charSet="UTF-8"/>
@@ -24,26 +25,7 @@ const MyApp = ({Component, pageProps}) => {
                 name="viewport"
                 content="width=device-width, initial-scale=1.0"
             />
-            {/*Favicons*/}
-            {/*<link rel="icon" href={`logo.png`}/>*/}
 
-            {/*<link*/}
-            {/*    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Muli:300,300i,400,400i,500,500i,600,600i,700,700i"*/}
-            {/*    rel="stylesheet"/> */}
-            <link href="https://fonts.gstatic.com" rel="preconnect"/>
-            <link
-                href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-                rel="stylesheet"/>
-
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-                  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-                  crossOrigin="anonymous"/>
-
-
-            <link href="/theme/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
-
-            <link href="/theme/fontawesome/css/all.min.css" rel="stylesheet"/>
-            {/*<link href="/theme/swiper/swiper-bundle.min.css" rel="stylesheet"/>*/}
             <title>Vihiga county Referral Hospital</title>
 
         </Head>
@@ -57,6 +39,25 @@ const MyApp = ({Component, pageProps}) => {
 
 
     return <>
+        {
+            publicRuntimeConfig.PRODUCTION && <>
+                <Script
+                    strategy="lazyOnload"
+                    src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS}`}
+                />
+
+                <Script strategy="lazyOnload">
+                    {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GOOGLE_ANALYTICS}', {
+              page_path: window.location.pathname,
+            });
+                `}
+                </Script>
+            </>
+        }
         {returnHead()}
         <Component {...pageProps} />
     </>

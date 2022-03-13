@@ -1,19 +1,19 @@
 export const aboutList = [
     {_id: 'as', title: 'Our Guiding principles', slug: 'guiding-principles'},
-    {_id: 'asd', title: 'Our Management Team', slug: 'board-members'},
+    {_id: 'asd', title: 'Our Health Management Team', slug: 'board-members'},
     {_id: 'asdf', title: 'Our Management Structure', slug: 'organisation-structure'},
     {_id: 'asdfg', title: 'Our Role', slug: 'roles'},
     {_id: 'qwer', title: 'Our Strategic Plan', slug: 'strategic-plan'},
     {_id: 'jhiu', title: 'Our Health Goals', slug: 'health-goals'},
-    // {_id:'',title: 'Our Neighboring Facilities', slug: 'neighboring-facilities/'},
-    // {_id:'',title: 'Our Projects', slug: 'project/'},
+    {_id:'hjgfd',title: 'Our Neighboring Facilities', slug: 'neighboring-facilities'},
+    {_id: 'hfdrf', title: 'Our Projects', slug: 'project'},
     {_id: 'ffufu', title: 'Our Partners', slug: 'partners'},
 ];
 
 export const covidList = [
     {_id: 'jgfrhutr', title: 'FAqs', slug: 'faqs'},
-    {_id: '564i656h', title: 'Proper Hand Care', slug: 'proper-hand-care'},
-    {_id: '4yyur', title: 'How prepared is VCRH', slug: 'how-prepared-is-vcrh'},
+    {_id: '564i656h', title: 'Proper Hand Care', slug: 'hand'},
+    {_id: '4yyur', title: 'How prepared is VCRH', slug: 'prep'},
 ];
 
 export const mediaList = [

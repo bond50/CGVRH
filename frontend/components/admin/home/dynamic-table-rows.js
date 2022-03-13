@@ -72,7 +72,7 @@ const DynamicTableRows = ({blog, user, deleteConfirm,endpoint}) => {
                        </span>
                         </Link>
                         <span className={`badge bg-danger ${classes.EditBtn}`}
-                              onClick={de}>
+                              onClick={deleteConfirm}>
                         <i className='bi bi-x-circle'/>
                     </span>
                     </td>

@@ -15,14 +15,16 @@ const Board = () => {
     ]
 
 
-    return <AboutContainer title={`Role`} para={`Our Roles in the county`}>
-        <p>
-            VCRH plays its roles in the county by providing a wide range of health services in partnership
-            with the greater community and other institutions.
-            Some of the roles played by the hospital in the county include
-        </p>
-
+    return <section className='section-bg'>
         <div className="container" data-aos="fade-up">
+            <div className="section-title">
+                <h2>Roles we play in the county</h2>
+                <p>
+                    VCRH plays its roles in the county by providing a wide range of health services in partnership
+                    with the greater community and other institutions.
+                    Some of the roles played by the hospital in the county include
+                </p>
+            </div>
             <div className={` ${styles.Content}`}>
                 <div className="pt-4 pt-lg-0" data-aos="fade-up" data-aos-once={`true`}>
                     <ul>
@@ -37,7 +39,7 @@ const Board = () => {
                 </div>
             </div>
         </div>
-    </AboutContainer>
+    </section>
 };
 
 export default Board;

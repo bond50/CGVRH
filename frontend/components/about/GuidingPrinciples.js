@@ -1,12 +1,14 @@
 import classes from '../../styles/Principles.module.css'
 import styles from '../../styles/AboutContainer.module.css'
-
+import React from "react";
 const GuidingPrinciples = () => {
-
     return <section className={styles.Section}>
         <div className="container">
-            <div className="row">
+            <div className="section-title">
+                <h2> Guiding Principles < /h2>
 
+            </div>
+            <div className="row">
                 <div className="col-md-6 d-flex align-items-stretch">
                     <div className={`card ${classes.Card}`} style={{
                         backgroundImage:

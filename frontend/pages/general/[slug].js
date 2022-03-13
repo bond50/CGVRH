@@ -6,6 +6,7 @@ import Link from "next/link";
 import {listRelated, singlePage} from "../../actions/general";
 import PageWrapper from "../../hoc/page-wrapper";
 import {useRouter} from "next/router";
+import Breadcrumbs from "../../components/reusables/Breadcrumbs";
 
 
 const Slug = ({service, query}) => {
@@ -68,6 +69,7 @@ const Slug = ({service, query}) => {
         <Fragment>
             {head()}
             <Layout>
+                <Breadcrumbs/>
                 <main>
                     {showPage()}
                 </main>

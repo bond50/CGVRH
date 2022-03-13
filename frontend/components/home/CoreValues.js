@@ -48,9 +48,9 @@ const CoreValues = () => {
 
 
     return (
-        <section className={`${styles.Section} `}>
+        <section>
             <div className="container">
-                <div className={styles.SectionTitle} data-aos="zoom-out" data-aos-once='true'>
+                <div className={`section-title`} data-aos="zoom-out" data-aos-once='true'>
                     <h2>Mission, Vision and Core Values</h2>
                 </div>
 

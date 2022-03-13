@@ -55,15 +55,15 @@ const Userprofile = ({user, blogs, query}) => {
             {head()}
             <Layout>
                 <section className={classes.Profile}>
-                    <div className="container">
+                    <div className="container ">
                         <div className="row">
                             <div className="col-xl-4 ">
 
                                 <div className={`card ${classes.Card} `}>
                                     <Image
                                         src={`${API}/user/photo/${user.username}`}
-                                        width={6720}
-                                        height={4480}
+                                        width={620}
+                                        height={480}
                                         layout="responsive"
                                         className="card-img-top" alt="..."/>
                                     <div

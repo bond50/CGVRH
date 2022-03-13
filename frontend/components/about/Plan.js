@@ -23,14 +23,15 @@ const Plan = () => {
     ];
 
     return (
-        <section className={`${styles.Section} ${styles.SectionBg}`}>
-            <div className="container"
-                 data-aos="fade-up">
+        <section className={`section-bg`}>
+            <div className="container" data-aos="fade-up">
+                <div className='section-title'>
+                    <h2> VCRH Strategic Plan < /h2>
+                    <p> The Office of the medical superintendent < /p>
+                </div>
                 <div className={`row  ${styles.Content}`}>
                     <div className="col-lg-6"
                          data-aos="fade-up">
-                        <h2> VCRH Strategic Plan < /h2> <
-                        h3> The Office of the medical superintendent < /h3>
                         <p>
                             The Constitution of Kenya 2010 grants Kenyans several rights among them being the right to
                             health.Article 43(1)(a) guarantees every person the right to the highest attainable

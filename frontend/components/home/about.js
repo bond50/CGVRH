@@ -1,16 +1,18 @@
 import React from 'react';
-import classes from '../../styles/Strategic.module.css'
+import classes from '../../styles/About.module.css'
 import {YearsOperated} from "../years-operated/YearsOperated";
 import Image from "next/image";
 
-const Strategic = () => {
+const About = () => {
     return (
-        <section className={` ${classes.hero} d-flex align-items-center`}>
-            <div className="container">
-                <div className="row">
-                    <div className="col-lg-6 d-flex flex-column justify-content-center">
-                        <h1 data-aos="fade-up">Vihiga County Referral Hospital</h1>
-                        <p data-aos="fade-up" data-aos-delay="400">
+        <section id='about'>
+            <div className="container" data-aos="fade-up" >
+                <div className="section-title">
+                    <h2>About Us</h2>
+                </div>
+                <div className={`row ${classes.content}`}>
+                    <div className="col-lg-6 pt-4 pt-lg-0">
+                        <p>
                             Vihiga County Referral Hospital <span>(VCRH)</span> is a level 5 government healthcare
                             facility located in
                             Vihiga County,along
@@ -21,22 +23,23 @@ const Strategic = () => {
                             following devolution of health services in Kenya.In august 2017, the facility was gazetted
                             to be a leval 5 referral hospital.
                         </p>
-                        <p data-aos="fade-up" data-aos-delay="600">
+
+                    </div>
+                    <div className="col-lg-6 pt-4 pt-lg-0">
+                         <p>
                             Delivering high quality healthcare to the community is our core function . We are among
                             the referral hospitals in Kenya previously owned by the Ministry of Medical Services
                             which was transfered to County Governments and serve a large and diverse population of
                             662,596 persons in Vihiga County.</p>
-                        <p data-aos="fade-up" data-aos-delay="800">VCRH first opened its door its doors to the public in
+                        <p>VCRH first opened its door its doors to the public in
                             the year 2001 under the Ministry of
                             Health to serve the population of the former Vihiga District.
                             It has 164 bed capacity with 108% bed occupancy with 6 wards which include general Male
                             and Female ,Maternity and paediatric,Amenity and ICU wards.
                         </p>
 
-                    </div>
-                    <div className={`col-lg-6 ${classes.heroImg}`} data-aos="zoom-out" data-aos-delay="200">
-                        <Image src="/herp.jpg" width={2048} height={1536} layout='responsive'
-                               alt="Vihiga County Referral Hospital "/>
+                        <a href="/about" className={classes.btn}>Read More</a>
+
                     </div>
                 </div>
             </div>
@@ -80,4 +83,4 @@ const Strategic = () => {
     );
 };
 
-export default Strategic;
+export default About;

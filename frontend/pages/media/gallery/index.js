@@ -4,6 +4,7 @@ import useSWR from "swr";
 import {API} from "../../../config";
 import {fetcher} from "../../../components/reusables/functions/fetcher";
 import React from "react";
+import GeneralPageHeader from "../../../hoc/general-page-header";
 
 
 const GalleryIndex = () => {
@@ -25,9 +26,7 @@ const GalleryIndex = () => {
     }
     if (data.length <= 0) {
         return <Layout>
-            <p>
-                xhshbdnymfdyggx
-            </p>
+            <GeneralPageHeader title='Sorry nothing to show here'/>
         </Layout>
     }
 

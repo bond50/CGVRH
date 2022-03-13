@@ -17,12 +17,12 @@
 }
 
 .NavLink:hover {
-    color: #2a7ade;
+    color: #1bbd36;
 }
 
 .NavLink.active, .NavLink .active {
-    color:  #441f00;
-    border-color:  #441f00;
+    color:  #1bbd36;
+    border-color:  #1bbd36;
 }
 
 .Details h1, .Details h2, .Details h3, .Details h4, .Details h5, .Details h6 {

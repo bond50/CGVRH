@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from '../../../styles/Board.module.css'
-import styles from '../../../styles/AboutContainer.module.css'
+
 import Link from 'next/link'
 import {API} from "../../../config";
 import Image from "../../reusables/lazy/Image";
@@ -13,8 +13,8 @@ const Board = ({members}) => {
                     <div className={classes.MemberImg}>
                         <Link href={`/profile/${m.username}`}>
                             <Image src={`${API}/user/photo/${m.username}`}
-                                   width={6720}
-                                   height={4480}
+                                   width={100}
+                                   height={100}
                                    layout="responsive"
                                    className="img-thumbnail img-fluid"
                                    alt={`${m.name}'s photo`}/>
@@ -42,17 +42,9 @@ const Board = ({members}) => {
     }
 
 
-    return <section className={`${styles.Section} ${styles.SectionBg}`}>
-        <div className="container">
-            <div className={styles.SectionTitle} data-aos="fade-up" data-aos-once='true'>
-                <h2>Team</h2>
-                <p>Our health management team</p>
-            </div>
-
+    return <section className={`section-bg`}>
+        <div className="container" data-aos="fade-up" >
             <div className="row" data-aos="fade-up" data-aos-delay='100'>
-                <p>VCRH is run by the Hospital Management Team under the leadership of the Medical Superintendent and
-                    supervision by the Hospital Management Committee.
-                </p>
                 {renderMember()}
             </div>
 

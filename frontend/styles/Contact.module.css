@@ -9,7 +9,7 @@
 
 .Info i {
     font-size: 20px;
-    color: #106eea;
+    color: #1bbd36;
     float: left;
     width: 44px;
     height: 44px;
@@ -37,7 +37,7 @@
 }
 
 .Info:hover i {
-    background: #106eea;
+    background: #1bbd36;
     color: #fff;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .Btn {
-    background: #106eea;
+    background: #1bbd36;
     border: 0;
     padding: 10px 24px;
     color: #fff;

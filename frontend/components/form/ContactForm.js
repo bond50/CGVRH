@@ -141,7 +141,7 @@ const ContactForm = ({authorEmail, label}) => {
     </div>;
 
     return (
-        <section className={classes.Contact}>
+        <section className={`${classes.Contact}`}>
             {!authorEmail && topData()}
             {contactForm()}
         </section>

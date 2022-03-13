@@ -63,9 +63,9 @@ exports.create = (req, res) => {
         console.log('array', arrayOfTags)
 
         if (files.photo) {
-            if (files.photo.size > 1000000) {
+            if (files.photo.size > 2000000) {
                 return res.status(400).json({
-                    error: 'Image should be less then 1mb in size'
+                    error: 'Image should be less then 2mb in size'
                 });
             }
             blog.photo.data = fs.readFileSync(files.photo.path);
@@ -349,7 +349,7 @@ exports.listByUser = (req, res) => {
 exports.listHomePageBlogs = (req, res) => {
     Blog.find({accepted: true})
         .select('_id title slug excerpt createdAt updatedAt')
-        .limit(6)
+        .limit(4)
         .sort({createdAt: -1})
         .exec((err, data) => {
             if (err) {

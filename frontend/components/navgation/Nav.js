@@ -9,6 +9,8 @@ import {fetcher} from "../reusables/functions/fetcher";
 import React from "react";
 import Media from "./media";
 import {isAuth, signout} from "../../actions/auth";
+import About from "./About";
+import Corona from "./Corona";
 
 
 const Nav = () => {
@@ -45,19 +47,23 @@ const Nav = () => {
     return (
         <nav id='navbar' className={`${attachedClasses.join(' ')}`}>
             <ul>
+                <About/>
                 {showLinks}
-                <MyLink caption={'HMT'} to='/about/board-members'/>
                 <Media/>
-
                 <MyLink caption={'Blog'} to='/blogs'/>
                 <MyLink caption={'Contact'} to='/contact'/>
+
                 {isAuth() && isAuth().role === 0 && <MyLink caption={'Dashboard'} to='/user'/>}
                 {isAuth() && isAuth().role === 1 && <MyLink caption={'Dashboard'} to='/admin2'/>}
+                {/*<Corona/>*/}
                 {isAuth() && <li
                     onClick={() => signout(() => Router.replace(`/signin`))}>
                     <a>Signout</a>
                 </li>
                 }
+                <li>
+                    <a className="getstarted " href="https://rbx105.truehost.cloud:2096/">Staff Mail</a>
+                </li>
             </ul>
             <i className={`${closed ? 'bi bi-x' : 'bi bi-list'} mobile-nav-toggle`} onClick={toggleClosed}/>
         </nav>

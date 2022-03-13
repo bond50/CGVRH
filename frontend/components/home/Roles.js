@@ -1,7 +1,7 @@
 import {Fragment} from "react";
 import Link from "next/link";
 import classes from '../../styles/Roles.module.css'
-import styles from '../../styles/Util.module.css'
+
 
 const Roles = () => {
 
@@ -31,10 +31,10 @@ const Roles = () => {
     return (
 
         <section className={classes.Section}>
-            <div className="container " data-aos='fade-up'>
+            <div className="container " data-aos='slide-up'>
 
-                <div className={styles.SectionTitle}>
-                    <h2>Some of the roles we play </h2>
+                <div className={`section-title`}>
+                    <h2>our roles</h2>
                 </div>
                 <div className={`row ${classes.RowContent}`}>
                     <div className="col-lg-6">

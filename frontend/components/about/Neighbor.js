@@ -1,5 +1,4 @@
 import React from 'react';
-import AboutContainer from "../reusables/AboutContainer";
 import List from "../reusables/List";
 
 
@@ -11,12 +10,17 @@ const Board = () => {
         }]
 
 
-    return <AboutContainer title='Neighbouring Facilities'>
-        <List
-            intro={intro}
-        />
+    return <section>
+        <div className="container">
+            <div className="section-title">
+                <h2>Neighbouring Facilities</h2>
+            </div>
 
-    </AboutContainer>;
+            <List
+                intro={intro}
+            />
+        </div>
+    </section>;
 };
 
 export default Board;

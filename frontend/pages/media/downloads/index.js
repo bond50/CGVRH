@@ -1,18 +1,21 @@
 import Layout from "../../../hoc/Layout";
 import DownloadList from "../../../components/media/downloads/download-list";
 import {getDownloads} from "../../../actions/fileupload";
+import GeneralPageHeader from "../../../hoc/general-page-header";
+import React from "react";
+import Breadcrumbs from "../../../components/reusables/Breadcrumbs";
 
 
 const Downloads = ({files}) => {
     if (!files || files.length === 0) {
         return <Layout>
-            <div className="container m-4">
-                <h2>No Files uploaded yet</h2>
-            </div>
+            <GeneralPageHeader title='Sorry nothing to show here'/>
         </Layout>
+
     } else {
         return (
             <Layout>
+                <Breadcrumbs/>
                 <DownloadList files={files}/>
             </Layout>
         );

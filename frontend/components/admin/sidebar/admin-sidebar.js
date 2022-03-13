@@ -151,6 +151,10 @@ const AdminSidebar = ({closed}) => {
                         title={'Website home page'}
                         slug={'/'}
                         icon={'house'}/>
+                    <SidebarLink
+                        title={'Realtime Google Analytics'}
+                        slug={'https://analytics.google.com/analytics/web/#/p306834202/realtime/overview?params=_u..nav%3Dmaui'}
+                        icon={'house'}/>
 
                     <SidebarLink
                         title={'Blog section'}

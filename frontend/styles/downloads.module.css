@@ -75,7 +75,7 @@
     transition: 0.5s;
     margin-top: 10px;
     border-radius: 10px;
-    border: 2px solid #f4a024;
+    border: 2px solid #1bbd36;
     color: #fff;
 }
 
@@ -83,9 +83,13 @@
     text-decoration: none;
     color: #0C163B;
 }
+.Btn span:hover {
+    color: #ffffff;
+}
 
 .Btn:hover {
-    background-color: #f4a024;
+    background-color: #1bbd36;
+
 }
 
 
