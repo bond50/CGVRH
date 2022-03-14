@@ -29,9 +29,7 @@ const Header = ({blog, home}) => {
     }
 
     let homeHeader = [`fixed-top d-flex align-items-center `]
-    if (home) {
-        homeHeader.push('margin-from-top')
-    }
+
     if (scrolled) {
         homeHeader.push('header-scrolled');
     }
@@ -54,7 +52,7 @@ const Header = ({blog, home}) => {
             </header>
             }
             {home && <header id='home-header' className={homeHeader.join(" ")}
-                              style={{top: `${home && !scrolled ? '20px' : ''}`}}>
+                              >
                 <div className="container">
                     <div className='header-container d-flex align-items-center justify-content-between'>
                         <div className={logo.join(' ')}>

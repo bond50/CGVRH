@@ -4,7 +4,6 @@ import React from "react";
 import renderHTML from "react-render-html";
 import ImageFallback from "../components/reusables/ImageFallback";
 import {API} from "../config";
-import GeneralPageHeader from "./general-page-header";
 import {useRouter} from "next/router";
 import classes from '../styles/page-wrapper.module.css'
 
@@ -16,7 +15,7 @@ const PageWrapper = ({related, page}) => {
             {/*<GeneralPageHeader*/}
             {/*    title={page.title}>*/}
             {/*</GeneralPageHeader>*/}
-            <section className={classes.Section}>
+            <section>
                 <div className="container">
                     <div className='row gy-4'>
                         <div className={'col-lg-3 order-2 order-lg-2'}>
