@@ -4,9 +4,10 @@ import Accordion2 from "../../reusables/Accordion2";
 import {accordionFunction} from "../../reusables/functions/admin-accordion";
 import {accordionPrivateFunction} from "../../reusables/functions/private-accordion";
 import AdminSidebarLink from "../../reusables/ui/admin-Sidebar-link";
-import PrivateSidebarLink from "../../reusables/ui/private-Sidebar-link";
+
 import {isAuth} from "../../../actions/auth";
 import SidebarLink from "../../reusables/ui/sidebar-link";
+import PrivateSidebarLink from "../../reusables/ui/private-sidebar-link";
 
 
 const AdminSidebar = ({closed}) => {
