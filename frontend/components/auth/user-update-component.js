@@ -36,6 +36,7 @@ const UserUpdateComponent = ({id}) => {
         photoDimensions: null,
         userData: process.browser && new FormData()
     });
+    const [role, setRole] = useState(0)
 
     const token = getCookie('token');
     const {
@@ -85,7 +86,7 @@ const UserUpdateComponent = ({id}) => {
                     hospitalRole: res.hospitalRole,
                     photoDimensions: res.photoDimensions
                 });
-
+                setRole(res.role)
             });
     };
 
@@ -108,6 +109,7 @@ const UserUpdateComponent = ({id}) => {
     const handleSubmit = e => {
         e.preventDefault();
         setValues({...values, error: '', loading: true, success: false});
+        userData.append("role", role);
         update(token, userData, loadedId).then(data => {
             if (data.error) {
                 setValues({...values, error: data.error, loading: false});
@@ -133,6 +135,7 @@ const UserUpdateComponent = ({id}) => {
                         loading: false,
                         reload: !reload
                     });
+
                 })
 
             }
@@ -161,6 +164,19 @@ const UserUpdateComponent = ({id}) => {
 
     }
 
+    const toggleTole = () => {
+        setRole(prev => {
+            if (prev === 0) {
+                return 1;
+            }
+            if (prev === 1) {
+                return 0;
+            }
+        });
+
+
+    }
+
 
     const imgSrc = `${API}/user/photo/${username_for_photo}`
 
@@ -172,7 +188,7 @@ const UserUpdateComponent = ({id}) => {
                 <div className="col-xl-4">
                     <div className={`card ${classes.Card} `}>
                         {
-                         photoDimensions && username_for_photo && <Image
+                            photoDimensions && username_for_photo && <Image
                                 width={photoDimensions.width}
                                 height={photoDimensions.height}
                                 src={imgSrc}
@@ -248,6 +264,8 @@ const UserUpdateComponent = ({id}) => {
                                         name={name}
                                         successMsg={showSuccessMessage}
                                         password={password}
+                                        role={role}
+                                        toggleRole={toggleTole}
                                         loading={loading}
                                         designation={designation}
                                         handleChange={handleChange}

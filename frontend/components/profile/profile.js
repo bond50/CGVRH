@@ -12,6 +12,8 @@ const Profile = ({
                      hmtRole,
                      hospitalRole,
                      name,
+                     role,
+                     toggleRole,
                      about,
                      errorMsg,
                      twitter,
@@ -93,6 +95,20 @@ const Profile = ({
                 </div>
             </div>}
 
+            {isAuth() && isAuth().role === 1 && <div className={`row ${classes.Row} mb-3`}>
+                <div className={`col-lg-3 col-md-4 ${classes.Label}`}>is admin</div>
+                <div className="col-lg-9 col-md-8">
+                    <input
+                        type="checkbox"
+                        value={role || ''}
+                        name="role"
+                        checked={role !== 0}
+                        onChange={toggleRole}/>
+                    {role === 1 ? "Yes" : "No"}
+                </div>
+            </div>}
+
+
             {hmt && isAuth() && isAuth().role === 1 && <div className={`row ${classes.Row} mb-3`}>
                 <div className={`col-lg-3 col-md-4 ${classes.Label}`}>HMT Role</div>
                 <div className="col-lg-9 col-md-8">
@@ -137,7 +153,8 @@ const Profile = ({
             </div>
 
             <div className={`row ${classes.Row} mb-3 text-muted`}>
-                <p className='fst-italic'>If you want people to find you on social media copy paste your links in the spaces below</p>
+                <p className='fst-italic'>If you want people to find you on social media copy paste your links in the
+                    spaces below</p>
             </div>
             <div className={`row ${classes.Row} mb-3`}>
                 <label htmlFor="Twitter"
