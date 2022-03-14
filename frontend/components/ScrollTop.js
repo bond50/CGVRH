@@ -12,7 +12,6 @@ const ScrollTop = () => {
 
 
     useEffect(() => {
-
         function toggleVisibility() {
             if (window.pageYOffset > 300) {
                 setVisible(true);
