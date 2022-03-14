@@ -4,7 +4,7 @@ import SocialLinks from "./SocialLinks";
 
 const FooterContact = () => <div
     className={`col-lg-3 col-md-6 ${classes.FooterContact}`}>
-    <h4>Contact Us</h4>
+    <h3>Contact Us</h3>
     <p>
         Off Kisumu road,Mbale <br/>
         Opposite District Headquaters <br/>

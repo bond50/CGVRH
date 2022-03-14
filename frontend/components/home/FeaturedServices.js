@@ -38,7 +38,7 @@ const FeaturedServices = ({featured}) => {
                     <div className={styles.card} data-aos="zoom-in" data-aos-delay="100">
                         <i className="bi bi-gear"/>
                         <div className="card-body">
-                            <h5 className="card-title">{service.title.toLowerCase()}</h5>
+                            <h3 className="card-title">{service.title.toLowerCase()}</h3>
                             <div className='card-text'>
                                   {renderHTML(service.excerpt.length >= 160 ? `${service.excerpt.substring(0, 80)}...` : service.excerpt)}
                             </div>
