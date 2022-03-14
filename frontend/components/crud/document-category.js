@@ -1,9 +1,10 @@
 import React from "react";
 import useCat from "../../hooks/useCat";
+import TagCategoryForm from "../reusables/forms/TagCategoryForm";
 
 const Category = () => {
     const {
-        newTagFom,
+        name, handleChange, clickSubmit,
         mouseMoveHandler,
         showCategories,
         showRemoved,
@@ -18,7 +19,11 @@ const Category = () => {
             {showError()}
             {showRemoved()}
             <div onMouseMove={mouseMoveHandler}>
-                {newTagFom()}
+                <TagCategoryForm
+                    value={name}
+                    handleChange={handleChange}
+                    label='Document Categories'
+                    clickSubmit={clickSubmit}/>
                 {showCategories()}
             </div>
         </React.Fragment>

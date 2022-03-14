@@ -7,7 +7,6 @@ import {fetcher} from "../../components/reusables/functions/fetcher";
 import {API} from "../../config";
 
 const Index = () => {
-
     const {data, error} = useSWR(`${API}/general`, fetcher)
     if (!data) {
         return <div id='preloader'/>

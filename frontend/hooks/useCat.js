@@ -3,7 +3,7 @@ import {getCookie} from "../actions/auth";
 import {create, getCategories, removeCategory} from "../actions/category";
 import TagCategoryForm from "../components/reusables/forms/TagCategoryForm";
 
-const UseCat = (fetchAllEndpoint, singleEndpoint, formLabel) => {
+const UseCat = (fetchAllEndpoint, singleEndpoint) => {
 
     const [values, setValues] = useState({
         name: "",
@@ -123,16 +123,19 @@ const UseCat = (fetchAllEndpoint, singleEndpoint, formLabel) => {
     const mouseMoveHandler = (e) => {
         setValues({...values, error: false, success: false, removed: ""});
     };
-    const newTagFom = () => (
-        <TagCategoryForm
-            value={name}
-            handleChange={handleChange}
-            label={formLabel}
-            clickSubmit={clickSubmit}/>
-    );
 
 
-    return {newTagFom, mouseMoveHandler, showCategories, showRemoved, showSuccess, showError}
+
+    return {
+        name,
+        handleChange,
+        clickSubmit,
+        mouseMoveHandler,
+        showCategories,
+        showRemoved,
+        showSuccess,
+        showError
+    }
 };
 
 export default UseCat;
