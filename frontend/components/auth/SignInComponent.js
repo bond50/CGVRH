@@ -101,7 +101,7 @@ const AdminLogin = () => {
                             type="submit">Login
                     </button>
                 </div>
-                <LoginGoogle/>
+                {/*<LoginGoogle/>*/}
                 {showError()}
                 {showLoading()}
                 {showMessage()}

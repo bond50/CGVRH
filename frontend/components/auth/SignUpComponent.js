@@ -121,11 +121,11 @@ const SignupComponent = () => {
                         </Link>
                     </div>
                 </div>
-                <div className={`col-12 ${classes.sBtn}`}>
-                    <div className="small mb-0">
-                        <LoginGoogle/>
-                    </div>
-                </div>
+                {/*<div className={`col-12 ${classes.sBtn}`}>*/}
+                {/*    <div className="small mb-0">*/}
+                {/*        <LoginGoogle/>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
                 <div className={`col-12 ${classes.sBtn}`}>
                     <div className="small mb-0">
                         <Link href={`/`}>
