@@ -76,7 +76,7 @@ const ContactForm = ({authorEmail, label}) => {
                         <div className={`${classes.Info} col-lg-4 mt-4 mt-lg-0`}>
                             <i className='bi bi-envelope'/>
                             <h4>Email</h4>
-                            <p>vihigahospital@gmail.com <br/>galavu10@gmail.com</p>
+                            <p>vihigahospital@gmail.com</p>
                         </div>
 
                         <div className={`${classes.Info} col-lg-4 mt-4 mt-lg-0`}>
