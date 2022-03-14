@@ -19,7 +19,7 @@ exports.contactForm = (req, res) => {
             <hr />
 
             <p><strong>This email may contain sensetive information</strong></p>
-            <p>https://vcrh.com</p>
+            <p>https://vihigahospital.go.ke</p>
         `,
     };
 
@@ -102,7 +102,7 @@ exports.contactBlogAuthorForm = (req, res) => {
             <p>Message: ${message}</p>
             <hr />
             <p>This email may contain sensetive information</p>
-            <p>https://vcrh.com</p>
+            <p>https://vihigahospital.go/ke</p>
         `,
     };
 
