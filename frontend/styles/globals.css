@@ -118,11 +118,11 @@ h1, h2, h3, h4, h5, h6 {
     #home-header {
         box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
         top: 0;
-        background: #52e052;
+        background: #1bbd36;
     }
 
     #home-header.header-scrolled, #home-header .header-container {
-        background: #52e052;
+        background: #1bbd36;
     }
 
     #home-header .home-logo {
