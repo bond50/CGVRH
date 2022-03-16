@@ -9,7 +9,9 @@ import Router from "next/router";
 import "animate.css"
 import Script from "next/script";
 import {GOOGLE_ANALYTICS} from "../config";
-import {publicRuntimeConfig} from "../next.config";
+import getConfig from "next/config";
+
+const {publicRuntimeConfig} = getConfig();
 
 const MyApp = ({Component, pageProps}) => {
 
