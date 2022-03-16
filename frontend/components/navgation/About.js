@@ -7,7 +7,7 @@ const About = () => {
 
     function showMediaLinks() {
         return aboutList.map(m => {
-            return <MyLink key={m._id} to={`/about/${m.slug}`} caption={m.title}/>
+            return <MyLink key={m._id} to={`/about-us/${m.slug}`} caption={m.title}/>
         })
     }
 
