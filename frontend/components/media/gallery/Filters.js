@@ -9,7 +9,7 @@ import {useEffect, useState} from "react";
 const Filters = () => {
     const [tags, setTags] = useState([])
 
-    const {data: filters, error} = useSWR(
+    const {data: filters} = useSWR(
         [
             `${API}/gallery-tags`,
         ],
@@ -22,7 +22,6 @@ const Filters = () => {
         setTags(filters)
         setTags(...tags,)
     }, [])
-
 
 
     const returnFilters = () => filters && filters.map(f => {

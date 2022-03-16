@@ -2,10 +2,8 @@ import useToggle from "../../hooks/useToggle";
 import MyLink from "./myLink";
 import React, {useEffect, useState} from "react";
 import {singleCategory} from "../../actions/category";
-import {useRouter} from "next/router";
 
-const SingleDropdown = ({caption, activeClassName, href, slug}) => {
-    const router = useRouter()
+const SingleDropdown = ({caption, slug}) => {
     const [closed, toggleClosed] = useToggle();
     const [loadedPages, setLoadedPages] = useState([])
 

@@ -1,6 +1,5 @@
 import classes from '../../styles/FooterContact.module.css'
 import React from "react";
-import SocialLinks from "./SocialLinks";
 
 const FooterContact = () => <div
     className={`col-lg-3 col-md-6  ${classes.FooterContact}`}>

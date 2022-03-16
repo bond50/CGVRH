@@ -13,7 +13,7 @@ const ResetPassword = ({router}) => {
         showForm: true
     });
 
-    const {showForm, name, newPassword, error, message} = values;
+    const {newPassword, error, message} = values;
 
     const handleSubmit = e => {
         e.preventDefault();

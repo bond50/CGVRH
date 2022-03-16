@@ -2,15 +2,13 @@ import React, {Fragment, useEffect, useState} from 'react';
 import Head from "next/head";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import Layout from "../../hoc/Layout";
-import Link from "next/link";
 import {listRelated, singlePage} from "../../actions/general";
 import PageWrapper from "../../hoc/page-wrapper";
-import {useRouter} from "next/router";
 import Breadcrumbs from "../../components/reusables/Breadcrumbs";
 
 
 const Slug = ({service, query}) => {
-    const router = useRouter()
+
 
     const [related, setRelated] = useState([])
 
@@ -27,18 +25,6 @@ const Slug = ({service, query}) => {
     useEffect(() => {
         loadRelated()
     }, [service])
-
-
-    function showAllServices() {
-        return related.map(service => {
-            return <li key={service._id}>
-                <Link href={`/general/${service.slug}`}>
-                    <a className="list-group-item list-group-item-action">{service.title}</a>
-                </Link>
-            </li>
-        })
-
-    }
 
 
     const head = () => (

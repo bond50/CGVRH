@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from '../../styles/About.module.css'
 import {YearsOperated} from "../years-operated/YearsOperated";
-import Image from "next/image";
 
 const About = () => {
     return (

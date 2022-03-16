@@ -8,7 +8,7 @@ import Image from "next/image";
 const ServiceList = ({services}) => {
     const showServices = () => {
         return services.map((service, index) => {
-            const myLoader = ({src}) => {
+            const myLoader = () => {
                 return `${API}/service/photo/${service.slug}`;
             }
             return <div className="col-lg-3" key={index} data-aos="fade-up" data-aos-delay='200' data-aos-once='true'>

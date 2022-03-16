@@ -3,10 +3,8 @@ import React, {useEffect, useState} from "react";
 import {authenticate, isAuth, signin} from "../../actions/auth";
 import Router from "next/router";
 import Alert from "../messages/Alert";
-import LoginGoogle from "../auth/LoginGoogle";
 import Link from "next/link";
 import AuthWrapper from "./auth-wrapper";
-
 
 
 const AdminLogin = () => {

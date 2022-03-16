@@ -35,7 +35,8 @@ const ApprovedPosts = ({username}) => {
                     endpoint = `/user/crud/${blog.slug}`
                 }
 
-                return <DynamicTableRows blog={blog} deleteConfirm={deleteBlogConfirm} endpoint={endpoint}/>
+                return <DynamicTableRows blog={blog} deleteConfirm={deleteBlogConfirm} endpoint={endpoint}
+                                         key={blog._id}/>
             })}
         </CardDetail>
 

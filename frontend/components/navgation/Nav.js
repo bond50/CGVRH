@@ -10,7 +10,6 @@ import React from "react";
 import Media from "./media";
 import {isAuth, signout} from "../../actions/auth";
 import About from "./About";
-import Corona from "./Corona";
 
 
 const Nav = () => {

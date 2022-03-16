@@ -34,15 +34,12 @@ const BlogUpdate = () => {
     const router = useRouter()
 
     useEffect(() => {
-        let isMounted = true;
         setValues({...values, formData: new FormData()});
         initBlog();
         initCategories();
         initTags();
         setValues({...values, formData: new FormData()});
-        return () => {
-            isMounted = false;
-        };
+
     }, [router]);
 
 
@@ -66,7 +63,7 @@ const BlogUpdate = () => {
 
     const setCategoriesArray = blogCategories => {
         let ca = [];
-        blogCategories.map((c, i) => {
+        blogCategories.map((c) => {
             ca.push(c._id);
         });
         setChecked(ca);
@@ -74,7 +71,7 @@ const BlogUpdate = () => {
 
     const setTagsArray = blogTags => {
         let ta = [];
-        blogTags.map((t, i) => {
+        blogTags.map((t) => {
             ta.push(t._id);
         });
         setCheckedTag(ta);

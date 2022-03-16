@@ -1,6 +1,7 @@
 import classes from '../../styles/Principles.module.css'
 import styles from '../../styles/AboutContainer.module.css'
 import React from "react";
+
 const GuidingPrinciples = () => {
     return <section className={styles.Section}>
         <div className="container">

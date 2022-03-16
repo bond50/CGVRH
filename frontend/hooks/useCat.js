@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {getCookie} from "../actions/auth";
 import {create, getCategories, removeCategory} from "../actions/category";
-import TagCategoryForm from "../components/reusables/forms/TagCategoryForm";
 
 const UseCat = (fetchAllEndpoint, singleEndpoint) => {
 

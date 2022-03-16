@@ -1,4 +1,3 @@
-import GeneralPageHeader from "../../../hoc/general-page-header";
 import classes from '../../../styles/downloads.module.css'
 import React, {Fragment, useEffect, useState} from 'react';
 import moment from "moment";

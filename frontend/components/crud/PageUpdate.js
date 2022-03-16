@@ -26,19 +26,15 @@ const Page = () => {
         loading: false
     });
 
-    const {error, success, formData, title, status} = values;
+    const {error, success, formData, title} = values;
     const token = getCookie('token');
     const router = useRouter()
 
     useEffect(() => {
-        let isMounted = true;
         setValues({...values, formData: new FormData()});
         initPage();
         initCategories();
         setValues({...values, formData: new FormData()});
-        return () => {
-            isMounted = false;
-        };
     }, [router]);
 
 
@@ -61,7 +57,7 @@ const Page = () => {
 
     const setCategoriesArray = pageCategories => {
         let ca = [];
-        pageCategories.map((c, i) => {
+        pageCategories.map((c) => {
             ca.push(c._id);
         });
         setChecked(ca);

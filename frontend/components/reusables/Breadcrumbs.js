@@ -1,7 +1,6 @@
 import Breadcrumbs from 'nextjs-breadcrumbs';
 import {useRouter} from 'next/router';
 import React, {useEffect, useState} from "react";
-import classes from '../../styles/Breadcrumbs.module.css'
 
 
 const Breadcrumb = () => {
@@ -22,7 +21,7 @@ const Breadcrumb = () => {
 
 
     return (
-        <section id="breadcrumbs"  className='breadcrumbs'>
+        <section id="breadcrumbs" className='breadcrumbs'>
             <div className="container">
                 <div className={`d-flex justify-content-between align-items-center`}>
                     <h2>{breadcrumbs.toLowerCase()}</h2>

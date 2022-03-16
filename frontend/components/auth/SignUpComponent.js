@@ -4,7 +4,6 @@ import Router from 'next/router';
 import AuthWrapper from "./auth-wrapper";
 import classes from "../../styles/login.module.css";
 import Link from "next/link";
-import LoginGoogle from "./LoginGoogle";
 
 const SignupComponent = () => {
     const [values, setValues] = useState({

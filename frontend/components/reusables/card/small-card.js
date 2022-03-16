@@ -24,7 +24,7 @@ const SmallCard = ({blog, service}) => {
 
 
     const returnCard = () => {
-        const myLoader = ({src}) => {
+        const myLoader = () => {
             return photoLink;
         }
 

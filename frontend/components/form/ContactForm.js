@@ -38,7 +38,7 @@ const ContactForm = ({authorEmail, label}) => {
             }
         });
     };
-    const {message, name, email, showForm, loading, success, error} = values;
+    const {message, name, email, loading, success, error} = values;
 
 
     let btnText = 'Send Message'

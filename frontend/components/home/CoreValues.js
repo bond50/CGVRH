@@ -1,4 +1,3 @@
-import styles from '../../styles/Util.module.css'
 import Column from "./Column";
 
 const CoreValues = () => {

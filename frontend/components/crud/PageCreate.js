@@ -10,7 +10,6 @@ const PageCreate = () => {
         handleBody,
         handleChange,
         publish,
-        getFeaturedServices,
         error,
         success,
         title,

@@ -8,12 +8,12 @@ import Link from "next/link";
 
 function BlogCarousel({blogs, home}) {
     const [index, setIndex] = useState(0);
-    const [nextIcon, setNextIcon] = useState(<span className="carousel-control-next-icon bi bi-chevron-right"
-                                                   aria-hidden="true"/>);
-    const [prevIcon, setPrevIcon] = useState(<span className="carousel-control-next-icon bi bi-chevron-left"
-                                                   aria-hidden="true"/>);
+    const [nextIcon] = useState(<span className="carousel-control-next-icon bi bi-chevron-right"
+                                      aria-hidden="true"/>);
+    const [prevIcon] = useState(<span className="carousel-control-next-icon bi bi-chevron-left"
+                                      aria-hidden="true"/>);
 
-    const handleSelect = (selectedIndex, e) => {
+    const handleSelect = (selectedIndex) => {
         setIndex(selectedIndex);
     };
 

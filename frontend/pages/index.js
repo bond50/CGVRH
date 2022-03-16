@@ -1,5 +1,4 @@
 import About from "../components/home/about";
-import Roles from "../components/home/Roles";
 import FeaturedServices from "../components/home/FeaturedServices";
 import LatestBlogs from "../components/home/LatestBlogs";
 import useSWR from 'swr'
@@ -15,7 +14,7 @@ import Cta from "../components/home/cta";
 
 export default function Home() {
 
-    const {data: services, error: serviceError} = useSWR(`${API}/featured-general`)
+    const {data: services} = useSWR(`${API}/featured-general`)
     const {data: blogs, error: blogsError} = useSWR(`${API}/list-recent-blogs`)
     if (blogsError) return <div className='container uh-oh mt-5 pt-5 '><p>uh oh something is
         wrong..Please

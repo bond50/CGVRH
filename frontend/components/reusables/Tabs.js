@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Button, Card, CardText, CardTitle, Col, Nav, NavItem, NavLink, Row, TabContent, TabPane} from 'reactstrap';
 import classnames from 'classnames';
 
-const Example = (props) => {
+const Example = () => {
     const [activeTab, setActiveTab] = useState('1');
 
     const toggle = tab => {

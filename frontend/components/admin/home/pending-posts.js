@@ -1,13 +1,12 @@
 import CardDetail from "./card-detail";
 import DynamicTableRows from "./dynamic-table-rows";
-import MyModal from "../../reusables/ui/modal";
 import Alert from "../../messages/Alert";
 import useARP from "../../../hooks/useARP";
 import {isAuth} from "../../../actions/auth";
 
 const PendingPosts = ({username}) => {
     const {
-      mouseMoveHandler,
+        mouseMoveHandler,
         loading,
         deleteBlogConfirm,
         error,
@@ -37,7 +36,8 @@ const PendingPosts = ({username}) => {
                 }
 
 
-                return <DynamicTableRows blog={blog} deleteConfirm={deleteBlogConfirm} endpoint={endpoint}/>
+                return <DynamicTableRows blog={blog} deleteConfirm={deleteBlogConfirm} endpoint={endpoint}
+                                         key={blog._id}/>
             })}
         </CardDetail>
 

@@ -1,3 +1,4 @@
+import React from 'react'
 import Admin from '../../../../components/auth/Admin';
 import PageRead from '../../../../components/crud/PageRead';
 import Layout from "../../../../hoc/admin/layout/layout";

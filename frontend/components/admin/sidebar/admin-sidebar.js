@@ -31,15 +31,6 @@ const AdminSidebar = ({closed}) => {
         {title: 'Update', to: 'update'},
     ]
 
-    const userDownloadList = [
-        {title: 'Upload', to: 'crud/upload-files'},
-
-    ]
-    const userGalleryList = [
-        {title: 'Upload', to: 'crud/upload-images'},
-
-    ]
-
 
     //admin
 
@@ -63,10 +54,6 @@ const AdminSidebar = ({closed}) => {
     const galleryList = [
         {title: 'Upload', slug: 'crud/upload-images'},
         {title: 'Tags', slug: 'crud/gallery-tag'},
-    ]
-    const quickLinks = [
-        {title: 'Website home page', slug: '/'},
-        {title: 'Blog section', slug: '/blogs'},
     ]
 
 

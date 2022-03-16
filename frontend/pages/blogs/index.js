@@ -3,13 +3,12 @@ import React, {useState} from "react";
 import {listBlogsWithCategoriesAndTags} from "../../actions/blog";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import {withRouter} from "next/router";
-
 import SmallCard from "../../components/reusables/card/small-card";
 import Layout from "../../hoc/Layout";
 import BlogHero from "../../components/blog/blog-hero";
 
 
-const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, categories, router}) => {
+const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {
     const head = () => (
         <Head>
             <title>Blogs | {APP_NAME}</title>
@@ -43,7 +42,7 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, categories, router}) =>
         </Head>
     );
 
-    const [limit, setLimit] = useState(blogsLimit);
+    const [limit] = useState(blogsLimit);
     const [skip, setSkip] = useState(0);
     const [size, setSize] = useState(totalBlogs);
     const [loadedBlogs, setLoadedBlogs] = useState([]);
@@ -115,7 +114,7 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, blogSkip, categories, router}) =>
     );
 };
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async () => {
     let skip = 0;
     let limit = 6;
     return listBlogsWithCategoriesAndTags(skip, limit).then((data) => {

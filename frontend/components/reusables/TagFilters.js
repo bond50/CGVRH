@@ -1,7 +1,7 @@
 import classes from '../../styles/Filters.module.css'
 import Link from "next/link";
 
-const TagFilters = ({filters, handleTagClick, active,}) => {
+const TagFilters = ({filters}) => {
     const returnFilters = () => filters && filters.map(tag => {
         return <li key={tag._id}>
             <Link href={`/document-tags/${tag.slug}`}>

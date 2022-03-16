@@ -3,7 +3,7 @@ import Top from "./top/Top";
 import Header from "./header/header"
 
 
-const Toolbar = ({blog,home}) => {
+const Toolbar = ({blog, home}) => {
 
     return (
         <Fragment>
