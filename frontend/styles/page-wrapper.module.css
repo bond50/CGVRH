@@ -21,8 +21,8 @@
 }
 
 .NavLink.active, .NavLink .active {
-    color:  #1bbd36;
-    border-color:  #1bbd36;
+    color: #1bbd36;
+    border-color: #1bbd36;
 }
 
 .Details h1, .Details h2, .Details h3, .Details h4, .Details h5, .Details h6 {
@@ -45,16 +45,19 @@
 
 .Details blockquote {
     overflow: hidden;
-    background-color: #f1f6fd;
-    padding: 60px;
+    background-color: #e9fbe9;
+    padding: 20px;
     position: relative;
-    margin: 20px 0;
-    color: #0C163B;
+    /*margin: 20px 0;*/
+    color: black;
     line-height: 1.6;
     margin-bottom: 0;
-    font-style: italic;
     font-weight: 500;
     font-size: 15px;
+}
+
+.Details blockquote p, .Details blockquote  h3, .Details blockquote  h4, .Details blockquote  h5, .Details blockquote  h6 {
+    color: #178217;
 }
 
 .Details blockquote::after {
@@ -65,7 +68,7 @@
     top: 0;
     bottom: 0;
     width: 3px;
-    background-color: #441f00;
+    background-color: #52e052;
     margin-bottom: 10px;
 }
 

@@ -7,6 +7,7 @@ import {API} from "../../config";
 import FooterLink from "./FooterLinks/FooterLink";
 import {Fragment} from "react";
 import ScrollTop from "../ScrollTop";
+import SocialLinks from "./SocialLinks";
 
 
 const Footer = () => {
@@ -31,8 +32,8 @@ const Footer = () => {
     return (
         <Fragment>
             <footer className={classes.Footer}>
-                <div className="container">
-                    <div className={classes.FooterTop}>
+                <div className={classes.FooterTop}>
+                    <div className="container">
                         <div className="row ">
                             <FooterContact/>
                             <FooterLinks header='Featured services'>
@@ -54,11 +55,14 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="container py-4">
-                    <div className={classes.Copyright}>
-                        &copy; Copyright <strong><span>{thisYear} Vihiga County Referral Hospital</span></strong>.
-                        All Rights Reserved
+                <div className="container d-md-flex py-4">
+                    <div className="me-md-auto text-center text-md-start">
+                        <div className={classes.Copyright}>
+                            &copy; Copyright <strong><span>{thisYear} Vihiga County Referral Hospital</span></strong>.
+                            All Rights Reserved
+                        </div>
                     </div>
+                    <SocialLinks/>
                 </div>
             </footer>
             <ScrollTop/>

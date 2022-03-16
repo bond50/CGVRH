@@ -34,13 +34,13 @@ const FeaturedServices = ({featured}) => {
 
     function returnColumns() {
         return featured && featured.map(service => {
-                return <div className="col-lg-3 mb-4" key={service._id}>
+                return <div className="col-lg-4 mb-4" key={service._id}>
                     <div className={styles.card} data-aos="zoom-in" data-aos-delay="100">
                         <i className="bi bi-gear"/>
                         <div className="card-body">
                             <h3 className="card-title">{service.title.toLowerCase()}</h3>
                             <div className='card-text'>
-                                  {renderHTML(service.excerpt.length >= 160 ? `${service.excerpt.substring(0, 80)}...` : service.excerpt)}
+                                  {renderHTML(service.excerpt)}
                             </div>
                             <Link href={`/general/${service.slug}`}>
                                 <a className={styles.readMore}>Read more </a>

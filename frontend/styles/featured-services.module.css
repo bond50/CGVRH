@@ -1,23 +1,23 @@
 .section {
-    background:  #4154f1;
+    background: #e9fbe9;
     /*background: #1bbd36;*/
 }
 
 
 .SectionTitle h2 {
-    color: #fff;
+    color: #178217;
 }
 
 .SectionTitle h2::after {
-    background: #fff;
+    background: #178217;
 }
 
 .card {
     /*background: #00458f;*/
     /*border-color: #00458f; */
 
-        background: #004a99;
-    border-color:  #4154f1;
+    background: #178217;
+    border-color: #178217;
     border-radius: 10px;
     margin: 0 15px;
     padding: 15px 0;
@@ -33,15 +33,15 @@
     }
 }
 
-.card:hover {
-    background: #003b7a;
-    border-color: #003b7a;
-}
+/*.card:hover {*/
+/*    background:  #52e052;*/
+/*    border-color:  #52e052;*/
+/*}*/
 
 .card i {
     font-size: 48px;
     padding-top: 15px;
-    color: #bfddfe;
+    color: #ffffff;
 }
 
 .card h3 {
@@ -52,7 +52,7 @@
 
 .card p {
     font-size: 15px;
-    color: #d8eafe;
+    color: #ffffff;
 }
 
 .card .readMore {
@@ -60,9 +60,9 @@
     font-weight: 600;
     display: inline-block;
     transition: 0.3s ease-in-out;
-    border-bottom: #00458f solid 2px;
+    border-bottom: #fff solid 2px;
 }
 
 .card .readMore:hover {
-    border-bottom: #fff solid 2px;
+    border-bottom: #f4a024 solid 2px;
 }

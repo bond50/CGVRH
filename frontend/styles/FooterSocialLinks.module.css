@@ -1,7 +1,7 @@
 .SocialLinks a {
     font-size: 18px;
     display: inline-block;
-    background: #1bbd36;
+    background: rgba(255, 255, 255, 0.08);
     color: #fff;
     line-height: 1;
     padding: 8px 0;
@@ -15,7 +15,7 @@
 }
 
 .SocialLinks a:hover {
-    color: #0366d6;
-    background: #f1f6fd;
+    background: #1bbd36;
+    color: #fff;
     text-decoration: none;
 }

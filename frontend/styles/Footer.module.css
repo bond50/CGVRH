@@ -1,13 +1,12 @@
 .Footer {
-    background: #1e1e1e;
     color: #fff;
     font-size: 14px;
+    background: #111;
 }
 
 .FooterTop {
     padding: 60px 0 30px 0;
     background: #1e1e1e;
-    border-bottom: 1px solid ;
 }
 
 

@@ -35,7 +35,7 @@ export default function Home() {
                 <Cta/>
                 {!services || services.length <= 0 ? null : <FeaturedServices featured={services}/>}
                 <CoreValues/>
-                <Roles/>
+                {/*<Roles/>*/}
             </main>
             <Footer/>
         </Fragment>

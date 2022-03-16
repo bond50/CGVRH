@@ -10,13 +10,13 @@
 
 
 .FooterLinkA {
-    color: #fff;
-    text-transform: capitalize;
+    color: rgba(255, 255, 255, 0.6);
     transition: 0.3s;
     display: inline-block;
     line-height: 1;
 }
 
 .FooterLinkA:hover {
-    color: #0366d6;
+    text-decoration: none;
+    color: #fff;
 }

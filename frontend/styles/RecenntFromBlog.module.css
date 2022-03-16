@@ -44,7 +44,7 @@
     align-items: center;
     font-weight: 600;
     line-height: 1;
-    color: #f4a024;
+    color: #1bbd36;
     transition: 0.3s;
 }
 
@@ -52,7 +52,7 @@
     line-height: 0;
     margin-left: 4px;
     font-size: 18px;
-    color: #f4a024;
+    color: #1bbd36;
 }
 
 .PostBox:hover .PostTitle {

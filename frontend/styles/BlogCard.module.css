@@ -123,8 +123,8 @@
     background-color: #f1f6fd;
     padding: 60px;
     position: relative;
-    margin: 20px 0;
-    color: #0C163B;
+    /*margin: 20px 0;*/
+    color: red;
     line-height: 1.6;
     margin-bottom: 0;
     font-style: italic;

@@ -1,18 +1,18 @@
 
 .FooterInfo h4 {
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    font-size: 18px;
-    font-weight: bold;
-    position: relative;
+ font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  position: relative;
+  padding-bottom: 12px
 
 
 }
 
-.FooterInfo p {
-    line-height: 24px;
-    color: #fff;
-    margin-bottom: 0;
-    font-family: "Muli", sans-serif;
+/*.FooterInfo p {*/
+/*    line-height: 24px;*/
+/*    color: #fff;*/
+/*    margin-bottom: 0;*/
+/*    font-family: "Muli", sans-serif;*/
 
-}
+/*}*/
