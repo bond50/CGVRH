@@ -15,10 +15,11 @@
 }
 
 .cta p span {
-    font-weight: 500;
+    font-weight: 900;
     letter-spacing: 1px;
-    font-style: italic;
-    color: #f4a024;
+    font-size: 20px;
+
+    color:  #ffa500;
 
 }
 
@@ -36,8 +37,9 @@
 }
 
 .btn:hover {
-    background: #47b2e4;
-    border: 2px solid #47b2e4;
+    background: #1bbd36;
+    border: 2px solid #1bbd36;
+    color: #fff;
 }
 
 @media (max-width: 1024px) {

@@ -14,11 +14,11 @@ function Hero() {
 
             </div>
             <Image
-                src="/herp3.jpg"
-                layout="fill"
-                loading="eager"
-                alt='Hero'
-                objectFit="cover"
+                   src="/herp3.jpg"
+                   layout="fill"
+                   loading="eager"
+                   alt='Hero'
+                   objectFit="cover"
             />
 
         </section>

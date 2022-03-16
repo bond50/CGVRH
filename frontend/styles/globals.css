@@ -501,7 +501,6 @@ section {
     position: relative;
     z-index: 1;
 
-
 }
 
 #home-hero .container {
@@ -783,7 +782,7 @@ section {
     bottom: 0;
     z-index: 9999;
     overflow: hidden;
-    background: #09254b;
+    background: #178217;
 }
 
 .preloader:before {
@@ -791,7 +790,7 @@ section {
     position: fixed;
     top: calc(50% - 30px);
     left: calc(50% - 30px);
-    border: 6px solid #09254b;
+    border: 6px solid #178217;
     border-top-color: #fff;
     border-bottom-color: #fff;
     border-radius: 50%;
@@ -826,7 +825,7 @@ section {
     right: 15px;
     bottom: 15px;
     z-index: 996;
-    background: #52e052;
+    background: #1bbd36;
     width: 40px;
     height: 40px;
     border-radius: 50px;

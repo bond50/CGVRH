@@ -98,7 +98,7 @@
     }
 
     .NavLink.active, .NavLink .active {
-        color: #fff;
-        background: #294a70;
+        color: #178217;
+        background: #e9fbe9;
     }
 }
