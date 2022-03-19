@@ -26,7 +26,6 @@ export default function Home() {
 
             <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
             <meta name="robots" content="max-image-preview:large"/>
-            <link rel="canonical" href="https://vihigahospital.go.ke/"/>
             <meta property="og:locale" content="en_US"/>
 
             <meta property="og:title" content={`Home page | ${APP_NAME}`}/>

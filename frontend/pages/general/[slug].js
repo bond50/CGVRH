@@ -30,7 +30,7 @@ const Slug = ({service, query}) => {
     const head = () => (
         <Head>
             <title>
-                {service.title} at {APP_NAME}
+                {service.title} | {APP_NAME}
             </title>
             <meta name="description" content={service.metaDesc}/>
 
