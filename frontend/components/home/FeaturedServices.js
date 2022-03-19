@@ -31,7 +31,6 @@ const FeaturedServices = ({featured}) => {
     //
     // ]
 
-
     function returnColumns() {
         return featured && featured.map(service => {
                 return <div className="col-lg-4 mb-4" key={service._id}>
