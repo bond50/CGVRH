@@ -32,19 +32,19 @@ const MyApp = ({Component, pageProps}) => {
 
             <meta name="description" content="We take care of your precious health "/>
             <meta name="robots" content="max-image-preview:large"/>
-            <link rel="canonical" href="http://vihigahospital.go.ke"/>
+            <link rel="canonical" href="https://vihigahospital.go.ke/"/>
             <meta property="og:locale" content="en_US"/>
             <meta property="og:site_name"
-                  content="Vihiga county referral hospital - we take care of your precious health"/>
+                  content="Vihiga County Referral Hospital (VCRH) is a level 5 government healthcare facility located in Vihiga County,along Kisumu-Kakamega road,at Mbale Center ,Opposite County Headquarters. VCRH has offered services to the people of Vihiga and its environs for the last 21 years. At interception it was referred to as the Vihiga District Hospital and later renamed following devolution of health services in Kenya.In august 2017, the facility was gazetted to be a leval 5 referral hospital."/>
             <meta property="og:type" content="website"/>
             <meta property="og:title"
-                  content="Vihiga county referral hospital - we take care of your precious health"/>
+                  content="Vihiga County Referral Hospital (VCRH) is a level 5 government healthcare facility located in Vihiga County,along Kisumu-Kakamega road,at Mbale Center ,Opposite County Headquarters. VCRH has offered services to the people of Vihiga and its environs for the last 21 years. At interception it was referred to as the Vihiga District Hospital and later renamed following devolution of health services in Kenya.In august 2017, the facility was gazetted to be a leval 5 referral hospital."/>
             <meta property="og:description" content="Excellence in Healthcare,Training and Research"/>
-            <meta property="og:url" content="http://vihigahospital.go.ke"/>
+            <meta property="og:url" content="https://vihigahospital.go.ke/"/>
             <meta property="og:image" content="/herp.jpg"/>
             <meta property="og:image:type" content="image/jpg"/>
             <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
-            
+
             <title>Vihiga county Referral Hospital</title>
 
         </Head>
