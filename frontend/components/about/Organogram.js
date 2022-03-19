@@ -106,7 +106,7 @@ const Organogram = () => {
                     {list.map(item => (
                         <Accordion defaultActiveKey="1" key={item.eventKey}>
                             <Accordion.Item eventKey={item.eventKey} data-aos="fade-up" data-aos-delay={item.delay}>
-                                <Accordion.Header as='a'><span>{`0${item.eventKey}`}</span>{item.title}
+                                <Accordion.Header><span>{`0${item.eventKey}`}</span>{item.title}
                                 </Accordion.Header>
                                 <Accordion.Body>
                                     {item.comp}
