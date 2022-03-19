@@ -27,6 +27,7 @@ const MyApp = ({Component, pageProps}) => {
                 name="viewport"
                 content="width=device-width, initial-scale=1.0"
             />
+            <meta name="description" content="Vihiga County Referral Hospital"/>
 
             <title>Vihiga county Referral Hospital</title>
 
