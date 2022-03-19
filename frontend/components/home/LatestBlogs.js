@@ -15,6 +15,8 @@ const LatestBlogs = () => {
         contact Vihiga county referral hospital ICT team for assistance.Thank you </p></div>
     if (!blogs) return <div className='preloader'/>
 
+    console.log(blogs)
+
 
     const showRecent = () => {
         return blogs && blogs.map((blog) => {

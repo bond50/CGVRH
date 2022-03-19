@@ -1,9 +1,11 @@
 import styles from "../../styles/featured-services.module.css";
 import renderHTML from "react-render-html";
 import Link from "next/link";
+import {API} from "../../config";
+import useSWR from "swr";
 
 
-const FeaturedServices = ({featured}) => {
+const FeaturedServices = () => {
     // const info = [
     //     {
     //         header: 'Pharmacy',
@@ -30,9 +32,17 @@ const FeaturedServices = ({featured}) => {
     //     },
     //
     // ]
+    //
+    const {data: services, error} = useSWR(`${API}/featured-general`)
+
+    if (error) return <div className='container uh-oh mt-5 pt-5 '><p>uh oh something is
+        wrong..Please
+        contact Vihiga county referral hospital ICT team for assistance.Thank you </p></div>
+    if (!services) return <div className='preloader'/>
+
 
     function returnColumns() {
-        return featured && featured.map(service => {
+        return services && services.map(service => {
                 return <div className="col-lg-4 mb-4" key={service._id}>
                     <div className={styles.card} data-aos="zoom-in" data-aos-delay="100">
                         <i className="bi bi-gear"/>

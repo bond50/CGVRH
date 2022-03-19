@@ -1,8 +1,5 @@
 import About from "../components/home/about";
-import FeaturedServices from "../components/home/FeaturedServices";
-import LatestBlogs from "../components/home/LatestBlogs";
-import useSWR from 'swr'
-import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../config";
+import {APP_NAME, DOMAIN, FB_APP_ID} from "../config";
 import Toolbar from "../components/navgation/Toolbar";
 import React, {Fragment} from "react";
 import Hero from "../components/home/Hero";
@@ -13,6 +10,8 @@ import Cta from "../components/home/cta";
 import Head from "next/head";
 import {useRouter} from "next/router";
 import {YearsOperated} from "../components/years-operated/YearsOperated";
+import LatestBlogs from "../components/home/LatestBlogs";
+import FeaturedServices from "../components/home/FeaturedServices";
 
 
 export default function Home() {
@@ -54,13 +53,6 @@ export default function Home() {
         </Head>
     );
 
-    const {data: services} = useSWR(`${API}/featured-general`)
-    const {data: blogs, error: blogsError} = useSWR(`${API}/list-recent-blogs`)
-    if (blogsError) return <div className='container uh-oh mt-5 pt-5 '><p>uh oh something is
-        wrong..Please
-        contact Vihiga county referral hospital ICT team for assistance.Thank you </p></div>
-    if (!blogs) return <div className='preloader'/>
-
 
     return (
         <Fragment>
@@ -70,9 +62,9 @@ export default function Home() {
             <main id='main'>
                 <Clients/>
                 <About/>
-                {!blogs || blogs.length <= 0 ? null : <LatestBlogs blogs={blogs}/>}
+                <LatestBlogs/>
                 <Cta/>
-                {!services || services.length <= 0 ? null : <FeaturedServices featured={services}/>}
+                <FeaturedServices/>
                 <CoreValues/>
                 {/*<Roles/>*/}
             </main>
