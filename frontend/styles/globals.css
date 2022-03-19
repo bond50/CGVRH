@@ -162,7 +162,7 @@ h1, h2, h3, h4, h5, h6 {
 /*    padding: 10px 0 10px 28px;*/
 /*}*/
 
-.navbar a, .navbar a:focus {
+.navbar a, .navbar a:focus, .navbar span {
     display: flex;
     align-items: center;
     justify-content: space-between;

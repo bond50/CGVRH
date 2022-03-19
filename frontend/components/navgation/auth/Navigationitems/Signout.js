@@ -4,7 +4,7 @@ import Router from "next/router";
 const SignOut = ({className}) =>
     <li
         onClick={() => signout(() => Router.replace(`/signin`))}>
-        <div className={className}>Signout</div>
+        <a className={className}>Signout</a>
     </li>
 
 export default SignOut;

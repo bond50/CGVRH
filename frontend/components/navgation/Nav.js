@@ -57,7 +57,7 @@ const Nav = () => {
                 {/*<Corona/>*/}
                 {isAuth() && <li
                     onClick={() => signout(() => Router.replace(`/signin`))}>
-                    <a>Signout</a>
+                    <span>Signout</span>
                 </li>
                 }
                 <li>
