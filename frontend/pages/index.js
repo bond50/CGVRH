@@ -12,16 +12,19 @@ import Clients from "../components/home/clients";
 import Cta from "../components/home/cta";
 import Head from "next/head";
 import {useRouter} from "next/router";
+import {YearsOperated} from "../components/years-operated/YearsOperated";
 
 
 export default function Home() {
     const router = useRouter()
+
     const head = () => (
         <Head>
             <title>{APP_NAME} - we take care of your precious health</title>
             <meta
                 name="description"
-                content="Vihiga county referral hospital blog on our services departments wards core values strategic plan"
+                content={`${APP_NAME} is a level 5 government healthcare facility located in Vihiga County,along Kisumu-Kakamega road,at Mbale Center ,Opposite County Headquarters. VCRH has offered services to the people of Vihiga and its environs for the last ${
+                    YearsOperated()} years`}
             />
 
             <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
