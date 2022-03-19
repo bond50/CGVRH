@@ -34,7 +34,7 @@ const PageWrapper = ({related, page}) => {
 
                             <div className="row gy-4">
                                 <div className={`col-lg-8 ${classes.Details} order-2 order-lg-1`}>
-                                    <h3>{page.title}</h3>
+                                    <h1>{page.title}</h1>
                                     {renderHTML(page.body)}
                                 </div>
                                 <div className="col-lg-4 text-center order-1 order-lg-2">

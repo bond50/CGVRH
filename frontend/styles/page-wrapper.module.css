@@ -35,7 +35,7 @@
 }
 
 
-.Details h3 {
+.Details h1 {
     font-weight: 600;
     font-size: 22px;
 
@@ -56,7 +56,7 @@
     font-size: 15px;
 }
 
-.Details blockquote p, .Details blockquote  h3, .Details blockquote  h4, .Details blockquote  h5, .Details blockquote  h6 {
+.Details blockquote p, .Details blockquote h3, .Details blockquote h4, .Details blockquote h5, .Details blockquote h6 {
     color: #178217;
 }
 
