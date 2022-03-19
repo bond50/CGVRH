@@ -8,7 +8,7 @@ import NProgress from 'nprogress';
 import Router from "next/router";
 import "animate.css"
 import Script from "next/script";
-import {GOOGLE_ANALYTICS} from "../config";
+import {FB_APP_ID, GOOGLE_ANALYTICS} from "../config";
 import getConfig from "next/config";
 
 const {publicRuntimeConfig} = getConfig();
@@ -29,6 +29,22 @@ const MyApp = ({Component, pageProps}) => {
             />
             <meta name="description" content="Vihiga County Referral Hospital"/>
 
+
+            <meta name="description" content="We take care of your precious health "/>
+            <meta name="robots" content="max-image-preview:large"/>
+            <link rel="canonical" href="http://vihigahospital.go.ke"/>
+            <meta property="og:locale" content="en_US"/>
+            <meta property="og:site_name"
+                  content="Vihiga county referral hospital - we take care of your precious health"/>
+            <meta property="og:type" content="website"/>
+            <meta property="og:title"
+                  content="Vihiga county referral hospital - we take care of your precious health"/>
+            <meta property="og:description" content="Excellence in Healthcare,Training and Research"/>
+            <meta property="og:url" content="http://vihigahospital.go.ke"/>
+            <meta property="og:image" content="/herp.jpg"/>
+            <meta property="og:image:type" content="image/jpg"/>
+            <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
+            
             <title>Vihiga county Referral Hospital</title>
 
         </Head>

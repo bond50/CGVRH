@@ -22,6 +22,7 @@ class MyDocument extends Document {
                     <link href="/theme/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
 
                     <link href="/theme/fontawesome/css/all.min.css" rel="stylesheet"/>
+                    <title>Vihiga county referral hospital</title>
                 </Head>
                 <body>
                 <Main/>
