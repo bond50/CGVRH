@@ -162,7 +162,7 @@ h1, h2, h3, h4, h5, h6 {
 /*    padding: 10px 0 10px 28px;*/
 /*}*/
 
-.navbar a, .navbar a:focus, .navbar span {
+.navbar a, .navbar a:focus, .navbar .signOut {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -317,7 +317,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: 0.3s;
 }
 
-.navbar-mobile a, .navbar-mobile a:focus {
+.navbar-mobile a, .navbar-mobile a:focus, .navbar-mobile .signOut {
     padding: 10px 20px;
     font-size: 15px;
     color: #36343a;

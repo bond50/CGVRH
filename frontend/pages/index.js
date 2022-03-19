@@ -15,16 +15,7 @@ import {useRouter} from "next/router";
 
 
 export default function Home() {
-
-    const {data: services} = useSWR(`${API}/featured-general`)
-    const {data: blogs, error: blogsError} = useSWR(`${API}/list-recent-blogs`)
-    if (blogsError) return <div className='container uh-oh mt-5 pt-5 '><p>uh oh something is
-        wrong..Please
-        contact Vihiga county referral hospital ICT team for assistance.Thank you </p></div>
-    if (!blogs) return <div className='preloader'/>
-
     const router = useRouter()
-
     const head = () => (
         <Head>
             <title>{APP_NAME}</title>
@@ -60,6 +51,13 @@ export default function Home() {
             <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
         </Head>
     );
+
+    const {data: services} = useSWR(`${API}/featured-general`)
+    const {data: blogs, error: blogsError} = useSWR(`${API}/list-recent-blogs`)
+    if (blogsError) return <div className='container uh-oh mt-5 pt-5 '><p>uh oh something is
+        wrong..Please
+        contact Vihiga county referral hospital ICT team for assistance.Thank you </p></div>
+    if (!blogs) return <div className='preloader'/>
 
 
     return (

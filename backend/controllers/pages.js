@@ -164,7 +164,7 @@ exports.read = (req, res) => {
         // .select("-photo")
         .populate('categories', '_id name slug')
         .populate('postedBy', '_id name username')
-        .select('_id title body accepted featured excerpt slug mtitle mdesc categories tags postedBy createdAt updatedAt')
+        .select('_id title body accepted featured excerpt slug metaTitle metaDesc categories tags postedBy createdAt updatedAt')
         .exec((err, data) => {
             if (err) {
                 return res.json({

@@ -9,7 +9,7 @@ import Breadcrumbs from "../../components/reusables/Breadcrumbs";
 
 const Slug = ({service, query}) => {
 
-
+    console.log(service)
     const [related, setRelated] = useState([])
 
     const loadRelated = () => {
@@ -33,6 +33,7 @@ const Slug = ({service, query}) => {
                 {service.title} | {APP_NAME}
             </title>
             <meta name="description" content={service.mdesc}/>
+
             <link rel="canonical" href={`${DOMAIN}/general/${query.slug}`}/>
             <meta property="og:title" content={`${service.title}| ${APP_NAME}`}/>
             <meta property="og:description" content={service.mdesc}/>
