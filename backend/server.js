@@ -55,17 +55,24 @@ app.use(bodyParser.urlencoded({limit: "200mb", extended: true}));
 //cors
 
 
-const whitelist = ["http://localhost", 'http://vihigahospital.go.ke', 'https://vihigahospital.go.ke', "https://142.96.48.128", "http://142.96.48.128"]
-const corsOptions = {
-    origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1) {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by CORS'))
-        }
-    }
-}
-app.use(cors(corsOptions))
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', '*')
+//     res.header(
+//         'Access-Control-Allow-Headers',
+//         'Origin,X-Requested-With,Content-Type,Accept,Authorization')
+//
+//     if (req.method === 'OPTIONS') {
+//         res.header('Access-Control-Allow-Methods', 'PUT,PATCH,POST,DELETE,GET')
+//         return res.status(200).json({})
+//     }
+//     next()
+// })
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 
 // port
 const port = process.env.PORT || 8000
