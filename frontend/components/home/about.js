@@ -5,7 +5,7 @@ import {YearsOperated} from "../years-operated/YearsOperated";
 const About = () => {
     return (
         <section id='about'>
-            <div className="container" data-aos="fade-up" >
+            <div className="container" data-aos="fade-up">
                 <div className="section-title">
                     <h2>About Us</h2>
                 </div>
@@ -25,7 +25,7 @@ const About = () => {
 
                     </div>
                     <div className="col-lg-6 pt-4 pt-lg-0">
-                         <p>
+                        <p>
                             Delivering high quality healthcare to the community is our core function . We are among
                             the referral hospitals in Kenya previously owned by the Ministry of Medical Services
                             which was transfered to County Governments and serve a large and diverse population of
@@ -37,7 +37,7 @@ const About = () => {
                             and Female ,Maternity and paediatric,Amenity and ICU wards.
                         </p>
 
-                        <a href="/about" className={classes.btn}>Read More</a>
+                        <a href={`/about-us`} className={classes.btn}>Read More</a>
 
                     </div>
                 </div>
