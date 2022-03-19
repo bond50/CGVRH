@@ -18,7 +18,7 @@ export default function Home() {
     const router = useRouter()
     const head = () => (
         <Head>
-            <title>{APP_NAME}</title>
+            <title>{APP_NAME} - we take care of your precious health</title>
             <meta
                 name="description"
                 content="Vihiga county referral hospital blog on our services departments wards core values strategic plan"
