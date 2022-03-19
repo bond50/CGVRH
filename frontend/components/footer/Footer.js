@@ -23,7 +23,6 @@ const Footer = () => {
         {title: 'County website', link: 'https://vihiga.go.ke/'},
         {title: 'County Vacancies', link: 'https://vihiga.go.ke/career.html'},
         {title: 'MOH', link: 'https://www.health.go.ke/'},
-        {title: 'About plan', link: '/about/strategic-plan/'},
     ]
 
 
