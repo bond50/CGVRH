@@ -43,7 +43,7 @@ const FeaturedServices = ({featured}) => {
                                 {renderHTML(service.excerpt)}
                             </div>
                             <Link href={`/general/${service.slug}`}>
-                                <a className={styles.readMore}>Read more </a>
+                                <a className={styles.readMore}>This link has more information about the service</a>
                             </Link>
                         </div>
                     </div>

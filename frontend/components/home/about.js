@@ -37,7 +37,7 @@ const About = () => {
                             and Female ,Maternity and paediatric,Amenity and ICU wards.
                         </p>
 
-                        <a href={`/about-us`} className={classes.btn}>Read More</a>
+                        <a href={`/about-us`} className={classes.btn}>Read more about the facility here </a>
 
                     </div>
                 </div>
