@@ -23,7 +23,7 @@ export default function Home() {
             <title>The {APP_NAME} </title>
             <meta
                 name="description"
-                content={`${APP_NAME} is a level 5 government healthcare facility located in Vihiga County,along Kisumu-Kakamega road,at Mbale Center ,Opposite County Headquarters. VCRH has offered services to the people of Vihiga and its environs for the last ${
+                content={`${APP_NAME} is a level 5 government healthcare facility  found in Western Region of Kenya. We've  been offering  services  for the last ${
                     YearsOperated()} years`}
             />
 
@@ -34,7 +34,8 @@ export default function Home() {
             <meta property="og:title" content={`Home page | ${APP_NAME}`}/>
             <meta
                 property="og:description"
-                content={`${APP_NAME} is a level 5 government healthcare facility located in Vihiga County,along Kisumu-Kakamega road,at Mbale Center ,Opposite County Headquarters.`}
+                content={`${APP_NAME} is a level 5 government healthcare facility  found in Western Region of Kenya. We've  been offering  services  for the last ${
+                    YearsOperated()} years`}
             />
 
             <meta property="og:type" content="webiste"/>
