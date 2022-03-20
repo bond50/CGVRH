@@ -18,7 +18,7 @@ function Hero() {
                 src="/herp3.jpg"
                 layout="fill"
                 loading="eager"
-                alt='Hero'
+                alt='photo of vcrh building'
                 objectFit="cover"
             />
 
