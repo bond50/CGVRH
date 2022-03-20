@@ -20,7 +20,7 @@ export default function Home() {
 
     const head = () => (
         <Head>
-            <title>Welcome to {APP_NAME} </title>
+            <title>The {APP_NAME} </title>
             <meta
                 name="description"
                 content={`${APP_NAME} is a level 5 government healthcare facility located in Vihiga County,along Kisumu-Kakamega road,at Mbale Center ,Opposite County Headquarters. VCRH has offered services to the people of Vihiga and its environs for the last ${
