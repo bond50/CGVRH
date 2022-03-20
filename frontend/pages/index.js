@@ -17,6 +17,7 @@ import FeaturedServices from "../components/home/FeaturedServices";
 export default function Home() {
     const router = useRouter()
 
+
     const head = () => (
         <Head>
             <title>Welcome to {APP_NAME} </title>

@@ -10,7 +10,11 @@ export const APP_NAME = publicRuntimeConfig.APP_NAME;
 
 export const FB_APP_ID = publicRuntimeConfig.FB_APP_ID;
 export const CLOUDINARY_NAME = publicRuntimeConfig.CLOUDINARY_NAME;
-export const FILE_DOWNLOAD_API = publicRuntimeConfig.API_DOWNLOAD_DEVELOPMENT;
+
+
+export const SITE_URL = publicRuntimeConfig.PRODUCTION
+    ? publicRuntimeConfig.SITE_URL
+    : publicRuntimeConfig.SITE_URL_DEV;
 
 export const DOMAIN = publicRuntimeConfig.PRODUCTION
     ? publicRuntimeConfig.DOMAIN_PRODUCTION

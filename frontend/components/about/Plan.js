@@ -26,8 +26,8 @@ const Plan = () => {
         <section className={`section-bg`}>
             <div className="container" data-aos="fade-up">
                 <div className='section-title'>
-                    <h2> VCRH Strategic Plan < /h2>
-                    <p> The Office of the medical superintendent < /p>
+                    <h2> VCRH Strategic Plan </h2>
+                    <p> The Office of the medical superintendent </p>
                 </div>
                 <div className={`row  ${styles.Content}`}>
                     <div className="col-lg-6"
@@ -95,7 +95,7 @@ const Plan = () => {
                     </div>
                 </div>
             </div>
-        < /section>
+        </section>
     );
 };
 

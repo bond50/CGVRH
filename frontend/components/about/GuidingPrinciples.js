@@ -6,7 +6,7 @@ const GuidingPrinciples = () => {
     return <section className={styles.Section}>
         <div className="container">
             <div className="section-title">
-                <h2> Guiding Principles < /h2>
+                <h2> Guiding Principles </h2>
 
             </div>
             <div className="row">

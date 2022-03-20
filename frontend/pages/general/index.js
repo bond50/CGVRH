@@ -2,20 +2,11 @@ import React from 'react';
 import Layout from "../../hoc/Layout";
 import Breadcrumbs from "../../components/reusables/Breadcrumbs";
 import Link from "next/link";
-import useSWR from 'swr'
-import {fetcher} from "../../components/reusables/functions/fetcher";
-import {API} from "../../config";
+import {list} from "../../actions/general";
 
-const Index = () => {
-    const {data, error} = useSWR(`${API}/general`, fetcher)
-    if (!data) {
-        return <div id='preloader'/>
-    }
-    if (error) {
-        return <p>Something went wrong</p>
-    }
 
-    const showList = data && data.map(pg => {
+const Index = ({pages}) => {
+    const showList = pages.map(pg => {
         return <li key={pg._id}>
             <i className="bi bi-chevron-double-right"/>
             <Link href={`/general/${pg.slug}`}>
@@ -38,5 +29,23 @@ const Index = () => {
         </Layout>
     );
 };
+
+
+export const getServerSideProps = async () => {
+
+    return list().then((data) => {
+        if (data.error) {
+            console.log(data.error);
+        } else {
+            return {
+                props: {
+                    pages: data,
+                },
+            };
+        }
+    });
+
+};
+
 
 export default Index;

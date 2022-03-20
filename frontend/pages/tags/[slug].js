@@ -10,13 +10,13 @@ const Tag = ({tag, blogs, query}) => {
     const head = () => (
         <Head>
             <title>
-                {tag.name} | {APP_NAME}
+                {tag.title} | {APP_NAME}
             </title>
-            <meta name="description" content={`${APP_NAME} blog on ${tag.name}`}/>
+            <meta name="description" content={`${APP_NAME} blog on ${tag.title}`}/>
 
             <link rel="canonical" href={`${DOMAIN}/tags/${query.slug}`}/>
-            <meta property="og:title" content={`${tag.name}| ${APP_NAME}`}/>
-            <meta property="og:description" content={`${APP_NAME} blog on ${tag.name}`}/>
+            <meta property="og:title" content={`${tag.title}| ${APP_NAME}`}/>
+            <meta property="og:description" content={`${APP_NAME} blog on ${tag.title}`}/>
             <meta property="og:type" content="webiste"/>
             <meta property="og:url" content={`${DOMAIN}/tags/${query.slug}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
