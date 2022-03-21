@@ -1041,7 +1041,7 @@ section {
 }
 
 .cta {
-    background: linear-gradient(rgba(40, 58, 90, 0.6), rgba(40, 58, 90, 0.9)), url("/herp3.jpg") fixed center center;
+    background: linear-gradient(rgba(40, 58, 90, 0.6), rgba(40, 58, 90, 0.9)), url("/herp1.jpg") fixed center center;
     background-size: cover;
     padding: 120px 0;
 }
