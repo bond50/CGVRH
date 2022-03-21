@@ -22,6 +22,7 @@ const Downloads = () => {
     return (
         <Layout>
             <Breadcrumbs/>
+
             <DownloadList files={files}/>
         </Layout>
     );
