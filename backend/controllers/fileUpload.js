@@ -97,7 +97,7 @@ exports.getDownloads = async (req, res) => {
         const files = await Document
             .find({cloudinaryFolder: 'documents'})
             .sort({createdAt: -1});
-        res.status(200).send({files: files});
+        res.status(200).send(files);
 
     } catch (error) {
         res.status(400).send(error.message);
