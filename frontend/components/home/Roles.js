@@ -1,6 +1,5 @@
 import {Fragment} from "react";
 import Link from "next/link";
-import classes from '../../styles/Roles.module.css'
 
 
 const Roles = () => {
@@ -19,8 +18,8 @@ const Roles = () => {
     const returnList = () => {
         return list.map(({desc}, i) => (
             <Fragment key={i}>
-                <ul className={classes.Ul}>
-                    <li className={`${classes.Li} `}><i className={`bi bi-check2-all ${classes.I}`}/>{desc}</li>
+                <ul>
+                    <li><i className={`bi bi-check2-all`}/>{desc}</li>
                 </ul>
             </Fragment>
         ))
@@ -30,13 +29,13 @@ const Roles = () => {
 
     return (
 
-        <section className={classes.Section}>
+        <section className='home-roles'>
             <div className="container " data-aos='slide-up'>
 
                 <div className={`section-title`}>
                     <h2>our roles</h2>
                 </div>
-                <div className={`row ${classes.RowContent}`}>
+                <div className={`row row-content`}>
                     <div className="col-lg-6">
                         <p>VCRH plays its roles in the county by providing a wide range of health services in
                             partnership
@@ -55,7 +54,7 @@ const Roles = () => {
                         <p>We also implement health policy at facility level and maintain quality standards and Provide
                             technical support to sub-county hospitals and health centers.</p>
                         <Link href={`/about/roles`}>
-                            <a className={classes.Button}>Click to see more</a>
+                            <a className='btn'>Click to see more</a>
                         </Link>
                     </div>
                 </div>

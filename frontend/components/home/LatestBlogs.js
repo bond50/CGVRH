@@ -1,6 +1,4 @@
-import styles from "../../styles/Util.module.css";
 import Link from "next/link";
-import classes from '../../styles/RecenntFromBlog.module.css'
 import {API} from "../../config";
 import moment from "moment";
 import renderHTML from "react-render-html";
@@ -21,8 +19,8 @@ const LatestBlogs = () => {
     const showRecent = () => {
         return blogs && blogs.map((blog) => {
             return <div className="col-lg-3" key={blog._id}>
-                <div className={classes.PostBox}>
-                    <div className={classes.PostImg}>
+                <div className='post-box'>
+                    <div className='post-image'>
                         <Image
                             width={2560}
                             height={1600}
@@ -30,11 +28,11 @@ const LatestBlogs = () => {
                             className="img-fluid"
                             alt={blog.title}/>
                     </div>
-                    <span className={classes.PostDate}> {moment(blog.updatedAt).fromNow()}</span>
-                    <h3 className={classes.PostTitle}>{blog.title.toLowerCase()}</h3>
+                    <span className='post-date'> {moment(blog.updatedAt).fromNow()}</span>
+                    <h3 className='post-title'>{blog.title.toLowerCase()}</h3>
                     {renderHTML(blog.excerpt.length >= 160 ? `${blog.excerpt.substring(0, 80)}...` : blog.excerpt)}
                     <Link href={`/blogs/${blog.slug}`}>
-                        <a className={`${classes.Btn} stretched-link mt-auto`}>
+                        <a className={`btnstretched-link mt-auto`}>
                             <span>Read More</span><i
                             className="bi bi-arrow-right"/>
                         </a>
@@ -46,7 +44,7 @@ const LatestBlogs = () => {
 
 
     return (
-        <section className={`${styles.Section} section-bg`}>
+        <section className={`section-bg home-blog`}>
             <div className="container" data-aos="fade-up">
                 <header className={'section-title'}>
                     <h2>Recent News / Events</h2>

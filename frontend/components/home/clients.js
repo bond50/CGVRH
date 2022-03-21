@@ -6,7 +6,6 @@ const Clients = () => {
         {
             name: 'NHIF and community based organizations (CBOs).',
             src: '/partners/nhif1.png',
-            to: 'http://www.nhif.or.ke/healthinsurance/'
         },
         {name: 'MOH', src: '/partners/moh1.png',},
         {name: 'KEMRI/Welcome Trust', src: '/partners/kemri.png',},
@@ -19,15 +18,18 @@ const Clients = () => {
             <div className="container">
                 <div className="row" data-aos="zoom-in">
                     {list.map((item, i) => {
-                        return <div key={i}
-                                    className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-
-                            <Image src={item.src} height={40} width={40} className="img-fluid" alt={item.name}
-                                   title={item.name}/>
+                        return <div
+                            key={i}
+                            className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+                            <Image
+                                src={item.src}
+                                height={70}
+                                width={70}
+                                className="img-fluid"
+                                alt={item.name}
+                                title={item.name}/>
                         </div>
                     })}
-
-
                 </div>
 
             </div>

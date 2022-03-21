@@ -917,12 +917,12 @@ section {
 }
 
 .clients {
-    padding: 0;
+    padding: 12px 0;
     text-align: center;
 }
 
 .clients img {
-    max-width: 35%;
+    max-width: 60%;
     transition: all 0.4s ease-in-out;
     display: inline-block;
     padding: 15px 0;
@@ -1011,4 +1011,276 @@ section {
 .organogram .accordion-body {
     margin-bottom: 0;
     padding: 0 1.25rem;
+}
+
+.homepage-about .content p:last-child {
+    margin-bottom: 0;
+}
+
+.homepage-about .btn {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 4px;
+    transition: 0.3s;
+    line-height: 1;
+    color: #1bbd36;
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+    margin-top: 6px;
+    border: 2px solid #1bbd36;
+}
+
+.homepage-about .btn:hover {
+    background: #52e052;
+    color: #fff;
+    text-decoration: none;
+}
+
+.cta {
+    background: linear-gradient(rgba(40, 58, 90, 0.6), rgba(40, 58, 90, 0.9)), url("/herp3.jpg") fixed center center;
+    background-size: cover;
+    padding: 120px 0;
+}
+
+.cta h3 {
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.cta p {
+    color: #fff;
+}
+
+.cta p span {
+    font-weight: 900;
+    letter-spacing: 1px;
+    font-size: 20px;
+
+    color: #ffa500;
+
+}
+
+.btn {
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 40px;
+    border-radius: 50px;
+    transition: 0.5s;
+    margin: 10px;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.btn:hover {
+    background: #1bbd36;
+    border: 2px solid #1bbd36;
+    color: #fff;
+}
+
+@media (max-width: 1024px) {
+    .cta {
+        background-attachment: scroll;
+    }
+}
+
+@media (min-width: 769px) {
+    .btnContainer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+
+.featured {
+    background: #e9fbe9;
+    /*background: #1bbd36;*/
+}
+
+
+.featured .section title h2 {
+    color: #178217;
+}
+
+.featured .section title h2::after {
+    background: #178217;
+}
+
+.featured .card {
+    /*background: #00458f;*/
+    /*border-color: #00458f; */
+
+    background: #178217;
+    border-color: #178217;
+    border-radius: 10px;
+    margin: 0 15px;
+    padding: 15px 0;
+    text-align: center;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+    height: 100%;
+}
+
+@media (max-width: 991px) {
+    .featured .card {
+        margin: 0;
+    }
+}
+
+/*.card:hover {*/
+/*    background:  #52e052;*/
+/*    border-color:  #52e052;*/
+/*}*/
+
+.featured .card i {
+    font-size: 48px;
+    padding-top: 15px;
+    color: #ffffff;
+}
+
+.featured .card h3 {
+    text-transform: capitalize;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.featured .card p {
+    font-size: 15px;
+    color: #ffffff;
+}
+
+
+.home-blog .post-box {
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 0 10px 40px 10px;
+    background: #fff;
+    box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);
+    transition: all 0.3s ease-in-out;
+
+}
+
+.home-blog .post-image {
+    overflow: hidden;
+    margin: -30px -30px 15px -30px;
+    position: relative;
+}
+
+.home-blog .post-image img {
+    transition: 0.5s;
+}
+
+.home-blog .post-date {
+    font-size: 16px;
+    font-weight: 600;
+    color: #09254b;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.home-blog .post-title {
+    font-size: 18px;
+    color: #294a70;
+    font-weight: 700;
+    margin-bottom: 9px;
+    text-transform: capitalize;
+    position: relative;
+    transition: 0.3s;
+}
+
+.home-blog .btn {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    line-height: 1;
+    color: #1bbd36;
+    transition: 0.3s;
+}
+
+.home-blog .btn i {
+    line-height: 0;
+    margin-left: 4px;
+    font-size: 18px;
+    color: #1bbd36;
+}
+
+.home-blog .post-box:hover .PostTitle {
+    color: #09254b;
+}
+
+.home-blog .post-box:hover .PostImg img {
+    transform: rotate(6deg) scale(1.2);
+}
+
+
+.home-roles {
+    color: #0C163B;
+    background: #f6f9ff;
+    position: relative;
+
+}
+
+.home-roles .row-content {
+    padding: 20px;
+}
+
+.home-roles .row-content p:last-child {
+    margin-bottom: 0;
+
+}
+
+.home-roles .row-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.home-roles .row-content ul li {
+    padding-left: 28px;
+    position: relative;
+    color: #0C163B;
+}
+
+.home-roles .row-content ul li + li {
+    margin-top: 10px;
+}
+
+.home-roles .row-content ul i {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 20px;
+    color: #1bbd36;
+    line-height: 1;
+
+}
+
+.home-roles .row-content ul .btn {
+    font-family: "Raleway", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 5px;
+    transition: 0.3s;
+    line-height: 1;
+    color: #1bbd36;
+    -webkit-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+    margin-top: 6px;
+    border: 2px solid #1bbd36;
+}
+
+.home-roles .row-content ul .btn:hover {
+    background-color: #1bbd36;
+    color: #fff;
+    text-decoration: none;
 }

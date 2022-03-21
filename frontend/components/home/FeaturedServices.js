@@ -1,4 +1,3 @@
-import styles from "../../styles/featured-services.module.css";
 import renderHTML from "react-render-html";
 import Link from "next/link";
 import {API} from "../../config";
@@ -44,18 +43,20 @@ const FeaturedServices = () => {
     function returnColumns() {
         return services && services.map(service => {
                 return <div className="col-lg-4 mb-4" key={service._id}>
-                    <div className={styles.card} data-aos="zoom-in" data-aos-delay="100">
-                        <i className="bi bi-gear"/>
-                        <div className="card-body">
-                            <h3 className="card-title">{service.title.toLowerCase()}</h3>
-                            <div className='card-text'>
-                                {renderHTML(service.excerpt)}
+                    <Link href={`/general/${service.slug}`}>
+                        <div className={'card'} data-aos="zoom-in" data-aos-delay="100">
+                            <i className="bi bi-gear"/>
+                            <div className="card-body">
+                                <h3 className="card-title">{service.title.toLowerCase()}</h3>
+                                <div className='card-text'>
+                                    {renderHTML(service.excerpt)}
+                                </div>
+
+                                {/*<a className='read-more'>Read more about the service here</a>*/}
+
                             </div>
-                            <Link href={`/general/${service.slug}`}>
-                                <a className={styles.readMore}>This link has more information about the service</a>
-                            </Link>
                         </div>
-                    </div>
+                    </Link>
                 </div>
 
             }
@@ -64,9 +65,9 @@ const FeaturedServices = () => {
 
     return (
 
-        <section className={styles.section}>
+        <section className='featured'>
             <div className="container">
-                <div className={`section-title ${styles.SectionTitle}`} data-aos="zoom-out" data-aos-once='true'>
+                <div className={`section-title`} data-aos="zoom-out" data-aos-once='true'>
                     <h2>Featured Services</h2>
                 </div>
 

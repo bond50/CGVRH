@@ -1,15 +1,14 @@
 import React from 'react';
-import classes from '../../styles/About.module.css'
 import {YearsOperated} from "../years-operated/YearsOperated";
 
 const About = () => {
     return (
-        <section id='about'>
+        <section id='about' className='homepage-about'>
             <div className="container" data-aos="fade-up">
                 <div className="section-title">
                     <h2>About Us</h2>
                 </div>
-                <div className={`row ${classes.content}`}>
+                <div className={`row content`}>
                     <div className="col-lg-6 pt-4 pt-lg-0">
                         <p>
                             Vihiga County Referral Hospital <span>(VCRH)</span> is a level 5 government healthcare
@@ -37,7 +36,7 @@ const About = () => {
                             and Female ,Maternity and paediatric,Amenity and ICU wards.
                         </p>
 
-                        <a href={`/about-us`} className={classes.btn}>Read more about the facility here </a>
+                        <a href={`/about-us`} className='btn'>Read more about the facility here </a>
 
                     </div>
                 </div>
