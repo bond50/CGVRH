@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Image from '../../components/reusables/lazy/Image'
 import React from "react";
 import {APP_NAME} from "../../config";
 
