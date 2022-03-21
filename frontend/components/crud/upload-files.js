@@ -2,16 +2,10 @@ import React from 'react';
 import UploadForm from "../../components/reusables/forms/upload-form";
 import useUpload from "../../hooks/useUpload";
 import SideCatTags from "../../components/reusables/forms/side-cat-tags";
-import {isAuth} from "../../actions/auth";
 
 
 const UploadFiles = () => {
-    let endpoint
-    if (isAuth() && isAuth().role === 1) {
-        endpoint = `/files-upload`
-    } else if (isAuth() && isAuth().role === 0) {
-        endpoint = `/user/files-upload`
-    }
+    const endpoint = `/files-upload`
 
 
     const {

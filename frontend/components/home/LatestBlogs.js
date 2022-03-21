@@ -32,7 +32,7 @@ const LatestBlogs = () => {
                     <h3 className='post-title'>{blog.title.toLowerCase()}</h3>
                     {renderHTML(blog.excerpt.length >= 160 ? `${blog.excerpt.substring(0, 80)}...` : blog.excerpt)}
                     <Link href={`/blogs/${blog.slug}`}>
-                        <a className={`btnstretched-link mt-auto`}>
+                        <a className={`btn stretched-link mt-auto`}>
                             <span>Read More</span><i
                             className="bi bi-arrow-right"/>
                         </a>

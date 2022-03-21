@@ -1,3 +1,5 @@
+import {APP_NAME} from "../../config";
+
 const Cta = () => {
     return (
         <section className='cta'>
@@ -6,7 +8,7 @@ const Cta = () => {
                     <div className="col-lg-9 text-center text-lg-start">
                         <h3>In an emergency? Need help now?
                         </h3>
-                        <p>VCRH Emergency unit operates on 24/7 basis. In case of an emergency tap Call Now button
+                        <p>{APP_NAME} Emergency unit operates on 24/7 basis. In case of an emergency tap Call Now button
                             to speak to emergency team. If the button is not working,
                             call <span>+254 723103564</span> now
                         </p>

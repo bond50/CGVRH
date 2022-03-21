@@ -1,5 +1,6 @@
 import React from 'react';
 import {YearsOperated} from "../years-operated/YearsOperated";
+import Link from "next/link";
 
 const About = () => {
     return (
@@ -35,9 +36,10 @@ const About = () => {
                             It has 164 bed capacity with 108% bed occupancy with 6 wards which include general Male
                             and Female ,Maternity and paediatric,Amenity and ICU wards.
                         </p>
-
-                        <a href={`/about-us`} className='btn'>Read more about the facility here </a>
-
+                        <Link href={`/about-us`}>
+                            <a className='btn'>Read more about the facility here </a>
+                        </Link>
+                        
                     </div>
                 </div>
             </div>
