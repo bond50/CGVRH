@@ -75,7 +75,7 @@ exports.multipleFileUpload = async (req, res) => {
             );
 
         })
-        await fs.rmdirSync('uploads', {recursive: true});
+        await fs.rm('uploads', {recursive: true});
     })
 }
 
