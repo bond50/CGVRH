@@ -3,16 +3,22 @@ import classes from '../../../styles/Board.module.css'
 
 import Link from 'next/link'
 import {API} from "../../../config";
-import Image from "../../reusables/lazy/Image";
+import Image from "next/image";
 
 const Board = ({members}) => {
+
     const renderMember = () => {
         return members && members.map((m, i) => {
+            const imgSrc = `${API}/user/photo/${m.username}`
+            const myLoader = () => {
+                return imgSrc;
+            }
             return <div className="col-lg-3 d-flex align-items-stretch justify-content-center" key={i}>
                 <div className={classes.Member}>
                     <div className={classes.MemberImg}>
                         <Link href={`/profile/${m.username}`}>
-                            <Image src={`${API}/user/photo/${m.username}`}
+                            <Image src={imgSrc}
+                                   loader={myLoader}
                                    width={100}
                                    height={100}
                                    layout="responsive"
@@ -43,7 +49,7 @@ const Board = ({members}) => {
 
 
     return <section className={`section-bg`}>
-        <div className="container" data-aos="fade-up" >
+        <div className="container" data-aos="fade-up">
             <div className="row" data-aos="fade-up" data-aos-delay='100'>
                 {renderMember()}
             </div>

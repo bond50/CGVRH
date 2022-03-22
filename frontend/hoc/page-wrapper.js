@@ -11,6 +11,12 @@ import classes from '../styles/page-wrapper.module.css'
 const PageWrapper = ({related, page}) => {
     const router = useRouter()
 
+    const imgSrc = `${API}/general/photo/${page.slug}`
+    const myLoader = () => {
+        return imgSrc;
+    }
+
+
     return (
         <>
             {/*<GeneralPageHeader*/}
@@ -40,10 +46,11 @@ const PageWrapper = ({related, page}) => {
                                 </div>
                                 <div className="col-lg-4 text-center order-1 order-lg-2">
                                     <Image
+                                        loader={myLoader}
                                         className="img-fluid"
                                         width={1200}
                                         height={700}
-                                        src={`${API}/general/photo/${page.slug}`}
+                                        src={imgSrc}
                                         alt={page.title}
                                     />
                                 </div>
