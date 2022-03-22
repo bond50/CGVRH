@@ -534,7 +534,7 @@ section {
     font-size: 24px;
 }
 
-#home-hero .btn-get-started {
+#home-hero .btn-get-started, .upload-btn {
     font-family: "Raleway", sans-serif;
     text-transform: uppercase;
     font-weight: 500;
@@ -549,7 +549,7 @@ section {
     background: #1bbd36;;
 }
 
-#home-hero .btn-get-started:hover {
+#home-hero .btn-get-started:hover, .upload-btn {
     background: #009970;
     border: 2px solid #009970;
 }
@@ -980,12 +980,13 @@ section {
 }
 
 
-.organogram .accordion-list {
-    padding: 0 100px 60px 100px;
-}
+/*.organogram .accordion-list {*/
+/*    padding: 0 100px 60px 100px;*/
+/*}*/
 
 .organogram .accordion-button {
     box-shadow: none;
+    width: 100% !important;
     background: #fff;
     color: #37517e;
     font-family: "Poppins", sans-serif;

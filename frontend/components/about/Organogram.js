@@ -54,31 +54,26 @@ const Organogram = () => {
         {
             eventKey: "1",
             title: "Medical Superintendent",
-            delay: '100',
             comp: <List list={medsupList}/>
         },
         {
             eventKey: "2",
             title: "Deputy Medical Superintendent",
-            delay: '200',
             comp: <List list={dmedsupList}/>
         },
         {
             eventKey: "3",
             title: "Nursing officer in charge",
-            delay: '300',
             comp: <List list={nursingOfficer}/>
         },
         {
             eventKey: "4",
             title: "Hospital Administrator",
-            delay: '400',
             comp: <List list={admin}/>
         },
         {
             eventKey: "5",
             title: "Head of clinical services",
-            delay: '500',
             comp: <List list={co}/>
         },
 
@@ -102,10 +97,10 @@ const Organogram = () => {
                 </div>
 
 
-                <div className="accordion-list">
+                <div className="accordion-list" data-aos="fade-up">
                     {list.map(item => (
                         <Accordion defaultActiveKey="1" key={item.eventKey}>
-                            <Accordion.Item eventKey={item.eventKey} data-aos="fade-up" data-aos-delay={item.delay}>
+                            <Accordion.Item eventKey={item.eventKey}>
                                 <Accordion.Header><span>{`0${item.eventKey}`}</span>{item.title}
                                 </Accordion.Header>
                                 <Accordion.Body>

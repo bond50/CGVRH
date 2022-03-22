@@ -17,7 +17,7 @@ const ProfileUpdateForm = ({
     return (
         <form onSubmit={handleSubmit}>
             <div className="form-group mb-3">
-                <label className="btn btn-outline-primary">
+                <label className="btn btn-outline-primary ">
                     Profile photo
                     <input
                         name='photo'
