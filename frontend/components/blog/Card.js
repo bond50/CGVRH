@@ -54,7 +54,7 @@ const Card = ({blog, single, servicePage}) => {
 
     let imgSrc = `${API}/blog/photo/${blog.slug}`
     if (servicePage) {
-        imgSrc = `${API}/general/photo/${blog.slug}`
+        imgSrc = `${API}/blog/photo/${blog.slug}`
     }
 
 
