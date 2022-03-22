@@ -15,7 +15,7 @@ function Hero() {
 
             </div>
             <Image
-                src="/herp3.jpg"
+                src="/herp.jpg"
                 layout="fill"
                 loading="eager"
                 alt='photo of vcrh building'
