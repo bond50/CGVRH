@@ -4,7 +4,7 @@ import renderHTML from 'react-render-html';
 import moment from 'moment';
 import {API} from '../../config';
 import classes from '../../styles/BlogCard.module.css'
-import ImageFallback from "../reusables/ImageFallback";
+import Image from "next/image";
 
 
 const Card = ({blog, single, servicePage}) => {
@@ -55,6 +55,7 @@ const Card = ({blog, single, servicePage}) => {
     let imgSrc = `${API}/blog/photo/${blog.slug}`
     if (servicePage) {
         imgSrc = `${API}/blog/photo/${blog.slug}`
+
     }
 
 
@@ -62,13 +63,13 @@ const Card = ({blog, single, servicePage}) => {
         <article className={attachedClass}>
             <Fragment>
                 <div className={classes.Image}>
-                    <ImageFallback
+                    <Image
                         className="img-fluid"
                         width={1200}
                         height={700}
                         src={imgSrc}
                         alt={blog.title}
-                     
+
                     />
 
                 </div>
