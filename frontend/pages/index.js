@@ -21,6 +21,7 @@ export default function Home() {
     const head = () => (
         <Head>
             <title>The {APP_NAME} </title>
+            <meta name="google-site-verification" content="Kcrylmv8RWsNALOsmjyga_p6uCldee4CwnA0aMCMym4" />
             <meta
                 name="description"
                 content={`${APP_NAME} is a level 5 government healthcare facility located in Western part of Kenya.We've  been offering  services  for the last ${
