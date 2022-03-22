@@ -68,7 +68,7 @@ const Card = ({blog, single, servicePage}) => {
                         height={700}
                         src={imgSrc}
                         alt={blog.title}
-                        fallbackSrc={`/fallback/services.jpg`}
+                     
                     />
 
                 </div>
