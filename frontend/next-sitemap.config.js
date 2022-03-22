@@ -1,4 +1,4 @@
-const siteUrl = "https://vihigahospital.go.ke/";
+const siteUrl = "https://vihigahospital.go.ke";
 
 module.exports = {
 
@@ -14,7 +14,7 @@ module.exports = {
             {userAgent: "*", allow: "/"},
         ],
         additionalSitemaps: [
-            `${siteUrl}/sitemap.xml`,
+     
             `${siteUrl}/general-sitemap.xml`,
             `${siteUrl}/categories-sitemap.xml`,
             `${siteUrl}/tags-sitemap.xml`,
