@@ -110,24 +110,22 @@
     font-weight: bold;
 }
 
-.Content img{
+.Content img {
     max-width: 100%;
-   height: auto;
+    height: auto;
     object-fit: cover;
 }
 
 
-
-.Content blockquote  {
-     overflow: hidden;
-    background-color: #f1f6fd;
-    padding: 60px;
+.Content blockquote {
+    overflow: hidden;
+    background-color: #e9fbe9;
+    padding: 20px;
     position: relative;
     /*margin: 20px 0;*/
-    color: red;
+    color: black;
     line-height: 1.6;
     margin-bottom: 0;
-    font-style: italic;
     font-weight: 500;
     font-size: 15px;
 }
@@ -140,7 +138,7 @@
     top: 0;
     bottom: 0;
     width: 3px;
-    background-color: #f4a024;
+    background-color: #52e052;
     margin-bottom: 10px;
 }
 

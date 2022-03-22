@@ -27,8 +27,10 @@
 
 .Details h1, .Details h2, .Details h3, .Details h4, .Details h5, .Details h6 {
     margin-bottom: 20px;
+    font-size: 22px;
     color: #2c4964;
 }
+
 
 .Details h1::first-letter, .Details h2::first-letter, .Details h3::first-letter, .Details h4::first-letter, .Details h5::first-letter, .Details h6::first-letter {
     text-transform: uppercase;
@@ -38,8 +40,6 @@
 .Details h1 {
     font-weight: 600;
     font-size: 22px;
-
-
 }
 
 
