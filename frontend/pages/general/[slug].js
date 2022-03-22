@@ -9,7 +9,6 @@ import Breadcrumbs from "../../components/reusables/Breadcrumbs";
 
 const Slug = ({service, query}) => {
 
-    console.log(service)
     const [related, setRelated] = useState([])
 
     const loadRelated = () => {

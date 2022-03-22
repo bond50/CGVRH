@@ -2,10 +2,11 @@ import {Nav} from "react-bootstrap";
 import Link from "next/link";
 import React from "react";
 import renderHTML from "react-render-html";
-import ImageFallback from "../components/reusables/ImageFallback";
+import Image from 'next/image'
 import {API} from "../config";
 import {useRouter} from "next/router";
 import classes from '../styles/page-wrapper.module.css'
+
 
 const PageWrapper = ({related, page}) => {
     const router = useRouter()
@@ -38,13 +39,12 @@ const PageWrapper = ({related, page}) => {
                                     {renderHTML(page.body)}
                                 </div>
                                 <div className="col-lg-4 text-center order-1 order-lg-2">
-                                    <ImageFallback
+                                    <Image
                                         className="img-fluid"
                                         width={1200}
                                         height={700}
                                         src={`${API}/general/photo/${page.slug}`}
                                         alt={page.title}
-                                        fallbackSrc={`/fallback/services.jpg`}
                                     />
                                 </div>
                             </div>
