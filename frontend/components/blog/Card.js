@@ -55,7 +55,9 @@ const Card = ({blog, single, servicePage}) => {
     let imgSrc = `${API}/blog/photo/${blog.slug}`
     if (servicePage) {
         imgSrc = `${API}/blog/photo/${blog.slug}`
-
+    }
+    const myLoader = () => {
+        return imgSrc;
     }
 
 
@@ -64,6 +66,7 @@ const Card = ({blog, single, servicePage}) => {
             <Fragment>
                 <div className={classes.Image}>
                     <Image
+                        loader={myLoader}
                         className="img-fluid"
                         width={1200}
                         height={700}
