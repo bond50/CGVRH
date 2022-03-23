@@ -6,7 +6,7 @@ import renderHTML from "react-render-html";
 import Link from "next/link";
 
 
-function BlogCarousel({blogs, home}) {
+function BlogCarousel({blogs}) {
     const [index, setIndex] = useState(0);
     const [nextIcon] = useState(<span className="carousel-control-next-icon bi bi-chevron-right"
                                       aria-hidden="true"/>);

@@ -72,7 +72,6 @@ const Card = ({blog, single, servicePage}) => {
                         height={700}
                         src={imgSrc}
                         alt={blog.title}
-
                     />
 
                 </div>
