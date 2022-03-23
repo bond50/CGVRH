@@ -12,16 +12,20 @@ const LatestBlogs = () => {
         wrong..Please
         contact Vihiga county referral hospital ICT team for assistance.Thank you </p></div>
     if (!blogs) return <div className='preloader'/>
-
-    console.log(blogs)
-
-
     const showRecent = () => {
+
         return blogs && blogs.map((blog) => {
+            const photoLink = `${API}/blog/photo/${blog.slug}`
+            const myLoader = () => {
+                return photoLink;
+            }
+
+
             return <div className="col-lg-3" key={blog._id}>
                 <div className='post-box'>
                     <div className='post-image'>
                         <Image
+                            loader={myLoader}
                             width={2560}
                             height={1600}
                             src={`${API}/blog/photo/${blog.slug}`}
