@@ -19,9 +19,15 @@ function BlogCarousel({blogs, home}) {
 
     const renderCarouselItem = () => {
         return blogs && blogs.map(d => {
+            const myLoader = () => {
+                return photoLink;
+            }
+            const photoLink = `${API}/blog/photo/${d.slug}`
+
             return <Carousel.Item key={d._id} className='carousel-item'>
                 <Image
-                    src={home ? `${API}/general/photo/${d.slug}` : `${API}/blog/photo/${d.slug}`}
+                    loader={myLoader}
+                    src={photoLink}
                     layout="fill"
                     objectFit="cover"
                 />
@@ -29,7 +35,7 @@ function BlogCarousel({blogs, home}) {
                     <div className="carousel-content animate__animated animate__fadeInUp">
                         <h2 className="animate__animated animate__fadeInDown">{d.title.toLowerCase()}</h2>
                         {renderHTML(d.excerpt)}
-                        <Link href={home ? ` /general/${d.slug}` : `/blogs/${d.slug}`}>
+                        <Link href={`/blogs/${d.slug}`}>
                             <a className="btn-get-started">Read
                                 More
                             </a>
