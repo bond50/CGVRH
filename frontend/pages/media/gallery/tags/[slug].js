@@ -13,7 +13,7 @@ const Slug = () => {
 
     const {data, error} = useSWR(
         [
-            `${API}/gallery-data/${router.router.slug}`,
+            `${API}/gallery-data/${router.query.slug}`,
         ],
         fetcher,
         {
