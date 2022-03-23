@@ -10,9 +10,10 @@ import Layout from "../../../../hoc/Layout";
 const Slug = () => {
     const router = useRouter()
 
+
     const {data, error} = useSWR(
         [
-            `${API}/gallery-tag/${router.query.slug}`,
+            `${API}/gallery-data/${router.router.slug}`,
         ],
         fetcher,
         {

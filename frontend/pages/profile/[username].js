@@ -16,18 +16,18 @@ const Userprofile = ({user, blogs, query}) => {
             <title>
                 {user.username} | {APP_NAME}
             </title>
-            <meta name="description" content={`Blogs by ${user.username}`}/>
+            <meta name="description" content={`Articles  by ${user.username}`}/>
             <link rel="canonical" href={`${DOMAIN}/profile/${query.username}`}/>
             <meta property="og:title" content={`${user.username}| ${APP_NAME}`}/>
-            <meta property="og:description" content={`Blogs by ${user.username}`}/>
+            <meta property="og:description" content={`Articles by ${user.username}`}/>
             <meta property="og:type" content="webiste"/>
             <meta property="og:url" content={`${DOMAIN}/profile/${query.username}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
 
             <meta property="og:image"
-                  content={`https://res.cloudinary.com/dwtcilinl/image/upload/v1622297993/Gallery/yffhwkqackates3w0hte.png`}/>
+                  content={`/herp.jpg`}/>
             <meta property="og:image:secure_url"
-                  content={`https://res.cloudinary.com/dwtcilinl/image/upload/v1622297993/Gallery/yffhwkqackates3w0hte.png`}/>
+                  content={`/herp.jpg`}/>
             <meta property="og:image:type" content="image/png"/>
             <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
 

@@ -166,7 +166,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 0 10px 30px;
+    padding: 0 0 0px 15px;
     color: #36343a;
     transition: 0.3s;
     font-size: 13px;
@@ -211,6 +211,7 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 99;
     opacity: 0;
     visibility: hidden;
+
     background: #fff;
     box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
     transition: 0.3s;
@@ -222,8 +223,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar .dropdown ul a {
     padding: 10px 20px;
-    text-transform: none;
     font-weight: 500;
+}
+
+.navbar .dropdown ul a {
+    text-transform: capitalize;
 }
 
 .navbar .dropdown ul a i {
@@ -231,7 +235,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
-    color: #009970;
+    color: #1bbd36;
 }
 
 .navbar .dropdown:hover > ul {
@@ -923,6 +927,7 @@ section {
 
 #clients img {
     max-width: 45%;
+    object-fit: contain;
     transition: all 0.4s ease-in-out;
     display: inline-block;
     padding: 15px 0;
@@ -1042,7 +1047,7 @@ section {
 }
 
 .cta {
-    background: linear-gradient(rgba(40, 58, 90, 0.6), rgba(40, 58, 90, 0.9)), url("/herp1.jpg") fixed center center;
+    background: linear-gradient(rgba(40, 58, 90, 0.6), rgba(40, 58, 90, 0.9)), url("/herp.jpg") fixed center center;
     background-size: cover;
     padding: 120px 0;
 }
@@ -1197,7 +1202,7 @@ section {
     transition: 0.3s;
 }
 
-.home-blog .btn {
+.home-blog .l-btn {
     display: flex;
     align-items: center;
     font-weight: 600;
@@ -1206,7 +1211,7 @@ section {
     transition: 0.3s;
 }
 
-.home-blog .btn i {
+.home-blog .l-btn i {
     line-height: 0;
     margin-left: 4px;
     font-size: 18px;

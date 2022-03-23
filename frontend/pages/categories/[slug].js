@@ -20,9 +20,9 @@ const Category = ({category, blogs, query}) => {
             <meta property="og:url" content={`${DOMAIN}/categories/${query.slug}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
             <meta property="og:image"
-                  content={`https://res.cloudinary.com/dwtcilinl/image/upload/v1622297993/Gallery/yffhwkqackates3w0hte.png`}/>
+                  content={`/herp.jpg`}/>
             <meta property="og:image:secure_url"
-                  content={`https://res.cloudinary.com/dwtcilinl/image/upload/v1622297993/Gallery/yffhwkqackates3w0hte.png`}/>
+                  content={`/herp.jpg`}/>
             <meta property="og:image:type" content="image/png"/>
             <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
         </Head>

@@ -10,7 +10,7 @@ const About = () => {
                     <h2>About Us</h2>
                 </div>
                 <div className={`row content`}>
-                    <div className="col-lg-6 pt-4 pt-lg-0">
+                    <div className="col-lg-6  pt-0">
                         <p>
                             Vihiga County Referral Hospital <span>(VCRH)</span> is a level 5 government healthcare
                             facility located in
@@ -24,7 +24,7 @@ const About = () => {
                         </p>
 
                     </div>
-                    <div className="col-lg-6 pt-4 pt-lg-0">
+                    <div className="col-lg-6  pt-0">
                         <p>
                             Delivering high quality healthcare to the community is our core function . We are among
                             the referral hospitals in Kenya previously owned by the Ministry of Medical Services
@@ -39,7 +39,7 @@ const About = () => {
                         <Link href={`/about-us`}>
                             <a className='btn'>Read more about the facility here </a>
                         </Link>
-                        
+
                     </div>
                 </div>
             </div>
