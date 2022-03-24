@@ -4,14 +4,14 @@ import Link from "next/link";
 
 const About = () => {
     return (
-        <section id='about' className='homepage-about'>
+        <section id='homepage-about' className='homepage-about'>
             <div className="container" data-aos="fade-up">
-                <div className="section-title">
+                <div className="section-title pb-sm-0">
                     <h2>About Us</h2>
                 </div>
-                <div className={`row content`}>
-                    <div className="col-lg-6  pt-0">
-                        <p>
+                <div className={`row content `}>
+                    <div className="col-lg-6  ">
+                        <p className='pt-0 mt-0'>
                             Vihiga County Referral Hospital <span>(VCRH)</span> is a level 5 government healthcare
                             facility located in
                             Vihiga County,along

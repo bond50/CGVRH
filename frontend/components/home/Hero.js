@@ -9,7 +9,7 @@ function Hero() {
             <div className="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
                 <h1> {APP_NAME}</h1>
                 <h2>We take care of your precious health</h2>
-                <Link href={"#about"}>
+                <Link href={"#homepage-about"}>
                     <a className="btn-get-started ">Get Started</a>
                 </Link>
 
@@ -21,7 +21,6 @@ function Hero() {
                 alt='photo of vcrh building'
                 objectFit="cover"
             />
-
         </section>
 
     );
