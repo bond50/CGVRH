@@ -38,7 +38,7 @@ const UseCat = (fetchAllEndpoint, singleEndpoint) => {
                     onDoubleClick={() => deleteConfirm(c.slug)}
                     title="Double click to delete"
                     key={i}
-                    className="btn btn-outline-primary mx-1 mt-3"
+                    className="btn btn-outline-primary mx-1 mt-3 "
                 >
                     {c.name}
                 </button>
@@ -122,7 +122,6 @@ const UseCat = (fetchAllEndpoint, singleEndpoint) => {
     const mouseMoveHandler = (e) => {
         setValues({...values, error: false, success: false, removed: ""});
     };
-
 
 
     return {

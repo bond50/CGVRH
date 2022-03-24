@@ -989,7 +989,7 @@ section {
 /*    padding: 0 100px 60px 100px;*/
 /*}*/
 
-.organogram .accordion-button {
+.organogram .accordion-button, .laboratory .accordion-button {
     box-shadow: none;
     width: 100% !important;
     background: #fff;
@@ -1003,18 +1003,18 @@ section {
 }
 
 
-.organogram .accordion-list span {
+.organogram .accordion-list span, .laboratory .accordion-list span {
     color: #37517e;
     font-weight: 600;
     font-size: 18px;
     padding-right: 10px;
 }
 
-.organogram .accordion-button::after {
+.organogram .accordion-button::after, .laboratory .accordion-button::after {
     font-size: 24px;
 }
 
-.organogram .accordion-body {
+.organogram .accordion-body, .laboratory .accordion-body {
     margin-bottom: 0;
     padding: 0 1.25rem;
 }
@@ -1071,21 +1071,23 @@ section {
 
 }
 
-.btn {
+.customBtn {
     font-weight: 500;
-    font-size: 16px;
+    font-size: 13px;
     letter-spacing: 1px;
     display: inline-block;
     padding: 12px 40px;
     border-radius: 50px;
     transition: 0.5s;
     margin: 10px;
-    border: 2px solid #fff;
-    color: #fff;
+    border: 2px solid #1bbd36;
+    color: #000000;
+
+
 }
 
-.btn:hover {
-    background: #1bbd36;
+.customBtn:hover {
+
     border: 2px solid #1bbd36;
     color: #fff;
 }
