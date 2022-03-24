@@ -61,7 +61,7 @@ const BlogNav = () => {
 
 
             </ul>
-            <i className={`${closed ? 'bi bi-x' : 'bi bi-list'} mobile-nav-toggle`} onClick={toggleClosed}/>
+            <i className={`${closed ? 'bi bi-x' : 'bi bi-list text-black'} mobile-nav-toggle`} onClick={toggleClosed}/>
         </nav>
     );
 };
