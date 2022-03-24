@@ -1089,6 +1089,7 @@ section {
 .cta .btn:hover {
     border: 2px solid #1bbd36;
     color: #1bbd36;
+    
 }
 
 @media (max-width: 1024px) {
