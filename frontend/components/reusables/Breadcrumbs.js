@@ -10,11 +10,15 @@ const Breadcrumb = () => {
 
     useEffect(() => {
         if (router) {
-            const linkPath = router.asPath.split('/');
+
+            let linkPath = router.asPath.split('/');
             linkPath.pop()
             linkPath.shift()
 
-            const last = linkPath[linkPath.length - 1].replace(/-/g, ' ')
+            let last = router.asPath.substring(1).replaceAll(/-/g, ' ')
+            if (linkPath.length > 0) {
+                last = linkPath[linkPath.length - 1].replace(/-/g, ' ')
+            }
             setBreadcrumbs(last);
         }
     }, [router]);

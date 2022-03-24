@@ -5,59 +5,62 @@ import Link from 'next/link'
 import {API} from "../../../config";
 import Image from "next/image";
 
-const Board = ({members}) => {
+class Board extends React.Component {
 
-    const renderMember = () => {
-        return members && members.map((m, i) => {
-            const imgSrc = `${API}/user/photo/${m.username}`
-            const myLoader = () => {
-                return imgSrc;
-            }
-            return <div className="col-lg-3 d-flex align-items-stretch justify-content-center" key={i}>
-                <div className={classes.Member}>
-                    <div className={classes.MemberImg}>
-                        <Link href={`/profile/${m.username}`}>
-                            <Image src={imgSrc}
-                                   loader={myLoader}
-                                   width={100}
-                                   height={100}
-                                   layout="responsive"
-                                   className="img-thumbnail img-fluid"
-                                   alt={`${m.name}'s photo`}/>
-                        </Link>
-                        <div className={classes.Social}>
-                            {m.twitter && <a href={m.twitter}><i className="bi bi-twitter"/></a>}
-                            {m.facebook && <a href={m.facebook}><i className="bi bi-facebook"/></a>}
-                            {m.instagram && <a href={m.instagram}><i className="bi bi-instagram"/></a>}
-                            {m.linkedIn && <a href={m.linkedIn}><i className="bi bi-linkedin"/></a>}
+
+    render() {
+        const renderMember = () => {
+            return this.props.members && this.props.members.map((m, i) => {
+                const imgSrc = `${API}/user/photo/${m.username}`
+                const myLoader = () => {
+                    return imgSrc;
+                }
+                return <div className="col-lg-3 d-flex align-items-stretch justify-content-center" key={i}>
+                    <div className={classes.Member}>
+                        <div className={classes.MemberImg}>
+                            <Link href={`/profile/${m.username}`}>
+                                <Image src={imgSrc}
+                                       loader={myLoader}
+                                       width={100}
+                                       height={100}
+                                       layout="responsive"
+                                       className="img-thumbnail img-fluid"
+                                       alt={`${m.name}'s photo`}/>
+                            </Link>
+                            <div className={classes.Social}>
+                                {m.twitter && <a href={m.twitter}><i className="bi bi-twitter"/></a>}
+                                {m.facebook && <a href={m.facebook}><i className="bi bi-facebook"/></a>}
+                                {m.instagram && <a href={m.instagram}><i className="bi bi-instagram"/></a>}
+                                {m.linkedIn && <a href={m.linkedIn}><i className="bi bi-linkedin"/></a>}
+                            </div>
+                        </div>
+                        <div className={classes.MemberInfo}>
+                            <Link href={`/profile/${m.username}`}>
+                                <h4>
+                                    {m.name}
+                                </h4>
+                            </Link>
+                            {m.hospitalRole && <span>{m.hospitalRole}</span>}
+                            {m.hmtRole && <span>{m.hmtRole} of HMT</span>}
+                            <span>{m.designation}</span>
                         </div>
                     </div>
-                    <div className={classes.MemberInfo}>
-                        <Link href={`/profile/${m.username}`}>
-                            <h4>
-                                {m.name}
-                            </h4>
-                        </Link>
-                        {m.hospitalRole && <span>{m.hospitalRole}</span>}
-                        {m.hmtRole && <span>{m.hmtRole} of HMT</span>}
-                        <span>{m.designation}</span>
-                    </div>
                 </div>
+            })
+        }
+
+
+        return <section className={`section-bg`}>
+            <div className="container" data-aos="fade-up">
+                <div className="row" data-aos="fade-up" data-aos-delay='100'>
+                    {renderMember()}
+                </div>
+
             </div>
-        })
+        </section>
+
+
     }
-
-
-    return <section className={`section-bg`}>
-        <div className="container" data-aos="fade-up">
-            <div className="row" data-aos="fade-up" data-aos-delay='100'>
-                {renderMember()}
-            </div>
-
-        </div>
-    </section>
-
-
-};
+}
 
 export default Board;
