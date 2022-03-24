@@ -1071,7 +1071,7 @@ section {
 
 }
 
-.customBtn {
+.cta .btn {
     font-weight: 500;
     font-size: 13px;
     letter-spacing: 1px;
@@ -1080,16 +1080,15 @@ section {
     border-radius: 50px;
     transition: 0.5s;
     margin: 10px;
-    border: 2px solid #1bbd36;
-    color: #000000;
+    border: 2px solid #fff;
+    color: #fff;
 
 
 }
 
-.customBtn:hover {
-
+.cta .btn:hover {
     border: 2px solid #1bbd36;
-    color: #fff;
+    color: #1bbd36;
 }
 
 @media (max-width: 1024px) {

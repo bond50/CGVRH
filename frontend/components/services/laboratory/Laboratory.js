@@ -1,6 +1,5 @@
 import React from 'react';
 import Accordion from "../../reusables/Accordion";
-import AboutContainer from "../../reusables/AboutContainer";
 import List from "../../reusables/List";
 import Tat from "./Tat";
 import OpeningHours from "./OpeningHours";
@@ -57,27 +56,37 @@ const Laboratory = () => {
 
 
     return (
-        <AboutContainer title='Laboratory' para={`Our Laboratory `}>
-            <h4>Accreditation</h4>
-            <p>Not only do we have a well equipped Laboratory, but also talented staff who offer best services in
-                the region. Our Laboratory is accredited as a medical testing laboratory upon satisfying the
-                requirement of ISO 15189:2012.. by KENAS.</p>
-            <h4>Location</h4>
-            <p>The Vihiga County Referral Hospital Laboratory is in kenya,Vihiga County,along kisumu-Kakamega road,at
-                Mbale Center ,within Vihiga County Referral Hospital, on basement next to X-ray unit</p>
-            <p>We offer all routinely daily tests, blood donor services
-                and in case of referral we refer our clients to the following facilities:</p>
+        <section id="laboratory" className="laboratory section-bg">
+            <div className="container" data-aos="fade-up">
+                <div className="row">
+                    <div className="section-title">
+                        <h2>Laboratory</h2>
+                        <p>The Vihiga County Referral Hospital Laboratory is in kenya,Vihiga County,along
+                            kisumu-Kakamega
+                            road,at
+                            Mbale Center ,within Vihiga County Referral Hospital, on basement next to X-ray unit.
+
+                            We offer all routinely daily tests, blood donor services
+                            and in case of referral we refer our clients to the following facilities:</p>
+                    </div>
+                    <List list={list}/>
+
+                    <h4>Accreditation</h4>
+                    <p>Not only do we have a well equipped Laboratory, but also talented staff who offer best services
+                        in
+                        the region. Our Laboratory is accredited as a medical testing laboratory upon satisfying the
+                        requirement of ISO 15189:2012.. by KENAS.</p>
+                    <h4>Location</h4>
 
 
-            <List list={list}/>
+                    {accList.map((acc, i) => {
+                        return <Accordion key={i} title={acc.title.toUpperCase()}>
+                            {acc.content()}
+                        </Accordion>
+                    })}</div>
+            </div>
 
-            {accList.map((acc, i) => {
-                return <Accordion key={i} title={acc.title.toUpperCase()}>
-                    {acc.content()}
-                </Accordion>
-            })}
-
-        </AboutContainer>
+        </section>
 
 
     );
