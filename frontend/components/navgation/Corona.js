@@ -3,11 +3,11 @@ import {covidList} from "./dropdown-links";
 import StaticDropdown from "./static-dropdown";
 import MyLink from "./myLink";
 
-const Corona = () => {
+const Corona = ({clicked}) => {
 
     function showMediaLinks() {
         return covidList.map(m => {
-            return <MyLink key={m._id} to={`/covid/${m.slug}`} caption={m.title}/>
+            return <MyLink key={m._id} to={`/covid/${m.slug}`} caption={m.title} clicked={clicked}/>
         })
     }
 

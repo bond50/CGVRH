@@ -13,7 +13,7 @@ import About from "./About";
 
 
 const Nav = () => {
-    const [closed, toggleClosed] = useToggle();
+    const [closed, toggleClosed] = useToggle(false);
     let attachedClasses = [`navbar`];
 
     if (closed) {
@@ -46,14 +46,16 @@ const Nav = () => {
     return (
         <nav id='navbar' className={`${attachedClasses.join(' ')}`}>
             <ul>
-                <About/>
+                <About clicked={() => toggleClosed(false)}/>
                 {showLinks}
-                <Media/>
-                <MyLink caption={'Blog'} to='/blogs'/>
-                <MyLink caption={'Contact'} to='/contact'/>
+                <Media clicked={() => toggleClosed(false)}/>
+                <MyLink caption={'Blog'} to='/blogs' clicked={() => toggleClosed(false)}/>
+                <MyLink caption={'Contact'} to='/contact' clicked={() => toggleClosed(false)}/>
 
-                {isAuth() && isAuth().role === 0 && <MyLink caption={'Dashboard'} to='/user'/>}
-                {isAuth() && isAuth().role === 1 && <MyLink caption={'Dashboard'} to='/admin2'/>}
+                {isAuth() && isAuth().role === 0 &&
+                <MyLink caption={'Dashboard'} to='/user' clicked={() => toggleClosed(false)}/>}
+                {isAuth() && isAuth().role === 1 &&
+                <MyLink caption={'Dashboard'} to='/admin2' clicked={() => toggleClosed(false)}/>}
                 {/*<Corona/>*/}
                 {isAuth() && <li
                     onClick={() => signout(() => Router.replace(`/signin`))}>
@@ -64,7 +66,7 @@ const Nav = () => {
                     <a className="getstarted " href="https://rbx105.truehost.cloud:2096/">Staff Mail</a>
                 </li>
             </ul>
-            <i className={`${closed ? 'bi bi-x' : 'bi bi-list'} mobile-nav-toggle`} onClick={toggleClosed}/>
+            <i className={`${closed ? 'bi bi-x text-white' : 'bi bi-list'} mobile-nav-toggle`} onClick={toggleClosed}/>
         </nav>
     );
 };

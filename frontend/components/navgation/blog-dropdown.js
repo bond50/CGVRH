@@ -3,7 +3,7 @@ import useToggle from "../../hooks/useToggle";
 import React, {useEffect, useState} from "react";
 import {singleCategory} from "../../actions/category";
 
-export const BlogDrop = ({slug, caption}) => {
+export const BlogDrop = ({slug, caption, clicked}) => {
     const [closed, toggleClosed] = useToggle();
     const [loadedPages, setLoadedPages] = useState([])
 
@@ -17,7 +17,7 @@ export const BlogDrop = ({slug, caption}) => {
 
     const showLoadedPages = () => {
         return loadedPages.map(pg => {
-            return <MyLink key={pg._id} to={`/blogs/${pg.slug}`} caption={pg.title}/>
+            return <MyLink key={pg._id} to={`/blogs/${pg.slug}`} caption={pg.title} clicked={clicked}/>
         })
 
     }

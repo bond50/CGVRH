@@ -10,7 +10,7 @@ import {isAuth, signout} from "../../actions/auth";
 import Router from "next/router";
 
 const BlogNav = () => {
-    const [closed, toggleClosed] = useToggle();
+    const [closed, toggleClosed] = useToggle(false);
     let attachedClasses = [`navbar`];
 
     if (closed) {
@@ -41,7 +41,7 @@ const BlogNav = () => {
             return <BlogDrop
                 key={cat._id}
                 caption={cat.name}
-                slug={cat.slug}
+                slug={cat.slug} clicked={() => toggleClosed(false)}
             />
         })
     }
@@ -50,7 +50,7 @@ const BlogNav = () => {
     return (
         <nav id='navbar' className={`${attachedClasses.join(' ')}`}>
             <ul>
-                <MyLink caption={'Home'} to='/blogs'/>
+                <MyLink caption={'Home'} to='/blogs' clicked={() => toggleClosed(false)}/>
                 {showLinks()}
                 {isAuth() && <li
                     onClick={() => signout(() => Router.replace(`/signin`))}>

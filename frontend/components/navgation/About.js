@@ -3,11 +3,13 @@ import {aboutList} from "./dropdown-links";
 import StaticDropdown from "./static-dropdown";
 import MyLink from "./myLink";
 
-const About = () => {
+const About = ({clicked}) => {
+
 
     function showMediaLinks() {
         return aboutList.map(m => {
-            return <MyLink key={m._id} to={`/about-us/${m.slug}`} caption={m.title}/>
+            return <MyLink key={m._id} to={`/about-us/${m.slug}`} caption={m.title}
+                           clicked={clicked}/>
         })
     }
 
