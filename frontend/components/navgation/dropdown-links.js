@@ -5,8 +5,8 @@ export const aboutList = [
     {_id: 'asdfg', title: 'Our Role', slug: 'roles'},
     {_id: 'qwer', title: 'Our Strategic Plan', slug: 'strategic-plan'},
     {_id: 'jhiu', title: 'Our Health Goals', slug: 'health-goals'},
-    {_id:'hjgfd',title: 'Our Neighboring Facilities', slug: 'neighboring-facilities'},
-    {_id: 'hfdrf', title: 'Our Projects', slug: 'project'},
+    {_id: 'hjgfd', title: 'Our Neighboring Facilities', slug: 'neighboring-facilities'},
+    // {_id: 'hfdrf', title: 'Our Projects', slug: 'project'},
     {_id: 'ffufu', title: 'Our Partners', slug: 'partners'},
 ];
 
