@@ -442,6 +442,12 @@ section {
     padding-bottom: 30px;
 }
 
+@media (max-width: 768px) {
+    .section-title {
+        padding-bottom: 0;
+    }
+}
+
 .section-title h2 {
     font-size: 32px;
     font-weight: bold;

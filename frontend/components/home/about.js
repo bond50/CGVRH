@@ -6,7 +6,7 @@ const About = () => {
     return (
         <section id='homepage-about' className='homepage-about'>
             <div className="container" data-aos="fade-up">
-                <div className="section-title pb-sm-0">
+                <div className="section-title">
                     <h2>About Us</h2>
                 </div>
                 <div className={`row content `}>
