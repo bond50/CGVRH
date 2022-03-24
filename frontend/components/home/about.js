@@ -36,7 +36,7 @@ const About = () => {
                             It has 164 bed capacity with 108% bed occupancy with 6 wards which include general Male
                             and Female ,Maternity and paediatric,Amenity and ICU wards.
                         </p>
-                        <Link href={`/about-us`}>
+                        <Link href={`/about-us/`}>
                             <a className='btn'>Read more about the facility here </a>
                         </Link>
 
