@@ -1,7 +1,7 @@
 /* eslint-disable */
 import {getServerSideSitemap, ISitemapField} from "next-sitemap";
 import {GetServerSideProps} from "next";
-import {API} from "../../config";
+import {API, DOMAIN} from "../../config";
 
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
@@ -10,7 +10,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 
     const fields: ISitemapField[] = loadedPages.map((p) => ({
-        loc: `${API}/blogs/${p.slug}`,
+        loc: `${DOMAIN}/blogs/${p.slug}`,
         lastmod: new Date().toISOString(),
     }));
 

@@ -21,7 +21,7 @@ export default function Home() {
     const head = () => (
         <Head>
             <title>The {APP_NAME} </title>
-            <meta name="google-site-verification" content="Kcrylmv8RWsNALOsmjyga_p6uCldee4CwnA0aMCMym4" />
+            <meta name="google-site-verification" content="Kcrylmv8RWsNALOsmjyga_p6uCldee4CwnA0aMCMym4"/>
             <meta
                 name="description"
                 content={`${APP_NAME} is a level 5 government healthcare facility located in Western part of Kenya.We've  been offering  services  for the last ${
@@ -32,7 +32,7 @@ export default function Home() {
             <meta name="robots" content="max-image-preview:large"/>
             <meta property="og:locale" content="en_US"/>
 
-            <meta property="og:title" content={`Home page | ${APP_NAME}`}/>
+            <meta property="og:title" content={`${APP_NAME}`}/>
             <meta
                 property="og:description"
                 content={`${APP_NAME} is a level 5 government healthcare facility located in Western part of Kenya.We've  been offering  services  for the last ${
