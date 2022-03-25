@@ -766,12 +766,12 @@ section {
 
 @media (max-width: 992px) {
     #hero .carousel-container {
-        top: 58px;
+        top: 100px;
     }
 
     #hero .carousel-content h2 {
         margin-bottom: 15px;
-        font-size: 22px;
+        font-size: 18px;
     }
 
     #hero .carousel-content p {
