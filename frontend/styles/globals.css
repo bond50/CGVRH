@@ -781,6 +781,7 @@ section {
 
 @media (max-height: 500px) {
     #hero {
+        
         height: 120vh;
     }
 }
