@@ -15,7 +15,7 @@ const Top = () => (
             <div className="align-items-center ">
                 <i className="bi bi-clock"/> Opening hours: Throughout
             </div>
-            <div className="d-flex align-items-center">
+            <div className="align-items-center">
                 <i className="bi bi-phone"/> Call us now +254 723 103 564
             </div>
         </div>

@@ -66,7 +66,7 @@ const Nav = () => {
                     <a className="getstarted " href="https://rbx105.truehost.cloud:2096/">Staff Mail</a>
                 </li>
             </ul>
-            <i className={`${closed ? 'bi bi-x text-white' : 'bi bi-list'} mobile-nav-toggle`} onClick={toggleClosed}/>
+            <i className={`${closed ? 'bi bi-x ' : 'bi bi-list '} mobile-nav-toggle`} onClick={toggleClosed}/>
         </nav>
     );
 };

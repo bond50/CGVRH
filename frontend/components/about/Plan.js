@@ -85,10 +85,11 @@ const Plan = () => {
                             medical superintendent <br/>
                             Vihiga County and Referral Hospital < br/>
                         </p>
-                        <div className="alert alert-link small">
-                            <Link href={`/media/downloads/`}>
+                        <div className="alert alert-link ">
+                            <Link
+                                href={`https://res.cloudinary.com/dwtcilinl/raw/upload/v1648102439/documents/hhw57tsgaookmiktzb4d.docx`}>
                                 <a>
-                                    Click here to download full strategic plan from download section
+                                    Click here to download full strategic plan for 2018 - 2022 period
                                 </a>
                             </Link>
                         </div>
