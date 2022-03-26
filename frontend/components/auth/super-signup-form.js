@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import classes from "../profile/overview.module.css";
 import Button from "../reusables/ui/Button";
 import {superSignup} from "../../actions/auth";
+import Alert from "../messages/Alert";
 
 const SuperSignupForm = () => {
     const [values, setValues] = useState({
@@ -129,7 +130,7 @@ const SuperSignupForm = () => {
                     <input
                         type="password"
                         value={password}
-                        
+
                         name='password'
                         placeholder='The user will be able to login with email and password provided'
                         onChange={handleChange('password')}
@@ -150,6 +151,8 @@ const SuperSignupForm = () => {
                 </div>
             </div>
             }
+            {showMessage()}
+            {showError()}
             <div className="text-center">
                 <Button
                     customClass={classes.Btn}
@@ -161,15 +164,13 @@ const SuperSignupForm = () => {
 
     }
 
-    const showLoading = () => (loading ? <div className="alert alert-info">Loading...</div> : 'Submit');
-    const showError = () => (error ? <div className="alert alert-danger">{error}</div> : '');
-    const showMessage = () => (message ? <div className="alert alert-info">{message}</div> : '');
+    const showLoading = () => (loading ? "Loading..." : 'Submit');
+    const showError = () => (error ? <Alert msg={error} type='danger' label='Danger'/> : '');
+    const showMessage = () => (message ? <Alert msg={message} type='success' label='Success'/> : '');
     return (
         <>
-            {showMessage()}
-            {showError()}
-            {showForm()}
 
+            {showForm()}
         </>
 
     );

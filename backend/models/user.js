@@ -54,6 +54,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             trim: true,
             unique: true,
+            required: true,
             lowercase: true,
         },
         profile: {
@@ -71,6 +72,7 @@ const userSchema = new mongoose.Schema(
         },
         hashed_password: {
             type: String,
+            required: true,
         },
         salt: String,
         about: {
