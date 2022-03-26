@@ -40,6 +40,7 @@ export const getProfile = (token, id) => {
 };
 
 export const update = (token, user, loadedId) => {
+  
     return fetch(`${API}/single-user/${loadedId}`, {
         method: 'PUT',
         headers: {

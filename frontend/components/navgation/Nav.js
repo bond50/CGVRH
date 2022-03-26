@@ -13,7 +13,7 @@ import About from "./About";
 
 
 const Nav = () => {
-    const [closed, toggleClosed] = useToggle(false);
+    const [closed, toggleClosed] = useToggle();
     let attachedClasses = [`navbar`];
 
     if (closed) {
@@ -51,7 +51,6 @@ const Nav = () => {
                 <Media clicked={() => toggleClosed(false)}/>
                 <MyLink caption={'Blog'} to='/blogs' clicked={() => toggleClosed(false)}/>
                 <MyLink caption={'Contact'} to='/contact' clicked={() => toggleClosed(false)}/>
-
                 {isAuth() && isAuth().role === 0 &&
                 <MyLink caption={'Dashboard'} to='/user' clicked={() => toggleClosed(false)}/>}
                 {isAuth() && isAuth().role === 1 &&
@@ -66,7 +65,8 @@ const Nav = () => {
                     <a className="getstarted " href="https://rbx105.truehost.cloud:2096/">Staff Mail</a>
                 </li>
             </ul>
-            <i className={`${closed ? 'bi bi-x ' : 'bi bi-list '} mobile-nav-toggle`} onClick={toggleClosed}/>
+            <i className={`${closed ? 'bi bi-x text-white' : 'bi bi-list '} mobile-nav-toggle`}
+               onClick={toggleClosed}/>
         </nav>
     );
 };

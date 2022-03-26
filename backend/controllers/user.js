@@ -197,7 +197,7 @@ exports.singleUpdate = (req, res) => {
                     });
                 }
 
-                  if (fields.password && fields.password.length < 6) {
+                if (fields.password && fields.password.length < 6) {
                     return res.status(400).json({
                         error: 'Password should be min 6 characters long'
                     });
@@ -211,9 +211,9 @@ exports.singleUpdate = (req, res) => {
                     const {width, height} = probe.sync(data)
                     const dimensions = {width, height}
 
-                    if (files.photo.size > 1000000) {
+                    if (files.photo.size > 2000000) {
                         return res.status(400).json({
-                            error: 'Profile Image should be less than 1mb '
+                            error: 'Profile Image should be less than 2mb '
                         });
                     }
                     oldUser.photo.data = fs.readFileSync(files.photo.path);

@@ -21,7 +21,7 @@ const Clients = () => {
         {name: 'ICT Authority', src: '/partners/icta1.png', width: 97, height: 60},
     ]
     return (
-        <section id="clients" className="clients section-bg">
+        <section id="clients" className="clients">
             <div className="container">
                 <div className="row" data-aos="zoom-in">
                     {list.map((item, i) => {

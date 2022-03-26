@@ -5,6 +5,7 @@ const {
     signin,
     googleLogin,
     preSignup,
+    signupByAdmin,
     forgotPassword,
     resetPassword
 } = require('../controllers/auth')
@@ -24,6 +25,7 @@ const {
 
 router.post('/pre-signup', userSignupValidator, runValidation, preSignup)
 router.post('/signup', signup)
+router.post('/super-signup', signupByAdmin)
 router.post('/signin', userSigninValidator, runValidation, signin)
 router.get('/signout', signout)
 router.put('/forgot-password', forgotPasswordValidator, runValidation, forgotPassword)

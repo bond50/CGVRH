@@ -53,7 +53,6 @@ const userSchema = new mongoose.Schema(
         email: {
             type: String,
             trim: true,
-            required: true,
             unique: true,
             lowercase: true,
         },
@@ -72,7 +71,6 @@ const userSchema = new mongoose.Schema(
         },
         hashed_password: {
             type: String,
-            required: true,
         },
         salt: String,
         about: {
@@ -136,7 +134,7 @@ userSchema.methods = {
 userSchema.pre('remove', async function (next) {
     const user = this
     console.log(user)
-     await Blog.remove({postedBy: user}).exec()
+    await Blog.remove({postedBy: user}).exec()
     next()
 })
 

@@ -10,6 +10,7 @@ const {OAuth2Client} = require('google-auth-library')
 const ip = require("ip");
 
 const sgMail = require("@sendgrid/mail");
+const formidable = require("formidable");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -78,38 +79,69 @@ exports.signup = (req, res) => {
         });
     }
 }
-// exports.signup = (req, res) => {
-//     User.findOne({email: req.body.email}).exec((err, user) => {
-//         if (user) {
-//             return res.status(400).json({
-//                 error: 'Email is taken'
-//             });
-//         }
-//
-//         const {name, email, password} = req.body;
-//         let username = shortId.generate();
-//         let profile = `${process.env.CLIENT_URL}/profile/${username}`;
-//
-//         let newUser = new User({name, email, password, profile, username});
-//         newUser.save((err, success) => {
-//             if (err) {
-//                 return res.status(400).json({
-//                     error: err
-//                 });
-//             }
-//             // res.json({
-//             //     user: success
-//             // });
-//             res.json({
-//                 message: 'Signup success! Please signin.'
-//             });
-//         });
-//     });
-// };
+exports.signupByAdmin = (req, res) => {
+    if (req.body.email) {
+        User.findOne({email: req.body.email}).exec((err, user) => {
+            if (user) {
+                return res.status(400).json({
+                    error: 'Email is taken'
+                });
+            }
+        });
+    }
+
+    const {name, email, password, designation, role, hospitalRole} = req.body;
+
+
+    let username = shortId.generate();
+    let profile = `${process.env.CLIENT_URL}/profile/${username}`;
+    let savedMail
+    let savedPass
+
+    // const chars = 'abcdefghijklmnopqrstuvwxyz1234567890';
+    // let string = '';
+    // for (let ii = 0; ii < 15; ii++) {
+    //     string += chars[Math.floor(Math.random() * chars.length)];
+    // }
+    //
+
+    if (!email) {
+        savedMail = shortId.generate() + '@dummy.com'
+        savedPass = shortId.generate();
+
+    } else {
+        savedMail = email
+        savedPass = password
+
+    }
+  
+
+    let newUser = new User({
+        name: name,
+        email: savedMail,
+        profile,
+        username,
+        hmt: true,
+        password: savedPass,
+        designation: designation,
+        role: role,
+        hospitalRole: hospitalRole
+    });
+
+    newUser.save((err, success) => {
+        if (err) {
+            return res.status(400).json({
+                error: errorHandler(err)
+            });
+        }
+
+        res.json({
+            message: 'Signup success! Please signin.'
+        });
+    });
+};
 
 exports.signin = (req, res) => {
-
-
     const {email, password} = req.body;
     // check if user exist
     User.findOne({email}).exec((err, user) => {
@@ -295,8 +327,6 @@ exports.resetPassword = (req, res) => {
     }
 
 };
-
-
 
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID)

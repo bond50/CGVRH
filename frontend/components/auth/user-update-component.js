@@ -101,7 +101,6 @@ const UserUpdateComponent = ({id}) => {
     const handleChange = name => e => {
         const value = name === 'photo' ? e.target.files[0] : e.target.value;
         userData.set(name, value);
-
         setValues({...values, [name]: value, userData, error: false, success: false});
     };
 

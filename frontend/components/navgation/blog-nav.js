@@ -10,7 +10,7 @@ import {isAuth, signout} from "../../actions/auth";
 import Router from "next/router";
 
 const BlogNav = () => {
-    const [closed, toggleClosed] = useToggle(false);
+    const [closed, toggleClosed] = useToggle();
     let attachedClasses = [`navbar`];
 
     if (closed) {
@@ -61,7 +61,8 @@ const BlogNav = () => {
 
 
             </ul>
-            <i className={`${closed ? 'bi bi-x' : 'bi bi-list '} mobile-nav-toggle`} onClick={toggleClosed}/>
+            <i className={`${closed ? 'bi bi-x text-white' : 'bi bi-list '} mobile-nav-toggle`}
+               onClick={toggleClosed}/>
         </nav>
     );
 };

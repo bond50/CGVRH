@@ -26,7 +26,7 @@ const BlogHero = () => {
 
 
     return (
-        data.length > 0 && <section id='hero' className='hero-blog'>
+        data.length > 0 && <section id='hero' className='hero'>
             <BlogCarousel blogs={data}/>
         </section>
     );

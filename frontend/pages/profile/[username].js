@@ -50,6 +50,22 @@ const Userprofile = ({user, blogs, query}) => {
             );
         });
     };
+
+    function splitMail() {
+        const emailSplit = user.email.split("@");
+        let contactForm
+        if (emailSplit[1] === 'dummy.com') {
+            contactForm =
+                <p> {user.name.toUpperCase()} cannot be contacted now</p>
+        } else {
+            contactForm = <ContactForm
+                authorEmail={user.email}
+                label={`Send a message to ${user.name}`}/>
+        }
+        return contactForm
+    }
+
+
     return (
         <>
             {head()}
@@ -105,7 +121,7 @@ const Userprofile = ({user, blogs, query}) => {
                                 </div>
                             </div>
                             <div className="col-xl-8">
-                                {blogs.length <= 0 ? <p>{user.name} has not written anything</p> :
+                                {blogs.length <= 0 ? null :
                                     <div className={`card ${classes.Card}`}>
                                         <div className={`card-body ${classes.CardBody}`}>
                                             <h5 className={classes.CardTitle}>Articles written
@@ -120,10 +136,7 @@ const Userprofile = ({user, blogs, query}) => {
                                         <p>{user.about}</p>
                                     </div>
                                 </div>}
-
-                                {user.email && <ContactForm
-                                    authorEmail={user.email}
-                                    label={`Send a message to ${user.name}`}/>}
+                                {splitMail()}
                             </div>
                         </div>
                     </div>

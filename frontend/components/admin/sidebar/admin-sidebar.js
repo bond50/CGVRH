@@ -58,7 +58,7 @@ const AdminSidebar = ({closed}) => {
 
 
     const userList = [
-        {title: 'Add new user', slug: 'crud/users/user'},
+        {title: 'Add HMT member', slug: 'crud/users/user'},
         {title: 'Manage existing users', slug: 'crud/users'},
     ]
     if (isAuth() && isAuth().role === 0) {
