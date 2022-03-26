@@ -22,7 +22,7 @@ class Board extends React.Component {
                                 <Image src={imgSrc}
                                        loader={myLoader}
                                        width={100}
-                                       height={100}
+                                       height={70}
                                        layout="responsive"
                                        className="img-thumbnail img-fluid"
                                        alt={`${m.name}'s photo`}/>
