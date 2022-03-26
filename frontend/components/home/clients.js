@@ -23,7 +23,7 @@ const Clients = () => {
     return (
         <section id="clients" className="clients">
             <div className="container">
-                <div className="row" data-aos="zoom-in">
+                <div className="row">
                     {list.map((item, i) => {
                         return <div
                             key={i}
