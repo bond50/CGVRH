@@ -33,8 +33,6 @@ const SuperSignupForm = () => {
     const handleSubmit = e => {
         e.preventDefault();
         setValues({...values, loading: true, error: ''});
-
-
         const user = {
             name: name,
             email: email,
@@ -44,7 +42,7 @@ const SuperSignupForm = () => {
             hospitalRole: hospitalRole
         };
 
-        console.log(user)
+
         superSignup(user)
             .then(data => {
                 if (data.error) {
@@ -82,6 +80,7 @@ const SuperSignupForm = () => {
                         type="text"
                         value={name}
                         name='name'
+                        required
                         onChange={handleChange('name')}
                         className="form-control"/>
                 </div>
@@ -130,6 +129,7 @@ const SuperSignupForm = () => {
                     <input
                         type="password"
                         value={password}
+                        
                         name='password'
                         placeholder='The user will be able to login with email and password provided'
                         onChange={handleChange('password')}
@@ -150,19 +150,18 @@ const SuperSignupForm = () => {
                 </div>
             </div>
             }
-
-
             <div className="text-center">
-                <Button customClass={classes.Btn}
-                        type='submit'
-                        btnCapture={'Submit'}
-                        loading={false}/>
+                <Button
+                    customClass={classes.Btn}
+                    type='submit'
+                    btnCapture={showLoading()}
+                    loading={false}/>
             </div>
         </form>
 
     }
 
-    const showLoading = () => (loading ? <div className="alert alert-info">Loading...</div> : '');
+    const showLoading = () => (loading ? <div className="alert alert-info">Loading...</div> : 'Submit');
     const showError = () => (error ? <div className="alert alert-danger">{error}</div> : '');
     const showMessage = () => (message ? <div className="alert alert-info">{message}</div> : '');
     return (

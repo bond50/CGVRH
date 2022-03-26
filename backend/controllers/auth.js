@@ -114,7 +114,7 @@ exports.signupByAdmin = (req, res) => {
         savedPass = password
 
     }
-  
+
 
     let newUser = new User({
         name: name,
@@ -136,7 +136,7 @@ exports.signupByAdmin = (req, res) => {
         }
 
         res.json({
-            message: 'Signup success! Please signin.'
+            message: 'Hmt member added to list successfully.'
         });
     });
 };
