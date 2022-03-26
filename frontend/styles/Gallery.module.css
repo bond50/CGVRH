@@ -12,6 +12,7 @@
 }
 
 .GalleryItem img {
+    object-fit: contain;
     transition: all ease-in-out 0.4s;
 }
 
