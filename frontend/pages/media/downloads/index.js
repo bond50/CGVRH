@@ -47,7 +47,7 @@ const Downloads = () => {
 
 
     if (error) return <div>failed to load</div>
-    if (!files) return <div>loading...</div>
+    if (!files) return <div className='preloader'/>
 
     if (files.length === 0) {
         return <Layout>

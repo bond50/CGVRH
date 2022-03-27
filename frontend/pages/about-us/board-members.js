@@ -51,7 +51,7 @@ const Index = () => {
         },
     );
     if (!members) {
-        return <p>Loading...</p>
+        return <div className='preloader'/>
     }
     if (error) {
         return <p>something went wrong</p>

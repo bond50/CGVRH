@@ -20,7 +20,7 @@ const Footer = () => {
             link: 'https://kenya.elephantprimarycare.com/'
         },
         {title: 'County website', link: 'https://vihiga.go.ke/'},
-        {title: 'County Vacancies', link: 'https://vihiga.go.ke/career.html'},
+        {title: 'Health Management team', link: '/about-us/board-members'},
         {title: 'MOH', link: 'https://www.health.go.ke/'},
     ]
 
