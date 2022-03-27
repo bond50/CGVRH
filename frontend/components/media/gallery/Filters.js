@@ -37,7 +37,7 @@ const Filters = () => {
     });
 
     return (
-        <div className="row pt-5">
+        <div className="row">
             <div className="col-lg-12 d-flex justify-content-center">
                 <ul className={`${classes.Filters}`}>
                     {returnFilters()}
