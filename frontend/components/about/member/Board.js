@@ -51,7 +51,7 @@ class Board extends React.Component {
 
 
         return <section className={`section-bg`}>
-            <div className="container" data-aos="fade-up">
+            <div className="container" data-aos="zoom-in">
                 <header className={'section-title'}>
                     <h2>Our Health management team</h2>
                     <p>Click on the image to sent the member a private Email.
