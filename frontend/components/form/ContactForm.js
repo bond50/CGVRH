@@ -70,7 +70,7 @@ const ContactForm = ({authorEmail, label}) => {
                         <div className={`${classes.Info} col-lg-4`}>
                             <i className='bi bi-geo-alt'/>
                             <h4>Location</h4>
-                            <p>Mbale town <br/>Opposite District Headquarters,50300, Maragoli</p>
+                            <p>Mbale town <br/>Opposite District Headquarters,1069-50300, Maragoli</p>
                         </div>
 
                         <div className={`${classes.Info} col-lg-4 mt-4 mt-lg-0`}>
