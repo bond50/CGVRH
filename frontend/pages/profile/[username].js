@@ -65,6 +65,10 @@ const Userprofile = ({user, blogs, query}) => {
         return contactForm
     }
 
+    const photoLink = `${API}/user/photo/${user.username}`
+    const myLoader = () => {
+        return photoLink;
+    }
 
     return (
         <>
@@ -77,7 +81,8 @@ const Userprofile = ({user, blogs, query}) => {
 
                                 <div className={`card ${classes.Card} `}>
                                     <Image
-                                        src={`${API}/user/photo/${user.username}`}
+                                        loader={myLoaderl}
+                                        src={photoLink}
                                         width={620}
                                         height={480}
                                         layout="responsive"
