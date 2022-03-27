@@ -2,7 +2,7 @@ import React from 'react';
 import classes from '../../../styles/Board.module.css'
 
 import Link from 'next/link'
-import {API} from "../../../config";
+import {API, DOMAIN} from "../../../config";
 import Image from "next/image";
 
 class Board extends React.Component {
@@ -52,6 +52,15 @@ class Board extends React.Component {
 
         return <section className={`section-bg`}>
             <div className="container" data-aos="fade-up">
+                <header className={'section-title'}>
+                    <h2>Our Health management team</h2>
+                    <p>Click on the image to sent the member a private Email.
+                        The TCP connection is encrypted and hence no
+                        eavesdropping by a third party. If you are unable to send a private mail to specific user,you
+                        can still reach us
+                        <Link href={`${DOMAIN}/contact`}> here</Link>
+                    </p>
+                </header>
                 <div className="row" data-aos="fade-up" data-aos-delay='100'>
                     {renderMember()}
                 </div>

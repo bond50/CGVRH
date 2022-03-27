@@ -12,7 +12,6 @@ function Hero() {
                 <Link href={"#homepage-about"}>
                     <a className="btn-get-started ">Get Started</a>
                 </Link>
-
             </div>
             <Image
                 src="/herp.jpg"
