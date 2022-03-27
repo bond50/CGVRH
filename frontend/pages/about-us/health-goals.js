@@ -41,9 +41,12 @@ const Index = () => {
     );
 
     return (
-        <Layout>
-            <Goals/>
-        </Layout>
+        <>
+            {head()}
+            <Layout>
+                <Goals/>
+            </Layout>
+        </>
     );
 };
 
