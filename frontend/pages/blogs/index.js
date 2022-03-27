@@ -17,7 +17,7 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {
                 content="Vihiga county referral hospital blog on our services departments wards core values strategic plan"
             />
 
-            <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
+            <link rel="canonical" href={`${DOMAIN}/${router.pathname}`}/>
 
             <meta property="og:title" content={`Latest articles | ${APP_NAME}`}/>
             <meta
@@ -26,7 +26,7 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {
             />
 
             <meta property="og:type" content="webiste"/>
-            <meta property="og:url" content={`${DOMAIN}${router.pathname}`}/>
+            <meta property="og:url" content={`${DOMAIN}/${router.pathname}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
 
             <meta
