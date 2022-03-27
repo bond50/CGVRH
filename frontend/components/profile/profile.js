@@ -13,6 +13,7 @@ const Profile = ({
                      hospitalRole,
                      name,
                      role,
+                     email,
                      toggleRole,
                      about,
                      errorMsg,
@@ -61,6 +62,16 @@ const Profile = ({
                         className="form-control"/>
                 </div>
             </div>
+            {isAuth() && isAuth().role === 1 && <div className={`row ${classes.Row} mb-3`}>
+                <div className={`col-lg-3 col-md-4 ${classes.Label}`}>Email Address</div>
+                <div className="col-lg-9 col-md-8">
+                    <input
+                        onChange={handleChange('email')}
+                        type="email"
+                        value={email || ''}
+                        className="form-control"/>
+                </div>
+            </div>}
 
             <div className={`row ${classes.Row} mb-3`}>
                 <div className={`col-lg-3 col-md-4 ${classes.Label}`}> Designation</div>

@@ -23,6 +23,7 @@ const UserUpdateComponent = ({id}) => {
         success: false,
         loading: false,
         photo: '',
+        emailL: '',
         designation: '',
         twitter: '',
         facebook: '',
@@ -49,6 +50,7 @@ const UserUpdateComponent = ({id}) => {
         designation,
         error,
         success,
+        email,
         loading,
         twitter,
         facebook,
@@ -261,6 +263,7 @@ const UserUpdateComponent = ({id}) => {
                                         username={username}
                                         about={about}
                                         name={name}
+                                        email={email}
                                         successMsg={showSuccessMessage}
                                         password={password}
                                         role={role}
