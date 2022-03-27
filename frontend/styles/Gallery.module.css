@@ -12,7 +12,6 @@
 }
 
 .GalleryItem img {
-    object-fit: scale-down;
     transition: all ease-in-out 0.4s;
 }
 

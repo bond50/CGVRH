@@ -6,7 +6,7 @@ import Image from "next/image";
 import axios from "axios";
 import {API} from "../../../config";
 import Filters from "../downloads/filters";
-
+import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
 
 const GalleryWrapper = ({data}) => {
 
@@ -82,25 +82,35 @@ const GalleryWrapper = ({data}) => {
                              handleTagFilter={filterTags}
                              active={active}/>
                     <div className='container-fluid'>
-                        <SRLWrapper options={options}>
-                            <div className='row ' data-aos="slide-up" data-aos-delay="100">
-                                {images.map(image => {
-                                        return <div className="col-lg-3 col-md-4" key={image._id}>
-                                            <div className={classes.GalleryItem}>
-                                                <Image
-                                                    layout="responsive"
-                                                    src={image.filePath}
-                                                    width={image.width}
-                                                    height={image.height}
-                                                    alt={`Title: ${image.title}`}
-                                                    className='img-fluid'/>
-                                            </div>
-                                        </div>;
-                                    }
-                                )
-                                }
-                            </div>
-                        </SRLWrapper>
+
+                        <div data-aos="slide-up" data-aos-delay="100">
+                            <SRLWrapper options={options}>
+                                <ResponsiveMasonry
+                                    columnsCountBreakPoints={{350: 1, 750: 2, 900: 3}}
+                                >
+                                    <Masonry>
+                                        {images.map(image => {
+                                                return <div className={classes.GalleryItem} key={image._id}>
+
+                                                    <Image
+                                                        layout="responsive"
+                                                        src={image.filePath}
+                                                        width={image.width}
+                                                        height={image.height}
+                                                        alt={`Title: ${image.title}`}
+                                                        className='img-fluid'/>
+
+                                                </div>
+
+                                            }
+                                        )
+                                        }
+                                    </Masonry>
+
+                                </ResponsiveMasonry>
+                            </SRLWrapper>
+                        </div>
+
                     </div>
                 </section>
             </SimpleReactLightbox>
