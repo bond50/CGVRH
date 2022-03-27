@@ -81,7 +81,7 @@ const Userprofile = ({user, blogs, query}) => {
 
                                 <div className={`card ${classes.Card} `}>
                                     <Image
-                                        loader={myLoaderl}
+                                        loader={myLoader}
                                         src={photoLink}
                                         width={620}
                                         height={480}
