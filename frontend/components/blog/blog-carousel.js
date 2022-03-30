@@ -32,14 +32,16 @@ function BlogCarousel({blogs}) {
                     objectFit="cover"
                 />
                 <div className="carousel-container ">
-                    <div className="carousel-content animate__animated animate__fadeInUp">
-                        <h2 className="animate__animated animate__fadeInDown">{d.title.toLowerCase()}</h2>
-                        {renderHTML(d.excerpt)}
-                        <Link href={`/blogs/${d.slug}`}>
-                            <a className="btn-get-started">Read
-                                More
-                            </a>
-                        </Link>
+                    <div className="container">
+                        <div className="carousel-content animate__animated animate__fadeInUp">
+                            <h2 className="animate__animated animate__fadeInDown">{d.title.toLowerCase()}</h2>
+                            {renderHTML(d.excerpt)}
+                            <Link href={`/blogs/${d.slug}`}>
+                                <a className="btn-get-started">Read
+                                    More
+                                </a>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </Carousel.Item>
