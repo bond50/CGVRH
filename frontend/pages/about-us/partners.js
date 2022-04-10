@@ -15,7 +15,7 @@ const Partner = () => {
                 content="Vihiga County Referral Hospital Partners"
             />
 
-            <link rel="canonical" href={`${DOMAIN}/${router.pathname}`}/>
+            <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
 
             <meta property="og:title" content={`Partners | ${APP_NAME}`}/>
             <meta
@@ -24,7 +24,7 @@ const Partner = () => {
             />
 
             <meta property="og:type" content="webiste"/>
-            <meta property="og:url" content={`${DOMAIN}/${router.pathname}`}/>
+            <meta property="og:url" content={`${DOMAIN}${router.pathname}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
 
             <meta

@@ -47,7 +47,6 @@ exports.create = (req, res) => {
                 error: 'At least one tag is required'
             });
         }
-        console.log('tags', tags)
         let blog = new Blog();
         blog.approved = false;
         blog.title = title;

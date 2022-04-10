@@ -13,13 +13,13 @@ const Index = ({pages}) => {
 
     const head = () => (
         <Head>
-            <title>Blogs | {APP_NAME}</title>
+            <title>Services| {APP_NAME}</title>
             <meta
                 name="description"
                 content={`All inpatient and out patient services offered at ${APP_NAME}. We take care of your health`}
             />
 
-            <link rel="canonical" href={`${DOMAIN}/${router.pathname}`}/>
+            <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
 
             <meta property="og:title" content={`Medical services | ${APP_NAME}`}/>
             <meta
@@ -28,7 +28,7 @@ const Index = ({pages}) => {
             />
 
             <meta property="og:type" content="webiste"/>
-            <meta property="og:url" content={`${DOMAIN}/${router.pathname}`}/>
+            <meta property="og:url" content={`${DOMAIN}${router.pathname}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
 
             <meta

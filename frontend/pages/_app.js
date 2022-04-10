@@ -8,10 +8,7 @@ import NProgress from 'nprogress';
 import Router from "next/router";
 import "animate.css"
 import Script from "next/script";
-import {GOOGLE_ANALYTICS} from "../config";
-import getConfig from "next/config";
 
-const {publicRuntimeConfig} = getConfig();
 
 const MyApp = ({Component, pageProps}) => {
 
@@ -39,10 +36,10 @@ const MyApp = ({Component, pageProps}) => {
 
     return <>
         {
-            publicRuntimeConfig.PRODUCTION && <>
+            process.env.PRODUCTION && <>
                 <Script
                     strategy="lazyOnload"
-                    src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS}`}
+                    src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS}`}
                 />
 
                 <Script strategy="lazyOnload">
@@ -50,7 +47,7 @@ const MyApp = ({Component, pageProps}) => {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${GOOGLE_ANALYTICS}', {
+            gtag('config', '${process.env.GOOGLE_ANALYTICS}', {
               page_path: window.location.pathname,
             });
                 `}

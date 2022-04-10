@@ -19,7 +19,7 @@ const Downloads = () => {
                 content={`Get access to all public documents  from this section.${APP_NAME}, We take care of your health`}
             />
 
-            <link rel="canonical" href={`${DOMAIN}/${router.pathname}`}/>
+            <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
 
             <meta property="og:title" content={`Public Documents | ${APP_NAME}`}/>
             <meta
@@ -28,7 +28,7 @@ const Downloads = () => {
             />
 
             <meta property="og:type" content="webiste"/>
-            <meta property="og:url" content={`${DOMAIN}/${router.pathname}`}/>
+            <meta property="og:url" content={`${DOMAIN}${router.pathname}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
 
             <meta

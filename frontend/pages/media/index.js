@@ -17,7 +17,7 @@ const Index = () => {
                 content={`Welcome to ${APP_NAME} Media section .You can access all images, videos and downloads from this section`}
             />
 
-            <link rel="canonical" href={`${DOMAIN}/${router.pathname}`}/>
+            <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
 
             <meta property="og:title" content={`Medical services | ${APP_NAME}`}/>
             <meta
@@ -26,7 +26,7 @@ const Index = () => {
             />
 
             <meta property="og:type" content="webiste"/>
-            <meta property="og:url" content={`${DOMAIN}/${router.pathname}`}/>
+            <meta property="og:url" content={`${DOMAIN}${router.pathname}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
 
             <meta

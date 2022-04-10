@@ -22,7 +22,7 @@ const Index = () => {
                 content="Vihiga County Referral Hospital information on Our Hospital Management, Organisation structure, Guiding principles and strategic plan"
             />
 
-            <link rel="canonical" href={`${DOMAIN}/${router.pathname}`}/>
+            <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
 
             <meta property="og:title" content={`About us | ${APP_NAME}`}/>
             <meta
@@ -31,7 +31,7 @@ const Index = () => {
             />
 
             <meta property="og:type" content="webiste"/>
-            <meta property="og:url" content={`${DOMAIN}/${router.pathname}`}/>
+            <meta property="og:url" content={`${DOMAIN}${router.pathname}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
 
             <meta

@@ -1,7 +1,6 @@
 const slugify = require("slugify");
 const PageCategory = require("../models/pageCategory");
 const {errorHandler} = require("../helpers/dbErrorHandler");
-
 const Pages = require("../models/pages");
 
 

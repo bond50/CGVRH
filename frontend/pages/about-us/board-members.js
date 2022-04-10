@@ -18,7 +18,7 @@ const Index = () => {
                 content="Vihiga County Referral Hospital  Hospital Management Team"
             />
 
-            <link rel="canonical" href={`${DOMAIN}/${router.pathname}`}/>
+            <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
 
             <meta property="og:title" content={`The Hospital Management Team | ${APP_NAME}`}/>
             <meta
@@ -27,7 +27,7 @@ const Index = () => {
             />
 
             <meta property="og:type" content="webiste"/>
-            <meta property="og:url" content={`${DOMAIN}/${router.pathname}`}/>
+            <meta property="og:url" content={`${DOMAIN}${router.pathname}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
 
             <meta
