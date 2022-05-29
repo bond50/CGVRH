@@ -4,10 +4,10 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.contactForm = (req, res) => {
     const {email, name, message} = req.body;
-    let mailList = [process.env.MEDSUPEMAIL, process.env.EMAIL_TO, process.env.ARRNEST_EMAIL];
+    let mailList = [process.env.MEDSUPEMAIL, process.env.EMAIL_TO, process.env.ARNEST_EMAIL];
     const emailData = {
         to: mailList,
-        from: process.env.EMAIL_TO,
+        from: process.env.EMAIL_FROM,
         subject: `Contact form - ${process.env.APP_NAME}`,
         text: `Email received from contact from \n Sender name: ${name} \n Sender email: ${email} \n Sender message: ${message}`,
         html: `
@@ -88,7 +88,7 @@ exports.contactBlogAuthorForm = (req, res) => {
     // let mailList = [authorEmail, process.env.EMAIL_TO];
     const emailData = {
         to: authorEmail,
-        from: process.env.EMAIL_TO,
+        from: process.env.EMAIL_FROM,
         subject: `${name} messaged you from ${process.env.APP_NAME}`,
         text: `Email received from contact from \n Sender name: ${name} \n Sender email: ${email} \n Sender message: ${message}`,
         html: `
