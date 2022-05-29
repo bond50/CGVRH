@@ -1,13 +1,12 @@
-
 const sgMail = require("@sendgrid/mail"); // SENDGRID_API_KEY
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 
 exports.contactForm = (req, res) => {
     const {email, name, message} = req.body;
-
+    let mailList = [process.env.MEDSUPEMAIL, process.env.EMAIL_TO, process.env.ARRNEST_EMAIL];
     const emailData = {
-        to: process.env.EMAIL_TO,
+        to: mailList,
         from: process.env.EMAIL_TO,
         subject: `Contact form - ${process.env.APP_NAME}`,
         text: `Email received from contact from \n Sender name: ${name} \n Sender email: ${email} \n Sender message: ${message}`,
@@ -17,7 +16,6 @@ exports.contactForm = (req, res) => {
             <p>Sender email: ${email}</p>
             <p>Sender message: ${message}</p>
             <hr />
-
             <p><strong>This email may contain sensetive information</strong></p>
             <p>https://vihigahospital.go.ke</p>
         `,
@@ -87,18 +85,16 @@ exports.contactForm = (req, res) => {
 exports.contactBlogAuthorForm = (req, res) => {
     const {authorEmail, email, name, message} = req.body;
     // console.log(req.body);
-    let mailList = [authorEmail, process.env.EMAIL_TO];
-
+    // let mailList = [authorEmail, process.env.EMAIL_TO];
     const emailData = {
-
-        to: mailList,
+        to: authorEmail,
         from: process.env.EMAIL_TO,
         subject: `${name} messaged you from ${process.env.APP_NAME}`,
         text: `Email received from contact from \n Sender name: ${name} \n Sender email: ${email} \n Sender message: ${message}`,
         html: `
             <h4>Message received from:</h4>
             <p>Name: ${name}</p>
-            <p>Email: ${email}</p>
+            <p>Senders mail: ${email}</p>
             <p>Message: ${message}</p>
             <hr />
             <p>This email may contain sensetive information</p>
