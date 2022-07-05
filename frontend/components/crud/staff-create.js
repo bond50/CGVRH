@@ -21,7 +21,7 @@ import {
     HIVProgramTime, countyInfo, genderInfo
 } from "../list/staff";
 import classes from "../../styles/login.module.css";
-import {useRouter} from "next/router";
+
 
 import {API} from "../../config";
 
@@ -118,79 +118,222 @@ const StaffCreate = () => {
     }, [])
 
     function getOptions() {
-        const selectTitleOptions = titles.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const selectDisabilityOptions = disability.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const selectGenderOptions = genderInfo.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const selectEthnicityOptions = ethnicity.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const selectMaritalOptions = maritalStatus.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const selectCountyOptions = countyInfo.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const selectEmployeeStatusOptions = employeeStatuses.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const selectDesignationOptions = designation.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const selectFacilityOptions = facilityOptions.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const selectFacilityCodeOptions = facilityCodes.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const reasonForChangePreCurrentPositionOptions = positionChangeReason.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const selectSpecialityOptions = speciality.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const selectSubSpecialityOptions = subSpeciality.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const professionalBodyOptions = professionalBodies.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const employerOptions = employers.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const employmentTermsOptions = termsOfEmployment.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const hivOptions = HIVProgramTime.map(t => ({
-            "value": t,
-            "label": t
-        }))
-        const positionStatusOptions = positionStatusList.map(t => ({
-            "value": t,
-            "label": t
-        }))
-
+        const selectTitleOptions = titles.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const selectDisabilityOptions = disability.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const selectGenderOptions = genderInfo.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const selectEthnicityOptions = ethnicity.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const selectMaritalOptions = maritalStatus.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const selectCountyOptions = countyInfo.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const selectEmployeeStatusOptions = employeeStatuses.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const selectDesignationOptions = designation.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const selectFacilityOptions = facilityOptions.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const selectFacilityCodeOptions = facilityCodes.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const reasonForChangePreCurrentPositionOptions = positionChangeReason.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const selectSpecialityOptions = speciality.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const selectSubSpecialityOptions = subSpeciality.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const professionalBodyOptions = professionalBodies.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const employerOptions = employers.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const employmentTermsOptions = termsOfEmployment.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const hivOptions = HIVProgramTime.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
+        const positionStatusOptions = positionStatusList.map(t => {
+            if (t === ' ') {
+                return {
+                    "value": '',
+                    "label": "none"
+                }
+            }
+            return ({
+                "value": t,
+                "label": t
+            });
+        })
 
         setValues({
             selectTitleOptions,
@@ -569,17 +712,16 @@ const StaffCreate = () => {
                         <div className={`card mb-3 ${classes.Card}`}>
 
                             <div className={`card-body pb-4${classes.CardBody}`}>
-
-                                    {form()}
-                                </div>
+                                {form()}
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
 
 
-)
+    )
 };
 
 export default StaffCreate;
