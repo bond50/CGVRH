@@ -66,8 +66,8 @@ const StaffCreate = () => {
         employeeStatus: '',
         designationStatus: '',
         positionTitle: '',
-        facility: '',
-        facilityCode: '',
+        facility: 'Vihiga County Referral Hospital',
+        facilityCode: '16157',
         hireDate: '',
         reasonForChangePreCurrentPosition: '',
         positionStatus: '',
@@ -577,17 +577,44 @@ const StaffCreate = () => {
                 />
             </div>
         </div>
+        {/*<div className="col-12">*/}
+        {/*    <label htmlFor="name" className="form-label">Facility Name</label>*/}
+        {/*    <Select*/}
+        {/*        options={selectFacilityOptions}*/}
+        {/*        onChange={handleSelect('facility')}/>*/}
+        {/*</div>*/}
+        {/*<div className="col-12">*/}
+        {/*    <label htmlFor="name" className="form-label">Facility Code</label>*/}
+        {/*    <Select*/}
+        {/*        options={selectFacilityCodeOptions}*/}
+        {/*        onChange={handleSelect('facilityCode')}/>*/}
+        {/*</div>*/}
+
         <div className="col-12">
             <label htmlFor="name" className="form-label">Facility Name</label>
-            <Select
-                options={selectFacilityOptions}
-                onChange={handleSelect('facility')}/>
+            <div className="input-group ">
+                <input
+                    onChange={handleChange('facility')}
+                    type="text"
+                    readOnly
+                    placeholder='Vihiga County Referral Hospital'
+                    name="facility"
+                    className="form-control"
+                />
+            </div>
         </div>
         <div className="col-12">
             <label htmlFor="name" className="form-label">Facility Code</label>
-            <Select
-                options={selectFacilityCodeOptions}
-                onChange={handleSelect('facilityCode')}/>
+            <div className="input-group ">
+                <input
+                    onChange={handleChange('facilityCode')}
+                    type="text"
+                    readOnly
+                    placeholder='16157'
+                    name="facilityCode"
+                    className="form-control"
+                />
+            </div>
         </div>
 
         <div className="col-12">
