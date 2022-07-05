@@ -736,12 +736,9 @@ const StaffCreate = () => {
             <div className="container">
                 <div className="row justify-content-center">
                     <div className=" col-md-6 d-flex flex-column align-items-center justify-content-center">
-                        <div className={`card mb-3 ${classes.Card}`}>
 
-                            <div className={`card-body pb-4${classes.CardBody}`}>
                                 {form()}
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
