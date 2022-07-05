@@ -37,111 +37,111 @@ exports.create = async (req, res) => {
     } = req.body
 
 
-    // if (!title || !title.length) {
-    //     return res.status(400).json({
-    //         error: "Title required",
-    //     });
-    // }
-    // if
-    // (!firstname || !firstname.length) {
-    //     return res.status(400).json({
-    //         error: "You must enter your firstname",
-    //     });
-    // }
-    //
-    // if
-    // (!surname || !surname.length) {
-    //     return res.status(400).json({
-    //         error: "You must enter your surname",
-    //     });
-    // }
-    // if (!idNo || !idNo.length) {
-    //     return res.status(400).json({
-    //         error: "You must provide your identification number",
-    //     });
-    // }
-    // if (!eNo || !eNo.length) {
-    //     return res.status(400).json({
-    //         error: "You must provide your employment number",
-    //     });
-    // }
-    // if (!dob || !dob.length) {
-    //     return res.status(400).json({
-    //         error: "Date of birth is required",
-    //     });
-    // }
-    // if (!gender || !gender.length) {
-    //     return res.status(400).json({
-    //         error: "Select your gender",
-    //     });
-    // }
-    // if (!ethnicityOpt || !ethnicityOpt.length) {
-    //     return res.status(400).json({
-    //         error: "select your ethnicity ",
-    //     });
-    // }
-    // if (!marital || !marital.length) {
-    //     return res.status(400).json({
-    //         error: "Select marital status",
-    //     });
-    // }
-    // if (!county || !county.length) {
-    //     return res.status(400).json({
-    //         error: "Select the county of residence",
-    //     });
-    // }
-    // if
-    // (!email || !email.length) {
-    //     return res.status(400).json({
-    //         error: "Enter your email",
-    //     });
-    // }
-    // if (!employeeStatus || !employeeStatus.length) {
-    //     return res.status(400).json({
-    //         error: "select your employment status",
-    //     });
-    // }
-    // if (!designationStatus || !designationStatus.length) {
-    //     return res.status(400).json({
-    //         error: "select your designation",
-    //     });
-    // }
-    // if (!positionTitle || !positionTitle.length) {
-    //     return res.status(400).json({
-    //         error: "Enter your position Title",
-    //     });
-    // }
-    // if (!facility || !facility.length) {
-    //     return res.status(400).json({
-    //         error: "select your facility",
-    //     });
-    // }
-    // if (!facilityCode || !facilityCode.length) {
-    //     return res.status(400).json({
-    //         error: "select your facility code use '16157' if your facility is VCRH",
-    //     });
-    // }
-    // if (!hireDate || !hireDate.length) {
-    //     return res.status(400).json({
-    //         error: "Select Hire Date/Date Posted",
-    //     });
-    // }
-    // if (!positionStatus || !positionStatus.length) {
-    //     return res.status(400).json({
-    //         error: "Select your Position Status",
-    //     });
-    // }
-    //
-    // if (!employer || !employer.length) {
-    //     return res.status(400).json({
-    //         error: "Select Your employer",
-    //     });
-    // }
-    // if (!employmentTerms || !employmentTerms.length) {
-    //     return res.status(400).json({
-    //         error: "Select Terms of employment ",
-    //     });
-    // }
+    if (!title || !title.length) {
+        return res.status(400).json({
+            error: "Title required",
+        });
+    }
+    if
+    (!firstname || !firstname.length) {
+        return res.status(400).json({
+            error: "You must enter your firstname",
+        });
+    }
+
+    if
+    (!surname || !surname.length) {
+        return res.status(400).json({
+            error: "You must enter your surname",
+        });
+    }
+    if (!idNo || !idNo.length) {
+        return res.status(400).json({
+            error: "You must provide your identification number",
+        });
+    }
+    if (!eNo || !eNo.length) {
+        return res.status(400).json({
+            error: "You must provide your employment number",
+        });
+    }
+    if (!dob || !dob.length) {
+        return res.status(400).json({
+            error: "Date of birth is required",
+        });
+    }
+    if (!gender || !gender.length) {
+        return res.status(400).json({
+            error: "Select your gender",
+        });
+    }
+    if (!ethnicityOpt || !ethnicityOpt.length) {
+        return res.status(400).json({
+            error: "select your ethnicity ",
+        });
+    }
+    if (!marital || !marital.length) {
+        return res.status(400).json({
+            error: "Select marital status",
+        });
+    }
+    if (!county || !county.length) {
+        return res.status(400).json({
+            error: "Select the county of residence",
+        });
+    }
+    if
+    (!email || !email.length) {
+        return res.status(400).json({
+            error: "Enter your email",
+        });
+    }
+    if (!employeeStatus || !employeeStatus.length) {
+        return res.status(400).json({
+            error: "select your employment status",
+        });
+    }
+    if (!designationStatus || !designationStatus.length) {
+        return res.status(400).json({
+            error: "select your designation",
+        });
+    }
+    if (!positionTitle || !positionTitle.length) {
+        return res.status(400).json({
+            error: "Enter your position Title",
+        });
+    }
+    if (!facility || !facility.length) {
+        return res.status(400).json({
+            error: "select your facility",
+        });
+    }
+    if (!facilityCode || !facilityCode.length) {
+        return res.status(400).json({
+            error: "select your facility code use '16157' if your facility is VCRH",
+        });
+    }
+    if (!hireDate || !hireDate.length) {
+        return res.status(400).json({
+            error: "Select Hire Date/Date Posted",
+        });
+    }
+    if (!positionStatus || !positionStatus.length) {
+        return res.status(400).json({
+            error: "Select your Position Status",
+        });
+    }
+
+    if (!employer || !employer.length) {
+        return res.status(400).json({
+            error: "Select Your employer",
+        });
+    }
+    if (!employmentTerms || !employmentTerms.length) {
+        return res.status(400).json({
+            error: "Select Terms of employment ",
+        });
+    }
 
 
     const data = (
