@@ -132,16 +132,6 @@ exports.create = async (req, res) => {
             error: "Select your Position Status",
         });
     }
-    if (!specialityArr || !specialityArr.length) {
-        return res.status(400).json({
-            error: "Select your Speciality",
-        });
-    }
-    if (!professionalBody || !professionalBody.length) {
-        return res.status(400).json({
-            error: "Select Professional Body",
-        });
-    }
 
     if (!employer || !employer.length) {
         return res.status(400).json({
