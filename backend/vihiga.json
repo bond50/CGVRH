@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "vihiga-datasheet",
+  "private_key_id": "19be83b9653a933bfdc0b79a9db73e38cc919a2c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCYWGvW2PjxnRtk\nQXSvFovbo2kdxX87eYEdOUWgbaFZV4wtK/PO6/ykU8sr/3PIMOcPIbtTnPL3io6o\nAOqmgtXpoURLbKcYTk8hw+g4goj3d/f9qILntgbOyWifdNwv4LKiNqRfNLQ0dfbN\nPH/jqMOAfNaN21eZfXZ5GOgX+75nb+3hOcXazkI0KU75W10WcAs5b+10m/ovWKBc\nNrQ3i0Q4Shx9iRy2lViIyEWnLR79u4a12ZcQCVQPf1kZbRuStbwnhAs7BiW8NO5u\nDepgsmaZHud+bsGju8p8w2I9zhreIsU2h/Vg1mUEBSwq5uRYKUiSNAMJuLlTs1yw\niRVkV99hAgMBAAECggEABWQDlNuim3ISuQ5z4Yorsr7qhkopwWIARpdzNkUK0418\ngVCv1N+W1f29D7Z/U1MfqfJonYHNOyMk/x7hLrksdpLlRsH2e66xsCEtg2pjDFar\naMdgsnBHd2O7FwFclTkfOQwz7sZ/peeSrxp38AdVu6MvOF/NjrnYylouREL9Ls3C\nIgzhcOQqZNZY1UK2HsNIWb303QwA+4d32mtbgpX5zqU9z0SXrKcoH6NpC06+7y41\n8CN2myXGbEfZDR5z04OaMginy8V60KAC+neSHOufSh1YMWqqgKuL+ZThNGC9JXO9\naTYCTY2kCKXgZCl48ybm0KCknP4gIUJKaYzoOh/iUQKBgQDMfCmvorJGLnRAYKWF\nhLFUrJVb4i3nd8upajdLVj8IDY7/1lk5Yq/i4CTB7/JTVLsdlqUsU4U4VnnsVh8j\n9Ufe2OU+ZSMDkZQqIBX8ybnZ/eRdZci7rr5cVFpXj0E0Hpt2U3buaCnS7mqPEGpD\nufox4fL0lMxtJQymUcTqOP2CxQKBgQC+uZ82JdPd4oVLIofEMsNWSQn4dRSKp5q4\nskcsK6YNEjfqXkifTITH0DXuDgVzBe+eLp2J6PZNLCFtihDQ3vR3A3WkfsHXMtDx\nEi+Ad8JSyi+TncweGIfmzXaIgDEbfqFgOVjWAWa84oCOhwSCFKbB9YeuWFw40jTS\n3nR9aH+D7QKBgFuYUmPmEMz3CgO8Ruhj47r2A4FA8yb3tjaQ6WvJmjpVOHTI4vad\nigOqO0zT2kwRbC94x0vvrYDq23pNqW1F9YeQyD8GtoRmtWOZM8Aj7CgFXkGn0h6f\ny404C6+k76QVAbYi9OcdqX5eZUToKXFk4PlvKJD+BgPt0Ji/j+EK3iOxAoGAYdZw\n0OMYyyMPg5qEEOaFg/bV0Yml7vbJjOOPVR5TATOOUYDqOiWTm7i4YZT5wKaT5A4/\nrGZAKxhvUXTY6Xzl5UN2DtsjbtRXkMLmcT1+BuBHBa+V7P5igMh3fNBd4J/WArmI\nU8fGPzDmB7dFXcFgRfFBF/Ol41QZ2u5YzZhUiYUCgYBbM6rKZ/RyJYU0upZUHxpp\nigl3ycQwO23UUVJE+wSb6/MBxTpE5dhQvLy2qAORygAzdWf3BZVG4KUTrfW6vnkA\nPw3D6meU1E8nZ+w/XRsaO/3u/zSRqj9s5Brk2TlLFnUokgmmICxzrP8FDcSPEyig\n6YlvUbmWcp4ugwgX4P3v7g==\n-----END PRIVATE KEY-----\n",
+  "client_email": "vcrh-datasheets@vihiga-datasheet.iam.gserviceaccount.com",
+  "client_id": "102029190265770500711",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vcrh-datasheets%40vihiga-datasheet.iam.gserviceaccount.com"
+}
