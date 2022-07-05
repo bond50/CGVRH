@@ -1,6 +1,8 @@
 .Section{
     background: #f1f6fd;
-    overflow: hidden;
+
+    min-height: 100vh;
+
 
 }
 .Logo {

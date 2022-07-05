@@ -20,7 +20,7 @@ const Alert = ({msg, type, label, reload}) => {
             if (!reload) {
                 setInterval(() => {
                     setShow(false);
-                }, 5000);
+                }, 8000);
             }
         }
     }, [msg]);

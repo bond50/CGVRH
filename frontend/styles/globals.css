@@ -1306,3 +1306,7 @@ section {
     color: #fff;
     text-decoration: none;
 }
+
+.temporary {
+    min-height: 450vh !important;
+}

@@ -21,6 +21,7 @@ const serviceTagRoutes = require('./routes/service-tag')
 const searchRoutes = require('./routes/search')
 const galleryTagRoutes = require('./routes/gallery-tag')
 const documentTagRoutes = require('./routes/document-tag')
+const staffRoutes = require('./routes/sheets')
 
 
 const ip = require("ip");
@@ -87,6 +88,7 @@ app.use('/api', pageCategoryRoutes);
 app.use('/api', searchRoutes);
 app.use('/api', galleryTagRoutes);
 app.use('/api', documentTagRoutes);
+app.use('/api', staffRoutes);
 
 
 process.on('uncaughtException', function (exception) {
