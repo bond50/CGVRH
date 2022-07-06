@@ -634,13 +634,13 @@ const StaffCreate = () => {
                         <div className={`card mb-3 ${classes.Card}`}>
                             <div className={`card-body ${classes.CardBody}`}>
                                 <div className={`pt-4 pb-2 ${classes.CardTitle}`}>
-                                    <h5 className={`text-center pb-0 fs-4`}> Submit your information through this
+                                    <h5 className={` pb-0 fs-4`}> Submit your information through this
                                         form</h5>
-                                    <p className="text-center small text-muted">For dropdowns,if the item you are
+                                    <span className="text-center small text-muted">For dropdowns,if the item you are
                                         looking for is
                                         not available,just type in the input whatever you want and click
                                         on <strong>create</strong> option that pops
-                                        up </p>
+                                        up </span>
 
                                 </div>
                                 {form()}
