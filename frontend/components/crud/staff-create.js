@@ -1,5 +1,7 @@
 import React, {Component, useEffect, useState} from 'react'
 import Select from 'react-select'
+import CreatableSelect from 'react-select/creatable';
+
 import axios from 'axios'
 import {
 
@@ -30,7 +32,6 @@ const StaffCreate = () => {
 
     const [values, setValues] = useState({
         selectTitleOptions: [],
-        selectDisabilityOptions: [],
         selectGenderOptions: [],
         selectEthnicityOptions: [],
         selectMaritalOptions: [],
@@ -44,9 +45,7 @@ const StaffCreate = () => {
         professionalBodyOptions: [],
         employerOptions: [],
         employmentTermsOptions: [],
-        hivOptions: [],
-        reasonForChangePreCurrentPositionOptions: [],
-        positionStatusOptions: [],
+
         add: '',
         title: '',
         firstname: '',
@@ -89,7 +88,7 @@ const StaffCreate = () => {
     const [showForm, setShowForm] = useState(true)
 
     const {
-        selectDisabilityOptions,
+
         selectGenderOptions,
         selectTitleOptions,
         selectEthnicityOptions,
@@ -97,16 +96,13 @@ const StaffCreate = () => {
         selectCountyOptions,
         selectEmployeeStatusOptions,
         selectDesignationOptions,
-        selectFacilityOptions,
-        selectFacilityCodeOptions,
-        reasonForChangePreCurrentPositionOptions,
-        positionStatusOptions,
+
         selectSpecialityOptions,
         selectSubSpecialityOptions,
         professionalBodyOptions,
         employerOptions,
         employmentTermsOptions,
-        hivOptions,
+
         error,
         loading,
         message,
@@ -119,144 +115,75 @@ const StaffCreate = () => {
 
     function getOptions() {
         const selectTitleOptions = titles.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
             });
         })
         const selectDisabilityOptions = disability.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
             });
         })
+
+
         const selectGenderOptions = genderInfo.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
-                "label": t
+                "label": t,
+
             });
         })
         const selectEthnicityOptions = ethnicity.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
             });
         })
         const selectMaritalOptions = maritalStatus.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
             });
         })
         const selectCountyOptions = countyInfo.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
             });
         })
         const selectEmployeeStatusOptions = employeeStatuses.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
             });
         })
         const selectDesignationOptions = designation.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
             });
         })
         const selectFacilityOptions = facilityOptions.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
             });
         })
         const selectFacilityCodeOptions = facilityCodes.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
             });
         })
         const reasonForChangePreCurrentPositionOptions = positionChangeReason.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
             });
         })
         const selectSpecialityOptions = speciality.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
@@ -287,48 +214,24 @@ const StaffCreate = () => {
             });
         })
         const employerOptions = employers.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
             });
         })
         const employmentTermsOptions = termsOfEmployment.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
             });
         })
         const hivOptions = HIVProgramTime.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
             });
         })
         const positionStatusOptions = positionStatusList.map(t => {
-            if (t === ' ') {
-                return {
-                    "value": '',
-                    "label": "none"
-                }
-            }
             return ({
                 "value": t,
                 "label": t
@@ -362,7 +265,18 @@ const StaffCreate = () => {
         setValues({...values, error: '', [name]: e.target.value.trim()});
     };
     const handleSelect = name => e => {
-        setValues({...values, error: '', [name]: e.value});
+        if (e) {
+            setValues({...values, error: '', [name]: e.value});
+        }
+    };
+    const handleMultiSelect = name => e => {
+        if (e) {
+            let myArr = []
+            e.map(item => {
+                myArr.push(item.value.trim())
+            })
+            setValues({...values, error: '', [name]: myArr.join(';')});
+        }
     };
 
 
@@ -409,18 +323,20 @@ const StaffCreate = () => {
 
     const form = () => <form onSubmit={handleSubmit} className='row gy-3 w-100'>
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Title</label>
-            <Select
-                required
+            <label className="form-label">Title</label>
+            <CreatableSelect
+                isClearable
+                onChange={handleSelect('title')}
+                onInputChange={handleSelect('title')}
                 options={selectTitleOptions}
-                onChange={handleSelect('title')}/>
+            />
+
         </div>
 
         <div className="col-12">
-            <label htmlFor="name" className="form-label">First Name</label>
+            <label className="form-label">First Name</label>
             <div className="input-group ">
                 <input
-                    required
                     onChange={handleChange('firstname')}
                     type="text"
                     name="firstname"
@@ -429,7 +345,7 @@ const StaffCreate = () => {
             </div>
         </div>
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Other Names</label>
+            <label className="form-label">Other Names</label>
             <div className="input-group ">
                 <input
                     onChange={handleChange('otherNames')}
@@ -440,7 +356,7 @@ const StaffCreate = () => {
             </div>
         </div>
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Surname</label>
+            <label className="form-label">Surname</label>
             <div className="input-group ">
                 <input
                     onChange={handleChange('surname')}
@@ -450,16 +366,9 @@ const StaffCreate = () => {
                 />
             </div>
         </div>
-        <div className="col-12">
-            <label htmlFor="name" className="form-label">Disability Type</label>
-            <Select
-                options={selectDisabilityOptions}
-
-                onChange={handleSelect('disabilityOption')}/>
-        </div>
 
         <div className="col-12">
-            <label htmlFor="name" className="form-label">ID Number</label>
+            <label className="form-label">ID Number</label>
             <div className="input-group ">
                 <input
                     onChange={handleChange('idNo')}
@@ -470,7 +379,7 @@ const StaffCreate = () => {
             </div>
         </div>
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Employment No.</label>
+            <label className="form-label">Employment No.</label>
             <div className="input-group ">
                 <input
                     onChange={handleChange('eNo')}
@@ -481,7 +390,7 @@ const StaffCreate = () => {
             </div>
         </div>
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Date Of Birth</label>
+            <label className="form-label">Date Of Birth</label>
             <div className="input-group ">
                 <input
                     onChange={handleChange('dob')}
@@ -493,33 +402,46 @@ const StaffCreate = () => {
         </div>
 
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Gender</label>
-            <Select
+            <label className="form-label">Gender</label>
+            <CreatableSelect
+                isClearable
+                onChange={handleSelect('gender')}
+                onInputChange={handleSelect('gender')}
                 options={selectGenderOptions}
-                onChange={handleSelect('gender')}/>
+            />
         </div>
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Ethnicity</label>
-            <Select
+            <label className="form-label">Ethnicity</label>
+            <CreatableSelect
+                isClearable
+                onChange={handleSelect('ethnicityOpt')}
+                onInputChange={handleSelect('ethnicityOpt')}
                 options={selectEthnicityOptions}
-                onChange={handleSelect('ethnicityOpt')}/>
+            />
         </div>
 
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Marital Status</label>
-            <Select
+            <label className="form-label">Marital Status</label>
+            <CreatableSelect
+                isClearable
+                onChange={handleSelect('marital')}
+                onInputChange={handleSelect('marital')}
                 options={selectMaritalOptions}
-                onChange={handleSelect('marital')}/>
+            />
+
         </div>
         <div className="col-12">
-            <label htmlFor="name" className="form-label">County of Residence</label>
-            <Select
+            <label className="form-label">County of Residence</label>
+            <CreatableSelect
+                isClearable
+                onChange={handleSelect('county')}
+                onInputChange={handleSelect('county')}
                 options={selectCountyOptions}
-                onChange={handleSelect('county')}/>
+            />
         </div>
 
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Telephone No.</label>
+            <label className="form-label">Telephone No.</label>
             <div className="input-group ">
                 <input
                     onChange={handleChange('telephone')}
@@ -530,7 +452,7 @@ const StaffCreate = () => {
             </div>
         </div>
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Email</label>
+            <label className="form-label">Email</label>
             <div className="input-group ">
                 <input
                     onChange={handleChange('email')}
@@ -540,58 +462,40 @@ const StaffCreate = () => {
                 />
             </div>
         </div>
-        <div className="col-12">
-            <label htmlFor="name" className="form-label">Mailing Address</label>
-            <div className="input-group ">
-                <input
-                    onChange={handleChange('mailingAddress')}
-                    type="text"
-                    name="mailingAddress"
-                    className="form-control"
-                />
-            </div>
-        </div>
 
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Employee Status</label>
+            <label className="form-label">Employee Status</label>
             <Select
                 options={selectEmployeeStatusOptions}
                 onChange={handleSelect('employeeStatus')}/>
         </div>
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Job designation</label>
-            <Select
+            <label className="form-label">Job designation</label>
+
+            <CreatableSelect
+                isClearable
+                onChange={handleSelect('designationStatus')}
+                onInputChange={handleSelect('designationStatus')}
                 options={selectDesignationOptions}
-                onChange={handleSelect('designationStatus')}/>
+            />
         </div>
 
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Position Title</label>
+            <label className="form-label">Position Title</label>
             <div className="input-group ">
                 <input
                     onChange={handleChange('positionTitle')}
                     type="text"
                     name="positionTitle"
-                    placeholder='eg CASCO,SCHRIO,SPHN , N/A,ETC'
+                    placeholder='eg CASCO,SCHRIO,SPHN,N/A, ETC'
                     className="form-control"
                 />
             </div>
         </div>
-        {/*<div className="col-12">*/}
-        {/*    <label htmlFor="name" className="form-label">Facility Name</label>*/}
-        {/*    <Select*/}
-        {/*        options={selectFacilityOptions}*/}
-        {/*        onChange={handleSelect('facility')}/>*/}
-        {/*</div>*/}
-        {/*<div className="col-12">*/}
-        {/*    <label htmlFor="name" className="form-label">Facility Code</label>*/}
-        {/*    <Select*/}
-        {/*        options={selectFacilityCodeOptions}*/}
-        {/*        onChange={handleSelect('facilityCode')}/>*/}
-        {/*</div>*/}
+
 
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Facility Name</label>
+            <label className="form-label">Facility Name</label>
             <div className="input-group ">
                 <input
                     onChange={handleChange('facility')}
@@ -604,7 +508,7 @@ const StaffCreate = () => {
             </div>
         </div>
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Facility Code</label>
+            <label className="form-label">Facility Code</label>
             <div className="input-group ">
                 <input
                     onChange={handleChange('facilityCode')}
@@ -618,7 +522,7 @@ const StaffCreate = () => {
         </div>
 
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Hire Date/Date Posted</label>
+            <label className="form-label">Hire Date/Date Posted</label>
             <div className="input-group ">
                 <input
                     onChange={handleChange('hireDate')}
@@ -628,54 +532,43 @@ const StaffCreate = () => {
                 />
             </div>
         </div>
-        <div className="col-12">
-            <label htmlFor="name" className="form-label">End Date of Previous/Current Position</label>
-            <div className="input-group ">
-                <input
-                    onChange={handleChange('endDate')}
-                    type="date"
-                    name="endDate"
-                    className="form-control"
-                />
-            </div>
-        </div>
-        <div className="col-12">
-            <label htmlFor="name" className="form-label">Reason for Changing Previous/Current Positions</label>
-            <Select
-                options={reasonForChangePreCurrentPositionOptions}
-                onChange={handleSelect('reasonForChangePreCurrentPosition')}/>
-        </div>
-        <div className="col-12">
-            <label htmlFor="name" className="form-label">Position Status</label>
-            <Select
-                options={positionStatusOptions}
-                onChange={handleSelect('positionStatus')}/>
-        </div>
 
 
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Speciality</label>
-            <Select
-
+            <label className="form-label">Speciality</label>
+            <CreatableSelect
+                isClearable
+                isMulti
+                placeholder='select multiple if applicable'
+                onChange={handleMultiSelect('specialityArr')}
+                onInputChange={handleSelect('specialityArr')}
                 options={selectSpecialityOptions}
-                onChange={handleSelect('specialityArr')}/>
+            />
         </div>
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Sub Speciality</label>
-            <Select
+            <label className="form-label">Sub Speciality</label>
+            <CreatableSelect
+                isClearable
+                placeholder='select multiple if applicable'
+                isMulti
+                onChange={handleMultiSelect('subSpecialityArr')}
+                onInputChange={handleSelect('subSpecialityArr')}
                 options={selectSubSpecialityOptions}
-                onChange={handleSelect('subSpecialityArr')}/>
+            />
         </div>
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Professional Body</label>
-            <Select
+            <label className="form-label">Professional Body</label>
+            <CreatableSelect
+                isClearable
+                onChange={handleSelect('professionalBody')}
+                onInputChange={handleSelect('professionalBody')}
                 options={professionalBodyOptions}
-                onChange={handleSelect('professionalBody')}/>
+            />
         </div>
 
 
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Registration No</label>
+            <label className="form-label">Registration No</label>
             <div className="input-group ">
                 <input
                     onChange={handleChange('registrationNo')}
@@ -686,7 +579,7 @@ const StaffCreate = () => {
             </div>
         </div>
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Practicing licence No</label>
+            <label className="form-label">Practicing licence No</label>
             <div className="input-group ">
                 <input
                     onChange={handleChange('licenceNo')}
@@ -698,23 +591,25 @@ const StaffCreate = () => {
         </div>
 
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Employer</label>
-            <Select
+            <label className="form-label">Employer</label>
+
+            <CreatableSelect
+                isClearable
+                onChange={handleSelect('employer')}
+                onInputChange={handleSelect('employer')}
                 options={employerOptions}
-                onChange={handleSelect('employer')}/>
+            />
+
         </div>
         <div className="col-12">
-            <label htmlFor="name" className="form-label">Terms of Employment</label>
-            <Select
+            <label className="form-label">Terms of Employment</label>
+            <CreatableSelect
+                isClearable
                 options={employmentTermsOptions}
+                onInputChange={handleSelect('employmentTerms')}
                 onChange={handleSelect('employmentTerms')}/>
         </div>
-        <div className="col-12">
-            <label htmlFor="name" className="form-label">HIV Program Time(%)</label>
-            <Select
-                options={hivOptions}
-                onChange={handleSelect('hiv')}/>
-        </div>
+
         <div className="col-12">
             {showErrorMessage()}
         </div>
@@ -724,7 +619,7 @@ const StaffCreate = () => {
 
         <div className="col-12">
             <button className={`btn btn-secondary w-100 ${classes.Btn}`}
-                    type="submit">Save
+                    type="submit">Submit
             </button>
         </div>
         {showLoading()}
@@ -732,19 +627,29 @@ const StaffCreate = () => {
 
     return (
         <section
-            className={` ${classes.Section} temporary`}>
+            className={` `}>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className=" col-md-6 d-flex flex-column align-items-center justify-content-center">
+                        <div className={`card mb-3 ${classes.Card}`}>
+                            <div className={`card-body ${classes.CardBody}`}>
+                                <div className={`pt-4 pb-2 ${classes.CardTitle}`}>
+                                    <h5 className={`text-center pb-0 fs-4`}> Submit your information through this
+                                        form</h5>
+                                    <p className="text-center small text-muted">For dropdowns,if the item you are
+                                        looking for is
+                                        not available,just type in the input whatever you want and click
+                                        on <strong>create</strong> option that pops
+                                        up </p>
 
+                                </div>
                                 {form()}
-
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
-
     )
 };
 

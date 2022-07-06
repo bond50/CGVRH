@@ -176,6 +176,7 @@ exports.create = async (req, res) => {
 
     const propertyValues = Object.values(replaceUndefinied());
 
+
     const auth = new google.auth.GoogleAuth({
         keyFile: "vihiga.json",
         scopes: "https://www.googleapis.com/auth/spreadsheets",
