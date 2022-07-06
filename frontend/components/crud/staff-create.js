@@ -414,6 +414,7 @@ const StaffCreate = () => {
             <label className="form-label">Ethnicity</label>
             <CreatableSelect
                 isClearable
+                placeholder='start typing for autocompletion'
                 onChange={handleSelect('ethnicityOpt')}
                 onInputChange={handleSelect('ethnicityOpt')}
                 options={selectEthnicityOptions}
@@ -434,6 +435,7 @@ const StaffCreate = () => {
             <label className="form-label">County of Residence</label>
             <CreatableSelect
                 isClearable
+                placeholder='start typing for autocompletion'
                 onChange={handleSelect('county')}
                 onInputChange={handleSelect('county')}
                 options={selectCountyOptions}
@@ -474,6 +476,7 @@ const StaffCreate = () => {
 
             <CreatableSelect
                 isClearable
+                placeholder='start typing for autocompletion'
                 onChange={handleSelect('designationStatus')}
                 onInputChange={handleSelect('designationStatus')}
                 options={selectDesignationOptions}
@@ -560,6 +563,7 @@ const StaffCreate = () => {
             <label className="form-label">Professional Body</label>
             <CreatableSelect
                 isClearable
+                placeholder='start typing for autocompletion'
                 onChange={handleSelect('professionalBody')}
                 onInputChange={handleSelect('professionalBody')}
                 options={professionalBodyOptions}
@@ -605,6 +609,7 @@ const StaffCreate = () => {
             <label className="form-label">Terms of Employment</label>
             <CreatableSelect
                 isClearable
+                placeholder='start typing for autocompletion'
                 options={employmentTermsOptions}
                 onInputChange={handleSelect('employmentTerms')}
                 onChange={handleSelect('employmentTerms')}/>
