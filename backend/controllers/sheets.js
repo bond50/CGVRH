@@ -60,11 +60,7 @@ exports.create = async (req, res) => {
             error: "You must provide your identification number",
         });
     }
-    if (!eNo || !eNo.length) {
-        return res.status(400).json({
-            error: "You must provide your employment number",
-        });
-    }
+
     if (!dob || !dob.length) {
         return res.status(400).json({
             error: "Date of birth is required",
@@ -90,8 +86,7 @@ exports.create = async (req, res) => {
             error: "Select the county of residence",
         });
     }
-    if
-    (!email || !email.length) {
+    if (!email || !email.length) {
         return res.status(400).json({
             error: "Enter your email",
         });
@@ -111,32 +106,20 @@ exports.create = async (req, res) => {
             error: "Enter your position Title",
         });
     }
-    if (!facility || !facility.length) {
-        return res.status(400).json({
-            error: "select your facility",
-        });
-    }
-    if (!facilityCode || !facilityCode.length) {
-        return res.status(400).json({
-            error: "select your facility code use '16157' if your facility is VCRH",
-        });
-    }
+
     if (!hireDate || !hireDate.length) {
         return res.status(400).json({
             error: "Select Hire Date/Date Posted",
         });
     }
-    if (!positionStatus || !positionStatus.length) {
-        return res.status(400).json({
-            error: "Select your Position Status",
-        });
-    }
+
 
     if (!employer || !employer.length) {
         return res.status(400).json({
             error: "Select Your employer",
         });
     }
+
     if (!employmentTerms || !employmentTerms.length) {
         return res.status(400).json({
             error: "Select Terms of employment ",
