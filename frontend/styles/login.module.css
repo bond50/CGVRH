@@ -1,6 +1,5 @@
 .Section{
     background: #f1f6fd;
-
     min-height: 100vh;
 
 
@@ -28,6 +27,7 @@
 }
 
 .Card {
+
     margin-bottom: 30px;
     border: none;
     border-radius: 5px;

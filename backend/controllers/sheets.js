@@ -170,7 +170,7 @@ exports.create = async (req, res) => {
         const str = JSON.stringify(data, function (key, value) {
             return (value === undefined) ? "" : value
         });
-        return JSON.parse(str);
+        return JSON.parse(str.toLowerCase());
     }
 
 

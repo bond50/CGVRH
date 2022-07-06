@@ -630,7 +630,7 @@ const StaffCreate = () => {
             className={` `}>
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className=" col-md-6 d-flex flex-column align-items-center justify-content-center">
+                    <div className=" col-lg-6 col-md-12 d-flex flex-column align-items-center justify-content-center">
                         <div className={`card mb-3 ${classes.Card}`}>
                             <div className={`card-body ${classes.CardBody}`}>
                                 <div className={`pt-4 pb-2 ${classes.CardTitle}`}>
