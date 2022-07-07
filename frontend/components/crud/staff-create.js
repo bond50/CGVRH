@@ -23,13 +23,16 @@ import {
     HIVProgramTime, countyInfo, genderInfo
 } from "../list/staff";
 import classes from "../../styles/login.module.css";
-
-
 import {API} from "../../config";
+import {calculateTimeLeft} from "../reusables/functions/calculateTimeLeft";
 
 
 const StaffCreate = () => {
 
+
+    const date_future = +new Date(2022, 6, 24, 23, 59, 59);
+    const date_now = +new Date();
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(date_future, date_now));
     const [values, setValues] = useState({
         selectTitleOptions: [],
         selectGenderOptions: [],
@@ -85,7 +88,27 @@ const StaffCreate = () => {
 
     });
 
-    const [showForm, setShowForm] = useState(true)
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setTimeLeft(calculateTimeLeft(date_future, date_now));
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    });
+
+    const timerComponents = [];
+    Object.keys(timeLeft).forEach((interval) => {
+        if (!timeLeft[interval]) {
+            return;
+        }
+
+        timerComponents.push(
+            <span>
+      {timeLeft[interval]} {interval}{" "}
+    </span>
+        );
+    });
+
 
     const {
 
@@ -297,7 +320,6 @@ const StaffCreate = () => {
                     loading: false,
 
                 })
-                setShowForm(false)
 
 
                 setTimeout(function () {
@@ -630,27 +652,51 @@ const StaffCreate = () => {
         {showLoading()}
     </form>
 
+
     return (
         <section
             className={` `}>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className=" col-lg-6 col-md-12 d-flex flex-column align-items-center justify-content-center">
+
                         <div className={`card mb-3 ${classes.Card}`}>
-                            <div className={`card-body ${classes.CardBody}`}>
-                                <div className={`pt-4 pb-2 ${classes.CardTitle}`}>
-                                    <h5 className={` pb-0 fs-4`}> Submit your information through this
-                                        form</h5>
-                                    <span className="text-center small text-muted">For dropdowns,if the item you are
+                            {timerComponents.length ? <div className={`card-body ${classes.CardBody}`}>
+                                    <div className={`pt-4 pb-2 ${classes.CardTitle}`}>
+
+                                        <p>
+                                            Time remaining :
+
+                                            <span>{timerComponents.length ? timerComponents : null}</span>
+                                        </p>
+
+
+                                        <h5 className={` pb-0 fs-4`}> Submit your information through this
+                                            form</h5>
+                                        <span className="text-center small text-muted">For dropdowns,if the item you are
                                         looking for is
                                         not available,just type in the input whatever you want and click
                                         on <strong>create</strong> option that pops
                                         up </span>
+                                    </div>
+                                    {form()}
+                                    <p>
+                                        Time remaining :
 
+                                        <span>{timerComponents.length ? timerComponents : null}</span>
+                                    </p>
+
+                                </div> :
+                                <div className={classes.CardTitle}>
+                                    <div className="container">
+                                        <p>
+                                            <span>Sorry, The time for submission has elapsed.Please visit Human Resource Department for assistance.Thank you</span>
+                                        </p>
+                                    </div>
                                 </div>
-                                {form()}
-                            </div>
+                            }
                         </div>
+
                     </div>
                 </div>
             </div>
