@@ -30,7 +30,7 @@ import {calculateTimeLeft} from "../reusables/functions/calculateTimeLeft";
 const StaffCreate = () => {
 
 
-    const date_future = +new Date(2022, 6, 24, 23, 59, 59);
+    const date_future = +new Date(2022, 6, 14, 23, 59, 59);
     const date_now = +new Date();
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(date_future, date_now));
     const [values, setValues] = useState({
@@ -666,8 +666,7 @@ const StaffCreate = () => {
 
                                         <p>
                                             Time remaining :
-
-                                            <span>{timerComponents.length ? timerComponents : null}</span>
+                                            <span className='mx-2'>{timerComponents.length ? timerComponents : null}</span>
                                         </p>
 
 
