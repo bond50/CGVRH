@@ -646,7 +646,7 @@ const StaffCreate = () => {
 
         <div className="col-12">
             <button className={`btn btn-secondary w-100 ${classes.Btn}`}
-                    type="submit">Submit
+                    type="submit" disabled={loading}>Submit
             </button>
         </div>
         {showLoading()}
