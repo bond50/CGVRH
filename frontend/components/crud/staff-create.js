@@ -682,7 +682,7 @@ const StaffCreate = () => {
                                     <p>
                                         Time remaining :
 
-                                        <span>{timerComponents.length ? timerComponents : null}</span>
+                                        <span className='mx-2'>{timerComponents.length ? timerComponents : null}</span>
                                     </p>
 
                                 </div> :
