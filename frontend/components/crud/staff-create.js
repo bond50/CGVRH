@@ -97,13 +97,13 @@ const StaffCreate = () => {
     });
 
     const timerComponents = [];
-    Object.keys(timeLeft).forEach((interval) => {
+    Object.keys(timeLeft).forEach((interval, index) => {
         if (!timeLeft[interval]) {
             return;
         }
 
         timerComponents.push(
-            <span>
+            <span key={index}>
       {timeLeft[interval]} {interval}{" "}
     </span>
         );
@@ -348,6 +348,7 @@ const StaffCreate = () => {
             <label className="form-label">Title</label>
             <CreatableSelect
                 isClearable
+                className={classes.select}
                 onChange={handleSelect('title')}
                 onInputChange={handleSelect('title')}
                 options={selectTitleOptions}
@@ -427,6 +428,7 @@ const StaffCreate = () => {
             <label className="form-label">Gender</label>
             <CreatableSelect
                 isClearable
+                className={classes.select}
                 onChange={handleSelect('gender')}
                 onInputChange={handleSelect('gender')}
                 options={selectGenderOptions}
@@ -436,6 +438,7 @@ const StaffCreate = () => {
             <label className="form-label">Ethnicity</label>
             <CreatableSelect
                 isClearable
+                className={classes.select}
                 placeholder='start typing for autocompletion'
                 onChange={handleSelect('ethnicityOpt')}
                 onInputChange={handleSelect('ethnicityOpt')}
@@ -447,6 +450,7 @@ const StaffCreate = () => {
             <label className="form-label">Marital Status</label>
             <CreatableSelect
                 isClearable
+                className={classes.select}
                 onChange={handleSelect('marital')}
                 onInputChange={handleSelect('marital')}
                 options={selectMaritalOptions}
@@ -457,6 +461,7 @@ const StaffCreate = () => {
             <label className="form-label">County of Residence</label>
             <CreatableSelect
                 isClearable
+                className={classes.select}
                 placeholder='start typing for autocompletion'
                 onChange={handleSelect('county')}
                 onInputChange={handleSelect('county')}
@@ -498,6 +503,7 @@ const StaffCreate = () => {
 
             <CreatableSelect
                 isClearable
+                className={classes.select}
                 placeholder='start typing for autocompletion'
                 onChange={handleSelect('designationStatus')}
                 onInputChange={handleSelect('designationStatus')}
@@ -563,6 +569,7 @@ const StaffCreate = () => {
             <label className="form-label">Speciality</label>
             <CreatableSelect
                 isClearable
+                className={classes.select}
                 isMulti
                 placeholder='select multiple if applicable'
                 onChange={handleMultiSelect('specialityArr')}
@@ -574,6 +581,7 @@ const StaffCreate = () => {
             <label className="form-label">Sub Speciality</label>
             <CreatableSelect
                 isClearable
+                className={classes.select}
                 placeholder='select multiple if applicable'
                 isMulti
                 onChange={handleMultiSelect('subSpecialityArr')}
@@ -585,6 +593,8 @@ const StaffCreate = () => {
             <label className="form-label">Professional Body</label>
             <CreatableSelect
                 isClearable
+                className={classes.select}
+
                 placeholder='start typing for autocompletion'
                 onChange={handleSelect('professionalBody')}
                 onInputChange={handleSelect('professionalBody')}
@@ -611,7 +621,7 @@ const StaffCreate = () => {
                     onChange={handleChange('licenceNo')}
                     type="text"
                     name="licenceNo"
-                    className="form-control"
+                    className={`form-control`}
                 />
             </div>
         </div>
@@ -621,6 +631,7 @@ const StaffCreate = () => {
 
             <CreatableSelect
                 isClearable
+                className={classes.select}
                 onChange={handleSelect('employer')}
                 onInputChange={handleSelect('employer')}
                 options={employerOptions}
@@ -631,6 +642,7 @@ const StaffCreate = () => {
             <label className="form-label">Terms of Employment</label>
             <CreatableSelect
                 isClearable
+                className={classes.select}
                 placeholder='start typing for autocompletion'
                 options={employmentTermsOptions}
                 onInputChange={handleSelect('employmentTerms')}
@@ -665,9 +677,9 @@ const StaffCreate = () => {
                                     <div className={`pt-4 pb-2 ${classes.CardTitle}`}>
 
                                         <p className={classes.white}>
-                                            <span >
+                                            <span>
                                             Remaining time : {' '}
-                                           {timerComponents.length ? timerComponents : null}
+                                                {timerComponents.length ? timerComponents : null}
                                         </span>
                                         </p>
 
@@ -677,7 +689,8 @@ const StaffCreate = () => {
                                         looking for is
                                         not available,just type in the input whatever you want and click
                                         on <strong>create</strong> option that pops
-                                        up </span>
+                                        up
+                                        </span>
                                     </div>
                                     {form()}
                                     <p>

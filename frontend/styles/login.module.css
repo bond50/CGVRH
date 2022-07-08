@@ -78,3 +78,13 @@
 .sBtn a {
     color: #106eea;
 }
+
+.Card input, .Card .select {
+  border-radius: 2px;
+
+}
+.Card input:focus, .Card .select:focus {
+ box-shadow: none!important;
+    border :2px solid #106eea;
+
+}
