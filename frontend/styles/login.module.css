@@ -61,9 +61,9 @@
 .white {
     background-color: #1bbd36;
     color: #fff !important;
-    width: 100% !important;
+
     border-radius: 5px;
-    padding: 10px;
+    padding: 3px;
 }
 
 .CardBody {
