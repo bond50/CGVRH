@@ -61,7 +61,8 @@
 .white {
     background-color: #1bbd36;
     color: #fff !important;
-border-radius: 10px;
+    width: 100% !important;
+    border-radius: 5px;
     padding: 10px;
 }
 

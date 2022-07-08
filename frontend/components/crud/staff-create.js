@@ -665,9 +665,10 @@ const StaffCreate = () => {
                                     <div className={`pt-4 pb-2 ${classes.CardTitle}`}>
 
                                         <p className={classes.white}>
-
+                                            <span >
                                             Remaining time : {' '}
                                            {timerComponents.length ? timerComponents : null}
+                                        </span>
                                         </p>
 
                                         <h5 className={` pb-0 fs-4`}> Submit your information through this
