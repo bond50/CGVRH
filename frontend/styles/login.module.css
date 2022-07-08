@@ -52,26 +52,26 @@
 }
 
 
-
-
-
 .CardTitle span {
     color: #fff;
     font-size: 14px;
     font-weight: 400;
 }
 
-.white{
-    color: #fff!important;
-    padding: 2px;
+.white {
+    background-color: #1bbd36;
+    color: #fff !important;
+border-radius: 10px;
+    padding: 10px;
 }
+
 .CardBody {
     padding: 0 20px 20px 20px;
 }
 
 .Btn {
-    background-color: #09254b;
-    border-color: #09254b;
+    background-color: #1bbd36;
+    border-color: #1bbd36;
 }
 
 .sBtn a {

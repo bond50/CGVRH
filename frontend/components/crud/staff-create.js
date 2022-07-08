@@ -664,10 +664,10 @@ const StaffCreate = () => {
                             {timerComponents.length ? <div className={`card-body ${classes.CardBody}`}>
                                     <div className={`pt-4 pb-2 ${classes.CardTitle}`}>
 
-                                        <p className='bg-primary '>
-                                             <span className={classes.white}>
-                                            Remaining time for online submission: {' '}
-                                           {timerComponents.length ? timerComponents : null}</span>
+                                        <p className={classes.white}>
+
+                                            Remaining time : {' '}
+                                           {timerComponents.length ? timerComponents : null}
                                         </p>
 
                                         <h5 className={` pb-0 fs-4`}> Submit your information through this
