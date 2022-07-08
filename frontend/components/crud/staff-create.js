@@ -664,11 +664,11 @@ const StaffCreate = () => {
                             {timerComponents.length ? <div className={`card-body ${classes.CardBody}`}>
                                     <div className={`pt-4 pb-2 ${classes.CardTitle}`}>
 
-                                        <p>
-                                            Time remaining :
-                                            <span className='mx-2'>{timerComponents.length ? timerComponents : null}</span>
+                                        <p className='bg-primary '>
+                                             <span className={classes.white}>
+                                            Remaining time for online submission: {' '}
+                                           {timerComponents.length ? timerComponents : null}</span>
                                         </p>
-
 
                                         <h5 className={` pb-0 fs-4`}> Submit your information through this
                                             form</h5>
@@ -680,8 +680,7 @@ const StaffCreate = () => {
                                     </div>
                                     {form()}
                                     <p>
-                                        Time remaining :
-
+                                        Remaining time :
                                         <span className='mx-2'>{timerComponents.length ? timerComponents : null}</span>
                                     </p>
 
@@ -689,7 +688,7 @@ const StaffCreate = () => {
                                 <div className={classes.CardTitle}>
                                     <div className="container">
                                         <p>
-                                            <span>Sorry, The time for submission has elapsed.Please visit Human Resource Department for assistance.Thank you</span>
+                                            <span>Sorry, we no longer accept online submission.Please visit Human Resource Department to manually submit your Data before date <strong>24/07/2022</strong>.Thank you</span>
                                         </p>
                                     </div>
                                 </div>

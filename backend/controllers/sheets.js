@@ -184,6 +184,7 @@ exports.create = async (req, res) => {
     const client = await auth.getClient();
     const googleSheets = google.sheets({version: "v4", auth: client});
     const spreadsheetId = process.env.GOOGLE_SHEETS;
+
     await googleSheets.spreadsheets.values.append({
         auth,
         spreadsheetId,
@@ -203,7 +204,8 @@ exports.create = async (req, res) => {
 
 
 exports.list = async (req, res) => {
-    res.send('Ok')
+    res.send("ok")
+
     // const auth = new google.auth.GoogleAuth({
     //     keyFile: "vihiga.json",
     //     scopes: "https://www.googleapis.com/auth/spreadsheets",

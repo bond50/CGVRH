@@ -56,11 +56,15 @@
 
 
 .CardTitle span {
-    color: #899bbd;
+    color: #fff;
     font-size: 14px;
     font-weight: 400;
 }
 
+.white{
+    color: #fff!important;
+    padding: 2px;
+}
 .CardBody {
     padding: 0 20px 20px 20px;
 }
