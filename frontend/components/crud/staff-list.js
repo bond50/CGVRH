@@ -20,7 +20,7 @@ export default function redirect() {
             <div className="container " data-aos="fade-up">
 
                 <div className="section-title ">
-                    <h2>Received</h2>
+                    <h2>Submitted returns</h2>
                 </div>
 
                 <div className="row justify-content-center">
@@ -32,7 +32,7 @@ export default function redirect() {
                                 <th scope="col">First Name</th>
                                 <th scope="col">Other Names</th>
                                 <th scope="col">Surname</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Received</th>
                             </tr>
                             </thead>
                             <tbody>
