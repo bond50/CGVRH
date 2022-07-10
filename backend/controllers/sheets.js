@@ -1,4 +1,6 @@
 const {google} = require("googleapis");
+const creds = require('../vihiga.json')
+const {GoogleSpreadsheet} = require("google-spreadsheet");
 
 
 exports.create = async (req, res) => {
@@ -148,8 +150,8 @@ exports.create = async (req, res) => {
             employeeStatus,
             designationStatus,
             positionTitle,
-            facility:"Vihiga County Referral Hospital",
-            facilityCode:"16157",
+            facility: "Vihiga County Referral Hospital",
+            facilityCode: "16157",
             hireDate,
             endDate,
             reasonForChangePreCurrentPosition,
@@ -204,32 +206,17 @@ exports.create = async (req, res) => {
 
 
 exports.list = async (req, res) => {
-    res.send("ok")
+    let list = []
+    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEETS);
+    await doc.useServiceAccountAuth(creds);
+    await doc.loadInfo();
 
-    // const auth = new google.auth.GoogleAuth({
-    //     keyFile: "vihiga.json",
-    //     scopes: "https://www.googleapis.com/auth/spreadsheets",
-    // });
-    //
-    // const client = await auth.getClient();
-    // // Instance of Google Sheets API
-    // const googleSheets = google.sheets({version: "v4", auth: client});
-    // // Get metadata about spreadsheet
-    //
-    // const spreadsheetId = process.env.GOOGLE_SHEETS;
-    //
-    // const metaData = await googleSheets.spreadsheets.get({
-    //     auth,
-    //     spreadsheetId,
-    // });
-    //
-    //
-    // const getRows = await googleSheets.spreadsheets.values.get({
-    //     auth,
-    //     spreadsheetId,
-    //     range: "Worksheet",
-    // });
-    // res.json(getRows.data.values)
-
-
+    const sheet = doc.sheetsByIndex[0];
+    const rows = await sheet.getRows(); // can pass in { limit, offset }
+    rows.forEach(person => {
+        list.push(
+            {firstname: person.FirstName, otherNames: person.OtherNames, surname: person.Surname})
+    })
+    list = list.filter((v) => v.firstname !== '');
+    res.json(list)
 };
