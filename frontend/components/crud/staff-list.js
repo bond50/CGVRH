@@ -1,18 +1,49 @@
 import useSWR from "swr";
 import {API} from "../../config";
+import React, {useEffect, useState} from "react";
+import {calculateTimeLeft} from "../reusables/functions/calculateTimeLeft";
+
 
 
 export default function redirect() {
-    const {data: people, error} = useSWR(`${API}/staff-info`,{
-  revalidateIfStale: true,
-  revalidateOnFocus: true,
-  revalidateOnReconnect: true
-})
+
+    const date_future = +new Date(2022, 6, 14, 23, 59, 59);
+    const date_now = +new Date();
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(date_future, date_now));
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setTimeLeft(calculateTimeLeft(date_future, date_now));
+        }, 1000);
+
+        return () => clearTimeout(timer);
+    });
+
+    const timerComponents = [];
+    Object.keys(timeLeft).forEach((interval, index) => {
+        if (!timeLeft[interval]) {
+            return;
+        }
+
+        timerComponents.push(
+            <span key={index}>
+      {timeLeft[interval]} {interval}{" "}
+    </span>
+        );
+    });
+
+    const {data: people, error} = useSWR(`${API}/staff-info`, {
+        revalidateIfStale: true,
+        revalidateOnFocus: true,
+        revalidateOnReconnect: true
+    })
+
 
     if (error) return <div className='container uh-oh mt-5 pt-5 '><p>uh oh something is
         wrong..Please
         contact Vihiga county referral hospital ICT team for assistance.Thank you </p></div>
     if (!people) return <div className='preloader'/>
+
 
     return (
 
@@ -21,11 +52,17 @@ export default function redirect() {
 
                 <div className="section-title ">
                     <h2>Submitted returns</h2>
+                    <p>
+
+                        Remaining time :
+                        <span className='mx-2'>{timerComponents.length ? timerComponents : `0 hours 0 minutes 0 seconds`}</span>
+                    </p>
                 </div>
+
 
                 <div className="row justify-content-center">
                     <div className="col-lg-6">
-                        <table className="table table-sm table-borderless table-responsive">
+                        {timerComponents.length ? <table className="table table-sm table-borderless table-responsive">
                             <thead>
                             <tr>
                                 <th scope="col">Number</th>
@@ -42,12 +79,15 @@ export default function redirect() {
                                     <td>{person.firstname}</td>
                                     <td>{person.otherNames}</td>
                                     <td>{person.surname}</td>
-                                    <td><i className='bi bi-check-circle ' style={{color:'#198754'}}></i></td>
+                                    <td><i className='bi bi-check-circle ' style={{color: '#198754'}}></i></td>
                                 </tr>
                             })}
-
                             </tbody>
-                        </table>
+                        </table> : <div className="container">
+                            <p>
+                                <span>Sorry, we no longer accept online submission.Please visit Human Resource Department to manually submit your Data before date <strong>24/07/2022</strong>.Thank you</span>
+                            </p>
+                        </div>}
                     </div>
 
                 </div>
