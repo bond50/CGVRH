@@ -25,10 +25,12 @@ import {
 import classes from "../../styles/login.module.css";
 import {API} from "../../config";
 import {calculateTimeLeft} from "../reusables/functions/calculateTimeLeft";
+import {useRouter} from "next/router";
+
 
 
 const StaffCreate = () => {
-
+const router = useRouter()
 
     const date_future = +new Date(2022, 6, 14, 23, 59, 59);
     const date_now = +new Date();
@@ -323,8 +325,8 @@ const StaffCreate = () => {
 
 
                 setTimeout(function () {
-                    window.location.reload(1);
-                }, 5000);
+                    router.push('/staff-data')
+                }, 1000);
             })
             .catch(function (error) {
                 if (error.response) {
