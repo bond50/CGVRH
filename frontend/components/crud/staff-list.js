@@ -62,7 +62,7 @@ export default function redirect() {
 
                 <div className="row justify-content-center">
                     <div className="col-lg-6">
-                        {timerComponents.length ? <table className="table table-sm table-borderless table-responsive">
+                        {timerComponents.length ? <div className="table-responsive"><table className="table table-striped">
                             <thead>
                             <tr>
                                 <th scope="col">Number</th>
@@ -75,15 +75,15 @@ export default function redirect() {
                             <tbody>
                             {people.map((person, i) => {
                                 return <tr key={i}>
-                                    <th scope="row">{i + 1}</th>
-                                    <td>{person.firstname}</td>
-                                    <td>{person.otherNames}</td>
-                                    <td>{person.surname}</td>
-                                    <td><i className='bi bi-check-circle ' style={{color: '#198754'}}></i></td>
+                                    <th scope="row" className='d-flex justify-content-center'>{i + 1}</th>
+                                    <td  >{person.firstname}</td>
+                                    <td >{person.otherNames}</td>
+                                    <td >{person.surname}</td>
+                                    <td className='d-flex justify-content-center'><i className='bi bi-check-circle ' style={{color: '#198754'}}/></td>
                                 </tr>
                             })}
                             </tbody>
-                        </table> : <div className="container">
+                        </table> </div>: <div className="container">
                             <p>
                                 <span>Sorry, we no longer accept online submission.Please visit Human Resource Department to manually submit your Data before date <strong>24/07/2022</strong>.Thank you</span>
                             </p>
