@@ -670,7 +670,6 @@ const StaffCreate = () => {
         <section
             className={` `}>
             <div className="container">
-
                 <div className="row justify-content-center">
                     <div className=" col-lg-6 col-md-12 d-flex flex-column align-items-center justify-content-center">
                         <div className="section-title ">
@@ -706,7 +705,7 @@ const StaffCreate = () => {
                                 <div className={classes.CardTitle}>
                                     <div className="container">
                                         <p>
-                                            <span>Sorry, we no longer accept online submission.Please visit Human Resource Department to manually submit your Data before date <strong>24/07/2022</strong>.Thank you</span>
+                                            <span>Sorry, we no longer accept online submission.Please visit Human Resource Department to manually submit your as soon as possible</span>
                                         </p>
                                     </div>
                                 </div>

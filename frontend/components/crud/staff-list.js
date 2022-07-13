@@ -54,17 +54,18 @@ export default function redirect() {
                     <h2 style={{textTransform:'none',fontWeight:'500'}}>
                        <p> Remaining time :</p>
                          </h2>
-                        <p className='alert-danger' style={{fontWeight:'600',fontSize:'25px'}}>{timerComponents.length ? timerComponents : `0 hours 0 minutes 0 seconds`}</p>
+                        <p className='text-danger' style={{fontWeight:'600',fontSize:'22px'}}>{timerComponents.length ? timerComponents : `0 hours 0 minutes 0 seconds`}</p>
 
                 </div>
 
 
                 <div className="row justify-content-center">
                     <div className="col-lg-6">
-                        {timerComponents.length ? <div className="table-responsive table-sm"><table className="table table-striped">
+                        {timerComponents.length ? <div className="table-responsive "><table className="table table-sm table-striped">
                             <thead>
                             <tr>
                                 <th scope="col">Number</th>
+                                <th scope="col">Title</th>
                                 <th scope="col">First Name</th>
                                 <th scope="col">Other Names</th>
                                 <th scope="col">Surname</th>
@@ -74,17 +75,18 @@ export default function redirect() {
                             <tbody>
                             {people.map((person, i) => {
                                 return <tr key={i}>
-                                    <th scope="row" className='d-flex justify-content-center'>{i + 1}</th>
-                                    <td  >{person.firstname}</td>
-                                    <td >{person.otherNames}</td>
-                                    <td >{person.surname}</td>
+                                    <td className='d-flex justify-content-center'>{i + 1}</td>
+                                    <td>{person.title}</td>
+                                    <td>{person.firstname}</td>
+                                    <td>{person.otherNames}</td>
+                                    <td>{person.surname}</td>
                                     <td className='d-flex justify-content-center'><i className='bi bi-check-circle ' style={{color: '#198754'}}/></td>
                                 </tr>
                             })}
                             </tbody>
                         </table> </div>: <div className="container">
                             <p>
-                                <span>Sorry, we no longer accept online submission.Please visit Human Resource Department to manually submit your Data before date <strong>24/07/2022</strong>.Thank you</span>
+                                <span>Sorry, we no longer accept online submission.Please visit Human Resource Department to manually submit your information as soon as possible.</span>
                             </p>
                         </div>}
                     </div>

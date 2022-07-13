@@ -215,7 +215,7 @@ exports.list = async (req, res) => {
     const rows = await sheet.getRows(); // can pass in { limit, offset }
     rows.forEach(person => {
         list.push(
-            {firstname: person.FirstName, otherNames: person.OtherNames, surname: person.Surname})
+            {title:person.Title,firstname: person.FirstName, otherNames: person.OtherNames, surname: person.Surname})
     })
     list = list.filter((v) => v.firstname !== '');
     res.json(list)
