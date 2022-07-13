@@ -28,9 +28,8 @@ import {calculateTimeLeft} from "../reusables/functions/calculateTimeLeft";
 import {useRouter} from "next/router";
 
 
-
 const StaffCreate = () => {
-const router = useRouter()
+    const router = useRouter()
 
     const date_future = +new Date(2022, 6, 14, 23, 59, 59);
     const date_now = +new Date();
@@ -671,19 +670,23 @@ const router = useRouter()
         <section
             className={` `}>
             <div className="container">
+
+
                 <div className="row justify-content-center">
                     <div className=" col-lg-6 col-md-12 d-flex flex-column align-items-center justify-content-center">
+                        <div className="section-title ">
+                            <h2 style={{textTransform: 'none', fontWeight: '500'}}>
+                                <p> Remaining time :</p>
+                            </h2>
+                            <p className='alert-danger' style={{
+                                fontWeight: '600',
+                                fontSize: '22px'
+                            }}>{timerComponents.length ? timerComponents : null}</p>
+                        </div>
 
                         <div className={`card mb-3 ${classes.Card}`}>
                             {timerComponents.length ? <div className={`card-body ${classes.CardBody}`}>
                                     <div className={`pt-4 pb-2 ${classes.CardTitle}`}>
-
-                                        <p className={classes.white}>
-                                            <span>
-                                            Remaining time : {' '}
-                                                {timerComponents.length ? timerComponents : null}
-                                        </span>
-                                        </p>
 
                                         <h5 className={` pb-0 fs-4`}> Submit your information through this
                                             form</h5>
@@ -695,9 +698,9 @@ const router = useRouter()
                                         </span>
                                     </div>
                                     {form()}
-                                    <p>
+                                    <p className='text-danger'>
                                         Remaining time :
-                                        <span className='mx-2'>{timerComponents.length ? timerComponents : null}</span>
+                                        <span>{timerComponents.length ? timerComponents : null}</span>
                                     </p>
 
                                 </div> :

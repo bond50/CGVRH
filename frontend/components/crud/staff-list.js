@@ -51,11 +51,11 @@ export default function redirect() {
             <div className="container " data-aos="fade-up">
 
                 <div className="section-title ">
-                    <h2 style={{textTransform:'capitalize',fontWeight:'500'}}>
-                        Remaining time :
-                        <span className='mx-2'>{timerComponents.length ? timerComponents : `0 hours 0 minutes 0 seconds`}</span>
+                    <h2 style={{textTransform:'none',fontWeight:'500'}}>
+                       <p> Remaining time :</p>
+                         </h2>
+                        <p className='alert-danger' style={{fontWeight:'600',fontSize:'25px'}}>{timerComponents.length ? timerComponents : `0 hours 0 minutes 0 seconds`}</p>
 
-                        </h2>
                 </div>
 
 
