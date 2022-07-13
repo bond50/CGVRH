@@ -671,14 +671,13 @@ const StaffCreate = () => {
             className={` `}>
             <div className="container">
 
-
                 <div className="row justify-content-center">
                     <div className=" col-lg-6 col-md-12 d-flex flex-column align-items-center justify-content-center">
                         <div className="section-title ">
                             <h2 style={{textTransform: 'none', fontWeight: '500'}}>
                                 <p> Remaining time :</p>
                             </h2>
-                            <p className='alert-danger' style={{
+                            <p className='text-danger' style={{
                                 fontWeight: '600',
                                 fontSize: '22px'
                             }}>{timerComponents.length ? timerComponents : null}</p>
