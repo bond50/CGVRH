@@ -61,7 +61,7 @@ export default function redirect() {
 
                 <div className="row justify-content-center">
                     <div className="col-lg-6">
-                        {timerComponents.length ? <div className="table-responsive"><table className="table table-striped">
+                        {timerComponents.length ? <div className="table-responsive table-sm"><table className="table table-striped">
                             <thead>
                             <tr>
                                 <th scope="col">Number</th>
