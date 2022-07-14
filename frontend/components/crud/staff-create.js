@@ -679,38 +679,36 @@ const StaffCreate = () => {
                             <p className='text-danger' style={{
                                 fontWeight: '600',
                                 fontSize: '22px'
-                            }}>{timerComponents.length ? timerComponents : null}</p>
+                            }}>{timerComponents.length ? timerComponents : '0 hours 0 minutes 0 seconds'}</p>
                         </div>
 
-                        <div className={`card mb-3 ${classes.Card}`}>
-                            {timerComponents.length ? <div className={`card-body ${classes.CardBody}`}>
-                                    <div className={`pt-4 pb-2 ${classes.CardTitle}`}>
+                        {timerComponents.length ? <div className={`card mb-3 ${classes.Card}`}>
+                            <div className={`card-body ${classes.CardBody}`}>
+                                <div className={`pt-4 pb-2 ${classes.CardTitle}`}>
 
-                                        <h5 className={` pb-0 fs-4`}> Submit your information through this
-                                            form</h5>
-                                        <span className="text-center small text-muted">For dropdowns,if the item you are
+                                    <h5 className={` pb-0 fs-4`}> Submit your information through this
+                                        form</h5>
+                                    <span className="text-center small text-muted">For dropdowns,if the item you are
                                         looking for is
                                         not available,just type in the input whatever you want and click
                                         on <strong>create</strong> option that pops
                                         up
                                         </span>
-                                    </div>
-                                    {form()}
-                                    <p className='text-danger'>
-                                        Remaining time :
-                                        <span>{timerComponents.length ? timerComponents : null}</span>
-                                    </p>
-
-                                </div> :
-                                <div className={classes.CardTitle}>
-                                    <div className="container">
-                                        <p>
-                                            <span>Sorry, we no longer accept online submission.Please visit Human Resource Department to manually submit your as soon as possible</span>
-                                        </p>
-                                    </div>
                                 </div>
-                            }
-                        </div>
+                                {form()}
+                                <p className='text-danger'>
+                                    Remaining time :
+                                    <span>{timerComponents.length ? timerComponents : null}</span>
+                                </p>
+
+                            </div>
+
+
+                        </div> : <div className="container">
+                            <p>
+                                <span>Sorry, we no longer accept online submission.Please visit Human Resource Department to manually submit your information as soon as possible</span>
+                            </p>
+                        </div>}
 
                     </div>
                 </div>
