@@ -62,7 +62,7 @@ const Nav = () => {
                 </li>
                 }
                 <li>
-                    <a className="getstarted " href="https://rbx105.truehost.cloud:2096/">Staff Mail</a>
+                    <a className="getstarted " href="https://mail.vihigahospital.go.ke/">Staff Mail</a>
                 </li>
             </ul>
             <i className={`${closed ? 'bi bi-x text-white' : 'bi bi-list '} mobile-nav-toggle`}
