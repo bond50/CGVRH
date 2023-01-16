@@ -357,6 +357,7 @@ const BlogUpdate = () => {
                     handleChange={handleChange('title')}
                     handleBody={handleBody}
                     bodyValue={body}
+                    loading={loading}
                     btnCapture={'Update'}
                     titleValue={title}
                     onSubmit={editBlog}/>

@@ -4,7 +4,7 @@ import {QuillFormats, QuillModules} from '../../../helpers/quill';
 
 const ReactQuill = dynamic(() => import('react-quill'), {ssr: false});
 
-const CreateForm = ({onSubmit, btnCapture, handleChange, handleBody, bodyValue, titleValue}) => {
+const CreateForm = ({onSubmit, loading, btnCapture, handleChange, handleBody, bodyValue, titleValue}) => {
     const form = () => {
         return (
             <form onSubmit={onSubmit}>
@@ -28,8 +28,11 @@ const CreateForm = ({onSubmit, btnCapture, handleChange, handleBody, bodyValue, 
                 </div>
 
                 <div>
-                    <button type="submit" className="btn btn-primary">
-                        {btnCapture}
+                    <button type="submit" className="btn btn-primary" disabled={loading}>
+                        {loading ? <>
+                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Loading...
+                        </> : btnCapture}
                     </button>
                 </div>
             </form>
