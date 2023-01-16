@@ -121,7 +121,7 @@ exports.getGalleryFormHomePage = async (req, res) => {
     Gallery.find({})
         .select('filePath title width height publicId')
         .sort({createdAt: -1})
-        .limit(24)
+        .limit(32)
         .exec((err, data) => {
             if (err) {
                 return res.json({
