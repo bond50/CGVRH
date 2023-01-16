@@ -66,6 +66,7 @@ const CreateBlog = () => {
 
         })
             .catch((error) => {
+                setLoading(false)
                 if (error.response) {
                     // The request was made and the server responded with a status code
                     // that falls out of the range of 2xx
@@ -95,6 +96,7 @@ const CreateBlog = () => {
                     handleChange={handleChange('title')}
                     handleBody={handleBody}
                     bodyValue={body}
+                    loading={loading}
                     btnCapture={'Publish'}
                     titleValue={title}
                     onSubmit={handleSubmit}/>
