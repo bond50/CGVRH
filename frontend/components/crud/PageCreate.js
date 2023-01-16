@@ -39,6 +39,7 @@ const PageCreate = () => {
     const token = getCookie('token');
     const handleSubmit = (e) => {
         e.preventDefault()
+        setLoading(true)
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         };
@@ -53,6 +54,7 @@ const PageCreate = () => {
                 images: [],
                 success: `A new item titled "${res.data.title}" is created`
             });
+            setLoading(false)
             setBody('');
             setTimeout(() => {
                 window.location.reload()

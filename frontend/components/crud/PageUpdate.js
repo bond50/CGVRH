@@ -130,6 +130,7 @@ const Page = () => {
 
     const editPage = e => {
         e.preventDefault();
+        setLoading(true)
         let updateEndpoint
 
         if (isAuth() && isAuth().role === 1) {
@@ -162,13 +163,16 @@ const Page = () => {
                 success: `A new item titled "${res.data.title}" is updated`
             });
             setBody('');
-            if (isAuth() && isAuth().role === 1) {
-                // Router.replace(`/admin2/gencrud/${router.query.slug}`);
-                Router.replace(`/admin2`).then(r => console.log(r));
-            } else if (isAuth() && isAuth().role === 0) {
-                // Router.replace(`/user/crud/${router.query.slug}`);
-                Router.replace(`/user`).then(r => console.log(r));
-            }
+            setLoading(false)
+            setTimeout(() => {
+                if (isAuth() && isAuth().role === 1) {
+                    // Router.replace(`/admin2/gencrud/${router.query.slug}`);
+                    Router.replace(`/admin2`).then(r => console.log(r));
+                } else if (isAuth() && isAuth().role === 0) {
+                    // Router.replace(`/user/crud/${router.query.slug}`);
+                    Router.replace(`/user`).then(r => console.log(r));
+                }
+            }, 3000)
 
         })
             .catch((error) => {

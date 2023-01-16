@@ -55,7 +55,6 @@ const BlogUpdate = () => {
         updateBlogEndpoint = `${API}/user/blog/${router.query.slug}`
     }
 
-    console.log('Main', values)
 
     const initBlog = () => {
         if (router.query.slug) {
@@ -220,7 +219,7 @@ const BlogUpdate = () => {
 
     const editBlog = e => {
         e.preventDefault();
-
+        setLoading(true)
         const config = {
             headers: {Authorization: `Bearer ${token}`}
         };
@@ -244,14 +243,17 @@ const BlogUpdate = () => {
                 images: [],
                 success: `A new item titled "${res.data.title}" is updated`
             });
+            setLoading(false)
             setBody('');
-            if (isAuth() && isAuth().role === 1) {
-                // Router.replace(`/admin2/gencrud/${router.query.slug}`);
-                Router.replace(`/admin2`).then(r => console.log(r));
-            } else if (isAuth() && isAuth().role === 0) {
-                // Router.replace(`/user/crud/${router.query.slug}`);
-                Router.replace(`/user`).then(r => console.log(r));
-            }
+            setTimeout(() => {
+                if (isAuth() && isAuth().role === 1) {
+                    // Router.replace(`/admin2/gencrud/${router.query.slug}`);
+                    Router.replace(`/admin2`).then(r => console.log(r));
+                } else if (isAuth() && isAuth().role === 0) {
+                    // Router.replace(`/user/crud/${router.query.slug}`);
+                    Router.replace(`/user`).then(r => console.log(r));
+                }
+            }, 4000)
 
         })
             .catch((error) => {

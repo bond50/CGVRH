@@ -42,6 +42,7 @@ const CreateBlog = () => {
 
     const token = getCookie('token');
     const handleSubmit = (e) => {
+        setLoading(true)
         e.preventDefault()
         const config = {
             headers: {Authorization: `Bearer ${token}`}
@@ -58,9 +59,10 @@ const CreateBlog = () => {
                 success: `A new item titled "${res.data.title}" is created`
             });
             setBody('');
+            setLoading(false)
             setTimeout(() => {
                 window.location.reload()
-            }, 2000)
+            }, 3000)
 
         })
             .catch((error) => {
