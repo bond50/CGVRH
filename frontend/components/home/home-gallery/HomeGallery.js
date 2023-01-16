@@ -132,7 +132,12 @@ const HomeGallery = (props) => {
 
                     {data && data.map((image, i) => {
                         return <div key={i} className={`${classes.Container} ${classes.Wrapper} card`}>
-                            <Image width={image.width} height={image.height} src={image.filePath} className={`${classes.Img} img-fluid `} alt={image.title}/>
+                            <Image
+                                src={image.filePath}
+                                width={image.width}
+                                height={image.height}
+                                layout="responsive"
+                                className={`${classes.Img} card-img-top `} alt={image.title}/>
                             <div className={classes.Overlay}>
                                 <div className={classes.Text}>
                                     <div>{image.title}</div>

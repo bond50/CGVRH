@@ -1,8 +1,11 @@
 .Wrapper {
     overflow: hidden;
+    display: inline-block;
     border-radius: 10px;
     margin: 0 10px;
     height: 200px;
+    width: 98%;
+
 }
 
 .Img:hover {
@@ -16,7 +19,9 @@
 
 .Img {
     transition: all 3s ease-in-out;
-    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
 .Container {
