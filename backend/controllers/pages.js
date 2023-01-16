@@ -63,7 +63,7 @@ exports.listFeatured = (req, res) => {
     Page.find({featured: true, accepted: true})
         .select('_id title images excerpt slug')
         .sort({createdAt: -1})
-        .limit(6)
+        .limit(12)
         .exec((err, data) => {
             if (err) {
                 return res.json({

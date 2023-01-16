@@ -327,7 +327,7 @@ exports.listHomePageBlogs = (req, res) => {
     Blog.find({accepted: true, featured: true})
         .populate('postedBy', '_id name username')
         .select('_id title images slug excerpt postedBy createdAt updatedAt')
-        .limit(3)
+        .limit(12)
         .sort({createdAt: -1})
         .exec((err, data) => {
             if (err) {
@@ -382,7 +382,7 @@ exports.featuredBlogs = (req, res) => {
     Blog.find({featured: true, accepted: true})
         .select('_id title images excerpt slug')
         .sort({createdAt: -1})
-        .limit(10)
+        .limit(12)
         .exec((err, data) => {
             if (err) {
                 return res.json({
