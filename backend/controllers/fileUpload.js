@@ -117,6 +117,21 @@ exports.getGallery = async (req, res) => {
             res.json(data);
         });
 }
+exports.getGalleryFormHomePage = async (req, res) => {
+    Gallery.find({})
+        .select('filePath title width height publicId')
+        .sort({createdAt: -1})
+        .limit(24)
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: errorHandler(err)
+                });
+            }
+            console.log(data)
+            res.json(data);
+        });
+}
 
 
 exports.fileRetrieveFromCloud = async (req, res) => {

@@ -14,7 +14,7 @@ const GalleryIndex = () => {
     const router = useRouter()
     const head = () => (
         <Head>
-            <title>Downloads | {APP_NAME}</title>
+            <title>Gallery | {APP_NAME}</title>
             <meta
                 name="description"
                 content={`Get access to out hospital gallery from this section.${APP_NAME}, We take care of your health`}
@@ -50,7 +50,7 @@ const GalleryIndex = () => {
         ],
         fetcher,
         {
-            revalidateOnFocus: false,
+            revalidateOnFocus: true,
         },
     );
 

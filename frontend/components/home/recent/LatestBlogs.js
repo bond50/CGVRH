@@ -13,7 +13,6 @@ const LatestBlogs = () => {
 
     const {data: blogs, error} = useSWR(`${API}/list-recent-blogs`)
 
-    console.log(blogs)
     if (error) return <div>failed to load recent blogs</div>
     if (!blogs) return <Preloader/>
 

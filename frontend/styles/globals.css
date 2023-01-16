@@ -154,7 +154,7 @@ h6 {
 
 
 #home-header.header-scrolled {
-     background: #ffffff;
+    background: #ffffff;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
     top: 0;
 }
@@ -162,7 +162,6 @@ h6 {
 #header.fixed-top {
     height: 70px;
 }
-
 
 
 #header .logo img {
@@ -597,7 +596,7 @@ h6 {
 #home-hero {
     margin-top: -100px;
     width: 100%;
-    height: 90vh;
+    height: 70vh;
     background-position: center;
     background-size: cover;
     position: relative;
@@ -613,7 +612,7 @@ h6 {
 #home-hero:before {
     z-index: 2;
     content: "";
-    background: linear-gradient(45deg, rgba(29, 224, 153, 0.85), rgba(29, 200, 205, 0.85)), center top no-repeat;
+    background: linear-gradient(45deg, rgba(29, 224, 153, 0.88), rgba(29, 200, 205, 0.77)), center top no-repeat;
     /*background: linear-gradient(rgba(29, 200, 205, 0.65), rgba(29, 205, 89, 0.2)), center top no-repeat;*/
     position: absolute;
     bottom: 0;
@@ -624,7 +623,7 @@ h6 {
 }
 
 #home-hero h1 {
-    margin: 0;
+    margin: 100px 0 0 0;
     line-height: 56px;
     font-size: 48px;
     font-weight: 400;
@@ -666,7 +665,7 @@ h6 {
 
 @media (max-width: 768px) {
     #home-hero {
-        height: 100vh;
+        height: 60vh;
     }
 
     #home-hero .container {
@@ -684,7 +683,7 @@ h6 {
     width: 100%;
     height: 66.66vh;
     /*background-color: rgba(60, 60, 60, 0.8);*/
-    background-color:var(--color-secondary);
+    background-color: var(--color-secondary);
     overflow: hidden;
     position: relative;
 }
@@ -1470,3 +1469,11 @@ h6 {
     color: var(--color-secondary);
 }
 
+.gallery-home {
+    background: linear-gradient(rgba(29, 200, 205, 0.45), rgba(29, 205, 89, 0.55)), url("/home/strategic.jpg") fixed center center;
+    background-size: contain;
+    /*margin-top: -90px;*/
+    z-index: 2;
+    padding: 60px 0;
+    overflow: hidden;
+}

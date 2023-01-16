@@ -13,9 +13,10 @@ const CoreValues = dynamic(() => import(  "../components/home/CoreValues"), {ssr
 const Clients = dynamic(() => import(  "../components/home/clients"), {ssr: false,});
 const Cta = dynamic(() => import( "../components/home/cta"), {ssr: false,});
 const Head = dynamic(() => import( "next/head"), {ssr: false,});
-const LatestBlogs = dynamic(() => import(  "../components/home/recent/LatestBlogs"), );
-const FeaturedServices = dynamic(() => import(  "../components/home/FeaturedServices"),);
+const LatestBlogs = dynamic(() => import(  "../components/home/recent/LatestBlogs"), {ssr: false});
+const FeaturedServices = dynamic(() => import(  "../components/home/FeaturedServices"), {ssr: false});
 const Roles = dynamic(() => import(  "../components/home/Roles"), {ssr: false,});
+const Gallery = dynamic(() => import(  "../components/home/home-gallery/HomeGallery"), {ssr: false,});
 
 
 export default function Home() {
@@ -67,6 +68,7 @@ export default function Home() {
             <Toolbar home/>
             <Hero/>
             <main id='main'>
+                <Gallery/>
                 <Clients/>
                 <About/>
                 <LatestBlogs/>
