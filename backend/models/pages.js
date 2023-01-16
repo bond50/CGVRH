@@ -35,6 +35,9 @@ const pageSchema = new mongoose.Schema(
             data: Buffer,
             contentType: String
         },
+        images: {
+            type: Array
+        },
         accepted: {
             type: Boolean,
             default: false,

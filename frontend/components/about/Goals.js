@@ -13,7 +13,7 @@ const Goals = () => {
     ]
 
 
-    return <section className='section-bg'>
+    return <section className='section'>
         <div className="container">
             <div data-aos="fade-up" data-aos-once={`true`}>
                 <div className="section-title">

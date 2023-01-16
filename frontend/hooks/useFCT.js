@@ -5,6 +5,7 @@ import {fetcher} from "../components/reusables/functions/fetcher";
 
 
 const useFCT = (endpoint) => {
+
     const {data, error} = useSWR(
         [
             `${API}/${endpoint}`,

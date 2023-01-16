@@ -4,6 +4,7 @@ import GuidingPrinciples from "../../components/about/GuidingPrinciples";
 import {useRouter} from "next/router";
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
+import CoreValues from "../../components/home/CoreValues";
 
 const Index = () => {
     const router = useRouter()
@@ -43,7 +44,7 @@ const Index = () => {
         <>
             {head()}
             <Layout>
-                <GuidingPrinciples/>
+                <CoreValues/>
             </Layout>
         </>
 

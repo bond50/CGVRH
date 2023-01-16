@@ -23,7 +23,7 @@ const Plan = () => {
     ];
 
     return (
-        <section className={`section-bg`}>
+        <section className={`section `}>
             <div className="container" data-aos="fade-up">
                 <div className='section-title'>
                     <h2> VCRH Strategic Plan </h2>

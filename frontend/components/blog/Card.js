@@ -7,7 +7,7 @@ import classes from '../../styles/BlogCard.module.css'
 import Image from "next/image";
 
 
-const Card = ({blog, single, servicePage}) => {
+const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle, servicePage, admin}) => {
 
 
     let attachedClass = classes.Entry
@@ -52,83 +52,122 @@ const Card = ({blog, single, servicePage}) => {
         })
     }
 
-    let imgSrc = `${API}/blog/photo/${blog.slug}`
-    if (servicePage) {
-        imgSrc = `${API}/blog/photo/${blog.slug}`
+
+    let imgSrc = ''
+
+    if (blog) {
+        if (blog.images && blog.images.length && blog.images.length > 0) {
+            const image = blog.images[Math.floor(Math.random() * blog.images.length)];
+            imgSrc = image.url
+        } else {
+            imgSrc = !admin && `${API}/blog/photo/${blog.slug}`
+        }
+
+    } else if (servicePage) {
+        imgSrc = ''
+        // imgSrc = !admin && `${API}/service/photo/${blog.slug}`
+    } else {
+        imgSrc = ''
     }
     const myLoader = () => {
         return imgSrc;
+    }
+    const adminLoader = () => {
+        return blogUploadSrc
     }
 
 
     return (
         <article className={attachedClass}>
-            <Fragment>
-                <div className={classes.Image}>
-                    <Image
-                        loader={myLoader}
-                        className="img-fluid"
-                        width={1200}
-                        height={700}
-                        src={imgSrc}
-                        alt={blog.title}
-                    />
+            {
+                admin ? <div className={classes.Content}>
 
-                </div>
-                <h2 className={classes.Title}>
-                    <Link href={single ? '' : `/blogs/${blog.slug}`}>
-                        <a>
-                            {blog.title.toLowerCase()}
-                        </a>
-                    </Link>
+                    <div className='position-relative d-inline'>
+                        <span className={`${classes.Badge} bi bi-x`} onClick={removeImageByAdmin}></span>
+                        <div className={classes.Image} style={{marginBottom: "-30px"}}>
+                            <Image
+                                loader={adminLoader}
+                                className="img-fluid "
+                                width={1200}
+                                height={800}
+                                src={blogUploadSrc}
+                                alt={blogUploadTitle}
+                            />
+                        </div>
 
-                </h2>
-            </Fragment>
+                    </div>
 
 
-            {!servicePage && <div className={classes.Meta}>
-                <ul className='mark pt-3 pb-3 '>
-                    <li className="d-flex align-items-center"><i className="bi bi-person"/>
-                        <span className='px-2'> Written by  </span>
-                        <Link href={`/profile/${blog.postedBy.username}`}>
-                            <a> {blog.postedBy.username}</a>
-                        </Link>
-                    </li>
+                </div> : <>
+                    <Fragment>
+                        <div className={classes.Image}>
+                            <Image
+                                loader={myLoader}
+                                className="img-fluid"
+                                width={1200}
+                                height={700}
+                                src={imgSrc}
+                                alt={blog.title}
+                            />
 
-                    <li className="d-flex align-items-center">
-                        <i className="bi bi-calendar"/>
-                        <span> {moment(blog.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}</span>
-                    </li>
+                        </div>
+                        <h2 className={classes.Title}>
+                            <Link href={single ? '' : `/blogs/${blog.slug}`}>
+                                <a>
+                                    {blog.title.toLowerCase()}
+                                </a>
+                            </Link>
 
-                </ul>
-            </div>
+                        </h2>
+                    </Fragment>
+
+
+                    {!servicePage && <div className={classes.Meta}>
+                        <ul className='mark pt-3 pb-3 '>
+                            <li className="d-flex align-items-center"><i className="bi bi-person"/>
+                                <span className='px-2'> Written by  </span>
+                                <Link href={`/profile/${blog.postedBy.username}`}>
+                                    <a> {blog.postedBy.username}</a>
+                                </Link>
+                            </li>
+
+                            <li className="d-flex align-items-center">
+                                <i className="bi bi-calendar"/>
+                                <span> {moment(blog.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    }
+
+                    <div className={classes.Content}>
+                        {!single && <>
+                            {renderHTML(blog.excerpt)}
+                            <div className={`${classes.ReadMore}`}>
+                                <Link href={`/blogs/${blog.slug}`}>
+                                    <a>Read more</a>
+                                </Link>
+                            </div>
+                        </>}
+                        {single && <>
+                            {renderHTML(blog.body)}
+                            {!servicePage && <div className={classes.Footer}>
+                                <i className="bi bi-folder"/>
+                                <ul className={classes.Cats}>
+                                    {showCats()}
+                                </ul>
+
+                                <i className="bi bi-tags"/>
+                                <ul className={classes.Tags}>
+                                    {showBlogTags()}
+                                </ul>
+                            </div>}
+                        </>
+                        }
+                    </div>
+                </>
             }
 
-            <div className={classes.Content}>
-                {!single && <>
-                    {renderHTML(blog.excerpt)}
-                    <div className={`${classes.ReadMore}`}>
-                        <Link href={`/blogs/${blog.slug}`}>
-                            <a>Read more</a>
-                        </Link>
-                    </div>
-                </>}
-                {single && <>
-                    {renderHTML(blog.body)}
-                    {!servicePage && <div className={classes.Footer}>
-                        <i className="bi bi-folder"/>
-                        <ul className={classes.Cats}>
-                            {showCats()}
-                        </ul>
-
-                        <i className="bi bi-tags"/>
-                        <ul className={classes.Tags}>
-                            {showBlogTags()}
-                        </ul>
-                    </div>}
-                </>
-                }
-            </div>
         </article>
 
     );

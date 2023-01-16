@@ -30,7 +30,6 @@ const useUpload = (folder, tagEndpoint, url) => {
         }
 
 
-
         axiosInstance.post(url, formData)
             .then(response => {
                 setValues({
@@ -65,6 +64,7 @@ const useUpload = (folder, tagEndpoint, url) => {
     const multipleFileChange = e => {
         setMultipleFiles(e.target.files)
     };
+
     const handleChange = e => {
         setValues({title: e.target.value})
     }

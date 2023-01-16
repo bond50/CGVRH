@@ -1,17 +1,15 @@
-import Column from "./Column";
+import Link from "next/link";
 
-const CoreValues = () => {
+const CoreValues = ({ifSingle}) => {
     const list = [
         {
             title: 'Our Vision',
-            delay: '0',
             classname: '',
             link: '/about/vision',
             para: ' A facility of choice in health care provision'
         },
         {
             title: 'Our Mission',
-            delay: '200',
             link: '/about/mission',
             classname: 'mt-4 mt-md-0',
             para: 'To provide quality preventive,\n' +
@@ -21,7 +19,6 @@ const CoreValues = () => {
             title: 'Our Core Values',
             classname: 'mt-4 mt-lg-0',
             link: '/about/core-values',
-            delay: '300',
             para: 'Accountability,Commitment,Integrity, Teamwork, Innovation',
             para1: 'Commitment',
             para2: "Integrity",
@@ -31,15 +28,13 @@ const CoreValues = () => {
     ]
     const renderList = () => {
         return list.map((item, index) => {
-            return <Column
-                to={item.link}
-                title={item.title}
-                delay={item.delay}
-                classname={`col-lg-4 col-md-6 ${item.classname}`}
-                key={index}
-                btnCaption='See more'>
-                <li>{item.para}</li>
-            </Column>
+            return <div key={index} className="col-xl-4 col-md-6 d-flex align-items-stretch  " data-aos="zoom-in"
+                        data-aos-delay={`${(1 + index) * 100}`}>
+                <div className="icon-box  w-100">
+                    <h4><Link href='/about-us/guiding-principles'>{item.title}</Link></h4>
+                    <p>{item.para}</p>
+                </div>
+            </div>
 
         })
 
@@ -47,10 +42,12 @@ const CoreValues = () => {
 
 
     return (
-        <section>
-            <div className="container">
-                <div className={`section-title`} data-aos="zoom-out" data-aos-once='true'>
-                    <h2>Mission, Vision and Core Values</h2>
+        <section id="services" className="services section-bg">
+            <div className="container" data-aos="fade-up">
+
+                <div className="section-title">
+                    <h2>Our guiding principles</h2>
+
                 </div>
 
                 <div className="row">

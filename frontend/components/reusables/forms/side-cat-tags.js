@@ -1,18 +1,30 @@
 import React from 'react';
+import FileUpload from "../../form/FileUpload";
 
-const SideCatTags = ({handleChange, categories, tags, featuredServices}) => {
+const SideCatTags = ({
+                         categories,
+                         loading,
+                         formData,
+                         setLoading,
+                         tags,
+                         featuredServices,
+                         hidden,
+                         folder,
+                         setValues,
+                         values
+                     }) => {
+
+
     return (
         <>
-            {handleChange ? <div className="form-group mb-3">
-                <h5>Featured image</h5>
-                <hr/>
-                <small className="text-muted">Max size: 1mb</small>
-                <br/>
-                <label className="upload-btn btn-sm ">
-                    Upload featured image
-                    <input onChange={handleChange('photo')} type="file" accept="image/*" hidden/>
-                </label>
-            </div> : null}
+            {!hidden && <FileUpload
+                setValues={setValues}
+                values={values}
+                loading={loading}
+                formData={formData}
+                setLoading={setLoading}
+                folder={folder}
+            />}
             {featuredServices ? <div className='mb-3'>
                 <h5>Nature</h5>
                 <hr/>

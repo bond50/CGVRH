@@ -1,10 +1,14 @@
 import React from 'react';
-import GalleryWrapper from "../../../../components/media/gallery/gallery-wrapper";
+import dynamic from "next/dynamic";
+const GalleryWrapper = dynamic(() => import("../../../../components/media/gallery/gallery-wrapper"), {ssr: false});
 import useSWR from "swr";
 import {API} from "../../../../config";
 import {fetcher} from "../../../../components/reusables/functions/fetcher";
 import {useRouter} from "next/router";
-import Layout from "../../../../hoc/Layout";
+import Preloader from "../../../../components/preloader";
+
+
+const Layout = dynamic(() => import('../../../../hoc/Layout'), {loading: () => <Preloader/>, ssr: false})
 
 
 const Slug = () => {

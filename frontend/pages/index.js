@@ -1,17 +1,21 @@
-import About from "../components/home/about";
-import {APP_NAME, DOMAIN, FB_APP_ID} from "../config";
-import Toolbar from "../components/navgation/Toolbar";
 import React, {Fragment} from "react";
-import Hero from "../components/home/Hero";
-import Footer from "../components/footer/Footer";
-import CoreValues from "../components/home/CoreValues";
-import Clients from "../components/home/clients";
-import Cta from "../components/home/cta";
-import Head from "next/head";
-import {useRouter} from "next/router";
+import {APP_NAME, DOMAIN, FB_APP_ID} from "../config";
+import Preloader from "../components/preloader";
 import {YearsOperated} from "../components/years-operated/YearsOperated";
-import LatestBlogs from "../components/home/LatestBlogs";
-import FeaturedServices from "../components/home/FeaturedServices";
+import {useRouter} from "next/router";
+import dynamic from 'next/dynamic'
+
+const About = dynamic(() => import(  "../components/home/about"), {ssr: false,});
+const Toolbar = dynamic(() => import(  "../components/navgation/Toolbar"), {ssr: false,});
+const Hero = dynamic(() => import(  "../components/home/Hero"), {ssr: false,});
+const Footer = dynamic(() => import(  "../components/footer/Footer"), {ssr: false,});
+const CoreValues = dynamic(() => import(  "../components/home/CoreValues"), {ssr: false,});
+const Clients = dynamic(() => import(  "../components/home/clients"), {ssr: false,});
+const Cta = dynamic(() => import( "../components/home/cta"), {ssr: false,});
+const Head = dynamic(() => import( "next/head"), {ssr: false,});
+const LatestBlogs = dynamic(() => import(  "../components/home/recent/LatestBlogs"), {ssr: false,});
+const FeaturedServices = dynamic(() => import(  "../components/home/FeaturedServices"), {ssr: false,});
+const Roles = dynamic(() => import(  "../components/home/Roles"), {ssr: false,});
 
 
 export default function Home() {
@@ -58,7 +62,7 @@ export default function Home() {
 
 
     return (
-        <Fragment>
+        <>
             {head()}
             <Toolbar home/>
             <Hero/>
@@ -69,10 +73,10 @@ export default function Home() {
                 <Cta/>
                 <FeaturedServices/>
                 <CoreValues/>
-                {/*<Roles/>*/}
+                <Roles/>
             </main>
             <Footer/>
-        </Fragment>
+        </>
 
     )
 }

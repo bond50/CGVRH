@@ -4,6 +4,9 @@ import {getCookie} from "../actions/auth";
 import {useRouter} from "next/router";
 import useFCT from "./useFCT";
 import {createAction} from "../components/reusables/functions/createAction";
+import axios from "axios";
+import {API} from "../config";
+import va from "simple-react-lightbox";
 
 
 const useCreate = (localStorageItem, catEndpoint, tagEndpoint, pageEndpoint) => {
@@ -12,23 +15,27 @@ const useCreate = (localStorageItem, catEndpoint, tagEndpoint, pageEndpoint) => 
     const [checkedTag, setCheckedTag] = useState([]); // tags
     const [body, setBody] = useState(dataFromLocalStorage(localStorageItem));
     const [checkedService, setCheckedService] = useState(false);
+    const [loading, setLoading] = useState(false)
     const [values, setValues] = useState({
         error: '',
         sizeError: '',
         success: '',
         formData: {},
+        images: [],
         title: '',
         hidePublishButton: false
     });
 
 
-    const {error, sizeError, success, formData, title, hidePublishButton} = values;
+    const {error, sizeError, success, images, formData, title} = values;
 
     const token = getCookie('token');
 
     const {data: categories, error: catError} = useFCT(catEndpoint)
 
-    const {data: tags, error: tagError} = useFCT(tagEndpoint)
+
+    const {data: tags, error: tagError} = tagEndpoint !== null && useFCT(tagEndpoint)
+
 
     useEffect(() => {
         let componentMounted = true;
@@ -45,6 +52,7 @@ const useCreate = (localStorageItem, catEndpoint, tagEndpoint, pageEndpoint) => 
 
     const publish = e => {
         e.preventDefault();
+
         createAction(formData, token, pageEndpoint).then(data => {
             if (data.error) {
                 setValues({...values, error: data.error});
@@ -100,6 +108,31 @@ const useCreate = (localStorageItem, catEndpoint, tagEndpoint, pageEndpoint) => 
         formData.set('tags', all);
     };
 
+    const removeImage = (id) => {
+        setLoading(true)
+        axios.post(`${API}/remove-image`, {public_id: id}, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        }).then((r) => {
+                setLoading(false)
+                const {images} = values
+
+                let filteredImages = images.filter((image) => {
+                    return image.public_id !== id
+                })
+
+                setValues({...values, images: filteredImages})
+
+
+            }
+        ).catch(e => {
+            console.log(e)
+            setLoading(false)
+        })
+
+    }
+
 
     const showCategories = () => {
         return (
@@ -154,9 +187,20 @@ const useCreate = (localStorageItem, catEndpoint, tagEndpoint, pageEndpoint) => 
         handleBody,
         handleChange,
         publish,
+        removeImage,
+        checked,
+        checkedTag,
+        loading,
+        setLoading,
+        checkedService,
+        formData,
+        setBody,
         getFeaturedServices,
         error,
         success,
+        images,
+        values,
+        setValues,
         title,
         body
     }

@@ -50,15 +50,14 @@ class Board extends React.Component {
         }
 
 
-        return <section className={`section-bg`}>
+        return <section className={`section`}>
             <div className="container" data-aos="zoom-in">
                 <header className={'section-title'}>
                     <h2>Our Health management team</h2>
                     <p>Click on the image to sent the member a private Email.
-                        The TCP connection is encrypted and hence no
-                        eavesdropping by a third party. If you are unable to send a private mail to specific user,you
-                        can still reach us
-                        <Link href={`${DOMAIN}/contact`}> here</Link>
+                       If you are unable to send a private mail to specific user,you
+                        can still reach us from
+                        <Link href={`${DOMAIN}/contact`}> from our contact section</Link>
                     </p>
                 </header>
                 <div className="row" data-aos="fade-up" data-aos-delay='100'>

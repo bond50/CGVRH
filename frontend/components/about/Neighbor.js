@@ -10,7 +10,7 @@ const Board = () => {
         }]
 
 
-    return <section>
+    return <section className='section'>
         <div className="container">
             <div className="section-title">
                 <h2>Neighbouring Facilities</h2>

@@ -1,4 +1,6 @@
-import Layout from "../../../hoc/Layout";
+import dynamic from "next/dynamic";
+
+
 import GeneralPageHeader from "../../../hoc/general-page-header";
 import React from "react";
 import Breadcrumbs from "../../../components/reusables/Breadcrumbs";
@@ -8,6 +10,9 @@ import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../../config";
 import DownloadList from "../../../components/media/downloads/download-list";
 import {useRouter} from "next/router";
 import Head from "next/head";
+import Preloader from "../../../components/preloader";
+
+const Layout = dynamic(() => import('../../../hoc/Layout'), {loading: () => <Preloader/>,ssr: false})
 
 const Downloads = () => {
     const router = useRouter()

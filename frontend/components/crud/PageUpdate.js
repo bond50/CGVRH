@@ -8,10 +8,13 @@ import CreateForm from "../reusables/forms/CreateForm";
 import {getCookie, isAuth} from "../../actions/auth";
 import {singlePage, updatePage} from "../../actions/general";
 import {getCategories} from "../../actions/category";
+import Card from "../blog/Card";
+import axios from "axios";
 
 
 const Page = () => {
     const [body, setBody] = useState('');
+    const [loading, setLoading] = useState(false)
     const [categories, setCategories] = useState([]);
     const [checked, setChecked] = useState([]); // categories
     const [isAccepted, setIsAccepted] = useState(false); // switch
@@ -22,8 +25,9 @@ const Page = () => {
         title: '',
         error: '',
         success: '',
+        images: [],
         formData: process.browser && new FormData(),
-        loading: false
+
     });
 
     const {error, success, formData, title} = values;
@@ -44,7 +48,7 @@ const Page = () => {
                 if (data.error) {
                     console.log(data.error);
                 } else {
-                    setValues({...values, title: data.title});
+                    setValues({...values, title: data.title, images: data.images.includes('') ? [] : data.images});
                     setBody(data.body);
                     setCategoriesArray(data.categories);
                     setIsAccepted(data.accepted)
@@ -124,23 +128,83 @@ const Page = () => {
     };
 
 
-    const editBlog = e => {
+    const editPage = e => {
         e.preventDefault();
-        updatePage(formData, token, router.query.slug)
-            .then(data => {
-                if (data.error) {
-                    setValues({...values, error: data.error});
-                } else {
-                    setValues({...values, title: '', success: `Blog titled "${data.title}" is successfully updated`});
-                    if (isAuth() && isAuth().role === 1) {
-                        // Router.replace(`/admin2/crud/${router.query.slug}`).then(r => console.log(r));
-                        Router.replace(`/admin2`).then(r => (console.log(r)));
-                    } else if (isAuth() && isAuth().role === 0) {
-                        // Router.replace(`/user/crud/gen-page/${router.query.slug}`).then(r => console.log(r));
-                        Router.replace(`/user`).then(r => (console.log(r)));
-                    }
-                }
+        let updateEndpoint
+
+        if (isAuth() && isAuth().role === 1) {
+            updateEndpoint = `${API}/general/${router.query.slug}`
+
+        } else if (isAuth() && isAuth().role === 0) {
+            updateEndpoint = `${API}/user/general/${router.query.slug}`
+        }
+
+
+        const config = {
+            headers: {Authorization: `Bearer ${token}`}
+        };
+
+        const bodyParameters = {
+            categories: checked,
+            featured: isFeatured,
+            accepted: isAccepted,
+            body,
+            title,
+            images: values.images,
+        };
+
+        axios.put(updateEndpoint, bodyParameters, config).then((res) => {
+            setValues({
+                ...values,
+                title: '',
+                error: '',
+                images: [],
+                success: `A new item titled "${res.data.title}" is updated`
             });
+            setBody('');
+            if (isAuth() && isAuth().role === 1) {
+                // Router.replace(`/admin2/gencrud/${router.query.slug}`);
+                Router.replace(`/admin2`).then(r => console.log(r));
+            } else if (isAuth() && isAuth().role === 0) {
+                // Router.replace(`/user/crud/${router.query.slug}`);
+                Router.replace(`/user`).then(r => console.log(r));
+            }
+
+        })
+            .catch((error) => {
+                if (error.response) {
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                    setValues({...values, error: error.response.data.error});
+                } else if (error.request) {
+                    // The request was made but no response was received
+                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                console.log(error.config);
+            });
+        // updatePage(formData, token, router.query.slug)
+        //     .then(data => {
+        //         if (data.error) {
+        //             setValues({...values, error: data.error});
+        //         } else {
+        //             setValues({...values, title: '', success: `Blog titled "${data.title}" is successfully updated`});
+        //             if (isAuth() && isAuth().role === 1) {
+        //                 // Router.replace(`/admin2/crud/${router.query.slug}`).then(r => console.log(r));
+        //                 Router.replace(`/admin2`).then(r => (console.log(r)));
+        //             } else if (isAuth() && isAuth().role === 0) {
+        //                 // Router.replace(`/user/crud/gen-page/${router.query.slug}`).then(r => console.log(r));
+        //                 Router.replace(`/user`).then(r => (console.log(r)));
+        //             }
+        //         }
+        //     });
     };
 
 
@@ -153,7 +217,31 @@ const Page = () => {
         setIsFeatured(!isFeatured)
         formData.set('featured', e.target.checked);
     };
+    const removeImage = (id) => {
+        setLoading(true)
+        axios.post(`${API}/remove-image`, {public_id: id}, {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        }).then((r) => {
+                setLoading(false)
 
+                const {images} = values
+
+                let filteredImages = images.filter((image) => {
+                    return image.public_id !== id
+                })
+
+                setValues({...values, images: filteredImages})
+
+
+            }
+        ).catch(e => {
+            console.log(e)
+            setLoading(false)
+        })
+
+    }
 
     return (
         <div className='row'>
@@ -172,15 +260,15 @@ const Page = () => {
                         </div>
                         }
                         {isAccepted && isAuth() && isAuth().role === 0 &&
-                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Accepted <i
-                            className="bi bi-check2-circle text-success "/>
-                        </label>
+                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Accepted <i
+                                className="bi bi-check2-circle text-success "/>
+                            </label>
                         }
                         <br/>
                         {isAuth() && isAuth().role === 0 && !isAccepted &&
-                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Accepted <i
-                            className="bi bi-x-circle-fill text-danger "/>
-                        </label>
+                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Accepted <i
+                                className="bi bi-x-circle-fill text-danger "/>
+                            </label>
                         }
 
                         {isAuth() && isAuth().role === 1 && <div className="form-check form-switch">
@@ -193,16 +281,16 @@ const Page = () => {
                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Is Featured </label>
                         </div>}
                         {isAuth() && isAuth().role === 0 && isFeatured &&
-                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Featured <i
-                            className="bi bi-check2-circle text-success "/>
-                        </label>
+                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Featured <i
+                                className="bi bi-check2-circle text-success "/>
+                            </label>
                         }
 
                         <br/>
                         {isAuth() && isAuth().role === 0 && !isFeatured &&
-                        <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Featured <i
-                            className="bi bi-x-circle-fill text-danger "/>
-                        </label>
+                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Featured <i
+                                className="bi bi-x-circle-fill text-danger "/>
+                            </label>
                         }
                     </div>
                 </div>
@@ -213,25 +301,44 @@ const Page = () => {
                     bodyValue={body}
                     btnCapture={'Update'}
                     titleValue={title}
-                    onSubmit={editBlog}/>
+                    onSubmit={editPage}/>
                 <div className="mb-3">
                     <br/>
                     <Alert msg={error} type="danger" label="Danger"/>
                     <Alert msg={success} label='Success' type='success'/>
                 </div>
-                {body && (
-                    <Image src={`${API}/general/photo/${router.query.slug}`} alt={title} width={800} height={500}/>
-                )}
+                <div className="row gy-3">
+                    {
+                        values.images && values.images.map(img => {
+                            return <div className="col-lg-3"
+                                        key={img.public_id}>
+                                <Card
+                                    admin={true}
+                                    blogUploadSrc={img.url}
+                                    blogUploadTitle={values.title}
+                                    removeImageByAdmin={() => removeImage(img.public_id)}/>
+
+                            </div>
+                        })
+                    }
+
+                </div>
             </div>
             <div className="col-md-4">
                 <SideCatTags
                     categories={showCategories}
+                    setLoading={setLoading}
+                    setValues={setValues}
+                    loading={loading}
+                    folder='vihiga-service'
+                    values={values}
                     handleChange={handleChange}/>
             </div>
         </div>
 
 
-    );
+    )
+        ;
 };
 
 export default Page;

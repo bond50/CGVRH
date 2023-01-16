@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "../../styles/AboutContainer.module.css";
+import {Icon} from "@iconify/react/dist/iconify";
 
 
 const Board = () => {
@@ -14,24 +15,21 @@ const Board = () => {
     ]
 
 
-    return <section className='section-bg'>
+    return <section className='section  home-roles'>
         <div className="container" data-aos="fade-up">
             <div className="section-title">
                 <h2>Roles we play in the county</h2>
-                <p>
+                <p className='text-start '>
                     VCRH plays its roles in the county by providing a wide range of health services in partnership
                     with the greater community and other institutions.
                     Some of the roles played by the hospital in the county include
                 </p>
             </div>
-            <div className={` ${styles.Content}`}>
+            <div className={`row content`}>
                 <div className="pt-4 pt-lg-0" data-aos="fade-up" data-aos-once={`true`}>
                     <ul>
                         {list.map((l, i) => {
-                            return <li key={i}
-                            ><i className="bi bi-check2-all"/>
-                                {l.name}
-                            </li>
+                            return <li key={i}>  <li><Icon className="icon" icon="ri:check-double-line" />{l.name}</li></li>
                         })
                         }
                     </ul>

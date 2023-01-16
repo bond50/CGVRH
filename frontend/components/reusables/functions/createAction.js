@@ -16,7 +16,7 @@ export const createAction = (body, token, pageEndpoint) => {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body
+        body: body
     })
         .then(response => {
             handleResponse(response)
@@ -24,3 +24,5 @@ export const createAction = (body, token, pageEndpoint) => {
         })
         .catch(err => console.log(err));
 };
+
+

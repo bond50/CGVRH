@@ -135,10 +135,10 @@ exports.fileRetrieveFromCloud = async (req, res) => {
 
 
 exports.galleryCreate = async (req, res,) => {
-    const files = req.files;
-    const {title} = req.body;
-    const {folder} = req.body
-    const {tags} = req.body
+
+
+    const {title, checkedTag: tags, images} = req.body;
+
 
     if (!title || !title.length) {
         return res.status(400).json({
@@ -146,13 +146,7 @@ exports.galleryCreate = async (req, res,) => {
         });
     }
 
-    if (!folder || !folder.length) {
-        return res.status(400).json({
-            error: "Folder must be provided",
-        });
-    }
-
-    if (files.length <= 0) {
+    if (images.length <= 0) {
         return res.status(400).json({
             error: "Select at least one file",
         });
@@ -163,47 +157,40 @@ exports.galleryCreate = async (req, res,) => {
         });
     }
 
+    let arr = []
 
-    let arrayOfTags = tags && tags.split(',');
-    files.map(async file => {
-        const {path, originalname, mimetype, size} = file;
-        const result = await cloudinaryUpload(path, folder);
-        let gallery = new Gallery()
-        gallery.filePath = result.filePath
-        gallery.title = title
-        gallery.cloudinaryFolder = folder
-        gallery.publicId = result.publicId
-        gallery.fileName = originalname
-        gallery.width = result.width
-        gallery.height = result.height
-        gallery.fileType = mimetype
-        gallery.fileSize = fileSizeFormatter(size, 2)
-        gallery.createdAt = result.createdAt
-        gallery.uploadedBy = req.auth._id
-        await gallery.save(async (err, doc) => {
-            if (err) {
-                return res.status(400).json({
-                    error: errorHandler(err)
-                });
+    if (images && images.length > 0) {
+        images.map(async file => {
+            const gallery = {
+                title: title,
+                tags: tags,
+                filePath: file.url,
+                cloudinaryFolder: file.cloudinaryFolder,
+                publicId: file.public_id,
+                fileType: file.fileType,
+                width: file.width,
+                height: file.height,
+                uploadedBy: req.auth._id
             }
 
-            await Gallery.findByIdAndUpdate(doc._id, {$push: {tags: arrayOfTags}}, {new: true}).exec(
-                (err, result) => {
-                    if (err) {
-                        return res.status(400).json({
-                            error: errorHandler(err)
-                        });
-
-                    } else
-                        res.json({
-                            data: result,
-                            message: `Files Uploaded to ${folder} directory in cloudinary servers`,
-                        });
-                }
-            );
+            arr.push(gallery)
 
         })
-        await fs.rm('uploads', {recursive: true});
-    })
+    }
+
+
+    try {
+        const data = await Gallery.insertMany(arr);
+        res.json({
+            data,
+            message: `Files Uploaded to gallery directory in cloudinary servers`,
+        });
+    } catch (e) {
+        res.status(400).json({
+            error: errorHandler(error)
+        });
+
+    }
+
 
 }

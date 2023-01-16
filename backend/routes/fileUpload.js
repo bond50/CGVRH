@@ -12,7 +12,7 @@ const {multipleFilesUploadCtrl, multipleImagesUploadCtrl} = require("../helpers/
 const router = express.Router();
 
 router.post('/files-upload', requireSignin, adminMiddleware, multipleFilesUploadCtrl, multipleFileUpload);
-router.post('/gallery-create', requireSignin, adminMiddleware, multipleImagesUploadCtrl, galleryCreate);
+router.post('/gallery-create', requireSignin, adminMiddleware, galleryCreate);
 router.post('/files-retrieve-from-cloud', fileRetrieveFromCloud);
 router.post('/get-all-multiple-files', getAllMultipleFiles);
 router.get('/get-downloads', getDownloads);
@@ -20,7 +20,7 @@ router.get('/get-gallery', getGallery);
 
 //user routes
 router.post('/user/files-upload', requireSignin, authMiddleware, multipleFilesUploadCtrl, multipleFileUpload);
-router.post('/user/gallery-create', requireSignin, authMiddleware, multipleImagesUploadCtrl, galleryCreate);
+router.post('/user/gallery-create', requireSignin, authMiddleware, galleryCreate);
 
 
 module.exports = router

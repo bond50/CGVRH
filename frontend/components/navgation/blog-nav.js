@@ -8,6 +8,7 @@ import MyLink from "./myLink";
 import BlogDrop from "./blog-dropdown";
 import {isAuth, signout} from "../../actions/auth";
 import Router from "next/router";
+import Preloader from "../preloader";
 
 const BlogNav = () => {
     const [closed, toggleClosed] = useToggle();
@@ -32,7 +33,7 @@ const BlogNav = () => {
     }
 
     if (!data) {
-        return <p>Loading categories</p>
+        return <Preloader/>
     }
 
 

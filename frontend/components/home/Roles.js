@@ -1,7 +1,6 @@
 import {Fragment} from "react";
 import Link from "next/link";
-
-
+import { Icon } from '@iconify/react';
 const Roles = () => {
 
     const list = [
@@ -19,7 +18,7 @@ const Roles = () => {
         return list.map(({desc}, i) => (
             <Fragment key={i}>
                 <ul>
-                    <li><i className={`bi bi-check2-all`}/>{desc}</li>
+                    <li><Icon className="icon" icon="ri:check-double-line" />{desc}</li>
                 </ul>
             </Fragment>
         ))
@@ -31,11 +30,10 @@ const Roles = () => {
 
         <section className='home-roles'>
             <div className="container " data-aos='slide-up'>
-
                 <div className={`section-title`}>
                     <h2>our roles</h2>
                 </div>
-                <div className={`row row-content`}>
+                <div className={`row content`}>
                     <div className="col-lg-6">
                         <p>VCRH plays its roles in the county by providing a wide range of health services in
                             partnership
@@ -53,8 +51,8 @@ const Roles = () => {
                             technologists,nutritionists, health records and information officers</p>
                         <p>We also implement health policy at facility level and maintain quality standards and Provide
                             technical support to sub-county hospitals and health centers.</p>
-                        <Link href={`/about/roles`}>
-                            <a className='btn'>Click to see more</a>
+                        <Link href={`/about-us/roles`}>
+                            <a className='btn-learn-more'>Read more about the roles we play in the county</a>
                         </Link>
                     </div>
                 </div>

@@ -10,6 +10,7 @@ import React from "react";
 import Media from "./media";
 import {isAuth, signout} from "../../actions/auth";
 import About from "./About";
+import Preloader from "../preloader";
 
 
 const Nav = () => {
@@ -35,7 +36,7 @@ const Nav = () => {
     }
 
     if (!data) {
-        return <div className='preloader'/>
+        return <Preloader/>
     }
 
     const showLinks = data.map(link => (
@@ -62,7 +63,7 @@ const Nav = () => {
                 </li>
                 }
                 <li>
-                    <a className="getstarted " href="https://rbx105.truehost.cloud:2096/">Staff Mail</a>
+                   <a className="getstarted " href="https://mail.vihigahospital.go.ke/">Staff Mail</a>
                 </li>
             </ul>
             <i className={`${closed ? 'bi bi-x text-white' : 'bi bi-list '} mobile-nav-toggle`}

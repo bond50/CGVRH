@@ -4,10 +4,19 @@ import Link from "next/link";
 import {API} from "../../config";
 
 const LoadRecentBlogs = ({blogs}) => {
+
+
     const recent = () => {
         return blogs && blogs.map((blog, index) => {
+            let imgSrc = `${API}/blog/photo/${blog.slug}`
+            if (blog.images && blog.images.length && blog.images.length > 0) {
+                const image = blog.images[Math.floor(Math.random() * blog.images.length)];
+                imgSrc = image.url
+            }
+
+
             return <div className={`${classes.Item} clearfix`} key={index}>
-                <img className="img img-fluid" src={`${API}/blog/photo/${blog.slug}`} alt={blog.title}/>
+                <img className="img img-fluid" src={imgSrc} alt={blog.title}/>
                 <h4>
                     <Link href={`/blogs/${blog.slug}`} key={index}>
                         <a> {blog.title.toLowerCase()}</a>

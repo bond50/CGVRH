@@ -32,7 +32,7 @@ const gallery = new Schema(
             },
             fileName: {
                 type: String,
-                required: true
+
             },
 
             fileType: {
@@ -41,7 +41,6 @@ const gallery = new Schema(
             },
             fileSize: {
                 type: String,
-                required: true
             },
             uploadedBy: {
                 type: mongoose.Types.ObjectId,

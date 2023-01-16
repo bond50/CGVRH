@@ -1,6 +1,5 @@
 const Page = require('../models/pages');
 const Category = require('../models/pageCategory');
-const formidable = require('formidable');
 const slugify = require('slugify');
 const stripHtml = require('string-strip-html');
 const _ = require('lodash');
@@ -11,77 +10,58 @@ const User = require("../models/user");
 const {capitalizeFirstLetter} = require("../helpers/importantFunctions");
 
 
+
 exports.create = (req, res) => {
-    let form = new formidable.IncomingForm();
-    form.keepExtensions = true;
-    form.parse(req, (err, fields, files) => {
+    const {title, body, categories, images} = req.body
+
+
+    if (!title || !title.length) {
+        return res.status(400).json({
+            error: 'title is required'
+        });
+    }
+
+
+    if (!categories || categories.length === 0) {
+        return res.status(400).json({
+            error: 'At least one category is required'
+        });
+    }
+
+
+    let page = new Page();
+    page.title = title.toLowerCase();
+    page.body = body;
+    page.excerpt = smartTrim(body, 320, ' ', ' ...');
+    page.slug = slugify(title).toLowerCase();
+    page.metaTitle = `${title} | ${process.env.APP_NAME}`;
+    page.metaDesc = stripHtml(body.substring(0, 160));
+    page.postedBy = req.auth._id;
+    page.images = images;
+
+
+    page.save((err, result) => {
         if (err) {
             return res.status(400).json({
-                error: 'Image could not upload'
+                error: errorHandler(err)
             });
         }
-        const {title, body, categories} = fields;
-
-
-        if (!title || !title.length) {
-            return res.status(400).json({
-                error: 'title is required'
-            });
-        }
-
-
-        if (!categories || categories.length === 0) {
-            return res.status(400).json({
-                error: 'At least one category is required'
-            });
-        }
-
-
-        let page = new Page();
-        page.title = title.toLowerCase();
-        page.body = body;
-        page.excerpt = smartTrim(body, 320, ' ', ' ...');
-        page.slug = slugify(title).toLowerCase();
-        page.metaTitle = `${title} | ${process.env.APP_NAME}`;
-        page.metaDesc = stripHtml(body.substring(0, 160));
-        page.postedBy = req.auth._id;
-        let arrayOfCategories = categories && categories.split(',');
-
-
-        if (files.photo) {
-            if (files.photo.size > 2000000) {
-                return res.status(400).json({
-                    error: 'Image should be less then 2 mb in size'
-                });
-            }
-            page.photo.data = fs.readFileSync(files.photo.path);
-            page.photo.contentType = files.photo.type;
-        }
-
-
-        page.save((err, result) => {
-            if (err) {
-                return res.status(400).json({
-                    error: errorHandler(err)
-                });
-            }
-            Page.findByIdAndUpdate(result._id, {$push: {categories: arrayOfCategories}}, {new: true}).exec(
-                (err, result) => {
-                    if (err) {
-                        return res.status(400).json({
-                            error: errorHandler(err)
-                        });
-                    } else {
-                        res.json(result);
-                    }
+        Page.findByIdAndUpdate(result._id, {$push: {categories}}, {new: true}).exec(
+            (err, result) => {
+                if (err) {
+                    return res.status(400).json({
+                        error: errorHandler(err)
+                    });
+                } else {
+                    res.json(result);
                 }
-            );
-        });
-    })
+            }
+        );
+    });
 }
 exports.listFeatured = (req, res) => {
     Page.find({featured: true, accepted: true})
-        .select('_id title excerpt slug')
+        .select('_id title images excerpt slug')
         .sort({createdAt: -1})
         .limit(6)
         .exec((err, data) => {
@@ -97,7 +77,7 @@ exports.list = (req, res) => {
     Page.find({accepted: true})
         .populate('categories', '_id name slug')
         .populate('postedBy', '_id name username')
-        .select('_id title slug excerpt categories  postedBy createdAt updatedAt')
+        .select('_id title slug images excerpt categories  postedBy createdAt updatedAt')
         .sort({createdAt: -1})
         .exec((err, data) => {
             if (err) {
@@ -119,7 +99,7 @@ exports.listAllServicesCategoriesTags = (req, res) => {
         .populate('categories', '_id name slug')
         .populate('postedBy', '_id name username profile')
         .sort({createdAt: -1})
-        .select('_id title slug excerpt  categories postedBy createdAt updatedAt')
+        .select('_id title slug excerpt images categories postedBy createdAt updatedAt')
         .exec((err, data) => {
             if (err) {
                 return res.json({
@@ -164,7 +144,7 @@ exports.read = (req, res) => {
         // .select("-photo")
         .populate('categories', '_id name slug')
         .populate('postedBy', '_id name username')
-        .select('_id title body accepted featured excerpt slug metaTitle metaDesc categories tags postedBy createdAt updatedAt')
+        .select('_id title body accepted images featured excerpt slug metaTitle metaDesc categories tags postedBy createdAt updatedAt')
         .exec((err, data) => {
             if (err) {
                 return res.json({
@@ -227,65 +207,80 @@ exports.remove = (req, res) => {
 };
 
 
-exports.update = (req, res) => {
+exports.update = async (req, res) => {
+    console.log(req.body)
 
-    const slug = req.params.slug.toLowerCase();
 
-    Page.findOne({slug}).exec((err, oldPage) => {
-        if (err) {
-            return res.status(400).json({
-                error: errorHandler(err)
-            });
+    try {
+        const slug = req.params.slug.toLowerCase();
+        const updated = await Page.findOneAndUpdate({slug}, req.body, {new: true}).exec()
+        if (req.body.images.length > 0) {
+            await Page.findOneAndUpdate({slug}, {$unset: {photo: {}}}, {new: true}).exec()
         }
+        res.json(updated)
 
-        let form = new formidable.IncomingForm();
-        form.keepExtensions = true;
-
-        form.parse(req, (err, fields, files) => {
-            if (err) {
-                return res.status(400).json({
-                    error: 'Image could not upload'
-                });
-            }
+    } catch (err) {
+        res.status(400).send({error: err.message})
+    }
 
 
-            let slugBeforeMerge = oldPage.slug;
-            oldPage = _.merge(oldPage, fields);
-            oldPage.slug = slugBeforeMerge;
-
-            const {body, desc, categories, tags} = fields;
-
-            if (body) {
-                oldPage.excerpt = smartTrim(body, 320, ' ', ' ...');
-                oldPage.desc = stripHtml(body.substring(0, 160));
-            }
-
-            if (categories) {
-                oldPage.categories = categories.split(',');
-            }
-
-
-            if (files.photo) {
-                if (files.photo.size > 2000000) {
-                    return res.status(400).json({
-                        error: 'Image should be less then 2mb in size'
-                    });
-                }
-                oldPage.photo.data = fs.readFileSync(files.photo.path);
-                oldPage.photo.contentType = files.photo.type;
-            }
-
-            oldPage.save((err, result) => {
-                if (err) {
-                    return res.status(400).json({
-                        error: errorHandler(err)
-                    });
-                }
-                // result.photo = undefined;
-                res.json(result);
-            });
-        });
-    });
+    // const slug = req.params.slug.toLowerCase();
+    //
+    // Page.findOne({slug}).exec((err, oldPage) => {
+    //     if (err) {
+    //         return res.status(400).json({
+    //             error: errorHandler(err)
+    //         });
+    //     }
+    //
+    //     let form = new formidable.IncomingForm();
+    //     form.keepExtensions = true;
+    //
+    //     form.parse(req, (err, fields, files) => {
+    //         if (err) {
+    //             return res.status(400).json({
+    //                 error: 'Image could not upload'
+    //             });
+    //         }
+    //
+    //
+    //         let slugBeforeMerge = oldPage.slug;
+    //         oldPage = _.merge(oldPage, fields);
+    //         oldPage.slug = slugBeforeMerge;
+    //
+    //         const {body, desc, categories, tags} = fields;
+    //
+    //         if (body) {
+    //             oldPage.excerpt = smartTrim(body, 320, ' ', ' ...');
+    //             oldPage.desc = stripHtml(body.substring(0, 160));
+    //         }
+    //
+    //         if (categories) {
+    //             oldPage.categories = categories.split(',');
+    //         }
+    //
+    //
+    //         if (files.photo) {
+    //             if (files.photo.size > 2000000) {
+    //                 return res.status(400).json({
+    //                     error: 'Image should be less then 2mb in size'
+    //                 });
+    //             }
+    //             oldPage.photo.data = fs.readFileSync(files.photo.path);
+    //             oldPage.photo.contentType = files.photo.type;
+    //         }
+    //
+    //         oldPage.save((err, result) => {
+    //             if (err) {
+    //                 return res.status(400).json({
+    //                     error: errorHandler(err)
+    //                 });
+    //             }
+    //             // result.photo = undefined;
+    //             res.json(result);
+    //         });
+    //     });
+    // });
 };
 
 exports.listPending = (req, res) => {
@@ -314,7 +309,7 @@ exports.listByUser = (req, res) => {
             Page.find({postedBy: user._id, accepted: true})
                 .populate('categories', '_id name slug')
                 .populate('postedBy', '_id name username')
-                .select('_id title accepted slug postedBy createdAt updatedAt')
+                .select('_id title images accepted slug postedBy createdAt updatedAt')
                 .exec((err1, data) => {
                     if (err) {
                         return res.status(400).json({

@@ -6,8 +6,6 @@ import SideCatTags from "../../components/reusables/forms/side-cat-tags";
 
 const UploadFiles = () => {
     const endpoint = `/files-upload`
-
-
     const {
         loading,
         successMessage,
@@ -61,8 +59,7 @@ const UploadFiles = () => {
                         loading={loading}/>
                 </div>
                 <div className="col-md-4">
-                    <SideCatTags
-                        tags={showTags}/>
+                    <SideCatTags hidden tags={showTags}/>
                 </div>
             </div>
         </div>

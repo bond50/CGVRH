@@ -1,0 +1,81 @@
+.Service ul {
+    list-style: none;
+    /*font-size: 1px;*/
+}
+
+.Service ul li {
+    display: flex;
+    align-items: center;
+}
+
+.Service ul li:before {
+    content: "\F26A";
+    font-size: 20px;
+    font-family: 'bootstrap-icons';
+    margin-right: 8px;
+    color: var(--color-primary);
+}
+
+
+.Service ul li {
+
+    font-size: 13px;
+    color: #001973;
+}
+
+
+
+
+
+.Card {
+    border: 1px solid rgba(14, 29, 52, 0.15);
+    background: var(--color-white);
+    position: relative;
+    border-radius: 0;
+    height: 100%;
+}
+
+.Card .Card-img {
+    overflow: hidden;
+    margin-bottom: 15px;
+    border-radius: 0;
+}
+
+.Card .Card-img img {
+    transition: 0.3s ease-in-out;
+}
+
+.Card h3 {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 5px;
+    padding: 10px 30px;
+    text-transform: capitalize;
+
+}
+
+
+
+.Card a {
+    color: var(--color-primary);
+    transition: 0.3s;
+}
+
+.Card a:hover {
+    color: var(--color-secondary);
+}
+
+.Card p {
+    padding: 0 30px;
+    color: var(--color-secondary-dark);
+    font-size: 15px;
+}
+
+.Card p:last-child {
+    margin-bottom: 30px;
+
+}
+
+.Card:hover .CardImg img {
+    transform: scale(1.1);
+}

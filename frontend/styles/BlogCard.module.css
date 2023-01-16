@@ -194,3 +194,22 @@
     color: #6c757d;
     content: ",";
 }
+
+/*.Item {*/
+/*    */
+/*  */
+/*}*/
+
+.Badge {
+    position: absolute;
+    right: -40px;
+    cursor: pointer;
+    top: -20px;
+    z-index: 10;
+    background: red;
+    text-align: center;
+    border-radius: 30px 30px 30px 30px;
+    color: white;
+    padding: 5px 10px;
+    font-size: 20px;
+}

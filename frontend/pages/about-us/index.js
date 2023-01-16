@@ -1,16 +1,22 @@
-import Layout from "../../hoc/Layout";
-import Plan from "../../components/about/Plan";
-import Partners from "../../components/about/Partners";
-import React from 'react'
-import Role from "../../components/about/Role";
-import Goals from "../../components/about/Goals";
-import GuidingPrinciples from "../../components/about/GuidingPrinciples";
-import Breadcrumbs from "../../components/reusables/Breadcrumbs";
-import Organogram from "../../components/about/Organogram";
-import Neighbor from "../../components/about/Neighbor";
-import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import {useRouter} from "next/router";
+import dynamic from "next/dynamic";
+import React from 'react'
+
+const Layout = dynamic(() => import( "../../hoc/Layout"), {ssr: false});
+const Plan = dynamic(() => import( "../../components/about/Plan"), {ssr: false});
+const Partners = dynamic(() => import( "../../components/about/Partners"), {ssr: false});
+
+const Role = dynamic(() => import( "../../components/about/Role"), {ssr: false});
+const Goals = dynamic(() => import( "../../components/about/Goals"), {ssr: false});
+const GuidingPrinciples = dynamic(() => import( "../../components/about/GuidingPrinciples"), {ssr: false});
+const Breadcrumbs = dynamic(() => import( "../../components/reusables/Breadcrumbs"), {ssr: false});
+const Organogram = dynamic(() => import( "../../components/about/Organogram"), {ssr: false});
+const Neighbor = dynamic(() => import( "../../components/about/Neighbor"), {ssr: false});
+const Head = dynamic(() => import( "next/head"), {ssr: false});
+
+
+
 
 const Index = () => {
     const router = useRouter()

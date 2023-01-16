@@ -40,6 +40,9 @@ const blogSchema = new mongoose.Schema(
         mdesc: {
             type: String
         },
+         images: {
+            type: Array
+        },
         photo: {
             data: Buffer,
             contentType: String

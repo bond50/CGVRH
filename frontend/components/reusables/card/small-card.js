@@ -5,8 +5,12 @@ import {API} from '../../../config';
 import classes from '../../../styles/SmallCard.module.css'
 import Image from "next/image";
 import React from "react";
+import ti from "simple-react-lightbox";
 
 const SmallCard = ({blog, service}) => {
+
+    console.log(blog)
+
 
     let photoLink
     let multiLink
@@ -15,8 +19,15 @@ const SmallCard = ({blog, service}) => {
         photoLink = `${API}/service/photo/${service.slug}`
         multiLink = `/services/${service.slug}`
     } else if (blog) {
-        photoLink = `${API}/blog/photo/${blog.slug}`
         multiLink = `/blogs/${blog.slug}`
+        if (blog.images && blog.images.length && blog.images.length > 0) {
+            const image = blog.images[Math.floor(Math.random() * blog.images.length)];
+            photoLink = image.url
+        } else {
+            photoLink = `${API}/blog/photo/${blog.slug}`
+        }
+
+
     } else {
         photoLink = ''
         multiLink = ''

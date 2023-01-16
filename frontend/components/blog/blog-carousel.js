@@ -19,10 +19,20 @@ function BlogCarousel({blogs}) {
 
     const renderCarouselItem = () => {
         return blogs && blogs.map(d => {
+            let s = d.excerpt
+            renderHTML(s)
+            console.log(renderHTML(s))
             const myLoader = () => {
                 return photoLink;
             }
-            const photoLink = `${API}/blog/photo/${d.slug}`
+
+            let photoLink = `${API}/blog/photo/${d.slug}`
+
+            if (d.images && d.images.length && d.images.length > 0) {
+                const image = d.images[Math.floor(Math.random() * d.images.length)];
+                photoLink = image.url
+            }
+
 
             return <Carousel.Item key={d._id} className='carousel-item'>
                 <Image
@@ -35,7 +45,9 @@ function BlogCarousel({blogs}) {
                     <div className="container">
                         <div className="carousel-content animate__animated animate__fadeInUp">
                             <h2 className="animate__animated animate__fadeInDown">{d.title.toLowerCase()}</h2>
-                            {renderHTML(d.excerpt)}
+
+                            {renderHTML(d.excerpt.length >= 150? `${d.excerpt.substring(0, 150)}...` : d.excerpt)}
+
                             <Link href={`/blogs/${d.slug}`}>
                                 <a className="btn-get-started">Read
                                     More

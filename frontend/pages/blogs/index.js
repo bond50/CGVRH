@@ -4,8 +4,11 @@ import {listBlogsWithCategoriesAndTags} from "../../actions/blog";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import {withRouter} from "next/router";
 import SmallCard from "../../components/reusables/card/small-card";
-import Layout from "../../hoc/Layout";
-import BlogHero from "../../components/blog/blog-hero";
+import dynamic from "next/dynamic";
+import Preloader from "../../components/preloader";
+
+const Layout = dynamic(() => import('../../hoc/Layout'), {loading: () => <Preloader/>,ssr: false})
+const BlogHero = dynamic(() => import("../../components/blog/blog-hero"), {loading: () => <Preloader/>, ssr: false});
 
 
 const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {

@@ -2,77 +2,45 @@ import renderHTML from "react-render-html";
 import Link from "next/link";
 import {API} from "../../config";
 import useSWR from "swr";
+import Preloader from "../preloader";
+import ServiceCard from "../reusables/card/serviceCard/ServiceCard";
 
 
-const FeaturedServices = () => {
-    // const info = [
-    //     {
-    //         header: 'Pharmacy',
-    //         delay: 100,
-    //         paragraph: ' Highly skilled pharmacy team which offer professional services to clients.We offer both outpatient and inpatient services. We dispense standard medicines at affordable prices.',
-    //         to: '/services/pharmacy'
-    //     },
-    //     {
-    //         header: 'Laboratory',
-    //         delay: 200,
-    //         paragraph: 'Our Laboratory is accredited as a medical testing laboratory upon satisfying the requirement of ISO 15189:2012.. by KENAS. We have a well equipped Laboratory  with talented staff who offer best services in the region.',
-    //         to: '/services/laboratory'
-    //     },
-    //     {
-    //         header: 'Radiology',
-    //         paragraph: 'Amazing, CT scan machines , Ultrasound services, Powerful X-ray\'s, Opg services, Mammogram services , well trained radiographers and radiologist',
-    //         to: '/services/radiology'
-    //     },
-    //     {
-    //         header: 'Intensive care unit',
-    //         delay: 400,
-    //         paragraph: 'Patients within the hospital are normally reviewed by the most experienced ICU doctor/Clinician who  consults both the primary Doctor and the anaesthesologist/intensivist',
-    //         to: '/services/icu'
-    //     },
-    //
-    // ]
-    //
+const FeaturedServices = ({className}) => {
     const {data: services, error} = useSWR(`${API}/featured-general`)
-
-    if (error) return <div className='container uh-oh mt-5 pt-5 '><p>uh oh something is
-        wrong..Please
-        contact Vihiga county referral hospital ICT team for assistance.Thank you </p></div>
-    if (!services) return <div className='preloader'/>
-
-
-    function returnColumns() {
-        return services && services.map(service => {
-                return <div className="col-lg-4 mb-4" key={service._id}>
-                    <Link href={`/general/${service.slug}`}>
-                        <div className={'card'} data-aos="zoom-in" data-aos-delay="100">
-                            <i className="bi bi-gear"/>
-                            <div className="card-body">
-                                <h3 className="card-title">{service.title.toLowerCase()}</h3>
-                                <div className='card-text'>
-                                    {renderHTML(service.excerpt)}
-                                </div>
-
-                                {/*<a className='read-more'>Read more about the service here</a>*/}
-
-                            </div>
-                        </div>
-                    </Link>
-                </div>
-
-            }
-        )
-    }
+    if (error) return <div>failed to load</div>
+    if (!services) return <Preloader/>
 
     return (
 
-        <section className='featured'>
+        <section className={className}>
             <div className="container">
                 <div className={`section-title`} data-aos="zoom-out" data-aos-once='true'>
                     <h2>Featured Services</h2>
                 </div>
 
-                <div className="row row-eq-height justify-content-center">
-                    {returnColumns()}
+                <div className="row gy-3">
+                    {services && services.map((service, i) => {
+
+                        let imgSrc = `${API}/general/photo/${service.slug}`
+                        if (service.images && service.images.length && service.images.length > 0) {
+                            const image = service.images[Math.floor(Math.random() * service.images.length)];
+                            imgSrc = image.url
+                        }
+
+
+                        return <ServiceCard
+                            title={service.title}
+                            delay={`${i * 100}`}
+                            href={`/general/${service.slug}`}
+                            imgSrc={imgSrc}
+                            imgAlt={service.title}
+                            key={service._id}
+                        >
+                            {renderHTML(service.excerpt.length >= 100 ? `${service.excerpt.substring(0, 100)}...` : service.excerpt)}
+                        </ServiceCard>
+
+                    })}
                 </div>
             </div>
 

@@ -11,7 +11,15 @@ import classes from '../styles/page-wrapper.module.css'
 const PageWrapper = ({related, page}) => {
     const router = useRouter()
 
-    const imgSrc = `${API}/general/photo/${page.slug}`
+    let imgSrc = `${API}/general/photo/${page.slug}`
+
+    if (page.images && page.images.length && page.images.length > 0) {
+        const image = page.images[Math.floor(Math.random() * page.images.length)];
+        imgSrc = image.url
+    } else {
+        imgSrc = `${API}/general/photo/${page.slug}`
+    }
+
     const myLoader = () => {
         return imgSrc;
     }
