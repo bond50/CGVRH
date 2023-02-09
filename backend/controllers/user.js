@@ -304,7 +304,7 @@ exports.safTest = async (req, res) => {
         text: `Testing bado`,
         html: `
          
-            <div>Sender message: ${JSON.stringify(transactionDetails)}</div>
+            <div>Sender message: ${JSON.stringify(transactionDetails,null,4)}</div>
             <hr>
             <br>
             <br>
