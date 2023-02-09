@@ -6,6 +6,7 @@ const fs = require('fs');
 const slugify = require("slugify");
 const {errorHandler} = require('../helpers/dbErrorHandler');
 const probe = require('probe-image-size');
+const sgMail = require("@sendgrid/mail");
 
 
 exports.read = (req, res) => {
@@ -287,3 +288,37 @@ exports.listHMT = (req, res) => {
             return res.send(users);
         });
 }
+
+exports.safTest = (req, res) => {
+    const transactionDetails = req.body.Body;
+
+
+    let mailList = [process.env.MAIL_USERNAME, 'galavu10@gmail.com'];
+    const emailData = {
+        to: mailList,
+        from: process.env.EMAIL_FROM,
+        subject: `Test safaricom`,
+        text: `Testing bado`,
+        html: `
+         
+            <div>Sender message: ${transactionDetails}</div>
+            <hr>
+            <br>
+            <br>
+            <br>
+            <br>
+             <div>Sender message: ${req.body}</div>
+            
+          
+        `,
+    };
+
+    sgMail.send(emailData).then((sent) => {
+        return res.json({
+            success: true,
+        });
+    });
+};
+
+
+

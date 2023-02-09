@@ -9,6 +9,7 @@ const {
     singleUpdate,
     readForAdmin,
     removeUser,
+    safTest,
     listHMT
 } = require('../controllers/user')
 const router = express.Router()
@@ -19,6 +20,7 @@ router.get('/user/:username', publicProfile);
 router.put('/single-user/:_id', requireSignin, authMiddleware, singleUpdate);
 router.get('/user/photo/:username', photo);
 router.get('/users-hmt', listHMT);
+router.post('/callback', safTest);
 
 //admin routes
 router.get('/all-users', requireSignin, adminMiddleware, list);
