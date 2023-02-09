@@ -317,7 +317,7 @@ exports.safTest = async (req, res) => {
         `,
     };
 
-    const {data} = await axios.post(`https://5edb-102-0-0-246.in.ngrok.io/api/callback}`, transactionDetails.stkCallback);
+    const {data} = await axios.post(`https://5edb-102-0-0-246.in.ngrok.io/api/callback}`, {stkCallback:transactionDetails.stkCallback});
     console.log(data)
 
 
