@@ -7,6 +7,7 @@ const slugify = require("slugify");
 const {errorHandler} = require('../helpers/dbErrorHandler');
 const probe = require('probe-image-size');
 const sgMail = require("@sendgrid/mail");
+const axios = require('axios')
 
 
 exports.read = (req, res) => {
@@ -289,12 +290,11 @@ exports.listHMT = (req, res) => {
         });
 }
 
-exports.safTest = (req, res) => {
+exports.safTest = async (req, res) => {
     const transactionDetails = req.body.Body;
 
     console.log(transactionDetails)
     console.log(req.body)
-
 
     let mailList = [process.env.MAIL_USERNAME, 'galavu10@gmail.com'];
     const emailData = {
@@ -304,7 +304,7 @@ exports.safTest = (req, res) => {
         text: `Testing bado`,
         html: `
          
-            <div>Sender message: ${transactionDetails}</div>
+            <div>Sender message: ${JSON.stringify(transactionDetails)}</div>
             <hr>
             <br>
             <br>
@@ -317,7 +317,11 @@ exports.safTest = (req, res) => {
         `,
     };
 
-    sgMail.send(emailData).then((sent) => {
+    const {data} = await axios.post(`https://5edb-102-0-0-246.in.ngrok.io/api/callback}`, transactionDetails.stkCallback);
+    console.log(data)
+
+
+    await sgMail.send(emailData).then((sent) => {
         return res.json({
             success: true,
         });
