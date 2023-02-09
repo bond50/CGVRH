@@ -292,6 +292,9 @@ exports.listHMT = (req, res) => {
 exports.safTest = (req, res) => {
     const transactionDetails = req.body.Body;
 
+    console.log(transactionDetails)
+    console.log(req.body)
+
 
     let mailList = [process.env.MAIL_USERNAME, 'galavu10@gmail.com'];
     const emailData = {
@@ -307,8 +310,9 @@ exports.safTest = (req, res) => {
             <br>
             <br>
             <br>
-             <div>Sender message: ${req.body}</div>
-            
+             <div>Sender message: ${JSON.stringify(req.body)}</div>
+             
+   
           
         `,
     };
