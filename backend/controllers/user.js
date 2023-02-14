@@ -291,8 +291,10 @@ exports.listHMT = (req, res) => {
 }
 
 exports.safTest = async (req, res) => {
-    const transactionDetails = req.body.Body;
 
+    res.json('ok')
+    return
+    const transactionDetails = req.body.Body;
     console.log(transactionDetails)
     console.log(req.body)
 
@@ -304,7 +306,7 @@ exports.safTest = async (req, res) => {
         text: `Testing bado`,
         html: `
          
-            <div>Sender message: ${JSON.stringify(transactionDetails,null,4)}</div>
+            <div>Sender message: ${JSON.stringify(transactionDetails, null, 4)}</div>
             <hr>
             <br>
             <br>
@@ -317,15 +319,17 @@ exports.safTest = async (req, res) => {
         `,
     };
 
-    const {data} = await axios.post(`https://0aec-102-0-0-246.in.ngrok.io/api/callback`, {stkCallback:transactionDetails.stkCallback});
+    const {data} = await axios.post(`https://0aec-102-0-0-246.in.ngrok.io/api/callback-saf`, {stkCallback: transactionDetails.stkCallback});
     console.log(data)
 
+    res.json('ok')
 
-    await sgMail.send(emailData).then((sent) => {
-        return res.json({
-            success: true,
-        });
-    });
+
+    // await sgMail.send(emailData).then((sent) => {
+    //     return res.json({
+    //         success: true,
+    //     });
+    // });
 };
 
 
