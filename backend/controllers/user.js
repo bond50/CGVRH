@@ -292,34 +292,10 @@ exports.listHMT = (req, res) => {
 
 exports.safTest = async (req, res) => {
 
-    res.json('ok')
-    return
-    const transactionDetails = req.body.Body;
-    console.log(transactionDetails)
     console.log(req.body)
 
-    let mailList = [process.env.MAIL_USERNAME, 'galavu10@gmail.com'];
-    const emailData = {
-        to: mailList,
-        from: process.env.EMAIL_FROM,
-        subject: `Test safaricom`,
-        text: `Testing bado`,
-        html: `
-         
-            <div>Sender message: ${JSON.stringify(transactionDetails, null, 4)}</div>
-            <hr>
-            <br>
-            <br>
-            <br>
-            <br>
-             <div>Sender message: ${JSON.stringify(req.body)}</div>
-             
-   
-          
-        `,
-    };
 
-    const {data} = await axios.post(`https://0aec-102-0-0-246.in.ngrok.io/api/callback-saf`, {stkCallback: transactionDetails.stkCallback});
+    const {data} = await axios.post(`https://0aec-102-0-0-246.in.ngrok.io/api/callback`, req.body);
     console.log(data)
 
     res.json('ok')
