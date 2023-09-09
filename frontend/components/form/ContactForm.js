@@ -106,6 +106,7 @@ const ContactForm = ({authorEmail, label}) => {
                         onChange={handleChange('subjectLine')}
                         className="form-control"
                         value={subjectLine}
+
                         required/>
                 </div>
                 <div className="form-group mt-3">
