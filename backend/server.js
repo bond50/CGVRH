@@ -38,6 +38,7 @@ const options = {
     useUnifiedTopology: true,
 
 }
+mongoose.set('strictQuery', true);
 mongoose.connect(process.env.DATABASE_URL)
     .then(() => {
         console.log('database connection established')

@@ -9,6 +9,7 @@ const ContactForm = ({authorEmail, label}) => {
         message: '',
         name: '',
         email: '',
+        subjectLine:'',
         loading: false,
         showForm: true,
         sent: false,
@@ -20,7 +21,7 @@ const ContactForm = ({authorEmail, label}) => {
     const clickSubmit = e => {
         e.preventDefault();
         setValues({...values, loading: true});
-        emailContactForm({authorEmail, name, email, message}).then(data => {
+        emailContactForm({authorEmail, name, email,subjectLine, message}).then(data => {
             if (data.error) {
                 setValues({...values, error: data.error, loading: false});
             } else {
@@ -32,13 +33,14 @@ const ContactForm = ({authorEmail, label}) => {
                     showForm: false,
                     email: '',
                     message: '',
+                    subjectLine:'',
                     buttonText: 'Sent',
                     success: data.success
                 });
             }
         });
     };
-    const {message, name, email, loading, success, error} = values;
+    const {message, name, email,subjectLine, loading, success, error} = values;
 
 
     let btnText = 'Send Message'
@@ -97,6 +99,15 @@ const ContactForm = ({authorEmail, label}) => {
         <div className={authorEmail ? '' : 'col-lg-10'}>
             <form onSubmit={clickSubmit} className={authorEmail ? null : classes.Contact}>
                 {label && <label className="form-label">{label}</label>}
+                <div className="form-group mt-3">
+                    <input
+                        placeholder="Subject"
+                        type="text"
+                        onChange={handleChange('subjectLine')}
+                        className="form-control"
+                        value={subjectLine}
+                        required/>
+                </div>
                 <div className="form-group mt-3">
                     <input
                         placeholder="Your Name"
