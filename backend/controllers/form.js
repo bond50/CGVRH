@@ -58,7 +58,7 @@ const createEmailHTML = ({subjectLine, message, name, email}) => `
         </div>
         <div class="footer">
             <img src="https://res.cloudinary.com/dwtcilinl/image/upload/v1694280044/vc150_prhdqk.png" alt="Logo" style="width: 100px;">
-            <p><em>This email was sent by '${name}' from our website <a href="https://vihigahospital.go.ke/contact">https://vihigahospital.go.ke/contact</a>.</em></p>
+            <p><em>This email was sent by '${name}' from our website https://vihigahospital.go.ke/contact.</em></p>
         </div>
     </div>
 </body>
