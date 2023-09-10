@@ -72,8 +72,7 @@ const Index = ({pages}) => {
 };
 
 
-export const getServerSideProps = async () => {
-
+export const getStaticProps = async () => {
     return list().then((data) => {
         if (data.error) {
             console.log(data.error);
@@ -82,10 +81,10 @@ export const getServerSideProps = async () => {
                 props: {
                     pages: data,
                 },
+                revalidate: 60,  // Optional: re-generate the page at most once per minute
             };
         }
     });
-
 };
 
 

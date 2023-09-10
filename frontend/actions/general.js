@@ -98,3 +98,21 @@ export const updatePage = (page, token, slug) => {
         .catch(err => console.log(err));
 };
 
+
+export const getAllSlugs = () => {
+    return fetch(`${API}/general/slugs`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+
+        })
+        .then(data => {
+            return data.slugs;  // Extract the 'slugs' array from the response object
+        })
+        .catch(err => {
+            console.log(err);
+            return [];
+        });
+};
+

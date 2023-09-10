@@ -69,3 +69,18 @@ exports.remove = (req, res) => {
         });
     });
 };
+
+// Controller for fetching all category slugs
+exports.listAllCategorySlugs = (req, res) => {
+    Category.find({}, 'slug -_id')
+        .exec((err, categories) => {
+            if (err) {
+                return res.status(400).json({
+                    error: 'Categories not found'
+                });
+            }
+            const slugs = categories.map(category => category.slug);
+            res.json(slugs);
+        });
+};
+

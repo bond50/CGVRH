@@ -188,7 +188,6 @@ exports.remove = (req, res) => {
 exports.update = async (req, res) => {
 
 
-
     try {
         const slug = req.params.slug.toLowerCase();
         const updated = await Blog.findOneAndUpdate({slug}, req.body, {new: true}).exec()
@@ -392,3 +391,18 @@ exports.featuredBlogs = (req, res) => {
             res.json(data);
         });
 }
+
+exports.listAllBlogsSlugs = (req, res) => {
+    Blog.find({status: 'approved'})  // Assuming you want to filter by 'approved' status
+        .select('slug')  // Only fetch the 'slug' field
+        .exec((err, blogs) => {
+            if (err) {
+                return res.status(400).json({
+                    error: 'Blogs not found'
+                });
+            }
+            // Extract slugs and return as an array
+            const slugs = blogs.map(blog => blog.slug);
+            res.json({slugs});
+        });
+};

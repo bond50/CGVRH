@@ -11,6 +11,7 @@ const {
     photo,
     listPendingByUser,
     listByUser,
+    listAllSlugs,
     listRelated, listAllServicesCategoriesTags, listServiceNamesAndSlugs
 } = require('../controllers/pages');
 
@@ -28,6 +29,7 @@ router.get('/general', list);
 router.get('/featured-general', listFeatured);
 router.get('/pending-pages', listPending);
 router.get('/page-categories', listAllServicesCategoriesTags);
+router.get('/general/slugs', listAllSlugs);
 router.get('/general/:slug', read);
 router.delete('/general/:slug', requireSignin, adminMiddleware, remove);
 router.put('/general/:slug', requireSignin, adminMiddleware, update);

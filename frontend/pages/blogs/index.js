@@ -117,7 +117,7 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {
     );
 };
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
     let skip = 0;
     let limit = 6;
     return listBlogsWithCategoriesAndTags(skip, limit).then((data) => {
@@ -132,9 +132,11 @@ export const getServerSideProps = async () => {
                     blogsLimit: limit,
                     blogSkip: skip,
                 },
+                revalidate: 60,  // Re-generate the page at most once per minute
             };
         }
     });
 };
+
 
 export default withRouter(Blogs);

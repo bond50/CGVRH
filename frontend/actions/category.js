@@ -53,3 +53,18 @@ export const removeCategory = (slug, token, endpoint) =>
             return response.json();
         })
         .catch((err) => console.log(err));
+
+export const getAllCategorySlugs = async () => {
+    try {
+        const response = await fetch(`${API}/categories`, {
+            method: 'GET'
+        });
+        const data = await response.json();
+        return data.map(category => ({
+            params: {slug: category.slug}
+        }));
+    } catch (err) {
+        console.log(err);
+        return [];
+    }
+};

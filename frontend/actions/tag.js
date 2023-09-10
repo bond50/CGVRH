@@ -67,3 +67,21 @@ export const removeTag = (slug, token, endpoint) => {
         })
         .catch(err => console.log(err));
 };
+
+
+
+export const getAllTagSlugs = async () => {
+    try {
+        const response = await fetch(`${API}/tags`, {
+            method: 'GET'
+        });
+        const data = await response.json();
+        return data.map(tag => ({
+            params: {slug: tag.slug}
+        }));
+    } catch (err) {
+        console.log(err);
+        return [];
+    }
+};
+

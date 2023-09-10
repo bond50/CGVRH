@@ -2,15 +2,13 @@ import React, {Fragment, useEffect, useState} from 'react';
 import Head from "next/head";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 
-import {listRelated, singlePage} from "../../actions/general";
+import {getAllSlugs, listRelated, singlePage} from "../../actions/general";
 import PageWrapper from "../../hoc/page-wrapper";
 import Breadcrumbs from "../../components/reusables/Breadcrumbs";
 import Layout from "../../hoc/Layout";
 
 const Slug = ({service, query}) => {
-
     const [related, setRelated] = useState([])
-
 
     const loadRelated = () => {
         listRelated({service}).then(data => {
@@ -66,16 +64,25 @@ const Slug = ({service, query}) => {
         </Fragment>
     )
 };
-export const getServerSideProps = async ({query}) => {
-
-    return singlePage(query.slug).then(data => {
+export const getStaticProps = async ({ params }) => {
+    return singlePage(params.slug).then(data => {
         if (data.error) {
-            console.log(data.error)
+            console.log(data.error);
         } else {
             return {
-                props: {service: data, query}
-            }
+                props: { service: data, query: params },
+                revalidate: 60,  // Optional: re-generate the page at most once per minute
+            };
         }
-    })
-}
+    });
+};
+
+export const getStaticPaths = async () => {
+    const slugs = await getAllSlugs();  // Fetch all possible slugs for pre-rendering
+    const paths = slugs.map(slug => ({ params: { slug } }));
+    return {
+        paths,
+        fallback: 'blocking',
+    };
+};
 export default Slug;

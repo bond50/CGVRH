@@ -14,6 +14,7 @@ const {
     listRelated,
     listSearch,
     featuredBlogs,
+    listAllBlogsSlugs,
     listPending
 } = require('../controllers/blog');
 
@@ -25,6 +26,7 @@ router.get('/blogs', list);
 router.get('/featured-blogs', featuredBlogs);
 router.get('/pending-blogs', requireSignin, adminMiddleware, listPending);
 router.get('/list-recent-blogs', listHomePageBlogs);
+router.get('/blogs/slugs', listAllBlogsSlugs);
 router.post('/blogs-categories-tags', listAllBlogsCategoriesTags);
 router.get('/blog/:slug', read);
 router.delete('/blog/:slug', requireSignin, adminMiddleware, remove);

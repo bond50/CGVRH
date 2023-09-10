@@ -1,4 +1,4 @@
-import {singleTag} from "../../actions/tag";
+import {singleTag,getAllTagSlugs} from "../../actions/tag";
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import React from "react";
@@ -68,20 +68,31 @@ const Tag = ({tag, blogs, query}) => {
     )
 
 };
-export const getServerSideProps = async ({query}) => {
-    return singleTag(query.slug, 'tag').then(data => {
-        if (data.error) {
-            console.log(data.error)
-        } else {
-            return {
-                props: {
-                    tag: data.tag,
-                    blogs: data.blogs,
-                    query
-                }
-            }
-        }
-    })
-}
+export const getStaticProps = async ({params}) => {
+    const data = await singleTag(params.slug, 'tag');
+    if (data.error) {
+        console.log(data.error);
+        return {
+            notFound: true,
+        };
+    } else {
+        return {
+            props: {
+                tag: data.tag,
+                blogs: data.blogs,
+                query: params,
+            },
+            revalidate: 60, // ISR, re-generate the page every 60 seconds
+        };
+    }
+};
 
+export const getStaticPaths = async () => {
+    // Fetch all slugs and return them
+    const paths = await getAllTagSlugs(); // Implement this function to fetch all slugs
+    return {
+        paths,
+        fallback: 'blocking',
+    };
+};
 export default Tag;

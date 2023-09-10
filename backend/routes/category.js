@@ -1,6 +1,6 @@
 const express = require('express')
 const {requireSignin, adminMiddleware,} = require('../controllers/auth')
-const {create, list, read, remove} = require('../controllers/category')
+const {create, list, read, remove,listAllCategorySlugs} = require('../controllers/category')
 const router = express.Router()
 
 //validators
@@ -10,6 +10,7 @@ const {categoryCreateValidator} = require('../validators/category')
 
 router.post('/category', categoryCreateValidator, runValidation, requireSignin, adminMiddleware, create)
 router.get('/categories', list);
+router.get('/categories/slugs', listAllCategorySlugs);
 router.get('/category/:slug', read);
 router.delete('/category/:slug', requireSignin, adminMiddleware, remove);
 

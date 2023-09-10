@@ -4,7 +4,6 @@ const slugify = require('slugify');
 const {errorHandler} = require('../helpers/dbErrorHandler');
 
 
-
 exports.create = (req, res) => {
     const {name} = req.body;
     let slug = slugify(name).toLowerCase();
@@ -71,4 +70,18 @@ exports.remove = (req, res) => {
             message: 'BlogTag deleted successfully'
         });
     });
+};
+
+// Controller for fetching all tag slugs
+exports.listAllTagSlugs = (req, res) => {
+    Tag.find({}, 'slug -_id')
+        .exec((err, tags) => {
+            if (err) {
+                return res.status(400).json({
+                    error: 'Tags not found'
+                });
+            }
+            const slugs = tags.map(tag => tag.slug);
+            res.json(slugs);
+        });
 };

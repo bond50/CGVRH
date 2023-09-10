@@ -1,10 +1,8 @@
-import {singleCategory} from "../../actions/category";
+import {singleCategory,getAllCategorySlugs} from "../../actions/category";
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import React from "react";
 import SmallCard from "../../components/reusables/card/small-card";
-import dynamic from "next/dynamic";
-import Preloader from "../../components/preloader";
 import Layout from "../../hoc/Layout";
 
 const Category = ({category, blogs, query}) => {
@@ -55,21 +53,31 @@ const Category = ({category, blogs, query}) => {
         </>
     );
 };
-export const getServerSideProps = async ({query}) => {
+export const getStaticProps = async ({params}) => {
+    const data = await singleCategory(params.slug, 'category');
+    if (data.error) {
+        console.log(data.error);
+        return {
+            notFound: true,
+        };
+    } else {
+        return {
+            props: {
+                category: data.category,
+                blogs: data.blogs,
+                query: params,
+            },
+            revalidate: 60, // ISR, re-generate the page every 60 seconds
+        };
+    }
+};
 
-    return singleCategory(query.slug, 'category').then(data => {
-        if (data.error) {
-            console.log(data.error)
-        } else {
-            return {
-                props: {
-                    category: data.category,
-                    blogs: data.blogs,
-                    query
-                }
-            }
-        }
-    })
-}
-
+export const getStaticPaths = async () => {
+    // Fetch all slugs and return them
+    const paths = await getAllCategorySlugs(); // Implement this function to fetch all slugs
+    return {
+        paths,
+        fallback: 'blocking',
+    };
+};
 export default Category;

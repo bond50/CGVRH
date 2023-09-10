@@ -10,7 +10,6 @@ const User = require("../models/user");
 const {capitalizeFirstLetter} = require("../helpers/importantFunctions");
 
 
-
 exports.create = (req, res) => {
     const {title, body, categories, images} = req.body
 
@@ -121,6 +120,21 @@ exports.listAllServicesCategoriesTags = (req, res) => {
         });
 };
 
+exports.listAllSlugs = (req, res) => {
+    Page.find({accepted: true})  // Assuming you only want slugs for accepted pages
+        .select('slug')  // Select only the 'slug' field
+        .sort({createdAt: -1})  // Sort by creation date, newest first
+        .exec((err, data) => {
+            if (err) {
+                return res.json({
+                    error: errorHandler(err)  // Assuming errorHandler is your custom error handling function
+                });
+            }
+            // Return only the slugs as an array
+            const slugs = data.map(page => page.slug);
+            res.json({slugs, size: slugs.length});
+        });
+};
 
 exports.photo = (req, res) => {
     const slug = req.params.slug.toLowerCase();
