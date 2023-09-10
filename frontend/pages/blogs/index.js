@@ -6,9 +6,9 @@ import {withRouter} from "next/router";
 import SmallCard from "../../components/reusables/card/small-card";
 import dynamic from "next/dynamic";
 import Preloader from "../../components/preloader";
-
-const Layout = dynamic(() => import('../../hoc/Layout'), {loading: () => <Preloader/>,ssr: false})
-const BlogHero = dynamic(() => import("../../components/blog/blog-hero"), {loading: () => <Preloader/>, ssr: false});
+import Layout from "../../hoc/Layout";
+import BlogHero from '../../components/blog/blog-hero'
+// const BlogHero = dynamic(() => import("../../components/blog/blog-hero"), {loading: () => <Preloader/>, ssr: false});
 
 
 const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {

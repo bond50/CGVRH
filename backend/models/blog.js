@@ -8,7 +8,8 @@ const blogSchema = new mongoose.Schema(
             trim: true,
             min: 3,
             max: 160,
-            required: true
+            required: true,
+            index: true
         },
         accepted: {
             type: Boolean,
