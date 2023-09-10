@@ -22,8 +22,8 @@ const Slug = ({service, query}) => {
     };
 
     useEffect(() => {
-        loadRelated()
-    }, [service])
+        loadRelated();
+    }, [service.slug]);
 
 
     const head = () => (
