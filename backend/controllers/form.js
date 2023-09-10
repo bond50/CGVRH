@@ -126,6 +126,7 @@ exports.contactBlogAuthorForm = async (req, res) => {
                     subject: subjectLine || `Urgent Inquiry: ${name}`
                 },
 
+
             ],
             from: `${name} <${EMAIL_FROM}>`,
             replyTo: email,
