@@ -7,7 +7,7 @@ export const API = publicRuntimeConfig.PRODUCTION
     : publicRuntimeConfig.API_DEVELOPMENT;
 export const GOOGLE_ANALYTICS_KEY = publicRuntimeConfig.PRODUCTION
     ? publicRuntimeConfig.GOOGLE_ANALYTICS
-    : '';
+    : publicRuntimeConfig.GOOGLE_ANALYTICS;
 
 export const APP_NAME = publicRuntimeConfig.APP_NAME;
 

@@ -17,7 +17,7 @@ const MyApp = ({Component, pageProps}) => {
     Router.onRouteChangeStart = () => NProgress.start();
     Router.onRouteChangeComplete = () => NProgress.done();
     Router.onRouteChangeError = () => NProgress.done();
-
+    console.log('GOOO', GOOGLE_ANALYTICS_KEY)
 
     const returnHead = () => {
         return <Head>
@@ -35,26 +35,27 @@ const MyApp = ({Component, pageProps}) => {
         )
     },)
 
+
     return <>
         {
             GOOGLE_ANALYTICS_KEY && <>
                 <Script
-                    strategy="lazyOnload"
+                    strategy="beforeInteractive"
                     src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_KEY}`}
+                    async
                 />
 
-                <Script strategy="lazyOnload">
+                <Script strategy="beforeInteractive">
                     {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GOOGLE_ANALYTICS_KEY}', {
-              page_path: window.location.pathname,
-            });
-                `}
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${GOOGLE_ANALYTICS_KEY}');
+      `}
                 </Script>
             </>
         }
+
 
         {returnHead()}
         <Component {...pageProps} />
