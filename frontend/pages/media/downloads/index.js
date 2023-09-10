@@ -12,7 +12,7 @@ import {useRouter} from "next/router";
 import Head from "next/head";
 
 
-import Layout from "../../hoc/Layout";
+import Layout from "../../../hoc/Layout";
 const Downloads = () => {
     const router = useRouter()
     const head = () => (
