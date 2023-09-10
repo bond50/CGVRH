@@ -8,6 +8,7 @@ import NProgress from 'nprogress';
 import Router from "next/router";
 import "animate.css"
 import Script from "next/script";
+import {GOOGLE_ANALYTICS_KEY} from "../config";
 
 
 const MyApp = ({Component, pageProps}) => {
@@ -16,6 +17,7 @@ const MyApp = ({Component, pageProps}) => {
     Router.onRouteChangeStart = () => NProgress.start();
     Router.onRouteChangeComplete = () => NProgress.done();
     Router.onRouteChangeError = () => NProgress.done();
+
 
     const returnHead = () => {
         return <Head>
@@ -33,13 +35,12 @@ const MyApp = ({Component, pageProps}) => {
         )
     },)
 
-
     return <>
         {
-            process.env.PRODUCTION && <>
+            GOOGLE_ANALYTICS_KEY && <>
                 <Script
                     strategy="lazyOnload"
-                    src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS}`}
+                    src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_KEY}`}
                 />
 
                 <Script strategy="lazyOnload">
@@ -47,13 +48,14 @@ const MyApp = ({Component, pageProps}) => {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${process.env.GOOGLE_ANALYTICS}', {
+            gtag('config', '${GOOGLE_ANALYTICS_KEY}', {
               page_path: window.location.pathname,
             });
                 `}
                 </Script>
             </>
         }
+
         {returnHead()}
         <Component {...pageProps} />
     </>
