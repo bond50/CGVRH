@@ -580,7 +580,8 @@ h6 {
 }
 
 #nprogress .bar {
-    height: 4px !important;
+    height: 10px !important;
+   background: #0e8d45 !important;
 }
 
 .ql-editor {

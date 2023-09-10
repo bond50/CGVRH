@@ -11,6 +11,7 @@ const Slug = ({service, query}) => {
 
     const [related, setRelated] = useState([])
 
+
     const loadRelated = () => {
         listRelated({service}).then(data => {
             if (data.error) {
