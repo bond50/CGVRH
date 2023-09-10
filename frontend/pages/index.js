@@ -25,7 +25,7 @@ export default function Home() {
 
     const head = () => (
         <Head>
-            <title>The {APP_NAME} </title>
+            <title>{APP_NAME} </title>
             <meta name="google-site-verification" content="Kcrylmv8RWsNALOsmjyga_p6uCldee4CwnA0aMCMym4"/>
             <meta
                 name="description"

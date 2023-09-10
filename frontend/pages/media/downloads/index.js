@@ -1,6 +1,3 @@
-
-
-
 import GeneralPageHeader from "../../../hoc/general-page-header";
 import React from "react";
 import Breadcrumbs from "../../../components/reusables/Breadcrumbs";
@@ -13,6 +10,7 @@ import Head from "next/head";
 
 
 import Layout from "../../../hoc/Layout";
+
 const Downloads = () => {
     const router = useRouter()
     const head = () => (

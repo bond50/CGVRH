@@ -13,10 +13,10 @@ import {GOOGLE_ANALYTICS_KEY} from "../config";
 
 const MyApp = ({Component, pageProps}) => {
 
-    NProgress.configure({showSpinner: true});
-    Router.onRouteChangeStart = () => NProgress.start();
-    Router.onRouteChangeComplete = () => NProgress.done();
-    Router.onRouteChangeError = () => NProgress.done();
+    // NProgress.configure({showSpinner: true});
+    // Router.onRouteChangeStart = () => NProgress.start();
+    // Router.onRouteChangeComplete = () => NProgress.done();
+    // Router.onRouteChangeError = () => NProgress.done();
 
 
     const returnHead = () => {
