@@ -5,8 +5,7 @@ import React from "react";
 import SmallCard from "../../components/reusables/card/small-card";
 import dynamic from "next/dynamic";
 import Preloader from "../../components/preloader";
-const Layout = dynamic(() => import('../../hoc/Layout'), {loading: () => <Preloader/>,ssr: false})
-
+import Layout from "../../hoc/Layout";
 
 const Category = ({category, blogs, query}) => {
     console.log(`${DOMAIN}/categories/${query.slug}`)

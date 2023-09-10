@@ -8,7 +8,6 @@ import dynamic from "next/dynamic";
 import Preloader from "../../components/preloader";
 import Layout from "../../hoc/Layout";
 import BlogHero from '../../components/blog/blog-hero'
-// const BlogHero = dynamic(() => import("../../components/blog/blog-hero"), {loading: () => <Preloader/>, ssr: false});
 
 
 const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {

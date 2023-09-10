@@ -6,10 +6,8 @@ import BlogContainer from "../../hoc/BlogContainer";
 import Card from "../../components/blog/Card";
 import DisqusThread from "../../components/DiscussThread";
 import SmallCard from "../../components/reusables/card/small-card";
-import dynamic from "next/dynamic";
-import Preloader from "../../components/preloader";
-const Layout = dynamic(() => import('../../hoc/Layout'), {loading: () => <Preloader/>,ssr: false})
 
+import Layout from "../../hoc/Layout";
 
 const Slug = ({blog, query}) => {
 

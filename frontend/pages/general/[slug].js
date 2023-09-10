@@ -2,13 +2,10 @@ import React, {Fragment, useEffect, useState} from 'react';
 import Head from "next/head";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 
-const Layout = dynamic(() => import('../../hoc/Layout'), {loading: () => <Preloader/>, ssr: false})
 import {listRelated, singlePage} from "../../actions/general";
 import PageWrapper from "../../hoc/page-wrapper";
 import Breadcrumbs from "../../components/reusables/Breadcrumbs";
-import dynamic from "next/dynamic";
-import Preloader from "../../components/preloader";
-
+import Layout from "../../hoc/Layout";
 
 const Slug = ({service, query}) => {
 

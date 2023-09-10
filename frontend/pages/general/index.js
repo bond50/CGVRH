@@ -1,13 +1,11 @@
 import React from 'react';
-const Layout = dynamic(() => import('../../hoc/Layout'), {loading: () => <Preloader/>,ssr: false})
 import Breadcrumbs from "../../components/reusables/Breadcrumbs";
 import Link from "next/link";
 import {list} from "../../actions/general";
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import {useRouter} from "next/router";
-import dynamic from "next/dynamic";
-import Preloader from "../../components/preloader";
+import Layout from "../../hoc/Layout";
 
 
 const Index = ({pages}) => {
