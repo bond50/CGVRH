@@ -17,7 +17,7 @@ const MyApp = ({Component, pageProps}) => {
     Router.onRouteChangeStart = () => NProgress.start();
     Router.onRouteChangeComplete = () => NProgress.done();
     Router.onRouteChangeError = () => NProgress.done();
-    console.log('GOOO', GOOGLE_ANALYTICS_KEY)
+
 
     const returnHead = () => {
         return <Head>
