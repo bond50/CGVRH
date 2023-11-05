@@ -6,12 +6,14 @@ import axios from "axios";
 import fileTypes from "../../reusables/functions/fileTypes";
 import {API} from "../../../config";
 import Filters from "./filters";
+import GeneralPageHeader from "../../../hoc/general-page-header";
 
 const DownloadList = ({files}) => {
     const [downloads, setLoadedDownloads] = useState(files)
     const [buttons, setButtons] = useState([])
     const [active, setActive] = useState( '8&03ubvgfd7b4e36e0f12d44')
 
+    console.log(buttons)
 
     const loadButtons = () => {
         let myArr = [{_id: '8&03ubvgfd7b4e36e0f12d44', name: 'All'}]

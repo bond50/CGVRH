@@ -7,6 +7,7 @@ import 'nprogress/nprogress.css';
 import NProgress from 'nprogress';
 import Router from "next/router";
 import "animate.css"
+import "react-datepicker/dist/react-datepicker.css";
 import Script from "next/script";
 import {GOOGLE_ANALYTICS_KEY} from "../config";
 

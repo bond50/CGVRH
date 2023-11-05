@@ -181,15 +181,15 @@ export const getAllBlogSlugs = () => {
     return fetch(`${API}/blogs/slugs`, {  // Replace '/blogs/slugs' with the actual endpoint that returns all blog slugs
         method: 'GET'
     })
-    .then(response => {
-        handleResponse(response);  // Optional: handle the response if needed
-        return response.json();
-    })
-    .then(data => {
-        return data.slugs;  // Assuming the response has a 'slugs' field that contains an array of slugs
-    })
-    .catch(err => {
-        console.log(err);
-        return [];
-    });
+        .then(response => {
+            handleResponse(response);  // Optional: handle the response if needed
+            return response.json();
+        })
+        .then(data => {
+            return data.slugs;  // Assuming the response has a 'slugs' field that contains an array of slugs
+        })
+        .catch(err => {
+            console.log(err);
+            return [];
+        });
 };

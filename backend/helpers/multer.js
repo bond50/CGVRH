@@ -65,10 +65,16 @@ const docFormats = [
 
 ];
 
+
+const pdfFormat = [
+    'application/pdf',
+];
+
+
 let FILE_FORMATS = [...new Set(docFormats)];
 
 
-const maxSize = 2 * 1024 * 1024; // for 2MB
+const maxSize = 5 * 1024 * 1024; // for 5MB
 
 const imageFeFilter = function (req, file, cb) {
     if (IMAGEFORMATS.includes(file.mimetype)) {
@@ -88,13 +94,14 @@ const docFilter = function (req, file, cb) {
 
 const uploadImages = multer({storage, fileFilter: imageFeFilter, limits: {fileSize: maxSize}})
 const uploadFiles = multer({storage, docFilter, limits: {fileSize: maxSize}})
+const uploadFile = multer({storage, pdfFormat})
 
 
 exports.multipleImagesUploadCtrl = uploadImages.array('files')
 
 exports.multipleFilesUploadCtrl = uploadFiles.array('files');
 
-// exports.singleUploadCtrl = upload.single('file');
+exports.singleUploadCtrl = uploadFile.single('file');
 
 
 

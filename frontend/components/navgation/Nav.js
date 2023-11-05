@@ -50,6 +50,7 @@ const Nav = () => {
                 <About clicked={() => toggleClosed(false)}/>
                 {showLinks}
                 <Media clicked={() => toggleClosed(false)}/>
+                 <MyLink caption={'Tenders'} to='/tenders' clicked={() => toggleClosed(false)}/>
                 <MyLink caption={'Blog'} to='/blogs' clicked={() => toggleClosed(false)}/>
                 <MyLink caption={'Contact'} to='/contact' clicked={() => toggleClosed(false)}/>
                 {isAuth() && isAuth().role === 0 &&

@@ -104,6 +104,19 @@ exports.getDownloads = async (req, res) => {
     }
 }
 
+exports.getTenders = async (req, res) => {
+
+    try {
+        const files = await Document
+            .find({cloudinaryFolder: 'Tenders'})
+            .sort({createdAt: -1});
+        res.status(200).send(files);
+
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
 exports.getGallery = async (req, res) => {
     Gallery.find({})
         .sort({createdAt: -1})
@@ -147,7 +160,6 @@ exports.fileRetrieveFromCloud = async (req, res) => {
         return res.status(422).send({message: e.message});
     }
 };
-
 
 exports.galleryCreate = async (req, res,) => {
 
