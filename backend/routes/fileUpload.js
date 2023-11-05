@@ -4,10 +4,14 @@ const {
     getAllMultipleFiles,
     fileRetrieveFromCloud,
     getDownloads,
-    getGallery, galleryCreate, getGalleryFormHomePage
+    getTenders,
+    getGallery,
+    galleryCreate,
+
+    getGalleryFormHomePage
 } = require("../controllers/fileUpload");
 const {requireSignin, adminMiddleware, authMiddleware} = require("../controllers/auth");
-const {multipleFilesUploadCtrl, multipleImagesUploadCtrl} = require("../helpers/multer");
+const {multipleFilesUploadCtrl, multipleImagesUploadCtrl, singleUploadCtrl} = require("../helpers/multer");
 
 const router = express.Router();
 
@@ -16,6 +20,8 @@ router.post('/gallery-create', requireSignin, adminMiddleware, galleryCreate);
 router.post('/files-retrieve-from-cloud', fileRetrieveFromCloud);
 router.post('/get-all-multiple-files', getAllMultipleFiles);
 router.get('/get-downloads', getDownloads);
+router.get('/get-tenders', getTenders);
+
 router.get('/get-gallery', getGallery);
 router.get('/get-gallery-for-home-page', getGalleryFormHomePage);
 

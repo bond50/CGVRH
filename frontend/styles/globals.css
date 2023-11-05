@@ -607,13 +607,13 @@ h6 {
 
 #home-hero .container {
     z-index: 3;
-    padding-top: 80px;
+    padding-top: 60px;
 }
 
 #home-hero:before {
     z-index: 2;
     content: "";
-    background: linear-gradient(45deg, rgba(29, 224, 153, 0.88), rgba(29, 200, 205, 0.77)), center top no-repeat;
+    background: linear-gradient(45deg, rgba(29, 224, 153, 0.5), rgba(29, 200, 205, 0.4)), center top no-repeat;
     /*background: linear-gradient(rgba(29, 200, 205, 0.65), rgba(29, 205, 89, 0.2)), center top no-repeat;*/
     position: absolute;
     bottom: 0;
@@ -1023,7 +1023,7 @@ h6 {
 }
 
 #clients {
-    padding: 12px 0;
+    padding: 6px 0;
     background: #eff5f5;
     text-align: center;
 }
@@ -1033,8 +1033,8 @@ h6 {
     object-fit: contain;
     transition: all 0.4s ease-in-out;
     display: inline-block;
-    padding: 10px 0;
-    /*filter: grayscale(100);*/
+    padding:  0;
+    /*filter: grayscale(50);*/
 }
 
 #clients img:hover {
@@ -1475,6 +1475,20 @@ h6 {
     background-size: contain;
     /*margin-top: -90px;*/
     z-index: 2;
-    padding: 60px 0;
+    padding: 15px 0;
     overflow: hidden;
+}
+
+
+.react-datepicker-wrapper{
+    width: 100%;
+}
+
+
+.disabled-button {
+    background-color: #ccc !important; /* Change the background color to a grayish tone */
+    cursor: not-allowed !important;   /* Change the cursor to indicate it's not clickable */
+    color: #0C163B!important;
+    border: none!important;
+
 }

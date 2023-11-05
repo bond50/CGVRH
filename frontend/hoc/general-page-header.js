@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
 
-const GeneralPageHeader = ({title}) => {
+const GeneralPageHeader = ({title,sub}) => {
 
     return (
         <Fragment>
@@ -11,8 +11,9 @@ const GeneralPageHeader = ({title}) => {
                             <div className="centered" style={{zIndex: '1'}}>
 
                                 <div className="layer2 ">
-
                                     <h1>{title}</h1>
+
+                                    <p className=' text-white-50'>{sub}</p>
                                 </div>
                             </div>
                         </div>

@@ -51,6 +51,10 @@ const AdminSidebar = ({closed}) => {
         {title: 'Upload', slug: 'crud/upload-files'},
         {title: 'Tags', slug: 'crud/document-tag'},
     ]
+    const tenderList = [
+        {title: 'Upload/Add', slug: 'crud/tenders/create'},
+        {title: 'Manage Tenders', slug: 'crud/tenders'},
+    ]
     const galleryList = [
         {title: 'Upload', slug: 'crud/upload-images'},
         {title: 'Tags', slug: 'crud/gallery-tag'},
@@ -155,6 +159,14 @@ const AdminSidebar = ({closed}) => {
                     <AdminSidebarLink
                         title={'Customize Home page'}
                         slug={''} icon={'grid'}/>
+                    <Accordion2
+                        title='Tenders'
+                        icon='journal-album'>
+                        <>
+                            {accordionFunction(tenderList)}
+                        </>
+                    </Accordion2>
+
                     <Accordion2
                         title='Blog'
                         icon='journal-album'>

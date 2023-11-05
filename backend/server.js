@@ -22,6 +22,7 @@ const searchRoutes = require('./routes/search')
 const galleryTagRoutes = require('./routes/gallery-tag')
 const documentTagRoutes = require('./routes/document-tag')
 const staffRoutes = require('./routes/sheets')
+const tenderRoutes = require('./routes/tender')
 const cloudinaryRoutes = require('./routes/cloudinary')
 
 
@@ -92,6 +93,7 @@ app.use('/api', galleryTagRoutes);
 app.use('/api', documentTagRoutes);
 app.use('/api', staffRoutes);
 app.use('/api', cloudinaryRoutes);
+app.use('/api', tenderRoutes);
 
 
 process.on('uncaughtException', function (exception) {
