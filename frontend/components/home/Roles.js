@@ -1,6 +1,5 @@
 import {Fragment} from "react";
 import Link from "next/link";
-import { Icon } from '@iconify/react';
 const Roles = () => {
 
     const list = [
@@ -18,7 +17,7 @@ const Roles = () => {
         return list.map(({desc}, i) => (
             <Fragment key={i}>
                 <ul>
-                    <li><Icon className="icon" icon="ri:check-double-line" />{desc}</li>
+                    <li><i className="bi bi-check2-all"></i>{desc}</li>
                 </ul>
             </Fragment>
         ))

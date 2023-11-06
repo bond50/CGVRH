@@ -5,7 +5,6 @@ import {API} from '../../../config';
 import classes from '../../../styles/SmallCard.module.css'
 import Image from "next/image";
 import React from "react";
-import ti from "simple-react-lightbox";
 
 const SmallCard = ({blog, service}) => {
 

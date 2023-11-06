@@ -1,6 +1,5 @@
 import React from 'react';
-import styles from "../../styles/AboutContainer.module.css";
-import {Icon} from "@iconify/react/dist/iconify";
+
 
 
 const Board = () => {
@@ -29,7 +28,7 @@ const Board = () => {
                 <div className="pt-4 pt-lg-0" data-aos="fade-up" data-aos-once={`true`}>
                     <ul>
                         {list.map((l, i) => {
-                            return <li key={i}>  <li><Icon className="icon" icon="ri:check-double-line" />{l.name}</li></li>
+                            return <li key={i}>  <li><i className="bi bi-check2-all"></i>{l.name}</li></li>
                         })
                         }
                     </ul>
