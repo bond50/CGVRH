@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import styles from '../../styles/Tender.module.css';
 import Link from "next/link";
+import moment from "moment";
 
 const TendersPage = ({files}) => {
     const [selectedCategory, setSelectedCategory] = useState('open'); // Initial category
-
 
 
     const filteredTenders = files.filter((tender) => {
@@ -26,6 +26,7 @@ const TendersPage = ({files}) => {
         {label: 'Archived Tenders', category: 'archived'},
         {label: 'Awarded Tenders', category: 'awarded'},
     ];
+
 
     return (
         <section className={styles.section}>
@@ -58,19 +59,23 @@ const TendersPage = ({files}) => {
                         </tr>
                         </thead>
                         <tbody>
-                        {filteredTenders.map((tender) => (
-                            <tr key={tender._id}>
-                                <td>{tender.title}</td>
-                                <td>{tender.tenderNumber}</td>
-                                <td>{tender.openDate}</td>
-                                <td>{tender.closeDate}</td>
-                                <td>
-                                    <Link href={tender.filePath}>
-                                        <a className={styles.btn}>Download </a>
-                                    </Link>
-                                </td>
-                            </tr>
-                        ))}
+                        {filteredTenders.map((tender) => {
+                            const formattedOpenDate = moment(tender.openDate).format('MMMM Do, YYYY h:mm A');
+                            const formattedCloseDate = moment(tender.closeDate).format('MMMM Do, YYYY h:mm A');
+                            return (
+                                <tr key={tender._id}>
+                                    <td>{tender.title}</td>
+                                    <td>{tender.tenderNumber}</td>
+                                    <td>{formattedOpenDate}</td>
+                                    <td>{formattedCloseDate}</td>
+                                    <td>
+                                        <Link href={tender.filePath}>
+                                            <a className={styles.btn}>Download </a>
+                                        </Link>
+                                    </td>
+                                </tr>
+                            );
+                        })}
                         </tbody>
                     </table>
                 </div>
