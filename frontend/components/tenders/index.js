@@ -88,6 +88,7 @@ const TendersPage = ({files}) => {
                             <div key={tender._id} className={`card mb-4 ${styles['card-wrapper']}`}>
                                 <div className="card-body">
                                     <h5 className="card-title">{tender.title}</h5>
+
                                     <p className="card-text"><span>Tender Number</span>: {tender.tenderNumber}</p>
                                     <p className="card-text"><span>Open Date</span>: {formattedOpenDate}</p>
                                     <p className="card-text"><span>Close Date</span>: {formattedCloseDate}</p>
