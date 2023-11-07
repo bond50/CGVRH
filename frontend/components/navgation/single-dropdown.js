@@ -3,7 +3,7 @@ import MyLink from "./myLink";
 import React, {useEffect, useState} from "react";
 import {singleCategory} from "../../actions/category";
 
-const SingleDropdown = ({caption, slug}) => {
+const SingleDropdown = ({caption, slug,clicked}) => {
     const [closed, toggleClosed] = useToggle();
     const [loadedPages, setLoadedPages] = useState([])
 
@@ -18,7 +18,7 @@ const SingleDropdown = ({caption, slug}) => {
 
     const showLoadedPages = () => {
         return loadedPages.map(pg => {
-            return <MyLink key={pg._id} to={`/general/${pg.slug}`} caption={pg.title}/>
+            return <MyLink key={pg._id} to={`/general/${pg.slug}`} caption={pg.title} clicked={clicked}/>
         })
 
     }

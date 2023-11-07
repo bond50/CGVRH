@@ -40,7 +40,7 @@ const Nav = () => {
     }
 
     const showLinks = data.map(link => (
-        <SingleDropdown caption={link.name} slug={link.slug} key={link._id}/>
+        <SingleDropdown caption={link.name} slug={link.slug} key={link._id} clicked={toggleClosed}/>
     ))
 
 

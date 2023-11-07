@@ -51,8 +51,7 @@ const Header = ({blog, home}) => {
                 </div>
             </header>
             }
-            {home && <header id='home-header' className={homeHeader.join(" ")}
-                              >
+            {home && <header id='home-header' className={homeHeader.join(" ")}>
                 <div className="container">
                     <div className='header-container d-flex align-items-center justify-content-between'>
                         <div className={logo.join(' ')}>
