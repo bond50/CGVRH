@@ -10,10 +10,9 @@ const GeneralPageHeader = ({title,sub}) => {
                         <div className="col-md-12 col-sm-12 col-xs-12">
                             <div className="centered" style={{zIndex: '1'}}>
 
-                                <div className="layer2 ">
-
+                                <div className="layer2 my-5">
                                     <h1>{title}</h1>
-                                    <p className='text-white-50 my-5'>{sub}</p>
+                                    <p className='text-white-50'>{sub}</p>
                                 </div>
                             </div>
                         </div>
