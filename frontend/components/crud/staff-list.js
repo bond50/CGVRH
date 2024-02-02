@@ -4,7 +4,6 @@ import React, {useEffect, useState} from "react";
 import {calculateTimeLeft} from "../reusables/functions/calculateTimeLeft";
 
 
-
 export default function redirect() {
 
     const date_future = +new Date(2022, 6, 14, 23, 59, 59);

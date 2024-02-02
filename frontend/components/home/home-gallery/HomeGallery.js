@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import useSWR from "swr";
 import {API} from "../../../config";
 import {fetcher} from "../../reusables/functions/fetcher";
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import axios from "axios";
 import Image from "next/image";
 import classes from '../../../styles/carded.module.css'
 import Link from "next/link";

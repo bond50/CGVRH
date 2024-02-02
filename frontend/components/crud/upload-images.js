@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import UploadForm from "../../components/reusables/forms/upload-form";
-import useUpload from "../../hooks/useUpload";
 import SideCatTags from "../../components/reusables/forms/side-cat-tags";
 import {getCookie, isAuth} from "../../actions/auth";
 import Alert from "../messages/Alert";
@@ -29,7 +27,7 @@ const UploadImages = () => {
     const [checkedTag, setCheckedTag] = useState([]);
     const [successMsg, setSuccessMsg] = useState('')
     const [error, setError] = useState('')
-    const {data: loadedTags, error: tagError} = useFCT('gallery-tags')
+    const {data: loadedTags} = useFCT('gallery-tags')
 
     const handleChange = e => {
         setValues({...values, title: e.target.value})
@@ -63,6 +61,7 @@ const UploadImages = () => {
 
 
     const handleSubmit = (e) => {
+        console.log(e)
         setLoading(true)
         setError('')
         const formData = {
@@ -105,6 +104,7 @@ const UploadImages = () => {
                 'Authorization': `Bearer ${token}`,
             }
         }).then((r) => {
+            console.log(r)
                 setLoading(false)
                 const {images} = values
 

@@ -3,8 +3,6 @@ import CreateForm from "../reusables/forms/CreateForm";
 import Alert from "../messages/Alert";
 import SideCatTags from "../reusables/forms/side-cat-tags";
 import React from "react";
-import {values} from "lodash/object";
-import Image from "next/image";
 import Card from "../blog/Card";
 import axios from "axios";
 import {getCookie, isAuth} from "../../actions/auth";

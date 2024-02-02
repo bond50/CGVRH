@@ -6,7 +6,6 @@ import axios from "axios";
 import fileTypes from "../../reusables/functions/fileTypes";
 import {API} from "../../../config";
 import Filters from "./filters";
-import GeneralPageHeader from "../../../hoc/general-page-header";
 
 const DownloadList = ({files}) => {
     const [downloads, setLoadedDownloads] = useState(files)

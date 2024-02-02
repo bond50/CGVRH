@@ -1,7 +1,5 @@
 import React from 'react';
 import Image from "next/image";
-import TopWaveInverted from "../shapes/top-wave-inverted";
-import Wave from "../shapes/wave";
 import Link from "next/link";
 
 const Clients = () => {

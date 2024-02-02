@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";

@@ -1,16 +1,14 @@
 import Link from "next/link";
 import {API} from "../../../config";
 import dayjs from "dayjs";
-import renderHTML from "html-react-parser";
 import Image from "next/image";
 import useSWR from "swr";
 
 import Preloader from "../../preloader";
 import classes from './RecentBlog.module.css'
 import React from "react";
-import Wave from "../../shapes/wave";
+
 import {generateExcerpt} from "../../reusables/functions/generate-excerpt";
-import {YearsOperated} from "../../years-operated/YearsOperated";
 
 const LatestBlogs = () => {
 

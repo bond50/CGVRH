@@ -1,26 +1,27 @@
-import React, {Component, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable';
 
 import axios from 'axios'
 import {
-
+    countyInfo,
     designation,
     disability,
     employeeStatuses,
+    employers,
     ethnicity,
-    positionStatusList,
-    maritalStatus,
-    facilityOptions,
-    titles,
     facilityCodes,
+    facilityOptions,
+    genderInfo,
+    HIVProgramTime,
+    maritalStatus,
     positionChangeReason,
+    positionStatusList,
+    professionalBodies,
     speciality,
     subSpeciality,
-    professionalBodies,
-    employers,
     termsOfEmployment,
-    HIVProgramTime, countyInfo, genderInfo
+    titles
 } from "../list/staff";
 import classes from "../../styles/login.module.css";
 import {API} from "../../config";

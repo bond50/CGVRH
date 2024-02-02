@@ -1,6 +1,5 @@
 import React from 'react';
 import {Icon} from "@iconify/react";
-import Wave from "../shapes/wave";
 
 const VihigaHospitalInfo = () => {
     const servicesData = [

@@ -2,7 +2,6 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Link from "next/link";
-import Button from "../ui/Button";
 import Alert from "../../messages/Alert";
 
 const UpdateTenderForm = ({

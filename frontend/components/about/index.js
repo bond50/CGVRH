@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {APP_NAME} from '../../config';
-import {YearsOperated} from '../years-operated/YearsOperated';
 
 import Accordion from 'react-bootstrap/Accordion';
 import History from './History';

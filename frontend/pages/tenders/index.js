@@ -1,6 +1,5 @@
 import GeneralPageHeader from "../../hoc/general-page-header";
 import React from "react";
-import Breadcrumbs from "../../components/reusables/Breadcrumbs";
 import useSWR from 'swr'
 import {fetcher} from "../../components/reusables/functions/fetcher";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";

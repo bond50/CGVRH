@@ -6,12 +6,10 @@ import React from 'react'
 import About from "../../components/about";
 import CoreValues from "../../components/about/CoreValues";
 import AboutCounter from "../../components/about/AboutCounter";
-import Referral from "../../components/about/Referal";
 
 
 const Layout = dynamic(() => import( "../../hoc/Layout"), {ssr: false});
 const Partners = dynamic(() => import( "../../components/about/Partners"), {ssr: false});
-const Organogram = dynamic(() => import( "../../components/about/Organogram"), {ssr: false});
 const Head = dynamic(() => import( "next/head"), {ssr: false});
 
 

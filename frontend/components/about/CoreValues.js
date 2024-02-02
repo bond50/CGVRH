@@ -1,10 +1,7 @@
-import Link from "next/link";
-import WaveBottom from "../shapes/wave-bottom";
-import Wave from "../shapes/wave";
 import {Icon} from "@iconify/react";
 import React from "react";
 
-const CoreValues = ({ifSingle}) => {
+const CoreValues = () => {
     const list = [
         {
             title: 'Vision',

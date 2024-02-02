@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import SideCatTags from "../reusables/forms/side-cat-tags";
-import Image from "next/image";
 import {API} from "../../config";
 import Router, {useRouter} from "next/router";
 import Alert from "../messages/Alert";
 import CreateForm from "../reusables/forms/CreateForm";
 import {getCookie, isAuth} from "../../actions/auth";
-import {singlePage, updatePage} from "../../actions/general";
+import {singlePage} from "../../actions/general";
 import {getCategories} from "../../actions/category";
 import Card from "../blog/Card";
 import axios from "axios";
@@ -229,6 +228,7 @@ const Page = () => {
                 'Authorization': `Bearer ${token}`,
             }
         }).then((r) => {
+            console.log(r)
                 setLoading(false)
 
                 const {images} = values

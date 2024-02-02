@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import {getCookie, isAuth} from '../../actions/auth';
+import React, {useEffect, useState} from 'react';
 import Router, {useRouter} from 'next/router';
 import {fetchSingleTender, updateTender} from '../../actions/tender';
 import UpdateTenderForm from '../reusables/forms/update-tender-form';
@@ -20,7 +19,7 @@ const TenderUpdate = () => {
     const [isClosed, setIsClosed] = useState(false); // switch
     const [error, setError] = useState('')
     const [successMessage, setSuccessMessage] = useState('')
-    const [shouldCloseTender, setShouldCloseTender] = useState(false);
+
 
 
     const {_id: tenderId} = router.query;

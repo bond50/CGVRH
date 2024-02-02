@@ -1,8 +1,6 @@
 import React from 'react';
 import {YearsOperated} from "../years-operated/YearsOperated";
 import Link from "next/link";
-import Wave from "../shapes/wave";
-import TopWaveInverted from "../shapes/top-wave-inverted";
 import {APP_NAME} from "../../config";
 
 const About = () => {

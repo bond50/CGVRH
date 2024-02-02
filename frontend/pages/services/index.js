@@ -1,9 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
-import Breadcrumbs from "../../components/reusables/Breadcrumbs";
 import Link from "next/link";
 import {list, listWithPagination} from "../../actions/general";
 import Head from "next/head";
-import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
+import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import {useRouter} from "next/router";
 import Layout from "../../hoc/Layout";
 import {Icon} from '@iconify/react';
@@ -16,7 +15,7 @@ const Index = ({paginationData, size, page, generalData}) => {
     const firstItemRef = useRef(null);
     const [data, setData] = useState(paginationData.data);
 
-    const [perPage, setPerPage] = useState(size || 6);
+    const perPage = size || 6;
     const [limit, setLimit] = useState(perPage);
     const [current, setCurrent] = useState(page || 1);
 
@@ -141,7 +140,7 @@ const Index = ({paginationData, size, page, generalData}) => {
                                                 <p>{generateExcerpt(service.excerpt, 160)}</p>
                                                 <Link href={`/services/${service.slug}`}>
                                                     <a className="readmore stretched-link">Continue reading
-                                                          <Icon icon="eva:arrow-right-fill" className='icon2'/>
+                                                        <Icon icon="eva:arrow-right-fill" className='icon2'/>
                                                     </a>
                                                 </Link>
 

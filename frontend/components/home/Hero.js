@@ -1,5 +1,5 @@
-import React, {useEffect, useRef} from "react";
-import {Video, Transformation} from "cloudinary-react";
+import React from "react";
+import {Transformation, Video} from "cloudinary-react";
 import {APP_NAME, CLOUDINARY_NAME} from "../../config";
 
 function Hero() {

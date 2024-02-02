@@ -1,6 +1,5 @@
-import React, {Fragment} from "react";
+import React from "react";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../config";
-import Preloader from "../components/preloader";
 import {YearsOperated} from "../components/years-operated/YearsOperated";
 import {useRouter} from "next/router";
 import dynamic from 'next/dynamic'
@@ -9,13 +8,11 @@ import WhyUs from "../components/home/why-us";
 import HomeCounter from "../components/home/home-counter";
 
 const About = dynamic(() => import(  "../components/home/about"), {ssr: false,});
-const CoreValues = dynamic(() => import(  "../components/about/CoreValues"), {ssr: false,});
 const Clients = dynamic(() => import(  "../components/home/clients"), {ssr: false,});
 const Cta = dynamic(() => import( "../components/home/cta"), {ssr: false,});
 const Head = dynamic(() => import( "next/head"), {ssr: false,});
 const LatestBlogs = dynamic(() => import(  "../components/home/recent/LatestBlogs"), {ssr: false});
 const FeaturedServices = dynamic(() => import(  "../components/home/FeaturedServices"), {ssr: false});
-const Roles = dynamic(() => import(  "../components/home/Roles"), {ssr: false,});
 const Gallery = dynamic(() => import(  "../components/home/home-gallery/HomeGallery"), {ssr: false,});
 
 

@@ -52,7 +52,6 @@ import React, {useEffect, useState} from 'react';
 import Link from 'next/link';
 import useToggle from "../../../hooks/useToggle";
 import {singleCategory} from "../../../actions/category";
-import MyLink from "../nav-link/myLink";
 import {Icon} from "@iconify/react";
 
 const Dropdown = ({caption, clicked, backendSlug, clientSideList}) => {

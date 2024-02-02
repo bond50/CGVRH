@@ -1,16 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import SideCatTags from "../reusables/forms/side-cat-tags";
-import Image from "next/image";
 import {API} from "../../config";
 import Router, {useRouter} from "next/router";
 import Alert from "../messages/Alert";
 import CreateForm from "../reusables/forms/CreateForm";
 import {getCookie, isAuth} from "../../actions/auth";
-import {singleBlog, updateBlog} from "../../actions/blog";
+import {singleBlog} from "../../actions/blog";
 import {getCategories} from "../../actions/category";
 import {getTags} from "../../actions/tag";
 import Card from "../blog/Card";
-import useCreate from "../../hooks/useCreate";
 import axios from "axios";
 
 
@@ -33,7 +31,7 @@ const BlogUpdate = () => {
         formData: process.browser && new FormData(),
     });
 
-    const {error, success, formData, images, title} = values;
+    const {error, success, formData, title} = values;
     const token = getCookie('token');
     const router = useRouter()
 
@@ -198,6 +196,7 @@ const BlogUpdate = () => {
                 'Authorization': `Bearer ${token}`,
             }
         }).then((r) => {
+            console.log(r)
                 setLoading(false)
 
                 const {images} = values

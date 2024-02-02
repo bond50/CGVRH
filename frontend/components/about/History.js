@@ -1,6 +1,5 @@
 import React from 'react';
 import {YearsOperated} from "../years-operated/YearsOperated";
-import {APP_NAME} from "../../config";
 
 const History = () => {
     return (

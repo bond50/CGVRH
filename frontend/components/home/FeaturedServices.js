@@ -1,4 +1,3 @@
-import renderHTML from "react-render-html";
 import Link from "next/link";
 import {API} from "../../config";
 import useSWR from "swr";

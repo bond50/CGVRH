@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {deleteTender, fetchTenderList} from "../../actions/tender";
 import {getCookie, isAuth} from "../../actions/auth";
-import {removeBlog} from "../../actions/tender";
 import Link from "next/link";
-import moment from "moment/moment";
 import Alert from "../messages/Alert";
 
 

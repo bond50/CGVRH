@@ -1,16 +1,12 @@
 import Router from 'next/router';
 
 import MyLink from './nav-link/myLink';
-
 import React, {useState} from 'react';
-
 import {isAuth, signout} from '../../actions/auth';
 import Dropdown from './dropdown/dropdown';
-import {aboutList, mediaList} from './dropdown-links';
+import {mediaList} from './dropdown-links';
 import MobileNavToggle from './mobile-nav/mobile-nav-toggle';
-import Weblink2 from './nav-link/Weblink2';
 import DynamicCats from "./dynamic-cats";
-import Logo from "./Logo";
 import Backdrop from "./Backdrop";
 
 

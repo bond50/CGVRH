@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Resizer from "react-image-file-resizer";
 import axios from "axios";
 import {getCookie} from "../../actions/auth";
 import {API} from "../../config";
 
 
-const FileUpload = ({values, setValues, formData, setLoading, loading, folder}) => {
+const FileUpload = ({values, setValues, setLoading, loading, folder}) => {
 
 
     const token = getCookie('token');

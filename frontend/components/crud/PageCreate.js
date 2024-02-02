@@ -13,7 +13,6 @@ const PageCreate = () => {
         showCategories,
         handleBody,
         handleChange,
-        publish,
         error,
         values,
         loading,
