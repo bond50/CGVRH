@@ -35,7 +35,7 @@ const Nav = () => {
                     clicked={closeMobileNav}
                 >Home
                 </MyLink>
-                 <MyLink
+                <MyLink
                     to="/about-us"
                     clicked={closeMobileNav}
                 >About us
@@ -65,10 +65,10 @@ const Nav = () => {
                 <MyLink to="/blogs" clicked={closeMobileNav}>News and Events</MyLink>
 
                 {isAuth() && isAuth().role === 0 && (
-                    <MyLink caption={'Dashboard'} to="/user"/>
+                    <MyLink to="/user" clicked={closeMobileNav}>Dashboard</MyLink>
                 )}
                 {isAuth() && isAuth().role === 1 && (
-                    <MyLink caption={'Dashboard'} to="/admin2"/>
+                    <MyLink to="/admin2" clicked={closeMobileNav}>Dashboard</MyLink>
                 )}
 
 
