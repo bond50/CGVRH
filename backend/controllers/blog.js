@@ -189,7 +189,10 @@ exports.update = async (req, res) => {
     try {
         const slug = req.params.slug.toLowerCase();
         // Update the excerpt in the request body
-        req.body.excerpt = smartTrim(req.body, 320, ' ', ' ...');
+
+
+
+        req.body.excerpt = smartTrim(req.body.body, 320, ' ', ' ...');
         const updated = await Blog.findOneAndUpdate({ slug }, req.body, { new: true }).exec();
 
         // If there are images, unset the 'photo' field
@@ -199,6 +202,7 @@ exports.update = async (req, res) => {
 
         res.json(updated);
     } catch (err) {
+        console.log(err)
         res.status(400).send({ error: err.message });
     }
 };
