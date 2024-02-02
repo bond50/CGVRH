@@ -186,61 +186,44 @@ exports.remove = (req, res) => {
 };
 
 exports.update = async (req, res) => {
-
-
     try {
         const slug = req.params.slug.toLowerCase();
-        const updated = await Blog.findOneAndUpdate({slug}, req.body, {new: true}).exec()
+        // Update the excerpt in the request body
+        req.body.excerpt = smartTrim(req.body, 320, ' ', ' ...');
+
+        const updated = await Blog.findOneAndUpdate({ slug }, req.body, { new: true }).exec();
+
+        // If there are images, unset the 'photo' field
         if (req.body.images.length > 0) {
-            await Blog.findOneAndUpdate({slug}, {$unset: {photo: {}}}, {new: true}).exec()
+            await Blog.findOneAndUpdate({ slug }, { $unset: { photo: {} } }, { new: true }).exec();
         }
-        res.json(updated)
 
+        res.json(updated);
     } catch (err) {
-        res.status(400).send({error: err.message})
+        res.status(400).send({ error: err.message });
     }
-
-    //
-    // Blog.findOne({slug}).exec((err, oldBlog) => {
-    //     if (err) {
-    //         return res.status(400).json({
-    //             error: errorHandler(err)
-    //         });
-    //     }
-    //
-    //     let slugBeforeMerge = oldBlog.slug;
-    //
-    //
-    //     oldBlog = _.merge(oldBlog, req.body);
-    //
-    //     oldBlog.slug = slugBeforeMerge;
-    //
-    //     const {body, desc, images, categories, tags} = req.body;
-    //
-    //
-    //     if (body) {
-    //         oldBlog.excerpt = smartTrim(body, 320, ' ', ' ...');
-    //         oldBlog.desc = stripHtml(body.substring(0, 160));
-    //     }
-    //     if (images) {
-    //         oldBlog.imahes = images
-    //
-    //
-    //     }
-    //
-    //
-    //     oldBlog.save((err, result) => {
-    //         if (err) {
-    //             return res.status(400).json({
-    //                 error: errorHandler(err)
-    //             });
-    //         }
-    //         // result.photo = undefined;
-    //         res.json(result);
-    //     });
-    // });
-
 };
+
+
+// exports.update = async (req, res) => {
+//
+//
+//     try {
+//         const slug = req.params.slug.toLowerCase();
+//         const excerpt = smartTrim(req.body, 320, ' ', ' ...')
+//
+//         const updated = await Blog.findOneAndUpdate({slug}, req.body, {new: true}).exec()
+//         if (req.body.images.length > 0) {
+//             await Blog.findOneAndUpdate({slug}, {$unset: {photo: {}}}, {new: true}).exec()
+//         }
+//         res.json(updated)
+//
+//     } catch (err) {
+//         res.status(400).send({error: err.message})
+//     }
+//
+//
+// };
 
 exports.photo = (req, res) => {
     const slug = req.params.slug.toLowerCase();
