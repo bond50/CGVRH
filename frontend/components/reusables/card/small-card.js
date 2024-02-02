@@ -60,9 +60,10 @@ const SmallCard = ({blog, service}) => {
                         </a>
                     </Link>
                 </h5>
+
                 <div className="card-text">{blog ? renderHTML(blog.excerpt) : renderHTML(service.excerpt)}</div>
                 {blog && <div className={classes.Info}>
-                    Posted {moment(blog.updatedAt).fromNow()} by{' '}
+                    Posted {moment(blog.createdAt).fromNow()} by{' '}
                     <Link href={`/profile/${blog.postedBy.username}`}>
                         <a className="float-end">{blog.postedBy.username}</a>
                     </Link>

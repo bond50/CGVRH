@@ -11,6 +11,7 @@ const Slug = ({service, query}) => {
 
     const loadRelated = () => {
         listRelated({service}).then(data => {
+            console.log(data)
             if (data.error) {
                 console.log(data.error)
             } else {
@@ -45,11 +46,12 @@ const Slug = ({service, query}) => {
     );
 
     const showPage = () => {
-        return <PageWrapper
-            page={service}
-            related={related}/>
-
-    };
+    return service ? (
+        <PageWrapper page={service} related={related} />
+    ) : (
+        <div>Loading...</div>
+    );
+};
 
     let imgSrc
 
