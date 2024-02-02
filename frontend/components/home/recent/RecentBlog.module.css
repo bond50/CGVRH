@@ -1,37 +1,22 @@
 
 .postBox {
-    /*transition: 0.3s;*/
+    transition: 0.3s;
     height: 100%;
     overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: var(--color-white);
-
-
-
-    padding: 30px;
-
-    border-radius: 10px;
-    margin: 0 10px 40px 10px;
-
-    box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);
-    transition: all 0.3s ease-in-out;
 
 
 }
 
 .postImg {
-     overflow: hidden;
-    margin: -30px -30px 15px -30px;
+    overflow: hidden;
     position: relative;
-
 }
 
 .postImg img {
     transition: 0.5s;
-
-
 }
 
 .meta {
@@ -39,7 +24,7 @@
 }
 
 .postDate {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     color: var(--color-default);
 
@@ -47,45 +32,55 @@
 }
 
 .postAuthor {
-    font-size: 15px;
+    font-size: 13px;
+    color: var(--color-secondary);
+}
+
+.postAuthor a {
+
     font-weight: 400;
-    color: var(--color-primary);
+    margin-left: 5px;
+    text-transform: capitalize;
+
 }
 
 .postTitle {
-    font-size: 16px;
-    color: var(--color-primary);
-    font-weight: 700;
-    margin: 10px 0 0 0;
-    position: relative;
+
     text-transform: capitalize;
+
+    font-size: 18px;
+    font-weight: 500;
+    margin: 15px 0 0 0;
+    position: relative;
     transition: 0.3s;
 
 }
 
+.postTitle a {
+
+    color: var(--color-secondary);
+}
+
 .postBox p {
     margin: 15px 0 0 0;
-    line-height: 1;
 
+    color: var(--color-default);
 }
 
 .readMore {
     display: flex;
     align-items: center;
     font-weight: 600;
-    font-size: 14px;
     line-height: 1;
     transition: 0.3s;
     margin-top: 15px;
-     color: var(--color-secondary) ;
 
 }
 
 .readMore .Icon {
     line-height: 0;
     margin-left: 4px;
-    font-size: 15px;
-    color: var(--color-secondary) ;
+    font-size: 18px;
 
 }
 
@@ -94,5 +89,5 @@
 }
 
 .postBox:hover .postImg img {
-    transform: rotate(6deg) scale(1.2);
+    transform: scale(1.1);
 }

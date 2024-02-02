@@ -1,38 +1,42 @@
 export const aboutList = [
-    {_id: 'as', title: 'Our Guiding principles', slug: 'guiding-principles'},
-    {_id: 'asd', title: 'Our Health Management Team', slug: 'board-members'},
-    {_id: 'asdf', title: 'Our Management Structure', slug: 'organisation-structure'},
-    {_id: 'asdfg', title: 'Our Role', slug: 'roles'},
-    {_id: 'qwer', title: 'Our Strategic Plan', slug: 'strategic-plan'},
-    {_id: 'jhiu', title: 'Our Health Goals', slug: 'health-goals'},
-    {_id: 'hjgfd', title: 'Our Neighboring Facilities', slug: 'neighboring-facilities'},
-    // {_id: 'hfdrf', title: 'Our Projects', slug: 'project'},
-    {_id: 'ffufu', title: 'Our Partners', slug: 'partners'},
+    {_id: 'ashdhdhhu833774bde73eh77eyuhd', title: 'Our Guiding principles', to: '/about-us/guiding-principles'},
+    {_id: 'ashdh746r646r7r739rbyfgdy8eed', title: 'Our Health Management Team', to: '/about-us/board-members'},
+    {_id: 'gdgy3384hduhsu38hydhcyosoasdf', title: 'Our Management Structure', to: '/about-us/organisation-structure'},
+    {_id: 'asghdd74gcgd99cokcihcbcyccdfg', title: 'Our Role', to: '/about-us/roles'},
+    {_id: 'qwgdhdcb0883dbdhhbkckchcocher', title: 'Our Strategic Plan', to: '/about-us/strategic-plan'},
+    {_id: 'jhigdg738e8hnhncjnchsi939ueu5', title: 'Our Health Goals', to: '/about-us/health-goals'},
+    {_id: 'hjggdg38e8hnhncjnchsi939uefd3', title: 'Our Neighboring Facilities', to: '/about-us/neighboring-facilities'},
+    {_id: 'hfdgdg738e8hnncjnchsi939uerf1', title: 'Our Projects', to: '/about-us/project'},
+    {_id: 'ffugdg738e8hnhnjnchsi939uefu6', title: 'Our Partners', to: '/about-us/partners'},
+
+
+
 ];
 
+
 export const covidList = [
-    {_id: 'jgfrhutr', title: 'FAqs', slug: 'faqs'},
-    {_id: '564i656h', title: 'Proper Hand Care', slug: 'hand'},
-    {_id: '4yyur', title: 'How prepared is VCRH', slug: 'prep'},
+    {_id: 'jgfrhutr', title: 'FAqs', to: 'faqs'},
+    {_id: '564i656h', title: 'Proper Hand Care', to: 'hand'},
+    {_id: '4yyur', title: 'How prepared is VCRH', to: 'prep'},
 ];
 
 export const mediaList = [
-    {_id: '5uhhhhryv', title: 'Downloads', slug: 'downloads'},
-    // {_id:'',title: 'Events', slug: '/media/events'},
-    {_id: '6rggagjdjdjjjwwd', title: 'Gallery', slug: 'gallery'},
-    // {_id:'',title: 'Press', slug: '/media/press'},
-    // {_id:'',title: 'Publications', slug: '/media/publications'},
-    // {_id:'',title: 'Vacancies', slug: '/media/vacancies'},
+    {_id: '5uhhhhryv', title: 'Downloads', to: 'downloads'},
+    // {_id:'',title: 'Events', to: '/media/events'},
+    {_id: '6rggagjdjdjjjwwd', title: 'Gallery', to: 'gallery'},
+    // {_id:'',title: 'Press', to: '/media/press'},
+    // {_id:'',title: 'Publications', to: '/media/publications'},
+    // {_id:'',title: 'Vacancies', to: '/media/vacancies'},
 ];
 
 export const servicesList = [
-    // {_id:'',title: 'Special Clinics', slug: '/services/clinics'},
-    {_id: 'uee85', title: 'Pharmacy', slug: 'pharmacy'},
-    {_id: '79ijhrg', title: 'Laboratory', slug: 'laboratory'},
-    {_id: '54yo906', title: 'Radiology/Xray', slug: 'radiology'},
-    {_id: '5.jtrrjh', title: 'Accident And Emergency', slug: 'casualty'},
-    {_id: 'jbgj', title: 'ICU', slug: 'icu'},
-    {_id: 'jggtj', title: 'Ambulance', slug: 'ambulance'},
-    {_id: 'jgtj', title: 'Nursing Services', slug: 'nursing'},
+    // {_id:'',title: 'Special Clinics', to: '/services/clinics'},
+    {_id: 'uee85', title: 'Pharmacy', to: 'pharmacy'},
+    {_id: '79ijhrg', title: 'Laboratory', to: 'laboratory'},
+    {_id: '54yo906', title: 'Radiology/Xray', to: 'radiology'},
+    {_id: '5.jtrrjh', title: 'Accident And Emergency', to: 'casualty'},
+    {_id: 'jbgj', title: 'ICU', to: 'icu'},
+    {_id: 'jggtj', title: 'Ambulance', to: 'ambulance'},
+    {_id: 'jgtj', title: 'Nursing Services', to: 'nursing'},
 ];
 

@@ -8,6 +8,7 @@ const {
     remove,
     update,
     listPending,
+    listWithPagination,
     photo,
     listPendingByUser,
     listByUser,
@@ -26,6 +27,7 @@ const {
 
 router.post('/page', requireSignin, adminMiddleware, create);
 router.get('/general', list);
+router.get('/services', listWithPagination);
 router.get('/featured-general', listFeatured);
 router.get('/pending-pages', listPending);
 router.get('/page-categories', listAllServicesCategoriesTags);

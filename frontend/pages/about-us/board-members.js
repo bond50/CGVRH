@@ -3,7 +3,7 @@ import React from 'react'
 import Board from "../../components/about/member/Board";
 import useSWR from "swr";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
-import Breadcrumbs from "../../components/reusables/Breadcrumbs";
+
 import Head from "next/head";
 import {useRouter} from "next/router";
 
@@ -62,7 +62,6 @@ const Index = () => {
         <>
             {head()}
             <Layout>
-                <Breadcrumbs/>
                 <Board members={members}/>
             </Layout>
         </>

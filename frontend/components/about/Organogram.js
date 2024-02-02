@@ -78,42 +78,29 @@ const Organogram = () => {
         },
 
     ]
-    return <section id="organogram" className="organogram section-bg">
-        <div className="container" data-aos="fade-up">
-            <div className="row">
-                <div className="section-title">
-                    <h2>Our Management Structure</h2>
-                    <p>Vihiga County Referral Hospital is the main hospital within Vihiga County serving as a referral
-                        facility
-                        for
-                        Sub County and Health centers within the County. It attained its level five status in August
-                        2017.
-                        The
-                        hospital has an integrated organizational structure with various departments and committees
-                        working
-                        to
-                        ensure good leadership and governance at the facility
-                    </p>
-                </div>
+    return <div className="container" data-aos="fade-up">
+        <div className="row">
+
+            <h2>Our Hospital Management Structure</h2>
 
 
-                <div className="accordion-list" data-aos="fade-up">
-                    {list.map(item => (
-                        <Accordion defaultActiveKey="1" key={item.eventKey}>
-                            <Accordion.Item eventKey={item.eventKey}>
-                                <Accordion.Header><span>{`0${item.eventKey}`}</span>{item.title}
-                                </Accordion.Header>
-                                <Accordion.Body>
-                                    {item.comp}
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        </Accordion>
-                    ))}
-                </div>
+            <div className="accordion-list" data-aos="fade-up">
+                {list.map(item => (
+                    <Accordion defaultActiveKey="1" key={item.eventKey}>
+                        <Accordion.Item eventKey={item.eventKey}>
+                            <Accordion.Header><span>{`0${item.eventKey}`}</span>{item.title}
+                            </Accordion.Header>
+                            <Accordion.Body>
+                                {item.comp}
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    </Accordion>
+                ))}
             </div>
         </div>
+    </div>
 
-    </section>;
+
 };
 
 export default Organogram;

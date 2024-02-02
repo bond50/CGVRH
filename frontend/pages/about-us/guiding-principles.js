@@ -1,10 +1,9 @@
 import Layout from "../../hoc/Layout";
 import React from 'react'
-import GuidingPrinciples from "../../components/about/GuidingPrinciples";
 import {useRouter} from "next/router";
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
-import CoreValues from "../../components/home/CoreValues";
+import CoreValues from "../../components/about/CoreValues";
 
 const Index = () => {
     const router = useRouter()

@@ -3,19 +3,16 @@ import {useRouter} from "next/router";
 import dynamic from "next/dynamic";
 import React from 'react'
 
+import About from "../../components/about";
+import CoreValues from "../../components/about/CoreValues";
+import AboutCounter from "../../components/about/AboutCounter";
+import Referral from "../../components/about/Referal";
+
+
 const Layout = dynamic(() => import( "../../hoc/Layout"), {ssr: false});
-const Plan = dynamic(() => import( "../../components/about/Plan"), {ssr: false});
 const Partners = dynamic(() => import( "../../components/about/Partners"), {ssr: false});
-
-const Role = dynamic(() => import( "../../components/about/Role"), {ssr: false});
-const Goals = dynamic(() => import( "../../components/about/Goals"), {ssr: false});
-const GuidingPrinciples = dynamic(() => import( "../../components/about/GuidingPrinciples"), {ssr: false});
-const Breadcrumbs = dynamic(() => import( "../../components/reusables/Breadcrumbs"), {ssr: false});
 const Organogram = dynamic(() => import( "../../components/about/Organogram"), {ssr: false});
-const Neighbor = dynamic(() => import( "../../components/about/Neighbor"), {ssr: false});
 const Head = dynamic(() => import( "next/head"), {ssr: false});
-
-
 
 
 const Index = () => {
@@ -56,16 +53,12 @@ const Index = () => {
     return (
         <>{head()}
             <Layout>
-                <Breadcrumbs/>
-                <Organogram/>
+                <About/>
+                <CoreValues/>
+                <AboutCounter/>
                 <Partners/>
-                <Plan/>
-                <GuidingPrinciples/>
-
-                {/*<Board/>*/}
-                <Role/>
-                <Neighbor/>
-                <Goals/>
+                {/*<Referral/>*/}
+                {/*<Organogram/>*/}
             </Layout>
         </>
     );

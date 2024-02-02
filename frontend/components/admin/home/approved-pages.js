@@ -15,7 +15,7 @@ const ApprovedPages = ({username}) => {
         removed,
         data: blogs,
         message
-    } = useARP(username ? `/${username}/general` : '/general')
+    } = useARP(username ? `/${username}/general` : '/services')
 
 
     function showBlogs() {

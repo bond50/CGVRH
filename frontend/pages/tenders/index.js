@@ -60,7 +60,6 @@ const Tender = () => {
         <>
             {head()}
             <Layout>
-                <Breadcrumbs/>
                 <TenderList files={files}/>
             </Layout>
         </>

@@ -1,3 +1,8 @@
+.Section{
+    margin-top: 20px;
+}
+
+
 .Wrap {
     border-top: 1px solid #ececec;
     border-left: 1px solid #ececec;
@@ -17,8 +22,8 @@
 
 .Logo img {
     transition: all 0.3s ease-in-out;
-    height: 36px;
-    filter: grayscale(100%);
+    height: 56px!important;
+    /*filter: grayscale(100%);*/
 
 }
 

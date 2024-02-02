@@ -20,10 +20,22 @@ export const list = (username) => {
     } else {
         listEndpoint = `${API}/general`
     }
-
-
     return fetch(`${listEndpoint}`, {
         method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};
+
+
+export const listWithPagination = (page, limit) => {
+    let listEndpoint = `${API}/services`;
+    const queryParams = `?page=${page}&limit=${limit}`;
+
+    return fetch(`${listEndpoint}${queryParams}`, {
+        method: 'GET',
     })
         .then(response => {
             return response.json();

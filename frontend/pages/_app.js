@@ -14,7 +14,7 @@ import {GOOGLE_ANALYTICS_KEY} from "../config";
 
 const MyApp = ({Component, pageProps}) => {
 
-    NProgress.configure({showSpinner: true});
+    NProgress.configure({showSpinner: false});
     Router.onRouteChangeStart = () => NProgress.start();
     Router.onRouteChangeComplete = () => NProgress.done();
     Router.onRouteChangeError = () => NProgress.done();

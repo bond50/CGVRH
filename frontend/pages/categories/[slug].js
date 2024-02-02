@@ -6,7 +6,7 @@ import SmallCard from "../../components/reusables/card/small-card";
 import Layout from "../../hoc/Layout";
 
 const Category = ({category, blogs, query}) => {
-    console.log(`${DOMAIN}/categories/${query.slug}`)
+
     const head = () => (
         <Head>
             <title>

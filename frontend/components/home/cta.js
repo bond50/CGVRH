@@ -6,11 +6,16 @@ const Cta = () => {
             <div className="container" data-aos="zoom-in">
                 <div className="row">
                     <div className="col-lg-9 text-center text-lg-start">
-                        <h3 className="cta-title">In an emergency? Need help now?
+                        <h3 className="cta-title">In an emergency?
                         </h3>
-                        <p className='cta-text'>{APP_NAME} Emergency unit operates on 24/7 basis. In case of an emergency tap Call Now button
-                            to speak to emergency team. If the button is not working,
-                            call <span>+254 723103564</span> now
+                        <p className='cta-text'>
+                            In the event of an emergency, {`${APP_NAME} 's`} Emergency Unit operates
+                            around the clock, 24/7. <br/>Should you require immediate assistance,
+                            kindly utilize the <span>Call Now</span> button to connect with our dedicated emergency response team. <br/>If, for any reason, the
+                            button is not operational, please promptly contact us directly
+                            at <span>0723103564</span>. Your
+                            safety and well-being are our top priorities, and we are here to provide swift and
+                            professional assistance during urgent situations.
                         </p>
                     </div>
                     <div className={`col-lg-3 cta-btn-container text-center`}>
@@ -19,7 +24,6 @@ const Cta = () => {
                 </div>
 
             </div>
-
 
 
         </section>

@@ -5,18 +5,31 @@ import useSWR from "swr";
 import Preloader from "../preloader";
 import ServiceCard from "../reusables/card/serviceCard/ServiceCard";
 
+import React from "react";
+import {generateExcerpt} from "../reusables/functions/generate-excerpt";
 
-const FeaturedServices = ({className}) => {
+
+const FeaturedServices = () => {
     const {data: services, error} = useSWR(`${API}/featured-general`)
     if (error) return <div>failed to load</div>
     if (!services) return <Preloader/>
 
     return (
 
-        <section className={className}>
-            <div className="container">
-                <div className={`section-title`} data-aos="zoom-out" data-aos-once='true'>
-                    <h2>Featured Services</h2>
+        <section className='featured-services'>
+            <div className="container" data-aos="slide-up">
+                <div className="section-title">
+                    <h2>
+                        <Link href={`/services`}>
+                            Our Services
+                        </Link>
+
+                    </h2>
+                    <h3>Explore the <span><Link href={`/services`}>Features of Our Services</Link></span></h3>
+
+                    <p>Explore the distinctive attributes that distinguish the services offered at Vihiga County Referral Hospital.</p>
+
+
                 </div>
 
                 <div className="row gy-3">
@@ -32,18 +45,19 @@ const FeaturedServices = ({className}) => {
                         return <ServiceCard
                             title={service.title}
                             delay={`${i * 100}`}
-                            href={`/general/${service.slug}`}
+                            href={`/services/${service.slug}`}
                             imgSrc={imgSrc}
                             imgAlt={service.title}
                             key={service._id}
                         >
-                            {renderHTML(service.excerpt.length >= 100 ? `${service.excerpt.substring(0, 100)}...` : service.excerpt)}
+                            <p>{generateExcerpt(service.excerpt,100)}</p>
                         </ServiceCard>
 
                     })}
                 </div>
             </div>
 
+            {/*<WaveBottom/>*/}
 
         </section>
 

@@ -4,10 +4,8 @@ import {listBlogsWithCategoriesAndTags} from "../../actions/blog";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import {withRouter} from "next/router";
 import SmallCard from "../../components/reusables/card/small-card";
-import dynamic from "next/dynamic";
-import Preloader from "../../components/preloader";
 import Layout from "../../hoc/Layout";
-import BlogHero from '../../components/blog/blog-hero'
+
 
 
 const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {
@@ -100,7 +98,7 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {
         <>
             {head()}
             <Layout blog>
-                <BlogHero/>
+
                 <main>
                     <section className='blog-section'>
                         <div className="container ">

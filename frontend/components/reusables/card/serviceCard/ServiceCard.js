@@ -6,7 +6,7 @@ import classes from './ServiceCard.module.css'
 const ServiceCard = ({delay, children, imgSrc,  imgAlt, href, title}) => {
 
     return (
-        <div className={`col-lg-4 col-md-6 ${classes.Service}`} data-aos="fade-up" data-aos-delay={delay}>
+        <div className={`col-lg-3 col-md-6 ${classes.Service}`} data-aos="fade-up" data-aos-delay={delay}>
             <div className={`card ${classes.Card}`}>
                 <div className={classes.CardImg}>
                     <Image

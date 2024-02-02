@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import useSWR from "swr";
 import {API} from "../../../config";
 import {fetcher} from "../../reusables/functions/fetcher";
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
+import axios from "axios";
 import Image from "next/image";
 import classes from '../../../styles/carded.module.css'
-
+import Link from "next/link";
 import Preloader from "../../preloader";
+
 
 const HomeGallery = (props) => {
 
@@ -53,13 +54,15 @@ const HomeGallery = (props) => {
 
 
     return (
-        <section className='gallery-home section-bg'>
-            {/*<div className="section-title">*/}
-            {/*    <h2>Recently uploaded</h2>*/}
-            {/*    <p><Link href='/'>Visit our gallery section for more</Link></p>*/}
-            {/*</div>*/}
+        <section className='gallery-home'>
+
+            <div className="section-title">
+                <h2>Gallery</h2>
+                {/*<h3>Explore Gallery</h3>*/}
+                <p><Link href='/media/gallery'>Explore our gallery for an in-depth look at our facilities and services</Link></p>
+            </div>
             <div className="container-fluid">
-                <Carousel
+            <Carousel
                     swipeable={true}
                     draggable={false}
                     showDots={false}
@@ -79,12 +82,15 @@ const HomeGallery = (props) => {
 
                     {data && data.map((image, i) => {
                         return <div key={i} className={`${classes.Container} ${classes.Wrapper} card`}>
-                            <Image
-                                src={image.filePath}
-                                width={image.width}
-                                height={image.height}
-                                layout="responsive"
-                                className={`${classes.Img} card-img-top `} alt={image.title}/>
+                            <Link href={`/media/gallery`}>
+                                <Image
+                                    src={image.filePath}
+                                    width={image.width}
+                                    height={image.height}
+                                    layout="responsive"
+                                    className={`${classes.Img} card-img-top `} alt={image.title}/>
+                            </Link>
+
                             <div className={classes.Overlay}>
                                 <div className={classes.Text}>
                                     <div>{image.title}</div>
@@ -96,6 +102,8 @@ const HomeGallery = (props) => {
 
                 </Carousel>
             </div>
+
+
         </section>
     )
         ;

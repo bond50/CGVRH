@@ -1,5 +1,4 @@
 
-import Breadcrumbs from "../../components/reusables/Breadcrumbs";
 import Link from "next/link";
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
@@ -49,7 +48,7 @@ const Index = () => {
         <>
             {head()}
             <Layout>
-                <Breadcrumbs/>
+
                 <section>
                     <div className="container page-intro">
                         <h4>Useful Media Links</h4>

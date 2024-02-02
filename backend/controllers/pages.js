@@ -13,13 +13,11 @@ const {capitalizeFirstLetter} = require("../helpers/importantFunctions");
 exports.create = (req, res) => {
     const {title, body, categories, images} = req.body
 
-
     if (!title || !title.length) {
         return res.status(400).json({
             error: 'title is required'
         });
     }
-
 
     if (!categories || categories.length === 0) {
         return res.status(400).json({
@@ -62,7 +60,7 @@ exports.listFeatured = (req, res) => {
     Page.find({featured: true, accepted: true})
         .select('_id title images excerpt slug')
         .sort({createdAt: -1})
-        .limit(12)
+        .limit(4)
         .exec((err, data) => {
             if (err) {
                 return res.json({
@@ -76,7 +74,7 @@ exports.list = (req, res) => {
     Page.find({accepted: true})
         .populate('categories', '_id name slug')
         .populate('postedBy', '_id name username')
-        .select('_id title slug images excerpt categories  postedBy createdAt updatedAt')
+        .select('_id title slug images excerpt categories postedBy createdAt updatedAt')
         .sort({createdAt: -1})
         .exec((err, data) => {
             if (err) {
@@ -88,6 +86,33 @@ exports.list = (req, res) => {
         });
 };
 
+
+exports.listWithPagination = async (req, res) => {
+    const page = req.query.page || 1;
+    const limit = req.query.limit || 6;
+
+    try {
+        const totalCount = await Page.countDocuments({accepted: true}).exec();
+        const data = await Page.find({accepted: true})
+            .populate('categories', '_id name slug')
+            .populate('postedBy', '_id name username')
+            .select('_id title slug excerpt createdAt updatedAt')
+            .sort({createdAt: -1})
+            .skip((page - 1) * limit)
+            .limit(parseInt(limit))
+            .exec();
+
+        res.json({
+            data,
+            totalCount,
+
+        });
+    } catch (err) {
+        res.status(500).json({
+            error: 'Internal Server Error',
+        });
+    }
+};
 
 exports.listAllServicesCategoriesTags = (req, res) => {
     let pages;

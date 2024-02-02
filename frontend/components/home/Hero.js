@@ -1,28 +1,37 @@
-import Link from "next/link";
-import Image from '../../components/reusables/lazy/Image'
-import React from "react";
-import {APP_NAME} from "../../config";
+import React, {useEffect, useRef} from "react";
+import {Video, Transformation} from "cloudinary-react";
+import {APP_NAME, CLOUDINARY_NAME} from "../../config";
 
 function Hero() {
-    return (
-        <section id="home-hero" className="d-flex align-items-center">
-            <div className="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
-                {/*<h1 className='display-1'>Welcome to {APP_NAME} </h1>*/}
-                {/*<h2></h2>*/}
-                {/*<Link href={"#homepage-about"}>*/}
-                {/*    <a className="btn-get-started ">Get Started</a>*/}
-                {/*</Link>*/}
-            </div>
-            <Image priority
-                src="/herp.jpg"
-                layout="fill"
-                loading="eager"
-                alt='photo of vcrh building'
-                objectFit="cover"
-            />
-        </section>
 
+
+    return (
+        <section id="home-hero">
+            <Video
+                className="cloudinary-video"
+                publicId="vcrh5_d4f09z"
+                cloudName={CLOUDINARY_NAME}
+                autoPlay
+                loop
+                muted
+                poster="/herp.jpg"
+                quality="auto"
+                fetchFormat="auto"
+                resourceType="video"
+                crop="fill"
+            >
+                <Transformation videoCodec="auto" bitrate="auto"/>
+            </Video>
+
+            <div className="container animate__animated animate__backInUp">
+                <div className="hero-header">
+                    <h2>{APP_NAME}</h2>
+                    <p>A facility of choice providing high quality health services to all</p>
+                </div>
+            </div>
+
+        </section>
     );
 }
 
-export default Hero
+export default Hero;

@@ -18,7 +18,6 @@
 
 
 .Service ul li {
-
     font-size: 13px;
     color: #001973;
 }
@@ -56,18 +55,19 @@
 
 
 
-.Card a {
-    color: var(--color-primary);
+.Card a:first-child {
+    color: var(--color-secondary);
     transition: 0.3s;
+    text-transform: capitalize;
 }
 
 .Card a:hover {
-    color: var(--color-secondary);
+    color: var(--color-secondary1);
 }
 
 .Card p {
     padding: 0 30px;
-    color: var(--color-secondary-dark);
+    color: var(--color-default);
     font-size: 15px;
 }
 

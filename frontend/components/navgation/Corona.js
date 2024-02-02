@@ -1,7 +1,7 @@
 import React from 'react';
 import {covidList} from "./dropdown-links";
 import StaticDropdown from "./static-dropdown";
-import MyLink from "./myLink";
+import MyLink from "./nav-link/myLink";
 
 const Corona = ({clicked}) => {
 

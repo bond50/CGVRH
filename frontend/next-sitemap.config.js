@@ -22,7 +22,7 @@ module.exports = {
         ],
     },
     exclude: [
-        "/general-sitemap.xml",
+        "/services-sitemap.xml",
         "/categories-sitemap.xml",
         "/tags-sitemap.xml",
         "/admin2",

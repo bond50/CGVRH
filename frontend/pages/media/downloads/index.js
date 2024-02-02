@@ -60,7 +60,6 @@ const Downloads = () => {
         <>
             {head()}
             <Layout>
-                <Breadcrumbs/>
                 <DownloadList files={files}/>
             </Layout>
         </>

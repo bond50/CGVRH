@@ -4,7 +4,6 @@ import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 
 import {getAllSlugs, listRelated, singlePage} from "../../actions/general";
 import PageWrapper from "../../hoc/page-wrapper";
-import Breadcrumbs from "../../components/reusables/Breadcrumbs";
 import Layout from "../../hoc/Layout";
 
 const Slug = ({service, query}) => {
@@ -52,11 +51,20 @@ const Slug = ({service, query}) => {
 
     };
 
+    let imgSrc
+
+    if (service.images && service.images.length && service.images.length > 0) {
+        const image = service.images[Math.floor(Math.random() * service.images.length)];
+        imgSrc = image.url
+    } else {
+        imgSrc = `${API}/general/photo/${service.slug}`
+    }
+
+
     return (
         <Fragment>
             {head()}
-            <Layout>
-                <Breadcrumbs/>
+            <Layout pageTitle={service.title} imageUrl={imgSrc}>
                 <main>
                     {showPage()}
                 </main>
@@ -64,13 +72,13 @@ const Slug = ({service, query}) => {
         </Fragment>
     )
 };
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({params}) => {
     return singlePage(params.slug).then(data => {
         if (data.error) {
             console.log(data.error);
         } else {
             return {
-                props: { service: data, query: params },
+                props: {service: data, query: params},
                 revalidate: 60,  // Optional: re-generate the page at most once per minute
             };
         }
@@ -79,7 +87,7 @@ export const getStaticProps = async ({ params }) => {
 
 export const getStaticPaths = async () => {
     const slugs = await getAllSlugs();  // Fetch all possible slugs for pre-rendering
-    const paths = slugs.map(slug => ({ params: { slug } }));
+    const paths = slugs.map(slug => ({params: {slug}}));
     return {
         paths,
         fallback: 'blocking',

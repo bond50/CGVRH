@@ -4,12 +4,12 @@ import Preloader from "../components/preloader";
 import {YearsOperated} from "../components/years-operated/YearsOperated";
 import {useRouter} from "next/router";
 import dynamic from 'next/dynamic'
+import Layout from "../hoc/Layout";
+import WhyUs from "../components/home/why-us";
+import HomeCounter from "../components/home/home-counter";
 
 const About = dynamic(() => import(  "../components/home/about"), {ssr: false,});
-const Toolbar = dynamic(() => import(  "../components/navgation/Toolbar"), {ssr: false,});
-const Hero = dynamic(() => import(  "../components/home/Hero"), {ssr: false,});
-const Footer = dynamic(() => import(  "../components/footer/Footer"), {ssr: false,});
-const CoreValues = dynamic(() => import(  "../components/home/CoreValues"), {ssr: false,});
+const CoreValues = dynamic(() => import(  "../components/about/CoreValues"), {ssr: false,});
 const Clients = dynamic(() => import(  "../components/home/clients"), {ssr: false,});
 const Cta = dynamic(() => import( "../components/home/cta"), {ssr: false,});
 const Head = dynamic(() => import( "next/head"), {ssr: false,});
@@ -21,7 +21,6 @@ const Gallery = dynamic(() => import(  "../components/home/home-gallery/HomeGall
 
 export default function Home() {
     const router = useRouter()
-
 
     const head = () => (
         <Head>
@@ -65,19 +64,23 @@ export default function Home() {
     return (
         <>
             {head()}
-            <Toolbar home/>
-            <Hero/>
-            <main id='main'>
-                <Gallery/>
+            <Layout home>
+
+                <WhyUs/>
+                {/*<CoreValues/>*/}
+
                 <Clients/>
+                <HomeCounter/>
+
                 <About/>
-                <LatestBlogs/>
-                <Cta/>
+                <Gallery/>
                 <FeaturedServices/>
-                <CoreValues/>
-                <Roles/>
-            </main>
-            <Footer/>
+                <Cta/>
+                <LatestBlogs/>
+
+
+                {/*<Roles/>*/}
+            </Layout>
         </>
 
     )
