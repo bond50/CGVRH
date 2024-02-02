@@ -190,7 +190,6 @@ exports.update = async (req, res) => {
         const slug = req.params.slug.toLowerCase();
         // Update the excerpt in the request body
         req.body.excerpt = smartTrim(req.body, 320, ' ', ' ...');
-
         const updated = await Blog.findOneAndUpdate({ slug }, req.body, { new: true }).exec();
 
         // If there are images, unset the 'photo' field
