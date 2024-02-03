@@ -30,11 +30,11 @@ const Nav = () => {
             <Backdrop clicked={closeMobileNav} show={open}/>
 
             <ul>
-                <MyLink
-                    to="/"
-                    clicked={closeMobileNav}
-                >Home
-                </MyLink>
+                {/*<MyLink*/}
+                {/*    to="/"*/}
+                {/*    clicked={closeMobileNav}*/}
+                {/*>Home*/}
+                {/*</MyLink>*/}
                 <MyLink
                     to="/about-us"
                     clicked={closeMobileNav}
@@ -49,14 +49,6 @@ const Nav = () => {
                         clicked={closeMobileNav}
                     />
                 ))}
-
-                <MyLink
-
-                    to="/tenders"
-                    clicked={closeMobileNav}
-                >
-                    Tenders
-                </MyLink>
 
                 <Dropdown
                     clientSideList={mediaList} caption={'Media'}

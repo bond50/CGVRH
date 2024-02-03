@@ -10,7 +10,6 @@ export const aboutList = [
     {_id: 'ffugdg738e8hnhnjnchsi939uefu6', title: 'Our Partners', to: '/about-us/partners'},
 
 
-
 ];
 
 
@@ -21,12 +20,13 @@ export const covidList = [
 ];
 
 export const mediaList = [
-    {_id: '5uhhhhryv', title: 'Downloads', to: 'downloads'},
-    // {_id:'',title: 'Events', to: '/media/events'},
-    {_id: '6rggagjdjdjjjwwd', title: 'Gallery', to: 'gallery'},
+    {_id: '5uhhhhryv', title: 'Downloads', to: '/media/downloads'},
+    // {_id: '', title: 'Events', to: '/media/events'},
+    {_id: '6rggagjdjdjjjwwd', title: 'Gallery', to: 'media/gallery'},
+    {_id: 'msjhd746467', title: 'Tenders', to: '/media/tenders'},
     // {_id:'',title: 'Press', to: '/media/press'},
     // {_id:'',title: 'Publications', to: '/media/publications'},
-    // {_id:'',title: 'Vacancies', to: '/media/vacancies'},
+
 ];
 
 export const servicesList = [
