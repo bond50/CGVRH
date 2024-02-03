@@ -252,6 +252,7 @@ exports.update = async (req, res) => {
 
     try {
         const slug = req.params.slug.toLowerCase();
+        req.body.excerpt = smartTrim(req.body.body, 320, ' ', ' ...');
         const updated = await Page.findOneAndUpdate({slug}, req.body, {new: true}).exec()
         if (req.body.images.length > 0) {
             await Page.findOneAndUpdate({slug}, {$unset: {photo: {}}}, {new: true}).exec()

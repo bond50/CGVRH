@@ -208,25 +208,6 @@ exports.update = async (req, res) => {
 };
 
 
-// exports.update = async (req, res) => {
-//
-//
-//     try {
-//         const slug = req.params.slug.toLowerCase();
-//         const excerpt = smartTrim(req.body, 320, ' ', ' ...')
-//
-//         const updated = await Blog.findOneAndUpdate({slug}, req.body, {new: true}).exec()
-//         if (req.body.images.length > 0) {
-//             await Blog.findOneAndUpdate({slug}, {$unset: {photo: {}}}, {new: true}).exec()
-//         }
-//         res.json(updated)
-//
-//     } catch (err) {
-//         res.status(400).send({error: err.message})
-//     }
-//
-//
-// };
 
 exports.photo = (req, res) => {
     const slug = req.params.slug.toLowerCase();

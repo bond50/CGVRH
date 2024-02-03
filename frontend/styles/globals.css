@@ -430,7 +430,7 @@ p {
         position: fixed;
         top: 0;
         right: -100%;
-        width: calc(100% - 200px);
+        width: calc(100% - 100px);
         bottom: 0;
         transition: 0.3s;
         z-index: 9997;
