@@ -14,7 +14,7 @@ function Hero() {
                 autoPlay
                 loop
                 muted
-                poster="/herp.jpg"
+                poster="https://vihigahospital.go.ke/herp.jpg"
                 quality="auto"
                 fetchFormat="auto"
                 resourceType="video"
