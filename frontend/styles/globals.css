@@ -722,7 +722,7 @@ section {
 
 }
 
-#home-hero .cloudinary-video {
+#home-hero img {
     position: absolute;
     inset: 0;
     display: block;
@@ -739,7 +739,7 @@ section {
     /*background: linear-gradient(45deg, rgba(29, 224, 153, 0.4), rgba(29, 200, 205, 0.7));*/
     opacity: 0.5;
     content: '';
-    background: rgba(0, 0, 0, 0.8);
+    /*background: rgba(0, 0, 0, 0.66);*/
     position: absolute;
     inset: 0;
     z-index: 2;

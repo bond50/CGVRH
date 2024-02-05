@@ -1,5 +1,5 @@
 import React from "react";
-import {Transformation, Video} from "cloudinary-react";
+import {CldImage} from 'next-cloudinary';
 import {APP_NAME, CLOUDINARY_NAME} from "../../config";
 
 function Hero() {
@@ -7,20 +7,15 @@ function Hero() {
 
     return (
         <section id="home-hero">
-            <Video
-                className="cloudinary-video"
-                publicId="vcrh5_d4f09z"
-                cloudName={CLOUDINARY_NAME}
-                autoPlay
-                loop
-                muted
-                quality="auto"
-                fetchFormat="auto"
-                resourceType="video"
-                crop="fill"
-            >
-                <Transformation videoCodec="auto" bitrate="auto"/>
-            </Video>
+
+
+            <CldImage
+                layout='fill'
+                src="project/DJI_0153_dkmqkt"
+                sizes="100vw"
+                alt="Description of my image"
+
+            />
 
             <div className="container animate__animated animate__backInUp">
                 <div className="hero-header">

@@ -31,6 +31,7 @@
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "next": "^12.1.0",
+    "next-cloudinary": "^5.20.0",
     "nextjs-breadcrumbs": "^1.1.1",
     "node-json-db": "^1.6.0",
     "nprogress": "^0.2.0",
