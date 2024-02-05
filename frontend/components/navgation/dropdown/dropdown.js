@@ -54,7 +54,7 @@ import useToggle from "../../../hooks/useToggle";
 import {singleCategory} from "../../../actions/category";
 import {Icon} from "@iconify/react";
 
-const Dropdown = ({caption, clicked, backendSlug, clientSideList}) => {
+const Dropdown = ({caption, clicked, link, backendSlug, clientSideList}) => {
     const [isOpen, handleClick] = useToggle();
 
     const [loadedPages, setLoadedPages] = useState([])
@@ -90,10 +90,15 @@ const Dropdown = ({caption, clicked, backendSlug, clientSideList}) => {
         if (clientSideList.length < 9) {
             return (
                 <li className={`dropdown`} onClick={handleClick}>
-                    <a href="#">
+                     {link ? <Link href={link}>
+                        <a>
+                            <span onClick={clicked}>{caption}</span>
+                            <i className="bi bi-chevron-down dropdown-indicator"></i>
+                        </a>
+                    </Link> : <a>
                         <span>{caption}</span>
                         <i className="bi bi-chevron-down dropdown-indicator"></i>
-                    </a>
+                    </a>}
                     <ul className={`${isOpen ? 'dropdown-active' : null}`}>
                         {clientSideList.map(l => (
                             <li key={l._id} onClick={clicked}>
@@ -110,18 +115,24 @@ const Dropdown = ({caption, clicked, backendSlug, clientSideList}) => {
 
             return (
                 <li className={`dropdown megamenu`} onClick={handleClick}>
-                    <a href="#">
+                    {link ? <Link href={link}>
+                        <a>
+                            <span onClick={clicked}>{caption}</span>
+                            <i className="bi bi-chevron-down dropdown-indicator"></i>
+                        </a>
+                    </Link> : <a>
                         <span>{caption}</span>
                         <i className="bi bi-chevron-down dropdown-indicator"></i>
-                    </a>
+                    </a>}
                     <ul className={`${isOpen ? 'dropdown-active' : null}`}>
                         {chunkedItems.map((chunk, index) => (
                             <li key={index} onClick={clicked}>
                                 {chunk.map((item) => (
                                     <Link href={item.to} key={item._id}>
                                         <a onClick={handleClick}>
-                                            <span className='d-flex align-items-center'><Icon icon="solar:round-double-alt-arrow-right-line-duotone"
-                                                        className='icon2'/>{item.title}  </span>
+                                            <span className='d-flex align-items-center'><Icon
+                                                icon="solar:round-double-alt-arrow-right-line-duotone"
+                                                className='icon2'/>{item.title}  </span>
                                         </a>
                                     </Link>
                                 ))}
@@ -135,10 +146,15 @@ const Dropdown = ({caption, clicked, backendSlug, clientSideList}) => {
         if (loadedPages.length < 9) {
             return (
                 <li className={`dropdown`} onClick={handleClick}>
-                    <a href="#">
+                    {link ? <Link href={link}>
+                        <a>
+                            <span onClick={clicked}>{caption}</span>
+                            <i className="bi bi-chevron-down dropdown-indicator"></i>
+                        </a>
+                    </Link> : <a>
                         <span>{caption}</span>
                         <i className="bi bi-chevron-down dropdown-indicator"></i>
-                    </a>
+                    </a>}
                     <ul className={`${isOpen ? 'dropdown-active' : null}`}>
                         {loadedPages.map(item => (
                             <li key={item._id} onClick={clicked}>
@@ -154,10 +170,15 @@ const Dropdown = ({caption, clicked, backendSlug, clientSideList}) => {
             const chunkedItems = chunkArray(loadedPages, 4);
             return (
                 <li className={`dropdown megamenu`} onClick={handleClick}>
-                    <a href="#">
+                     {link ? <Link href={link}>
+                        <a>
+                            <span onClick={clicked}>{caption}</span>
+                            <i className="bi bi-chevron-down dropdown-indicator"></i>
+                        </a>
+                    </Link> : <a>
                         <span>{caption}</span>
                         <i className="bi bi-chevron-down dropdown-indicator"></i>
-                    </a>
+                    </a>}
                     <ul className={`${isOpen ? 'dropdown-active' : null}`}>
                         {chunkedItems.map((chunk, index) => (
                             <li key={index} onClick={clicked}>
@@ -166,7 +187,7 @@ const Dropdown = ({caption, clicked, backendSlug, clientSideList}) => {
                                         <a>
                                             <span className='d-flex align-items-center'>
                                                 <Icon icon="solar:round-double-alt-arrow-right-line-duotone"
-                                                        className='icon2'/>
+                                                      className='icon2'/>
                                                 {item.title}
                                             </span>
                                         </a>

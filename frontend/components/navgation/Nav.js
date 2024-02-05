@@ -43,6 +43,7 @@ const Nav = () => {
 
                 {dynamicCategories.map(category => (
                     <Dropdown
+                        link={'/services'}
                         key={category._id}
                         caption={category.name}
                         backendSlug={category.slug}
@@ -80,15 +81,13 @@ const Nav = () => {
                     to="/contact"
                     clicked={closeMobileNav}
                 >Contact Us</MyLink>
-                  <MyLink external
-                          className="staff-link"
+                <MyLink external
+                        className="staff-link"
                         to="https://mail.vihigahospital.go.ke/"
                         clicked={closeMobileNav}
                 >
                     Access staff mail
                 </MyLink>
-
-
 
 
             </ul>

@@ -1688,7 +1688,7 @@ section {
 }
 
 .services-list .services-list-items, .services-detail .services-detail-items {
-    padding: 10px 30px;
+    padding: 10px;
     /*border: 1px solid #eeeeee;*/
     margin-bottom: 20px;
     background: var(--color-white);
@@ -1706,7 +1706,7 @@ section {
     font-size: 18px;
     font-weight: 400;
     padding: 8px 0 8px 15px;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .services-list .services-list-items .tags, .services-detail .services-detail-items .tags {
