@@ -29,6 +29,8 @@ const Header = ({pages}) => {
             <div className="container d-flex align-items-center justify-content-between">
                 <Logo scrolled={scrolled}/>
                 <Nav pages={pages}/>
+
+
             </div>
         </header>
     );

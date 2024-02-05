@@ -1,13 +1,13 @@
-import GeneralPageHeader from "../../../hoc/general-page-header";
+import GeneralPageHeader from "../../hoc/general-page-header";
 import React from "react";
 import useSWR from 'swr'
-import {fetcher} from "../../../components/reusables/functions/fetcher";
-import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../../config";
-import TenderList from "../../../components/tenders";
+import {fetcher} from "../../components/reusables/functions/fetcher";
+import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
+import TenderList from "../../components/tenders";
 import {useRouter} from "next/router";
 import Head from "next/head";
 
-import Layout from "../../../hoc/Layout";
+import Layout from "../../hoc/Layout";
 
 const Tender = () => {
     const router = useRouter()

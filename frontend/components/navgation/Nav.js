@@ -50,6 +50,10 @@ const Nav = () => {
                     />
                 ))}
 
+                <MyLink
+                    to="/tenders"
+                    clicked={closeMobileNav}
+                >Tenders</MyLink>
                 <Dropdown
                     clientSideList={mediaList} caption={'Media'}
                     clicked={closeMobileNav}/>
@@ -64,15 +68,6 @@ const Nav = () => {
                 )}
 
 
-                {/*<MyLink external*/}
-
-                {/*        to="https://vihiga.go.ke/job-openings/"*/}
-                {/*        clicked={closeMobileNav}*/}
-                {/*>*/}
-                {/*    Apply for Jobs*/}
-                {/*</MyLink>*/}
-
-
                 {isAuth() && (
                     <li
                         onClick={() => signout(() => Router.replace(`/signin`))}
@@ -85,6 +80,16 @@ const Nav = () => {
                     to="/contact"
                     clicked={closeMobileNav}
                 >Contact Us</MyLink>
+                  <MyLink external
+                          className="staff-link"
+                        to="https://mail.vihigahospital.go.ke/"
+                        clicked={closeMobileNav}
+                >
+                    Access staff mail
+                </MyLink>
+
+
+
 
             </ul>
             <MobileNavToggle clicked={toggleOpen} isOpen={open}/>
