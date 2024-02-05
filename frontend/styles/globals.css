@@ -1698,6 +1698,7 @@ section {
 
 .services-detail .services-detail-items {
     background: #eeeeee;
+    padding-bottom: 8px;
 }
 
 
@@ -1713,13 +1714,14 @@ section {
 
 .services-list .services-list-items .tags, .services-detail .services-detail-items .tags {
     margin: 20px;
+
 }
 
 .services-list .services-list-items .tag, .services-detail .services-detail-items .tag {
     display: flex;
     line-height: 1;
     padding: 8px 0 8px 15px;
-    border: 1px solid #fff;
+    border: 1px solid var(--color-primary);
     background: #fff;
     margin: 20px 0;
     color: var(--color-primary);
@@ -1736,8 +1738,9 @@ section {
 
 
 .services-list .services-list-items .tag:hover, .services-detail .services-detail-items .tag:hover {
-    background: var(--color-secondary);
-    color: var(--color-white);
+    background: var(--color-cadimium-yellow);
+    color: var(--color-black);
+    border: none;
 }
 
 .services-list .items {
