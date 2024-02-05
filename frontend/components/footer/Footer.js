@@ -12,13 +12,14 @@ import ScrollTop from "../ScrollTop";
 const Footer = () => {
 
     const {data: services, error} = useSWR(`${API}/featured-general`)
+    const {data: blogs, error: blogErr} = useSWR(`${API}/featured-blogs`)
     const n = new Date()
     const thisYear = n.getFullYear()
     const list = [
-        {
-            title: 'Elephant System',
-            link: 'https://kenya.elephantprimarycare.com/'
-        },
+        // {
+        //     title: 'Elephant System',
+        //     link: 'https://kenya.elephantprimarycare.com/'
+        // },
         {title: 'County website', link: 'https://vihiga.go.ke/'},
         {title: 'Health Management team', link: '/about-us/board-members'},
         {title: 'MOH', link: 'https://www.health.go.ke/'},
@@ -46,7 +47,15 @@ const Footer = () => {
                                     link={l.link}
                                     title={l.title}/>)}
                             </FooterLinks>
-                            <FooterInfo/>
+                             <FooterLinks header='Blog'>
+                                {!blogs || blogErr ? <div>Loading</div> :
+                                    blogs.map(s => <FooterLink
+                                        key={s._id}
+                                        link={`/blogs/${s.slug}`}
+                                        title={s.title}/>)
+                                }
+                            </FooterLinks>
+
                         </div>
                     </div>
                 </div>

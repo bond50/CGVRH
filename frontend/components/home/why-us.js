@@ -1,5 +1,6 @@
 import React from 'react';
 import {Icon} from "@iconify/react";
+import Link from "next/link";
 
 const VihigaHospitalInfo = () => {
     const servicesData = [
@@ -38,9 +39,12 @@ const VihigaHospitalInfo = () => {
                                 medical care.
                             </p>
                             <div className="text-center">
-                                <a href="/about-us" className="more-btn">
-                                    Learn More <Icon icon='bx:chevron-right' className='icon'/>
-                                </a>
+                                <Link href={`services`}>
+                                    <a  className="more-btn">
+                                       All Services <Icon icon='bx:chevron-right' className='icon'/>
+                                    </a>
+                                </Link>
+
                             </div>
                         </div>
                     </div>

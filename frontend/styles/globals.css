@@ -79,10 +79,10 @@ p {
 #top-bar {
     background: var(--color-primary);
     min-height: 35px;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 400;
     transition: all 0.5s;
-    color: var(--color-white);
+    color: var(--color-cadimium-yellow);
     padding: 0;
 }
 
@@ -105,6 +105,7 @@ p {
 #top-bar .contact-info i span {
     padding-left: 5px;
     color: var(--color-white);
+    font-size: 12px;
 }
 
 #top-bar .contact-info i a {
@@ -121,7 +122,7 @@ p {
     color: rgba(var(--color-white), 0.7);
     line-height: 0;
     transition: 0.3s;
-    font-size: 15px;
+    font-size: 26px;
     margin-left: 20px;
 }
 
@@ -403,16 +404,16 @@ p {
         padding: 8px 20px;
         margin-left: 30px;
         border-radius: 50px;
-        color: var(--color-primary);
+        color: var(--color-black);
+        background: var(--color-cadimium-yellow);
         font-size: 14px;
-        border: 2px solid var(--color-primary);
         font-weight: 600;
     }
 
     .navbar .staff-link:hover,
     .navbar .staff-link:focus:hover {
-        color: #fff;
-        background: var(--color-primary);
+        color: var(--color-primary);
+
     }
 }
 
@@ -604,7 +605,7 @@ p {
 }
 
 .breadcrumbs ol a {
-text-transform: capitalize;
+    text-transform: capitalize;
     color: rgba(255, 255, 255, 0.8);
     transition: 0.3s;
 }
@@ -624,6 +625,7 @@ text-transform: capitalize;
     color: #fff;
     content: "/";
 }
+
 
 @media (max-width: 726px) {
     .breadcrumbs h1 {
@@ -749,7 +751,7 @@ section {
 
 #home-hero {
     width: 100%;
-    height: 75vh;
+    height: 80vh;
     position: relative;
     padding: 160px 0 80px 0;
     display: flex;
@@ -774,9 +776,9 @@ section {
 #home-hero:before {
     /*background: linear-gradient(45deg, rgba(0, 128, 0, 0.55), rgba(255, 255, 0, 0.545));*/
     /*background: linear-gradient(45deg, rgba(29, 224, 153, 0.4), rgba(29, 200, 205, 0.7));*/
-    /*opacity: 0.5;*/
+    opacity: 0.5;
     content: '';
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.66);
     position: absolute;
     inset: 0;
     z-index: 2;
@@ -791,7 +793,7 @@ section {
     margin-left: 110px;
     background: rgba(4, 4, 4, 0.7);
     color: #fff;
-    border-right: 8px solid var(--color-primary);
+    border-right: 8px solid var(--color-cadimium-yellow);
 }
 
 
@@ -802,35 +804,38 @@ section {
 
 .hero-header h2 {
     font-family: var(--font-default);
-    font-size: 28px;
-    line-height: 28px;
-    font-weight: 400;
-    text-shadow: 3px 3px var(--color-primary);
+    font-size: 26px;
+    line-height: 26px;
+    font-weight: 700;
+    color: var(--color-cadimium-yellow);
+    /*text-shadow: 3px 3px var(--color-primary);*/
     position: relative;
+    margin-bottom: 20px;
 
 }
 
-.hero-header h2:before,
-.hero-header h2:after {
-    content: "";
-    width: 15px;
-    height: 3px;
-    background: var(--color-yellow);
-    display: inline-block;
-}
+/*.hero-header h2:before,*/
+/*.hero-header h2:after {*/
+/*    content: "";*/
+/*    width: 15px;*/
+/*    height: 3px;*/
+/*    background: var(--color-yellow);*/
+/*    display: inline-block;*/
+/*}*/
 
-.hero-header h2:before {
-    margin: 0 15px 10px 0;
-    font-size: 14px;
-}
+/*.hero-header h2:before {*/
+/*    margin: 0 15px 10px 0;*/
+/*    font-size: 14px;*/
+/*}*/
 
-.hero-header h2:after {
-    margin: 0 0 10px 15px;
-}
+/*.hero-header h2:after {*/
+/*    margin: 0 0 10px 15px;*/
+/*}*/
 
 .hero-header p {
     margin: 0 auto;
-    font-size: 15px;
+    font-size: 13px;
+    color: var(--color-white);
 }
 
 /*@media (min-width: 1199px) {*/
@@ -861,10 +866,11 @@ section {
     }
 
     #home-hero h2 {
-        font-size: 32px;
-        line-height: 36px;
+        font-size: 28px;
+        line-height: 28px;
         font-weight: 700;
         text-shadow: none;
+        margin-bottom: 10px;
     }
 
     .hero-header h2:before,
@@ -1559,13 +1565,15 @@ section {
 }
 
 .hospital-info .content h3 {
-    font-weight: 700;
+    font-weight: 500;
     font-size: 34px;
+    color: var(--color-cadimium-yellow);
     margin-bottom: 30px;
 }
 
 .hospital-info .content p {
     margin-bottom: 30px;
+    font-size: 14px;
 }
 
 .hospital-info .content .more-btn {
@@ -1582,7 +1590,7 @@ section {
 }
 
 .hospital-info .content .more-btn:hover {
-    color: #1977cc;
+    color: var(--color-yellow);
     background: #fff;
 }
 
@@ -1598,10 +1606,10 @@ section {
 
 .hospital-info .services-boxes .service-box .icon {
     font-size: 80px !important;
-    color: var(--color-primary) !important;
+    color: var(--color-yellow) !important;
     margin-bottom: 30px;
     padding: 10px;
-    border: 1px solid var(--color-yellow);
+    border: 1px solid var(--color-yellow) !important;
 
 }
 
@@ -1620,42 +1628,36 @@ section {
 
 .services-detail h2, .services-detail h3, .services-detail h4, .services-detail h5, .services-detail h6 {
     margin-bottom: 20px;
-    font-size: 22px;
-    color: var(--color-secondary);
+    font-weight: 700;
+    font-family: var(--font-secondary);
+    color: var(--color-primary);
 }
 
 .services-detail h2::first-letter, .services-detail h3::first-letter, .services-detail h4::first-letter, .services-detail h5::first-letter, .services-detail h6::first-letter {
     text-transform: uppercase;
 }
 
-
-.services-detail h2 {
-    font-weight: 600;
-    font-size: 24px;
-}
-
-.services-detail h3 {
-    font-weight: 500;
-    font-size: 22px;
-}
-
-.services-detail h4 {
-    font-weight: 600;
-    font-size: 20px;
-}
-
-.services-detail h6 {
-    font-weight: 600;
-    font-size: 18px;
-}
-
 .services-detail p {
-    margin: 0 0 15px;
+    margin: 0 0 10px;
+    line-height: 16px;
+    font-size: 14px;
+
 }
 
-.services-detail p, .services-detail ul li {
-    /*color: #000000;*/
+.services-detail ul {
+    list-style-type: none;
+
 }
+
+.services-detail ul li {
+    color: var(--color-black)
+}
+
+.services-detail ul li::before {
+    content: url('https://api.iconify.design/bi/chevron-double-right.svg?height=14&color=%23#000000');
+    margin-right: 10px;
+}
+
 
 
 .services-detail blockquote {
@@ -1688,7 +1690,7 @@ section {
 }
 
 .services-list .services-list-items, .services-detail .services-detail-items {
-    padding: 10px;
+    padding: 0px;
     /*border: 1px solid #eeeeee;*/
     margin-bottom: 20px;
     background: var(--color-white);
@@ -1700,9 +1702,9 @@ section {
 
 
 .services-list .services-list-items h2, .services-detail .services-detail-items h2 {
-    background: var(--color-secondary);
+    background: var(--color-primary);
     color: var(--color-white);
-    border: 1px solid var(--color-secondary);
+    border: 1px solid var(--color-primary);
     font-size: 18px;
     font-weight: 400;
     padding: 8px 0 8px 15px;
@@ -1720,7 +1722,7 @@ section {
     border: 1px solid #fff;
     background: #fff;
     margin: 20px 0;
-    color: var(--color-secondary);
+    color: var(--color-primary);
     transition: 0.3s;
     justify-content: space-between;
     text-transform: capitalize;
@@ -1729,7 +1731,7 @@ section {
 .services-list .services-list-items .tags .icon, .services-detail .icon {
     font-size: 20px !important;
     margin-right: 10px;
-    color: var(--color-secondary);
+    color: var(--color-primary);
 }
 
 
@@ -1768,7 +1770,7 @@ section {
 
 
 .services-list .service-item h3 {
-    color: var(--color-secondary1);
+    color: var(--color-primary);
     font-weight: 700;
     margin: 0 0 20px 0;
     padding-bottom: 8px;
