@@ -737,7 +737,7 @@ section {
 #home-hero:before {
     /*background: linear-gradient(45deg, rgba(0, 128, 0, 0.55), rgba(255, 255, 0, 0.545));*/
     /*background: linear-gradient(45deg, rgba(29, 224, 153, 0.4), rgba(29, 200, 205, 0.7));*/
-    opacity: 0.5;
+    /*opacity: 0.5;*/
     content: '';
     /*background: rgba(0, 0, 0, 0.66);*/
     position: absolute;
