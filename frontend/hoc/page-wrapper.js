@@ -7,7 +7,7 @@ import {useRouter} from "next/router";
 import {Icon} from "@iconify/react";
 
 
-const PageWrapper = ({related, page}) => {
+const PageWrapper = ({related,children,title}) => {
 
 
 
@@ -17,9 +17,9 @@ const PageWrapper = ({related, page}) => {
         <section className='services-detail'>
             <div className="container " data-aos="fade-up" data-aos-delay="100">
                 <div className="row">
-                    <div className="col-lg-4 order-lg-1 order-2  ">
+                    <div className="col-lg-4 order-lg-1 order-2">
                         <div className="services-detail-items">
-                            <h2>Related</h2>
+                            <h2>{title}</h2>
                             <div className="tags">
                                 {related.map(pg => {
                                     return <Link href={`/services/${pg.slug}`} key={pg._id}>
@@ -33,7 +33,7 @@ const PageWrapper = ({related, page}) => {
                         </div>
                     </div>
                     <div className='col-lg-8 order-lg-2 order-1'>
-                        {renderHTML(page.body)}
+                        {children}
                     </div>
                 </div>
             </div>

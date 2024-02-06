@@ -8,6 +8,7 @@ import Layout from "../../hoc/Layout";
 import {Icon} from '@iconify/react';
 import {generateExcerpt} from "../../components/reusables/functions/generate-excerpt";
 import Pagination from 'rc-pagination';
+import PageWrapper from "../../hoc/page-wrapper";
 
 const Index = ({paginationData, size, page, generalData}) => {
     const router = useRouter();
@@ -74,16 +75,7 @@ const Index = ({paginationData, size, page, generalData}) => {
         </Head>
     );
 
-    const showList = generalData.map(pg => {
-        return <Link href={`/services/${pg.slug}`} key={pg._id}>
-            <div className='tag'>
-                <span>{pg.title}</span>
-                <Icon icon="gg:chevron-double-right-o" className='icon'/>
-            </div>
-        </Link>
 
-    })
-    // Inside your renderPagination function
 
     const PerPageChange = (value) => {
         setLimit(value);
@@ -112,63 +104,50 @@ const Index = ({paginationData, size, page, generalData}) => {
     return (
         <>
             {head()}
-            <Layout pages={generalData}>
-                <section id="services-list" className="services-list section-bg" ref={firstItemRef}>
-                    <div className="container " data-aos="fade-up" data-aos-delay="100">
-                        <div className="row">
-                            <div className="col-lg-4 order-lg-1 order-2 bg-white">
-                                <div className="services-list-items">
-                                    <h2>All services</h2>
-                                    <div className="tags">
-                                        {showList}
+            <Layout pages={generalData} >
+
+                <main>
+                    <PageWrapper related={generalData} title={`All Services`}>
+                        <div className="row gy-4">
+                            {data.map((service, index) => (
+                                <div
+                                    key={index}
+                                    className="col-lg-6 col-md-6 services-list"
+                                    data-aos="fade-up"
+                                    data-aos-delay={100 * index}>
+                                    <div className="service-item position-relative">
+                                        <div className="icon">
+                                            <Icon icon='uil:medical-drip' className='item-icon'/>
+                                        </div>
+                                        <h3>{service.title}</h3>
+                                        <p>{generateExcerpt(service.excerpt, 160)}</p>
+                                        <Link href={`/services/${service.slug}`}>
+                                            <a className="readmore stretched-link">Continue reading
+                                                <Icon icon="eva:arrow-right-fill" className='icon2'/>
+                                            </a>
+                                        </Link>
+
                                     </div>
                                 </div>
-                            </div>
-                            <div className="col-lg-8 order-lg-2 order-1 items">
-                                <div className="row gy-4">
-                                    {data.map((service, index) => (
-                                        <div
-                                            key={index}
-                                            className="col-lg-6 col-md-6"
-                                            data-aos="fade-up"
-                                            data-aos-delay={100 * index}>
-                                            <div className="service-item position-relative">
-                                                <div className="icon">
-                                                    <Icon icon='uil:medical-drip' className='item-icon'/>
-                                                </div>
-                                                <h3>{service.title}</h3>
-                                                <p>{generateExcerpt(service.excerpt, 160)}</p>
-                                                <Link href={`/services/${service.slug}`}>
-                                                    <a className="readmore stretched-link">Continue reading
-                                                        <Icon icon="eva:arrow-right-fill" className='icon2'/>
-                                                    </a>
-                                                </Link>
-
-                                            </div>
-                                        </div>
-                                    ))}
-
-                                </div>
-
-                                <div className="d-flex justify-content-center pagination">
-                                    <Pagination
-                                        className="pagination-data"
-                                        showTotal={(total, range) => `Showing ${range[0]}-${range[1]} of ${total}`}
-                                        onChange={PaginationChange}
-                                        total={totalCount}
-                                        current={current}
-                                        pageSize={limit}
-                                        showSizeChanger={false}
-                                        itemRender={PrevNextArrow}
-                                        onShowSizeChange={PerPageChange}
-                                    />
-                                </div>
-
-                            </div>
+                            ))}
 
                         </div>
-                    </div>
-                </section>
+
+                        <div className="d-flex justify-content-center pagination">
+                            <Pagination
+                                className="pagination-data"
+                                showTotal={(total, range) => `Showing ${range[0]}-${range[1]} of ${total}`}
+                                onChange={PaginationChange}
+                                total={totalCount}
+                                current={current}
+                                pageSize={limit}
+                                showSizeChanger={false}
+                                itemRender={PrevNextArrow}
+                                onShowSizeChange={PerPageChange}
+                            />
+                        </div>
+                    </PageWrapper>
+                </main>
             </Layout>
         </>
     )

@@ -5,6 +5,7 @@ import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import {getAllSlugs, listRelated, singlePage} from "../../actions/general";
 import PageWrapper from "../../hoc/page-wrapper";
 import Layout from "../../hoc/Layout";
+import renderHTML from "react-render-html";
 
 const Slug = ({service, query}) => {
     const [related, setRelated] = useState([])
@@ -47,7 +48,9 @@ const Slug = ({service, query}) => {
 
     const showPage = () => {
     return service ? (
-        <PageWrapper page={service} related={related} />
+        <PageWrapper  related={related} title={`Related to ${service.title}`}>
+            {renderHTML(service.body)}
+        </PageWrapper>
     ) : (
         <div>Loading...</div>
     );

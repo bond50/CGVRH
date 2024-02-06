@@ -1,7 +1,7 @@
 :root {
-    --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-default: "Questrial", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-primary: "Roboto", sans-serif;
-    --font-secondary: "Work Sans", sans-serif;
+    --font-secondary: "Open Sans", sans-serif;
 }
 
 /* Colors */
@@ -20,6 +20,7 @@
     --color-white: #ffffff;
     --color-black: #000000;
     --color-white-rgb: 255, 255, 255;
+    --color-header: #52565e;
 
 }
 
@@ -36,7 +37,7 @@ body {
     text-transform: none;
     letter-spacing: -0.13px;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 24px;
     color: var(--color-default);
 }
@@ -79,7 +80,7 @@ p {
 #top-bar {
     background: var(--color-primary);
     min-height: 35px;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
     transition: all 0.5s;
     color: var(--color-cadimium-yellow);
@@ -238,7 +239,7 @@ p {
         align-items: center;
         justify-content: space-between;
         padding: 10px 15px;
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 400;
         text-transform: capitalize;
         color: var(--color-default);
@@ -249,7 +250,7 @@ p {
 
     .navbar a i,
     .navbar a:focus i {
-        font-size: 12px;
+        font-size: 13px;
         line-height: 0;
         margin-left: 5px;
     }
@@ -316,7 +317,7 @@ p {
 
     .navbar .dropdown ul a {
         padding: 10px 20px;
-        font-size: 12px;
+        font-size: 13px;
         text-transform: capitalize !important;
         font-weight: 500;
         color: var(--color-default);
@@ -363,7 +364,7 @@ p {
 
     .navbar .megamenu ul li a {
         text-transform: capitalize;
-        font-size: 12px;
+        font-size: 13px;
         line-height: 18px;
         padding: 8px 10px;
         white-space: normal; /* Allow text to wrap */
@@ -406,7 +407,7 @@ p {
         border-radius: 50px;
         color: var(--color-black);
         background: var(--color-cadimium-yellow);
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 600;
     }
 
@@ -577,7 +578,7 @@ p {
 
 .breadcrumbs:before {
     content: "";
-    background-color: rgba(27, 47, 69, 0.9);
+    background-color: rgba(27, 47, 69, 0.8);
     position: absolute;
     inset: 0;
 }
@@ -589,7 +590,7 @@ p {
     text-transform: capitalize;
     line-height: 36px;
     color: var(--color-white);
-    font-family: var(--font-secondary);
+
 }
 
 
@@ -602,6 +603,7 @@ p {
     font-size: 16px;
     font-weight: 600;
     color: var(--color-primary);
+     font-family: var(--font-primary);
 }
 
 .breadcrumbs ol a {
@@ -626,6 +628,9 @@ p {
     content: "/";
 }
 
+.breadcrumbs ol li nav ol li:last-child a {
+    color: var(--color-cadimium-yellow);
+}
 
 @media (max-width: 726px) {
     .breadcrumbs h1 {
@@ -1629,35 +1634,38 @@ section {
 .services-detail h2, .services-detail h3, .services-detail h4, .services-detail h5, .services-detail h6 {
     margin-bottom: 20px;
     font-weight: 700;
-    font-family: var(--font-secondary);
-    color: var(--color-primary);
+    font-size: 20px;
+    font-family: var(--font-default);
+    color: var(--color-header);
 }
 
 .services-detail h2::first-letter, .services-detail h3::first-letter, .services-detail h4::first-letter, .services-detail h5::first-letter, .services-detail h6::first-letter {
     text-transform: uppercase;
 }
 
-.services-detail p {
-    margin: 0 0 10px;
-    line-height: 16px;
-    font-size: 14px;
-
+.services-detail p{
+    line-height: 24px;
+    margin: 0 0 25px 0;
+    overflow: hidden;
+    font-weight: 500;
 }
+
+.services-detail p, .services-detail ul li {
+    color: var(--color-default);
+     font-weight: 500;
+}
+
 
 .services-detail ul {
     list-style-type: none;
 
 }
 
-.services-detail ul li {
-    color: var(--color-black)
-}
 
-.services-detail ul li::before {
-    content: url('https://api.iconify.design/bi/chevron-double-right.svg?height=14&color=%23#000000');
+.services-detail ul:not(.pagination-data) li::before {
+    content: url('https://api.iconify.design/bi/chevron-double-right.svg?height=14&color=%23364d59');
     margin-right: 10px;
 }
-
 
 
 .services-detail blockquote {
@@ -1689,8 +1697,8 @@ section {
     margin-bottom: 10px;
 }
 
-.services-list .services-list-items, .services-detail .services-detail-items {
-    padding: 0px;
+.services-detail .services-detail-items {
+    /*padding: 0px;*/
     /*border: 1px solid #eeeeee;*/
     margin-bottom: 20px;
     background: var(--color-white);
@@ -1702,50 +1710,46 @@ section {
 }
 
 
-.services-list .services-list-items h2, .services-detail .services-detail-items h2 {
+.services-detail .services-detail-items h2 {
     background: var(--color-primary);
     color: var(--color-white);
     border: 1px solid var(--color-primary);
-    font-size: 18px;
-    font-weight: 400;
+    font-size:16px;
+    font-family: var(--font-secondary);
     padding: 8px 0 8px 15px;
-    margin-top: 20px;
+    text-transform: capitalize;
+    /*margin-top: 20px;*/
 }
 
-.services-list .services-list-items .tags, .services-detail .services-detail-items .tags {
+.services-detail .services-detail-items .tags {
     margin: 20px;
-
 }
 
-.services-list .services-list-items .tag, .services-detail .services-detail-items .tag {
+.services-detail .services-detail-items .tag {
     display: flex;
     line-height: 1;
-    padding: 8px 0 8px 15px;
-    border: 1px solid var(--color-primary);
+    padding: 12px 0 10px 6px;
+    /*border: 1px solid var(--color-primary);*/
     background: #fff;
     margin: 20px 0;
-    color: var(--color-primary);
+    /*color: var(--color-primary);*/
     transition: 0.3s;
     justify-content: space-between;
     text-transform: capitalize;
 }
 
-.services-list .services-list-items .tags .icon, .services-detail .icon {
+.services-detail .icon {
     font-size: 20px !important;
     margin-right: 10px;
-    color: var(--color-primary);
+    color: var(--color-yellow);
 }
 
-
-.services-list .services-list-items .tag:hover, .services-detail .services-detail-items .tag:hover {
+.services-detail .services-detail-items .tag:hover {
     background: var(--color-cadimium-yellow);
     color: var(--color-black);
     border: none;
 }
 
-.services-list .items {
-    background: #eeeeee;
-}
 
 .services-list .service-item {
     padding: 20px;
@@ -1815,7 +1819,6 @@ section {
 .services-list .pagination {
     padding: 20px 0 20px 0;
     margin: 30px 0 0 0;
-
     background: var(--color-white);
 }
 
@@ -1944,6 +1947,13 @@ section {
 .rc-pagination-total-text button:hover {
     background-color: #eceff5;
     border-color: #eceff5;
+}
+
+@media screen and (max-width: 365px) {
+    .rc-pagination-total-text {
+        display: none;
+        visibility: hidden;
+    }
 }
 
 .about h2 {
