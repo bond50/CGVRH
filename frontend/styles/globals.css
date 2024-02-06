@@ -603,7 +603,7 @@ p {
     font-size: 16px;
     font-weight: 600;
     color: var(--color-primary);
-     font-family: var(--font-primary);
+    font-family: var(--font-primary);
 }
 
 .breadcrumbs ol a {
@@ -1631,16 +1631,40 @@ section {
 .services-detail h2, .services-detail h3, .services-detail h4, .services-detail h5, .services-detail h6 {
     margin-bottom: 20px;
     font-weight: 700;
-    font-size: 20px;
     font-family: var(--font-default);
     color: var(--color-header);
+}
+
+.services-detail h2 {
+    font-size: 28px;
+
+}
+
+.services-detail h3 {
+    font-size: 20px;
+
+}
+
+.services-detail h4 {
+    font-size: 18px;
+
+}
+
+.services-detail h5 {
+    font-size: 16px;
+
+}
+
+.services-detail h6 {
+    font-size: 16px;
+
 }
 
 .services-detail h2::first-letter, .services-detail h3::first-letter, .services-detail h4::first-letter, .services-detail h5::first-letter, .services-detail h6::first-letter {
     text-transform: uppercase;
 }
 
-.services-detail p{
+.services-detail p {
     line-height: 24px;
     margin: 0 0 25px 0;
     overflow: hidden;
@@ -1649,7 +1673,7 @@ section {
 
 .services-detail p, .services-detail ul li {
     color: var(--color-default);
-     font-weight: 500;
+    font-weight: 500;
 }
 
 
@@ -1711,7 +1735,7 @@ section {
     background: var(--color-primary);
     color: var(--color-white);
     border: 1px solid var(--color-primary);
-    font-size:16px;
+    font-size: 16px;
     font-family: var(--font-secondary);
     padding: 8px 0 8px 15px;
     text-transform: capitalize;
