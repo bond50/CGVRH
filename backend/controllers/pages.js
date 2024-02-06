@@ -377,6 +377,7 @@ exports.listPendingByUser = (req, res) => {
                 .populate('postedBy', '_id name username')
                 .select('_id title accepted slug postedBy createdAt updatedAt')
                 .sort({updatedAt: -1})
+
                 .exec((err1, data) => {
                     if (err) {
                         return res.status(400).json({
