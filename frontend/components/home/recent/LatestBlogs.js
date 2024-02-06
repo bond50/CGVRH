@@ -68,7 +68,7 @@ const LatestBlogs = () => {
                                 </div>
                                 <div className={classes.meta}>
                                     <span
-                                        className={classes.postDate}>{dayjs(blog.updatedAt).format("ddd, MMM D, YYYY h:mm A")}</span>
+                                        className={classes.postDate}>{dayjs(blog.createdAt).format("ddd, MMM D, YYYY h:mm A")}</span>
                                     <span className={classes.postAuthor}> /
                                         <Link
                                             href={`/profile/${blog.postedBy.username}`}>

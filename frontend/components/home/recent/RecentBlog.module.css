@@ -37,7 +37,6 @@
 }
 
 .postAuthor a {
-
     font-weight: 400;
     margin-left: 5px;
     text-transform: capitalize;
@@ -47,8 +46,7 @@
 .postTitle {
 
     text-transform: capitalize;
-
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     margin: 15px 0 0 0;
     position: relative;
@@ -57,14 +55,14 @@
 }
 
 .postTitle a {
-
-    color: var(--color-secondary);
+    color: var(--color-primary);
 }
 
 .postBox p {
     margin: 15px 0 0 0;
-
+    font-size: 14px;
     color: var(--color-default);
+    font-family: var(--font-secondary);
 }
 
 .readMore {
@@ -74,6 +72,8 @@
     line-height: 1;
     transition: 0.3s;
     margin-top: 15px;
+    color: var(--font-default);
+    font-family: var(--font-primary);
 
 }
 
@@ -85,7 +85,7 @@
 }
 
 .postBox:hover .postTitle {
-    color: var(--color-primary);
+    color: var(--color-yellow);
 }
 
 .postBox:hover .postImg img {

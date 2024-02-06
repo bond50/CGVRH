@@ -57,7 +57,6 @@ const HomeGallery = (props) => {
 
             <div className="section-title">
                 <h2>Gallery</h2>
-                {/*<h3>Explore Gallery</h3>*/}
                 <p><Link href='/media/gallery'>Explore our gallery for an in-depth look at our facilities and services</Link></p>
             </div>
             <div className="container-fluid">
