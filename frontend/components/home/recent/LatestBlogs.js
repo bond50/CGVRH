@@ -79,6 +79,7 @@ const LatestBlogs = () => {
                                     </span>
                                 </div>
                                 <h3 className={classes.postTitle}>
+
                                     <Link href={`/blogs/${blog.slug}`}>
                                         {blog.title.toLowerCase()}
                                     </Link>
