@@ -59,7 +59,7 @@ exports.create = (req, res) => {
 exports.listFeatured = (req, res) => {
     Page.find({featured: true, accepted: true})
         .select('_id title images excerpt slug')
-        .sort({createdAt: -1})
+        .sort({updatedAt: -1})
         .limit(4)
         .exec((err, data) => {
             if (err) {
@@ -75,7 +75,7 @@ exports.list = (req, res) => {
         .populate('categories', '_id name slug')
         .populate('postedBy', '_id name username')
         .select('_id title slug images excerpt categories postedBy createdAt updatedAt')
-        .sort({createdAt: -1})
+        .sort({updatedAt: -1})
         .exec((err, data) => {
             if (err) {
                 return res.json({
@@ -97,7 +97,7 @@ exports.listWithPagination = async (req, res) => {
             .populate('categories', '_id name slug')
             .populate('postedBy', '_id name username')
             .select('_id title slug excerpt createdAt updatedAt')
-            .sort({createdAt: -1})
+            .sort({updatedAt: -1})
             .skip((page - 1) * limit)
             .limit(parseInt(limit))
             .exec();
@@ -122,7 +122,7 @@ exports.listAllServicesCategoriesTags = (req, res) => {
     Page.find({})
         .populate('categories', '_id name slug')
         .populate('postedBy', '_id name username profile')
-        .sort({createdAt: -1})
+        .sort({updatedAt: -1})
         .select('_id title slug excerpt images categories postedBy createdAt updatedAt')
         .exec((err, data) => {
             if (err) {
@@ -148,7 +148,7 @@ exports.listAllServicesCategoriesTags = (req, res) => {
 exports.listAllSlugs = (req, res) => {
     Page.find({accepted: true})  // Assuming you only want slugs for accepted pages
         .select('slug')  // Select only the 'slug' field
-        .sort({createdAt: -1})  // Sort by creation date, newest first
+        .sort({updatedAt: -1}) // Sort by creation date, newest first
         .exec((err, data) => {
             if (err) {
                 return res.json({
@@ -197,7 +197,7 @@ exports.read = (req, res) => {
 
 exports.listServiceNamesAndSlugs = (req, res) => {
     Page.find({})
-        .sort({createdAt: -1})
+        .sort({updatedAt: -1})
         .select('_id title slug')
         .exec((err, data) => {
             if (err) {
@@ -218,6 +218,7 @@ exports.listRelated = (req, res) => {
     Page.find({categories: {$in: categories}})
         .limit(limit)
         .select('title slug')
+        .sort({updatedAt: -1})
         .exec((err, blogs) => {
             if (err) {
                 return res.status(400).json({
@@ -327,6 +328,7 @@ exports.listPending = (req, res) => {
     Page.find({accepted: false})
         .populate('postedBy', '_id name username')
         .select('_id title accepted slug postedBy createdAt updatedAt')
+        .sort({updatedAt: -1})
         .exec((err, data) => {
             if (err) {
                 return res.json({
@@ -350,6 +352,7 @@ exports.listByUser = (req, res) => {
                 .populate('categories', '_id name slug')
                 .populate('postedBy', '_id name username')
                 .select('_id title images accepted slug postedBy createdAt updatedAt')
+                .sort({updatedAt: -1})
                 .exec((err1, data) => {
                     if (err) {
                         return res.status(400).json({
@@ -373,6 +376,7 @@ exports.listPendingByUser = (req, res) => {
                 .populate('categories', '_id name slug')
                 .populate('postedBy', '_id name username')
                 .select('_id title accepted slug postedBy createdAt updatedAt')
+                .sort({updatedAt: -1})
                 .exec((err1, data) => {
                     if (err) {
                         return res.status(400).json({
