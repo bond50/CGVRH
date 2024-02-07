@@ -90,9 +90,9 @@ const Dropdown = ({caption, clicked, link, backendSlug, clientSideList}) => {
         if (clientSideList.length < 9) {
             return (
                 <li className={`dropdown`} onClick={handleClick}>
-                     {link ? <Link href={link}>
+                       {link ? <Link href={link}>
                         <a>
-                            <span onClick={clicked}>{caption}</span>
+                            <span onClick={clicked} >{caption}</span>
                             <i className="bi bi-chevron-down dropdown-indicator"></i>
                         </a>
                     </Link> : <a>
