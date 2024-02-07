@@ -100,8 +100,8 @@ const Dropdown = ({caption, clicked, link, backendSlug, clientSideList}) => {
                         <i className="bi bi-chevron-down dropdown-indicator"></i>
                     </a>}
                     <ul className={`${isOpen ? 'dropdown-active' : null}`}>
-                        {clientSideList.map(l => (
-                            <li key={l._id} onClick={clicked}>
+                        {clientSideList.map((l,i) => (
+                            <li key={i} onClick={clicked}>
                                 <Link href={l.to}>
                                     <a><span>{l.title}</span></a>
                                 </Link>
@@ -111,7 +111,7 @@ const Dropdown = ({caption, clicked, link, backendSlug, clientSideList}) => {
                 </li>
             );
         } else {
-            const chunkedItems = chunkArray(clientSideList);
+            const chunkedItems = chunkArray(clientSideList,4);
 
             return (
                 <li className={`dropdown megamenu`} onClick={handleClick}>
@@ -125,19 +125,24 @@ const Dropdown = ({caption, clicked, link, backendSlug, clientSideList}) => {
                         <i className="bi bi-chevron-down dropdown-indicator"></i>
                     </a>}
                     <ul className={`${isOpen ? 'dropdown-active' : null}`}>
-                        {chunkedItems.map((chunk, index) => (
-                            <li key={index} onClick={clicked}>
-                                {chunk.map((item) => (
-                                    <Link href={item.to} key={item._id}>
-                                        <a onClick={handleClick}>
-                                            <span className='d-flex align-items-center'><Icon
-                                                icon="solar:round-double-alt-arrow-right-line-duotone"
-                                                className='icon2'/>{item.title}  </span>
-                                        </a>
-                                    </Link>
-                                ))}
-                            </li>
-                        ))}
+                        {chunkedItems.map((chunk, index) => {
+                            console.log('CHUNK', chunk)
+                            return (
+                                <li key={index} onClick={clicked}>
+                                    {chunk.map((item,i) => {
+                                        return (
+                                            <Link href={item.to} key={i}>
+                                                <a onClick={handleClick}>
+                                                    <span className='d-flex align-items-center'><Icon
+                                                        icon="solar:round-double-alt-arrow-right-line-duotone"
+                                                        className='icon2'/>{item.title}  </span>
+                                                </a>
+                                            </Link>
+                                        );
+                                    })}
+                                </li>
+                            );
+                        })}
                     </ul>
                 </li>
             );
@@ -156,8 +161,8 @@ const Dropdown = ({caption, clicked, link, backendSlug, clientSideList}) => {
                         <i className="bi bi-chevron-down dropdown-indicator"></i>
                     </a>}
                     <ul className={`${isOpen ? 'dropdown-active' : null}`}>
-                        {loadedPages.map(item => (
-                            <li key={item._id} onClick={clicked}>
+                        {loadedPages.map((item,i) => (
+                            <li key={i} onClick={clicked}>
                                 <Link href={`/services/${item.slug}`} key={item._id}>
                                     <a> <span>{item.title}</span> </a>
                                 </Link>

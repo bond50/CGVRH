@@ -21,7 +21,7 @@ const PageWrapper = ({related,children,title}) => {
                         <div className="services-detail-items">
                             <h2>{title}</h2>
                             <div className="tags">
-                                {related.map(pg => {
+                                {related&&related.map(pg => {
                                     return <Link href={`/services/${pg.slug}`} key={pg._id}>
                                         <div className='tag'>
                                             <span>{pg.title}</span>

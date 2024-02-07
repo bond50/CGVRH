@@ -61,7 +61,7 @@ const GalleryIndex = () => {
         return 'Failed to load images from cloudinary '
     }
     if (data.length <= 0) {
-        return <Layout>
+        return <Layout pageTitle='Gallery'>
             <GeneralPageHeader title='Sorry nothing to show here'/>
         </Layout>
     }

@@ -44,7 +44,7 @@ const Index = ({paginationData, size, page, generalData}) => {
 
     const head = () => (
         <Head>
-            <title>Services| {APP_NAME}</title>
+            <title>Services | {APP_NAME}</title>
             <meta
                 name="description"
                 content={`All inpatient and out patient services offered at ${APP_NAME}. We take care of your health`}

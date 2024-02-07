@@ -40,11 +40,10 @@ const Nav = () => {
                     clicked={closeMobileNav}
                 >About us
                 </MyLink>
-
-                {dynamicCategories.map(category => (
+                {dynamicCategories.map((category, i) => (
                     <Dropdown
                         link={'/services'}
-                        key={category._id}
+                        key={i}
                         caption={category.name}
                         backendSlug={category.slug}
                         clicked={closeMobileNav}
@@ -60,11 +59,10 @@ const Nav = () => {
                     clicked={closeMobileNav}/>
 
                 <MyLink to="/blogs" clicked={closeMobileNav}>News and Events</MyLink>
+                <MyLink to="/contact" clicked={closeMobileNav}>Contact Us</MyLink>
 
-                {isAuth() && isAuth().role === 0 && (
-                    <MyLink to="/user" clicked={closeMobileNav}>Dashboard</MyLink>
-                )}
-                {isAuth() && isAuth().role === 1 && (
+
+                {isAuth() && (
                     <MyLink to="/admin2" clicked={closeMobileNav}>Dashboard</MyLink>
                 )}
 
@@ -73,21 +71,21 @@ const Nav = () => {
                     <li
                         onClick={() => signout(() => Router.replace(`/signin`))}
                     >
-                        <div className="signOut">Signout</div>
+                        <a href='#' className="">Signout</a>
                     </li>
                 )}
 
-                <MyLink
-                    to="/contact"
-                    clicked={closeMobileNav}
-                >Contact Us</MyLink>
-                <MyLink external
-                        className="staff-link"
-                        to="https://mail.vihigahospital.go.ke/"
-                        clicked={closeMobileNav}
-                >
-                    Access staff mail
-                </MyLink>
+                <li>
+                    <a href="https://mail.vihigahospital.go.ke" className='staff-link'>Access staff mail</a>
+                </li>
+
+                {/*<MyLink external*/}
+                {/*        className="staff-link"*/}
+                {/*        to="/"*/}
+                {/*        clicked={closeMobileNav}*/}
+                {/*>*/}
+                {/*    */}
+                {/*</MyLink>*/}
 
 
             </ul>

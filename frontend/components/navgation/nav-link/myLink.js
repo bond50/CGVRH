@@ -1,13 +1,12 @@
 import React from 'react';
 import Link from "next/link";
 
-const MyLink = ({children, to, active, clicked,className, external}) => {
+const MyLink = ({children, to, active, clicked}) => {
     return (
         <li onClick={clicked}>
-            {external ? <a href={to} className={`nav-link ${className} ${active ? 'active' : null}`}>{children}</a> : <Link href={to}>
-                <a className={`nav-link ${className} ${active ? 'active' : null}`}>{children}</a>
-            </Link>}
-
+            <Link href={to}>
+                <a className={`${active ? 'active' : ''}`}>{children}</a>
+            </Link>
         </li>
     );
 };

@@ -58,7 +58,7 @@ const Downloads = () => {
     return (
         <>
             {head()}
-            <Layout>
+            <Layout pageTitle='Downloads'>
                 <DownloadList files={files}/>
             </Layout>
         </>
