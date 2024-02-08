@@ -1,70 +1,55 @@
-import {handleResponse} from "./auth";
-import {API} from "../config";
+import {handleResponse,} from "./auth";
+import axiosInstance from "../axios/axios";
 import fetch from "isomorphic-fetch";
+import {API} from "../config";
 
 
-export const singleProject = (slug) => {
-    return fetch(`${API}/project/${slug}`, {
-        method: 'GET'
-    })
+export const createProject = async (projectData) => {
+    const response = await axiosInstance.post('/project', projectData);
+    return response.data;
+};
+
+export const getProject = (slug) => {
+    return axiosInstance.get(`/project/${slug}`)
         .then(response => {
-            return response.json();
+            return response.data;
         })
         .catch(err => console.log(err));
 };
 
 export const listProjects = () => {
-    let listEndpoint = `${API}/projects`
-
-    return fetch(`${listEndpoint}`, {
-        method: 'GET'
-    })
+    return axiosInstance.get('/projects')
         .then(response => {
-            return response.json();
+            return response.data;
         })
         .catch(err => console.log(err));
 };
 
-
-
-
-export const removeProject = (slug, token) => {
-
-    return fetch(`${API}/project/${slug}`, {
-        method: 'DELETE',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-        },
-    })
+export const removeProject = (slug) => {
+    return axiosInstance.delete(`/project/${slug}`)
         .then(response => {
-            handleResponse(response)
-            return response.json();
+            handleResponse(response);
+            return response.data;
         })
         .catch(err => console.log(err));
 };
 
+export const updateProject = (slug, project) => {
 
 
-
-
-export const updateProject = (project, token, slug) => {
-
-    return fetch(`${API}/project/${slug}`, {
-        method: 'PUT',
-        headers: {
-            Accept: 'application/json',
-            Authorization: `Bearer ${token}`
-        },
-        body: project
-    })
+    return axiosInstance.put(`/project/${slug}`, project)
         .then(response => {
-            handleResponse(response)
-            return response.json();
+            handleResponse(response);
+            return response.data;
         })
         .catch(err => console.log(err));
 };
 
-
+export const getAllProjectSlugs = () => {
+    return axiosInstance.get('/project/slugs')
+        .then(response => {
+            return response.data;
+        })
+        .catch(err => console.log(err));
+};
 

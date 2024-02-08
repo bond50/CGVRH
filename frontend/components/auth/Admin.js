@@ -6,7 +6,7 @@ const Admin = ({children}) => {
     useEffect(() => {
 
         if (!isAuth()) {
-            Router.push(`/admin-login`);
+            Router.push(`/signin`);
         } else if (isAuth().role !== 1) {
             Router.push(`/user`);
         }

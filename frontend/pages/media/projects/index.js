@@ -7,10 +7,11 @@ import PageWrapper from "../../../hoc/page-wrapper";
 import {Icon} from "@iconify/react";
 import {generateExcerpt} from "../../../components/reusables/functions/generate-excerpt";
 import Link from "next/link";
-import {list} from "../../../actions/general";
 import {listProjects} from "../../../actions/projects";
 
-const Projects = ({projects = [], services}) => {
+const Projects = ({projects}) => {
+
+
 
     const router = useRouter();
     const head = () => (<Head>
@@ -50,7 +51,7 @@ const Projects = ({projects = [], services}) => {
         {head()}
         <Layout pageTitle='Projects'>
             <main>
-                <PageWrapper related={services} title={`All Services`}>
+                <PageWrapper related={projects} title={`All Projects`}>
                     <div className="row gy-4">
                         {projects && projects.map((service, index) => (<div
                             key={index}
@@ -63,7 +64,7 @@ const Projects = ({projects = [], services}) => {
                                 </div>
                                 <h3>{service.title}</h3>
                                 <p>{generateExcerpt(service.excerpt, 160)}</p>
-                                <Link href={`/services/${service.slug}`}>
+                                <Link href={`/media/projects/${service.slug}`}>
                                     <a className="readmore stretched-link">Continue reading
                                         <Icon icon="eva:arrow-right-fill" className='icon2'/>
                                     </a>
@@ -80,20 +81,12 @@ const Projects = ({projects = [], services}) => {
 };
 export const getStaticProps = async () => {
     try {
-        const services = await list();
-        // const projects = await listProjects()
-
-        if (services.error) {
-            console.log(services.error);
-        }
-        // if (projects.error) {
-        //     console.log(projects.error);
-        // }
+        const projects = await listProjects()
         return {
             props: {
-                services: services,
-                // projects: projects
+                projects
             },
+
             revalidate: 60,
         };
     } catch (error) {
@@ -106,4 +99,5 @@ export const getStaticProps = async () => {
         };
     }
 };
+
 export default Projects;

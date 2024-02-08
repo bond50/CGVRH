@@ -51,6 +51,10 @@ const AdminSidebar = ({closed}) => {
         {title: 'Upload', slug: 'crud/upload-files'},
         {title: 'Tags', slug: 'crud/document-tag'},
     ]
+    const projectList = [
+        {title: 'Create', slug: 'crud/projects/create'},
+        {title: 'Manage Projects', slug: 'crud/projects'},
+    ]
     const tenderList = [
         {title: 'Upload/Add', slug: 'crud/tenders/create'},
         {title: 'Manage Tenders', slug: 'crud/tenders'},
@@ -188,6 +192,11 @@ const AdminSidebar = ({closed}) => {
                     <Accordion2 title='Gallery' icon='journal'>
                         <>
                             {accordionFunction(galleryList)}
+                        </>
+                    </Accordion2>
+                    <Accordion2 title='Project' icon='journal'>
+                        <>
+                            {accordionFunction(projectList)}
                         </>
                     </Accordion2>
                     <li className={classes.NavHeading}>Staff</li>

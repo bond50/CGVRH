@@ -56,6 +56,7 @@ exports.create = (req, res) => {
         );
     });
 }
+
 exports.listFeatured = (req, res) => {
     Page.find({featured: true, accepted: true})
         .select('_id title images excerpt slug')
@@ -74,7 +75,7 @@ exports.list = (req, res) => {
     Page.find({accepted: true})
         .populate('categories', '_id name slug')
         .populate('postedBy', '_id name username')
-        .select('_id title slug images excerpt categories postedBy createdAt updatedAt')
+        .select('_id title slug images metaTitle metaDesc excerpt categories postedBy createdAt updatedAt')
         .sort({updatedAt: -1})
         .exec((err, data) => {
             if (err) {
@@ -96,7 +97,7 @@ exports.listWithPagination = async (req, res) => {
         const data = await Page.find({accepted: true})
             .populate('categories', '_id name slug')
             .populate('postedBy', '_id name username')
-            .select('_id title slug excerpt createdAt updatedAt')
+            .select('_id title slug metaTitle metaDesc excerpt createdAt updatedAt')
             .sort({updatedAt: -1})
             .skip((page - 1) * limit)
             .limit(parseInt(limit))
@@ -123,7 +124,7 @@ exports.listAllServicesCategoriesTags = (req, res) => {
         .populate('categories', '_id name slug')
         .populate('postedBy', '_id name username profile')
         .sort({updatedAt: -1})
-        .select('_id title slug excerpt images categories postedBy createdAt updatedAt')
+        .select('_id title slug excerpt metaTitle metaDesc images categories postedBy createdAt updatedAt')
         .exec((err, data) => {
             if (err) {
                 return res.json({
@@ -145,20 +146,24 @@ exports.listAllServicesCategoriesTags = (req, res) => {
         });
 };
 
-exports.listAllSlugs = (req, res) => {
-    Page.find({accepted: true})  // Assuming you only want slugs for accepted pages
-        .select('slug')  // Select only the 'slug' field
-        .sort({updatedAt: -1}) // Sort by creation date, newest first
-        .exec((err, data) => {
-            if (err) {
-                return res.json({
-                    error: errorHandler(err)  // Assuming errorHandler is your custom error handling function
-                });
-            }
-            // Return only the slugs as an array
-            const slugs = data.map(page => page.slug);
-            res.json({slugs, size: slugs.length});
-        });
+exports.listAllSlugs = async (req, res) => {
+    try {
+        // Find all pages with accepted flag set to true, select only the 'slug' field,
+        // and sort by updatedAt date in descending order
+        const data = await Page.find({accepted: true})
+            .select('slug')
+            .sort({updatedAt: -1})
+            .exec();
+
+        // Extract slugs from the data array
+        const slugs = data.map(page => page.slug);
+
+        // Return slugs and size as JSON response
+        res.json({slugs, size: slugs.length});
+    } catch (error) {
+        // Handle errors
+        res.status(500).json({error: errorHandler(error)});
+    }
 };
 
 exports.photo = (req, res) => {
@@ -248,9 +253,6 @@ exports.remove = (req, res) => {
 
 
 exports.update = async (req, res) => {
-    console.log(req.body)
-
-
     try {
         const slug = req.params.slug.toLowerCase();
         req.body.excerpt = smartTrim(req.body.body, 320, ' ', ' ...');
@@ -265,63 +267,6 @@ exports.update = async (req, res) => {
     }
 
 
-    // const slug = req.params.slug.toLowerCase();
-    //
-    // Page.findOne({slug}).exec((err, oldPage) => {
-    //     if (err) {
-    //         return res.status(400).json({
-    //             error: errorHandler(err)
-    //         });
-    //     }
-    //
-    //     let form = new formidable.IncomingForm();
-    //     form.keepExtensions = true;
-    //
-    //     form.parse(req, (err, fields, files) => {
-    //         if (err) {
-    //             return res.status(400).json({
-    //                 error: 'Image could not upload'
-    //             });
-    //         }
-    //
-    //
-    //         let slugBeforeMerge = oldPage.slug;
-    //         oldPage = _.merge(oldPage, fields);
-    //         oldPage.slug = slugBeforeMerge;
-    //
-    //         const {body, desc, categories, tags} = fields;
-    //
-    //         if (body) {
-    //             oldPage.excerpt = smartTrim(body, 320, ' ', ' ...');
-    //             oldPage.desc = stripHtml(body.substring(0, 160));
-    //         }
-    //
-    //         if (categories) {
-    //             oldPage.categories = categories.split(',');
-    //         }
-    //
-    //
-    //         if (files.photo) {
-    //             if (files.photo.size > 2000000) {
-    //                 return res.status(400).json({
-    //                     error: 'Image should be less then 2mb in size'
-    //                 });
-    //             }
-    //             oldPage.photo.data = fs.readFileSync(files.photo.path);
-    //             oldPage.photo.contentType = files.photo.type;
-    //         }
-    //
-    //         oldPage.save((err, result) => {
-    //             if (err) {
-    //                 return res.status(400).json({
-    //                     error: errorHandler(err)
-    //                 });
-    //             }
-    //             // result.photo = undefined;
-    //             res.json(result);
-    //         });
-    //     });
-    // });
 };
 
 exports.listPending = (req, res) => {

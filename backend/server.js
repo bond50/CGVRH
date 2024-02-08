@@ -24,6 +24,8 @@ const documentTagRoutes = require('./routes/document-tag')
 const staffRoutes = require('./routes/sheets')
 const tenderRoutes = require('./routes/tender')
 const cloudinaryRoutes = require('./routes/cloudinary')
+const projectRoutes = require('./routes/project')
+
 
 
 const ip = require("ip");
@@ -94,6 +96,7 @@ app.use('/api', documentTagRoutes);
 app.use('/api', staffRoutes);
 app.use('/api', cloudinaryRoutes);
 app.use('/api', tenderRoutes);
+app.use('/api', projectRoutes);
 
 
 process.on('uncaughtException', function (exception) {

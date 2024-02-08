@@ -32,12 +32,11 @@ const Slug = ({service, query}) => {
                 {service.title} | {APP_NAME}
             </title>
             <meta name="description" content={service.metaDesc}/>
-
-            <link rel="canonical" href={`${DOMAIN}/general/${query.slug}`}/>
+            <link rel="canonical" href={`${DOMAIN}/services/${query.slug}`}/>
             <meta property="og:title" content={`${service.title}| ${APP_NAME}`}/>
             <meta property="og:description" content={service.metaDesc}/>
             <meta property="og:type" content="webiste"/>
-            <meta property="og:url" content={`${DOMAIN}/general/${query.slug}`}/>
+            <meta property="og:url" content={`${DOMAIN}/services/${query.slug}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
             <meta property="og:image" content={`${API}/page/photo/${service.slug}`}/>
             <meta property="og:image:secure_url" content={`${API}/page/photo/${service.slug}`}/>

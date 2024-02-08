@@ -1,15 +1,10 @@
 import Link from "next/link";
 import React from "react";
-import renderHTML from "react-render-html";
-import Image from 'next/image'
-import {API} from "../config";
-import {useRouter} from "next/router";
+
 import {Icon} from "@iconify/react";
 
 
-const PageWrapper = ({related,children,title}) => {
-
-
+const PageWrapper = ({related, children, title, project}) => {
 
 
     return (
@@ -21,8 +16,8 @@ const PageWrapper = ({related,children,title}) => {
                         <div className="services-detail-items">
                             <h2>{title}</h2>
                             <div className="tags">
-                                {related&&related.map(pg => {
-                                    return <Link href={`/services/${pg.slug}`} key={pg._id}>
+                                {related && related.map(pg => {
+                                    return <Link href={project ? `/media/projects/${pg.slug}` : `/services/${pg.slug}`} key={pg._id}>
                                         <div className='tag'>
                                             <span>{pg.title}</span>
                                             <Icon icon="gg:chevron-double-right-o" className='icon'/>

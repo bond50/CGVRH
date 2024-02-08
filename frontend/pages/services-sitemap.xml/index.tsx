@@ -5,12 +5,12 @@ import {API, DOMAIN} from "../../config";
 
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    const response = await fetch(`${API}/general`);
+    const response = await fetch(`${API}/services`);
     const loadedPages: any[] = await response.json();
 
 
     const fields: ISitemapField[] = loadedPages.map((p) => ({
-        loc: `${DOMAIN}/general/${p.slug}`,
+        loc: `${DOMAIN}/services/${p.slug}`,
         lastmod: new Date().toISOString(),
     }));
 

@@ -16,7 +16,6 @@ exports.upload = async (req, res) => {
         folder: folder
     })
 
-
     res.json({
         public_id: result.public_id,
         url: result.secure_url,
@@ -29,7 +28,6 @@ exports.upload = async (req, res) => {
 }
 exports.remove = (req, res) => {
     const imageId = req.body.public_id
-    res.send('ok')
     cloudinary.uploader.destroy(imageId, (err, result) => {
         console.log(result)
 
@@ -38,7 +36,6 @@ exports.remove = (req, res) => {
             res.json({success: false, err})
         }
         res.send('ok')
-        return
     })
 
 }
