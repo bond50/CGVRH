@@ -40,8 +40,8 @@ function Hero() {
 
             const isSmallScreen = window.innerWidth <= 768;
 
-            let excerptText = trim(d.excerpt, isSmallScreen ? 100 : 200);
-            const trimHeading = trim(d.title, isSmallScreen ? 42 : 60)
+            let excerptText = trim(d.excerpt, isSmallScreen ? 180 : 200);
+            // const trimHeading = trim(d.title, isSmallScreen ? 80 : 100)
 
             let photoLink;
             if (d.images && d.images.length > 0) {
@@ -78,7 +78,7 @@ function Hero() {
                         <div className="container">
                             <h2 className="animate__animated animate__fadeInDown">
                                 <Link href={link}>
-                                    <a><span>{trimHeading.toLowerCase()}</span></a>
+                                    <a><span>{d.title.toLowerCase()}</span></a>
                                 </Link>
                             </h2>
                             <div className=" animate__animated animate__fadeInUp">
