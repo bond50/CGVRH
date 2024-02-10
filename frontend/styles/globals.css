@@ -1056,8 +1056,8 @@ section {
 }
 
 @media (max-width: 768px) {
-    #hero h2 {
-        font-size: 24px;
+    #hero h2 a {
+        font-size: 20px;
     }
 }
 
@@ -1072,6 +1072,7 @@ section {
         height: 120vh;
     }
 }
+
 
 .preloader {
     position: fixed;
