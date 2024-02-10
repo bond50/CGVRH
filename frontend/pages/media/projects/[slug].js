@@ -43,7 +43,7 @@ const Slug = ({project, query}) => {
     );
 
     const showPage = () => {
-        return <PageWrapper related={projects} title={`Related to ${project.title}`} project>
+        return <PageWrapper related={projects} title={`Related to ${project.title}`} projectPage>
             {renderHTML(project.body)}
         </PageWrapper>
     };

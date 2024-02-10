@@ -8,27 +8,11 @@ const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
 const dotenv = require('dotenv');
 dotenv.config();
-const blogRoutes = require('./routes/blog')
-const authRoutes = require('./routes/auth')
-const userRoutes = require('./routes/user')
-const categoryRoutes = require('./routes/category')
-const tagRoutes = require('./routes/tag')
-const formRoutes = require('./routes/form')
-const uploadRoute = require('./routes/fileUpload')
-const serviceRoutes = require('./routes/pages')
-const pageCategoryRoutes = require('./routes/page-category')
-const serviceTagRoutes = require('./routes/service-tag')
-const searchRoutes = require('./routes/search')
-const galleryTagRoutes = require('./routes/gallery-tag')
-const documentTagRoutes = require('./routes/document-tag')
-const staffRoutes = require('./routes/sheets')
-const tenderRoutes = require('./routes/tender')
-const cloudinaryRoutes = require('./routes/cloudinary')
-const projectRoutes = require('./routes/project')
 
 
 
 const ip = require("ip");
+const {readdirSync} = require("fs");
 const app = express()
 
 
@@ -80,24 +64,7 @@ const port = process.env.PORT || 8000
 
 // route middleware
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use('/api', blogRoutes);
-app.use('/api', authRoutes);
-app.use('/api', tagRoutes);
-app.use('/api', userRoutes);
-app.use('/api', categoryRoutes);
-app.use('/api', formRoutes);
-app.use('/api', uploadRoute,);
-app.use('/api', serviceRoutes);
-app.use('/api', serviceTagRoutes);
-app.use('/api', pageCategoryRoutes);
-app.use('/api', searchRoutes);
-app.use('/api', galleryTagRoutes);
-app.use('/api', documentTagRoutes);
-app.use('/api', staffRoutes);
-app.use('/api', cloudinaryRoutes);
-app.use('/api', tenderRoutes);
-app.use('/api', projectRoutes);
-
+readdirSync('./routes/').map(r => app.use('/api', require(`./routes/${r}`)))
 
 process.on('uncaughtException', function (exception) {
     console.log(exception); // to see your exception details in the console

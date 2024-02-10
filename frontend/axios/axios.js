@@ -1,12 +1,15 @@
-import {getCookie} from "../actions/auth";
-import {API} from "../config";
+
 import axios from "axios";
+import {API} from "../config";
+import {getCookie} from "../actions/auth";
 
 const token = getCookie('token');
 
 
 const axiosInstance = axios.create({
     baseURL: API,
+    xsrfCookieName: 'csrftoken',
+    xsrfHeaderName: 'X-CSRFToken',
     headers: {
         'Authorization': `Bearer ${token}`
     }
@@ -19,3 +22,7 @@ axiosInstance.interceptors.request.use((req) => {
     return req;
 })
 export default axiosInstance
+
+const fetcher = ({url, method}) => axiosInstance[method](url).then((res) => res.data);
+const optionsFetcher = (url) => axiosInstance.options(url).then((res) => res.data);
+export { fetcher, optionsFetcher };

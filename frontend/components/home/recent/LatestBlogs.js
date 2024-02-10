@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {API} from "../../../config";
 import dayjs from "dayjs";
-import Image from "next/image";
+import Image from "../../reusables/lazy/Image";
 import useSWR from "swr";
 
 import Preloader from "../../preloader";

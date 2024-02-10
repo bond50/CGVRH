@@ -15,6 +15,7 @@ const Nav = () => {
     const [open, setOpen] = useState(false);
 
     const dynamicCategories = DynamicCats();
+    console.log('Dynamic',dynamicCategories)
 
     const toggleOpen = () => {
         setOpen((prevState) => !prevState);
@@ -40,7 +41,7 @@ const Nav = () => {
                     clicked={closeMobileNav}
                 >About us
                 </MyLink>
-                {dynamicCategories.map((category, i) => (
+                {dynamicCategories&&dynamicCategories.map((category, i) => (
                     <Dropdown
                         link={'/services'}
                         key={i}

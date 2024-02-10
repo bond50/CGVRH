@@ -47,7 +47,7 @@ const Slug = ({service, query}) => {
 
     const showPage = () => {
     return service ? (
-        <PageWrapper  related={related} title={`Related to ${service.title}`}>
+        <PageWrapper  related={related} title={`Related to ${service.title}`} >
             {renderHTML(service.body)}
         </PageWrapper>
     ) : (

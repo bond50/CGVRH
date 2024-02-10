@@ -51,7 +51,7 @@ const Projects = ({projects}) => {
         {head()}
         <Layout pageTitle='Projects'>
             <main>
-                <PageWrapper related={projects} title={`All Projects`}>
+                <PageWrapper related={projects} title={`All Projects`} projectPage>
                     <div className="row gy-4">
                         {projects && projects.map((service, index) => (<div
                             key={index}

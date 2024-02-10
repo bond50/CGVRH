@@ -126,7 +126,6 @@ exports.getGallery = async (req, res) => {
                     error: errorHandler(err)
                 });
             }
-            console.log(data)
             res.json(data);
         });
 }
@@ -141,7 +140,6 @@ exports.getGalleryFormHomePage = async (req, res) => {
                     error: errorHandler(err)
                 });
             }
-            console.log(data)
             res.json(data);
         });
 }

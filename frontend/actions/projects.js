@@ -24,6 +24,13 @@ export const listProjects = () => {
         })
         .catch(err => console.log(err));
 };
+export const listFeatured = () => {
+    return axiosInstance.get('/featured-all')
+        .then(response => {
+            return response.data;
+        })
+        .catch(err => console.log(err));
+};
 
 export const removeProject = (slug) => {
     return axiosInstance.delete(`/project/${slug}`)
