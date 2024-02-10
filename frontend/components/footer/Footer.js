@@ -37,7 +37,7 @@ const Footer = () => {
                                 {!services || error ? <div>Loading</div> :
                                     services.map(s => <FooterLink
                                         key={s._id}
-                                        link={`/general/${s.slug}`}
+                                        link={`/services/${s.slug}`}
                                         title={s.title}/>)
                                 }
                             </FooterLinks>
