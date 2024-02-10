@@ -1049,7 +1049,6 @@ section {
     /*    height: 100vh;*/
     /*}*/
     #hero .carousel-container {
-        text-align: center;
         max-width: 70%;
         left: 15%;
     }
