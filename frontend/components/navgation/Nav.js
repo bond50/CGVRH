@@ -15,7 +15,7 @@ const Nav = () => {
     const [open, setOpen] = useState(false);
 
     const dynamicCategories = DynamicCats();
-    console.log('Dynamic',dynamicCategories)
+
 
     const toggleOpen = () => {
         setOpen((prevState) => !prevState);
