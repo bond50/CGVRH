@@ -588,7 +588,7 @@ p {
 
 .breadcrumbs:before {
     content: "";
-    background-color: rgba(27, 47, 69, 0.4);
+    background-color: rgba(27, 47, 69, 0.89);
     position: absolute;
     inset: 0;
 }
