@@ -1,6 +1,7 @@
 import {handleResponse,} from "./auth";
 import axiosInstance from "../axios/axios";
 import axios from 'axios'
+import {API} from "../config";
 
 
 export const createProject = async (projectData) => {
@@ -52,7 +53,7 @@ export const updateProject = (slug, project) => {
 };
 
 export const getAllProjectSlugs = () => {
-    return axios.get('/project/slugs')
+    return axios.get(`${API}/project/slugs`)
         .then(response => {
             return response.data;
         })
