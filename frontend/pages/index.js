@@ -64,26 +64,24 @@ export default function Home() {
         <>
             {head()}
 
-            <div className='mt-5 pt-5'>
-                HELLO
-            </div>
-            {/*<Layout home>*/}
 
-            {/*    <WhyUs/>*/}
+            <Layout home>
+
+                <WhyUs/>
 
 
-            {/*    <Clients/>*/}
-            {/*    <HomeCounter/>*/}
+                <Clients/>
+                <HomeCounter/>
 
-            {/*    <About/>*/}
-            {/*    <Gallery/>*/}
-            {/*    <FeaturedServices/>*/}
-            {/*    <Cta/>*/}
-            {/*    <LatestBlogs/>*/}
+                <About/>
+                <Gallery/>
+                <FeaturedServices/>
+                <Cta/>
+                <LatestBlogs/>
 
 
-            {/*   */}
-            {/*</Layout>*/}
+
+            </Layout>
         </>
 
     )
