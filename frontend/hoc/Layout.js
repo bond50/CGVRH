@@ -27,7 +27,7 @@ const Layout = ({children, pages, imageUrl, pageTitle, home}) => {
                 {!home && <Breadcrumb imageUrl={imageUrl} pageTitle={pageTitle}/>}
                 {children}
             </main>
-            <Footer disabled={list} services={services} blogs={blogs}/>
+            {/*<Footer disabled={list} services={services} blogs={blogs}/>*/}
         </>
     );
 
