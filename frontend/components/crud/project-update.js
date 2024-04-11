@@ -5,7 +5,7 @@ import FileUpload from "../FileUpload";
 import {getProject, updateProject} from "../../actions/projects";
 import {useRouter} from "next/router";
 
-const ProjectUpdate = ({match}) => {
+const ProjectUpdate = () => {
     const [values, setValues] = useState({
         error: '',
         success: '',

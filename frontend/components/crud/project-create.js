@@ -19,7 +19,7 @@ const ProjectCreate = () => {
     const [body, setBody] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const {title, description, progress, error, success, images, sizeError} = values;
+    const {title, description, progress, error, success, images} = values;
 
     const handleChange = (e) => {
         const {name, value} = e.target;

@@ -1,6 +1,6 @@
 import classes from '../../styles/Footer.module.css'
 import FooterLinks from "./FooterLinks/FooterLinks";
-import FooterInfo from "./FooterInfo/FooterInfo";
+
 import FooterContact from "./FooterContact";
 import useSWR from "swr";
 import {API} from "../../config";

@@ -124,7 +124,7 @@ exports.listAllSlugs = async (req, res) => {
         // Extract slugs from the data array
         const slugs = data.map(page => page.slug);
 
-        res.json(slugs);
+        res.json({slugs});
     } catch (error) {
         // Handle errors
         res.status(500).json({error: errorHandler(error)});

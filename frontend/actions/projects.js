@@ -1,6 +1,6 @@
 import {handleResponse,} from "./auth";
 import axiosInstance from "../axios/axios";
-import axios from 'axios'
+import fetch from "isomorphic-fetch";
 import {API} from "../config";
 
 
@@ -53,10 +53,19 @@ export const updateProject = (slug, project) => {
 };
 
 export const getAllProjectSlugs = () => {
-    return axios.get(`${API}/project/slugs`)
+   return fetch(`${API}/project/slugs`, {  // Replace '/blogs/slugs' with the actual endpoint that returns all blog slugs
+        method: 'GET'
+    })
         .then(response => {
-            return response.data;
+            handleResponse(response);  // Optional: handle the response if needed
+            return response.json();
         })
-        .catch(err => console.log(err));
+        .then(data => {
+            return data.slugs;  // Assuming the response has a 'slugs' field that contains an array of slugs
+        })
+        .catch(err => {
+            console.log(err);
+            return [];
+        });
 };
 

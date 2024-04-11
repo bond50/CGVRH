@@ -12,7 +12,6 @@ const Slug = ({service, query}) => {
 
     const loadRelated = () => {
         listRelated({service}).then(data => {
-            console.log(data)
             if (data.error) {
                 console.log(data.error)
             } else {

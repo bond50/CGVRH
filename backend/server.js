@@ -43,29 +43,29 @@ app.use(bodyParser.urlencoded({limit: "200mb", extended: true}));
 
 
 //cors
-const corsOptions = {
-    origin: process.env.NODE_ENV === 'production' ? process.env.CLIENT_URL : '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
-    credentials: true, // set to true if you need cookies to be sent across domains
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-
-
-app.use(cors(corsOptions));
-
-// app.use((req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', '*')
-//     res.header(
-//         'Access-Control-Allow-Headers',
-//         'Origin,X-Requested-With,Content-Type,Accept,Authorization')
+// const corsOptions = {
+//     origin: process.env.NODE_ENV === 'production' ? process.env.CLIENT_URL : '*',
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
+//     credentials: true, // set to true if you need cookies to be sent across domains
+//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
 //
-//     if (req.method === 'OPTIONS') {
-//         res.header('Access-Control-Allow-Methods', 'PUT,PATCH,POST,DELETE,GET')
-//         return res.status(200).json({})
-//     }
-//     next()
-// })
+//
+// app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header(
+        'Access-Control-Allow-Headers',
+        'Origin,X-Requested-With,Content-Type,Accept,Authorization')
+
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'PUT,PATCH,POST,DELETE,GET')
+        return res.status(200).json({})
+    }
+    next()
+})
 
 
 // port

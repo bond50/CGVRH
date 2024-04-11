@@ -22,6 +22,8 @@ const DynamicCats = () => {
         return []
     }
 
+    console.log('data',data)
+
     // Assuming data is an array of objects with id, name, and slug properties
     return data.map(category => ({
         id: category.id,

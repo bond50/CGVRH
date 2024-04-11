@@ -46,7 +46,7 @@ const FileUpload = ({values, setValues, setLoading, folder, loading}) => {
             headers: {
                 'Authorization': `Bearer ${token}`,
             }
-        }).then((r) => {
+        }).then(() => {
                 setLoading(false)
 
                 const {images} = values

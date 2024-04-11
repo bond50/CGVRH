@@ -102,7 +102,6 @@ const Slug = ({blog, query}) => {
 export const getStaticPaths = async () => {
     // Fetch all possible slugs for pre-rendering
     const slugs = await getAllBlogSlugs();
-    console.log(slugs)
     const paths = slugs.map(slug => ({ params: { slug } }));
     return { paths, fallback: 'blocking' };
 };
