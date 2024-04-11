@@ -5,6 +5,7 @@ import renderHTML from "react-render-html";
 import {getAllProjectSlugs, getProject, listProjects} from "../../../actions/projects";
 import PageWrapper from "../../../hoc/page-wrapper";
 import Layout from "../../../hoc/Layout";
+import {getAllSlugs} from "../../../actions/general";
 
 const Slug = ({project, query}) => {
     const [projects, setProjects] = useState([]);
@@ -81,14 +82,21 @@ export const getStaticProps = async ({params}) => {
         }
     });
 };
-
 export const getStaticPaths = async () => {
     const slugs = await getAllProjectSlugs();  // Fetch all possible slugs for pre-rendering
-    const paths = slugs?.map(slug => ({params: {slug}}));
-   console.log('Paths:', paths);
+    const paths = slugs.map(slug => ({params: {slug}}));
     return {
         paths,
         fallback: 'blocking',
     };
 };
+// export const getStaticPaths = async () => {
+//     const slugs = await getAllProjectSlugs();  // Fetch all possible slugs for pre-rendering
+//     const paths = slugs?.map(slug => ({params: {slug}}));
+//    console.log('Paths:', paths);
+//     return {
+//         paths,
+//         fallback: 'blocking',
+//     };
+// };
 export default Slug;
