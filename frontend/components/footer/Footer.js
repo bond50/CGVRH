@@ -2,28 +2,18 @@ import classes from '../../styles/Footer.module.css'
 import FooterLinks from "./FooterLinks/FooterLinks";
 
 import FooterContact from "./FooterContact";
-import useSWR from "swr";
-import {API} from "../../config";
+
 import FooterLink from "./FooterLinks/FooterLink";
 import {Fragment} from "react";
 import ScrollTop from "../ScrollTop";
 
 
-const Footer = () => {
+const Footer = ({list,services,blogs}) => {
 
-    const {data: services, error} = useSWR(`${API}/featured-general`)
-    const {data: blogs, error: blogErr} = useSWR(`${API}/featured-blogs`)
+
     const n = new Date()
     const thisYear = n.getFullYear()
-    const list = [
-        // {
-        //     title: 'Elephant System',
-        //     link: 'https://kenya.elephantprimarycare.com/'
-        // },
-        {title: 'County website', link: 'https://vihiga.go.ke/'},
-        {title: 'Health Management team', link: '/about-us/board-members'},
-        {title: 'MOH', link: 'https://www.health.go.ke/'},
-    ]
+
 
 
     return (
@@ -34,8 +24,7 @@ const Footer = () => {
                         <div className="row ">
                             <FooterContact/>
                             <FooterLinks header='Featured services'>
-                                {!services || error ? <div>Loading</div> :
-                                    services.map(s => <FooterLink
+                                {services?.map(s => <FooterLink
                                         key={s._id}
                                         link={`/services/${s.slug}`}
                                         title={s.title}/>)
@@ -48,8 +37,8 @@ const Footer = () => {
                                     title={l.title}/>)}
                             </FooterLinks>
                              <FooterLinks header='Blog'>
-                                {!blogs || blogErr ? <div>Loading</div> :
-                                    blogs.map(s => <FooterLink
+                                {
+                                    blogs?.map(s => <FooterLink
                                         key={s._id}
                                         link={`/blogs/${s.slug}`}
                                         title={s.title}/>)
