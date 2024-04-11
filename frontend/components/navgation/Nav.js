@@ -41,7 +41,7 @@ const Nav = () => {
                     clicked={closeMobileNav}
                 >About us
                 </MyLink>
-                {dynamicCategories&&dynamicCategories.map((category, i) => (
+                {dynamicCategories?.map((category, i) => (
                     <Dropdown
                         link={'/services'}
                         key={i}
