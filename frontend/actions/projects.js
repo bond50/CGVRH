@@ -1,7 +1,6 @@
 import {handleResponse,} from "./auth";
 import axiosInstance from "../axios/axios";
-import fetch from "isomorphic-fetch";
-import {API} from "../config";
+import axios from 'axios'
 
 
 export const createProject = async (projectData) => {
@@ -53,7 +52,7 @@ export const updateProject = (slug, project) => {
 };
 
 export const getAllProjectSlugs = () => {
-    return axiosInstance.get('/project/slugs')
+    return axios.get('/project/slugs')
         .then(response => {
             return response.data;
         })
