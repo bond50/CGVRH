@@ -69,6 +69,7 @@ const Slug = ({project, query}) => {
 };
 export const getStaticProps = async ({params}) => {
     return getProject(params.slug).then(data => {
+        console.log('data',data)
 
         if (data.error) {
             console.log(data.error);
@@ -83,8 +84,8 @@ export const getStaticProps = async ({params}) => {
 
 export const getStaticPaths = async () => {
     const slugs = await getAllProjectSlugs();  // Fetch all possible slugs for pre-rendering
-
     const paths = slugs.map(slug => ({params: {slug}}));
+    console.log('paths',paths)
     return {
         paths,
         fallback: 'blocking',
