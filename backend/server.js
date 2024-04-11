@@ -73,6 +73,10 @@ const port = process.env.PORT || 8000
 
 // route middleware
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.get('/', (req, res) => {
+  res.send('Welcome to Vihiga Teaching and Referral Hospital');
+});
+
 readdirSync('./routes/').map(r => app.use('/api', require(`./routes/${r}`)))
 
 process.on('uncaughtException', function (exception) {
