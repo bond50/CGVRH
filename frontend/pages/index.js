@@ -1,5 +1,5 @@
 import React from "react";
-import {APP_NAME, DOMAIN, FB_APP_ID} from "../config";
+import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../config";
 import {YearsOperated} from "../components/years-operated/YearsOperated";
 import {useRouter} from "next/router";
 import dynamic from 'next/dynamic'
@@ -57,27 +57,33 @@ export default function Home() {
         </Head>
     );
 
+    console.log('API', API)
+
 
     return (
         <>
             {head()}
-            <Layout home>
 
-                <WhyUs/>
-                {/*<CoreValues/>*/}
+            <div className='mt-5 pt-5'>
+                HELLO
+            </div>
+            {/*<Layout home>*/}
 
-                <Clients/>
-                <HomeCounter/>
-
-                <About/>
-                <Gallery/>
-                <FeaturedServices/>
-                <Cta/>
-                <LatestBlogs/>
+            {/*    <WhyUs/>*/}
 
 
-                {/*<Roles/>*/}
-            </Layout>
+            {/*    <Clients/>*/}
+            {/*    <HomeCounter/>*/}
+
+            {/*    <About/>*/}
+            {/*    <Gallery/>*/}
+            {/*    <FeaturedServices/>*/}
+            {/*    <Cta/>*/}
+            {/*    <LatestBlogs/>*/}
+
+
+            {/*   */}
+            {/*</Layout>*/}
         </>
 
     )

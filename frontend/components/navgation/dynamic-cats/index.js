@@ -12,7 +12,7 @@ const DynamicCats = () => {
             revalidateOnFocus: true,
         },
     );
-
+    console.log('API',API)
 
     if (error) {
         return <p>Failed to load categories</p>;
