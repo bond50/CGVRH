@@ -19,7 +19,7 @@ const PageWrapper = ({related, children, title, projectPage}) => {
                         <div className="services-detail-items">
                             <h2>{title}</h2>
                             <div className="tags">
-                                {related.map(pg => {
+                                {related?.map(pg => {
                                     return <Link href={projectPage ? `/media/projects/${pg.slug}` : `/services/${pg.slug}`}
                                                  key={pg._id}>
                                         <div className='tag'>
