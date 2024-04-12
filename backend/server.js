@@ -46,7 +46,7 @@ app.use(bodyParser.urlencoded({limit: "200mb", extended: true}));
 
 
 let corsOptions = {
-    origin : ['http://localhost:4200', "https://galavuwal.com","https://vihigahospital.go.ke"],
+    origin : ['http://localhost:3000', "https://galavuwal.com","https://vihigahospital.go.ke"],
 
 }
 app.use(cors(corsOptions));
