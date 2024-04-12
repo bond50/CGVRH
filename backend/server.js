@@ -45,11 +45,18 @@ app.use(bodyParser.urlencoded({limit: "200mb", extended: true}));
 
 
 
+let whitelist = ['http://localhost:3000', `https://${process.env.SERVER_IP}:3000`, 'https://galavuwal.com', 'https://vihigahospital.go.ke'];
 let corsOptions = {
-    //origin : ['http://localhost:3000',`https://${process.env.SERVER_IP}:3000`, `https://${process.env.SERVER_IP}:3000`,"https://galavuwal.com","https://vihigahospital.go.ke"],
-    origin : ['*'],
-
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
 }
+app.use(cors(corsOptions));
+
 app.use(cors(corsOptions));
 
 // app.use((req, res, next) => {
