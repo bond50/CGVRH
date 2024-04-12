@@ -27,7 +27,7 @@ export const list = (username) => {
             console.log(response)
             return response.json();
         })
-        .catch(err => console.log('ERORRRR',err));
+        .catch(err => console.log('ERORRRR', err));
 };
 
 
