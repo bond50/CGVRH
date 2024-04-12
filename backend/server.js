@@ -42,30 +42,27 @@ app.use(express.json({limit: '200mb'}));
 app.use(bodyParser.urlencoded({limit: "200mb", extended: true}));
 
 
-//cors
-// const corsOptions = {
-//     origin: process.env.NODE_ENV === 'production' ? process.env.CLIENT_URL : '*',
-//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//     allowedHeaders: 'Origin,X-Requested-With,Content-Type,Accept,Authorization',
-//     credentials: true, // set to true if you need cookies to be sent across domains
-//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// };
-//
-//
-// app.use(cors(corsOptions));
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header(
-        'Access-Control-Allow-Headers',
-        'Origin,X-Requested-With,Content-Type,Accept,Authorization')
 
-    if (req.method === 'OPTIONS') {
-        res.header('Access-Control-Allow-Methods', 'PUT,PATCH,POST,DELETE,GET')
-        return res.status(200).json({})
-    }
-    next()
-})
+
+let corsOptions = {
+    origin : ['http://localhost:4200', "http://vihigahospital.go.ke","https://vihigahospital.go.ke"],
+
+}
+app.use(cors(corsOptions));
+
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', '*')
+//     res.header(
+//         'Access-Control-Allow-Headers',
+//         'Origin,X-Requested-With,Content-Type,Accept,Authorization')
+//
+//     if (req.method === 'OPTIONS') {
+//         res.header('Access-Control-Allow-Methods', 'PUT,PATCH,POST,DELETE,GET')
+//         return res.status(200).json({})
+//     }
+//     next()
+// })
 
 
 // port
@@ -77,7 +74,7 @@ app.get('/', (req, res) => {
   res.send('Welcome to Vihiga Teaching and Referral Hospital');
 });
 
-readdirSync('./routes/').map(r => app.use('/api', require(`./routes/${r}`)))
+readdirSync('./routes/').map(r => app.use('/v1', require(`./routes/${r}`)))
 
 process.on('uncaughtException', function (exception) {
     console.log(exception); // to see your exception details in the console
