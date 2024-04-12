@@ -1,17 +1,13 @@
 import Link from "next/link";
 import {API} from "../../config";
-import useSWR from "swr";
-import Preloader from "../preloader";
 import ServiceCard from "../reusables/card/serviceCard/ServiceCard";
 
 import React from "react";
 import {generateExcerpt} from "../reusables/functions/generate-excerpt";
 
 
-const FeaturedServices = () => {
-    const {data: services, error} = useSWR(`${API}/featured-general`)
-    if (error) return <div>failed to load</div>
-    if (!services) return <Preloader/>
+const FeaturedServices = ({services}) => {
+
 
     return (
 

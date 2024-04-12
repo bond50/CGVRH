@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../config";
 import {YearsOperated} from "../components/years-operated/YearsOperated";
 import {useRouter} from "next/router";
@@ -16,7 +17,7 @@ const FeaturedServices = dynamic(() => import(  "../components/home/FeaturedServ
 const Gallery = dynamic(() => import(  "../components/home/home-gallery/HomeGallery"), {ssr: false,});
 
 
-export default function Home() {
+export default function Home({services, blogs, featuredAll: allFeatured}) {
     const router = useRouter()
 
     const head = () => (
@@ -57,7 +58,7 @@ export default function Home() {
         </Head>
     );
 
-    console.log('API', API)
+
 
 
     return (
@@ -65,7 +66,10 @@ export default function Home() {
             {head()}
 
 
-            <Layout home>
+            <Layout home
+                    featuredServices={services}
+                    allFeatured={allFeatured}
+                    featuredBlogs={blogs}>
 
                 <WhyUs/>
 
@@ -75,14 +79,32 @@ export default function Home() {
 
                 <About/>
                 <Gallery/>
-                <FeaturedServices/>
+                <FeaturedServices services={services}/>
                 <Cta/>
                 <LatestBlogs/>
-
 
 
             </Layout>
         </>
 
     )
+}
+
+
+export async function getStaticProps() {
+    const fetchServices = axios.get(`${API}/featured-general`);
+    const fetchBlogs = axios.get(`${API}/featured-blogs`);
+    const allFeatured = axios.get(`${API}/featured-all`)
+
+    const [servicesResponse, blogsResponse, allResponse] = await Promise.all([fetchServices, fetchBlogs, allFeatured]);
+
+
+    return {
+        props: {
+            services: servicesResponse.data,
+            blogs: blogsResponse.data,
+            featuredAll: allResponse.data
+        },
+        revalidate: 1 // Optionally, add revalidate time in seconds
+    };
 }

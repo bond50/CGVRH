@@ -8,8 +8,13 @@ import {Fragment} from "react";
 import ScrollTop from "../ScrollTop";
 
 
-const Footer = ({list,services,blogs}) => {
+const Footer = ({services,blogs}) => {
+ const list = [
 
+        {title: 'County website', link: 'https://vihiga.go.ke/'},
+        {title: 'Health Management team', link: '/about-us/board-members'},
+        {title: 'MOH', link: 'https://www.health.go.ke/'},
+    ]
 
     const n = new Date()
     const thisYear = n.getFullYear()
