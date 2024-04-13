@@ -91,7 +91,7 @@ export default function Home({services, blogs, featuredAll: allFeatured}) {
 }
 
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
     const fetchServices = axios.get(`${API}/featured-general`);
     const fetchBlogs = axios.get(`${API}/featured-blogs`);
     const allFeatured = axios.get(`${API}/featured-all`)
@@ -105,6 +105,6 @@ export async function getStaticProps() {
             blogs: blogsResponse.data,
             featuredAll: allResponse.data
         },
-        revalidate: 1 // Optionally, add revalidate time in seconds
+        revalidate: 60 // Optionally, add revalidate time in seconds
     };
-}
+};

@@ -45,7 +45,7 @@ export default function GalleryIndex({ galleryData }) {
     );
 }
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
     try {
         const response = await axios.get(`${API}/get-gallery`);
         return {
@@ -62,4 +62,4 @@ export async function getStaticProps() {
             }
         };
     }
-}
+};

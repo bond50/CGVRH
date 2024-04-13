@@ -2,12 +2,26 @@ import Footer from "../components/footer/Footer";
 import Toolbar from "../components/navgation/Toolbar";
 import Hero from "../components/home/Hero";
 import Breadcrumb from "../components/reusables/Breadcrumbs";
-import useSWR from "swr";
+import {useEffect, useState} from "react";
+import axios from "axios";
 import {API} from "../config";
 
 
-const Layout = ({children, pages, imageUrl, pageTitle, home,featuredServices,featuredBlogs,allFeatured}) => {
+const Layout = ({children, pages, imageUrl, pageTitle, home, featuredServices, featuredBlogs, allFeatured}) => {
+    const [footerServices, setFooterServices] = useState(featuredServices);
+    const [footerBlogs, setFooterBlogs] = useState(featuredBlogs);
 
+    useEffect(() => {
+            if (!featuredServices || !featuredBlogs) {
+                const fetchServices = axios.get(`${API}/featured-general`);
+                const fetchBlogs = axios.get(`${API}/featured-blogs`);
+                Promise.all([fetchServices, fetchBlogs]).then(([servicesResponse, blogsResponse]) => {
+                    setFooterServices(servicesResponse.data);
+                    setFooterBlogs(blogsResponse.data);
+                });
+            }
+        }, []
+    );
 
     return (
         <>
@@ -18,8 +32,8 @@ const Layout = ({children, pages, imageUrl, pageTitle, home,featuredServices,fea
                 {children}
             </main>
             <Footer
-                services={featuredServices}
-                blogs={featuredBlogs}/>
+                services={footerServices}
+                blogs={footerBlogs}/>
         </>
     );
 
