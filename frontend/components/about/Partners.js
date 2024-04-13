@@ -6,7 +6,7 @@ import Image from "next/image";
 const Partners = () => {
     const list = [
         {
-            name: 'County Government of Vihiga', src: '/logo/logo.png', website: 'https://vihoga.go.ke/', width: 100,
+            name: 'County Government of Vihiga', src: '/logo/logo.png', website: 'https://vihiga.go.ke/', width: 100,
             height: 55
         },
 
