@@ -1,5 +1,5 @@
 // controllers/certificateController.js
-const Certificate = require('../models/Certificate');
+const Certificate = require('../models/certificate');
 const QRCode = require('qrcode');
 const {errorHandler} = require('../helpers/dbErrorHandler');
 const PDFDocument = require('pdfkit');
