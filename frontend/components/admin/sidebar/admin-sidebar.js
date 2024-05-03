@@ -47,6 +47,12 @@ const AdminSidebar = ({closed}) => {
         {title: 'Update/delete a page', slug: 'crud/gen-page/dynamic-pages'},
     ]
 
+    const certificateList = [
+        {title: 'Create', slug: 'crud/certificate/create'},
+        {title: 'List', slug: 'crud/certificate/list'},
+
+    ]
+
     const downloadList = [
         {title: 'Upload', slug: 'crud/upload-files'},
         {title: 'Tags', slug: 'crud/document-tag'},
@@ -183,6 +189,11 @@ const AdminSidebar = ({closed}) => {
                             {accordionFunction(serviceList)}
                         </>
                     </Accordion2>
+                    <Accordion2 title='Certificate' icon='journal'>
+                        <>
+                            {accordionFunction(certificateList)}
+                        </>
+                    </Accordion2>
                     <li className={classes.NavHeading}>Media</li>
                     <Accordion2 title='Downloads' icon='journal'>
                         <>
@@ -199,6 +210,7 @@ const AdminSidebar = ({closed}) => {
                             {accordionFunction(projectList)}
                         </>
                     </Accordion2>
+
                     <li className={classes.NavHeading}>Staff</li>
 
                     <Accordion2 title='Users' icon='journal'>

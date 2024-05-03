@@ -8,6 +8,8 @@ import Layout from "../hoc/Layout";
 import WhyUs from "../components/home/why-us";
 import HomeCounter from "../components/home/home-counter";
 
+
+
 const About = dynamic(() => import(  "../components/home/about"), {ssr: false,});
 const Clients = dynamic(() => import(  "../components/home/clients"), {ssr: false,});
 const Cta = dynamic(() => import( "../components/home/cta"), {ssr: false,});
@@ -15,7 +17,6 @@ const Head = dynamic(() => import( "next/head"), {ssr: false,});
 const LatestBlogs = dynamic(() => import(  "../components/home/recent/LatestBlogs"), {ssr: false});
 const FeaturedServices = dynamic(() => import(  "../components/home/FeaturedServices"), {ssr: false});
 const Gallery = dynamic(() => import(  "../components/home/home-gallery/HomeGallery"), {ssr: false,});
-
 
 export default function Home({services, blogs, featuredAll: allFeatured}) {
     const router = useRouter()
@@ -59,8 +60,6 @@ export default function Home({services, blogs, featuredAll: allFeatured}) {
     );
 
 
-
-
     return (
         <>
             {head()}
@@ -82,6 +81,7 @@ export default function Home({services, blogs, featuredAll: allFeatured}) {
                 <FeaturedServices services={services}/>
                 <Cta/>
                 <LatestBlogs/>
+
 
 
             </Layout>

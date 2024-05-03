@@ -98,7 +98,6 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {
         <>
             {head()}
             <Layout blog>
-
                 <main>
                     <section className='blog-section'>
                         <div className="container ">
