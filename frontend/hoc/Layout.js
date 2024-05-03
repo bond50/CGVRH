@@ -7,7 +7,17 @@ import axios from "axios";
 import {API} from "../config";
 
 
-const Layout = ({children, pages, imageUrl, pageTitle, noBread,home, featuredServices, featuredBlogs, allFeatured}) => {
+const Layout = ({
+                    children,
+                    pages,
+                    imageUrl,
+                    pageTitle,
+                    noBread,
+                    home,
+                    featuredServices,
+                    featuredBlogs,
+                    allFeatured
+                }) => {
     const [footerServices, setFooterServices] = useState(featuredServices);
     const [footerBlogs, setFooterBlogs] = useState(featuredBlogs);
 
@@ -28,7 +38,8 @@ const Layout = ({children, pages, imageUrl, pageTitle, noBread,home, featuredSer
             <Toolbar pages={pages}/>
             {home && <Hero services={allFeatured}/>}
             <main>
-                {!home || !noBread && <Breadcrumb imageUrl={imageUrl} pageTitle={pageTitle}/>}
+                {!(home && noBread) && <Breadcrumb imageUrl={imageUrl} pageTitle={pageTitle}/>}
+
                 {children}
             </main>
             <Footer
