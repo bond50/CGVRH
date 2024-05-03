@@ -38,7 +38,7 @@ const Layout = ({
             <Toolbar pages={pages}/>
             {home && <Hero services={allFeatured}/>}
             <main>
-                {!(home && noBread) && <Breadcrumb imageUrl={imageUrl} pageTitle={pageTitle}/>}
+                {!noBread && <Breadcrumb imageUrl={imageUrl} pageTitle={pageTitle}/>}
 
                 {children}
             </main>

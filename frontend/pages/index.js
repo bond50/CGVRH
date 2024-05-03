@@ -65,7 +65,8 @@ export default function Home({services, blogs, featuredAll: allFeatured}) {
             {head()}
 
 
-            <Layout home
+            <Layout noBread
+                    home
                     featuredServices={services}
                     allFeatured={allFeatured}
                     featuredBlogs={blogs}>
