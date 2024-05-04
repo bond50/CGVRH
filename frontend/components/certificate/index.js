@@ -43,6 +43,10 @@ const CertificateVerification = () => {
                                 <td>{certificate.facilityName}</td>
                             </tr>
                             <tr>
+                                <th scope="row">Issued to</th>
+                                <td>{certificate.contractor}</td>
+                            </tr>
+                            <tr>
                                 <th scope="row">Approved by</th>
                                 <td>{certificate.facilityIncharge}</td>
                             </tr>
