@@ -331,7 +331,7 @@ exports.downloadPDF = async (req, res) => {
                 .text('Name: ', labelX, yPosition + 15);
             // Print the name value
             doc.font('fonts/Italianno-Regular.ttf').fontSize(13).fill('#021c27')
-                .text(name, valueX +  2, yPosition + 13);
+                .text(name, valueX +  5, yPosition + 13);
             doc.font('fonts/NotoSerif_Condensed-Regular.ttf').fontSize(8).fill('#021c27')
                 .text(`Sign: `, leftColumnStart, yPosition + 28);
         });
