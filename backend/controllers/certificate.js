@@ -252,7 +252,7 @@ exports.downloadPDF = async (req, res) => {
 
         // Place the 'CERTIFICATE' text
         doc.font('fonts/CinzelDecorative-Bold.ttf').fontSize(14).fill('#021c27')
-            .text('CERTIFICATE OF COMPLETION', margin, margin + 140, {
+            .text('PARTIAL COMPLETION CERTIFICATE', margin, margin + 140, {
                 width: doc.page.width - 2 * margin,
                 align: 'center'
             });
