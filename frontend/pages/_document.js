@@ -1,18 +1,22 @@
 import React from 'react'
 import Document, {Head, Html, Main, NextScript} from "next/document";
+import {ADSENSE_CLIENT_ID} from "../config";
 
 class MyDocument extends Document {
 
-    render() {
-        const adsenseAccountId = process.env.NEXT_PUBLIC_ADSENSE_ACCOUNT_ID;
 
+
+    render() {
+        console.log('ADSENSE_CLIENT_ID in doc',  ADSENSE_CLIENT_ID)
         return (
             <Html lang="en">
                 <Head>
                     <meta charSet="UTF-8"/>
-                     {adsenseAccountId && (
-                        <meta name="google-adsense-account" content={adsenseAccountId} />
+                     {ADSENSE_CLIENT_ID && (
+                        <meta name="google-adsense-account" content={ADSENSE_CLIENT_ID} />
                     )}
+
+                    <meta name="google-adsense-account" content="ca-pub-9278372397525835"/>
                     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png"/>
                     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png"/>
                     <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png"/>

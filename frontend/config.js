@@ -9,6 +9,11 @@ export const GOOGLE_ANALYTICS_KEY = publicRuntimeConfig.PRODUCTION
     ? publicRuntimeConfig.GOOGLE_ANALYTICS
     : publicRuntimeConfig.GOOGLE_ANALYTICS;
 
+export const ADSENSE_CLIENT_ID = publicRuntimeConfig.PRODUCTION
+    ? publicRuntimeConfig.ADSENSE_CLIENT_ID
+    : publicRuntimeConfig.ADSENSE_CLIENT_ID;
+
+
 export const APP_NAME = publicRuntimeConfig.APP_NAME;
 
 export const FB_APP_ID = publicRuntimeConfig.FB_APP_ID;

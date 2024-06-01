@@ -84,7 +84,7 @@ import Router from "next/router";
 import "animate.css";
 import "react-datepicker/dist/react-datepicker.css";
 import Script from "next/script";
-import { GOOGLE_ANALYTICS_KEY } from "../config";
+import {ADSENSE_CLIENT_ID, GOOGLE_ANALYTICS_KEY} from "../config";
 
 const MyApp = ({ Component, pageProps }) => {
     NProgress.configure({ showSpinner: false });
@@ -105,7 +105,8 @@ const MyApp = ({ Component, pageProps }) => {
         AOS.init({ duration: 1500, once: true });
     }, []);
 
-    const ADSENSE_CLIENT_ID = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
+
+    console.log('ADSENSE_CLIENT_ID in app',  ADSENSE_CLIENT_ID)
 
     return (
         <>
