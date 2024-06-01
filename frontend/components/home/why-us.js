@@ -37,6 +37,7 @@ const VihigaHospitalInfo = () => {
                                 services to the inhabitants of Vihiga County and the neighboring community. Our goal is
                                 to enhance the overall health of the community by offering thorough and empathetic
                                 medical care.
+
                             </p>
                             <div className="text-center">
                                 <Link href={`services`} className="more-btn">
