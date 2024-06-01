@@ -25,7 +25,7 @@ export default function Home({services, blogs, featuredAll: allFeatured}) {
             <meta name="google-site-verification" content="Kcrylmv8RWsNALOsmjyga_p6uCldee4CwnA0aMCMym4"/>
             <meta
                 name="description"
-                content={`${APP_NAME} is a level 5 government healthcare facility located in Western part of Kenya.We've been offering services for the last ${YearsOperated()} years`}
+                content={`${APP_NAME} is a level 4 government healthcare facility located in Western part of Kenya.We've been offering services for the last ${YearsOperated()} years`}
             />
             <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
             <meta name="robots" content="max-image-preview:large"/>
@@ -33,7 +33,7 @@ export default function Home({services, blogs, featuredAll: allFeatured}) {
             <meta property="og:title" content={`${APP_NAME}`}/>
             <meta
                 property="og:description"
-                content={`${APP_NAME} is a level 5 government healthcare facility located in Western part of Kenya.We've been offering services for the last ${YearsOperated()} years`}
+                content={`${APP_NAME} is a level 4 government healthcare facility located in Western part of Kenya.We've been offering services for the last ${YearsOperated()} years`}
             />
             <meta property="og:type" content="website"/>
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`}/>

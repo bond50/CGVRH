@@ -156,8 +156,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import Script from "next/script";
 import {ADSENSE_CLIENT_ID, GOOGLE_ANALYTICS_KEY} from "../config";
 
-const MyApp = ({ Component, pageProps }) => {
-    NProgress.configure({ showSpinner: false });
+const MyApp = ({Component, pageProps}) => {
+    NProgress.configure({showSpinner: false});
     Router.events.on('routeChangeStart', () => NProgress.start());
     Router.events.on('routeChangeComplete', () => NProgress.done());
     Router.events.on('routeChangeError', () => NProgress.done());
@@ -165,14 +165,14 @@ const MyApp = ({ Component, pageProps }) => {
     const returnHead = () => {
         return (
             <Head>
-                <meta charSet="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta charSet="UTF-8"/>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             </Head>
         );
     };
 
     useEffect(() => {
-        AOS.init({ duration: 1500, once: true });
+        AOS.init({duration: 1500, once: true});
     }, []);
 
     return (
@@ -203,6 +203,7 @@ const MyApp = ({ Component, pageProps }) => {
                     async
                 />
             )}
+
 
             {returnHead()}
             <Component {...pageProps} />
