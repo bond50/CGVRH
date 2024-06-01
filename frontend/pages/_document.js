@@ -7,7 +7,7 @@ class MyDocument extends Document {
 
 
     render() {
-        console.log('ADSENSE_CLIENT_ID in doc',  ADSENSE_CLIENT_ID)
+
         return (
             <Html lang="en">
                 <Head>

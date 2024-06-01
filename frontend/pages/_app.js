@@ -106,7 +106,6 @@ const MyApp = ({ Component, pageProps }) => {
     }, []);
 
 
-    console.log('ADSENSE_CLIENT_ID in app',  ADSENSE_CLIENT_ID)
 
     return (
         <>
@@ -130,7 +129,7 @@ const MyApp = ({ Component, pageProps }) => {
 
             {ADSENSE_CLIENT_ID && (
                 <Script
-                    strategy="afterInteractive"
+                    strategy="lazyOnload"
                     src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
                     crossOrigin="anonymous"
                     async

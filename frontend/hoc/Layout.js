@@ -5,6 +5,7 @@ import Breadcrumb from "../components/reusables/Breadcrumbs";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {API} from "../config";
+import AdBanner from "../components/AdBanner";
 
 
 const Layout = ({
@@ -42,6 +43,10 @@ const Layout = ({
 
                 {children}
             </main>
+            <AdBanner
+                data-ad-slot="6511402910" // Replace with your ad slot ID
+                style={{width: '100%', height: '250px'}}
+            />
             <Footer
                 services={footerServices}
                 blogs={footerBlogs}/>
