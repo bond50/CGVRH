@@ -39,10 +39,8 @@ const VihigaHospitalInfo = () => {
                                 medical care.
                             </p>
                             <div className="text-center">
-                                <Link href={`services`}>
-                                    <a  className="more-btn">
+                                <Link href={`services`} className="more-btn">
                                        All Services <Icon icon='bx:chevron-right' className='icon'/>
-                                    </a>
                                 </Link>
 
                             </div>
