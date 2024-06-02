@@ -48,6 +48,7 @@ const SmallCard = ({blog, service}) => {
                         width={720}
                         height={450}
                         src={photoLink}
+                        priority={true}
                         alt={blog ? blog.title : service.title}
                     />
                 </a>
