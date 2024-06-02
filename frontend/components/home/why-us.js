@@ -2,6 +2,7 @@ import React from 'react';
 import {Icon} from "@iconify/react";
 import Link from "next/link";
 
+
 const VihigaHospitalInfo = () => {
     const servicesData = [
         {
@@ -26,7 +27,7 @@ const VihigaHospitalInfo = () => {
 
     return (
         <section id="hospital-info" className="hospital-info" >
-            {/*<Wave/>*/}
+
             <div className="container" data-aos="fade-up">
                 <div className="row">
                     <div className="col-lg-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay={100}>

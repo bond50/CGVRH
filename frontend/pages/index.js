@@ -27,6 +27,29 @@ export default function Home({services, blogs, featuredAll: allFeatured}) {
                 name="description"
                 content={`${APP_NAME} is a level 4 government healthcare facility located in Western part of Kenya.We've been offering services for the last ${YearsOperated()} years`}
             />
+            <meta name="keywords"
+                  content="Vihiga,
+                       Vihiga hospital,
+                       county government of vihiga,
+                       hospital in Vihiga,
+                       level 4 hospital in Kenya,
+                       level 4 hospital in Mbale,
+                       hospital in Mbale Kenya,
+                       hospital in Western Kenya,
+                       Vihiga County,
+                       healthcare in Vihiga,
+                       Vihiga medical services,
+                       best hospital in Vihiga,
+                       medical care in Vihiga,
+                       Vihiga health center,
+                       hospitals in Western Kenya,
+                       medical services in Mbale,
+                       Mbale health services,
+                       healthcare in Western Kenya,
+                       Vihiga County healthcare,
+                       Vihiga County hospital,
+                       Vihiga County health services"/>
+
             <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
             <meta name="robots" content="max-image-preview:large"/>
             <meta property="og:locale" content="en_US"/>
@@ -42,6 +65,39 @@ export default function Home({services, blogs, featuredAll: allFeatured}) {
             <meta property="og:image:secure_url" content={`/herp.jpg`}/>
             <meta property="og:image:type" content="image/png"/>
             <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "Hospital",
+                    "name": APP_NAME,
+                    "url": DOMAIN,
+                    "logo": `https://asset.cloudinary.com/dwtcilinl/b640e6d08f8574e718edca77a4bd1164`,
+                    "sameAs": [
+                        "https://www.facebook.com/profile.php?id=100063774356598"
+                    ],
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "telephone": "+254-723-103-564",
+                        "contactType": "Nurse covering"
+                    },
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "1069",
+                        "addressLocality": "Maragoli",
+                        "addressRegion": "Western",
+                        "postalCode": "50300",
+                        "addressCountry": "KE"
+                    },
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": "0.07926612499999998",
+                        "longitude": "34.72226381249999"
+                    },
+                    "medicalSpecialty": "General"
+                })
+            }}/>
+
+
         </Head>
     );
 
