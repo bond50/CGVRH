@@ -6,7 +6,7 @@ import classes from '../../../styles/SmallCard.module.css';
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 
-const SmallCard = ({ blog, service }) => {
+const SmallCard = ({ blog, service, isPriority }) => {
     const [photoLink, setPhotoLink] = useState('');
     const [multiLink, setMultiLink] = useState('');
 
@@ -56,7 +56,8 @@ const SmallCard = ({ blog, service }) => {
                         height={450}
                         src={photoLink}
                         alt={blog ? blog.title : service.title}
-                        priority={true} // Preload the first image
+                        priority={isPriority} // Preload the first image
+                        loading={isPriority ? undefined : "lazy"} // Lazy load other images
                     />
                 </a>
             </Link>

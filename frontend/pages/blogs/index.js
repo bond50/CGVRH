@@ -1,11 +1,10 @@
 import Head from "next/head";
 import React, {useState} from "react";
 import {listBlogsWithCategoriesAndTags} from "../../actions/blog";
-import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
+import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import {withRouter} from "next/router";
 import SmallCard from "../../components/reusables/card/small-card";
 import Layout from "../../hoc/Layout";
-
 
 
 const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {
@@ -17,19 +16,15 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {
                 name="description"
                 content="Vihiga county referral hospital blog on our services departments wards core values strategic plan"
             />
-
             <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
-
             <meta property="og:title" content={`Latest articles | ${APP_NAME}`}/>
             <meta
                 property="og:description"
                 content="Vihiga county referral hospital blog on our services departments wards core values strategic plan"
             />
-
             <meta property="og:type" content="webiste"/>
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
-
             <meta
                 property="og:image"
                 content={`/herp.jpg`}
@@ -40,7 +35,17 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {
             />
             <meta property="og:image:type" content="image/png"/>
             <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
+
+            {/* Preload only the first image */}
+            {blogs.length > 0 && (
+                <link
+                    rel="preload"
+                    as="image"
+                    href={blogs[0].images && blogs[0].images.length > 0 ? blogs[0].images[0].url.replace('/upload/', '/upload/f_auto,q_auto/') : `${API}/blog/photo/${blogs[0].slug}`}
+                />
+            )}
         </Head>
+
     );
 
     const [limit] = useState(blogsLimit);
@@ -79,7 +84,7 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {
         return blogs.map((blog, i) => {
             return (
                 <div key={i} className='col-lg-4'>
-                    <SmallCard blog={blog}/>
+                    <SmallCard blog={blog} isPriority={i === 0}/> {/* Only the first image is prioritized */}
                 </div>
             );
         });
