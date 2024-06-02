@@ -9,7 +9,7 @@ const Tag = ({tag, blogs, query}) => {
     const head = () => (
         <Head>
             <title>
-                {tag.title} | {APP_NAME}
+                {tag.name} | {APP_NAME}
             </title>
             <meta name="description" content={`${APP_NAME} blog on ${tag.title}`}/>
 

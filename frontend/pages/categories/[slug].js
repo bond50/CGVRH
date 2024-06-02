@@ -10,7 +10,7 @@ const Category = ({category, blogs, query}) => {
     const head = () => (
         <Head>
             <title>
-                {category.title} | {APP_NAME}
+                {category.name} | {APP_NAME}
             </title>
             <meta name="description" content={`${APP_NAME} blog on ${category.title}`}/>
             <link rel="canonical" href={`${DOMAIN}/categories/${query.slug}`}/>
@@ -43,7 +43,7 @@ const Category = ({category, blogs, query}) => {
     return (
         <>
             {head()}
-            <Layout>
+              <Layout blog>
                 <section className='blog-section'>
                     <div className="container mt-2">
                         <div className="row">{showCats()}</div>

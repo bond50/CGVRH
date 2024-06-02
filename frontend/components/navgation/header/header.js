@@ -2,7 +2,7 @@ import Logo from "../Logo";
 import React, {useEffect, useState} from "react";
 import Nav from "../Nav";
 
-const Header = ({pages}) => {
+const Header = ({pages,blog}) => {
     const [scrolled, setScrolled] = useState(false);
     const handleScroll = () => {
         const offset = window.scrollY;
@@ -28,8 +28,7 @@ const Header = ({pages}) => {
         <header id="header" className={navbarClasses.join(' ')}>
             <div className="container d-flex align-items-center justify-content-between">
                 <Logo scrolled={scrolled}/>
-                <Nav pages={pages}/>
-
+                <Nav pages={pages} blog={blog}/>
 
             </div>
         </header>

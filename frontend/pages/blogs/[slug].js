@@ -1,4 +1,4 @@
-import {listRelated, singleBlog,getAllBlogSlugs} from "../../actions/blog";
+import {listRelated, singleBlog, getAllBlogSlugs} from "../../actions/blog";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import Head from "next/head";
 import React, {useEffect, useState} from "react";
@@ -69,16 +69,12 @@ const Slug = ({blog, query}) => {
     </div>;
 
 
-    return (<Layout blog>
-            <section >
-                {head()}
+    return (
 
-                <main>
-
-                    {/*<GeneralPageHeader*/}
-                    {/*    imgSrc={`${API}/blog/photo/${blog.slug}`}*/}
-                    {/*    title={blog.title}*/}
-                    {/*    alt={blog.title}>*/}
+        <>
+            {head()}
+            <Layout blog>
+                <section>
                     <BlogContainer>
                         {showBlog()}
                         <div className='pt-5'>
@@ -90,11 +86,11 @@ const Slug = ({blog, query}) => {
                         <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
                         <div className="row">{showRelatedBlog()}</div>
                     </div>
-                    {/*</GeneralPageHeader>*/}
-                </main>
 
-            </section>
-        </Layout>
+
+
+                </section>
+            </Layout></>
     );
 };
 
@@ -102,19 +98,19 @@ const Slug = ({blog, query}) => {
 export const getStaticPaths = async () => {
     // Fetch all possible slugs for pre-rendering
     const slugs = await getAllBlogSlugs();
-    const paths = slugs.map(slug => ({ params: { slug } }));
-    return { paths, fallback: 'blocking' };
+    const paths = slugs.map(slug => ({params: {slug}}));
+    return {paths, fallback: 'blocking'};
 };
 
 // This function gets called at build time for each path returned by getStaticPaths
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({params}) => {
     return singleBlog(params.slug).then(data => {
         if (data.error) {
             console.log(data.error);
-            return { notFound: true };
+            return {notFound: true};
         } else {
             return {
-                props: { blog: data, query: params },
+                props: {blog: data, query: params},
                 revalidate: 60,  // Optional: re-generate the page at most once per minute
             };
         }

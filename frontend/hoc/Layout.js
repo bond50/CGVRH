@@ -15,6 +15,7 @@ const Layout = ({
                     pageTitle,
                     noBread,
                     home,
+                    blog,
                     featuredServices,
                     featuredBlogs,
                     allFeatured
@@ -36,11 +37,10 @@ const Layout = ({
 
     return (
         <>
-            <Toolbar pages={pages}/>
+            <Toolbar pages={pages} blog={blog}/>
             {home && <Hero services={allFeatured}/>}
             <main>
                 {!noBread && <Breadcrumb imageUrl={imageUrl} pageTitle={pageTitle}/>}
-
                 {children}
             </main>
             <AdBanner
