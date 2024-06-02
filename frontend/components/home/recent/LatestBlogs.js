@@ -44,8 +44,8 @@ const LatestBlogs = () => {
                         }
 
 
-                        const myLoader = () => {
-                            return photoLink;
+                         const myLoader = ({ src, width, quality }) => {
+                            return `${src}?w=${width}&q=${quality || 75}`;
                         }
 
 
@@ -55,14 +55,16 @@ const LatestBlogs = () => {
                             data-aos-delay="100" key={i + 1 + 100}>
                             <div className={classes.postBox}>
                                 <div className={classes.postImg}>
-                                    <Link href={`/blogs/${blog.slug}`}>
-                                         <Image
-                                        width={720}
-                                        height={450}
-                                        loader={myLoader}
-                                        src={photoLink}
-                                        className="img-fluid"
-                                        alt={blog.title}/>
+                                    <Link href={`/blogs/${blog.slug}`} passHref>
+                                        <a>
+                                            <Image
+                                                width={720}
+                                                height={450}
+                                                loader={myLoader}
+                                                src={photoLink}
+                                                className="img-fluid"
+                                                alt={blog.title}/>
+                                        </a>
                                     </Link>
 
                                 </div>

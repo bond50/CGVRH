@@ -14,7 +14,7 @@ const Cta = dynamic(() => import("../components/home/cta"), {ssr: false});
 const Head = dynamic(() => import("next/head"), {ssr: false});
 const LatestBlogs = dynamic(() => import("../components/home/recent/LatestBlogs"), {ssr: false});
 const FeaturedServices = dynamic(() => import("../components/home/FeaturedServices"), {ssr: false});
-const Gallery = dynamic(() => import("../components/home/home-gallery/HomeGallery"), {ssr: false});
+//const Gallery = dynamic(() => import("../components/home/home-gallery/HomeGallery"), {ssr: false});
 
 export default function Home({services, blogs, featuredAll: allFeatured}) {
     const router = useRouter();
@@ -53,7 +53,7 @@ export default function Home({services, blogs, featuredAll: allFeatured}) {
                 <Clients/>
                 <HomeCounter/>
                 <About/>
-                <Gallery/>
+                {/*<Gallery/>*/}
                 <FeaturedServices services={services}/>
                 <Cta/>
                 <LatestBlogs/>

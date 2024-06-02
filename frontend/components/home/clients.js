@@ -6,10 +6,19 @@ const Clients = () => {
 
     const list = [
 
-        {name: 'MOH', to: 'https://www.health.go.ke/', src: '/partners/moh1.png', width: 97, height: 82},
         {
-            name: 'NHIF and community based organizations (CBOs).', to: 'https://www.nhif.or.ke/',
-            src: '/partners/nhif1.png', width: 60, height: 60
+            name: 'MOH',
+            to: 'https://www.health.go.ke/',
+            src: '/partners/moh1.png',
+            width: 97,
+            height: 82
+        },
+        {
+            name: 'NHIF and community based organizations (CBOs).',
+            to: 'https://www.nhif.or.ke/',
+            src: '/partners/nhif1.png',
+            width: 60,
+            height: 60
         },
         {
             name: 'KEMRI/Welcome Trust',
@@ -36,20 +45,22 @@ const Clients = () => {
     return (
         <section id="clients" className="clients">
 
-            <div className="container-fluid" data-aos="fade-up">
+            <div className="container" data-aos="fade-up">
                 <div className="row">
                     {list.map((item, i) => {
                         return <div
                             key={i}
                             className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
-                            <Link href={item.to}>
-                                <Image
+                            <Link href={item.to} passHref>
+                                <a>
+                                    <Image
                                     src={item.src}
                                     width={97}
                                     height={75}
                                     className="img-fluid"
                                     alt={item.name}
                                     title={item.name}/>
+                                </a>
                             </Link>
                         </div>
                     })}
