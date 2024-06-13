@@ -1,82 +1,40 @@
-import fetch from 'isomorphic-fetch';
-import {API} from '../config';
+import axiosInstance from '../axios/axios';
 import {handleResponse} from "./auth";
 
-
 export const create = (tag, token, endpoint) => {
-    return fetch(`${API}/${endpoint}`, {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify(tag)
-    })
+    return axiosInstance.post(`${endpoint}`, tag)
         .then(response => {
-            handleResponse(response)
-            return response.json();
+            handleResponse(response);
+            return response.data;
         })
         .catch(err => console.log(err));
 };
 
 export const getTags = (endPoint) => {
-    return fetch(`${API}/${endPoint}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
+    return axiosInstance.get(`/${endPoint}`)
+        .then(response => response.data)
         .catch(err => console.log(err));
 };
 
-// export const getSerViceTags = () => {
-//     return fetch(`${API}/service-tags`, {
-//         method: 'GET'
-//     })
-//         .then(response => {
-//             return response.json();
-//         })
-//         .catch(err => console.log(err));
-// };
-
-
 export const singleTag = (slug, endpoint) => {
-
-    return fetch(`${API}/${endpoint}/${slug}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
+    return axiosInstance.get(`/${endpoint}/${slug}`)
+        .then(response => response.data)
         .catch(err => console.log(err));
 };
 
 export const removeTag = (slug, token, endpoint) => {
-    return fetch(`${API}/${endpoint}/${slug}`, {
-        method: 'DELETE',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-        }
-    })
+    return axiosInstance.delete(`/${endpoint}/${slug}`)
         .then(response => {
-            handleResponse(response)
-            return response.json();
+            handleResponse(response);
+            return response.data;
         })
         .catch(err => console.log(err));
 };
 
-
-
 export const getAllTagSlugs = async () => {
     try {
-        const response = await fetch(`${API}/tags`, {
-            method: 'GET'
-        });
-        const data = await response.json();
-        return data.map(tag => ({
+        const response = await axiosInstance.get(`/tags`, );
+        return response.data.map(tag => ({
             params: {slug: tag.slug}
         }));
     } catch (err) {
@@ -84,4 +42,3 @@ export const getAllTagSlugs = async () => {
         return [];
     }
 };
-

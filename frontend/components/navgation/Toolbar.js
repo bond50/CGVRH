@@ -3,11 +3,11 @@ import Top from "./top/Top";
 import Header from "./header/header"
 
 
-const Toolbar = ({pages,blog}) => {
+const Toolbar = ({pages, blog}) => {
 
     return (
         <Fragment>
-            <Top/>
+            <Top blog={blog}/>
             <Header
                 pages={pages}
                 blog={blog}/>

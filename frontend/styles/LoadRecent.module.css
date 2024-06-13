@@ -5,7 +5,10 @@
 
 .Recent img {
     width: 80px;
+    height: 55px;
+    object-fit: cover; /* Ensure images maintain aspect ratio and cover the area */
     float: left;
+    border-radius: 4px;
 }
 
 .Recent h4 {
@@ -15,13 +18,13 @@
 }
 
 .Recent h4 a {
-    color: #111;
+    color: var(--color-mixed-paragraph-10);
     text-transform: capitalize;
     transition: 0.3s;
 }
 
 .Recent h4 a:hover {
-    color: #2CC73E;
+    color: var(--color-secondary);
 }
 
 .Time {
@@ -29,5 +32,5 @@
     margin-left: 95px;
     font-style: italic;
     font-size: 14px;
-    color: #b4aca8;
+    color: var(--color-text-3);
 }

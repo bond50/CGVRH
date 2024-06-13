@@ -29,6 +29,7 @@ const BlogSideBarContent = () => {
         let skip = 0
         let limit = 4
         return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
+            console.log('kufu',data)
             if (data.error) {
                 console.log(data.error)
             } else {

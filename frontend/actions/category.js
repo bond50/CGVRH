@@ -1,67 +1,41 @@
-import fetch from "isomorphic-fetch";
-import {API} from "../config";
-import {handleResponse} from "./auth";
+import axiosInstance from '../axios/axios';
+import { handleResponse } from "./auth";
 
-export const create = (category, token, endpoint) => {
-    return fetch(`${API}/${endpoint}`, {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(category),
+export const create = (category, endpoint) => {
+    return axiosInstance.post(`/${endpoint}`, category)
+    .then(response => {
+        handleResponse(response);
+        return response.data;
     })
-        .then((response) => {
-            handleResponse(response);
-            return response.json();
-        })
-        .catch((err) => console.log(err));
+    .catch(err => console.log(err));
 };
 
-export const getCategories = (endPoint) =>
-    fetch(`${API}/${endPoint}`, {
-        method: "GET",
-    })
-        .then((response) => {
-            return response.json();
-        })
-        .catch((err) => console.log(err));
-
+export const getCategories = (endPoint) => {
+    return axiosInstance.get(`/${endPoint}`)
+    .then(response => response.data)
+    .catch(err => console.log(err));
+};
 
 export const singleCategory = (slug, endpoint) => {
-    return fetch(`${API}/${endpoint}/${slug}`, {
-        method: "GET",
-    })
-        .then((response) => {
-            return response.json();
-        })
-        .catch((err) => console.log(err));
+    return axiosInstance.get(`/${endpoint}/${slug}`)
+    .then(response => response.data)
+    .catch(err => console.log(err));
 };
 
-export const removeCategory = (slug, token, endpoint) =>
-    fetch(`${API}/${endpoint}/${slug}`, {
-        method: "DELETE",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-        },
+export const removeCategory = (slug, endpoint) => {
+    return axiosInstance.delete(`/${endpoint}/${slug}`)
+    .then(response => {
+        handleResponse(response);
+        return response.data;
     })
-        .then((response) => {
-            handleResponse(response);
-            return response.json();
-        })
-        .catch((err) => console.log(err));
+    .catch(err => console.log(err));
+};
 
 export const getAllCategorySlugs = async () => {
     try {
-        const response = await fetch(`${API}/categories`, {
-            method: 'GET'
-        });
-        const data = await response.json();
-        return data.map(category => ({
-            params: {slug: category.slug}
+        const response = await axiosInstance.get('/categories');
+        return response.data.map(category => ({
+            params: { slug: category.slug }
         }));
     } catch (err) {
         console.log(err);

@@ -1,234 +1,208 @@
-import classes from './admin-sidebar.module.css'
-import React from "react";
+
+import React, { useEffect, useState } from "react";
+import classes from './admin-sidebar.module.css';
 import Accordion2 from "../../reusables/Accordion2";
-import {accordionFunction} from "../../reusables/functions/admin-accordion";
-import {accordionPrivateFunction} from "../../reusables/functions/private-accordion";
-import AdminSidebarLink from "../../reusables/ui/admin-Sidebar-link";
-
-import {isAuth} from "../../../actions/auth";
+import { accordionFunction } from "../../reusables/functions/admin-accordion";
+import { isAuth } from "../../../actions/auth";
 import SidebarLink from "../../reusables/ui/sidebar-link";
-import PrivateSidebarLink from "../../reusables/ui/private-sidebar-link";
+import Spinner from 'react-bootstrap/Spinner';
+import { useRouter } from "next/router";
 
+const AdminSidebar = ({ closed }) => {
+    const [auth, setAuth] = useState(null);
+    const router = useRouter();
 
-const AdminSidebar = ({closed}) => {
-    let attachedClasses = [classes.Sidebar, classes.CloseMobile];
+    useEffect(() => {
+        setAuth(isAuth());
+    }, []);
 
-    if (closed) {
-        attachedClasses = [classes.Sidebar, classes.Close];
+    const attachedClasses = [classes.Sidebar, closed ? classes.Close : classes.CloseMobile];
+
+    const sidebarConfig = {
+        user: [
+            { heading: 'Dashboard', links: [{ title: 'Home', to: '', icon: 'mdi:home', type: 'private' }] },
+            {
+                heading: 'Quick links',
+                links: [
+                    { title: 'Website home page', to: '/', icon: 'mdi:home', quick: true },
+                    { title: 'Blog section', to: '/blogs', icon: 'mdi:view-grid', quick: true }
+                ]
+            },
+            {
+                heading: 'Pages',
+                accordions: [
+                    {
+                        title: 'Blog',
+                        icon: 'mdi:book-open-page-variant',
+                        items: [
+                            { title: 'Write a blog', to: 'crud/blog' },
+                            { title: 'Update/delete a blog', to: 'crud/blogs' }
+                        ]
+                    },
+                    {
+                        title: 'Pages',
+                        icon: 'mdi:file-document-box',
+                        items: [
+                            { title: 'Create page', to: 'crud/gen-page/' },
+                            { title: 'Update/delete a page', to: 'crud/gen-page/dynamic-pages' }
+                        ]
+                    },
+                    {
+                        title: 'Profile',
+                        icon: 'mdi:account',
+                        items: [{ title: 'Update', to: 'update' }]
+                    }
+                ]
+            }
+        ],
+        admin: [
+            {
+                heading: 'Dashboard',
+                links: [{ title: 'Admin home', to: '', icon: 'mdi:home', type: 'admin' }]
+            },
+            {
+                heading: 'Quick links',
+                links: [
+                    { title: 'Website home page', to: '/', icon: 'mdi:home', quick: true },
+                    {
+                        title: 'Realtime Google Analytics',
+                        to: 'https://analytics.google.com/analytics/web/#/p306834202/realtime/overview?params=_u..nav%3Dmaui',
+                        icon: 'mdi:google-analytics',
+                        external: true
+                    },
+                    { title: 'Blog section', to: '/blogs', icon: 'mdi:view-grid', quick: true }
+                ]
+            },
+            {
+                heading: 'Pages',
+                links: [{ title: 'Customize Home page', to: 'home-customize', icon: 'mdi:home-edit', type: 'admin' }],
+                accordions: [
+                    {
+                        title: 'Tenders',
+                        icon: 'mdi:briefcase-outline',
+                        items: [
+                            { title: 'Upload/Add', slug: 'crud/tenders/create' },
+                            { title: 'Manage Tenders', slug: 'crud/tenders' }
+                        ]
+                    },
+                    {
+                        title: 'Blog',
+                        icon: 'mdi:book-open-page-variant',
+                        items: [
+                            { title: 'Categories', slug: 'crud/category-tag' },
+                            { title: 'Tags', slug: 'crud/category-tag' },
+                            { title: 'Write a blog', slug: 'crud/blog' },
+                            { title: 'Update/delete a blog', slug: 'crud/blogs' }
+                        ]
+                    },
+                    {
+                        title: 'Pages',
+                        icon: 'mdi:file-document-box-multiple-outline',
+                        items: [
+                            { title: 'Categories', slug: 'crud/gen-page/page-category' },
+                            { title: 'Create page', slug: 'crud/gen-page/' },
+                            { title: 'Update/delete a page', slug: 'crud/gen-page/dynamic-pages' }
+                        ]
+                    },
+                    {
+                        title: 'Certificate',
+                        icon: 'mdi:certificate',
+                        items: [
+                            { title: 'Create', slug: 'crud/certificate/create' },
+                            { title: 'List', slug: 'crud/certificate/list' }
+                        ]
+                    },
+                    {
+                        title: 'Downloads',
+                        icon: 'mdi:download',
+                        items: [
+                            { title: 'Upload', slug: 'crud/upload-files' },
+                            { title: 'Tags', slug: 'crud/document-tag' }
+                        ]
+                    },
+                    {
+                        title: 'Gallery',
+                        icon: 'mdi:image-album',
+                        items: [
+                            { title: 'Upload', slug: 'crud/upload-images' },
+                            { title: 'Tags', slug: 'crud/gallery-tag' }
+                        ]
+                    },
+                    {
+                        title: 'Project',
+                        icon: 'mdi:briefcase-check',
+                        items: [
+                            { title: 'Create', slug: 'crud/projects/create' },
+                            { title: 'Manage Projects', slug: 'crud/projects' }
+                        ]
+                    },
+                    {
+                        title: 'Users',
+                        icon: 'mdi:account-multiple',
+                        items: [
+                            { title: 'Add HMT member', slug: 'crud/users/user' },
+                            { title: 'Manage existing users', slug: 'crud/users' }
+                        ]
+                    },
+                    {
+                        title: 'Profile',
+                        icon: 'mdi:account-circle',
+                        items: [{ title: 'Update', to: 'update' }],
+                        type: 'private'
+                    }
+                ]
+            }
+        ]
+    };
+
+    const renderLinks = (links, basePath) =>
+        links.map(link => {
+            const fullPath = link.quick || link.external ? link.to : `${basePath}${link.to ? `/${link.to}` : ''}`;
+            return (
+                <SidebarLink
+                    key={link.title}
+                    title={link.title}
+                    fullPath={fullPath}
+                    icon={link.icon}
+                    currentPath={router.pathname}
+                    external={link.external} />
+            );
+        });
+
+    const renderAccordions = (accordions, isPrivate) =>
+        accordions.map(accordion => (
+            <Accordion2
+                key={accordion.title}
+                title={accordion.title}
+                icon={accordion.icon}
+                currentPath={router.pathname}>
+                {accordionFunction(accordion.items, isPrivate ? '/user' : '/admin2', router.pathname)}
+            </Accordion2>
+        ));
+
+    const renderSidebar = (config, basePath) =>
+        config.map(section => (
+            <React.Fragment key={section.heading}>
+                <li className={classes.NavHeading}>{section.heading}</li>
+                {section.links && renderLinks(section.links, basePath)}
+                {section.accordions && renderAccordions(section.accordions, section.accordions[0]?.type === 'private')}
+            </React.Fragment>
+        ));
+
+    if (!auth) {
+        return <div className={classes.SpinnerWrapper}><Spinner animation="border" /></div>;
     }
 
-    //user
-    const userBlogList = [
-        {title: 'Write a blog', to: 'crud/blog'},
-        {title: 'Update/delete a blog', to: 'crud/blogs'},
-    ]
+    const config = auth.role === 0 ? sidebarConfig.user : sidebarConfig.admin;
+    const basePath = auth.role === 0 ? '/user' : '/admin2';
 
-    const userServiceList = [
-        {title: 'Create  page', to: 'crud/gen-page/'},
-        {title: 'Update/delete a page', to: 'crud/gen-page/dynamic-pages'},
-    ]
-    const profileList = [
-        {title: 'Update', to: 'update'},
-    ]
-
-
-    //admin
-
-    const blogList = [
-        {title: 'Categories', slug: 'crud/category-tag'},
-        {title: 'Tags', slug: 'crud/category-tag'},
-        {title: 'Write a blog', slug: 'crud/blog'},
-        {title: 'Update/delete a blog', slug: 'crud/blogs'},
-    ]
-
-    const serviceList = [
-        {title: 'Categories', slug: 'crud/gen-page/page-category'},
-        {title: 'Create  page', slug: 'crud/gen-page/'},
-        {title: 'Update/delete a page', slug: 'crud/gen-page/dynamic-pages'},
-    ]
-
-    const certificateList = [
-        {title: 'Create', slug: 'crud/certificate/create'},
-        {title: 'List', slug: 'crud/certificate/list'},
-
-    ]
-
-    const downloadList = [
-        {title: 'Upload', slug: 'crud/upload-files'},
-        {title: 'Tags', slug: 'crud/document-tag'},
-    ]
-    const projectList = [
-        {title: 'Create', slug: 'crud/projects/create'},
-        {title: 'Manage Projects', slug: 'crud/projects'},
-    ]
-    const tenderList = [
-        {title: 'Upload/Add', slug: 'crud/tenders/create'},
-        {title: 'Manage Tenders', slug: 'crud/tenders'},
-    ]
-    const galleryList = [
-        {title: 'Upload', slug: 'crud/upload-images'},
-        {title: 'Tags', slug: 'crud/gallery-tag'},
-    ]
-
-
-    const userList = [
-        {title: 'Add HMT member', slug: 'crud/users/user'},
-        {title: 'Manage existing users', slug: 'crud/users'},
-    ]
-    if (isAuth() && isAuth().role === 0) {
-        return <aside className={attachedClasses.join(' ')}>
+    return (
+        <aside className={attachedClasses.join(' ')}>
             <ul className={classes.SidebarList}>
-                <li className={classes.NavHeading}>Dashboard</li>
-                <PrivateSidebarLink
-                    title={'Home'}
-                    slug={''}
-                    icon={'house'}
-                />
-                <li
-                    className={classes.NavHeading}>Quick links
-                </li>
-                <SidebarLink
-                    title={'Website home page'}
-                    slug={'/'}
-                    icon={'house'}/>
-
-                <SidebarLink
-                    title={'Blog section'}
-                    slug={'/blogs'}
-                    icon={'grid'}/>
-                <li
-                    className={classes.NavHeading}>Pages
-                </li>
-                <Accordion2
-                    title='Blog'
-                    icon='journal-album'>
-                    <>
-                        {accordionPrivateFunction(userBlogList)}
-                    </>
-                </Accordion2>
-                <Accordion2 title='Pages' icon='journal'>
-                    <>
-                        {accordionPrivateFunction(userServiceList)}
-                    </>
-                </Accordion2>
-
-
-                <Accordion2 title='Profile' icon='journal'>
-                    <>
-                        {accordionPrivateFunction(profileList)}
-                    </>
-                </Accordion2>
-                {/*<Accordion2 title='Gallery' icon='journal'>*/}
-                {/*    <>*/}
-                {/*        {accordionPrivateFunction(userGalleryList)}*/}
-                {/*    </>*/}
-                {/*</Accordion2>*/}
-
-                {/*<Accordion2 title='Downloads' icon='journal'>*/}
-                {/*    <>*/}
-                {/*        {accordionPrivateFunction(userDownloadList)}*/}
-                {/*    </>*/}
-                {/*</Accordion2>*/}
-
-
+                {renderSidebar(config, basePath)}
             </ul>
         </aside>
-    }
-
-    if (isAuth() && isAuth().role === 1) {
-        return (
-
-            <aside className={attachedClasses.join(' ')}>
-                <ul className={classes.SidebarList}>
-                    <li className={classes.NavHeading}>Dashboard</li>
-                    <AdminSidebarLink
-                        title={'Admin home'}
-                        slug={''}
-                        icon={'house'}
-                    />
-                    <li
-                        className={classes.NavHeading}>Quick links
-                    </li>
-                    <SidebarLink
-                        title={'Website home page'}
-                        slug={'/'}
-                        icon={'house'}/>
-                    <SidebarLink
-                        title={'Realtime Google Analytics'}
-                        slug={'https://analytics.google.com/analytics/web/#/p306834202/realtime/overview?params=_u..nav%3Dmaui'}
-                        icon={'house'}/>
-
-                    <SidebarLink
-                        title={'Blog section'}
-                        slug={'/blogs'}
-                        icon={'grid'}/>
-
-                    <li
-                        className={classes.NavHeading}>Pages
-                    </li>
-                    <AdminSidebarLink
-                        title={'Customize Home page'}
-                        slug={''} icon={'grid'}/>
-                    <Accordion2
-                        title='Tenders'
-                        icon='journal-album'>
-                        <>
-                            {accordionFunction(tenderList)}
-                        </>
-                    </Accordion2>
-
-                    <Accordion2
-                        title='Blog'
-                        icon='journal-album'>
-                        <>
-                            {accordionFunction(blogList)}
-                        </>
-                    </Accordion2>
-                    <Accordion2 title='Pages' icon='journal'>
-                        <>
-                            {accordionFunction(serviceList)}
-                        </>
-                    </Accordion2>
-                    <Accordion2 title='Certificate' icon='journal'>
-                        <>
-                            {accordionFunction(certificateList)}
-                        </>
-                    </Accordion2>
-                    <li className={classes.NavHeading}>Media</li>
-                    <Accordion2 title='Downloads' icon='journal'>
-                        <>
-                            {accordionFunction(downloadList)}
-                        </>
-                    </Accordion2>
-                    <Accordion2 title='Gallery' icon='journal'>
-                        <>
-                            {accordionFunction(galleryList)}
-                        </>
-                    </Accordion2>
-                    <Accordion2 title='Project' icon='journal'>
-                        <>
-                            {accordionFunction(projectList)}
-                        </>
-                    </Accordion2>
-
-                    <li className={classes.NavHeading}>Staff</li>
-
-                    <Accordion2 title='Users' icon='journal'>
-                        <>
-                            {accordionFunction(userList)}
-                        </>
-                    </Accordion2>
-
-                    <Accordion2 title='Profile' icon='journal'>
-                        <>
-                            {accordionPrivateFunction(profileList)}
-                        </>
-                    </Accordion2>
-                </ul>
-            </aside>
-        )
-    } else
-        return <p>loading</p>
+    );
 };
 
 export default AdminSidebar;

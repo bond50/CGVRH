@@ -1,3 +1,4 @@
+
 .SidebarListItem {
     border: none !important;
     padding: 0;
@@ -5,35 +6,36 @@
     margin-bottom: 5px;
 }
 
-.SidebarListItem .icon {
-    margin-right: 5px;
-    font-size: 20px !important;
-}
 
 .NavLink {
+    background: var(--color-background1);
+    padding: 10px 15px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     font-size: 14px;
     font-weight: 600;
     color: var(--color-text-1);
-    background: var(--color-background1);
-    padding: 10px 15px;
-    border-radius: 4px;
     font-family: var(--font-heading);
+    transition: 0.3s;
 }
 
+
 .NavLink .icon {
-    font-size: 16px !important;
-    margin-right: 10px;
+    font-size: 10px !important;
+    margin-right: 8px;
+    line-height: 0;
+    border-radius: 50% !important;
     color: #899bbd;
 }
 
+
 .NavLink:hover, .NavLink.active {
-     color: var(--color-secondary-brighter);
+    color: var(--color-secondary-brighter);
     background: #ededf1;
 }
 
-.active {
-    color: var(--color-secondary-brighter);
-    background: #ededf1;
+
+.NavLink.active .icon {
+    color: var(--color-secondary-brighter);;
 }

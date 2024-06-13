@@ -14,7 +14,8 @@ const {lowerFirst} = require("lodash/string");
 
 
 exports.create = (req, res) => {
-
+    console.log(req.body)
+    return
     const {title, body, categories, images, tags} = req.body
 
     if (!title || !title.length) {
@@ -106,51 +107,104 @@ exports.list = (req, res) => {
 };
 
 
-exports.listAllBlogsCategoriesTags = (req, res) => {
+// exports.listAllBlogsCategoriesTags = (req, res) => {
+//     let limit = req.body.limit ? parseInt(req.body.limit) : 4;
+//     let skip = req.body.skip ? parseInt(req.body.skip) : 0;
+//
+//     let blogs;
+//     let categories;
+//     let tags;
+//
+//     Blog.find({accepted: true})
+//         .populate('categories', '_id name slug')
+//         .populate('tags', '_id name slug')
+//         .populate('postedBy', '_id name username profile')
+//         .sort({createdAt: -1})
+//         .skip(skip)
+//         .limit(limit)
+//         .select('_id title accepted slug images excerpt categories tags postedBy createdAt updatedAt')
+//         .exec((err, data) => {
+//             if (err) {
+//                 return res.json({
+//                     error: errorHandler(err)
+//                 });
+//             }
+//             blogs = data; // blogs
+//             // get all categories
+//             Category.find({}).exec((err, c) => {
+//                 if (err) {
+//                     return res.json({
+//                         error: errorHandler(err)
+//                     });
+//                 }
+//                 categories = c; // categories
+//                 // get all tags
+//                 Tag.find({}).exec((err, t) => {
+//                     if (err) {
+//                         return res.json({
+//                             error: errorHandler(err)
+//                         });
+//                     }
+//                     tags = t;
+//                     // return all blogs categories tags
+//                     res.json({blogs, categories, tags, size: blogs.length});
+//                 });
+//             });
+//         });
+// };
+
+
+
+
+exports.listAllBlogsCategoriesTags = async (req, res) => {
     let limit = req.body.limit ? parseInt(req.body.limit) : 4;
     let skip = req.body.skip ? parseInt(req.body.skip) : 0;
 
-    let blogs;
-    let categories;
-    let tags;
+    try {
+        // Find all blogs with the given criteria
+        const blogs = await Blog.find({ accepted: true })
+            .populate('categories', '_id name slug')
+            .populate('tags', '_id name slug')
+            .populate('postedBy', '_id name username profile')
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(limit)
+            .select('_id title accepted slug images excerpt categories tags postedBy createdAt updatedAt')
+            .exec();
 
-    Blog.find({accepted: true})
-        .populate('categories', '_id name slug')
-        .populate('tags', '_id name slug')
-        .populate('postedBy', '_id name username profile')
-        .sort({createdAt: -1})
-        .skip(skip)
-        .limit(limit)
-        .select('_id title accepted slug images excerpt categories tags postedBy createdAt updatedAt')
-        .exec((err, data) => {
-            if (err) {
-                return res.json({
-                    error: errorHandler(err)
-                });
-            }
-            blogs = data; // blogs
-            // get all categories
-            Category.find({}).exec((err, c) => {
-                if (err) {
-                    return res.json({
-                        error: errorHandler(err)
-                    });
-                }
-                categories = c; // categories
-                // get all tags
-                Tag.find({}).exec((err, t) => {
-                    if (err) {
-                        return res.json({
-                            error: errorHandler(err)
-                        });
-                    }
-                    tags = t;
-                    // return all blogs categories tags
-                    res.json({blogs, categories, tags, size: blogs.length});
-                });
-            });
+        // Find all categories
+        const categories = await Category.find({}).exec();
+
+        // Find all tags
+        const tags = await Tag.find({}).exec();
+
+        // Count blogs in each category
+        const categoryBlogCounts = await Blog.aggregate([
+            { $match: { accepted: true } },
+            { $unwind: '$categories' },
+            { $group: { _id: '$categories', count: { $sum: 1 } } }
+        ]);
+
+        // Map category counts to categories
+        const categoriesWithCounts = categories.map(category => {
+            const count = categoryBlogCounts.find(count => String(count._id) === String(category._id));
+            return {
+                ...category.toObject(),
+                blogCount: count ? count.count : 0
+            };
         });
+
+        // Return all blogs, categories with counts, and tags
+        res.json({ blogs, categories: categoriesWithCounts, tags ,size: blogs.length});
+
+    } catch (err) {
+        return res.json({
+            error: errorHandler(err)
+        });
+    }
 };
+
+
 
 exports.read = (req, res) => {
     const slug = req.params.slug.toLowerCase();
@@ -293,7 +347,7 @@ exports.listHomePageBlogs = (req, res) => {
     Blog.find({accepted: true, featured: true})
         .populate('postedBy', '_id name username')
         .select('_id title images slug excerpt postedBy createdAt updatedAt')
-        .limit(12)
+        .limit(4)
         .sort({createdAt: -1})
         .exec((err, data) => {
             if (err) {
@@ -373,4 +427,95 @@ exports.listAllBlogsSlugs = (req, res) => {
             const slugs = blogs.map(blog => blog.slug);
             res.json({slugs});
         });
+};
+
+
+exports.listTrending = async (req, res) => {
+    try {
+        const trendingBlogs = await Blog.find({ accepted: true })
+            .sort({
+                // Calculate score as: views + 2 * likes + 3 * comments + 4 * shares
+                $expr: {
+                    $add: [
+                        "$views",
+                        { $multiply: ["$likes", 2] },
+                        { $multiply: ["$comments", 3] },
+                        { $multiply: ["$shares", 4] }
+                    ]
+                }
+            })
+            .populate('categories', '_id name slug')
+            .populate('tags', '_id name slug')
+            .populate('postedBy', '_id name username profile')
+            .limit(10) // Limit to top 10 trending blogs
+            .select('_id title slug images excerpt categories tags postedBy createdAt updatedAt views likes comments shares')
+            .exec();
+
+        res.json(trendingBlogs);
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler(err)
+        });
+    }
+};
+
+
+exports.incrementViews = async (req, res) => {
+    try {
+        const blog = await Blog.findOneAndUpdate(
+            { slug: req.params.slug },
+            { $inc: { views: 1 } },
+            { new: true }
+        ).exec();
+        res.json(blog);
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler(err)
+        });
+    }
+};
+
+exports.incrementLikes = async (req, res) => {
+    try {
+        const blog = await Blog.findOneAndUpdate(
+            { slug: req.params.slug },
+            { $inc: { likes: 1 } },
+            { new: true }
+        ).exec();
+        res.json(blog);
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler(err)
+        });
+    }
+};
+
+exports.incrementComments = async (req, res) => {
+    try {
+        const blog = await Blog.findOneAndUpdate(
+            { slug: req.params.slug },
+            { $inc: { comments: 1 } },
+            { new: true }
+        ).exec();
+        res.json(blog);
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler(err)
+        });
+    }
+};
+
+exports.incrementShares = async (req, res) => {
+    try {
+        const blog = await Blog.findOneAndUpdate(
+            { slug: req.params.slug },
+            { $inc: { shares: 1 } },
+            { new: true }
+        ).exec();
+        res.json(blog);
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler(err)
+        });
+    }
 };

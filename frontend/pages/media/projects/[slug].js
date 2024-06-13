@@ -1,10 +1,10 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../../config";
-import renderHTML from "react-render-html";
 import {getAllProjectSlugs, getProject, listProjects} from "../../../actions/projects";
 import PageWrapper from "../../../hoc/page-wrapper";
 import Layout from "../../../hoc/Layout";
+import {stripTags} from "../../../components/reusables/utility";
 
 
 const Slug = ({project, query}) => {
@@ -44,8 +44,8 @@ const Slug = ({project, query}) => {
     );
 
     const showPage = () => {
-        return <PageWrapper related={projects} title={`Related to ${project.title}`} projectPage>
-            {renderHTML(project.body)}
+        return <PageWrapper related={projects} title={`Related`} projectPage>
+             {stripTags(project.body, ['strong', 'b'])}
         </PageWrapper>
     };
 

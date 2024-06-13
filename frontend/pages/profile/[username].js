@@ -39,12 +39,12 @@ const Userprofile = ({user, blogs, query}) => {
         return blogs.map((blog, i) => {
             return (
                 <div className={`row ${classes.Row}`} key={i}>
-                    <div className="col-lg-3 col-md-4 ">
+                    <div className="col-9">
                         <Link href={`/blogs/${blog.slug}`}>
-                            <a className="lead">{blog.title}</a>
+                            <a>{blog.title}</a>
                         </Link>
                     </div>
-                    <div className="col-lg-9 col-md-8">{user.name}</div>
+                    <div className="col-3">{user.name}</div>
                 </div>
 
             );
@@ -75,7 +75,7 @@ const Userprofile = ({user, blogs, query}) => {
             {head()}
             <Layout>
                 <section className={classes.Profile}>
-                    <div className="container ">
+                    <div className="container">
                         <div className="row">
                             <div className="col-xl-4 ">
 
@@ -130,7 +130,7 @@ const Userprofile = ({user, blogs, query}) => {
                                     <div className={`card ${classes.Card}`}>
                                         <div className={`card-body ${classes.CardBody}`}>
                                             <h5 className={classes.CardTitle}>Articles written
-                                                by <em><strong>{user.name}</strong></em></h5>
+                                                by <em><strong>{user.username}</strong></em></h5>
                                             {showUserBlogs()}
                                         </div>
                                     </div>}

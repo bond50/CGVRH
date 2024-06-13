@@ -1,8 +1,6 @@
-import fetch from "isomorphic-fetch";
+import axiosInstance from '../axios/axios';
 import cookie from "js-cookie";
-import {API} from "../config";
 import Router from "next/router";
-
 
 export const handleResponse = (response) => {
     if (response.status === 401) {
@@ -18,63 +16,27 @@ export const handleResponse = (response) => {
 };
 
 export const preSignup = (user) => {
-    return fetch(`${API}/pre-signup`, {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-    })
-        .then((response) => {
-            return response.json();
-        })
-        .catch((err) => console.log(err));
+    return axiosInstance.post('/pre-signup', user)
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
-
 
 export const signup = (user) => {
-    return fetch(`${API}/signup`, {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-    })
-        .then((response) => {
-            return response.json();
-        })
-        .catch((err) => console.log(err));
+    return axiosInstance.post('/signup', user)
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
+
 export const superSignup = (user) => {
-    return fetch(`${API}/super-signup`, {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-    })
-        .then((response) => {
-            return response.json();
-        })
-        .catch((err) => console.log(err));
+    return axiosInstance.post('/super-signup', user)
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
 export const signin = (user) => {
-    return fetch(`${API}/signin`, {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-    })
-        .then((response) => {
-            return response.json();
-        })
-        .catch((err) => console.log(err));
+    return axiosInstance.post('/signin', user)
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
 export const signout = (next) => {
@@ -83,18 +45,16 @@ export const signout = (next) => {
     removeLocalStorage("loadedUser");
     next();
 
-    return fetch(`${API}/signout`, {
-        method: "GET",
+    return axiosInstance.get('/signout')
+    .then((response) => {
+        console.log("signout success");
     })
-        .then((response) => {
-            console.log("signout success");
-        })
-        .catch((err) => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 // set cookie
 export const setCookie = (key, value) => {
-    if (process.browser) {
+    if (typeof window !== 'undefined') {
         cookie.set(key, value, {
             expires: 1,
         });
@@ -102,31 +62,33 @@ export const setCookie = (key, value) => {
 };
 
 export const removeCookie = (key) => {
-    if (process.browser) {
+    if (typeof window !== 'undefined') {
         cookie.remove(key, {
             expires: 1,
         });
     }
 };
+
 // get cookie
 export const getCookie = (key) => {
-    if (process.browser) {
+    if (typeof window !== 'undefined') {
         return cookie.get(key);
     }
 };
 
 // localstorage
 export const setLocalStorage = (key, value) => {
-    if (process.browser) {
+    if (typeof window !== 'undefined') {
         localStorage.setItem(key, JSON.stringify(value));
     }
 };
 
 export const removeLocalStorage = (key) => {
-    if (process.browser) {
+    if (typeof window !== 'undefined') {
         localStorage.removeItem(key);
     }
 };
+
 // authenticate user by pass data to cookie and localstorage
 export const authenticate = (data, next) => {
     setCookie("token", data.token);
@@ -134,9 +96,8 @@ export const authenticate = (data, next) => {
     next();
 };
 
-
 export const isAuth = () => {
-    if (process.browser) {
+    if (typeof window !== 'undefined') {
         const cookieChecked = getCookie("token");
         if (cookieChecked) {
             if (localStorage.getItem("user")) {
@@ -148,10 +109,8 @@ export const isAuth = () => {
     }
 };
 
-
 export const updateUser = (user, id, cb) => {
-
-    if (isAuth() && isAuth()._id === id && process.browser && localStorage.getItem("user")) {
+    if (isAuth() && isAuth()._id === id && typeof window !== 'undefined' && localStorage.getItem("user")) {
         localStorage.setItem("user", JSON.stringify(user));
         cb();
     } else {
@@ -159,48 +118,20 @@ export const updateUser = (user, id, cb) => {
     }
 };
 
-
-export const forgotPassword = email => {
-    return fetch(`${API}/forgot-password`, {
-        method: 'PUT',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(email)
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
+export const forgotPassword = (email) => {
+    return axiosInstance.put('/forgot-password', email)
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
-export const resetPassword = resetInfo => {
-    return fetch(`${API}/reset-password`, {
-        method: 'PUT',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(resetInfo)
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
+export const resetPassword = (resetInfo) => {
+    return axiosInstance.put('/reset-password', resetInfo)
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };
 
-export const loginWithGoogle = user => {
-    return fetch(`${API}/google-login`, {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(user)
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
+export const loginWithGoogle = (user) => {
+    return axiosInstance.post('/google-login', user)
+    .then((response) => response.data)
+    .catch((err) => console.log(err));
 };

@@ -4,7 +4,6 @@ const Project = require("../models/project");
 const {errorHandler} = require("../helpers/dbErrorHandler");
 
 exports.listFeatured = async (req, res) => {
-    console.log('Hitted');
 
     try {
         // Define conditions for each model

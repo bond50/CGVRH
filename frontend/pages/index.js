@@ -104,11 +104,18 @@ export default function Home({services, blogs, featuredAll: allFeatured}) {
     return (
         <>
             {head()}
-            <Layout noBread home featuredServices={services} allFeatured={allFeatured} featuredBlogs={blogs}>
-                <WhyUs/>
+            <Layout
+                noBread
+                home
+                featuredServices={services}
+                allFeatured={allFeatured}
+                featuredBlogs={blogs}>
                 <Clients/>
-                <HomeCounter/>
+                <WhyUs/>
                 <About/>
+
+
+                <HomeCounter/>
                 {/*<Gallery/>*/}
                 <FeaturedServices services={services}/>
                 <Cta/>
@@ -131,6 +138,6 @@ export const getStaticProps = async () => {
             blogs: blogsResponse.data,
             featuredAll: allResponse.data,
         },
-        revalidate: 60, // Optionally, add revalidate time in seconds
+        revalidate: 60,
     };
 };

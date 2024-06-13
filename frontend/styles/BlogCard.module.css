@@ -1,21 +1,16 @@
 .Entry {
+    overflow: hidden;
     padding: 30px;
     margin-bottom: 60px;
     color: #111111;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-.ServiceEntry {
-    padding: 30px;
-    margin-bottom: 60px;
-    color: #09254b;
-    border: none !important;
-}
 
 .Image {
-    max-height: 440px;
-    margin: -30px -30px 20px -30px;
+    max-height: 400px;
     overflow: hidden;
+    margin: -30px -30px 30px -30px;
 }
 
 .Image img {
@@ -27,23 +22,22 @@
 
 .Title {
     font-size: 28px;
-    text-transform: capitalize !important;
     font-weight: bold;
-    padding: 0;
     margin: 0 0 20px 0;
 }
 
 .Title a {
-    color: #294a70;
+    color: var(--color-secondary);
     letter-spacing: 1px;
     transition: 0.3s;
-    text-transform: capitalize;
 }
 
 
 .Meta {
+    background-color: var(--color-background2);
     margin-bottom: 15px;
-    color: #777777;
+    color: var(--color-text-2);
+    padding: 0 10px;
 }
 
 .Meta ul {
@@ -62,7 +56,7 @@
 .Meta i {
     font-size: 16px;
     margin-right: 8px;
-    color: #111111;
+    color: var(--color-text-1);
     line-height: 0;
 }
 
@@ -70,11 +64,16 @@
     font-size: 14px;
     display: inline-block;
     line-height: 1;
+    color: var(--color-secondary);
+}
+
+.Meta a:hover {
+    text-decoration: underline;
 }
 
 .Meta span {
     font-size: 14px;
-    color: #111111;
+    color: var(--color-mixed-paragraph-10);
     display: inline-block;
     line-height: 1;
 }
@@ -82,32 +81,14 @@
 
 .Content p, .Content ul li {
     line-height: 26px;
-    color: #7b829c;
+    color: var(--color-text-1);
+    font-family: var(--font-default);
 }
 
-.Content .ReadMore {
-    -moz-text-align-last: right;
-    text-align-last: right;
-}
 
-.Content .ReadMore a {
-    display: inline-block;
-    background: #2CC73E;
-    color: #fff;
-    padding: 6px 20px;
-    transition: 0.3s;
-    font-size: 14px;
-    border-radius: 4px;
-}
-
-.Content.ReadMore a:hover {
-    background: #2CC73E
-}
-
-.Content h3 {
+.Content h2, .Content h3, .Content h4, .Content h5, .Content h6 {
     font-size: 22px;
-    margin-top: 30px;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .Content img {
@@ -119,15 +100,15 @@
 
 .Content blockquote {
     overflow: hidden;
-    background-color: #e9fbe9;
+    background-color: var(--color-background2);
     padding: 20px;
     position: relative;
-    /*margin: 20px 0;*/
-    color: black;
+    color: var(--color-paragraph);
     line-height: 1.6;
     margin-bottom: 0;
-    font-weight: 500;
-    font-size: 15px;
+    font-weight: 400;
+    font-size: 14px;
+
 }
 
 .Content blockquote::after {
@@ -138,22 +119,24 @@
     top: 0;
     bottom: 0;
     width: 3px;
-    background-color: #52e052;
+    background-color: var(--color-secondary);
     margin-bottom: 10px;
 }
 
 .Footer {
+    margin-top: 20px;
     padding-top: 10px;
-    border-top: 1px solid #e6e6e6;
+    border-top: 1px solid var(--color-mixed-default-88);
 }
 
 .Footer i {
-    color: #5e5e5e;
+    color: var(--color-mixed-paragraph-10);
     display: inline;
+    margin-right: 5px;
 }
 
 .Footer a {
-    color: #1e1e1e;
+     color: var(--color-text-1);
     transition: 0.3s;
 }
 

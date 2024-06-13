@@ -1,48 +1,56 @@
-import dynamic from "next/dynamic";
-import 'react-quill/dist/quill.snow.css';
-import {QuillFormats, QuillModules} from '../../../helpers/quill';
+import TinyMCEEditor from "../../TinyMCEEditor";
 
-const ReactQuill = dynamic(() => import('react-quill'), {ssr: false});
+const CreateForm = ({ onSubmit, loading, btnCapture, handleChange, handleBody, bodyValue, titleValue, postToSocialMedia, setPostToSocialMedia, keywordsValue }) => {
+    return (
+        <form onSubmit={onSubmit}>
+            <div className="form-group mb-3">
+                <label className="text-muted">Title</label>
+                <input
+                    type="text"
+                    name="title"
+                    className="form-control"
+                    value={titleValue}
+                    onChange={handleChange} />
+            </div>
 
-const CreateForm = ({onSubmit, loading, btnCapture, handleChange, handleBody, bodyValue, titleValue}) => {
-    const form = () => {
-        return (
-            <form onSubmit={onSubmit}>
-                <div className="form-group mb-3">
-                    <label className="text-muted">Title</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        value={titleValue}
-                        onChange={handleChange}/>
-                </div>
+            <div className="form-group mb-3">
+                <TinyMCEEditor
+                    value={bodyValue}
+                    onEditorChange={handleBody}
+                />
+            </div>
 
-                <div className="form-group mb-3">
-                    <ReactQuill
-                        modules={QuillModules}
-                        formats={QuillFormats}
-                        value={bodyValue}
-                        placeholder="Write something amazing..."
-                        onChange={handleBody}
-                    />
-                </div>
+            <div className="form-group mb-3">
+                <label className="text-muted">Keywords separated by ,</label>
+                <textarea
 
-                <div>
-                    <button type="submit" className="btn btn-primary" disabled={loading}>
-                        {loading ? <>
+                    name="keywords"
+                    className="form-control"
+                    value={keywordsValue}
+                    onChange={handleChange} />
+            </div>
+
+            <div className="form-group mb-3">
+                <label className="text-muted">Post to Social Media</label>
+                <input
+                    type="checkbox"
+                    name="postToSocialMedia"
+                    checked={postToSocialMedia}
+                    onChange={handleChange}
+                />
+            </div>
+
+            <div>
+                <button type="submit" className="btn btn-primary" disabled={loading}>
+                    {loading ? (
+                        <>
                             <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             Loading...
-                        </> : btnCapture}
-                    </button>
-                </div>
-            </form>
-        );
-    };
-
-
-    return (<>
-            {form()}
-        </>
+                        </>
+                    ) : btnCapture}
+                </button>
+            </div>
+        </form>
     );
 };
 

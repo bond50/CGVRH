@@ -1,5 +1,5 @@
 .Profile {
-    background: #ecf5ff;
+    background: var(--color-background2);
 }
 
 .Card {
@@ -10,9 +10,11 @@
     box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
     overflow: hidden;
 }
-.Password{
+
+.Password {
     width: 75%;
 }
+
 .Card img {
     overflow: hidden;
 }
@@ -47,8 +49,19 @@
 
 
 .Row {
-    margin-bottom: 20px;
-    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.Row a {
+    font-weight: 400;
+    font-family: var(--font-secondary);
+    line-height: 18px;
+    font-size: 14px;
+    color: var(--color-secondary);
+}
+.Row a:hover {
+    text-decoration: underline;
+    color: var(--color-primary);
 }
 
 .CardTitle {

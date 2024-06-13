@@ -15,7 +15,12 @@ const {
     listSearch,
     featuredBlogs,
     listAllBlogsSlugs,
-    listPending
+    listPending,
+    incrementViews,
+    incrementLikes,
+    incrementComments,
+    incrementShares,
+    listTrending
 } = require('../controllers/blog');
 
 const {requireSignin, adminMiddleware, authMiddleware, canUpdateDeleteBlog} = require('../controllers/auth');
@@ -23,6 +28,7 @@ const {requireSignin, adminMiddleware, authMiddleware, canUpdateDeleteBlog} = re
 
 router.post('/blog', requireSignin, adminMiddleware, create);
 router.get('/blogs', list);
+router.get('/blogs/trending', listTrending);
 router.get('/featured-blogs', featuredBlogs);
 router.get('/pending-blogs', requireSignin, adminMiddleware, listPending);
 router.get('/list-recent-blogs', listHomePageBlogs);
@@ -34,6 +40,12 @@ router.put('/blog/:slug', requireSignin, adminMiddleware, update);
 router.get('/blog/photo/:slug', photo);
 router.post('/blogs/related', listRelated);
 router.get('/blogs/search', listSearch);
+
+
+router.post('/blog/:slug/views', incrementViews);
+router.post('/blog/:slug/likes', incrementLikes);
+router.post('/blog/:slug/comments', incrementComments);
+router.post('/blog/:slug/shares', incrementShares);
 
 //auth user blog routes
 

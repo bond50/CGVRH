@@ -35,14 +35,19 @@ const BlogUpdate = () => {
     const token = getCookie('token');
     const router = useRouter()
 
-    useEffect(() => {
-        setValues({...values, formData: new FormData()});
-        initBlog();
-        initCategories();
-        initTags();
-        setValues({...values, formData: new FormData()});
-
+   useEffect(() => {
+        let isMounted = true;
+        if (isMounted) {
+            setValues({...values, formData: new FormData()});
+            initBlog();
+            initCategories();
+            initTags();
+        }
+        return () => {
+            isMounted = false;
+        };
     }, [router]);
+
 
     let updateBlogEndpoint
 

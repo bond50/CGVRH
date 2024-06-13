@@ -1,28 +1,42 @@
 import Link from 'next/link';
 import React, {Fragment} from "react";
-import renderHTML from 'react-render-html';
-import moment from 'moment';
 import {API} from '../../config';
 import classes from '../../styles/BlogCard.module.css'
 import Image from "next/image";
+import {stripAllTags, stripTags} from "../reusables/utility";
+import {incrementLikes, incrementComments, incrementShares} from "../../actions/blog"; // Import actions
+import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
 
+dayjs.extend(advancedFormat);
 
-const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle, servicePage, admin}) => {
+const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle, admin}) => {
+    console.log('CARD', blog)
 
+    const handleLike = () => {
+        incrementLikes(blog.slug).then(data => {
+            if (data.error) {
+                console.log(data.error);
+            } else {
+                console.log('Liked');
+            }
+        });
+    };
 
-    let attachedClass = classes.Entry
-
-    if (servicePage) {
-        attachedClass = classes.ServiceEntry
-    }
+    const handleShare = () => {
+        incrementShares(blog.slug).then(data => {
+            if (data.error) {
+                console.log(data.error);
+            } else {
+                console.log('Shared');
+            }
+        });
+    };
 
 
     const showBlogTags = () =>
         blog.tags.map((t, i) => {
             let tagsLink = `/tags/${t.slug}`
-            if (servicePage) {
-                tagsLink = `/service-tags/${t.slug}`
-            }
             return (
                 <li key={i}>
                     <Link href={tagsLink}>
@@ -37,9 +51,6 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
         return blog.categories.map((c, i) => {
 
             let catsLink = `/categories/${c.slug}`
-            if (servicePage) {
-                catsLink = `/service-categories/${c.slug}`
-            }
 
             return (
                 <li key={i}>
@@ -55,19 +66,11 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
 
     let imgSrc = ''
 
-    if (blog) {
-        if (blog.images && blog.images.length && blog.images.length > 0) {
-            const image = blog.images[Math.floor(Math.random() * blog.images.length)];
-            imgSrc = image.url
-        } else {
-            imgSrc = !admin && `${API}/blog/photo/${blog.slug}`
-        }
-
-    } else if (servicePage) {
-        imgSrc = ''
-        // imgSrc = !admin && `${API}/service/photo/${blog.slug}`
+    if (blog && blog.images && blog.images.length && blog.images.length > 0) {
+        const image = blog.images[0];
+        imgSrc = image.url
     } else {
-        imgSrc = ''
+        imgSrc = !admin && blog && `${API}/blog/photo/${blog.slug}`
     }
     const myLoader = () => {
         return imgSrc;
@@ -76,9 +79,9 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
         return blogUploadSrc
     }
 
-
+    console.log(imgSrc)
     return (
-        <article className={attachedClass}>
+        <article className={classes.Entry}>
             {
                 admin ? <div className={classes.Content}>
 
@@ -117,13 +120,12 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
                                     {blog.title.toLowerCase()}
                                 </a>
                             </Link>
-
                         </h2>
                     </Fragment>
 
 
-                    {!servicePage && <div className={classes.Meta}>
-                        <ul className='mark pt-3 pb-3 '>
+                    <div className={classes.Meta}>
+                        <ul className='pt-3 pb-3 '>
                             <li className="d-flex align-items-center"><i className="bi bi-person"/>
                                 <span className='px-2'> Written by  </span>
                                 <Link href={`/profile/${blog.postedBy.username}`}>
@@ -133,16 +135,16 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
 
                             <li className="d-flex align-items-center">
                                 <i className="bi bi-calendar"/>
-                                <span> {moment(blog.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}</span>
+                                <span>{dayjs(blog.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}</span>
                             </li>
 
                         </ul>
                     </div>
-                    }
+
 
                     <div className={classes.Content}>
                         {!single && <>
-                            {renderHTML(blog.excerpt)}
+                            {stripAllTags(blog.excerpt, [])}
                             <div className={`${classes.ReadMore}`}>
                                 <Link href={`/blogs/${blog.slug}`}>
                                     <a>Read more</a>
@@ -150,8 +152,8 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
                             </div>
                         </>}
                         {single && <>
-                            {renderHTML(blog.body)}
-                            {!servicePage && <div className={classes.Footer}>
+                            {stripTags(blog.body, ['strong', 'b'])}
+                            <div className={classes.Footer}>
                                 <i className="bi bi-folder"/>
                                 <ul className={classes.Cats}>
                                     {showCats()}
@@ -161,9 +163,14 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
                                 <ul className={classes.Tags}>
                                     {showBlogTags()}
                                 </ul>
-                            </div>}
+                            </div>
                         </>
                         }
+                    </div>
+                    <div className={classes.Actions}>
+                        <button onClick={handleLike} className="btn btn-primary">Like</button>
+                        <button onClick={handleShare} className="btn btn-secondary">Share</button>
+                        {/* Comment functionality to be integrated with existing comment system */}
                     </div>
                 </>
             }

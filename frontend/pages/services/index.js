@@ -76,7 +76,6 @@ const Index = ({paginationData, size, page, generalData}) => {
     );
 
 
-
     const PerPageChange = (value) => {
         setLimit(value);
         const newPerPage = Math.ceil(totalCount / value);
@@ -104,7 +103,7 @@ const Index = ({paginationData, size, page, generalData}) => {
     return (
         <>
             {head()}
-            <Layout pages={generalData} >
+            <Layout pages={generalData}>
 
                 <main>
                     <PageWrapper related={generalData} title={`All Services`}>
@@ -163,12 +162,13 @@ export const getStaticProps = async () => {
         const paginationData = await listWithPagination(page, limit);
         const generalData = await list();
 
-        if (paginationData.error) {
-            console.log(paginationData.error);
+        if (!paginationData || !generalData) {
+            return {
+                notFound: true,
+            };
         }
-
-        if (generalData.error) {
-            console.log(generalData.error);
+        if (paginationData.error || generalData.error) {
+            console.log('error')
         }
 
         return {
@@ -183,11 +183,9 @@ export const getStaticProps = async () => {
     } catch (error) {
         console.error('Error fetching data:', error);
         return {
-            props: {
-                error: 'Failed to fetch data',
-            },
-            revalidate: 60,
+            notFound: true,
         };
     }
 };
+
 export default Index;

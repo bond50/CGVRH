@@ -9,16 +9,16 @@
 }
 
 .Categories a {
-    color: #111;
+    color: var(--color-text-2);
     transition: 0.3s;
 }
 
 .Categories a:hover {
-    color: #2CC73E;
+    color: var(--color-secondary);
 }
 
 .Categories a span {
     padding-left: 5px;
-    color: #b4aca8;
+    color: var(--color-text-2);
     font-size: 14px;
 }

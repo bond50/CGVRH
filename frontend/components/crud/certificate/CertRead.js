@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import Link from 'next/link';
 import {getCookie, isAuth} from '../../../actions/auth';
 import {list, listByUser, removeCertificate} from '../../../actions/certificate';
-import moment from 'moment';
+
 import Alert from "../../messages/Alert";
 import {API} from "../../../config";
 

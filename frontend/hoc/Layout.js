@@ -15,6 +15,7 @@ const Layout = ({
                     pageTitle,
                     noBread,
                     home,
+                    noHero,
                     blog,
                     featuredServices,
                     featuredBlogs,
@@ -40,6 +41,7 @@ const Layout = ({
             <Toolbar pages={pages} blog={blog}/>
             {home && <Hero services={allFeatured}/>}
             <main>
+                {blog && !noHero && <Hero services={footerBlogs} blog/>}
                 {!noBread && <Breadcrumb imageUrl={imageUrl} pageTitle={pageTitle}/>}
                 {children}
             </main>
@@ -49,7 +51,8 @@ const Layout = ({
             />
             <Footer
                 services={footerServices}
-                blogs={footerBlogs}/>
+                blogs={footerBlogs}
+                blog={blog}/>
         </>
     );
 

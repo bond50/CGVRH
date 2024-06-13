@@ -18,7 +18,7 @@ const VihigaHospitalInfo = () => {
             delay: 300
         },
         {
-            icon: 'openmoji:ct-scan',
+            icon: 'guidance:mri-pet',
             title: 'State-of-the-Art Facilities',
             description: 'Equipped with modern facilities to enhance patient care and experience.',
             delay: 400

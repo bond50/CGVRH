@@ -1,4 +1,4 @@
-import {listRelated, singleBlog, getAllBlogSlugs} from "../../actions/blog";
+import {listRelated, singleBlog, getAllBlogSlugs, incrementViews} from "../../actions/blog";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import Head from "next/head";
 import React, {useEffect, useState} from "react";
@@ -25,6 +25,7 @@ const Slug = ({blog, query}) => {
 
     useEffect(() => {
         loadRelated()
+        incrementViews(query.slug);
     }, [blog])
 
     const head = () => (
@@ -73,8 +74,8 @@ const Slug = ({blog, query}) => {
 
         <>
             {head()}
-            <Layout blog>
-                <section>
+            <Layout blog noHero noBread={true}>
+                <section className='blog-detail-section'>
                     <BlogContainer>
                         {showBlog()}
                         <div className='pt-5'>
@@ -86,7 +87,6 @@ const Slug = ({blog, query}) => {
                         <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
                         <div className="row">{showRelatedBlog()}</div>
                     </div>
-
 
 
                 </section>
@@ -104,17 +104,31 @@ export const getStaticPaths = async () => {
 
 // This function gets called at build time for each path returned by getStaticPaths
 export const getStaticProps = async ({params}) => {
-    return singleBlog(params.slug).then(data => {
-        if (data.error) {
-            console.log(data.error);
-            return {notFound: true};
-        } else {
+    try {
+        const data = await singleBlog(params.slug);
+
+        if (!data) {
             return {
-                props: {blog: data, query: params},
-                revalidate: 60,  // Optional: re-generate the page at most once per minute
+                notFound: true,
             };
         }
-    });
+        if (data.error) {
+            console.log(data.error);
+        }
+
+        return {
+            props: {
+                blog: data,
+                query: params,
+            },
+            revalidate: 60, // Optional: re-generate the page at most once per minute
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            notFound: true,
+        };
+    }
 };
 
 export default Slug

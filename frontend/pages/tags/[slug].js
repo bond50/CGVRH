@@ -31,7 +31,7 @@ const Tag = ({tag, blogs, query}) => {
     return (
         <>
             {head()}
-            <Layout blog>
+               <Layout blog noBread>
                 <section className='blog-section'>
                     <div className="container mt-2">
                         <div className="row">

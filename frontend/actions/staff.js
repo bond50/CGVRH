@@ -1,32 +1,17 @@
-import fetch from 'isomorphic-fetch';
-import {API} from '../config';
-import queryString from 'query-string'
-import {handleResponse, isAuth} from "./auth";
-
+import axiosInstance from "../axios/axios";
 
 export const createStaff = (data) => {
-
-
-    return fetch(`${API}/staff-info`, {
-        method: 'POST',
+    return axiosInstance().post(`/staff-info`, data, {
         headers: {
             Accept: 'application/json',
         },
-        body: data
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
+    .then(response => response.data)
+    .catch(err => console.log(err));
 };
 
-
 export const list = () => {
-    return fetch(`${API}/staff-info`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
+    return axiosInstance.get(`/staff-info`)
+    .then(response => response.data)
+    .catch(err => console.log(err));
 };

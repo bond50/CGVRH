@@ -1,25 +1,20 @@
-import fetch from "isomorphic-fetch";
-import {API} from "../config";
+import axiosInstance from '../axios/axios';
 
 export const emailContactForm = (data) => {
     let emailEndpoint;
 
     if (data.authorEmail) {
-        emailEndpoint = `${API}/contact-blog-author`;
+        emailEndpoint = '/contact-blog-author';
     } else {
-        emailEndpoint = `${API}/contact`;
+        emailEndpoint = '/contact';
     }
 
-    return fetch(`${emailEndpoint}`, {
-        method: "POST",
+    return axiosInstance.post(emailEndpoint, data, {
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
     })
-        .then((response) => {
-            return response.json();
-        })
-        .catch((err) => console.log(err));
+    .then(response => response.data)
+    .catch(err => console.log(err));
 };

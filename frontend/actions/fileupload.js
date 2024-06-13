@@ -1,49 +1,24 @@
-import axios from "axios";
-import {API} from "../config";
-
+import axiosInstance from "../axios/axios";
 
 export const singleFileUpload = async (data, options) => {
-    try {
-        await axios.post(`${API}/single-file-upload`, data, options)
-    } catch (e) {
-        throw e
-
-    }
+    await axiosInstance.post('/single-file-upload', data, options);
 };
 
 export const getSingleFiles = async () => {
-    try {
-        const {data} = await axios.get(`${API}/get-all-single-files`)
-        return data
-    } catch (e) {
-        throw e
-    }
+    const { data } = await axiosInstance.get('/get-all-single-files');
+    return data;
 };
 
 export const multipleFileUpload = async (data, options) => {
-    try {
-        await axios.post(`${API}/files-upload`, data, options)
-    } catch (e) {
-        throw e
-    }
+    await axiosInstance.post('/files-upload', data, options);
 };
-
 
 export const getDownloads = async () => {
-    try {
-        const {data} = await axios.get(`${API}/get-downloads`)
-        return data
-    } catch (e) {
-        throw e
-    }
+    const { data } = await axiosInstance.get('/get-downloads');
+    return data;
 };
 
-
 export const getGallery = async () => {
-    try {
-        const {data} = await axios.get(`${API}/get-gallery`)
-        return data
-    } catch (e) {
-        throw e
-    }
+    const { data } = await axiosInstance.get('/get-gallery');
+    return data;
 };

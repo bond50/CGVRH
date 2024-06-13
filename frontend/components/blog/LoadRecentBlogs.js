@@ -1,14 +1,16 @@
 import classes from '../../styles/LoadRecent.module.css'
-import moment from "moment";
 import Link from "next/link";
 import {API} from "../../config";
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
+dayjs.extend(relativeTime);
 const LoadRecentBlogs = ({blogs}) => {
-
 
     const recent = () => {
         return blogs && blogs.map((blog, index) => {
             let imgSrc = `${API}/blog/photo/${blog.slug}`
+            const relativeDate = dayjs(blog.updatedAt).fromNow();
             if (blog.images && blog.images.length && blog.images.length > 0) {
                 const image = blog.images[Math.floor(Math.random() * blog.images.length)];
                 imgSrc = image.url
@@ -23,7 +25,7 @@ const LoadRecentBlogs = ({blogs}) => {
                     </Link>
                 </h4>
                 <div className={classes.Time}>
-                    {moment(blog.updatedAt).fromNow()}
+                    <span>Modified {relativeDate}</span>
                 </div>
             </div>
         })

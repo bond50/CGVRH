@@ -79,7 +79,7 @@ const CoreValues = () => {
     });
   };
     return (
-        <section id="principles" className="principles section-bg">
+        <section id="principles" className="principles">
             <div className="container" data-aos="fade-up">
                 <div className="row">
                     {renderList()}

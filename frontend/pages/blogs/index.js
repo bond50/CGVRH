@@ -1,12 +1,13 @@
 import Head from "next/head";
-import React, { useState } from "react";
-import { listBlogsWithCategoriesAndTags } from "../../actions/blog";
-import { API, APP_NAME, DOMAIN } from "../../config";
-import { withRouter } from "next/router";
+import React, {useState} from "react";
+import {listBlogsWithCategoriesAndTags} from "../../actions/blog";
+import {API, APP_NAME, DOMAIN} from "../../config";
+import {withRouter} from "next/router";
 import SmallCard from "../../components/reusables/card/small-card";
 import Layout from "../../hoc/Layout";
+import TrendingBlogs from "../../components/blog/TrendingBlogs";
 
-const Blogs = ({ blogs, totalBlogs, blogsLimit, router }) => {
+const Blogs = ({blogs, totalBlogs, blogsLimit, router}) => {
     const [limit] = useState(blogsLimit);
     const [skip, setSkip] = useState(0);
     const [size, setSize] = useState(totalBlogs);
@@ -15,6 +16,8 @@ const Blogs = ({ blogs, totalBlogs, blogsLimit, router }) => {
     const loadMore = () => {
         let toSkip = skip + limit;
         listBlogsWithCategoriesAndTags(toSkip, limit).then((data) => {
+
+            console.log('INSIDE BLOG INDEX',data)
             if (data.error) {
                 console.log(data.error);
             } else {
@@ -43,7 +46,7 @@ const Blogs = ({ blogs, totalBlogs, blogsLimit, router }) => {
         return blogs.map((blog, i) => {
             return (
                 <div key={i} className="col-lg-4">
-                    <SmallCard blog={blog} isPriority={i === 0} />
+                    <SmallCard blog={blog} isPriority={i === 0}/>
                 </div>
             );
         });
@@ -52,7 +55,7 @@ const Blogs = ({ blogs, totalBlogs, blogsLimit, router }) => {
     const showLoadedBlogs = () => {
         return loadedBlogs.map((blog, i) => (
             <div key={i} className="col-lg-4">
-                <SmallCard blog={blog} />
+                <SmallCard blog={blog}/>
             </div>
         ));
     };
@@ -65,19 +68,20 @@ const Blogs = ({ blogs, totalBlogs, blogsLimit, router }) => {
                     name="description"
                     content="Discover articles on health, wellness, fitness, and mental health from Vihiga County Referral Hospital."
                 />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <meta name="keywords" content="health, wellness, fitness, mental health, Vihiga County, medical services" />
-                <meta name="author" content="Vihiga County Referral Hospital" />
-                <meta name="robots" content="index, follow" />
-                <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
-                <meta property="og:title" content="Health & Wellness Articles | Vihiga County Referral Hospital Blog" />
+                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <meta name="keywords"
+                      content="health, wellness, fitness, mental health, Vihiga County, medical services"/>
+                <meta name="author" content="Vihiga County Referral Hospital"/>
+                <meta name="robots" content="index, follow"/>
+                <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
+                <meta property="og:title" content="Health & Wellness Articles | Vihiga County Referral Hospital Blog"/>
                 <meta
                     property="og:description"
                     content="Explore our latest articles on health, wellness, fitness, and mental health."
                 />
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
-                <meta property="og:site_name" content={`${APP_NAME}`} />
+                <meta property="og:type" content="website"/>
+                <meta property="og:url" content={`${DOMAIN}${router.pathname}`}/>
+                <meta property="og:site_name" content={`${APP_NAME}`}/>
 
                 {blogs.length > 0 && (
                     <>
@@ -104,10 +108,11 @@ const Blogs = ({ blogs, totalBlogs, blogsLimit, router }) => {
                 )}
 
                 {/* Twitter Card Metadata */}
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:site" content="@your_twitter_handle" />
-                <meta name="twitter:title" content="Health & Wellness Articles | Vihiga County Referral Hospital Blog" />
-                <meta name="twitter:description" content="Explore our latest articles on health, wellness, fitness, and mental health." />
+                <meta name="twitter:card" content="summary_large_image"/>
+                <meta name="twitter:site" content="@your_twitter_handle"/>
+                <meta name="twitter:title" content="Health & Wellness Articles | Vihiga County Referral Hospital Blog"/>
+                <meta name="twitter:description"
+                      content="Explore our latest articles on health, wellness, fitness, and mental health."/>
                 {blogs.length > 0 && (
                     <meta name="twitter:image" content={blogs[0].images && blogs[0].images.length > 0
                         ? blogs[0].images[0].url.replace('/upload/', '/upload/f_auto,q_auto/')
@@ -181,17 +186,17 @@ const Blogs = ({ blogs, totalBlogs, blogsLimit, router }) => {
                 ))}
             </Head>
 
-            <Layout blog>
-
-                    <section className="blog-section">
-                        <div className="container">
-                            <div className="row">
-                                {showAllBlogs()}
-                                {showLoadedBlogs()}
-                            </div>
-                            <div className="text-center pb-3">{loadMoreButton()}</div>
+            <Layout blog noBread>
+                <section className="section">
+                    <div className="container">
+                        <div className="row">
+                            {showAllBlogs()}
+                            {showLoadedBlogs()}
                         </div>
-                    </section>
+                        <div className="text-center pb-3">{loadMoreButton()}</div>
+                        <TrendingBlogs />
+                    </div>
+                </section>
 
             </Layout>
         </>
@@ -201,22 +206,36 @@ const Blogs = ({ blogs, totalBlogs, blogsLimit, router }) => {
 export const getStaticProps = async () => {
     let skip = 0;
     let limit = 6;
-    return listBlogsWithCategoriesAndTags(skip, limit).then((data) => {
-        if (data.error) {
-            console.log(data.error);
-        } else {
+
+    try {
+        const data = await listBlogsWithCategoriesAndTags(skip, limit);
+
+        if (!data) {
             return {
-                props: {
-                    blogs: data.blogs,
-                    categories: data.categories,
-                    totalBlogs: data.size,
-                    blogsLimit: limit,
-                    blogSkip: skip,
-                },
-                revalidate: 60, // Re-generate the page at most once per minute
+                notFound: true,
             };
         }
-    });
+        if (data.error ) {
+            console.log(data.error);
+        }
+
+        return {
+            props: {
+                blogs: data.blogs,
+                categories: data.categories,
+                totalBlogs: data.size,
+                blogsLimit: limit,
+                blogSkip: skip,
+            },
+            revalidate: 60, // Re-generate the page at most once per minute
+        };
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        return {
+            notFound: true,
+        };
+    }
 };
+
 
 export default withRouter(Blogs);

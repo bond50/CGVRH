@@ -41,7 +41,7 @@ const blogSchema = new mongoose.Schema(
         mdesc: {
             type: String
         },
-         images: {
+        images: {
             type: Array
         },
         photo: {
@@ -53,6 +53,26 @@ const blogSchema = new mongoose.Schema(
         postedBy: {
             type: ObjectId,
             ref: 'User'
+        },
+        views: {
+            type: Number,
+            default: 0
+        },
+        likes: {
+            type: Number,
+            default: 0
+        },
+        comments: {
+            type: Number,
+            default: 0
+        },
+        shares: {
+            type: Number,
+            default: 0
+        },
+        postToSocialMedia: {
+            type: Boolean,
+            default: false
         }
     },
 

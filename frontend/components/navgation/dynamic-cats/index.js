@@ -1,7 +1,7 @@
 // dynamic-cats.js
 import useSWR from "swr";
 import {API} from "../../../config";
-import {fetcher} from "../../reusables/functions/fetcher";
+import {fetcher} from "../../../axios/axios";
 
 
 const DynamicCats = () => {

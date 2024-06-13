@@ -1,195 +1,144 @@
-import fetch from 'isomorphic-fetch';
-import {API} from '../config';
-import queryString from 'query-string'
-import {handleResponse, isAuth} from "./auth";
+import axiosInstance from '../axios/axios';
+import queryString from 'query-string';
+import { handleResponse, isAuth } from "./auth";
 
-
-export const createBlog = (blog, token) => {
-    let blogEndpoint
+export const createBlog = (blog) => {
+    let blogEndpoint;
 
     if (isAuth() && isAuth().role === 1) {
-        blogEndpoint = `${API}/blog`
+        blogEndpoint = '/blog';
     } else if (isAuth() && isAuth().role === 0) {
-        blogEndpoint = `${API}/user/blog`
+        blogEndpoint = '/user/blog';
     }
 
-    return fetch(`${blogEndpoint}`, {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            Authorization: `Bearer ${token}`
-        },
-        body: blog
+    return axiosInstance.post(blogEndpoint, blog)
+    .then(response => {
+        handleResponse(response);
+        return response.data;
     })
-        .then(response => {
-            handleResponse(response)
-            return response.json();
-        })
-        .catch(err => console.log(err));
+    .catch(err => console.log(err));
 };
 
 export const listBlogsWithCategoriesAndTags = (skip, limit) => {
-    const data = {
-        limit,
-        skip
-    };
-    return fetch(`${API}/blogs-categories-tags`, {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
+    const data = { limit, skip };
+    return axiosInstance.post('/blogs-categories-tags', data)
+    .then(response => response.data)
+    .catch(err => console.log(err));
 };
 
-
 export const singleBlog = (slug) => {
-    console.log(slug)
-    return fetch(`${API}/blog/${slug}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
+    return axiosInstance.get(`/blog/${slug}`)
+    .then(response => response.data)
+    .catch(err => console.log(err));
 };
 
 export const listRelated = (blog) => {
-    return fetch(`${API}/blogs/related`, {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(blog)
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
+    return axiosInstance.post('/blogs/related', blog)
+    .then(response => response.data)
+    .catch(err => console.log(err));
 };
-
 
 export const list = (username) => {
-    let listBlogEndpoint
+    let listBlogEndpoint;
     if (username) {
-        listBlogEndpoint = `${API}/${username}/blogs`
+        listBlogEndpoint = `/${username}/blogs`;
     } else {
-        listBlogEndpoint = `${API}/blogs`
+        listBlogEndpoint = '/blogs';
     }
 
-
-    return fetch(`${listBlogEndpoint}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
+    return axiosInstance.get(listBlogEndpoint)
+    .then(response => response.data)
+    .catch(err => console.log(err));
 };
 
-
-export const removeBlog = (slug, token) => {
-    let deleteBlogEndpoint
+export const removeBlog = (slug) => {
+    let deleteBlogEndpoint;
     if (isAuth() && isAuth().role === 1) {
-        deleteBlogEndpoint = `${API}/blog/${slug}`
+        deleteBlogEndpoint = `/blog/${slug}`;
     } else if (isAuth() && isAuth().role === 0) {
-        deleteBlogEndpoint = `${API}/user/blog/${slug}`
+        deleteBlogEndpoint = `/user/blog/${slug}`;
     }
 
-    return fetch(`${deleteBlogEndpoint}`, {
-        method: 'DELETE',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-        },
+    return axiosInstance.delete(deleteBlogEndpoint)
+    .then(response => {
+        handleResponse(response);
+        return response.data;
     })
-        .then(response => {
-            handleResponse(response)
-            return response.json();
-        })
-        .catch(err => console.log(err));
+    .catch(err => console.log(err));
 };
 
-
-export const updateBlog = (blog, token, slug) => {
-    let updateBlogEndpoint
+export const updateBlog = (blog, slug) => {
+    let updateBlogEndpoint;
 
     if (isAuth() && isAuth().role === 1) {
-        updateBlogEndpoint = `${API}/blog/${slug}`
-
+        updateBlogEndpoint = `/blog/${slug}`;
     } else if (isAuth() && isAuth().role === 0) {
-        updateBlogEndpoint = `${API}/user/blog/${slug}`
+        updateBlogEndpoint = `/user/blog/${slug}`;
     }
 
-
-    return fetch(`${updateBlogEndpoint}`, {
-        method: 'PUT',
-        headers: {
-            Accept: 'application/json',
-            Authorization: `Bearer ${token}`
-        },
-        body: blog
+    return axiosInstance.put(updateBlogEndpoint, blog)
+    .then(response => {
+        handleResponse(response);
+        return response.data;
     })
-        .then(response => {
-            handleResponse(response)
-            return response.json();
-        })
-        .catch(err => console.log(err));
+    .catch(err => console.log(err));
 };
-
 
 export const listSearch = params => {
     let query = queryString.stringify(params);
-    console.log('query params', query);
-    return fetch(`${API}/blogs/search?${query}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
+    return axiosInstance.get(`/blogs/search?${query}`)
+    .then(response => response.data)
+    .catch(err => console.log(err));
 };
 
-
-export const listPending = (username, endpoint) => {
-    let listBlogEndpoint
+export const listPending = (username) => {
+    let listBlogEndpoint;
     if (username) {
-        listBlogEndpoint = `${API}/${username}/pending-blogs`
+        listBlogEndpoint = `/${username}/pending-blogs`;
     } else {
-        listBlogEndpoint = `${API}/pending-blogs`
+        listBlogEndpoint = '/pending-blogs';
     }
 
-
-    return fetch(`${listBlogEndpoint}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.log(err));
+    return axiosInstance.get(listBlogEndpoint)
+    .then(response => response.data)
+    .catch(err => console.log(err));
 };
 
-
 export const getAllBlogSlugs = () => {
-    return fetch(`${API}/blogs/slugs`, {  // Replace '/blogs/slugs' with the actual endpoint that returns all blog slugs
-        method: 'GET'
-    })
-        .then(response => {
-            handleResponse(response);  // Optional: handle the response if needed
-            return response.json();
-        })
-        .then(data => {
-            return data.slugs;  // Assuming the response has a 'slugs' field that contains an array of slugs
-        })
-        .catch(err => {
-            console.log(err);
-            return [];
-        });
+    return axiosInstance.get('/blogs/slugs')
+    .then(response => response.data.slugs)
+    .catch(err => {
+        console.log(err);
+        return [];
+    });
+};
+
+export const incrementViews = (slug) => {
+    return axiosInstance.post(`/blog/${slug}/views`)
+    .then(response => response.data)
+    .catch(err => console.log(err));
+};
+
+export const incrementComments = (slug) => {
+    return axiosInstance.post(`/blog/${slug}/comments`)
+    .then(response => response.data)
+    .catch(err => console.log(err));
+};
+
+export const incrementShares = (slug) => {
+    return axiosInstance.post(`/blog/${slug}/shares`)
+    .then(response => response.data)
+    .catch(err => console.log(err));
+};
+
+export const incrementLikes = (slug) => {
+    return axiosInstance.post(`/blog/${slug}/likes`)
+    .then(response => response.data)
+    .catch(err => console.log(err));
+};
+
+export const listTrending = () => {
+    return axiosInstance.get('/blogs/trending')
+    .then(response => response.data)
+    .catch(err => console.log(err));
 };

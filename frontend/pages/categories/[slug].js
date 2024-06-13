@@ -43,7 +43,7 @@ const Category = ({category, blogs, query}) => {
     return (
         <>
             {head()}
-              <Layout blog>
+                <Layout blog noBread>
                 <section className='blog-section'>
                     <div className="container mt-2">
                         <div className="row">{showCats()}</div>

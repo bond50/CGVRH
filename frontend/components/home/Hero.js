@@ -1,11 +1,11 @@
-
 import React, {useEffect, useState} from 'react';
 import {Carousel} from "react-bootstrap";
 import Image from "next/image";
 import renderHTML from "html-react-parser";
 import Link from "next/link";
 
-function Hero({services: data}) {
+function Hero({services: data, blog}) {
+
     const [index, setIndex] = useState(0);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -36,16 +36,18 @@ function Hero({services: data}) {
 
             let photoLink;
             if (d.images && d.images.length > 0) {
-                photoLink = d.images[Math.floor(Math.random() * d.images.length)].url;
+                photoLink = d.images[0].url;
             } else {
                 photoLink = "/herp.jpg";
             }
 
-            let link = `/services/${d.slug}`;
+            let link = `/blogs/${d.slug}`;
             if (d.dataFrom === 'projects') {
                 link = `/media/projects/${d.slug}`;
             } else if (d.dataFrom === 'blogs') {
                 link = `/blogs/${d.slug}`;
+            } else if (d.dataFrom === 'services') {
+                link = `/services/${d.slug}`
             }
 
             return (
@@ -58,7 +60,7 @@ function Hero({services: data}) {
                         objectFit="cover"
                         priority={idx === 0} // Preload the first image
                     />
-                    <div className="carousel-container ">
+                    <div className="carousel-container">
                         <div className="container">
                             <h2 className="animate__animated animate__fadeInDown">
                                 <Link href={link}>
@@ -73,20 +75,41 @@ function Hero({services: data}) {
                 </Carousel.Item>
             );
         });
-    }
+    };
+
+    const renderIndicators = () => {
+        return data && data.map((_, idx) => (
+            <li
+                key={idx}
+                className={idx === index ? 'active' : ''}
+                onClick={() => setIndex(idx)}
+            />
+        ));
+    };
 
     return (
-        <section id="hero">
+        <section id="hero" className={blog ? 'blog-hero' : ''}>
             <Carousel
-                activeIndex={index} onSelect={handleSelect} fade
+                activeIndex={index}
+                onSelect={handleSelect}
+                fade
                 nextLabel='next'
                 prevLabel='prev'
                 nextIcon={data && data.length > 1 && nextIcon}
-                prevIcon={data && data.length > 1 && prevIcon}>
+                prevIcon={data && data.length > 1 && prevIcon}
+                indicators={false}
+            >
                 {renderCarouselItem()}
             </Carousel>
+            <ol className="carousel-indicators custom-carousel-indicators">
+                {renderIndicators()}
+            </ol>
         </section>
     );
 }
 
 export default Hero;
+
+
+
+

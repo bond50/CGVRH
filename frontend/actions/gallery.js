@@ -1,39 +1,20 @@
-import {API} from "../config";
-import axios from "axios";
-import fetch from "isomorphic-fetch";
-
-
-// export const getFilesFromCloud = async () => {
-//     return await axios.get(`${API}/files-retrieve-from-cloud`)
-//         .then(({data}) => {
-//             return data
-//         }).catch(error => console.log(error))
-// };
-//
+import axiosInstance from '../axios/axios';
 
 export const getFilesFromLocal = async () => {
-    return await axios.get(`${API}/get-all-multiple-files`)
-        .then(({data}) => {
-            return data
-        }).catch(error => console.log(error))
+    return await axiosInstance.get('/get-all-multiple-files')
+        .then(({ data }) => data)
+        .catch(error => console.log(error));
 };
 
-
 export const getFilesFromCloud = async (folder) => {
-    const data = {
-        folder: folder
-    };
+    const data = { folder };
 
-    return fetch(`${API}/files-retrieve-from-cloud`, {
-        method: 'POST',
+    return await axiosInstance.post('/files-retrieve-from-cloud', data, {
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+        }
     })
-        .then(response => {
-            return response.json();
-        })
-
+    .then(response => response.data)
+    .catch(error => console.log(error));
 };

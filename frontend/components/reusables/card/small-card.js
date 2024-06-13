@@ -1,12 +1,16 @@
 import Link from 'next/link';
-import renderHTML from 'react-render-html';
-import moment from 'moment';
-import { API } from '../../../config';
+import {API} from '../../../config';
 import classes from '../../../styles/SmallCard.module.css';
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
+import {stripAllTags} from "../utility";
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
-const SmallCard = ({ blog, service, isPriority }) => {
+// Extend dayjs with the relativeTime plugin
+dayjs.extend(relativeTime);
+
+const SmallCard = ({blog, service, isPriority}) => {
     const [photoLink, setPhotoLink] = useState('');
     const [multiLink, setMultiLink] = useState('');
 
@@ -70,11 +74,11 @@ const SmallCard = ({ blog, service, isPriority }) => {
                     </Link>
                 </h5>
                 <div className="card-text">
-                    {blog ? renderHTML(blog.excerpt) : renderHTML(service.excerpt)}
+                    <p>{blog ? stripAllTags(blog.excerpt, []) : stripAllTags(service.excerpt, [])}</p>
                 </div>
                 {blog && (
                     <div className={classes.Info}>
-                        Posted {moment(blog.createdAt).fromNow()} by{' '}
+                        Posted {dayjs(blog.createdAt).fromNow()} by{' '}
                         <Link href={`/profile/${blog.postedBy.username}`}>
                             <a className="float-end">{blog.postedBy.username}</a>
                         </Link>

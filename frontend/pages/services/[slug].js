@@ -5,10 +5,12 @@ import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import {getAllSlugs, listRelated, singlePage} from "../../actions/general";
 import PageWrapper from "../../hoc/page-wrapper";
 import Layout from "../../hoc/Layout";
-import renderHTML from "react-render-html";
+import {stripTags} from "../../components/reusables/utility";
+
 
 const Slug = ({service, query}) => {
     const [related, setRelated] = useState([])
+
 
     const loadRelated = () => {
         listRelated({service}).then(data => {
@@ -45,14 +47,14 @@ const Slug = ({service, query}) => {
     );
 
     const showPage = () => {
-    return service ? (
-        <PageWrapper  related={related} title={`Related to ${service.title}`} >
-            {renderHTML(service.body)}
-        </PageWrapper>
-    ) : (
-        <div>Loading...</div>
-    );
-};
+        return service ? (
+            <PageWrapper related={related} title={`Related`}>
+                {stripTags(service.body, ['strong', 'b'])}
+            </PageWrapper>
+        ) : (
+            <div>Loading...</div>
+        );
+    };
 
     let imgSrc
 
@@ -76,16 +78,21 @@ const Slug = ({service, query}) => {
     )
 };
 export const getStaticProps = async ({params}) => {
-    return singlePage(params.slug).then(data => {
-        if (data.error) {
-            console.log(data.error);
-        } else {
-            return {
-                props: {service: data, query: params},
-                revalidate: 60,  // Optional: re-generate the page at most once per minute
-            };
-        }
-    });
+    const data = await singlePage(params.slug);
+
+    if (!data) {
+        return {
+            notFound: true,
+        };
+    }
+    if (data.error) {
+        console.log(data.error)
+    }
+
+    return {
+        props: {service: data, query: params},
+        revalidate: 60,  // Optional: re-generate the page at most once per minute
+    };
 };
 
 export const getStaticPaths = async () => {

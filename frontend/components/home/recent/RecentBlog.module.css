@@ -26,25 +26,25 @@
 .postDate {
     font-size: 15px;
     font-weight: 400;
-    color: var(--color-default);
+    color: var(--color-heading1);
 
 
 }
 
-.postAuthor {
-    font-size: 13px;
-    color: var(--color-secondary);
-}
+/*.postAuthor {*/
+/*    font-size: 13px;*/
+/*    display: none;*/
+/*    color: var(--color-secondary);*/
+/*}*/
 
-.postAuthor a {
-    font-weight: 400;
-    margin-left: 5px;
-    text-transform: capitalize;
+/*.postAuthor a {*/
+/*    font-weight: 400;*/
+/*    margin-left: 5px;*/
+/*    text-transform: capitalize;*/
 
-}
+/*}*/
 
 .postTitle {
-
     text-transform: capitalize;
     font-size: 16px;
     font-weight: 500;
@@ -55,14 +55,15 @@
 }
 
 .postTitle a {
-    color: var(--color-primary);
+    color: var(--color-default);
 }
 
 .postBox p {
     margin: 15px 0 0 0;
     font-size: 14px;
-    color: var(--color-default);
-    font-family: var(--font-secondary);
+    font-weight: 300;
+    color: var(--color-paragraph);
+    font-family: var(--font-heading);
 }
 
 .readMore {
@@ -72,8 +73,8 @@
     line-height: 1;
     transition: 0.3s;
     margin-top: 15px;
-    color: var(--font-default);
-    font-family: var(--font-primary);
+    color: var(--color-heading1);
+
 
 }
 

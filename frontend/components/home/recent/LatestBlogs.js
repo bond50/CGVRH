@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {API} from "../../../config";
+import {API, APP_NAME} from "../../../config";
 import dayjs from "dayjs";
 import Image from "../../reusables/lazy/Image";
 import useSWR from "swr";
@@ -15,19 +15,18 @@ const LatestBlogs = () => {
 
     const {data: blogs, error} = useSWR(`${API}/list-recent-blogs`)
 
+
     if (error) return <div>failed to load recent blogs</div>
     if (!blogs) return <Preloader/>
 
     return (
-        <section className='section section-bg' data-aos="fade-up">
+        <section className='section' data-aos="fade-up">
             <div className="container" data-aos="fade-up">
                 <div className="section-title">
                     <h2>Latest News & Updates</h2>
-                    <h3>Stay Updated with <span>Our Latest News</span></h3>
+                    <h3>Stay Updated with <span>Our <Link href='/blogs'>Latest News</Link></span></h3>
 
-                    <p>Discover the latest happenings and updates at Vihiga County Referral Hospital. Stay connected
-                        with our community for the most recent developments and news.
-                    </p>
+                    <p>Discover the latest happenings,Health tips and updates at {APP_NAME}.</p>
 
                 </div>
 
@@ -44,13 +43,13 @@ const LatestBlogs = () => {
                         }
 
 
-                         const myLoader = ({ src, width, quality }) => {
+                        const myLoader = ({src, width, quality}) => {
                             return `${src}?w=${width}&q=${quality || 75}`;
                         }
 
 
                         return <div
-                            className="col-xl-3 col-md-6"
+                            className={`col-xl-${blogs.length === 3 ? '4' : '3'} col-md-6`}
                             data-aos="fade-up"
                             data-aos-delay="100" key={i + 1 + 100}>
                             <div className={classes.postBox}>

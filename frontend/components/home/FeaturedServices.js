@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {API} from "../../config";
+import {API, APP_NAME} from "../../config";
 import ServiceCard from "../reusables/card/serviceCard/ServiceCard";
 
 import React from "react";
@@ -16,13 +16,12 @@ const FeaturedServices = ({services}) => {
                 <div className="section-title">
                     <h2>
                         <Link href={`/services`}>
-                            Our Services
+                          Services
                         </Link>
-
                     </h2>
-                    <h3>Explore the <span><Link href={`/services`}>Features of Our Services</Link></span></h3>
+                    <h3>Explore our <span>featured <Link href={`/services`}>services</Link></span></h3>
 
-                    <p>Explore the distinctive attributes that distinguish the services offered at Vihiga County Referral Hospital.</p>
+                    <p>Explore the distinctive attributes that distinguish the services offered at {APP_NAME}.</p>
 
 
                 </div>
