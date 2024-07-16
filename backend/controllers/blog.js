@@ -9,8 +9,7 @@ const _ = require('lodash');
 const {errorHandler} = require('../helpers/dbErrorHandler');
 const fs = require('fs');
 const {smartTrim} = require('../helpers/blog');
-const Page = require("../models/pages");
-const {lowerFirst} = require("lodash/string");
+const SEO = require('../models/seo');
 
 
 exports.create = (req, res) => {
@@ -107,66 +106,18 @@ exports.list = (req, res) => {
 };
 
 
-// exports.listAllBlogsCategoriesTags = (req, res) => {
-//     let limit = req.body.limit ? parseInt(req.body.limit) : 4;
-//     let skip = req.body.skip ? parseInt(req.body.skip) : 0;
-//
-//     let blogs;
-//     let categories;
-//     let tags;
-//
-//     Blog.find({accepted: true})
-//         .populate('categories', '_id name slug')
-//         .populate('tags', '_id name slug')
-//         .populate('postedBy', '_id name username profile')
-//         .sort({createdAt: -1})
-//         .skip(skip)
-//         .limit(limit)
-//         .select('_id title accepted slug images excerpt categories tags postedBy createdAt updatedAt')
-//         .exec((err, data) => {
-//             if (err) {
-//                 return res.json({
-//                     error: errorHandler(err)
-//                 });
-//             }
-//             blogs = data; // blogs
-//             // get all categories
-//             Category.find({}).exec((err, c) => {
-//                 if (err) {
-//                     return res.json({
-//                         error: errorHandler(err)
-//                     });
-//                 }
-//                 categories = c; // categories
-//                 // get all tags
-//                 Tag.find({}).exec((err, t) => {
-//                     if (err) {
-//                         return res.json({
-//                             error: errorHandler(err)
-//                         });
-//                     }
-//                     tags = t;
-//                     // return all blogs categories tags
-//                     res.json({blogs, categories, tags, size: blogs.length});
-//                 });
-//             });
-//         });
-// };
-
-
-
-
 exports.listAllBlogsCategoriesTags = async (req, res) => {
     let limit = req.body.limit ? parseInt(req.body.limit) : 4;
     let skip = req.body.skip ? parseInt(req.body.skip) : 0;
+    const seoId = '668175f5879d792ab67edfa1'
 
     try {
         // Find all blogs with the given criteria
-        const blogs = await Blog.find({ accepted: true })
+        const blogs = await Blog.find({accepted: true})
             .populate('categories', '_id name slug')
             .populate('tags', '_id name slug')
             .populate('postedBy', '_id name username profile')
-            .sort({ createdAt: -1 })
+            .sort({createdAt: -1})
             .skip(skip)
             .limit(limit)
             .select('_id title accepted slug images excerpt categories tags postedBy createdAt updatedAt')
@@ -177,12 +128,15 @@ exports.listAllBlogsCategoriesTags = async (req, res) => {
 
         // Find all tags
         const tags = await Tag.find({}).exec();
+        const seoSettings = await SEO.find({page: seoId}).populate("page").exec();
+
+
 
         // Count blogs in each category
         const categoryBlogCounts = await Blog.aggregate([
-            { $match: { accepted: true } },
-            { $unwind: '$categories' },
-            { $group: { _id: '$categories', count: { $sum: 1 } } }
+            {$match: {accepted: true}},
+            {$unwind: '$categories'},
+            {$group: {_id: '$categories', count: {$sum: 1}}}
         ]);
 
         // Map category counts to categories
@@ -195,7 +149,7 @@ exports.listAllBlogsCategoriesTags = async (req, res) => {
         });
 
         // Return all blogs, categories with counts, and tags
-        res.json({ blogs, categories: categoriesWithCounts, tags ,size: blogs.length});
+        res.json({blogs, categories: categoriesWithCounts, tags, size: blogs.length, seoSettings: seoSettings});
 
     } catch (err) {
         return res.json({
@@ -203,7 +157,6 @@ exports.listAllBlogsCategoriesTags = async (req, res) => {
         });
     }
 };
-
 
 
 exports.read = (req, res) => {
@@ -245,22 +198,20 @@ exports.update = async (req, res) => {
         // Update the excerpt in the request body
 
 
-
         req.body.excerpt = smartTrim(req.body.body, 320, ' ', ' ...');
-        const updated = await Blog.findOneAndUpdate({ slug }, req.body, { new: true }).exec();
+        const updated = await Blog.findOneAndUpdate({slug}, req.body, {new: true}).exec();
 
         // If there are images, unset the 'photo' field
         if (req.body.images.length > 0) {
-            await Blog.findOneAndUpdate({ slug }, { $unset: { photo: {} } }, { new: true }).exec();
+            await Blog.findOneAndUpdate({slug}, {$unset: {photo: {}}}, {new: true}).exec();
         }
 
         res.json(updated);
     } catch (err) {
         console.log(err)
-        res.status(400).send({ error: err.message });
+        res.status(400).send({error: err.message});
     }
 };
-
 
 
 exports.photo = (req, res) => {
@@ -432,27 +383,82 @@ exports.listAllBlogsSlugs = (req, res) => {
 
 exports.listTrending = async (req, res) => {
     try {
-        const trendingBlogs = await Blog.find({ accepted: true })
-            .sort({
-                // Calculate score as: views + 2 * likes + 3 * comments + 4 * shares
-                $expr: {
-                    $add: [
-                        "$views",
-                        { $multiply: ["$likes", 2] },
-                        { $multiply: ["$comments", 3] },
-                        { $multiply: ["$shares", 4] }
-                    ]
+        const trendingBlogs = await Blog.aggregate([
+            {
+                $match: {
+                    accepted: true,
+                    views: { $gt: 10 }
                 }
-            })
-            .populate('categories', '_id name slug')
-            .populate('tags', '_id name slug')
-            .populate('postedBy', '_id name username profile')
-            .limit(10) // Limit to top 10 trending blogs
-            .select('_id title slug images excerpt categories tags postedBy createdAt updatedAt views likes comments shares')
-            .exec();
+            },
+            {
+                $addFields: {
+                    score: {
+                        $add: [
+                            "$views",
+                            { $multiply: ["$likes", 2] },
+                            { $multiply: ["$comments", 3] },
+                            { $multiply: ["$shares", 4] }
+                        ]
+                    }
+                }
+            },
+            {
+                $sort: { score: -1 }
+            },
+            {
+                $limit: 10
+            },
+            {
+                $lookup: {
+                    from: 'categories',
+                    localField: 'categories',
+                    foreignField: '_id',
+                    as: 'categories'
+                }
+            },
+            {
+                $lookup: {
+                    from: 'tags',
+                    localField: 'tags',
+                    foreignField: '_id',
+                    as: 'tags'
+                }
+            },
+            {
+                $lookup: {
+                    from: 'users',
+                    localField: 'postedBy',
+                    foreignField: '_id',
+                    as: 'postedBy'
+                }
+            },
+            {
+                $unwind: "$postedBy"
+            },
+            {
+                $project: {
+                    _id: 1,
+                    title: 1,
+                    slug: 1,
+                    images: 1,
+                    excerpt: 1,
+                    categories: { _id: 1, name: 1, slug: 1 },
+                    tags: { _id: 1, name: 1, slug: 1 },
+                    postedBy: { _id: 1, name: 1, username: 1, profile: 1 },
+                    createdAt: 1,
+                    updatedAt: 1,
+                    views: 1,
+                    likes: 1,
+                    comments: 1,
+                    shares: 1
+                }
+            }
+        ]);
 
+        console.log(trendingBlogs);
         res.json(trendingBlogs);
     } catch (err) {
+        console.log(err);
         return res.status(400).json({
             error: errorHandler(err)
         });
@@ -463,9 +469,9 @@ exports.listTrending = async (req, res) => {
 exports.incrementViews = async (req, res) => {
     try {
         const blog = await Blog.findOneAndUpdate(
-            { slug: req.params.slug },
-            { $inc: { views: 1 } },
-            { new: true }
+            {slug: req.params.slug},
+            {$inc: {views: 1}},
+            {new: true}
         ).exec();
         res.json(blog);
     } catch (err) {
@@ -478,9 +484,9 @@ exports.incrementViews = async (req, res) => {
 exports.incrementLikes = async (req, res) => {
     try {
         const blog = await Blog.findOneAndUpdate(
-            { slug: req.params.slug },
-            { $inc: { likes: 1 } },
-            { new: true }
+            {slug: req.params.slug},
+            {$inc: {likes: 1}},
+            {new: true}
         ).exec();
         res.json(blog);
     } catch (err) {
@@ -493,9 +499,9 @@ exports.incrementLikes = async (req, res) => {
 exports.incrementComments = async (req, res) => {
     try {
         const blog = await Blog.findOneAndUpdate(
-            { slug: req.params.slug },
-            { $inc: { comments: 1 } },
-            { new: true }
+            {slug: req.params.slug},
+            {$inc: {comments: 1}},
+            {new: true}
         ).exec();
         res.json(blog);
     } catch (err) {
@@ -508,9 +514,9 @@ exports.incrementComments = async (req, res) => {
 exports.incrementShares = async (req, res) => {
     try {
         const blog = await Blog.findOneAndUpdate(
-            { slug: req.params.slug },
-            { $inc: { shares: 1 } },
-            { new: true }
+            {slug: req.params.slug},
+            {$inc: {shares: 1}},
+            {new: true}
         ).exec();
         res.json(blog);
     } catch (err) {

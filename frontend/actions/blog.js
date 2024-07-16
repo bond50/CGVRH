@@ -119,23 +119,23 @@ export const incrementViews = (slug) => {
     .catch(err => console.log(err));
 };
 
-export const incrementComments = (slug) => {
-    return axiosInstance.post(`/blog/${slug}/comments`)
-    .then(response => response.data)
-    .catch(err => console.log(err));
-};
-
-export const incrementShares = (slug) => {
-    return axiosInstance.post(`/blog/${slug}/shares`)
-    .then(response => response.data)
-    .catch(err => console.log(err));
-};
-
-export const incrementLikes = (slug) => {
-    return axiosInstance.post(`/blog/${slug}/likes`)
-    .then(response => response.data)
-    .catch(err => console.log(err));
-};
+// export const incrementComments = (slug) => {
+//     return axiosInstance.post(`/blog/${slug}/comments`)
+//     .then(response => response.data)
+//     .catch(err => console.log(err));
+// };
+//
+// export const incrementShares = (slug) => {
+//     return axiosInstance.post(`/blog/${slug}/shares`)
+//     .then(response => response.data)
+//     .catch(err => console.log(err));
+// };
+//
+// export const incrementLikes = (slug) => {
+//     return axiosInstance.post(`/blog/${slug}/likes`)
+//     .then(response => response.data)
+//     .catch(err => console.log(err));
+// };
 
 export const listTrending = () => {
     return axiosInstance.get('/blogs/trending')

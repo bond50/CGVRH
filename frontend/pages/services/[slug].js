@@ -1,20 +1,26 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import Head from "next/head";
-import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
-
-import {getAllSlugs, listRelated, singlePage} from "../../actions/general";
-import PageWrapper from "../../hoc/page-wrapper";
-import Layout from "../../hoc/Layout";
+import {API, APP_NAME} from "../../config";
 import {stripTags} from "../../components/reusables/utility";
+import {getAllSlugs, listRelated, singlePage} from "../../actions/general";
+import dynamic from "next/dynamic";
+import Preloader from "../../components/preloader";
+import SEOHead from "../../components/SEOHead";
+
+const PageWrapper = dynamic(() => import("../../hoc/page-wrapper"), { ssr: false, loading: () => <Preloader /> });
+const Layout = dynamic(() => import("../../hoc/Layout"), { ssr: false, loading: () => <Preloader /> });
 
 
-const Slug = ({service, query}) => {
+
+const Slug = ({service}) => {
     const [related, setRelated] = useState([])
 
 
     const loadRelated = () => {
         listRelated({service}).then(data => {
-            if (data.error) {
+           if (!data){
+               return {notFound:true}
+           }
+           if (data.error) {
                 console.log(data.error)
             } else {
                 setRelated(data)
@@ -27,24 +33,7 @@ const Slug = ({service, query}) => {
     }, [service.slug]);
 
 
-    const head = () => (
-        <Head>
-            <title>
-                {service.title} | {APP_NAME}
-            </title>
-            <meta name="description" content={service.metaDesc}/>
-            <link rel="canonical" href={`${DOMAIN}/services/${query.slug}`}/>
-            <meta property="og:title" content={`${service.title}| ${APP_NAME}`}/>
-            <meta property="og:description" content={service.metaDesc}/>
-            <meta property="og:type" content="webiste"/>
-            <meta property="og:url" content={`${DOMAIN}/services/${query.slug}`}/>
-            <meta property="og:site_name" content={`${APP_NAME}`}/>
-            <meta property="og:image" content={`${API}/page/photo/${service.slug}`}/>
-            <meta property="og:image:secure_url" content={`${API}/page/photo/${service.slug}`}/>
-            <meta property="og:image:type" content="image/jpg"/>
-            <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
-        </Head>
-    );
+
 
     const showPage = () => {
         return service ? (
@@ -59,16 +48,40 @@ const Slug = ({service, query}) => {
     let imgSrc
 
     if (service.images && service.images.length && service.images.length > 0) {
-        const image = service.images[Math.floor(Math.random() * service.images.length)];
-        imgSrc = image.url
+        imgSrc = service.images[0].url
     } else {
         imgSrc = `${API}/general/photo/${service.slug}`
     }
 
 
+
+
+      const additionalStructuredData = [
+        {
+            "@context": "https://schema.org",
+            "@type": "MedicalService",
+            "name": service.metaTitle,
+            "description": service.metaDesc,
+            "provider": {
+                "@type": "Hospital",
+                "name": APP_NAME
+            },
+            "url": `https://vihigahospital.go.ke/services/${service.slug}`
+        }
+    ];
+
+
     return (
         <Fragment>
-            {head()}
+             <SEOHead
+                title={`${service.metaTitle}`}
+                description={service.metaDesc}
+                url={`https://vihigahospital.go.ke/services/${service.slug}`}
+                imageUrl={service.imageUrl}
+                keywords={`${service.title}, Vihiga County Referral Hospital, cardiology`}
+                author={`${APP_NAME}`}
+                additionalStructuredData={additionalStructuredData}
+            />
             <Layout pageTitle={service.title} imageUrl={imgSrc}>
                 <main>
                     {showPage()}

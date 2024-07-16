@@ -1,58 +1,8 @@
-// import React, {useEffect, useState} from 'react';
-// import Link from 'next/link';
-// import useToggle from "../../../hooks/useToggle";
-// import {singleCategory} from "../../../actions/category";
-//
-// const Dropdown = ({caption, backendSlug, clientSideList}) => {
-//     const [isOpen, handleClick] = useToggle();
-//
-//     const [loadedPages, setLoadedPages] = useState([])
-//
-//     useEffect(() => {
-//             if (backendSlug) {
-//                 singleCategory(backendSlug, 'page-cat-name').then(res => {
-//                     setLoadedPages(res.pages)
-//                 })
-//             }
-//         }
-//         ,
-//         [backendSlug])
-//
-//
-//     return (
-//         <li className={`${classes.Dropdown}`}>
-//             <div className={`${classes.DropdownToggler} ${isOpen ? classes.DropdownTogglerActive : ''}`} role="button">
-//                 <span>{caption}</span>
-//             </div>
-//             <div className={`${classes.DropdownItem} ${isOpen ? classes.DropdownActive : ''}`} onClick={handleClick}>
-//                 {clientSideList && clientSideList.map(l => (
-//                     <div className={`${classes.DropdownItems}`} key={l._id}>
-//                         <Link href={l.to}>
-//                             <a className={`${classes.Links} nav-link`}>{l.title}</a>
-//                         </Link>
-//                     </div>
-//                 ))}
-//
-//                 {loadedPages.map(l => (
-//                     <div className={`${classes.DropdownItems}`} key={l._id}>
-//                         <Link href={`/services/${l.slug}`}>
-//                             <a className={`${classes.Links} nav-link`}>{l.title}</a>
-//                         </Link>
-//                     </div>
-//                 ))}
-//             </div>
-//         </li>
-//     );
-// };
-//
-// export default Dropdown;
-
-
 import React, {useEffect, useState} from 'react';
 import Link from 'next/link';
 import useToggle from "../../../hooks/useToggle";
 import {singleCategory} from "../../../actions/category";
-import {Icon} from "@iconify/react";
+
 
 const Dropdown = ({caption, clicked, link, backendSlug, clientSideList}) => {
     const [isOpen, handleClick] = useToggle();
@@ -60,14 +10,24 @@ const Dropdown = ({caption, clicked, link, backendSlug, clientSideList}) => {
     const [loadedPages, setLoadedPages] = useState([])
 
     useEffect(() => {
-            if (backendSlug) {
-                singleCategory(backendSlug, 'page-cat-name').then(res => {
-                    setLoadedPages(res.pages)
-                })
-            }
+        let isMounted = true;
+
+        if (backendSlug) {
+            singleCategory(backendSlug, 'page-cat-name').then(res => {
+                if (isMounted) {
+                    setLoadedPages(res.pages);
+                }
+            }).catch(err => {
+                if (isMounted) {
+                    console.log(err);
+                }
+            });
         }
-        ,
-        [backendSlug])
+
+        return () => {
+            isMounted = false;
+        };
+    }, [backendSlug]);
 
 
     function chunkArray(array) {

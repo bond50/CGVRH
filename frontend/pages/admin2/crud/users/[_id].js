@@ -1,18 +1,27 @@
-import Layout from "../../../../hoc/admin/layout/layout";
-import Admin from "../../../../components/auth/Admin";
-import React from "react";
-import UserUpdateComponent from "../../../../components/auth/user-update-component";
-import {useRouter} from "next/router";
+import React from 'react';
+import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
+import Preloader from '../../../../components/preloader';
+
+const Layout = dynamic(() => import('../../../../hoc/admin/layout/layout'), { ssr: false, loading: () => <Preloader /> });
+const Admin = dynamic(() => import('../../../../components/auth/Admin'), { ssr: false, loading: () => <Preloader /> });
+const UserUpdateComponent = dynamic(() => import('../../../../components/auth/user-update-component'), { ssr: false, loading: () => <Preloader /> });
 
 const Slug = () => {
-const router = useRouter()
+    const router = useRouter();
 
     return (
-        <Layout>
+        <>
+            <Head>
+                <meta name="robots" content="noindex, nofollow" />
+            </Head>
             <Admin>
-                <UserUpdateComponent id={router.query._id}/>
+                <Layout>
+                    <UserUpdateComponent id={router.query._id} />
+                </Layout>
             </Admin>
-        </Layout>
+        </>
     );
 };
 

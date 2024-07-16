@@ -10,6 +10,7 @@ const {
     listPending,
     listWithPagination,
     photo,
+    listSEOSettings,
     listPendingByUser,
     listByUser,
     listAllSlugs,
@@ -29,6 +30,7 @@ router.post('/page', requireSignin, adminMiddleware, create);
 router.get('/general', list);
 router.get('/services', listWithPagination);
 router.get('/featured-general', listFeatured);
+router.get('/home-page-seo', listSEOSettings);
 router.get('/pending-pages', listPending);
 router.get('/page-categories', listAllServicesCategoriesTags);
 router.get('/general/slugs', listAllSlugs);

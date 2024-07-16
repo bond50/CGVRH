@@ -22,7 +22,7 @@ const SmallCard = ({blog, service, isPriority}) => {
             initialPhotoLink = `${API}/service/photo/${service.slug}`;
             initialMultiLink = `/services/${service.slug}`;
         } else if (blog) {
-            initialMultiLink = `/blogs/${blog.slug}`;
+            initialMultiLink = `/blog/${blog.slug}`;
             if (blog.images && blog.images.length > 0) {
                 const image = blog.images[0]; // Ensure consistent image selection
                 initialPhotoLink = image.url;

@@ -34,7 +34,7 @@ const Search = () => {
                 {results.map((blog, i) => {
                     return (
                         <div key={i}>
-                            <Link href={`/blogs/${blog.slug}`}>
+                            <Link href={`/blog/${blog.slug}`}>
                                 <a className={`text-primary ${classes.Text}`}>{blog.title.toLowerCase()}</a>
                             </Link>
                         </div>

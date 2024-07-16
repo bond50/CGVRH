@@ -20,7 +20,7 @@ const LoadRecentBlogs = ({blogs}) => {
             return <div className={`${classes.Item} clearfix`} key={index}>
                 <img className="img img-fluid" src={imgSrc} alt={blog.title}/>
                 <h4>
-                    <Link href={`/blogs/${blog.slug}`} key={index}>
+                    <Link href={`/blog/${blog.slug}`} key={index}>
                         <a> {blog.title.toLowerCase()}</a>
                     </Link>
                 </h4>

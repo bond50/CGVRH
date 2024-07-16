@@ -1,43 +1,43 @@
 // components/CertificateRead.js
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
+import useSWR from 'swr';
 import Link from 'next/link';
-import {getCookie, isAuth} from '../../../actions/auth';
-import {list, listByUser, removeCertificate} from '../../../actions/certificate';
-
+import { getCookie, isAuth } from '../../../actions/auth';
+import { removeCertificate } from '../../../actions/certificate';
 import Alert from "../../messages/Alert";
-import {API} from "../../../config";
+import { API } from "../../../config";
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 
-const CertificateRead = ({username}) => {
-    const [certificates, setCertificates] = useState([]);
-    const [message, setMessage] = useState('');
+dayjs.extend(relativeTime);
+
+const fetcher = (url, token) => fetch(url, {
+    headers: { Authorization: `Bearer ${token}` }
+}).then(res => res.json());
+
+const CertificateRead = ({ username }) => {
     const token = getCookie('token');
+    const [message, setMessage] = useState('');
 
-    useEffect(() => {
-        loadCertificates();
-    }, []);
+    const { data: certificates, error, mutate } = useSWR(
+        () => username ? [`${API}/certificates/${username}`, token] : [`${API}/certificates`, token],
+        fetcher
+    );
 
-    const loadCertificates = () => {
-        const fetchCertificates = username ? listByUser : list;
-        fetchCertificates(username).then(data => {
-            if (data.error) {
-                setMessage(data.error);
-            } else {
-                setCertificates(data);
-            }
-        });
-    };
+    if (error) setMessage(error.message);
 
-    const deleteCertificate = (id) => {
-        removeCertificate(id, token).then(data => {
+    const deleteCertificate = async (id) => {
+        try {
+            const data = await removeCertificate(id, token);
             if (data.error) {
                 setMessage(data.error);
             } else {
                 setMessage(data.message);
-                loadCertificates();
+                mutate(); // revalidate the data
             }
-        }).catch(error => {
+        } catch (error) {
             setMessage(error.response?.data?.error || "Failed to delete certificate.");
-        });
+        }
     };
 
     const deleteConfirm = id => {
@@ -64,36 +64,34 @@ const CertificateRead = ({username}) => {
     };
 
     const showAllCertificates = () => {
-        return certificates.map((certificate, i) => {
-            return (
-                <div key={i} className="pb-5">
-                    <h6>{certificate.projectTitle}</h6>
-                    <p className="mark">
-                        Created by {certificate.createdBy?.name} | Published on {moment(certificate.updatedAt).fromNow()}
-                    </p>
-                    <button className="btn btn-sm btn-danger" onClick={() => deleteConfirm(certificate._id)}>
-                        Delete
-                    </button>
-                    {showUpdateButton(certificate)}
-                    <button className="btn btn-sm btn-secondary" onClick={() => viewCertificate(certificate._id)}>
-                        View PDF
-                    </button>
-                </div>
-            );
-        });
+        if (!certificates) return <p>Loading...</p>;
+        return certificates.map((certificate, i) => (
+            <div key={i} className="pb-5">
+                <h6>{certificate.projectTitle}</h6>
+                <p className="mark">
+                    Created by {certificate.createdBy?.name} | Published on {dayjs(certificate.updatedAt).fromNow()}
+                </p>
+                <button className="btn btn-sm btn-danger" onClick={() => deleteConfirm(certificate._id)}>
+                    Delete
+                </button>
+                {showUpdateButton(certificate)}
+                <button className="btn btn-sm btn-secondary" onClick={() => viewCertificate(certificate._id)}>
+                    View PDF
+                </button>
+            </div>
+        ));
     };
 
-    const viewCertificate = (id) => {
-    window.open(`${API}/certificate/${id}/pdf`, '_blank');
-};
-
+    const viewCertificate = id => {
+        window.open(`${API}/certificate/${id}/pdf`, '_blank');
+    };
 
     return (
         <div className="row">
             <div className="col-md-8">
                 <h3>Certificates</h3>
                 {showAllCertificates()}
-                {message && <Alert msg={message} label='Error' type='danger'/>}
+                {message && <Alert msg={message} label='Error' type='danger' />}
             </div>
         </div>
     );

@@ -1,17 +1,27 @@
 import React from 'react';
-import Admin from '../../../../components/auth/Admin';
-import PageCreate from '../../../../components/crud/PageCreate';
-import Layout from "../../../../hoc/admin/layout/layout";
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import { APP_NAME } from '../../../../config';
+import Preloader from '../../../../components/preloader';
 
+const Admin = dynamic(() => import('../../../../components/auth/Admin'), { ssr: false, loading: () => <Preloader /> });
+const PageCreate = dynamic(() => import('../../../../components/crud/PageCreate'), { ssr: false, loading: () => <Preloader /> });
+const Layout = dynamic(() => import('../../../../hoc/admin/layout/layout'), { ssr: false, loading: () => <Preloader /> });
 
-const Blog = () => {
+const CreateNewPage = () => {
     return (
-        <Layout pageTitle='Create a new page'>
-            <Admin>
-                <PageCreate/>
-            </Admin>
-        </Layout>
+        <>
+            <Head>
+                <meta name="robots" content="noindex, nofollow" />
+                <title>Create a New Page | {APP_NAME}</title>
+            </Head>
+            <Layout pageTitle='Create a New Page'>
+                <Admin>
+                    <PageCreate />
+                </Admin>
+            </Layout>
+        </>
     );
 };
 
-export default Blog;
+export default CreateNewPage;

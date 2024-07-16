@@ -1,10 +1,11 @@
-import {useState} from 'react';
-
-import Router, {withRouter} from 'next/router';
-import {resetPassword} from '../../../../actions/auth';
+import { useState } from 'react';
+import Router, { withRouter } from 'next/router';
+import { resetPassword } from '../../../../actions/auth';
 import Link from "next/link";
+import Head from 'next/head';
+import {APP_NAME} from "../../../../config";
 
-const ResetPassword = ({router}) => {
+const ResetPassword = ({ router }) => {
     const [values, setValues] = useState({
         name: '',
         newPassword: '',
@@ -13,7 +14,7 @@ const ResetPassword = ({router}) => {
         showForm: true
     });
 
-    const {newPassword, error, message} = values;
+    const { newPassword, error, message } = values;
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -22,14 +23,12 @@ const ResetPassword = ({router}) => {
             resetPasswordLink: router.query.id
         }).then(data => {
             if (data.error) {
-                setValues({...values, error: data.error, showForm: false, newPassword: ''});
+                setValues({ ...values, error: data.error, showForm: false, newPassword: '' });
             } else {
-                setValues({...values, message: data.message, showForm: false, newPassword: '', error: ''});
-
+                setValues({ ...values, message: data.message, showForm: false, newPassword: '', error: '' });
                 setTimeout(() => {
-                    Router.push('/signin')
+                    Router.push('/signin');
                 }, 5000);
-
             }
         });
     };
@@ -39,7 +38,7 @@ const ResetPassword = ({router}) => {
             <div className="form-group pt-5">
                 <input
                     type="password"
-                    onChange={e => setValues({...values, newPassword: e.target.value})}
+                    onChange={e => setValues({ ...values, newPassword: e.target.value })}
                     className="form-control mb-3"
                     value={newPassword}
                     placeholder="Type new password"
@@ -56,17 +55,22 @@ const ResetPassword = ({router}) => {
     const showMessage = () => (message ? <div className="alert alert-success">{message}</div> : '');
 
     return (
-
-        <div className="container">
-            <h2>Reset password</h2>
-            <hr/>
-            {showError()}
-            {showMessage()}
-            {passwordResetForm()}
-            <Link href={`/signin`}>
-                <a className='btn btn-danger btn-sm mt-2'>Click to login</a>
-            </Link>
-        </div>
+        <>
+            <Head>
+                <meta name="robots" content="noindex, nofollow" />
+                <title>Reset Password | {APP_NAME}</title>
+            </Head>
+            <div className="container">
+                <h2>Reset password</h2>
+                <hr />
+                {showError()}
+                {showMessage()}
+                {passwordResetForm()}
+                <Link href={`/signin`}>
+                    <a className='btn btn-danger btn-sm mt-2'>Click to login</a>
+                </Link>
+            </div>
+        </>
     );
 };
 

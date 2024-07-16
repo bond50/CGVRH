@@ -60,9 +60,9 @@
 
 .postBox p {
     margin: 15px 0 0 0;
-    font-size: 14px;
-    font-weight: 300;
-    color: var(--color-paragraph);
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-text-1);
     font-family: var(--font-heading);
 }
 
@@ -73,12 +73,12 @@
     line-height: 1;
     transition: 0.3s;
     margin-top: 15px;
-    color: var(--color-heading1);
+    color: var(--color-secondary-brighter);
 
 
 }
 
-.readMore .Icon {
+.readMore .icon {
     line-height: 0;
     margin-left: 4px;
     font-size: 18px;
@@ -86,7 +86,7 @@
 }
 
 .postBox:hover .postTitle {
-    color: var(--color-yellow);
+    color: var(--color-accent);
 }
 
 .postBox:hover .postImg img {

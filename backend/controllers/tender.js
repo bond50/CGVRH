@@ -2,6 +2,7 @@ const {cloudinaryUpload} = require("../helpers/cloudinary");
 const Tender = require("../models/tender");
 const {fileSizeFormatter} = require("../helpers/fileSizeFormatter");
 const fs = require("fs");
+const SEO = require("../models/seo");
 
 const cloudinary = require('cloudinary').v2
 require('dotenv').config();
@@ -67,7 +68,7 @@ exports.createTenders = async (req, res) => {
 };
 
 exports.fetchTenders = async (req, res) => {
-    console.log(req)
+
     try {
         const tenders = await Tender.find({})
             .sort({createdAt: -1}) // Sort by createdAt in descending order
@@ -82,11 +83,13 @@ exports.fetchTenders = async (req, res) => {
 
 exports.fetchPublicTenders = async (req, res) => {
     try {
+        const seoSettings = await SEO.find({page: '6696654914be5a83aa6b0592'}).populate("page").exec();
+
         const tenders = await Tender.find({isHidden: false}) // Filter for non-hidden tenders
             .sort({createdAt: -1}) // Sort by createdAt in descending order
             .exec();
 
-        res.status(200).json(tenders);
+        res.status(200).json({tenders, seoSettings});
     } catch (error) {
         console.error(error);
         res.status(500).json({error: "Error while fetching tenders."});

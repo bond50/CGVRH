@@ -23,7 +23,7 @@ const Breadcrumb = ({pageTitle }) => {
         }
     }, [router]);
 
-    const defaultImageUrl = '/home/imange.png';
+    const defaultImageUrl = '/home/image.jpg';
     const containerStyle = {
         backgroundImage: `url('${defaultImageUrl}')`,
     };

@@ -8,83 +8,70 @@ const fs = require('fs');
 const {smartTrim} = require('../helpers/blog');
 const User = require("../models/user");
 const {capitalizeFirstLetter} = require("../helpers/importantFunctions");
+const SEO = require('../models/seo');
 
 
-exports.create = (req, res) => {
-    const {title, body, categories, images} = req.body
+exports.create = async (req, res) => {
+    try {
+        const {title, body, categories, images} = req.body;
 
-    if (!title || !title.length) {
-        return res.status(400).json({
-            error: 'title is required'
-        });
-    }
-
-    if (!categories || categories.length === 0) {
-        return res.status(400).json({
-            error: 'At least one category is required'
-        });
-    }
-
-
-    let page = new Page();
-    page.title = title.toLowerCase();
-    page.body = body;
-    page.excerpt = smartTrim(body, 320, ' ', ' ...');
-    page.slug = slugify(title).toLowerCase();
-    page.metaTitle = `${title} | ${process.env.APP_NAME}`;
-    page.metaDesc = stripHtml(body.substring(0, 160));
-    page.postedBy = req.auth._id;
-    page.images = images;
-
-
-    page.save((err, result) => {
-        if (err) {
-            return res.status(400).json({
-                error: errorHandler(err)
-            });
+        if (!title || !title.length) {
+            return res.status(400).json({error: 'Title is required'});
         }
-        Page.findByIdAndUpdate(result._id, {$push: {categories}}, {new: true}).exec(
-            (err, result) => {
-                if (err) {
-                    return res.status(400).json({
-                        error: errorHandler(err)
-                    });
-                } else {
-                    res.json(result);
-                }
-            }
-        );
-    });
-}
 
-exports.listFeatured = (req, res) => {
-    Page.find({featured: true, accepted: true})
-        .select('_id title images excerpt slug')
-        .sort({updatedAt: -1})
-        .limit(4)
-        .exec((err, data) => {
-            if (err) {
-                return res.json({
-                    error: errorHandler(err)
-                });
-            }
-            res.json(data);
+        if (!categories || categories.length === 0) {
+            return res.status(400).json({error: 'At least one category is required'});
+        }
+
+        let page = new Page({
+            title: title.toLowerCase(),
+            body,
+            excerpt: smartTrim(body, 320, ' ', ' ...'),
+            slug: slugify(title).toLowerCase(),
+            metaTitle: `${title} | ${process.env.APP_NAME}`,
+            metaDesc: stripHtml(body.substring(0, 160)),
+            postedBy: req.auth._id,
+            images
         });
-}
-exports.list = (req, res) => {
-    Page.find({accepted: true})
-        .populate('categories', '_id name slug')
-        .populate('postedBy', '_id name username')
-        .select('_id title slug images metaTitle metaDesc excerpt categories postedBy createdAt updatedAt')
-        .sort({updatedAt: -1})
-        .exec((err, data) => {
-            if (err) {
-                return res.json({
-                    error: errorHandler(err)
-                });
-            }
-            res.json(data);
-        });
+
+        let result = await page.save();
+        result = await Page.findByIdAndUpdate(result._id, {$push: {categories}}, {new: true}).exec();
+
+        res.json(result);
+    } catch (err) {
+        return res.status(400).json({error: errorHandler(err)});
+    }
+};
+
+exports.listFeatured = async (req, res) => {
+    try {
+        const data = await Page.find({featured: true, accepted: true})
+            .select('_id title images excerpt slug')
+            .sort({updatedAt: -1})
+            .limit(4)
+            .exec();
+
+        res.json(data);
+    } catch (err) {
+        return res.json({error: errorHandler(err)});
+    }
+};
+
+exports.list = async (req, res) => {
+    try {
+
+
+        const data = await Page.find({accepted: true})
+            .populate('categories', '_id name slug')
+            .populate('postedBy', '_id name username')
+            .select('_id title slug images metaTitle metaDesc excerpt categories postedBy createdAt updatedAt')
+            .sort({updatedAt: -1})
+            .exec();
+
+        res.json(data);
+    } catch (err) {
+        return res.json({error: errorHandler(err)});
+    }
 };
 
 
@@ -93,6 +80,9 @@ exports.listWithPagination = async (req, res) => {
     const limit = req.query.limit || 6;
 
     try {
+        const seoSettings = await SEO.find({page: '6681769e879d792ab67edfdb'}).populate("page").exec();
+
+
         const totalCount = await Page.countDocuments({accepted: true}).exec();
         const data = await Page.find({accepted: true})
             .populate('categories', '_id name slug')
@@ -106,6 +96,8 @@ exports.listWithPagination = async (req, res) => {
         res.json({
             data,
             totalCount,
+            seoSettings
+
 
         });
     } catch (err) {
@@ -115,35 +107,21 @@ exports.listWithPagination = async (req, res) => {
     }
 };
 
-exports.listAllServicesCategoriesTags = (req, res) => {
-    let pages;
-    let categories;
-    let tags;
+exports.listAllServicesCategoriesTags = async (req, res) => {
+    try {
+        const pages = await Page.find({})
+            .populate('categories', '_id name slug')
+            .populate('postedBy', '_id name username profile')
+            .sort({updatedAt: -1})
+            .select('_id title slug excerpt metaTitle metaDesc images categories postedBy createdAt updatedAt')
+            .exec();
 
-    Page.find({})
-        .populate('categories', '_id name slug')
-        .populate('postedBy', '_id name username profile')
-        .sort({updatedAt: -1})
-        .select('_id title slug excerpt metaTitle metaDesc images categories postedBy createdAt updatedAt')
-        .exec((err, data) => {
-            if (err) {
-                return res.json({
-                    error: errorHandler(err)
-                });
-            }
-            pages = data;
-            // get all categories
-            Category.find({}).exec((err, c) => {
-                if (err) {
-                    return res.json({
-                        error: errorHandler(err)
-                    });
-                }
-                categories = c; // categories
+        const categories = await Category.find({}).exec();
 
-                res.json({pages, categories, size: pages.length});
-            });
-        });
+        res.json({pages, categories, size: pages.length});
+    } catch (err) {
+        return res.json({error: errorHandler(err)});
+    }
 };
 
 exports.listAllSlugs = async (req, res) => {
@@ -234,6 +212,10 @@ exports.listRelated = (req, res) => {
         });
 };
 
+exports.listSEOSettings = async (req, res) => {
+    const seoSettings = await SEO.find({page: '6696537c9670825168aef3b7'}).populate("page").exec();
+    res.json(seoSettings);
+}
 
 exports.remove = (req, res) => {
     const slug = req.params.slug.toLowerCase();

@@ -1,7 +1,10 @@
 import React from 'react';
-import Layout from '../../../hoc/Layout';
-import Admin from '../../../components/auth/Admin';
-import DocumentUpload from '../../../components/crud/document-upload';
+import dynamic from "next/dynamic";
+
+const Admin = dynamic(() => import('../../../components/auth/Admin'), { ssr: false });
+const DocumentUpload = dynamic(() => import('../../../components/crud/document-upload'), { ssr: false });
+const Layout = dynamic(() => import('../../../hoc/admin/layout/layout'), { ssr: false });
+
 
 const Blog = () => {
     return (

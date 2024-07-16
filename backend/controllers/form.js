@@ -1,4 +1,5 @@
-const sgMail = require("@sendgrid/mail"); // SENDGRID_API_KEY
+const sgMail = require("@sendgrid/mail");
+const SEO = require("../models/seo"); // SENDGRID_API_KEY
 
 
 const {
@@ -149,3 +150,7 @@ exports.contactBlogAuthorForm = async (req, res) => {
     }
 };
 
+exports.listSEOSettings = async (req, res) => {
+    const seoSettings = await SEO.find({page: '6696781d2a62ba1a405bc58b'}).populate("page").exec();
+    res.json(seoSettings);
+}

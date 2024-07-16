@@ -1,6 +1,6 @@
 import axios from "axios";
-import {API} from "../config";
-import {getCookie, handleResponse} from "../actions/auth";
+import { API } from "../config";
+import { getCookie, handleResponse } from "../actions/auth";
 
 // Create an axios instance
 const axiosInstance = axios.create({
@@ -35,23 +35,23 @@ axiosInstance.interceptors.response.use((response) => {
     return Promise.reject(error);
 });
 
-// Modified fetcher to handle GET and POST requests with optional payload and token
-const fetcher = async (url, payload, token) => {
-    const options = {
-        method: payload ? "POST" : "GET",
+// Modified fetcher to handle all HTTP methods
+const fetcher = async (url, options = {}) => {
+    const { method = 'GET', payload, token } = options;
+
+    const axiosConfig = {
+        url,
+        method,
         headers: {
             accept: "application/json",
             "Content-Type": "application/json",
-            ...(token && {Authorization: `Bearer ${token}`})
+            ...(token && { Authorization: `Bearer ${token}` })
         },
-        ...(payload && {data: payload})
+        ...(payload && { data: payload })
     };
 
     try {
-        const response = await axiosInstance.request({
-            url,
-            ...options
-        });
+        const response = await axiosInstance.request(axiosConfig);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -60,7 +60,15 @@ const fetcher = async (url, payload, token) => {
 };
 
 // Fetcher for OPTIONS requests
-const optionsFetcher = (url) => axiosInstance.options(url).then((res) => res.data);
+const optionsFetcher = async (url) => {
+    try {
+        const response = await axiosInstance.options(url);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
 
-export {axiosInstance, fetcher, optionsFetcher};
+export { axiosInstance, fetcher, optionsFetcher };
 export default axiosInstance;

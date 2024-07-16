@@ -1,10 +1,16 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import Link from "next/link";
 import dayjs from "dayjs";
 import classes from "./index.module.css";
-import {isAuth} from "../../../actions/auth";
+import { isAuth } from "../../../actions/auth";
 
-const DynamicTableRows = ({blog, user, deleteConfirm, endpoint}) => {
+const DynamicTableRows = ({ blog, user, deleteConfirm, endpoint }) => {
+
+    console.log(endpoint);
+
+    // Ensure endpoint has a valid default value if undefined
+    const validEndpoint = endpoint || '#';
+
     return (
         <>
             <tr className={classes.tr}>
@@ -28,15 +34,14 @@ const DynamicTableRows = ({blog, user, deleteConfirm, endpoint}) => {
                             )}
                         </td>
                         <td className={classes.td}>
-                            <Link href={endpoint}>
-                                <span className={`badge bg-primary ${classes.EditBtn}`}>
-                                    <i className='bi bi-gear'/>
-                                </span>
+                            <Link href={validEndpoint}>
+                                <a className={`badge bg-primary ${classes.EditBtn}`}>
+                                    <i className='bi bi-gear' />
+                                </a>
                             </Link>
 
-                            <span className={`badge bg-danger ${classes.EditBtn}`}
-                                  onClick={() => deleteConfirm(blog.slug, blog.title)}>
-                                <i className='bi bi-x-circle'/>
+                            <span className={`badge bg-danger ${classes.EditBtn}`} onClick={() => deleteConfirm(blog.slug, blog.title)}>
+                                <i className='bi bi-x-circle' />
                             </span>
                         </td>
                     </Fragment>
@@ -61,17 +66,17 @@ const DynamicTableRows = ({blog, user, deleteConfirm, endpoint}) => {
                         </td>
                         <td className={classes.td}>
                             <Link href={`/profile/${user.username}`}>
-                                <span className={`badge bg-primary ${classes.EditBtn}`}>
-                                    <i className='bi bi-eye'/>
-                                </span>
+                                <a className={`badge bg-primary ${classes.EditBtn}`}>
+                                    <i className='bi bi-eye' />
+                                </a>
                             </Link>
                             <Link href={`/admin2/crud/users/${user._id}`}>
-                                <span className={`badge bg-primary ${classes.EditBtn}`}>
-                                    <i className='bi bi-gear'/>
-                                </span>
+                                <a className={`badge bg-primary ${classes.EditBtn}`}>
+                                    <i className='bi bi-gear' />
+                                </a>
                             </Link>
                             <span className={`badge bg-danger ${classes.EditBtn}`} onClick={deleteConfirm}>
-                                <i className='bi bi-x-circle'/>
+                                <i className='bi bi-x-circle' />
                             </span>
                         </td>
                     </Fragment>

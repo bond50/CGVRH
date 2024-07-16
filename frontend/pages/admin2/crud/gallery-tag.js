@@ -1,8 +1,14 @@
 import React from 'react';
-import useTag from "../../../hooks/useTag";
-import TagCategoryForm from "../../../components/reusables/forms/TagCategoryForm";
-import Layout from "../../../hoc/admin/layout/layout";
-import Admin from "../../../components/auth/Admin";
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import { APP_NAME } from '../../../config';
+import Preloader from '../../../components/preloader';
+
+const Layout = dynamic(() => import('../../../hoc/admin/layout/layout'), { ssr: false, loading: () => <Preloader /> });
+const Admin = dynamic(() => import('../../../components/auth/Admin'), { ssr: false, loading: () => <Preloader /> });
+const TagCategoryForm = dynamic(() => import('../../../components/reusables/forms/TagCategoryForm'), { ssr: false, loading: () => <Preloader /> });
+
+import useTag from '../../../hooks/useTag';
 
 const BlogTag = () => {
     const {
@@ -15,28 +21,39 @@ const BlogTag = () => {
         showTags,
         showError,
         showRemoved
-    } = useTag('gallery-tags', 'gallery-tag', 'Gallery Tag')
+    } = useTag('gallery-tags', 'gallery-tag', 'Gallery Tag');
 
+    const head = () => (
+        <Head>
+            <title>Manage Tags | {APP_NAME}</title>
+            <meta name="robots" content="noindex, nofollow" />
+        </Head>
+    );
 
-    const newTagFom = () => (
+    const newTagForm = () => (
         <TagCategoryForm
             value={name}
             handleChange={handleChange}
             label={formLabel}
-            clickSubmit={clickSubmit}/>
+            clickSubmit={clickSubmit}
+        />
     );
+
     return (
-        <Layout pageTitle='Manage Tags'>
+        <>
+            {head()}
             <Admin>
-                {showSuccess()}
-                {showError()}
-                {showRemoved()}
-                <div onMouseMove={mouseMoveHandler}>
-                    {newTagFom()}
-                    {showTags()}
-                </div>
+                <Layout pageTitle='Manage Tags'>
+                    {showSuccess()}
+                    {showError()}
+                    {showRemoved()}
+                    <div onMouseMove={mouseMoveHandler}>
+                        {newTagForm()}
+                        {showTags()}
+                    </div>
+                </Layout>
             </Admin>
-        </Layout>
+        </>
     );
 };
 

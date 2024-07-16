@@ -1,7 +1,6 @@
-import classes from '../../styles/Partners.module.css'
+import classes from '../../styles/Partners.module.css';
 import Link from "next/link";
 import Image from "next/image";
-
 
 const Partners = () => {
     const list = [
@@ -9,7 +8,6 @@ const Partners = () => {
             name: 'County Government of Vihiga', src: '/logo/logo.png', website: 'https://vihiga.go.ke/', width: 100,
             height: 55
         },
-
         {
             name: 'NHIF and community based organizations (CBOs).',
             src: '/partners/nhif.jpg',
@@ -34,7 +32,6 @@ const Partners = () => {
             website: 'https://www.mmust.ac.ke/',
             width: 100,
             height: 80
-
         },
         {
             name: 'JKUAT', src: '/partners/jkuat.jpg', website: 'https://www.jkuat.ac.ke/', width: 80,
@@ -60,27 +57,28 @@ const Partners = () => {
             name: 'Makl', src: '/partners/makl.png', website: 'https://makl.co.ke/', width: 100,
             height: 60
         },
+    ];
 
-    ]
-
-
-    return <section className={`${classes.Section}`}>
-        <div className="container" data-aos="fade-up">
-            <div className={`row no-gutters ${classes.Wrap} clearfix`} data-aos="fade-up" data-aos-delay="100"
-                 data-aos-once='true'>
-                {list.map((img, i) => {
-                    return <div className="col-lg-3 col-md-4 col-6" key={i}>
-                        <div className={classes.Logo}>
-                            <Link href={img.website}>
-                                <Image src={img.src} className="img-fluid" alt={img.name} width={img.width}
-                                       height={img.height}/>
-                            </Link>
+    return (
+        <section className={`${classes.Section}`}>
+            <div className="container" data-aos="fade-up">
+                <div className={`row no-gutters ${classes.Wrap} clearfix`} data-aos="fade-up" data-aos-delay="100"
+                     data-aos-once='true'>
+                    {list.map((img, i) => (
+                        <div className="col-lg-3 col-md-4 col-6" key={i}>
+                            <div className={classes.Logo}>
+                                <Link href={img.website} passHref>
+                                    <a>
+                                        <Image src={img.src} className="img-fluid" alt={img.name} width={img.width} height={img.height} />
+                                    </a>
+                                </Link>
+                            </div>
                         </div>
-                    </div>
-                })}
+                    ))}
+                </div>
             </div>
-        </div>
-    </section>;
+        </section>
+    );
 };
 
 export default Partners;

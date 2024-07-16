@@ -88,7 +88,7 @@ const PageCreate = () => {
         <div className='row'>
             <div className="col-md-8">
                 <CreateForm
-                    handleChange={handleChange('title')}
+                    handleChange={handleChange}
                     handleBody={handleBody}
                     bodyValue={body}
                     loading={loading}

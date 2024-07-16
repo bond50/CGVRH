@@ -23,6 +23,9 @@ const Header = ({pages,blog}) => {
     if (scrolled) {
         navbarClasses.push('fixed-top');
     }
+    if (blog){
+        navbarClasses.push('blog-header')
+    }
 
     return (
         <header id="header" className={navbarClasses.join(' ')}>

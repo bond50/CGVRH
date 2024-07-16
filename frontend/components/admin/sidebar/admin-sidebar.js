@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import classes from './admin-sidebar.module.css';
 import Accordion2 from "../../reusables/Accordion2";
@@ -142,6 +141,22 @@ const AdminSidebar = ({ closed }) => {
                         items: [
                             { title: 'Add HMT member', slug: 'crud/users/user' },
                             { title: 'Manage existing users', slug: 'crud/users' }
+                        ]
+                    },
+                    {
+                        title: 'SEO Head settings',
+                        icon: 'mdi:search-web',
+                        items: [
+                            { title: 'Create SEO settings', slug: 'crud/seo/create' },
+                            { title: 'Manage SEO settings', slug: 'crud/seo' }
+                        ]
+                    },
+                    {
+                        title: 'SEO Pages',
+                        icon: 'mdi:file-document-box-multiple-outline',
+                        items: [
+                            { title: 'Create SEO Page', slug: 'crud/seopages/create' },
+                            { title: 'Manage SEO Pages', slug: 'crud/seopages' }
                         ]
                     },
                     {

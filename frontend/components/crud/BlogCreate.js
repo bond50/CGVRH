@@ -20,8 +20,6 @@ const CreateBlog = () => {
         values,
         keywords,
         formData,
-        checked: categories,
-        checkedTag: tags,
         setValues,
         body,
         publish,

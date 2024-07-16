@@ -1,7 +1,9 @@
 import React from 'react';
-import Admin from '../../../components/auth/Admin';
-import BlogCreate from '../../../components/crud/BlogCreate';
-import Layout from "../../../hoc/admin/layout/layout";
+import dynamic from 'next/dynamic';
+const Admin = dynamic(() => import('../../../components/auth/Admin'), { ssr: false });
+const BlogCreate = dynamic(() => import('../../../components/crud/BlogCreate'), { ssr: false });
+const Layout = dynamic(() => import('../../../hoc/admin/layout/layout'), { ssr: false });
+
 
 const Blog = () => {
     return (

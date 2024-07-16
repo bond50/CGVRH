@@ -1,6 +1,6 @@
 import TinyMCEEditor from "../../TinyMCEEditor";
 
-const CreateForm = ({ onSubmit, loading, btnCapture, handleChange, handleBody, bodyValue, titleValue, postToSocialMedia, setPostToSocialMedia, keywordsValue }) => {
+const CreateForm = ({ onSubmit, loading, btnCapture, handleChange, handleBody, bodyValue, titleValue, postToSocialMedia,  keywordsValue }) => {
     return (
         <form onSubmit={onSubmit}>
             <div className="form-group mb-3">

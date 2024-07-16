@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axiosInstance from "../axios/axios";
-import {getCookie} from "../actions/auth";
-import {removeBlog} from "../actions/blog";
-import {removePage} from "../actions/general";
+import { getCookie } from "../actions/auth";
+import { removeBlog } from "../actions/blog";
+import { removePage } from "../actions/general";
 
-
-const UseARP = (url) => {
+const useARP = (url) => {
     const [values, setValues] = useState({
         error: false,
         loading: false,
@@ -15,67 +14,79 @@ const UseARP = (url) => {
         reload: false
     });
 
-    const {error, data, message, removed, loading, reload} = values
-    useEffect(() => {
-        if (url) {
-            loadData()
-        }
-    }, [reload, url])
+    const { error, data, message, removed, loading, reload } = values;
     const token = getCookie('token');
 
+    useEffect(() => {
+        if (url) {
+            loadData();
+        }
+    }, [reload, url]);
+
     function loadData() {
-        setValues({...values, loading: true, error: false})
+        setValues(prevValues => ({ ...prevValues, loading: true, error: false }));
         axiosInstance.get(url)
             .then(response => {
-                setValues({...values, data: response.data, loading: false})
+                setValues(prevValues => ({ ...prevValues, data: response.data, loading: false }));
             })
             .catch(err => {
-                if (err.response.status) {
-                    setValues({...values, error: 'Oops! something went wrong while fetching data', loading: false})
-                }
-            })
+                setValues(prevValues => ({
+                    ...prevValues,
+                    error: 'Oops! something went wrong while fetching data',
+                    loading: false
+                }));
+            });
     }
 
-
-    const deleteBlog = slug => {
+    const deleteBlog = (slug) => {
         removeBlog(slug, token).then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
-                setValues({...values, error: false, message: data.message, removed: !removed, reload: !reload});
+                setValues(prevValues => ({
+                    ...prevValues,
+                    error: false,
+                    message: data.message,
+                    removed: !removed,
+                    reload: !reload
+                }));
             }
         });
     };
 
-    const deletePage = slug => {
+    const deletePage = (slug) => {
         removePage(slug, token).then(data => {
             if (data.error) {
                 console.log(data.error);
             } else {
-                setValues({...values, error: false, message: data.message, removed: !removed, reload: !reload});
+                setValues(prevValues => ({
+                    ...prevValues,
+                    error: false,
+                    message: data.message,
+                    removed: !removed,
+                    reload: !reload
+                }));
             }
         });
     };
 
-    const mouseMoveHandler = e => {
-        setValues({...values, error: false, removed: false});
+    const mouseMoveHandler = () => {
+        setValues(prevValues => ({ ...prevValues, error: false, removed: false }));
     };
 
-    function deleteBlogConfirm(slug, title) {
-        let answer = window.confirm(`Are you sure you want to delete ${title}`)
+    const deleteBlogConfirm = (slug, title) => {
+        const answer = window.confirm(`Are you sure you want to delete ${title}`);
         if (answer) {
-            deleteBlog(slug)
+            deleteBlog(slug);
         }
-    }
+    };
 
-
-    function deleteConfirm(slug, title) {
-        let answer = window.confirm(`Are you sure you want to delete ${title}`)
+    const deleteConfirm = (slug, title) => {
+        const answer = window.confirm(`Are you sure you want to delete ${title}`);
         if (answer) {
-            deletePage(slug)
+            deletePage(slug);
         }
-    }
-
+    };
 
     return {
         mouseMoveHandler,
@@ -86,8 +97,7 @@ const UseARP = (url) => {
         data,
         removed,
         message,
-
-    }
+    };
 };
 
-export default UseARP;
+export default useARP;

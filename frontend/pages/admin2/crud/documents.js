@@ -1,7 +1,12 @@
 import React from 'react';
-import Layout from '../../../hoc/Layout';
-import Admin from '../../../components/auth/Admin';
-import BlogRead from '../../../components/crud/BlogRead';
+import dynamic from "next/dynamic";
+import Preloader from "../../../components/preloader";
+
+
+const Layout = dynamic(() => import('../../../hoc/Layout'), { ssr: false, loading: () => <Preloader /> });
+const Admin = dynamic(() => import('../../../components/auth/Admin'), { ssr: false, loading: () => <Preloader /> });
+const BlogRead = dynamic(() => import('../../../components/crud/BlogRead'), { ssr: false, loading: () => <Preloader /> });
+
 
 
 const Blogs = () => {

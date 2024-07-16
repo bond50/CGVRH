@@ -1,15 +1,15 @@
-import Admin from "../../../components/auth/Admin";
-import BlogUpdate from "../../../components/crud/BlogUpdate";
-import Layout from "../../../hoc/admin/layout/layout";
+import React from 'react';
+import dynamic from 'next/dynamic';
 
+const Admin = dynamic(() => import('../../../components/auth/Admin'), { ssr: false });
+const BlogUpdate = dynamic(() => import('../../../components/crud/BlogUpdate'), { ssr: false });
+const Layout = dynamic(() => import('../../../hoc/admin/layout/layout'), { ssr: false });
 
 const Slug = () => {
-
-
     return (
         <Layout>
             <Admin>
-                <BlogUpdate/>
+                <BlogUpdate />
             </Admin>
         </Layout>
     );

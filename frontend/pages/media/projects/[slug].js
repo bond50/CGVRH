@@ -1,28 +1,17 @@
-import React, {Fragment, useEffect, useState} from 'react';
-import Head from "next/head";
-import {APP_NAME, DOMAIN, FB_APP_ID} from "../../../config";
-import {getAllProjectSlugs, getProject, listProjects} from "../../../actions/projects";
-import PageWrapper from "../../../hoc/page-wrapper";
-import Layout from "../../../hoc/Layout";
+import dynamic from "next/dynamic";
+import useSWR from 'swr';
+import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../../config";
+import {getAllProjectSlugs, getProject} from "../../../actions/projects";
 import {stripTags} from "../../../components/reusables/utility";
+import Preloader from "../../../components/preloader";
+import {fetcher} from "../../../axios/axios";
+import Head from "next/head";
 
+const PageWrapper = dynamic(() => import("../../../hoc/page-wrapper"), {ssr: false, loading: () => <Preloader/>});
+const Layout = dynamic(() => import("../../../hoc/Layout"), {ssr: false, loading: () => <Preloader/>});
 
 const Slug = ({project, query}) => {
-    const [projects, setProjects] = useState([]);
-
-    useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                const response = await listProjects();
-                setProjects(response);
-            } catch (error) {
-                console.error('Error fetching projects:', error);
-            }
-        };
-
-        fetchProjects(); // Call the fetchProjects function when the component mounts
-    }, []);
-
+    const {data: projects} = useSWR(`${API}/projects`, fetcher);
 
     const head = () => (
         <Head>
@@ -33,7 +22,7 @@ const Slug = ({project, query}) => {
             <link rel="canonical" href={`${DOMAIN}/media/projects/${query.slug}`}/>
             <meta property="og:title" content={`${project.title}| ${APP_NAME}`}/>
             <meta property="og:description" content={project.metaDesc}/>
-            <meta property="og:type" content="webiste"/>
+            <meta property="og:type" content="website"/>
             <meta property="og:url" content={`${DOMAIN}/media/projects/${query.slug}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}/>
             <meta property="og:image" content={project.images[0]}/>
@@ -44,49 +33,57 @@ const Slug = ({project, query}) => {
     );
 
     const showPage = () => {
-        return <PageWrapper related={projects} title={`Related`} projectPage>
-             {stripTags(project.body, ['strong', 'b'])}
-        </PageWrapper>
+        return (
+            <PageWrapper related={projects} title={`Related`} projectPage>
+                {stripTags(project.body, ['strong', 'b'])}
+            </PageWrapper>
+        );
     };
 
-    let imgSrc
+    let imgSrc;
 
     if (project.images && project.images.length && project.images.length > 0) {
         const image = project.images[Math.floor(Math.random() * project.images.length)];
-        imgSrc = image.url
+        imgSrc = image.url;
     }
 
-
     return (
-        <Fragment>
+        <>
             {head()}
             <Layout pageTitle={project.title} imageUrl={imgSrc}>
                 <main>
                     {showPage()}
                 </main>
             </Layout>
-        </Fragment>
-    )
+        </>
+    );
 };
-export const getStaticProps = async ({params}) => {
-    return getProject(params.slug).then(data => {
 
-        if (data.error) {
-            console.log(data.error);
-        } else {
-            return {
-                props: {project: data, query: params},
-                revalidate: 60,
-            };
-        }
-    });
+export const getStaticProps = async ({params}) => {
+    const data = await getProject(params.slug);
+
+    if (!data) {
+        return {
+            notFound: true,
+        };
+    }
+    if (data.error) {
+        console.log(data.error);
+    }
+
+    return {
+        props: {project: data, query: params},
+        revalidate: 60,
+    };
 };
 
 export const getStaticPaths = async () => {
     const slugs = await getAllProjectSlugs();  // Fetch all possible slugs for pre-rendering
-
-
-    const paths = slugs.map(slug => ({ params: { slug } }));
-    return { paths, fallback: 'blocking' };
+    const paths = slugs.map(slug => ({params: {slug}}));
+    return {
+        paths,
+        fallback: 'blocking',
+    };
 };
+
 export default Slug;

@@ -7,7 +7,7 @@ const FooterContact = () => <div
     <p>
         Off Kisumu road,Mbale <br/>
         Opposite District Headquaters <br/>
-        P.O Box 1069 -50300, Maragoli <br/>
+        P.O Box 1069-50300, Maragoli <br/>
         <strong>Phone:</strong> +254-723103564/+254-056-51558<br/>
         <strong>Email:</strong> vihigahospital@gmail.com<br/>
     </p>

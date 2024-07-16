@@ -1,117 +1,81 @@
-import classes from '../../../styles/downloads.module.css'
-import React, {Fragment, useEffect, useState} from 'react';
-import moment from "moment";
-import axios from "axios";
+import classes from '../../../styles/downloads.module.css';
+import React, { Fragment, useEffect, useState } from 'react';
+import dayjs from 'dayjs';
+import useSWR from 'swr';
+import axios from 'axios';
 
-import fileTypes from "../../reusables/functions/fileTypes";
-import {API} from "../../../config";
-import Filters from "./filters";
+import fileTypes from '../../reusables/functions/fileTypes';
+import { API } from '../../../config';
+import Filters from './filters';
+import {fetcher} from "../../../axios/axios";
 
-const DownloadList = ({files}) => {
-    const [downloads, setLoadedDownloads] = useState(files)
-    const [buttons, setButtons] = useState([])
-    const [active, setActive] = useState( '8&03ubvgfd7b4e36e0f12d44')
 
-    console.log(buttons)
-
-    const loadButtons = () => {
-        let myArr = [{_id: '8&03ubvgfd7b4e36e0f12d44', name: 'All'}]
-        axios.get(`${API}/document-tags`)
-            .then(res => {
-                res.data.map(({_id, name}) => {
-                    myArr.push({_id, name})
-                })
-                setButtons(myArr)
-            })
-    }
+const DownloadList = ({ files }) => {
+    const { data: tags} = useSWR(`${API}/document-tags`, fetcher);
+    const [downloads, setLoadedDownloads] = useState(files);
+    const [buttons, setButtons] = useState([{ _id: '8&03ubvgfd7b4e36e0f12d44', name: 'All' }]);
+    const [active, setActive] = useState('8&03ubvgfd7b4e36e0f12d44');
 
     useEffect(() => {
-        loadButtons()
-    }, [])
-
-    function filterTags(id) {
-        setActive(id)
-
-        if (id === '8&03ubvgfd7b4e36e0f12d44') {
-            setLoadedDownloads(files)
-        } else {
-            let filteredArr = files.filter((d) => {
-                const tags = [d.tags];
-                return tags.some(f => f.includes(id))
-
-            });
-            setLoadedDownloads(filteredArr)
+        if (tags) {
+            const newButtons = tags.map(({ _id, name }) => ({ _id, name }));
+            setButtons(prev => [...prev, ...newButtons]);
         }
+    }, [tags]);
 
+    const filterTags = id => {
+        setActive(id);
+        if (id === '8&03ubvgfd7b4e36e0f12d44') {
+            setLoadedDownloads(files);
+        } else {
+            const filteredArr = files.filter(file => file.tags.includes(id));
+            setLoadedDownloads(filteredArr);
+        }
+    };
 
-    }
-
-
-    function handleDownload(file, id) {
-        axios.get(file, {
-            responseType: "blob",
-        }).then(function (response) {
-
-            const url = window.URL.createObjectURL(
-                new Blob([response.data], {
-                    type: response.headers["content-type"],
-                })
-            );
-
-            const link = document.createElement("a");
+    const handleDownload = async (file, id) => {
+        try {
+            const response = await axios.get(file, { responseType: 'blob' });
+            const url = window.URL.createObjectURL(new Blob([response.data], { type: response.headers['content-type'] }));
+            const link = document.createElement('a');
             link.href = url;
-            link.setAttribute("download", id);
+            link.setAttribute('download', id);
             document.body.appendChild(link);
             link.click();
-
-        }).catch(err => {
-            console.log(err)
-        });
-    }
+            link.remove();
+        } catch (err) {
+            console.error('Error downloading file:', err);
+        }
+    };
 
     return (
         <Fragment>
-            {/*<GeneralPageHeader*/}
-            {/*    title='Downloads'>*/}
-            {/*</GeneralPageHeader>*/}
-
             <section className={classes.Download}>
                 <Filters
                     buttons={buttons}
                     active={active}
-                    handleTagFilter={filterTags}/>
-
-                <div className={classes.DownloadWrapper}  data-aos="slide-up" data-aos-delay="100">
-                    {downloads.map(file => {
-                        return <div className={classes.Wrapper} key={file._id}>
+                    handleTagFilter={filterTags}
+                />
+                <div className={classes.DownloadWrapper} data-aos="slide-up" data-aos-delay="100">
+                    {downloads.map(file => (
+                        <div className={classes.Wrapper} key={file._id}>
                             <div className={classes.Header}>
                                 {fileTypes(file.fileType)}
                                 <span>{file.title}</span>
                             </div>
                             <div className="d-flex align-items-center flex-column m-2">
-                                <div className={classes.Date}>Uploaded
-                                    on <span>{moment(file.createdAt).format('llll')}</span></div>
-                                <div className={classes.Size}>File size :<span>{file.fileSize}</span></div>
+                                <div className={classes.Date}>Uploaded on <span>{dayjs(file.createdAt).format('LLLL')}</span></div>
+                                <div className={classes.Size}>File size: <span>{file.fileSize}</span></div>
                             </div>
-                            <div className={`${classes.Btn} text-center`}
-                                 onClick={() => handleDownload(file.filePath, file._id)}>
+                            <div className={`${classes.Btn} text-center`} onClick={() => handleDownload(file.filePath, file._id)}>
                                 <span className="align-middle">Download</span>
                             </div>
                         </div>
-                    })}
+                    ))}
                 </div>
-
-
             </section>
-
-
         </Fragment>
-
-
     );
 };
 
 export default DownloadList;
-
-
-//https://stackoverflow.com/questions/61621451/filtering-js-array-of-objects-based-on-tags

@@ -1,17 +1,27 @@
 import React from 'react';
-import Admin from '../../../../components/auth/Admin';
-import Layout from "../../../../hoc/admin/layout/layout";
-import CertUpdate from '../../../../components/crud/certificate/CertUpdate';
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import { APP_NAME } from '../../../../config';
+import Preloader from '../../../../components/preloader';
 
+const Admin = dynamic(() => import('../../../../components/auth/Admin'), { ssr: false, loading: () => <Preloader /> });
+const CertUpdate = dynamic(() => import('../../../../components/crud/certificate/CertUpdate'), { ssr: false, loading: () => <Preloader /> });
+const Layout = dynamic(() => import('../../../../hoc/admin/layout/layout'), { ssr: false, loading: () => <Preloader /> });
 
-const Upload = () => {
+const UpdateCertificate = () => {
     return (
-        <Layout pageTitle='Update a certificate'>
-            <Admin>
-                <CertUpdate/>
-            </Admin>
-        </Layout>
+        <>
+            <Head>
+                <meta name="robots" content="noindex, nofollow" />
+                <title>Update a Certificate | {APP_NAME}</title>
+            </Head>
+            <Layout pageTitle='Update a Certificate'>
+                <Admin>
+                    <CertUpdate />
+                </Admin>
+            </Layout>
+        </>
     );
 };
 
-export default Upload;
+export default UpdateCertificate;

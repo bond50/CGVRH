@@ -4,35 +4,35 @@ import {API} from '../../config';
 import classes from '../../styles/BlogCard.module.css'
 import Image from "next/image";
 import {stripAllTags, stripTags} from "../reusables/utility";
-import {incrementLikes, incrementComments, incrementShares} from "../../actions/blog"; // Import actions
+// import {incrementLikes, incrementComments, incrementShares} from "../../actions/blog"; // Import actions
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 
 dayjs.extend(advancedFormat);
 
 const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle, admin}) => {
-    console.log('CARD', blog)
 
-    const handleLike = () => {
-        incrementLikes(blog.slug).then(data => {
-            if (data.error) {
-                console.log(data.error);
-            } else {
-                console.log('Liked');
-            }
-        });
-    };
 
-    const handleShare = () => {
-        incrementShares(blog.slug).then(data => {
-            if (data.error) {
-                console.log(data.error);
-            } else {
-                console.log('Shared');
-            }
-        });
-    };
-
+    // const handleLike = () => {
+    //     incrementLikes(blog.slug).then(data => {
+    //         if (data.error) {
+    //             console.log(data.error);
+    //         } else {
+    //             console.log('Liked');
+    //         }
+    //     });
+    // };
+    //
+    // const handleShare = () => {
+    //     incrementShares(blog.slug).then(data => {
+    //         if (data.error) {
+    //             console.log(data.error);
+    //         } else {
+    //             console.log('Shared');
+    //         }
+    //     });
+    // };
+    //
 
     const showBlogTags = () =>
         blog.tags.map((t, i) => {
@@ -79,7 +79,7 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
         return blogUploadSrc
     }
 
-    console.log(imgSrc)
+
     return (
         <article className={classes.Entry}>
             {
@@ -115,7 +115,7 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
 
                         </div>
                         <h2 className={classes.Title}>
-                            <Link href={single ? '' : `/blogs/${blog.slug}`}>
+                            <Link href={single ? '' : `/blog/${blog.slug}`}>
                                 <a>
                                     {blog.title.toLowerCase()}
                                 </a>
@@ -146,7 +146,7 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
                         {!single && <>
                             {stripAllTags(blog.excerpt, [])}
                             <div className={`${classes.ReadMore}`}>
-                                <Link href={`/blogs/${blog.slug}`}>
+                                <Link href={`/blog/${blog.slug}`}>
                                     <a>Read more</a>
                                 </Link>
                             </div>
@@ -167,11 +167,11 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
                         </>
                         }
                     </div>
-                    <div className={classes.Actions}>
-                        <button onClick={handleLike} className="btn btn-primary">Like</button>
-                        <button onClick={handleShare} className="btn btn-secondary">Share</button>
-                        {/* Comment functionality to be integrated with existing comment system */}
-                    </div>
+                    {/*<div className={classes.Actions}>*/}
+                    {/*    <button onClick={handleLike} className="btn btn-primary">Like</button>*/}
+                    {/*    <button onClick={handleShare} className="btn btn-secondary">Share</button>*/}
+                    {/*    /!* Comment functionality to be integrated with existing comment system *!/*/}
+                    {/*</div>*/}
                 </>
             }
 

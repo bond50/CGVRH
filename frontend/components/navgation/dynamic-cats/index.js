@@ -1,28 +1,19 @@
-// dynamic-cats.js
 import useSWR from "swr";
-import {API} from "../../../config";
-import {fetcher} from "../../../axios/axios";
-
+import { API } from "../../../config";
+import { fetcher } from "../../../axios/axios";
 
 const DynamicCats = () => {
-    const { data, error } = useSWR(
-        [`${API}/page-cats`],
-        fetcher,
-        {
-            revalidateOnFocus: true,
-        },
-    );
-
+    const { data, error } = useSWR([`${API}/page-cats`], fetcher, {
+        revalidateOnFocus: true,
+    });
 
     if (error) {
-        return <p>Failed to load categories</p>;
+        return [];
     }
 
     if (!data) {
-        return []
+        return [];
     }
-
-
 
     // Assuming data is an array of objects with id, name, and slug properties
     return data.map(category => ({

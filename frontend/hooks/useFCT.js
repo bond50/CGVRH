@@ -1,7 +1,7 @@
 import React from 'react';
 import useSWR from "swr";
 import {API} from "../config";
-import {fetcher} from "../components/reusables/functions/fetcher";
+import {fetcher} from "../axios/axios";
 
 
 const useFCT = (endpoint) => {

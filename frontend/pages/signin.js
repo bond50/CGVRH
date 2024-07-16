@@ -1,23 +1,27 @@
-import SigninComponent from "../components/auth/SignInComponent";
-import {withRouter} from "next/router";
-import Alert from "../components/messages/Alert";
+import dynamic from "next/dynamic";
+import { withRouter } from "next/router";
+import Head from "next/head";
+import { APP_NAME } from "../config";
+import Preloader from "../components/preloader";
 
+const SigninComponent = dynamic(() => import("../components/auth/SignInComponent"), { ssr: false, loading: () => <Preloader /> });
+const Alert = dynamic(() => import("../components/messages/Alert"), { ssr: false, loading: () => <Preloader /> });
 
-const Signin = ({router}) => {
-    // const showRedirectMessage = () => {
-    //
-    //     if (router.query.message) {
-    //         return <div className="alert alert-danger">{router.query.message}</div>;
-    //     } else {
-    //         return;
-    //     }
-    // };
+const Signin = ({ router }) => {
+    const head = () => (
+        <Head>
+            <title>Signin | {APP_NAME}</title>
+            <meta name="robots" content="noindex, nofollow" />
+        </Head>
+    );
+
     return (
         <>
+            {head()}
             <div className="col-lg-12">
-                {router.query.message && <Alert msg={router.query.message} type='danger' label='Danger'/>}
+                {router.query.message && <Alert msg={router.query.message} type='danger' label='Danger' />}
             </div>
-            <SigninComponent/>
+            <SigninComponent />
         </>
     );
 };

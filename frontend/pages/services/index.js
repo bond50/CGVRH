@@ -1,17 +1,22 @@
 import React, {useEffect, useRef, useState} from 'react';
 import Link from "next/link";
 import {list, listWithPagination} from "../../actions/general";
-import Head from "next/head";
-import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
-import {useRouter} from "next/router";
-import Layout from "../../hoc/Layout";
-import {Icon} from '@iconify/react';
+import {APP_NAME} from "../../config";
 import {generateExcerpt} from "../../components/reusables/functions/generate-excerpt";
-import Pagination from 'rc-pagination';
-import PageWrapper from "../../hoc/page-wrapper";
+import dynamic from "next/dynamic";
+import Preloader from "../../components/preloader";
+import {Icon} from "@iconify/react";
+import SEOHead from "../../components/SEOHead";
+
+
+const Layout = dynamic(() => import("../../hoc/Layout"), {ssr: false, loading: () => <Preloader/>});
+const PageWrapper = dynamic(() => import("../../hoc/page-wrapper"), {ssr: false, loading: () => <Preloader/>});
+const PaginationComponent = dynamic(() => import("../../components/reusables/PaginationComponent"), {
+    ssr: false,
+    loading: () => <Preloader/>
+});
 
 const Index = ({paginationData, size, page, generalData}) => {
-    const router = useRouter();
 
     const firstItemRef = useRef(null);
     const [data, setData] = useState(paginationData.data);
@@ -35,6 +40,7 @@ const Index = ({paginationData, size, page, generalData}) => {
 
         fetchData();
     }, [current]);
+
     useEffect(() => {
         if (firstItemRef.current) {
             firstItemRef.current.scrollIntoView({behavior: "smooth"});
@@ -42,67 +48,53 @@ const Index = ({paginationData, size, page, generalData}) => {
     }, [current]);
 
 
-    const head = () => (
-        <Head>
-            <title>Services | {APP_NAME}</title>
-            <meta
-                name="description"
-                content={`All inpatient and out patient services offered at ${APP_NAME}. We take care of your health`}
-            />
-
-            <link rel="canonical" href={`${DOMAIN}${router.pathname}`}/>
-
-            <meta property="og:title" content={`Medical services | ${APP_NAME}`}/>
-            <meta
-                property="og:description"
-                content={`All inpatient and out patient services offered at ${APP_NAME}. We take care of your health`}
-            />
-
-            <meta property="og:type" content="webiste"/>
-            <meta property="og:url" content={`${DOMAIN}${router.pathname}`}/>
-            <meta property="og:site_name" content={`${APP_NAME}`}/>
-
-            <meta
-                property="og:image"
-                content={`/herp.jpg`}
-            />
-            <meta
-                property="og:image:secure_url"
-                content={`/herp.jpg`}
-            />
-            <meta property="og:image:type" content="image/png"/>
-            <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
-        </Head>
-    );
-
-
-    const PerPageChange = (value) => {
-        setLimit(value);
-        const newPerPage = Math.ceil(totalCount / value);
-        if (current > newPerPage) {
-            setCurrent(newPerPage);
-        }
-    };
-
-    const PaginationChange = (pg, pgSize) => {
+    const handlePaginationChange = (pg, pgSize) => {
         setCurrent(pg);
         setLimit(pgSize);
     };
 
-    const PrevNextArrow = (current, type, originalElement) => {
-        if (type === "prev") {
-            return <button><Icon icon="fluent:arrow-left-48-regular"/></button>;
-        }
-        if (type === "next") {
-            return <button><Icon icon="fluent:arrow-right-48-regular"/></button>;
-        }
-        return originalElement;
-    };
 
+      const {
+        author,
+        description,
+        imageUrl,
+        keywords,
+        locale,
+        themeColor,
+        title,
+        page:seoPageData,
+
+
+    } = paginationData.seoSettings[0];
+
+
+
+
+    const additionalStructuredData = [
+        {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Healthcare Service",
+            "provider": {
+                "@type": "Hospital",
+                "name": APP_NAME
+            }
+        }
+    ];
 
     return (
         <>
-            {head()}
+            <SEOHead
+                title={title}
+                description={description}
+                url={seoPageData.url}
+                imageUrl={imageUrl}
+                keywords={keywords}
+                locale={locale}
+                themeColor={themeColor}
+                author={author}
+                additionalStructuredData={additionalStructuredData}
+            />
             <Layout pages={generalData}>
 
                 <main>
@@ -133,16 +125,11 @@ const Index = ({paginationData, size, page, generalData}) => {
                         </div>
 
                         <div className="d-flex justify-content-center pagination">
-                            <Pagination
-                                className="pagination-data"
-                                showTotal={(total, range) => `Showing ${range[0]}-${range[1]} of ${total}`}
-                                onChange={PaginationChange}
+                            <PaginationComponent
                                 total={totalCount}
                                 current={current}
                                 pageSize={limit}
-                                showSizeChanger={false}
-                                itemRender={PrevNextArrow}
-                                onShowSizeChange={PerPageChange}
+                                onChange={handlePaginationChange}
                             />
                         </div>
                     </PageWrapper>

@@ -2,10 +2,11 @@ import Footer from "../components/footer/Footer";
 import Toolbar from "../components/navgation/Toolbar";
 import Hero from "../components/home/Hero";
 import Breadcrumb from "../components/reusables/Breadcrumbs";
-import {useEffect, useState} from "react";
-import axios from "axios";
+import useSWR from "swr";
 import {API} from "../config";
 import AdBanner from "../components/AdBanner";
+import {fetcher} from "../axios/axios";
+
 
 
 const Layout = ({
@@ -21,20 +22,18 @@ const Layout = ({
                     featuredBlogs,
                     allFeatured
                 }) => {
-    const [footerServices, setFooterServices] = useState(featuredServices);
-    const [footerBlogs, setFooterBlogs] = useState(featuredBlogs);
+    const {
+        data: fetchedServices,
+        error: servicesError
+    } = useSWR(!featuredServices ? `${API}/featured-general` : null, fetcher);
+    const {data: fetchedBlogs, error: blogsError} = useSWR(!featuredBlogs ? `${API}/featured-blogs` : null, fetcher);
 
-    useEffect(() => {
-            if (!featuredServices || !featuredBlogs) {
-                const fetchServices = axios.get(`${API}/featured-general`);
-                const fetchBlogs = axios.get(`${API}/featured-blogs`);
-                Promise.all([fetchServices, fetchBlogs]).then(([servicesResponse, blogsResponse]) => {
-                    setFooterServices(servicesResponse.data);
-                    setFooterBlogs(blogsResponse.data);
-                });
-            }
-        }, []
-    );
+    const footerServices = featuredServices || fetchedServices || [];
+    const footerBlogs = featuredBlogs || fetchedBlogs || [];
+
+    if (servicesError || blogsError) {
+        console.error('Error fetching footer data:', servicesError || blogsError);
+    }
 
     return (
         <>
@@ -46,18 +45,16 @@ const Layout = ({
                 {children}
             </main>
             <AdBanner
-                data-ad-slot="6511402910" // Replace with your ad slot ID
+                data-ad-slot="6511402910"
                 style={{width: '100%', height: '250px'}}
             />
             <Footer
                 services={footerServices}
                 blogs={footerBlogs}
-                blog={blog}/>
+                blog={blog}
+            />
         </>
     );
-
-
 }
 
-
-export default Layout
+export default Layout;
