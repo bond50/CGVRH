@@ -8,6 +8,7 @@ import { generateExcerpt } from "../../../components/reusables/functions/generat
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import Preloader from "../../../components/preloader";
+import AdBanner from "../../../components/adsense/AdBanner";
 
 const Layout = dynamic(() => import("../../../hoc/Layout"), { ssr: false, loading: () => <Preloader /> });
 const PageWrapper = dynamic(() => import("../../../hoc/page-wrapper"), { ssr: false, loading: () => <Preloader /> });
@@ -57,19 +58,22 @@ const Projects = ({ projects }) => {
                                 >
                                     <div className="service-item position-relative">
                                         <div className="icon">
-                                            <Icon icon="uil:medical-drip" className="item-icon" />
+                                            <Icon icon="uil:medical-drip" className="item-icon"/>
                                         </div>
                                         <h3>{service.title}</h3>
                                         <p>{generateExcerpt(service.excerpt, 160)}</p>
                                         <Link href={`/media/projects/${service.slug}`}>
                                             <a className="readmore stretched-link">
                                                 Continue reading
-                                                <Icon icon="eva:arrow-right-fill" className="icon2" />
+                                                <Icon icon="eva:arrow-right-fill" className="icon2"/>
                                             </a>
                                         </Link>
                                     </div>
                                 </div>
                             ))}
+                        </div>
+                        <div className="container">
+                            <AdBanner/>
                         </div>
                     </PageWrapper>
                 </main>
