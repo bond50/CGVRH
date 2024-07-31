@@ -7,7 +7,7 @@ import { generateExcerpt } from "../reusables/functions/generate-excerpt";
 import styles from '../../styles/FeaturedServices.module.css';
 
 const FeaturedServices = ({ services }) => {
-    const defaultImage = '/home/image.jpg';
+    const defaultImage = '/home/image1.jpg';
 
     return (
         <section className={styles.Featured}>
