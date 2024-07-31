@@ -119,15 +119,17 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
                                         {showBlogTags()}
                                     </ul>
                                 </div>
+
+                                <div className="container">
+                                    <AdBanner/>
+                                </div>
                             </>
                             }
                         </div>
                     </>
                 }
             </article>
-            <div className="container">
-                <AdBanner/>
-            </div>
+
         </>
     )
         ;

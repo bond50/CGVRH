@@ -114,9 +114,7 @@ const PageWrapper = ({related = [], children, title, projectPage}) => {
                             <AdBanner/>
                         </div>
 
-                        <div className="container">
-                            <AdBanner/>
-                        </div>
+
                     </div>
                 </div>
             </div>
