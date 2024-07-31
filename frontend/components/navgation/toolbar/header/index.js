@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Logo from "../../Logo";
+
 import Navbar from "./navbar";
 import styles from '../../../../styles/Header.module.css';
+import Logo from "../../Logo";
 
 const Header = ({ pages, blog }) => {
     const [scrolled, setScrolled] = useState(false);
