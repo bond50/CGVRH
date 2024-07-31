@@ -1,0 +1,15 @@
+
+.logo {
+    padding: 5px 0;
+}
+
+.logo img {
+    max-height: 50px;
+    transition: max-height 0.5s ease;
+}
+
+
+.logo-scrolled img {
+    max-height: 40px;
+    transition: max-height 0.5s ease;
+}

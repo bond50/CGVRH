@@ -1,11 +1,12 @@
 import {APP_NAME, SITE_URL} from "../../config";
-
 import dynamic from "next/dynamic";
 import React from 'react';
 import Preloader from "../../components/preloader";
-
 import SEOHead from "../../components/SEOHead";
-import axiosInstance from "../../axios/axios";
+
+import Organogram from "../../components/about/Organogram";
+
+
 
 const About = dynamic(() => import("../../components/about"), {ssr: false, loading: () => <Preloader/>});
 const CoreValues = dynamic(() => import("../../components/about/CoreValues"), {
@@ -60,6 +61,7 @@ const Index = ({seoSettings}) => {
         }
     ];
 
+
     return (
         <>
             <SEOHead
@@ -78,6 +80,8 @@ const Index = ({seoSettings}) => {
                 <CoreValues/>
                 <AboutCounter/>
                 <Partners/>
+                <Organogram/>
+
             </Layout>
         </>
     );

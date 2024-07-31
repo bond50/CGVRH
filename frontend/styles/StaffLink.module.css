@@ -1,0 +1,54 @@
+/* Common Styles */
+.Staff {
+    position: relative;
+    white-space: nowrap;
+}
+
+.StaffLink,
+.StaffLink:focus {
+    padding: 8px 20px;
+    margin-left: 30px;
+    border-radius: 0 30px 0 30px;
+    color: var(--color-contrast);
+    background: var(--color-primary);
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.StaffLink:hover,
+.StaffLink:focus:hover {
+    background: var(--color-secondary);
+    color: var(--color-contrast);
+}
+
+/* Desktop Navigation */
+@media (min-width: 1280px) {
+    .StaffLink,
+    .StaffLink:focus {
+        padding: 8px 20px;
+        margin-left: 30px;
+        border-radius: 0 30px 0 30px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
+
+/* Mobile Navigation */
+@media (max-width: 1279px) {
+    .Staff {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .StaffLink,
+    .StaffLink:focus {
+        display: block;
+        width: auto;
+        margin: 10px auto;
+        padding: 15px 20px;
+        border-radius: 30px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+}

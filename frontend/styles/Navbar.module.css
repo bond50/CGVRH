@@ -1,0 +1,80 @@
+/* Common Styles */
+.navbar {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.navigationList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.MobileNavToggle {
+    display: none;
+}
+
+/* Media query for large screens */
+@media (min-width: 1280px) {
+    /* Specific styles for large screens */
+    .navbar {
+        padding: 0;
+        position: relative;
+    }
+
+    .navigationList {
+        display: flex;
+    }
+
+    /* Hide MobileNavToggle on desktop */
+    .MobileNavToggle {
+        display: none;
+    }
+}
+
+/* Media query for small screens */
+@media (max-width: 1279px) {
+    /* Specific styles for small screens */
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        right: -100%;
+        transition: right 0.3s ease-in-out;
+        z-index: 9997;
+        bottom: 0;
+        overflow: hidden;
+        padding: 0 20px;
+    }
+
+    .ShowMobileNav {
+        right: 0;
+    }
+
+    .HideMobileNav {
+        right: -100%;
+    }
+
+    .navigationList {
+        background:#f2f2f2;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 10px 32px;
+        z-index: 9998;
+        overflow: hidden;
+        flex-direction: column; /* Make navigation list vertical on mobile */
+        align-items: flex-start; /* Align items to the start */
+    }
+
+    /* Show MobileNavToggle on mobile */
+    .MobileNavToggle {
+        display: block;
+    }
+}

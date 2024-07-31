@@ -1,11 +1,5 @@
 
-import React from 'react';
-const Preloader = () => (
-    <div id="preloader">
-        <div className="line-container">
-            <div className="line"></div>
-        </div>
-    </div>
-);
+import styles from '../../styles/Preloader.module.css'
+const Preloader = () => <div className={styles.preloader}></div>;
 
 export default Preloader;

@@ -7,7 +7,10 @@ import SEOHead from "../components/SEOHead";
 
 const Layout = dynamic(() => import("../hoc/Layout"), {ssr: false, loading: () => <Preloader/>});
 
-const WhyUs = dynamic(() => import("../components/home/why-us"), {ssr: false, loading: () => <Preloader/>});
+const HospitalOverview = dynamic(() => import("../components/home/hospital-overview"), {
+    ssr: false,
+    loading: () => <Preloader/>
+});
 const HomeCounter = dynamic(() => import("../components/home/home-counter"), {ssr: false, loading: () => <Preloader/>});
 const About = dynamic(() => import("../components/home/about"), {ssr: false, loading: () => <Preloader/>});
 const Cta = dynamic(() => import("../components/home/cta"), {ssr: false, loading: () => <Preloader/>});
@@ -48,9 +51,9 @@ export default function Home({services, blogs, featuredAll: allFeatured, seoSett
                 keywords={keywords}
             />
             <Layout noBread home featuredServices={services} allFeatured={allFeatured} featuredBlogs={blogs}>
-                <WhyUs/>
-                <About/>
+                <HospitalOverview/>
                 <HomeCounter/>
+                <About/>
                 <FeaturedServices services={services}/>
                 <Cta/>
                 <LatestBlogs/>

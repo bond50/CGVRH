@@ -1,7 +1,7 @@
 .Footer {
-    color: #fff;
-    font-size: 12px;
-    background: #111;
+    color: var(--color-background);
+    font-size: 13px;
+    background: var(--color-primary1);
 }
 
 .FooterTop {
@@ -11,8 +11,8 @@
 
 
 .Copyright {
-    padding-top: 10px;
+    padding-top: 5px;
     text-align: center;
     font-size: 13px;
-    color: #fff;
+    color: var(--color-contrast);
 }

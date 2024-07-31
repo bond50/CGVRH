@@ -1,34 +1,6 @@
-.Service ul {
-    list-style: none;
-    /*font-size: 1px;*/
-}
-
-.Service ul li {
-    display: flex;
-    align-items: center;
-}
-
-.Service ul li:before {
-    content: "\F26A";
-    font-size: 20px;
-    font-family: 'bootstrap-icons';
-    margin-right: 8px;
-    color: var(--color-primary);
-}
-
-
-.Service ul li {
-    font-size: 13px;
-    color: #001973;
-}
-
-
-
-
-
 .Card {
     border: 1px solid rgba(14, 29, 52, 0.15);
-    background: var(--color-white);
+    background: var(--color-contrast);
     position: relative;
     border-radius: 0;
     height: 100%;
@@ -54,20 +26,20 @@
 }
 
 
-
-.Card a:first-child {
+.Card a {
     color: var(--color-secondary);
+    font-family: var(--font-secondary);
     transition: 0.3s;
     text-transform: capitalize;
 }
 
 .Card a:hover {
-    color: var(--color-secondary1);
+    color: var(--color-secondary);
 }
 
 .Card p {
     padding: 0 30px;
-    color: var(--color-default);
+    color: var(--color-text-2);
     font-size: 15px;
 }
 

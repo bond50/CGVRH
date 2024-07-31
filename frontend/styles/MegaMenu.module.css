@@ -1,0 +1,87 @@
+/* MegaMenu.module.css */
+
+/* Media query for large screens */
+@media (min-width: 1280px) {
+    .MegaMenuList {
+        list-style: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        opacity: 0;
+        visibility: hidden;
+        margin: 0;
+        z-index: 99;
+        background: #ffffff;
+        box-shadow: 0 0 30px rgba(127, 137, 161, 0.25);
+        border-top: 3px solid var(--color-secondary);
+        transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out, transform 0.5s ease-in-out;
+        transform: translateY(-10px);
+        right: 0;
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .Visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        animation: fadeInSlideDown 0.5s ease-in-out;
+    }
+
+    @keyframes fadeInSlideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .MegaMenuItem {
+        min-width: 200px;
+        flex: 1 1 200px;
+        box-sizing: border-box;
+        border: none;
+        margin-bottom: 10px;
+    }
+
+    .MegaMenuItem a {
+        font-size: 13px;
+        font-weight: 400;
+        font-family: var(--font-secondary);
+        color: var(--color-heading1);
+        text-transform: capitalize;
+        line-height: 15px;
+        padding: 8px 10px;
+        white-space: normal;
+        display: block;
+    }
+
+    .MegaMenuItem a,
+    .MegaMenuList:hover > a {
+        color: var(--color-text-1);
+        background: none;
+    }
+
+    .MegaMenuItem a:hover,
+    .Active,
+    .Active:hover {
+        color: var(--color-secondary);
+    }
+
+    .MegaMenuItem a:hover {
+        color: var(--color-secondary);
+        text-decoration: underline;
+    }
+}
+
+/* Media query for small screens */
+@media (max-width: 1279px) {
+    .MegaMenuList {
+        display: none;
+    }
+}

@@ -27,16 +27,13 @@ const Partners = () => {
             height: 100
         },
         {
-            name: 'Masinde Muliro University Of Science And Technology',
-            src: '/partners/mmust.png',
-            website: 'https://www.mmust.ac.ke/',
+            name: 'Kaimosi Friends University',
+            src: '/partners/kafu.jpg',
+            website: 'https://kafu.ac.ke/',
             width: 100,
-            height: 80
+            height: 100
         },
-        {
-            name: 'JKUAT', src: '/partners/jkuat.jpg', website: 'https://www.jkuat.ac.ke/', width: 80,
-            height: 80
-        },
+
         {
             name: 'The ICT Authority (ICTA)', src: '/partners/icta.png', website: 'https://icta.go.ke/', width: 120,
             height: 80

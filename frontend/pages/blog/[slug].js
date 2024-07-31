@@ -1,38 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import dynamic from "next/dynamic";
-import { getAllBlogSlugs, incrementViews, listRelated, singleBlog } from "../../actions/blog";
-import { APP_NAME } from "../../config";
+import {getAllBlogSlugs, incrementViews, listRelated, singleBlog} from "../../actions/blog";
+import {APP_NAME} from "../../config";
 import Preloader from "../../components/preloader";
 import SEOHead from "../../components/SEOHead";
 import TrendingBlogs from "../../components/blog/TrendingBlogs";
+import AdBanner from "../../components/AdBanner";
 
 const Card = dynamic(() => import("../../components/blog/Card"), {
     ssr: false,
-    loading: () => <Preloader />
+    loading: () => <Preloader/>
 });
 const DisqusThread = dynamic(() => import("../../components/DiscussThread"), {
     ssr: false,
-    loading: () => <Preloader />
+    loading: () => <Preloader/>
 });
 const BlogContainer = dynamic(() => import("../../hoc/BlogContainer"), {
     ssr: false,
-    loading: () => <Preloader />
+    loading: () => <Preloader/>
 });
 const SmallCard = dynamic(() => import("../../components/reusables/card/small-card"), {
     ssr: false,
-    loading: () => <Preloader />
+    loading: () => <Preloader/>
 });
 const Layout = dynamic(() => import("../../hoc/Layout"), {
     ssr: false,
-    loading: () => <Preloader />
+    loading: () => <Preloader/>
 });
 
-const Slug = ({ blog, query }) => {
+const Slug = ({blog, query}) => {
     const [related, setRelated] = useState([]);
 
     const loadRelated = async () => {
         try {
-            const data = await listRelated({ blog });
+            const data = await listRelated({blog});
             setRelated(data);
         } catch (error) {
             console.error(error);
@@ -44,19 +45,19 @@ const Slug = ({ blog, query }) => {
         incrementViews(query.slug);
     }, [blog]);
 
-    const showBlog = () => <Card blog={blog} single />;
+    const showBlog = () => <Card blog={blog} single/>;
 
     const showRelatedBlog = () => related.map(blog => (
         <div className="col-lg-4 col-md-6" key={blog._id}>
             <article>
-                <SmallCard blog={blog} />
+                <SmallCard blog={blog}/>
             </article>
         </div>
     ));
 
     const showComments = () => (
         <div>
-            <DisqusThread id={blog._id} title={blog.title} path={blog.slug} />
+            <DisqusThread id={blog._id} title={blog.title} path={blog.slug}/>
         </div>
     );
 
@@ -72,7 +73,7 @@ const Slug = ({ blog, query }) => {
                 "name": blog.postedBy.name
             },
             "publisher": {
-                "@type": "facility",
+                "@type": "Organization",
                 "name": APP_NAME,
                 "logo": {
                     "@type": "ImageObject",
@@ -103,13 +104,17 @@ const Slug = ({ blog, query }) => {
                         <div className="pt-5">
                             {showComments()}
                         </div>
+
+                        <AdBanner/>
                     </BlogContainer>
-                    <hr />
+                    <hr/>
                     <div className="container">
                         <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
                         <div className="row">{showRelatedBlog()}</div>
+                        <AdBanner/>
                     </div>
-                    <TrendingBlogs />
+                    <TrendingBlogs/>
+                    <AdBanner/>
                 </section>
             </Layout>
         </>
@@ -118,25 +123,25 @@ const Slug = ({ blog, query }) => {
 
 export const getStaticPaths = async () => {
     const slugs = await getAllBlogSlugs();
-    const paths = slugs.map(slug => ({ params: { slug } }));
-    return { paths, fallback: 'blocking' };
+    const paths = slugs.map(slug => ({params: {slug}}));
+    return {paths, fallback: 'blocking'};
 };
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({params}) => {
     try {
         const data = await singleBlog(params.slug);
 
         if (!data) {
-            return { notFound: true };
+            return {notFound: true};
         }
 
         return {
-            props: { blog: data, query: params },
+            props: {blog: data, query: params},
             revalidate: 60,
         };
     } catch (error) {
         console.error('Error fetching data:', error);
-        return { notFound: true };
+        return {notFound: true};
     }
 };
 

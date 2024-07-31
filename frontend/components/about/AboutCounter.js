@@ -1,11 +1,12 @@
 import React from 'react';
 import Counter from "../counter/counter";
 import {YearsOperated} from "../years-operated/YearsOperated";
+import styles from '../../styles/HomeCounter.module.css'
 
 const AboutCounter = () => {
     return (
 
-            <div className="container counts about-count" data-aos="fade-up">
+            <div className={`container ${styles.about}`} data-aos="fade-up">
                 <div className="row gy-4">
                     <Counter
                         start={0}

@@ -1,0 +1,67 @@
+.principles {
+    background: var(--color-secondary);
+    margin-bottom: -80px;
+    padding-bottom: 120px;
+}
+
+.iconBox {
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.1);
+    padding: 50px 30px;
+    border-radius: 5px;
+    transition: all ease-in-out 0.4s;
+    background: var(--color-contrast);
+}
+
+.iconBox:hover {
+    transform: translateY(-10px);
+}
+
+.principles h4 {
+    color: var(--color-primary1);
+}
+
+.icon {
+    margin-bottom: 10px;
+}
+
+.ico {
+    color: var(--color-primary1);
+    font-size: 36px;
+    transition: 0.3s;
+}
+
+.principles p {
+    line-height: 24px;
+    font-size: 14px;
+    margin-bottom: 0;
+    font-family: var(--font-secondary);
+    color: var(--color-text-1);
+}
+
+.principles ul {
+    list-style: none;
+    padding: 0;
+}
+
+
+.principles ul li {
+    padding-left: 28px;
+    font-family: var(--font-secondary);
+    color: var(--color-text-1);
+    position: relative;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+.principles ul li + li {
+    margin-top: 5px;
+}
+
+.ico1 {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 20px;
+    color: var(--color-primary1);
+    line-height: 1;
+}

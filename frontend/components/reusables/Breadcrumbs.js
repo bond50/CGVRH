@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-
+import styles from '../../styles/Breadcrumbs.module.css'
 const Breadcrumb = ({pageTitle }) => {
     const [breadcrumbs, setBreadcrumbs] = useState([]);
     const router = useRouter();
@@ -29,7 +29,7 @@ const Breadcrumb = ({pageTitle }) => {
     };
 
     return (
-        <div id="breadcrumbs" className='breadcrumbs d-flex align-items-center ' style={containerStyle}>
+        <div  className={`${styles.breadcrumbs} d-flex align-items-center`} style={containerStyle}>
             <div className="container position-relative d-flex align-items-start flex-column">
                 <h1>{pageTitle ? pageTitle : breadcrumbs[breadcrumbs.length - 1]?.breadcrumb.toLowerCase()}</h1>
                 <ol>

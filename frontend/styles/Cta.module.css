@@ -1,0 +1,52 @@
+.cta {
+    background: linear-gradient(var(--color-overlay1), var(--color-overlay)), url("/herp.jpg") fixed center center;
+    background-size: cover;
+    padding: 40px 0;
+    overflow: hidden;
+}
+
+.ctaTitle {
+    color: var(--color-contrast);
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.ctaText {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 34px;
+}
+
+.ctaText span {
+    font-size: 20px;
+    font-weight: 700;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+@media (min-width: 769px) {
+    .ctaBtnContainer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+
+.ctaBtn {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 30px;
+    border-radius: 25px 0 25px 0;
+    transition: background 0.5s;
+    margin: 10px;
+    background-color: var(--color-contrast);
+    color: var(--color-primary);
+}
+
+.ctaBtn:hover {
+    color: var(--color-secondary);
+}

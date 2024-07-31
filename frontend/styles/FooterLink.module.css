@@ -1,7 +1,7 @@
 .FooterLink {
     padding: 10px 0;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .FooterLink:first-child {
@@ -12,12 +12,20 @@
 .FooterLinkA {
     color: rgba(255, 255, 255, 0.6);
     transition: 0.3s;
-    font-size: 12px;
+    font-size: 13px;
     display: inline-block;
     line-height: 1;
 }
 
 .FooterLinkA:hover {
     text-decoration: none;
-    color: var(--color-cadimium-yellow);
+    color: var(--color-primary1);
+}
+
+
+.Icon {
+    padding-right: 5px;
+    color: var(--color-contrast);
+    font-size: 16px!important;
+    line-height: 1;
 }

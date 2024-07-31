@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {Fragment, useCallback, useEffect, useState} from 'react';
 import {API, APP_NAME} from "../../config";
 import {stripTags} from "../../components/reusables/utility";
 import {getAllSlugs, listRelated, singlePage} from "../../actions/general";
@@ -9,31 +9,28 @@ import SEOHead from "../../components/SEOHead";
 const PageWrapper = dynamic(() => import("../../hoc/page-wrapper"), { ssr: false, loading: () => <Preloader /> });
 const Layout = dynamic(() => import("../../hoc/Layout"), { ssr: false, loading: () => <Preloader /> });
 
-
-
 const Slug = ({service}) => {
     const [related, setRelated] = useState([])
 
-
-    const loadRelated = () => {
+    const loadRelated = useCallback(() => {
+        let isMounted = true;
         listRelated({service}).then(data => {
-           if (!data){
-               return {notFound:true}
-           }
-           if (data.error) {
+            if (!isMounted) return;
+            if (!data){
+                return {notFound:true}
+            }
+            if (data.error) {
                 console.log(data.error)
             } else {
                 setRelated(data)
             }
-        })
-    };
+        });
+        return () => { isMounted = false; };
+    }, [service]);
 
     useEffect(() => {
-        loadRelated();
-    }, [service.slug]);
-
-
-
+        return loadRelated();
+    }, [loadRelated]);
 
     const showPage = () => {
         return service ? (
@@ -45,18 +42,14 @@ const Slug = ({service}) => {
         );
     };
 
-    let imgSrc
-
-    if (service.images && service.images.length && service.images.length > 0) {
-        imgSrc = service.images[0].url
+    let imgSrc;
+    if (service.images && service.images.length > 0) {
+        imgSrc = service.images[0].url;
     } else {
-        imgSrc = `${API}/general/photo/${service.slug}`
+        imgSrc = `${API}/general/photo/${service.slug}`;
     }
 
-
-
-
-      const additionalStructuredData = [
+    const additionalStructuredData = [
         {
             "@context": "https://schema.org",
             "@type": "MedicalService",
@@ -69,7 +62,6 @@ const Slug = ({service}) => {
             "url": `https://vihigahospital.go.ke/services/${service.slug}`
         }
     ];
-
 
     return (
         <Fragment>
@@ -90,6 +82,7 @@ const Slug = ({service}) => {
         </Fragment>
     )
 };
+
 export const getStaticProps = async ({params}) => {
     const data = await singlePage(params.slug);
 
@@ -116,4 +109,5 @@ export const getStaticPaths = async () => {
         fallback: 'blocking',
     };
 };
+
 export default Slug;

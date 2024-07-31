@@ -1,4 +1,6 @@
 import {useEffect, useState} from 'react';
+import {Icon} from "@iconify/react";
+
 
 const ScrollTop = () => {
     const [visible, setVisible] = useState(false);
@@ -31,8 +33,8 @@ const ScrollTop = () => {
     }
 
     return (
-        <div onClick={scrollToTop} className={classes.join(' ')}><i
-            className="bi bi-arrow-up-short"/>
+        <div onClick={scrollToTop} className={classes.join(' ')}>
+             <Icon icon='bi:arrow-up-short' className={`icon`}/>
         </div>
     );
 };

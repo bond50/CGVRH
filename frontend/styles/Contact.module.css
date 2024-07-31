@@ -7,7 +7,7 @@
     background: #ffffff;
 }
 
-.Info i {
+.Info i ,.Icon {
     font-size: 20px;
     color: #1bbd36;
     float: left;

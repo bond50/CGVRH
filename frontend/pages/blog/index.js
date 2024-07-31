@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Preloader from "../../components/preloader";
 import SEOHead from "../../components/SEOHead";
 import {APP_NAME} from "../../config";
+import AdBanner from "../../components/AdBanner";
 
 const SmallCard = dynamic(() => import("../../components/reusables/card/small-card"), {
     ssr: false,
@@ -125,7 +126,7 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, seoSettings}) => {
                         <div className="row">
                             {showAllBlogs()}
                             {showLoadedBlogs()}
-
+                              <AdBanner/>
                         </div>
                         <div className="text-center pb-3">{loadMoreButton()}</div>
                     </div>

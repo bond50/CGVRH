@@ -1,0 +1,25 @@
+.countBox {
+    background: var(--color-contrast);
+    box-shadow: 0px 0 30px rgba(82, 86, 94, 0.05);
+    padding: 30px;
+}
+
+.icon {
+    font-size: 42px;
+    line-height: 0;
+    margin-right: 20px;
+    color: var(--color-secondary);
+}
+
+.countBox span {
+    font-size: 36px;
+    display: block;
+    font-weight: 600;
+    color: var(--color-secondary);
+}
+
+.countBox p {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}

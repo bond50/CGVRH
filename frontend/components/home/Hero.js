@@ -45,7 +45,7 @@ function Hero({ services: data, blog }) {
         if (!data || data.length === 0) return <p>No data available</p>;
 
         return data.map((d, idx) => {
-            const excerptText = trim(d.excerpt, isSmallScreen ? 180 : 200);
+            const excerptText = trim(d.excerpt, isSmallScreen ? 140 : 160);
             const photoLink = d.images && d.images.length > 0 ? d.images[0].url : defaultImageUrl;
             let link = `/blog/${d.slug}`;
             if (d.dataFrom === 'projects') link = `/media/projects/${d.slug}`;

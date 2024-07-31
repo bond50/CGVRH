@@ -1,12 +1,12 @@
 import Footer from "../components/footer/Footer";
-import Toolbar from "../components/navgation/Toolbar";
+import Index from "../components/navgation/toolbar";
 import Hero from "../components/home/Hero";
 import Breadcrumb from "../components/reusables/Breadcrumbs";
 import useSWR from "swr";
 import {API} from "../config";
 import AdBanner from "../components/AdBanner";
 import {fetcher} from "../axios/axios";
-
+import React from "react";
 
 
 const Layout = ({
@@ -37,17 +37,15 @@ const Layout = ({
 
     return (
         <>
-            <Toolbar pages={pages} blog={blog}/>
+            <Index pages={pages} blog={blog}/>
             {home && <Hero services={allFeatured}/>}
             <main>
                 {blog && !noHero && <Hero services={footerBlogs} blog/>}
                 {!noBread && <Breadcrumb imageUrl={imageUrl} pageTitle={pageTitle}/>}
                 {children}
+                <AdBanner/>
             </main>
-            <AdBanner
-                data-ad-slot="6511402910"
-                style={{width: '100%', height: '250px'}}
-            />
+
             <Footer
                 services={footerServices}
                 blogs={footerBlogs}

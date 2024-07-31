@@ -3,11 +3,13 @@
 }
 
 .FooterLinks h4 {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
-    color: #fff;
+    font-family: var(--font-secondary);
+    color: var(--color-contrast);
     position: relative;
     padding-bottom: 12px;
+
 }
 
 .FooterLinks ul {
@@ -22,7 +24,7 @@
 
 .FooterLinks ul i {
     padding-right: 2px;
-    color: var(--color-cadimium-yellow);
-    font-size: 16px;
+    color: var(--color-accent);
+    font-size: 13px;
     line-height: 1;
 }

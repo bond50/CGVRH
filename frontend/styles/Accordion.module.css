@@ -1,49 +1,39 @@
-
-.accordionWrapper + * {
-    margin-top: 0.5em;
+.accordionList {
+    margin-top: 20px;
 }
 
 .accordionItem {
-    overflow: hidden;
-    transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
-    height: auto;
-    max-height: 9999px;
+    border: none;
 }
 
-.accordionItem.collapsed {
-    max-height: 0;
-    transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+.accordionHeader {
+    max-width: 100%;
+    margin-bottom: 10px;
 }
 
-.accordionTitle {
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0.5em 1.5em;
-    border: solid 1px #ccc;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.accordionHeader h3 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--color-text-2);
+    margin: 0;
+    transition: 0.3s;
 }
 
-.accordionTitle::after {
-    content: "";
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid currentColor;
+.accordionHeader h3 span {
+    margin-right: 10px;
+    color: var(--color-default);
+    font-size: 18px;
+    font-weight: 700;
 }
 
-.accordionTitle:hover, .accordionTitle.open {
-    color: black;
+.accordionBody {
+    padding-top: 0;
+    padding-bottom: 10px;
+    text-transform: none!important;
 }
 
-.accordionTitle.open::after {
-    content: "";
-    border-top: 0;
-    border-bottom: 5px solid;
-}
-
-.accordionContent {
-    padding: 1em 0;
+.accordionHeader button:focus {
+    outline: none;
+    box-shadow: none;
 }

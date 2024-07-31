@@ -1,54 +1,80 @@
-.Breadcrumbs {
-    padding: 10px 0;
-    background-color: #ffffff;
-    min-height: 20px;
+.breadcrumbs {
+    padding: 30px 0 0 0;
+    min-height: 20vh;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-
-.Breadcrumbs h2 {
-    font-size: 16px;
-    font-weight: 300;
+.breadcrumbs:before {
+    content: "";
+    background-color: var(--color-overlay);
+    position: absolute;
+    inset: 0;
 }
 
-.Breadcrumbs ol {
-    font-size: 11px;
+.breadcrumbs h1 {
+    font-size: 36px;
+    font-weight: 700;
+    font-family: var(--font-default);
+    text-transform: capitalize;
+    line-height: 36px;
+    color: var(--color-contrast);
+    border-left: 5px solid var(--color-contrast);
+    padding-left: 20px;
+}
+
+.breadcrumbs ol {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    padding: 0;
+    padding: 0 0 10px 0;
     margin: 0;
+    font-size: 16px;
+    font-weight: 400;
 }
 
-.Breadcrumbs a {
-    color: #fafafa;
-    text-transform: uppercase;
+.breadcrumbs ol a {
+    text-transform: capitalize;
+    color: var(--color-contrast);
+    transition: 0.3s;
 }
 
-.Breadcrumbs ol li + li::before {
+.breadcrumbs ol a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumbs ol li + li {
+    padding-left: 10px;
+}
+
+.breadcrumbs ol li + li::before {
     display: inline-block;
-    padding: 0 5px;
-    color: #6c757d;
-    content: '/';
+    padding-right: 10px;
+    color: #fff;
+    content: "⟹";
 }
 
-
-.Breadcrumbs ol li + li:last-child:before {
-    content: ''
+.breadcrumbs ol li nav ol li:last-child a {
+    color: var(--color-light-yellow);
 }
 
-
-@media (max-width: 768px) {
-    .Block {
-        display: block !important;
+@media (max-width: 726px) {
+    .breadcrumbs h1 {
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 26px;
+        text-align: center;
     }
 
-    .Breadcrumbs ol {
-        display: block;
+    .breadcrumbs ol {
+        justify-content: center;
     }
 
-    .Breadcrumbs ol li {
-        display: inline-block;
+    .breadcrumbs ol a {
+        color: rgba(255, 255, 255, 0.8);
+        transition: 0.3s;
+        font-size: 13px;
     }
-
-
 }

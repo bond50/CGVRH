@@ -1,18 +1,19 @@
+/* General styles */
 .Download {
     padding: 60px 0;
     overflow: hidden;
     background: #fff;
 }
 
-
+/* Download wrapper styles */
 .DownloadWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
 }
 
+/* Individual download item styles */
 .Wrapper {
     display: flex;
     width: 90%;
@@ -20,18 +21,20 @@
     flex-direction: column;
     align-items: center;
     background: #f1f6fd;
-    padding: 5px 10px;
-    margin: 10px;
+    padding: 20px; /* Increased padding for better spacing */
+    margin: 10px 0; /* Adjusted margin for consistent spacing */
     justify-content: space-between;
     text-align: center;
+    border-radius: 10px; /* Added border-radius for better aesthetics */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added subtle shadow for better visibility */
 }
 
-
+/* Header styles */
 .Header {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    margin-bottom: 10px; /* Added margin-bottom for spacing */
 }
 
 .Header i {
@@ -42,18 +45,19 @@
     color: #0C163B;
     margin-right: 10px;
     text-transform: capitalize;
+    font-weight: 700; /* Added font-weight for emphasis */
 }
 
-
+/* Date and size styles */
 .Date, .Size {
     text-transform: capitalize;
     font-size: 13px;
     color: #09254b;
-    margin-left: 5px;
+    margin: 5px 0; /* Adjusted margin for consistent spacing */
     font-weight: 600;
 }
 
-
+/* Responsive styles */
 @media (min-width: 992px) {
     .Wrapper, .Header {
         flex-direction: row;
@@ -65,31 +69,33 @@
     }
 }
 
+/* Button styles */
 .Btn {
     font-family: "Raleway", sans-serif;
     font-weight: 500;
     font-size: 15px;
     letter-spacing: 1px;
     display: inline-block;
-    padding: 4px 13px;
+    padding: 8px 16px; /* Adjusted padding for better spacing */
     transition: 0.5s;
     margin-top: 10px;
     border-radius: 10px;
     border: 2px solid #1bbd36;
-    color: #fff;
-}
-
-.Btn span {
-    text-decoration: none;
-    color: #0C163B;
-}
-.Btn span:hover {
-    color: #ffffff;
+    background-color: transparent; /* Added background color for initial state */
+    color: #0C163B; /* Moved color from span to Btn for consistency */
+    text-align: center; /* Added text-align for centering */
 }
 
 .Btn:hover {
     background-color: #1bbd36;
-
+    color: #fff; /* Changed text color on hover for better contrast */
 }
 
+/* Span styles inside button */
+.Btn span {
+    text-decoration: none;
+}
 
+.Btn span:hover {
+    color: #ffffff;
+}

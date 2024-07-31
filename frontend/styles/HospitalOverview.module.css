@@ -1,0 +1,73 @@
+.hospitalOverview {
+    z-index: 99;
+    /*background-color: var(--color-background2);*/
+}
+
+.hospitalOverview .content {
+    padding: 30px;
+    background: var(--color-primary1);
+    border-radius: 4px;
+    color: var(--color-contrast);
+}
+
+.hospitalOverview .content h3 {
+    font-weight: 500;
+    font-size: 34px;
+    color: var(--color-contrast);
+    margin-bottom: 30px;
+}
+
+.hospitalOverview .content p {
+    margin-bottom: 30px;
+    font-size: 14px;
+    font-family: var(--font-secondary);
+}
+
+.hospitalOverview .content .moreBtn {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 30px 8px 30px;
+    color: #fff;
+    border-radius: 50px;
+    transition: all ease-in-out 0.4s;
+}
+
+.hospitalOverview .content .moreBtn .icon {
+    font-size: 14px;
+}
+
+.hospitalOverview .content .moreBtn:hover {
+    color: var(--color-secondary);
+    background: #fff;
+}
+
+.hospitalOverview .servicesBoxes .serviceBox {
+    text-align: center;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px 30px;
+    width: 100%;
+}
+
+.hospitalOverview .servicesBoxes .serviceBox .icon {
+    font-size: 50px !important;
+    color: var(--color-secondary) !important;
+    margin-bottom: 30px;
+    padding: 10px;
+    border: 1px solid var(--color-secondary) !important;
+}
+
+.hospitalOverview .servicesBoxes .serviceBox h4 {
+    font-family: var(--font-secondary);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-primary1);
+    margin: 0 0 20px 0;
+}
+
+.hospitalOverview .servicesBoxes .serviceBox p {
+    font-size: 14px;
+    font-family: var(--font-secondary);
+    color: var(--color-text-1);
+}

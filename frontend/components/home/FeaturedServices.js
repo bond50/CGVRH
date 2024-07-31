@@ -4,6 +4,7 @@ import ServiceCard from "../reusables/card/serviceCard/ServiceCard";
 
 import React from "react";
 import {generateExcerpt} from "../reusables/functions/generate-excerpt";
+import styles from '../../styles/FeaturedServices.module.css'
 
 
 const FeaturedServices = ({services}) => {
@@ -11,7 +12,7 @@ const FeaturedServices = ({services}) => {
 
     return (
 
-        <section className='featured-services'>
+        <section className={styles.Featured}>
             <div className="container" data-aos="slide-up">
                 <div className="section-title">
                     <h2>

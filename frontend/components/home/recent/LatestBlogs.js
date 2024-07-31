@@ -7,6 +7,7 @@ import Image from "../../reusables/lazy/Image";
 import Preloader from "../../preloader";
 import { generateExcerpt } from "../../reusables/functions/generate-excerpt";
 import classes from './RecentBlog.module.css';
+import {Icon} from "@iconify/react";
 
 const LatestBlogs = () => {
     const { data: blogs, error } = useSWR(`${API}/list-recent-blogs`);
@@ -24,7 +25,7 @@ const LatestBlogs = () => {
                 <div className="section-title">
                     <h2>Latest News & Updates</h2>
                     <h3>
-                        Stay Updated with <span>Our <Link href="/blog">Latest News</Link></span>
+                        Stay Updated with Our <span> <Link href="/blog">Latest News</Link></span>
                     </h3>
                     <p>Discover the latest happenings, health tips, and updates at {APP_NAME}.</p>
                 </div>
@@ -76,7 +77,7 @@ const LatestBlogs = () => {
                                     <Link href={`/blog/${blog.slug}`}>
                                         <a className={classes.readMore}>
                                             <span>Read Full Article</span>
-                                            <i className={`bi bi-arrow-right ${classes.icon}`} />
+                                             <Icon icon='bi:arrow-right' className={classes.icon}/>
                                         </a>
                                     </Link>
                                 </div>

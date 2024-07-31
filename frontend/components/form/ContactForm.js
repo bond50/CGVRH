@@ -3,6 +3,7 @@ import {emailContactForm} from '../../actions/form';
 import Alert from "../messages/Alert";
 import Button from "../reusables/ui/Button";
 import classes from '../../styles/Contact.module.css'
+import {Icon} from "@iconify/react";
 
 const ContactForm = ({authorEmail, label}) => {
     const [values, setValues] = useState({
@@ -70,19 +71,19 @@ const ContactForm = ({authorEmail, label}) => {
                     <div className="row">
 
                         <div className={`${classes.Info} col-lg-4`}>
-                            <i className='bi bi-geo-alt'/>
+                             <Icon icon="mdi:location" className={classes.Icon} />
                             <h4>Location</h4>
                             <p>Mbale town <br/>Opposite District Headquarters,1069-50300, Maragoli</p>
                         </div>
 
                         <div className={`${classes.Info} col-lg-4 mt-4 mt-lg-0`}>
-                            <i className='bi bi-envelope'/>
+                            <Icon icon="mdi:email-outline" className={classes.Icon} />
                             <h4>Email</h4>
                             <p>vihigahospital@gmail.com</p>
                         </div>
 
                         <div className={`${classes.Info} col-lg-4 mt-4 mt-lg-0`}>
-                            <i className='bi bi-phone'/>
+                            <Icon icon="mdi:phone" className={classes.Icon} />
                             <h4>Call us</h4>
                             <p>Phone: +254-723103564 <br/>+254-056-51558
                             </p>
