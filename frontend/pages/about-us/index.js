@@ -5,6 +5,7 @@ import Preloader from "../../components/preloader";
 import SEOHead from "../../components/SEOHead";
 
 import Organogram from "../../components/about/Organogram";
+import axiosInstance from "../../axios/axios";
 
 
 
