@@ -1,6 +1,6 @@
 import classes from '../../styles/List.module.css'
 import styles from '../../styles/Roles.module.css'
-import Icon from '@iconify/react'
+import {Icon} from "@iconify/react";
 
 const List = ({list, intro}) => {
     return (
