@@ -5,7 +5,7 @@ import {APP_NAME} from "../../config";
 import Preloader from "../../components/preloader";
 import SEOHead from "../../components/SEOHead";
 import TrendingBlogs from "../../components/blog/TrendingBlogs";
-import AdBanner from "../../components/AdBanner";
+import AdBanner from "../../components/adsense/AdBanner";
 
 const Card = dynamic(() => import("../../components/blog/Card"), {
     ssr: false,

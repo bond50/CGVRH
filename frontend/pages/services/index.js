@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 import Preloader from "../../components/preloader";
 import {Icon} from "@iconify/react";
 import SEOHead from "../../components/SEOHead";
-import AdBanner from "../../components/AdBanner";
+import AdBanner from "../../components/adsense/AdBanner";
 
 
 const Layout = dynamic(() => import("../../hoc/Layout"), {ssr: false, loading: () => <Preloader/>});

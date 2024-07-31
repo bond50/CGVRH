@@ -6,7 +6,7 @@ import React, {useState, useEffect} from "react";
 import {stripAllTags} from "../utility";
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import AdBanner from "../../AdBanner";
+
 
 // Extend dayjs with the relativeTime plugin
 dayjs.extend(relativeTime);
@@ -86,7 +86,7 @@ const SmallCard = ({blog, service, isPriority}) => {
                     </div>
                 )}
             </div>
-            <AdBanner/>
+
         </div>
     );
 };

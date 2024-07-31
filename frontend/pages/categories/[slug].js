@@ -4,7 +4,7 @@ import Head from "next/head";
 import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import React from "react";
 import Preloader from "../../components/preloader";
-import AdBanner from "../../components/AdBanner";
+import AdBanner from "../../components/adsense/AdBanner";
 
 const SmallCard = dynamic(() => import("../../components/reusables/card/small-card"), {
     ssr: false,

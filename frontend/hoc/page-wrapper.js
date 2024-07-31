@@ -5,7 +5,7 @@ import {useRouter} from "next/router";
 import useSWR from "swr";
 import {API} from "../config";
 import {fetcher} from "../axios/axios";
-import AdBanner from "../components/AdBanner";
+import AdBanner from "../components/adsense/AdBanner";
 
 const PageWrapper = ({related = [], children, title, projectPage}) => {
     const router = useRouter();
