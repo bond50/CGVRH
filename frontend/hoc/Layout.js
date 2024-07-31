@@ -43,7 +43,6 @@ const Layout = ({
                 {blog && !noHero && <Hero services={footerBlogs} blog/>}
                 {!noBread && <Breadcrumb imageUrl={imageUrl} pageTitle={pageTitle}/>}
                 {children}
-                <AdBanner/>
             </main>
 
             <Footer
