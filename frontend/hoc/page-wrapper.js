@@ -110,11 +110,6 @@ const PageWrapper = ({related = [], children, title, projectPage}) => {
                     </div>
                     <div className="col-lg-8 ps-lg-5 order-lg-2 order-1">
                         {children}
-                        <div className="container">
-                            <AdBanner/>
-                        </div>
-
-
                     </div>
                 </div>
             </div>

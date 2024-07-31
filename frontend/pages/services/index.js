@@ -127,7 +127,6 @@ const Index = ({paginationData, size, page, generalData}) => {
                             <AdBanner/>
                         </div>
 
-
                         <div className="d-flex justify-content-center pagination">
                             <PaginationComponent
                                 total={totalCount}

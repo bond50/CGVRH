@@ -5,9 +5,10 @@ import {getAllSlugs, listRelated, singlePage} from "../../actions/general";
 import dynamic from "next/dynamic";
 import Preloader from "../../components/preloader";
 import SEOHead from "../../components/SEOHead";
+import AdBanner from "../../components/adsense/AdBanner";
 
-const PageWrapper = dynamic(() => import("../../hoc/page-wrapper"), { ssr: false, loading: () => <Preloader /> });
-const Layout = dynamic(() => import("../../hoc/Layout"), { ssr: false, loading: () => <Preloader /> });
+const PageWrapper = dynamic(() => import("../../hoc/page-wrapper"), {ssr: false, loading: () => <Preloader/>});
+const Layout = dynamic(() => import("../../hoc/Layout"), {ssr: false, loading: () => <Preloader/>});
 
 const Slug = ({service}) => {
     const [related, setRelated] = useState([])
@@ -16,8 +17,8 @@ const Slug = ({service}) => {
         let isMounted = true;
         listRelated({service}).then(data => {
             if (!isMounted) return;
-            if (!data){
-                return {notFound:true}
+            if (!data) {
+                return {notFound: true}
             }
             if (data.error) {
                 console.log(data.error)
@@ -25,7 +26,9 @@ const Slug = ({service}) => {
                 setRelated(data)
             }
         });
-        return () => { isMounted = false; };
+        return () => {
+            isMounted = false;
+        };
     }, [service]);
 
     useEffect(() => {
@@ -36,6 +39,9 @@ const Slug = ({service}) => {
         return service ? (
             <PageWrapper related={related} title={`Related`}>
                 {stripTags(service.body, ['strong', 'b'])}
+                <div className="container">
+                    <AdBanner/>
+                </div>
             </PageWrapper>
         ) : (
             <div>Loading...</div>
@@ -65,7 +71,7 @@ const Slug = ({service}) => {
 
     return (
         <Fragment>
-             <SEOHead
+            <SEOHead
                 title={`${service.metaTitle}`}
                 description={service.metaDesc}
                 url={`https://vihigahospital.go.ke/services/${service.slug}`}
