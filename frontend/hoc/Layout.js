@@ -4,7 +4,7 @@ import Hero from "../components/home/Hero";
 import Breadcrumb from "../components/reusables/Breadcrumbs";
 import useSWR from "swr";
 import {API} from "../config";
-import AdBanner from "../components/adsense/AdBanner";
+
 import {fetcher} from "../axios/axios";
 import React from "react";
 

@@ -6,6 +6,7 @@ import SEOHead from "../../components/SEOHead";
 
 import Organogram from "../../components/about/Organogram";
 import axiosInstance from "../../axios/axios";
+import AdBanner from "../../components/adsense/AdBanner";
 
 
 
@@ -82,6 +83,9 @@ const Index = ({seoSettings}) => {
                 <AboutCounter/>
                 <Partners/>
                 <Organogram/>
+                <div className="container">
+                    <AdBanner/>
+                </div>
 
             </Layout>
         </>

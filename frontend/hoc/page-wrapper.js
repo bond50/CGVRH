@@ -7,6 +7,7 @@ import {API} from "../config";
 import {fetcher} from "../axios/axios";
 import AdBanner from "../components/adsense/AdBanner";
 
+
 const PageWrapper = ({related = [], children, title, projectPage}) => {
     const router = useRouter();
     const {data: files, error} = useSWR(`${API}/get-downloads`, fetcher);
@@ -108,9 +109,14 @@ const PageWrapper = ({related = [], children, title, projectPage}) => {
                         </div>
                     </div>
                     <div className="col-lg-8 ps-lg-5 order-lg-2 order-1">
-                        <AdBanner/>
                         {children}
-                        <AdBanner/>
+                        <div className="container">
+                            <AdBanner/>
+                        </div>
+
+                        <div className="container">
+                            <AdBanner/>
+                        </div>
                     </div>
                 </div>
             </div>

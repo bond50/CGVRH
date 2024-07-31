@@ -55,7 +55,7 @@ const Index = ({paginationData, size, page, generalData}) => {
     };
 
 
-      const {
+    const {
         author,
         description,
         imageUrl,
@@ -63,12 +63,10 @@ const Index = ({paginationData, size, page, generalData}) => {
         locale,
         themeColor,
         title,
-        page:seoPageData,
+        page: seoPageData,
 
 
     } = paginationData.seoSettings[0];
-
-
 
 
     const additionalStructuredData = [
@@ -124,7 +122,11 @@ const Index = ({paginationData, size, page, generalData}) => {
                             ))}
 
                         </div>
-                          <AdBanner/>
+
+                        <div className="container">
+                            <AdBanner/>
+                        </div>
+
 
                         <div className="d-flex justify-content-center pagination">
                             <PaginationComponent

@@ -105,16 +105,16 @@ const Slug = ({blog, query}) => {
                             {showComments()}
                         </div>
 
-                        <AdBanner/>
                     </BlogContainer>
                     <hr/>
                     <div className="container">
                         <h4 className="text-center pt-2 pb-2 h2">Related blogs</h4>
                         <div className="row">{showRelatedBlog()}</div>
-                        <AdBanner/>
                     </div>
                     <TrendingBlogs/>
-                    <AdBanner/>
+                    <div className="container">
+                        <AdBanner/>
+                    </div>
                 </section>
             </Layout>
         </>

@@ -4,6 +4,7 @@ import {APP_NAME, DOMAIN, FB_APP_ID} from "../../config";
 import React from "react";
 import {getAllTagSlugs, singleTag} from "../../actions/tag";
 import Preloader from "../../components/preloader";
+import AdBanner from "../../components/adsense/AdBanner";
 
 const SmallCard = dynamic(() => import("../../components/reusables/card/small-card"), { ssr: false, loading: () => <Preloader /> });
 const Layout = dynamic(() => import("../../hoc/Layout"), { ssr: false, loading: () => <Preloader /> });
@@ -36,10 +37,13 @@ const Tag = ({ tag, blogs, query }) => {
                             {blogs.map(blog => (
                                 <div className="col-md-4" key={blog._id}>
                                     <article>
-                                        <SmallCard blog={blog} />
+                                        <SmallCard blog={blog}/>
                                     </article>
                                 </div>
                             ))}
+                        </div>
+                        <div className="container">
+                            <AdBanner/>
                         </div>
                     </div>
                 </section>

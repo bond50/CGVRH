@@ -7,6 +7,7 @@ import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../../config";
 import {fetcher} from "../../../axios/axios";
 import dynamic from "next/dynamic";
 import Preloader from "../../../components/preloader";
+import AdBanner from "../../../components/adsense/AdBanner";
 
 
 const DownloadList = dynamic(() => import("../../../components/media/downloads/download-list"), {
@@ -68,6 +69,9 @@ const Downloads = () => {
             {head()}
             <Layout pageTitle="Downloads">
                 <DownloadList files={files}/>
+                <div className="container">
+                    <AdBanner/>
+                </div>
             </Layout>
         </>
     );

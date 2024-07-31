@@ -6,6 +6,7 @@ import {useRouter} from "next/router";
 import GeneralPageHeader from "../../../hoc/general-page-header";
 import {API, APP_NAME, DOMAIN, FB_APP_ID} from "../../../config";
 import Preloader from "../../../components/preloader";
+import AdBanner from "../../../components/adsense/AdBanner";
 
 // Dynamically import components
 const Gallery = dynamic(() => import("../../../components/media/gallery/Gallery"), {
@@ -49,6 +50,9 @@ export default function GalleryIndex({galleryData}) {
             {head()}
             <Layout>
                 <Gallery data={galleryData}/>
+                <div className="container">
+                    <AdBanner/>
+                </div>
             </Layout>
         </>
     );

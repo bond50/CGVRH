@@ -4,6 +4,7 @@ import {API} from "../config";
 import dynamic from "next/dynamic";
 import Preloader from "../components/preloader";
 import SEOHead from "../components/SEOHead";
+import AdBanner from "../components/adsense/AdBanner";
 
 const Layout = dynamic(() => import("../hoc/Layout"), {ssr: false, loading: () => <Preloader/>});
 
@@ -57,6 +58,9 @@ export default function Home({services, blogs, featuredAll: allFeatured, seoSett
                 <FeaturedServices services={services}/>
                 <Cta/>
                 <LatestBlogs/>
+                <div className="container">
+                    <AdBanner/>
+                </div>
             </Layout>
         </>
     );
