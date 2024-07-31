@@ -1,4 +1,4 @@
-const SEOPage = require('../models/SEOPage');
+const SEOPage = require('../models/seoPage');
 
 // Get all SEO Pages
 exports.getAllSEOPages = async (req, res) => {
