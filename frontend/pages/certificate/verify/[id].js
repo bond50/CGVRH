@@ -29,7 +29,7 @@ const Id = () => {
             </Head>
             <Layout noBread>
                 <CertVerify/>
-                <div className="container">
+                <div className="container py-4">
                     <AdBanner/>
                 </div>
             </Layout>

@@ -42,7 +42,7 @@ const Tag = ({ tag, blogs, query }) => {
                                 </div>
                             ))}
                         </div>
-                        <div className="container">
+                        <div className="container py-4">
                             <AdBanner/>
                         </div>
                     </div>

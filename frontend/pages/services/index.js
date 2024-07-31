@@ -123,12 +123,12 @@ const Index = ({paginationData, size, page, generalData}) => {
 
                         </div>
 
-                        <div className="container">
+                        <div className="container py-4">
                             <AdBanner/>
                         </div>
 
                         <div className="d-flex justify-content-center pagination">
-                            <PaginationComponent
+                        <PaginationComponent
                                 total={totalCount}
                                 current={current}
                                 pageSize={limit}

@@ -38,7 +38,7 @@ const Slug = ({project, query}) => {
         return (
             <PageWrapper related={projects} title={`Related`} projectPage>
                 {stripTags(project.body, ['strong', 'b'])}
-                <div className="container">
+                <div className="container py-4">
                     <AdBanner/>
                 </div>
             </PageWrapper>

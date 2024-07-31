@@ -5,6 +5,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import Preloader from "../../components/preloader";
 import Link from "next/link";
+import AdBanner from "../../components/adsense/AdBanner";
 
 const Layout = dynamic(() => import("../../hoc/Layout"), { ssr: false, loading: () => <Preloader /> });
 
@@ -45,18 +46,22 @@ const Index = () => {
                         <h4>Useful Media Links</h4>
                         <ul>
                             <li>
-                                <i className="bi bi-chevron-double-right" />
+                                <i className="bi bi-chevron-double-right"/>
                                 <Link href="/media/downloads">
                                     <a>Downloads</a>
                                 </Link>
                             </li>
                             <li>
-                                <i className="bi bi-chevron-double-right" />
+                                <i className="bi bi-chevron-double-right"/>
                                 <Link href="/media/gallery">
                                     <a>The Hospital Gallery</a>
                                 </Link>
                             </li>
                         </ul>
+                    </div>
+
+                    <div className="container py-4">
+                        <AdBanner/>
                     </div>
                 </section>
             </Layout>

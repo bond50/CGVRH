@@ -50,7 +50,7 @@ export default function GalleryIndex({galleryData}) {
             {head()}
             <Layout>
                 <Gallery data={galleryData}/>
-                <div className="container">
+                <div className="container py-4">
                     <AdBanner/>
                 </div>
             </Layout>

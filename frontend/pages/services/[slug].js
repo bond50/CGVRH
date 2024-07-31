@@ -39,7 +39,7 @@ const Slug = ({service}) => {
         return service ? (
             <PageWrapper related={related} title={`Related`}>
                 {stripTags(service.body, ['strong', 'b'])}
-                <div className="container">
+                <div className="container py-4">
                     <AdBanner/>
                 </div>
             </PageWrapper>

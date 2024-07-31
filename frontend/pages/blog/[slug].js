@@ -101,9 +101,9 @@ const Slug = ({blog, query}) => {
                 <section className="blog-detail-section">
                     <BlogContainer>
                         {showBlog()}
-                        <div className="pt-5">
-                            {showComments()}
-                        </div>
+                        {/*<div className="pt-5">*/}
+                        {/*    {showComments()}*/}
+                        {/*</div>*/}
 
                     </BlogContainer>
                     <hr/>
@@ -112,7 +112,7 @@ const Slug = ({blog, query}) => {
                         <div className="row">{showRelatedBlog()}</div>
                     </div>
                     <TrendingBlogs/>
-                    <div className="container">
+                    <div className="container py-4">
                         <AdBanner/>
                     </div>
                 </section>

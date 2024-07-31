@@ -58,7 +58,7 @@ export default function Home({services, blogs, featuredAll: allFeatured, seoSett
                 <FeaturedServices services={services}/>
                 <Cta/>
                 <LatestBlogs/>
-                <div className="container">
+                <div className="container py-4">
                     <AdBanner/>
                 </div>
             </Layout>

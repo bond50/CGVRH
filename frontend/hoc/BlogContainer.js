@@ -11,14 +11,13 @@ const BlogContainer = ({children}) => {
             <div className="row">
                 <div className="col-lg-8 mt-3">
                     {children}
-                    <div className="container">
+                    <div className="container py-4">
                         <AdBanner/>
                     </div>
-
                 </div>
                 <div className="col-lg-4 mt-3">
                     <SideBar>
-                    <BlogSideBarContent/>
+                        <BlogSideBarContent/>
                     </SideBar>
                 </div>
             </div>

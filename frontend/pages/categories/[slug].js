@@ -53,7 +53,9 @@ const Category = ({category, blogs, query}) => {
                     <div className="container mt-2">
                         <div className="row">{showCats()}</div>
                     </div>
-                      <AdBanner/>
+                    <div className="container py-4">
+                        <AdBanner/>
+                    </div>
                 </section>
             </Layout>
         </>

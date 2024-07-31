@@ -83,7 +83,7 @@ const Index = ({seoSettings}) => {
                 <AboutCounter/>
                 <Partners/>
                 <Organogram/>
-                <div className="container">
+                <div className="container py-4">
                     <AdBanner/>
                 </div>
 

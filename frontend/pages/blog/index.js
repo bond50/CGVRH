@@ -125,7 +125,7 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, seoSettings}) => {
                     <div className="container">
                         <div className="row">
                             {showAllBlogs()}
-                            <div className="container">
+                            <div className="container py-4">
                                 <AdBanner/>
                             </div>
                             {showLoadedBlogs()}

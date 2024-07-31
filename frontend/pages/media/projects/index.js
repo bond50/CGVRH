@@ -72,7 +72,7 @@ const Projects = ({ projects }) => {
                                 </div>
                             ))}
                         </div>
-                        <div className="container">
+                        <div className="container py-4">
                             <AdBanner/>
                         </div>
                     </PageWrapper>
