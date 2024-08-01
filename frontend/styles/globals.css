@@ -272,7 +272,7 @@ section {
 
 #hero.blog-hero .carousel-container {
     background-color: transparent;
-    top: calc(100% - 320px);
+    top: calc(100% - 200px);
     max-width: 80%;
     border-radius: 0;
     border: 0;
@@ -281,7 +281,7 @@ section {
 @media (max-width: 768px) {
 
     #hero.blog-hero .carousel-container {
-        top: calc(100% - 300px); /* Adjusted space on top for mobile devices */
+        top: calc(100% - 310px); /* Adjusted space on top for mobile devices */
         left: 3.5%;
         max-width: 92%;
         padding: 18px 30px 18px 20px;
