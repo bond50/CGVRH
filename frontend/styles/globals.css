@@ -202,13 +202,16 @@ section {
     object-fit: cover;
 }
 
-
 #hero {
     width: 100%;
     overflow: hidden;
     position: relative;
     height: 70vh;
     margin-bottom: -120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 #hero.blog-hero {
@@ -216,7 +219,10 @@ section {
     margin-bottom: 0;
 }
 
-#hero .carousel, #hero .carousel-inner, #hero .carousel-item, #hero .carousel-item::before {
+#hero .carousel,
+#hero .carousel-inner,
+#hero .carousel-item,
+#hero .carousel-item::before {
     position: absolute;
     top: 0;
     right: 0;
@@ -241,7 +247,6 @@ section {
     z-index: 2;
     content: "";
     background-color: rgba(0, 0, 0, 0.65);
-
 }
 
 #hero.blog-hero .carousel-item::before {
@@ -252,39 +257,62 @@ section {
     z-index: 999;
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     position: relative;
-    top: 37.1%;
-    left: 7.5%;
-    height: auto;
+    margin: auto;
     border-right: 8px solid var(--color-primary1);
-    max-width: 37.1%;
+    max-width: 80%;
     border-radius: 0 152px 0 0;
     background: rgba(255, 255, 255, 0.85);
-    padding: 18px 45px 18px 25px;
-    text-align: left;
+    padding: 18px 45px;
+    text-align: center;
     width: auto;
-
 }
 
 #hero.blog-hero .carousel-container {
     background-color: transparent;
-    top: calc(100% - 130px);
+    top: calc(100% - 180px);
     max-width: 80%;
     border-radius: 0;
     border: 0;
+}
 
+@media (max-width: 768px) {
+    #hero.blog-hero .carousel-container {
+        top: calc(100% - 260px); /* Adjusted space on top for mobile devices */
+        left: 3.5%;
+        max-width: 92%;
+        padding: 18px 30px 18px 20px;
+    }
+
+    #hero.blog-hero h2 a {
+        font-size: 20px;
+        line-height: 1.2; /* Improved line height */
+    }
+
+    #hero.blog-hero p {
+        font-size: 14px;
+        margin-bottom: 10px;
+        font-family: var(--font-secondary);
+        /*line-height: 1.5; !* Improved line height *!*/
+    }
+
+    #hero .carousel-control-next-icon,
+    #hero .carousel-control-prev-icon {
+        display: none !important;
+        visibility: hidden;
+    }
 }
 
 #hero h2 {
-    margin-bottom: 10px;
+    margin: 20px 0;
     line-height: 22px;
-
 }
 
 #hero.blog-hero h2 {
-    margin-bottom: 10px;
+    margin: 20px 0;
     line-height: 18px;
-
 }
 
 #hero h2 a {
@@ -299,26 +327,21 @@ section {
     font-family: var(--font-secondary);
 }
 
-
 #hero p {
     -webkit-animation-delay: 0.4s;
     animation-delay: 0.4s;
     color: var(--color-default);
-    margin-bottom: 5px;
+    margin: 20px 0;
     font-size: 13px;
-
     font-family: var(--font-secondary);
-    /*text-shadow: 0 0 2px #ffffff;*/
+    /* text-shadow: 0 0 2px #ffffff; */
 }
 
 #hero.blog-hero p {
     font-family: var(--font-secondary);
     color: var(--color-contrast);
     font-size: 14px;
-
-
 }
-
 
 #hero .carousel-inner .carousel-item {
     transition-property: opacity;
@@ -346,7 +369,8 @@ section {
     transform: translate3d(0, 0, 0);
 }
 
-#hero .carousel-control-next-icon, #hero .carousel-control-prev-icon {
+#hero .carousel-control-next-icon,
+#hero .carousel-control-prev-icon {
     background: none;
     font-size: 30px;
     line-height: 0;
@@ -360,7 +384,6 @@ section {
     align-items: center;
     justify-content: center;
 }
-
 
 /* Make icons visible when hovering inside the carousel */
 #hero .carousel:hover .carousel-control-next-icon,
@@ -379,7 +402,6 @@ section {
     border-radius: 50px;
     opacity: 0.6;
     transition: 0.3s;
-
 }
 
 #hero .carousel-indicators li.active {
@@ -387,40 +409,16 @@ section {
     background: var(--color-secondary);
 }
 
-
 @media (max-width: 992px) {
-    /*#hero {*/
-    /*    height: 100vh;*/
-    /*}*/
     #hero .carousel-container {
         max-width: 70%;
         left: 15%;
     }
-
-}
-
-@media (max-width: 768px) {
-    #hero .carousel-container {
-        left: 3.5%;
-        max-width: 92%;
-        padding: 18px 30px 18px 20px;
-
-    }
-
-
-    #hero h2 a {
-        font-size: 20px;
-    }
-
-    #hero .carousel-control-next-icon, #hero .carousel-control-prev-icon {
-        display: none !important;
-        visibility: hidden;
-    }
-
 }
 
 @media (min-width: 1024px) {
-    #hero .carousel-control-prev, #hero .carousel-control-next {
+    #hero .carousel-control-prev,
+    #hero .carousel-control-next {
         width: 5%;
     }
 }
@@ -430,7 +428,6 @@ section {
         height: 120vh;
     }
 }
-
 
 .back-to-top {
     position: fixed;
