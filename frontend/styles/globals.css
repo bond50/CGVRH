@@ -272,7 +272,7 @@ section {
 
 #hero.blog-hero .carousel-container {
     background-color: transparent;
-    top: calc(100% - 200px);
+    top: calc(100% - 250px);
     max-width: 80%;
     border-radius: 0;
     border: 0;
