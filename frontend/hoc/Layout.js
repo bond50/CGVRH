@@ -38,7 +38,7 @@ const Layout = ({
     return (
         <>
             <Index pages={pages} blog={blog}/>
-            {home && <Hero services={allFeatured}/>}
+            {home && <Hero services={allFeatured} />}
             <main>
                 {blog && !noHero && <Hero services={footerBlogs} blog/>}
                 {!noBread && <Breadcrumb imageUrl={imageUrl} pageTitle={pageTitle}/>}

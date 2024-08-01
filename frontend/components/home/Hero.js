@@ -7,6 +7,7 @@ import Link from "next/link";
 const defaultImageUrl = '/home/image.jpg';
 
 function Hero({ services: data, blog }) {
+
     const [index, setIndex] = useState(0);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     const isMounted = useRef(true);

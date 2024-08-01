@@ -257,16 +257,16 @@ section {
     z-index: 999;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
     position: relative;
-    margin: auto;
+    top: 37.1%;
+    left: 8.7%;
+    height: auto;
     border-right: 8px solid var(--color-primary1);
-    max-width: 80%;
+    max-width: 37.1%;
     border-radius: 0 152px 0 0;
     background: rgba(255, 255, 255, 0.85);
-    padding: 18px 45px;
-    text-align: center;
+    padding: 18px 45px 18px 25px;
+    text-align: left;
     width: auto;
 }
 
@@ -279,6 +279,8 @@ section {
 }
 
 @media (max-width: 768px) {
+
+
     #hero.blog-hero .carousel-container {
         top: calc(100% - 260px); /* Adjusted space on top for mobile devices */
         left: 3.5%;
@@ -411,8 +413,8 @@ section {
 
 @media (max-width: 992px) {
     #hero .carousel-container {
-        max-width: 70%;
-        left: 15%;
+        max-width: 90%;
+        left: 2.5%;
     }
 }
 
@@ -592,7 +594,6 @@ section {
     text-decoration: none;
     color: var(--color-primary);
 }
-
 
 
 .page-wrapper .page-box {
