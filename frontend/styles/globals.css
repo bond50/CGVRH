@@ -288,12 +288,12 @@ section {
     }
 
     #hero.blog-hero h2 a {
-        font-size: 20px;
-        line-height: 1.2; /* Improved line height */
+        font-size: 18px;
+        line-height: 1.1; /* Improved line height */
     }
 
     #hero.blog-hero p {
-        font-size: 14px;
+        font-size: 13px;
         margin-bottom: 10px;
         font-family: var(--font-secondary);
 
