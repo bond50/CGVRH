@@ -55,7 +55,7 @@ body {
 }
 
 a {
-    color: var(--color-primary);
+    color: var(--color-primary1);
     text-decoration: none;
 }
 
@@ -69,13 +69,13 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
 }
 
-p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0;
-    margin-inline-end: 0;
-}
+/*p {*/
+/*    display: block;*/
+/*    margin-block-start: 1em;*/
+/*    margin-block-end: 1em;*/
+/*    margin-inline-start: 0;*/
+/*    margin-inline-end: 0;*/
+/*}*/
 
 @media screen and (max-width: 768px) {
     [data-aos-delay] {
@@ -206,7 +206,7 @@ section {
     width: 100%;
     overflow: hidden;
     position: relative;
-    height: 70vh;
+    height: 80vh;
     margin-bottom: -120px;
     display: flex;
     align-items: center;
@@ -258,11 +258,11 @@ section {
     display: flex;
     align-items: center;
     position: relative;
-    top: 37.1%;
-    left: 8.7%;
+    top: 35.1%;
+    left: 7.5%;
     height: auto;
     border-right: 8px solid var(--color-primary1);
-    max-width: 37.1%;
+    max-width: 38.1%;
     border-radius: 0 152px 0 0;
     background: rgba(255, 255, 255, 0.85);
     padding: 18px 45px 18px 25px;
@@ -272,7 +272,7 @@ section {
 
 #hero.blog-hero .carousel-container {
     background-color: transparent;
-    top: calc(100% - 180px);
+    top: calc(100% - 200px);
     max-width: 80%;
     border-radius: 0;
     border: 0;
@@ -280,9 +280,8 @@ section {
 
 @media (max-width: 768px) {
 
-
     #hero.blog-hero .carousel-container {
-        top: calc(100% - 260px); /* Adjusted space on top for mobile devices */
+        top: calc(100% - 300px); /* Adjusted space on top for mobile devices */
         left: 3.5%;
         max-width: 92%;
         padding: 18px 30px 18px 20px;
@@ -297,6 +296,7 @@ section {
         font-size: 14px;
         margin-bottom: 10px;
         font-family: var(--font-secondary);
+
         /*line-height: 1.5; !* Improved line height *!*/
     }
 
@@ -314,7 +314,7 @@ section {
 
 #hero.blog-hero h2 {
     margin: 20px 0;
-    line-height: 18px;
+    line-height: 1.2;
 }
 
 #hero h2 a {
@@ -332,9 +332,9 @@ section {
 #hero p {
     -webkit-animation-delay: 0.4s;
     animation-delay: 0.4s;
-    color: var(--color-default);
+    color: #09254b;
     margin: 20px 0;
-    font-size: 13px;
+    font-size: 14px;
     font-family: var(--font-secondary);
     /* text-shadow: 0 0 2px #ffffff; */
 }

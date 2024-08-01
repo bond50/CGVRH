@@ -1,16 +1,16 @@
 import Link from 'next/link';
-import React, {Fragment} from "react";
-import {API} from '../../config';
+import React, { Fragment } from "react";
+import { API } from '../../config';
 import classes from '../../styles/BlogCard.module.css';
 import Image from "next/image";
-import {stripAllTags, stripTags} from "../reusables/utility";
+import { stripAllTags, stripTags } from "../reusables/utility";
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
-import AdBanner from "../adsense/AdBanner";
+import { Icon } from '@iconify/react';
 
 dayjs.extend(advancedFormat);
 
-const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle, admin}) => {
+const Card = ({ blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle, admin }) => {
 
     const showBlogTags = () =>
         blog.tags.map((t, i) => {
@@ -52,8 +52,10 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
                 {
                     admin ? <div className={classes.Content}>
                         <div className='position-relative d-inline'>
-                            <span className={`${classes.Badge} bi bi-x`} onClick={removeImageByAdmin}></span>
-                            <div className={classes.Image} style={{marginBottom: "-30px"}}>
+                            <span className={classes.Badge} onClick={removeImageByAdmin}>
+                                <Icon icon='mdi:remove-bold' />
+                            </span>
+                            <div className={classes.Image} style={{ marginBottom: "-30px" }}>
                                 <Image
                                     className="img-fluid"
                                     width={1200}
@@ -79,21 +81,21 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
                             <h2 className={classes.Title}>
                                 <Link href={single ? '' : `/blog/${blog.slug}`}>
                                     <a>
-                                        {blog.title.toLowerCase()}
+                                        {blog.title}
                                     </a>
                                 </Link>
                             </h2>
                         </Fragment>
                         <div className={classes.Meta}>
                             <ul className='pt-3 pb-3 '>
-                                <li className="d-flex align-items-center"><i className="bi bi-person"/>
+                                <li className="d-flex align-items-center"><Icon icon="bi:person" />
                                     <span className='px-2'> Written by  </span>
                                     <Link href={`/profile/${blog.postedBy.username}`}>
                                         <a> {blog.postedBy.username}</a>
                                     </Link>
                                 </li>
                                 <li className="d-flex align-items-center">
-                                    <i className="bi bi-calendar"/>
+                                    <Icon icon="bi:calendar" />
                                     <span>{dayjs(blog.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}</span>
                                 </li>
                             </ul>
@@ -110,19 +112,17 @@ const Card = ({blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle,
                             {single && <>
                                 {stripTags(blog.body, ['strong', 'b'])}
                                 <div className={classes.Footer}>
-                                    <i className="bi bi-folder"/>
+                                    <Icon icon="bi:folder" />
                                     <ul className={classes.Cats}>
                                         {showCats()}
                                     </ul>
-                                    <i className="bi bi-tags"/>
+                                    <Icon icon="bi:tags" />
                                     <ul className={classes.Tags}>
                                         {showBlogTags()}
                                     </ul>
                                 </div>
 
-                                <div className="container">
-                                    <AdBanner/>
-                                </div>
+
                             </>
                             }
                         </div>

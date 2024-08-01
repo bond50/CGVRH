@@ -12,14 +12,13 @@ const {smartTrim} = require('../helpers/blog');
 const SEO = require('../models/seo');
 
 
-exports.create = (req, res) => {
-    console.log(req.body)
-    return
-    const {title, body, categories, images, tags} = req.body
 
-    if (!title || !title.length) {
+exports.create = async (req, res) => {
+    const { title, body, categories, images, tags } = req.body;
+
+    if (!title || title.length < 3 || title.length > 160) {
         return res.status(400).json({
-            error: 'title is required'
+            error: 'Title is required and must be between 3 and 160 characters'
         });
     }
 
@@ -42,52 +41,32 @@ exports.create = (req, res) => {
     }
 
     let blog = new Blog();
-    blog.approved = false;
+    blog.accepted = false;
     blog.title = title;
     blog.images = images;
     blog.body = body;
     blog.excerpt = smartTrim(body, 320, ' ', ' ...');
     blog.slug = slugify(title).toLowerCase();
     blog.mtitle = `${title} | ${process.env.APP_NAME}`;
-    blog.mdesc = stripHtml(body.substring(0, 160));
-
-
-    // let arrayOfCategories = categories && categories.split(',');
-    // let arrayOfTags = tags && tags.split(',');
+    blog.mdesc = stripHtml(body.substring(0, 160)).result;
     blog.postedBy = req.auth._id;
-    blog.save((err, result) => {
-        if (err) {
-            return res.status(400).json({
-                error: errorHandler(err)
-            });
-        }
-        // res.json(result);
-        console.log(result)
-        Blog.findByIdAndUpdate(result._id, {$push: {categories: categories}}, {new: true}).exec(
-            (err, result) => {
-                if (err) {
-                    return res.status(400).json({
-                        error: errorHandler(err)
-                    });
-                } else {
-                    Blog.findByIdAndUpdate(result._id, {$push: {tags: tags}}, {new: true}).exec(
-                        (err, result) => {
-                            if (err) {
-                                return res.status(400).json({
-                                    error: errorHandler(err)
-                                });
-                            } else {
-                                res.json(result);
-                            }
-                        }
-                    );
-                }
-            }
-        );
-    });
 
-}
+    try {
+        const savedBlog = await blog.save();
 
+        const updatedBlog = await Blog.findByIdAndUpdate(
+            savedBlog._id,
+            { $set: { categories: categories, tags: tags } },
+            { new: true }
+        ).exec();
+
+        res.json(updatedBlog);
+    } catch (err) {
+        return res.status(400).json({
+            error: errorHandler(err)
+        });
+    }
+};
 
 exports.list = (req, res) => {
     Blog.find({accepted: true})

@@ -109,7 +109,7 @@ exports.listWithPagination = async (req, res) => {
 
 exports.listAllServicesCategoriesTags = async (req, res) => {
     try {
-        const pages = await Page.find({})
+        const pages = await Page.find({accepted: true})
             .populate('categories', '_id name slug')
             .populate('postedBy', '_id name username profile')
             .sort({updatedAt: -1})
@@ -198,7 +198,7 @@ exports.listRelated = (req, res) => {
     const {categories} = req.body.service;
 
 
-    Page.find({categories: {$in: categories}})
+    Page.find({categories: {$in: categories},accepted: true})
         .limit(limit)
         .select('title slug')
         .sort({updatedAt: -1})

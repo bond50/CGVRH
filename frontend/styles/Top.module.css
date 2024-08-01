@@ -1,4 +1,4 @@
-#top-bar {
+.topBar {
     background: var(--color-primary1);
     min-height: 35px;
     font-size: 13px;
@@ -8,7 +8,7 @@
     padding: 0;
 }
 
-.blog-bar {
+.blogBar {
     min-height: 30px;
     background: var(--color-secondary);
 }
@@ -58,7 +58,7 @@
     margin-left: 20px;
 }
 
-.trending .links-wrapper {
+.trending .linksWrapper {
     position: relative;
     overflow: hidden;
     height: 100%;
@@ -67,7 +67,7 @@
     align-items: center;
 }
 
-.trending .links-wrapper ul {
+.trending .linksWrapper ul {
     position: relative;
     width: 100%;
     list-style-type: none;
@@ -78,7 +78,7 @@
     justify-content: center;
 }
 
-.trending .links-wrapper ul li {
+.trending .linksWrapper ul li {
     display: none;
     text-align: center;
     color: var(--color-contrast);
@@ -88,7 +88,7 @@
     font-size: 12px;
 }
 
-.trending .links-wrapper ul li a {
+.trending .linksWrapper ul li a {
     color: var(--color-contrast);
     text-decoration: none;
     font-family: var(--font-heading);
@@ -96,22 +96,22 @@
     font-size: 12px;
 }
 
-.trending .links-wrapper ul li .arrow-icon {
+.trending .linksWrapper ul li .arrowIcon {
     margin-left: 5px;
     font-size: 16px !important;
 }
 
-.trending .links-wrapper ul li a:hover {
+.trending .linksWrapper ul li a:hover {
     color: var(--color-contrast-rgb);
     border-bottom: 2px solid var(--color-contrast-rgb);
 }
 
-.trending .links-wrapper ul li.show {
+.trending .linksWrapper ul li.show {
     display: block;
     animation: slide-up 10s linear infinite;
 }
 
-.contact-info i {
+.contactInfo .icon {
     font-style: normal;
     color: var(--color-contrast);
     border-left: 1px solid var(--color-contrast);
@@ -120,27 +120,27 @@
     padding-left: 15px;
 }
 
-.contact-info i:first-child {
+.contactInfo .icon:first-child {
     border-left: none;
 }
 
-.contact-info i a,
-.contact-info i span {
+.contactInfo  a,
+.contactInfo  span {
     padding-left: 5px;
     color: var(--color-contrast);
 }
 
-.contact-info i a {
+.contactInfo  a {
     line-height: 0;
     transition: 0.3s;
 }
 
-.contact-info i a:hover {
+.contactInfo  a:hover {
     color: var(--color-contrast);
     text-decoration: underline;
 }
 
-.social-links a {
+.socialLinks a {
     color: rgba(var(--color-contrast), 0.7);
     line-height: 0;
     transition: 0.3s;
@@ -148,38 +148,38 @@
     margin-left: 20px;
 }
 
-.social-links a:hover {
+.socialLinks a:hover {
     color: var(--color-contrast);
 }
 
 @media (max-width: 1279px) {
-    #top-bar {
+    .topBar {
         display: none !important;
     }
 }
 
 @media (max-width: 767px) {
-    .contact-info {
+    .contactInfo {
         flex-wrap: wrap;
         justify-content: flex-start;
         padding: 10px;
         font-size: 13px;
     }
 
-    .contact-info i {
+    .contactInfo .icon {
         border-left: none;
         margin-bottom: 10px;
         margin-left: 0;
         padding-left: 0;
     }
 
-    .contact-info i:last-child {
+    .contactInfo .icon:last-child {
         border-left: 1px solid #fff;
         margin-left: 15px !important;
         padding-left: 15px;
     }
 
-    .social-links {
+    .socialLinks {
         justify-content: center;
     }
 }

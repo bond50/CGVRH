@@ -51,7 +51,7 @@ const useCreate = (localStorageItem, catEndpoint, tagEndpoint, pageEndpoint) => 
             tags: checkedTag,
         };
 
-        console.log(payload)
+
 
 
         try {

@@ -35,27 +35,23 @@ const Top = ({ blog }) => {
     }, [trendingLinks.length]);
 
     return (
-        <section id={styles['top-bar']} className={`${blog ? styles['blog-bar'] : ''} d-flex align-items-center`}>
+        <section className={`${styles.topBar} ${blog ? styles.blogBar : ''} d-flex align-items-center`}>
             <div className="container d-flex flex-column flex-md-row justify-content-center justify-content-md-between">
                 {!blog && (
                     <>
-                        <div className={`${styles['contact-info']} d-flex align-items-center`}>
-                            <i className="bi bi-clock-fill d-flex align-items-center">
-                                <span><YearsOperated /> Years of service</span>
-                            </i>
-                            <i className="bi bi-envelope-check-fill d-flex align-items-center ms-4 custom-margin">
-                                <a href="mailto:info@vihigahospital.go.ke">info@vihigahospital.go.ke</a>
-                            </i>
-                            <i className="bi bi-phone-fill d-flex align-items-center ms-4 custom-margin">
-                                <span>+254723103564</span>
-                            </i>
-                            <i className="bi bi-clock d-flex align-items-center ms-4 custom-margin">
-                                <span>Open 24/7</span>
-                            </i>
+                        <div className={`${styles.contactInfo} d-flex align-items-center`}>
+                            <Icon icon="memory:clock-fill" className={`d-flex align-items-center`} />
+                            <span><YearsOperated /> Years of service</span>
+                            <Icon icon="bi:envelope-check-fill" className="d-flex align-items-center ms-4" />
+                            <a href="mailto:info@vihigahospital.go.ke">info@vihigahospital.go.ke</a>
+                            <Icon icon="bi:phone-fill" className="d-flex align-items-center ms-4 " />
+                            <span>+254723103564</span>
+                            <Icon icon="bi:clock" className="d-flex align-items-center ms-4" />
+                            <span>Open 24/7</span>
                         </div>
-                        <div className={`${styles['social-links']} d-flex align-items-center`}>
+                        <div className={`${styles.socialLinks} d-flex align-items-center`}>
                             <a href="https://www.facebook.com/profile.php?id=100063774356598" className="facebook">
-                                <i className="bi bi-facebook"></i>
+                                <Icon icon="bi:facebook" />
                             </a>
                         </div>
                     </>
@@ -65,14 +61,14 @@ const Top = ({ blog }) => {
                         <Icon icon="material-symbols:lightning-stand-outline-rounded" className={styles.icon} />
                         <span>Trending</span>
                         <div className={styles.line}></div>
-                        <div className={styles['links-wrapper']}>
+                        <div className={styles.linksWrapper}>
                             <ul>
                                 {trendingLinks.map((link, index) => (
                                     <li key={index} className={currentLinkIndex === index ? styles.show : ''}>
                                         <Link href={link.url}>
                                             <a>{link.title}</a>
                                         </Link>
-                                        <Icon icon="material-symbols:chevron-right" className={styles['arrow-icon']} />
+                                        <Icon icon="material-symbols:chevron-right" className={styles.arrowIcon} />
                                     </li>
                                 ))}
                             </ul>
