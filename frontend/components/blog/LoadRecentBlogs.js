@@ -10,7 +10,7 @@ const LoadRecentBlogs = ({blogs}) => {
     const recent = () => {
         return blogs && blogs.map((blog, index) => {
             let imgSrc = `${API}/blog/photo/${blog.slug}`
-            const relativeDate = dayjs(blog.updatedAt).fromNow();
+            const relativeDate = dayjs(blog.createdAt).fromNow();
             if (blog.images && blog.images.length && blog.images.length > 0) {
                 const image = blog.images[Math.floor(Math.random() * blog.images.length)];
                 imgSrc = image.url
@@ -25,7 +25,7 @@ const LoadRecentBlogs = ({blogs}) => {
                     </Link>
                 </h4>
                 <div className={classes.Time}>
-                    <span>Modified {relativeDate}</span>
+                    <span>Written {relativeDate}</span>
                 </div>
             </div>
         })

@@ -87,7 +87,7 @@ const Card = ({ blog, single, blogUploadSrc, removeImageByAdmin, blogUploadTitle
                             </h2>
                         </Fragment>
                         <div className={classes.Meta}>
-                            <ul className='pt-3 pb-3 '>
+                            <ul className='pt-3 pb-3'>
                                 <li className="d-flex align-items-center"><Icon icon="bi:person" />
                                     <span className='px-2'> Written by  </span>
                                     <Link href={`/profile/${blog.postedBy.username}`}>
