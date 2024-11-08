@@ -1,8 +1,8 @@
 .counts {
-    background: var(--color-background3);
+    background: var(--color-background1);
 }
 
 .about{
-     background: var(--color-background3);
+     background: var(--color-background2);
      padding: 40px;
 }

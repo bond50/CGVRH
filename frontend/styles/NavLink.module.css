@@ -38,11 +38,11 @@
     .navLink,
     .navLink:focus {
         padding: 10px 15px;
-        font-size: 12px;
-        font-weight: 400;
-        font-family: var(--font-heading);
+        font-size: 13px;
+        font-weight: 500;
+        font-family: var(--font-secondary);
         text-transform: capitalize;
-        color: var(--color-text-1);
+         color: var(--color-default);
     }
 
     .navLink:hover,

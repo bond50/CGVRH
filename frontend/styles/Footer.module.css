@@ -1,7 +1,7 @@
 .Footer {
     color: var(--color-background);
     font-size: 13px;
-    background: var(--color-primary1);
+    background: var(--color-black);
 }
 
 .FooterTop {

@@ -6,13 +6,13 @@
 
 .StaffLink,
 .StaffLink:focus {
-    padding: 8px 20px;
+    padding: 8px 20px !important;
     margin-left: 30px;
-    border-radius: 0 30px 0 30px;
+    /*border-radius: 0 30px 0 30px;*/
     color: var(--color-contrast);
-    background: var(--color-primary);
+    background: var(--color-primary1);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
@@ -28,7 +28,7 @@
     .StaffLink:focus {
         padding: 8px 20px;
         margin-left: 30px;
-        border-radius: 0 30px 0 30px;
+        border-radius: 30px;
         font-size: 14px;
         font-weight: 500;
     }

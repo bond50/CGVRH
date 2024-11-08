@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import Preloader from "../../components/preloader";
 import SEOHead from "../../components/SEOHead";
 import {APP_NAME} from "../../config";
-import AdBanner from "../../components/adsense/AdBanner";
+
 
 const SmallCard = dynamic(() => import("../../components/reusables/card/small-card"), {
     ssr: false,
@@ -125,9 +125,9 @@ const Blogs = ({blogs, totalBlogs, blogsLimit, seoSettings}) => {
                     <div className="container">
                         <div className="row">
                             {showAllBlogs()}
-                            <div className="container py-4">
-                                <AdBanner/>
-                            </div>
+                            {/*<div className="container py-4">*/}
+                            {/*    <AdBanner/>*/}
+                            {/*</div>*/}
                             {showLoadedBlogs()}
 
                         </div>

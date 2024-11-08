@@ -8,7 +8,7 @@ import { generateExcerpt } from "../../../components/reusables/functions/generat
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import Preloader from "../../../components/preloader";
-import AdBanner from "../../../components/adsense/AdBanner";
+
 
 const Layout = dynamic(() => import("../../../hoc/Layout"), { ssr: false, loading: () => <Preloader /> });
 const PageWrapper = dynamic(() => import("../../../hoc/page-wrapper"), { ssr: false, loading: () => <Preloader /> });
@@ -72,9 +72,9 @@ const Projects = ({ projects }) => {
                                 </div>
                             ))}
                         </div>
-                        <div className="container py-4">
-                            <AdBanner/>
-                        </div>
+                        {/*<div className="container py-4">*/}
+                        {/*    <AdBanner/>*/}
+                        {/*</div>*/}
                     </PageWrapper>
                 </main>
             </Layout>

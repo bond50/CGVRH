@@ -7,7 +7,6 @@ import dynamic from "next/dynamic";
 import Preloader from "../../components/preloader";
 import {Icon} from "@iconify/react";
 import SEOHead from "../../components/SEOHead";
-import AdBanner from "../../components/adsense/AdBanner";
 
 
 const Layout = dynamic(() => import("../../hoc/Layout"), {ssr: false, loading: () => <Preloader/>});
@@ -123,9 +122,9 @@ const Index = ({paginationData, size, page, generalData}) => {
 
                         </div>
 
-                        <div className="container py-4">
-                            <AdBanner/>
-                        </div>
+                        {/*<div className="container py-4">*/}
+                        {/*    <AdBanner/>*/}
+                        {/*</div>*/}
 
                         <div className="d-flex justify-content-center pagination">
                         <PaginationComponent

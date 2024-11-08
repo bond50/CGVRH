@@ -5,7 +5,7 @@ import {APP_NAME} from "../../config";
 import Preloader from "../../components/preloader";
 import SEOHead from "../../components/SEOHead";
 import TrendingBlogs from "../../components/blog/TrendingBlogs";
-import AdBanner from "../../components/adsense/AdBanner";
+
 
 const Card = dynamic(() => import("../../components/blog/Card"), {
     ssr: false,
@@ -112,9 +112,9 @@ const Slug = ({blog, query}) => {
                         <div className="row">{showRelatedBlog()}</div>
                     </div>
                     <TrendingBlogs/>
-                    <div className="container py-4">
-                        <AdBanner/>
-                    </div>
+                    {/*<div className="container py-4">*/}
+                    {/*    <AdBanner/>*/}
+                    {/*</div>*/}
                 </section>
             </Layout>
         </>

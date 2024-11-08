@@ -15,7 +15,7 @@
     --color-secondary-brighter: #4154f1;
     --color-background: #eff5f5;
     --color-background1: #ffffff;
-    --color-background3: #f2f2f2;
+    --color-background3: #f5f6f8;
     --color-contrast: #ffffff;
     --color-contrast-rgb: rgba(255, 255, 255, 0.85);
     --color-link-hover: #ffc107;
@@ -34,7 +34,7 @@
     --color-yellow: #f4a024;
     --color-accent: #FDDA0D;
     --color-mixed-default-90: color-mix(in srgb, var(--color-default), transparent 90%);
-    --color-mixed-default-88: color-mix(in srgb, var(--color-default), transparent 88%);
+    --color-mixed-default-88: color-mix(in srgb, var(--color-default), transparent 70%);
     --color-mixed-default-92: color-mix(in srgb, var(--color-default), transparent 92%);
     --color-mixed-default-96: color-mix(in srgb, var(--color-default), transparent 96%);
     --color-mixed-paragraph-10: color-mix(in srgb, var(--color-paragraph), transparent 10%);
@@ -191,8 +191,8 @@ section {
 
 
 #nprogress .bar {
-    height: 8px !important;
-    background: var(--color-accent) !important;
+    height: 5px !important;
+    background: var(--color-primary1) !important;
 }
 
 
@@ -206,8 +206,8 @@ section {
     width: 100%;
     overflow: hidden;
     position: relative;
-    height: 80vh;
-    margin-bottom: -120px;
+    height:50vh;
+    /*margin-bottom: -120px;*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -246,7 +246,7 @@ section {
 #hero .carousel-item::before {
     z-index: 2;
     content: "";
-    background-color: rgba(0, 0, 0, 0.65);
+    background-color: rgba(0, 0, 0, 0.89);
 }
 
 #hero.blog-hero .carousel-item::before {
@@ -258,7 +258,7 @@ section {
     display: flex;
     align-items: center;
     position: relative;
-    top: 35.1%;
+    top: 37.1%;
     left: 7.5%;
     height: auto;
     border-right: 8px solid var(--color-primary1);
@@ -310,7 +310,7 @@ section {
 }
 
 #hero h2 {
-    margin: 20px 0;
+    margin: 10px 0;
     line-height: 22px;
 }
 
@@ -320,7 +320,7 @@ section {
 }
 
 #hero h2 a {
-    font-size: 20px;
+    font-size: 18px;
     color: var(--color-primary1);
     font-weight: 700;
 }
@@ -334,9 +334,9 @@ section {
 #hero p {
     -webkit-animation-delay: 0.4s;
     animation-delay: 0.4s;
-    color: #09254b;
-    margin: 20px 0;
-    font-size: 14px;
+    color: var(--color-default);
+    margin: 10px 0;
+    font-size: 13px;
     font-family: var(--font-secondary);
     /* text-shadow: 0 0 2px #ffffff; */
 }
@@ -410,7 +410,7 @@ section {
 
 #hero .carousel-indicators li.active {
     opacity: 1;
-    background: var(--color-secondary);
+    background: var(--color-primary1);
 }
 
 @media (max-width: 992px) {

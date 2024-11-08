@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Head from 'next/head';
 import Preloader from "../../../components/preloader";
 import { APP_NAME, DOMAIN } from "../../../config";
-import AdBanner from "../../../components/adsense/AdBanner";
+
 
 const CertVerify = dynamic(() => import("../../../components/certificate"), { ssr: false, loading: () => <Preloader /> });
 const Layout = dynamic(() => import("../../../hoc/Layout"), { ssr: false, loading: () => <Preloader /> });
@@ -29,9 +29,9 @@ const Id = () => {
             </Head>
             <Layout noBread>
                 <CertVerify/>
-                <div className="container py-4">
-                    <AdBanner/>
-                </div>
+                {/*<div className="container py-4">*/}
+                {/*    <AdBanner/>*/}
+                {/*</div>*/}
             </Layout>
         </>
     );

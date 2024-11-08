@@ -41,10 +41,10 @@
     }
 
     .DropdownCaption {
-        font-weight: 400;
+        font-weight: 500;
         padding: 10px 15px;
-        font-size: 12px;
-        font-family: var(--font-heading);
+        font-size: 13px;
+        font-family: var(--font-secondary);
         text-transform: capitalize;
         color: var(--color-default);
     }

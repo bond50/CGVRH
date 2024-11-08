@@ -6,7 +6,7 @@ import {useRouter} from "next/router";
 import Preloader from "../../../../components/preloader";
 import {fetcher} from "../../../../axios/axios";
 import Head from "next/head";
-import AdBanner from "../../../../components/adsense/AdBanner";
+// import AdBanner from "../../../../components/adsense/AdBanner";
 
 
 const GalleryWrapper = dynamic(() => import("../../../../components/media/gallery/gallery-wrapper"), {
@@ -57,9 +57,9 @@ const Slug = () => {
             {head()}
             <Layout>
                 <GalleryWrapper data={data.data}/>
-                <div className="container py-4">
-                    <AdBanner/>
-                </div>
+                {/*<div className="container py-4">*/}
+                {/*    <AdBanner/>*/}
+                {/*</div>*/}
             </Layout>
         </>
     );

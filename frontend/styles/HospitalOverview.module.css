@@ -1,6 +1,6 @@
 .hospitalOverview {
     z-index: 99;
-    /*background-color: var(--color-background2);*/
+    background-color: var(--color-background3);
 }
 
 .hospitalOverview .content {

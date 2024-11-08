@@ -5,7 +5,6 @@ import {fetcher} from "../../axios/axios";
 import Preloader from "../../components/preloader";
 import dynamic from "next/dynamic";
 import SEOHead from "../../components/SEOHead";
-import AdBanner from "../../components/adsense/AdBanner";
 
 const TenderList = dynamic(() => import("../../components/tenders"), {ssr: false, loading: () => <Preloader/>});
 const Layout = dynamic(() => import("../../hoc/Layout"), {ssr: false, loading: () => <Preloader/>});
@@ -85,9 +84,9 @@ const Tender = () => {
             />
             <Layout>
                 <TenderList files={files}/>
-                <div className="container py-4">
-                    <AdBanner/>
-                </div>
+                {/*<div className="container py-4">*/}
+                {/*    <AdBanner/>*/}
+                {/*</div>*/}
             </Layout>
         </>
     );

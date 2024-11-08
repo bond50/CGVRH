@@ -5,7 +5,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import Preloader from "../../components/preloader";
 import Link from "next/link";
-import AdBanner from "../../components/adsense/AdBanner";
+
 
 const Layout = dynamic(() => import("../../hoc/Layout"), { ssr: false, loading: () => <Preloader /> });
 
@@ -60,9 +60,9 @@ const Index = () => {
                         </ul>
                     </div>
 
-                    <div className="container py-4">
-                        <AdBanner/>
-                    </div>
+                    {/*<div className="container py-4">*/}
+                    {/*    <AdBanner/>*/}
+                    {/*</div>*/}
                 </section>
             </Layout>
         </>

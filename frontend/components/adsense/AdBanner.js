@@ -1,4 +1,4 @@
-// components/AdBanner.js
+
 import React, {useEffect} from 'react';
 
 const AdBanner = () => {

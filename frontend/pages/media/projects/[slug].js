@@ -6,7 +6,6 @@ import {stripTags} from "../../../components/reusables/utility";
 import Preloader from "../../../components/preloader";
 import {fetcher} from "../../../axios/axios";
 import Head from "next/head";
-import AdBanner from "../../../components/adsense/AdBanner";
 import React from "react";
 
 const PageWrapper = dynamic(() => import("../../../hoc/page-wrapper"), {ssr: false, loading: () => <Preloader/>});
@@ -38,9 +37,9 @@ const Slug = ({project, query}) => {
         return (
             <PageWrapper related={projects} title={`Related`} projectPage>
                 {stripTags(project.body, ['strong', 'b'])}
-                <div className="container py-4">
-                    <AdBanner/>
-                </div>
+                {/*<div className="container py-4">*/}
+                {/*    <AdBanner/>*/}
+                {/*</div>*/}
             </PageWrapper>
         );
     };

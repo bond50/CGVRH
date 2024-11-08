@@ -5,7 +5,7 @@ import {getAllSlugs, listRelated, singlePage} from "../../actions/general";
 import dynamic from "next/dynamic";
 import Preloader from "../../components/preloader";
 import SEOHead from "../../components/SEOHead";
-import AdBanner from "../../components/adsense/AdBanner";
+// import AdBanner from "../../components/adsense/AdBanner";
 
 const PageWrapper = dynamic(() => import("../../hoc/page-wrapper"), {ssr: false, loading: () => <Preloader/>});
 const Layout = dynamic(() => import("../../hoc/Layout"), {ssr: false, loading: () => <Preloader/>});
@@ -39,9 +39,9 @@ const Slug = ({service}) => {
         return service ? (
             <PageWrapper related={related} title={`Related`}>
                 {stripTags(service.body, ['strong', 'b'])}
-                <div className="container py-4">
-                    <AdBanner/>
-                </div>
+                {/*<div className="container py-4">*/}
+                {/*    <AdBanner/>*/}
+                {/*</div>*/}
             </PageWrapper>
         ) : (
             <div>Loading...</div>
