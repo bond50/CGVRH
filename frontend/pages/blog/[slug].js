@@ -8,23 +8,18 @@ import TrendingBlogs from "../../components/blog/TrendingBlogs";
 
 
 const Card = dynamic(() => import("../../components/blog/Card"), {
-    ssr: false,
     loading: () => <Preloader/>
 });
 const DisqusThread = dynamic(() => import("../../components/DiscussThread"), {
-    ssr: false,
     loading: () => <Preloader/>
 });
 const BlogContainer = dynamic(() => import("../../hoc/BlogContainer"), {
-    ssr: false,
     loading: () => <Preloader/>
 });
 const SmallCard = dynamic(() => import("../../components/reusables/card/small-card"), {
-    ssr: false,
     loading: () => <Preloader/>
 });
 const Layout = dynamic(() => import("../../hoc/Layout"), {
-    ssr: false,
     loading: () => <Preloader/>
 });
 
