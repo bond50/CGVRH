@@ -7,8 +7,8 @@ import Preloader from "../../components/preloader";
 import SEOHead from "../../components/SEOHead";
 // import AdBanner from "../../components/adsense/AdBanner";
 
-const PageWrapper = dynamic(() => import("../../hoc/page-wrapper"), {ssr: false, loading: () => <Preloader/>});
-const Layout = dynamic(() => import("../../hoc/Layout"), {ssr: false, loading: () => <Preloader/>});
+const PageWrapper = dynamic(() => import("../../hoc/page-wrapper"), { loading: () => <Preloader/>});
+const Layout = dynamic(() => import("../../hoc/Layout"), { loading: () => <Preloader/>});
 
 const Slug = ({service}) => {
     const [related, setRelated] = useState([])

@@ -12,6 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Script from "next/script";
 import {ADSENSE_CLIENT_ID, GOOGLE_ANALYTICS_KEY} from "../config";
 
+
 const MyApp = ({Component, pageProps}) => {
     NProgress.configure({showSpinner: false});
     Router.events.on('routeChangeStart', () => NProgress.start());
