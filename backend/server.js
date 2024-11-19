@@ -45,7 +45,7 @@ app.use(bodyParser.urlencoded({limit: "200mb", extended: true}));
 
 
 
-let whitelist = ['http://localhost:3000', `https://${process.env.SERVER_IP}:3000`,`http://192.168.45.3:3000`, 'https://galavuwal.com', 'https://vihigahospital.go.ke'];
+let whitelist = [`https://${process.env.SERVER_IP}:${process.env.CLIENT_PORT}`, 'https://galavuwal.com', `${process.env.CLIENT_URL}`,`${process.env.CLIENT_URL_DEV}`];
 let corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1 || !origin) {

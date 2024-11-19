@@ -50,11 +50,11 @@ const Slug = ({blog, query}) => {
         </div>
     ));
 
-    const showComments = () => (
-        <div>
-            <DisqusThread id={blog._id} title={blog.title} path={blog.slug}/>
-        </div>
-    );
+    // const showComments = () => (
+    //     <div>
+    //         <DisqusThread id={blog._id} title={blog.title} path={blog.slug}/>
+    //     </div>
+    // );
 
     const additionalStructuredData = [
         {

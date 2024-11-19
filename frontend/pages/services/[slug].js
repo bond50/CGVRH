@@ -2,14 +2,10 @@ import React, {Fragment, useCallback, useEffect, useState} from 'react';
 import {API, APP_NAME} from "../../config";
 import {stripTags} from "../../components/reusables/utility";
 import {getAllSlugs, listRelated, singlePage} from "../../actions/general";
-import dynamic from "next/dynamic";
-import Preloader from "../../components/preloader";
 import SEOHead from "../../components/SEOHead";
 // import AdBanner from "../../components/adsense/AdBanner";
-
-const PageWrapper = dynamic(() => import("../../hoc/page-wrapper"), { loading: () => <Preloader/>});
-const Layout = dynamic(() => import("../../hoc/Layout"), { loading: () => <Preloader/>});
-
+import Layout from "../../hoc/Layout";
+import PageWrapper from "../../hoc/page-wrapper";
 const Slug = ({service}) => {
     const [related, setRelated] = useState([])
 

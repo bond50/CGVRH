@@ -8,11 +8,9 @@ import {APP_NAME} from "../../config";
 
 
 const SmallCard = dynamic(() => import("../../components/reusables/card/small-card"), {
-    ssr: false,
     loading: () => <Preloader/>
 });
 const Layout = dynamic(() => import("../../hoc/Layout"), {
-    ssr: false,
     loading: () => <Preloader/>
 });
 const Blogs = ({blogs, totalBlogs, blogsLimit, seoSettings}) => {
