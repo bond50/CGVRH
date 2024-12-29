@@ -4,7 +4,7 @@ import Link from "next/link";
 import dayjs from 'dayjs';
 
 const TendersPage = ({ files }) => {
-    const [selectedCategory, setSelectedCategory] = useState('awarded'); // Initial category
+    const [selectedCategory, setSelectedCategory] = useState('open'); // Initial category
 
     const filteredTenders = files.filter((tender) => {
         switch (selectedCategory) {
