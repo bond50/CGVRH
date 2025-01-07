@@ -2,6 +2,8 @@
     --font-secondary: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-heading: "Nunito", sans-serif;
     --font-default: "IBM Plex Sans", sans-serif;
+}
+:root {
     /*--color-primary: #6aaf08;*/
     --color-primary1: #228B22;
     --color-primary: #4CAF50;
@@ -9,7 +11,7 @@
     --color-heading1: #234821;
     --color-heading2: #13191d;
     --color-heading3: #5AAC4E;
-    --color-default: #485664;
+    --color-default:  #212529;
     --color-secondary: #388da8;
     --color-blog-bg: #388da8;
     --color-secondary-brighter: #4154f1;
@@ -66,7 +68,7 @@ a:hover {
 
 /* Heading styles */
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
+    font-family: var(--font-secondary);
 }
 
 /*p {*/
@@ -84,7 +86,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 section {
-    padding: 60px 0;
+    padding: 80px 0;
     overflow: hidden;
     position: relative;
 }
@@ -206,7 +208,7 @@ section {
     width: 100%;
     overflow: hidden;
     position: relative;
-    height:50vh;
+    height:70vh;
     /*margin-bottom: -120px;*/
     display: flex;
     align-items: center;
@@ -246,11 +248,12 @@ section {
 #hero .carousel-item::before {
     z-index: 2;
     content: "";
-    background-color: rgba(0, 0, 0, 0.89);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+
 }
 
 #hero.blog-hero .carousel-item::before {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #1e2024);
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), #1e2024);
 }
 
 #hero .carousel-container {
@@ -258,14 +261,14 @@ section {
     display: flex;
     align-items: center;
     position: relative;
-    top: 37.1%;
+    top: 45.1%;
     left: 7.5%;
     height: auto;
     border-right: 8px solid var(--color-primary1);
     max-width: 38.1%;
     border-radius: 0 152px 0 0;
     background: rgba(255, 255, 255, 0.85);
-    padding: 18px 45px 18px 25px;
+    padding: 20px 45px 20px 25px;
     text-align: left;
     width: auto;
 }
@@ -311,7 +314,7 @@ section {
 
 #hero h2 {
     margin: 10px 0;
-    line-height: 22px;
+    line-height: 24px;
 }
 
 #hero.blog-hero h2 {
@@ -320,7 +323,7 @@ section {
 }
 
 #hero h2 a {
-    font-size: 18px;
+    font-size: 20px;
     color: var(--color-primary1);
     font-weight: 700;
 }
@@ -328,7 +331,7 @@ section {
 #hero.blog-hero h2 a {
     font-size: 28px;
     color: var(--color-contrast);
-    font-family: var(--font-secondary);
+    font-family: var(--font-heading);
 }
 
 #hero p {
@@ -336,8 +339,8 @@ section {
     animation-delay: 0.4s;
     color: var(--color-default);
     margin: 10px 0;
-    font-size: 13px;
-    font-family: var(--font-secondary);
+    font-size: 15px;
+    font-family: var(--font-default);
     /* text-shadow: 0 0 2px #ffffff; */
 }
 
