@@ -1,31 +1,33 @@
 .FooterLink {
-    padding: 10px 0;
+    padding: 12px 0;
     display: flex;
-    align-items: flex-start;
+    align-items: center; /* Better vertical alignment */
+    gap: 10px; /* Added spacing between icon and text for clarity */
 }
 
 .FooterLink:first-child {
     padding-top: 0;
 }
 
-
 .FooterLinkA {
-    color: rgba(255, 255, 255, 0.6);
-    transition: 0.3s;
-    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7); /* Slightly brighter for readability */
+    font-size: 14px; /* Slightly larger for readability */
     display: inline-block;
-    line-height: 1;
+    line-height: 1.6; /* Improved line height for readability */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease; /* Added subtle scaling effect */
 }
 
 .FooterLinkA:hover {
-    text-decoration: none;
     color: var(--color-primary1);
+    text-decoration: underline; /* Clearer hover effect */
+    transform: translateX(4px); /* Slight movement on hover for a modern feel */
 }
 
-
 .Icon {
-    padding-right: 5px;
+    padding-right: 8px; /* More spacing for better balance */
     color: var(--color-contrast);
-    font-size: 16px!important;
-    line-height: 1;
+    font-size: 18px !important; /* Slightly larger for better visibility */
+    line-height: 1.5; /* Adjusted line height for balance */
+    flex-shrink: 0; /* Prevents icon from resizing */
 }

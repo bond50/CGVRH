@@ -1,26 +1,24 @@
-
-.FooterContact {
-    margin-bottom: 30px;
-
+.FooterInfo h4 {
+    font-size: 18px; /* Slightly larger for better emphasis */
+    font-weight: bold;
+    color: #fff;
+    position: relative;
+    padding-bottom: 12px;
+    line-height: 1.8; /* Increased for better readability */
+    margin-bottom: 15px; /* Added spacing below heading for clarity */
+    border-bottom: 2px solid var(--color-primary1); /* Optional for visual separation */
 }
 
-.FooterContact h3 {
-    font-size: 16px;
-    margin: 0 0 10px 0;
-    padding: 2px 0 2px 0;
-    line-height: 1;
-    font-weight: 600;
-    font-family: var(--font-default);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--color-contrast);
-
+/* Uncommented and improved the paragraph styling */
+.FooterInfo p {
+    line-height: 1.6; /* Improved readability */
+    color: #fff;
+    margin-bottom: 10px; /* Adjusted spacing for better flow */
+    font-size: 14px;
+    opacity: 0.85; /* Slight transparency for a softer look */
+    transition: opacity 0.3s ease-in-out;
 }
 
-.FooterContact p {
-    font-size: 13px;
-    line-height: 24px;
-    margin-bottom: 0;
-    font-family:var(--font-secondary);
-    color: rgba(255, 255, 255, 0.7);
+.FooterInfo p:hover {
+    opacity: 1; /* Full visibility on hover */
 }

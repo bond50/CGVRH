@@ -10,9 +10,7 @@ import TrendingBlogs from "../../components/blog/TrendingBlogs";
 const Card = dynamic(() => import("../../components/blog/Card"), {
     loading: () => <Preloader/>
 });
-const DisqusThread = dynamic(() => import("../../components/DiscussThread"), {
-    loading: () => <Preloader/>
-});
+
 const BlogContainer = dynamic(() => import("../../hoc/BlogContainer"), {
     loading: () => <Preloader/>
 });

@@ -443,7 +443,7 @@ section {
     right: 15px;
     bottom: 15px;
     z-index: 996;
-    background: var(--color-primary1);
+    background: var(--color-secondary);
     width: 40px;
     height: 40px;
     border-radius: 50px;
@@ -614,7 +614,7 @@ section {
 .page-wrapper .page-box h4 {
     font-size: 20px;
     font-weight: 700;
-    color: var(--color-secondary);
+    color: var(--color-);
     border-bottom: 2px solid var(--color-mixed-default-92);
     padding-bottom: 15px;
     margin-bottom: 15px;
@@ -729,11 +729,17 @@ section {
     margin-right: 8px;
     color: var(--color-secondary);
 }
+.page-wrapper h2{
+     font-weight: 700;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: var(--color-secondary);
 
+}
 
-.page-wrapper h2, .page-wrapper h3, .page-wrapper h4, .page-wrapper h5, .page-wrapper h6 {
+ .page-wrapper h3, .page-wrapper h4, .page-wrapper h5, .page-wrapper h6 {
     font-weight: 700;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--color-secondary);
 }
 

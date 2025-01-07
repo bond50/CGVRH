@@ -1,15 +1,18 @@
 .FooterLinks {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    line-height: 1.6; /* Improved line height for readability */
 }
 
 .FooterLinks h4 {
-    font-size: 16px;
+    font-size: 18px; /* Slightly larger for better emphasis */
     font-weight: bold;
-    font-family: var(--font-secondary);
+    font-family: var(--font-default);
     color: var(--color-contrast);
     position: relative;
     padding-bottom: 12px;
-
+    line-height: 1.8; /* Enhanced spacing for titles */
+    margin-bottom: 15px; /* Added spacing below headings for clarity */
+    border-bottom: 2px solid var(--color-accent); /* Optional: underline effect */
 }
 
 .FooterLinks ul {
@@ -19,12 +22,20 @@
 }
 
 .FooterLinks ul li {
-    text-transform: capitalize;
+    text-transform: none;
+    font-size: 15px;
+    line-height: 1.6; /* Better readability */
+    margin-bottom: 8px; /* Increased spacing between items */
+    transition: color 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.FooterLinks ul li:hover {
+    color: var(--color-accent); /* Color change on hover for better UX */
 }
 
 .FooterLinks ul i {
-    padding-right: 2px;
+    padding-right: 8px; /* More space between icon and text */
     color: var(--color-accent);
-    font-size: 13px;
-    line-height: 1;
+    font-size: 14px;
+    vertical-align: middle; /* Align icons better with text */
 }

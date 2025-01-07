@@ -34,7 +34,7 @@ const Footer = ({ services, blogs }) => {
                                     link={l.link}
                                     title={l.title} />)}
                             </FooterLinks>
-                            <FooterLinks header='Articles from our blog section'>
+                            <FooterLinks header='Latest news'>
                                 {Array.isArray(blogs) && blogs.length > 0 ? (
                                     blogs.map(s => <FooterLink
                                         key={s._id}
