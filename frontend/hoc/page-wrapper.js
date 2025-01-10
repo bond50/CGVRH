@@ -7,7 +7,6 @@ import {API} from "../config";
 import {fetcher} from "../axios/axios";
 
 
-
 const PageWrapper = ({related = [], children, title, projectPage}) => {
     const router = useRouter();
     const {data: files, error} = useSWR(`${API}/get-downloads`, fetcher);
@@ -90,23 +89,44 @@ const PageWrapper = ({related = [], children, title, projectPage}) => {
                             </div>
                         </div>
                         <div className="help-box d-flex flex-column justify-content-center align-items-center">
-                            <i className="bi bi-headset help-icon"></i>
+
+                            <Icon icon="iconoir:headset" className="help-icon"/>
                             <h4>Have a Question?</h4>
-                            <p className="d-flex align-items-center mt-2 mb-0">
-                                <i className="bi bi-telephone me-2"></i>
+                            <p className="d-flex align-items-start mt-2 mb-0">
+
+                                <Icon icon="mynaui:telephone-call" className="icon me-2"/>
                                 <span>+254 723 103 564</span>
                             </p>
                             <p className="d-flex align-items-center mt-1 mb-0">
-                                <i className="bi bi-envelope me-2"></i>
+                                <Icon icon="clarity:envelope-line" className="icon me-2"/>
                                 <a href="mailto:info@vihihigahospital.go.ke">info@vihihigahospital.go.ke</a>
                             </p>
-                            <h4>Ward visiting Hours</h4>
+                            <h4>Ward Visiting Hours</h4>
                             <ul>
-                                <li>6:00 AM - 7:00AM</li>
-                                <li>1:00 PM - 2:00PM</li>
-                                <li>5:00 PM - 6:00PM</li>
+                                <li>6:00 AM - 7:00 AM</li>
+                                <li>1:00 PM - 2:00 PM</li>
+                                <li>5:00 PM - 6:00 PM</li>
                             </ul>
                         </div>
+
+                        {/*<div className="help-box d-flex flex-column justify-content-center align-items-center">*/}
+                        {/*    <i className="bi bi-headset help-icon"></i>*/}
+                        {/*    <h4>Have a Question?</h4>*/}
+                        {/*    <p className="d-flex align-items-center mt-2 mb-0">*/}
+                        {/*        <i className="bi bi-telephone me-2"></i>*/}
+                        {/*        <span>+254 723 103 564</span>*/}
+                        {/*    </p>*/}
+                        {/*    <p className="d-flex align-items-center mt-1 mb-0">*/}
+                        {/*        <i className="bi bi-envelope me-2"></i>*/}
+                        {/*        <a href="mailto:info@vihihigahospital.go.ke">info@vihihigahospital.go.ke</a>*/}
+                        {/*    </p>*/}
+                        {/*    <h4>Ward visiting Hours</h4>*/}
+                        {/*    <ul>*/}
+                        {/*        <li>6:00 AM - 7:00AM</li>*/}
+                        {/*        <li>1:00 PM - 2:00PM</li>*/}
+                        {/*        <li>5:00 PM - 6:00PM</li>*/}
+                        {/*    </ul>*/}
+                        {/*</div>*/}
                     </div>
                     <div className="col-lg-8 ps-lg-5 order-lg-2 order-1">
                         {children}

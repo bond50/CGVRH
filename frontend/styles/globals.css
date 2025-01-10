@@ -762,41 +762,63 @@ section {
     font-size: 16px;
     color: var(--color-secondary);
 }
-
+.page-wrapper .help-box {
+    max-width: 500px; /* Limit the width of the help box */
+    padding: 20px; /* Add padding around the box */
+    background-color: var(--color-secondary); /* Set a background color */
+    border-radius: 8px; /* Rounded corners for the box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    text-align: center; /* Center-align the content */
+}
 
 .page-wrapper .help-box h4 {
-    margin-top: 10px;
-    margin-bottom: 0;
-    font-family: var(--font-secondary);
+    margin-top: 20px;
+    font-family: var(--font-heading);
+    font-size: 24px; /* Increase font size */
+    color: var(--color-contrast); /* Set text color to primary */
+}
+
+.page-wrapper .help-box p {
+    margin: 10px 0;
+     font-weight: 500;
+    font-size: 16px; /* Set a smaller font size for text */
+    color: var(--color-contrast);
+}
+
+.page-wrapper .help-box p a {
+    color: var(--color-contrast); /* Set link color to primary */
+    text-decoration: none;
+
+    transition: color 0.3s ease; /* Smooth transition on hover */
+}
+
+.page-wrapper .help-box p a:hover {
+    color: var(--color-secondary); /* Change color on hover */
 }
 
 .page-wrapper .help-box ul {
     list-style: none;
     padding: 0;
-    font-size: 15px;
-}
-
-.page-wrapper .help-box ul li {
-    margin-top: 10px;
-    padding: 0;
-    display: flex;
-    font-size: 13px;
-    align-items: flex-start;
+    margin-top: 20px;
+    font-size: 16px; /* Set font size for the list items */
     color: var(--color-contrast);
 }
 
-.page-wrapper .help-box ul .icon {
-    font-size: 20px;
-    margin-right: 8px;
-    color: white; /* Make the icon color white */
+.page-wrapper .help-box ul li {
+    margin-top: 8px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    font-weight: 500; /* Make the text slightly bold */
 }
 
-.page-wrapper .help-box ul li::before {
-    content: url('https://api.iconify.design/material-symbols-light/check-circle-outline.svg?height=18&color=%23ffffff'); /* Change icon color to white */
-    margin-right: 10px;
-    margin-top: 3px;
-}
 
+
+.page-wrapper .help-box .help-icon {
+    font-size: 30px; /* Increase the size of the headset icon */
+    color: var(--color-accent); /* Set primary color for the icon */
+    margin-bottom: 20px; /* Add margin below the icon */
+}
 
 .page-wrapper blockquote {
     overflow: hidden;

@@ -10,8 +10,7 @@ import PageWrapper from "../../hoc/page-wrapper";
 import PaginationComponent from "../../components/reusables/PaginationComponent"
 
 
-
-const Index = ({paginationData, size, page, generalData}) => {
+const Services = ({paginationData, size, page, generalData}) => {
 
     const firstItemRef = useRef(null);
     const [data, setData] = useState(paginationData.data);
@@ -105,10 +104,10 @@ const Index = ({paginationData, size, page, generalData}) => {
                                         </div>
                                         <h3>{service.title}</h3>
                                         <p>{generateExcerpt(service.excerpt, 160)}</p>
-                                        <Link href={`/services/${service.slug}`}>
-                                            <a className="readmore stretched-link">Continue reading
+                                        <Link href={`/services/${service.slug}`} className='readmore stretched-link'>
+                                            <>Continue reading
                                                 <Icon icon="eva:arrow-right-fill" className='icon2'/>
-                                            </a>
+                                            </>
                                         </Link>
 
                                     </div>
@@ -122,7 +121,7 @@ const Index = ({paginationData, size, page, generalData}) => {
                         {/*</div>*/}
 
                         <div className="d-flex justify-content-center pagination">
-                        <PaginationComponent
+                            <PaginationComponent
                                 total={totalCount}
                                 current={current}
                                 pageSize={limit}
@@ -143,33 +142,31 @@ export const getStaticProps = async () => {
     const limit = 6;
 
     try {
-        const paginationData = await listWithPagination(page, limit);
         const generalData = await list();
+        const paginationData = await listWithPagination(page, limit);
 
-        if (!paginationData || !generalData) {
+        if (!generalData || !paginationData || paginationData.data.length === 0) {
             return {
-                notFound: true,
+                notFound: true,  // Explicitly trigger a 404 page if data is missing
             };
-        }
-        if (paginationData.error || generalData.error) {
-            console.log('error')
         }
 
         return {
             props: {
-                paginationData: paginationData || {},
-                page: page,
+                paginationData,
+                page,
                 size: limit,
-                generalData: generalData || {},
+                generalData,
             },
-            revalidate: 60,  // Optional: re-generate the page at most once per minute
+            revalidate: 60, // Re-generate the page every minute
         };
     } catch (error) {
         console.error('Error fetching data:', error);
         return {
-            notFound: true,
+            notFound: true, // Catch block now also triggers a 404
         };
     }
 };
 
-export default Index;
+
+export default Services;
